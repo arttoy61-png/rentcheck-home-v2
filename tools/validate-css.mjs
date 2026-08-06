@@ -69,6 +69,7 @@ for (const match of css.matchAll(/grid-template-columns\s*:\s*([^;{}]+)\s*;/giu)
 
 const responsiveChecks = [
   [1440, /\.hero-inner\s*\{[^}]*minmax\(0,\s*52fr\)\s+minmax\(0,\s*48fr\)/su, /\.action-grid\s*\{[^}]*repeat\(3,\s*minmax\(0,\s*1fr\)\)/su],
+  [1280, /@media\s*\(max-width:\s*1280px\)[\s\S]*?\.hero-inner\s*\{[^}]*gap:\s*56px/su, /\.action-grid\s*\{[^}]*repeat\(3,\s*minmax\(0,\s*1fr\)\)/su],
   [1024, /@media\s*\(max-width:\s*1024px\)[\s\S]*?\.hero-inner\s*\{[^}]*minmax\(0,\s*52fr\)\s+minmax\(430px,\s*48fr\)/su, /\.action-grid\s*\{[^}]*repeat\(3,\s*minmax\(0,\s*1fr\)\)/su],
   [768, /@media\s*\(max-width:\s*768px\)[\s\S]*?\.hero-inner\s*\{[^}]*grid-template-columns:\s*1fr/su, /@media\s*\(max-width:\s*768px\)[\s\S]*?\.action-grid\s*\{[^}]*repeat\(2,\s*minmax\(0,\s*1fr\)\)/su],
   [520, /@media\s*\(max-width:\s*520px\)[\s\S]*?\.hero-inner\s*\{[^}]*gap:\s*70px/su, /@media\s*\(max-width:\s*520px\)[\s\S]*?\.action-grid\s*\{[^}]*grid-template-columns:\s*1fr/su],
@@ -84,5 +85,5 @@ if (failures.length) {
   process.exitCode = 1;
 } else {
   console.log("styles.css: units, functions, grid columns, and media queries are valid");
-  console.log("Responsive hero and Quick Actions rules verified at 1440px, 1024px, 768px, and 520px");
+  console.log("Responsive hero and Quick Actions rules verified at 1440px, 1280px, 1024px, 768px, and 520px");
 }
