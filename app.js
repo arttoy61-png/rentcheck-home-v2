@@ -23,6 +23,7 @@ function showToast(message) {
   toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
 }
 
+
 const menuToggle = $('#menuToggle');
 const mobileNav = $('#mobileNav');
 menuToggle.addEventListener('click', () => {
