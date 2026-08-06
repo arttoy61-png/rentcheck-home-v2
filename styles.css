@@ -993,3 +993,193 @@ h1 em { color: transparent; background: linear-gradient(100deg,#2563eb,#6d4aff 7
   .data-badge strong { font-size: 10px; line-height: 1.4; }
   .dashboard-disclosure { font-size: 9px; }
 }
+
+/* First-screen type hierarchy and calmer metadata */
+.hero .eyebrow {
+  margin-bottom: 28px;
+  color: #4338ca;
+  font-size: 13px;
+}
+.hero h1 {
+  margin: 0 0 32px;
+  color: #111827;
+  font-size: clamp(64px, 4.85vw, 72px);
+  line-height: 1.18;
+}
+.hero-description {
+  color: #475569;
+  font-size: 18px;
+  line-height: 1.85;
+}
+.search-product {
+  margin-top: 52px;
+  padding: 24px;
+}
+.search-product-head {
+  padding: 0 4px 18px;
+  color: #111827;
+  font-size: 16px;
+  font-weight: 700;
+}
+.search-box { height: 72px; }
+.search-box input,
+.search-box button { font-size: 16px; }
+.search-box button { height: 56px; }
+.suggestions { margin-top: 20px; gap: 10px; }
+.suggestions > span,
+.suggestions button { font-size: 14px; }
+.trust-row {
+  margin-top: 24px;
+  padding-top: 20px;
+}
+.trust-row p {
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.trust-row p span { color: #64748b; }
+
+.dash-label {
+  color: #64748b;
+  font-size: 13px;
+  letter-spacing: .02em;
+}
+.dash-header h2 {
+  margin-top: 8px;
+  color: #111827;
+  font-size: 24px;
+}
+.price-row { margin-top: 34px; }
+.price-row > div > span:first-child {
+  margin-bottom: 7px;
+  color: #475569;
+  font-size: 15px;
+}
+.price-row strong {
+  color: #111827;
+  font-size: 38px;
+  line-height: 1.3;
+}
+.metric-value-row,
+.summary-title-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+}
+.example-badge {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  min-height: 21px;
+  padding: 2px 7px;
+  border: 1px solid #c7d2fe;
+  border-radius: 999px;
+  color: #4338ca;
+  background: #eef2ff;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 700;
+}
+.floating-metric .example-badge,
+.metric-grid .example-badge,
+.summary-title-row .example-badge {
+  display: inline-flex;
+  float: none;
+  margin: 0;
+  color: #4338ca;
+  font-size: 11px;
+}
+.chart-months { color: #64748b; font-size: 13px; }
+.ai-status { margin-top: 24px; padding-block: 16px; }
+.ai-status > div { min-width: 0; }
+.ai-status strong { color: #111827; font-size: 17px; }
+.ai-status p { color: #475569; font-size: 15px; }
+.floating-metric { min-height: 78px; }
+.floating-metric small {
+  margin-bottom: 4px;
+  color: #64748b;
+  font-size: 14px;
+}
+.floating-metric strong {
+  margin: 0;
+  color: #111827;
+  font-size: 21px;
+  line-height: 1.35;
+}
+.floating-ai strong { font-size: 16px; }
+.dashboard-disclosure {
+  margin: 22px 2px 0;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.data-badge { color: #64748b; }
+.dark .hero h1,
+.dark .search-product-head,
+.dark .dash-header h2,
+.dark .price-row strong,
+.dark .ai-status strong,
+.dark .floating-metric strong { color: #f8fafc; }
+.dark .hero-description,
+.dark .trust-row p,
+.dark .trust-row p span,
+.dark .dash-label,
+.dark .price-row > div > span:first-child,
+.dark .chart-months,
+.dark .ai-status p,
+.dark .floating-metric small,
+.dark .dashboard-disclosure { color: #cbd5e1; }
+.dark .example-badge { color: #c7d2fe; background: #262b46; border-color: #4f5680; }
+
+@media (max-width: 1280px) {
+  .hero h1 { font-size: 60px; }
+}
+
+@media (max-width: 1024px) {
+  .hero h1 { font-size: 54px; }
+  .hero-description { font-size: 18px; }
+  .search-product { margin-top: 44px; }
+  .dashboard-card { padding: 28px; }
+}
+
+@media (max-width: 768px) {
+  .hero .eyebrow { margin-bottom: 24px; }
+  .hero h1 { font-size: 44px; }
+  .hero-description { font-size: 17px; }
+  .hero-inner { gap: 84px; }
+  .dashboard-wrap { row-gap: 16px; }
+}
+
+@media (max-width: 520px) {
+  .hero .eyebrow { font-size: 12px; }
+  .hero h1 {
+    margin-bottom: 26px;
+    font-size: 40px;
+    line-height: 1.25;
+  }
+  .hero-description { font-size: 16px; line-height: 1.75; }
+  .search-product { margin-top: 40px; padding: 18px; }
+  .search-product-head { padding-bottom: 16px; font-size: 16px; }
+  .search-box input,
+  .search-box button { font-size: 16px; }
+  .suggestions { margin-top: 18px; }
+  .suggestions button { font-size: 14px; }
+  .trust-row p { font-size: 13px; }
+  .dash-header h2 { font-size: 22px; }
+  .price-row { margin-top: 28px; }
+  .price-row strong { font-size: 34px; }
+  .ai-status strong { font-size: 16px; }
+  .ai-status p { font-size: 15px; }
+  .floating-metric small { font-size: 14px; }
+  .floating-metric strong { font-size: 20px; }
+  .floating-ai strong { font-size: 16px; }
+  .dashboard-disclosure { margin-top: 20px; font-size: 13px; }
+  .example-badge { font-size: 11px; white-space: nowrap; }
+  .dashboard-wrap { grid-template-columns: 1fr; }
+  .dashboard-card { grid-column: 1; grid-row: 1; }
+  .floating-sale,
+  .floating-safety,
+  .floating-ai,
+  .data-badge { grid-column: 1; grid-row: auto; }
+}
