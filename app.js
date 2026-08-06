@@ -23,17 +23,6 @@ function showToast(message) {
   toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
 }
 
-const themeToggle = $('#themeToggle');
-function setTheme(theme) {
-  const dark = theme === 'dark';
-  document.documentElement.classList.toggle('dark', dark);
-  themeToggle.setAttribute('aria-pressed', String(dark));
-  themeToggle.setAttribute('aria-label', dark ? '라이트 모드 켜기' : '다크 모드 켜기');
-  localStorage.setItem('rentcheck-theme', theme);
-}
-setTheme(localStorage.getItem('rentcheck-theme') || 'light');
-themeToggle.addEventListener('click', () => setTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark'));
-
 const menuToggle = $('#menuToggle');
 const mobileNav = $('#mobileNav');
 menuToggle.addEventListener('click', () => {
