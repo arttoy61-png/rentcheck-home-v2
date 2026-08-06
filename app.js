@@ -32,6 +32,19 @@ $$('#mobileNav a').forEach(link => link.addEventListener('click', () => {
   menuToggle.setAttribute('aria-expanded', 'false');
 }));
 
+$$('.footer-group h2 button').forEach(button => button.addEventListener('click', () => {
+  const expanded = button.getAttribute('aria-expanded') === 'true';
+  button.setAttribute('aria-expanded', String(!expanded));
+  button.closest('.footer-group').classList.toggle('open', !expanded);
+}));
+
+const analysisToggle = $('.analysis-detail-toggle');
+analysisToggle.addEventListener('click', () => {
+  const expanded = analysisToggle.getAttribute('aria-expanded') === 'true';
+  analysisToggle.setAttribute('aria-expanded', String(!expanded));
+  $('#analysisDetail').classList.toggle('mobile-open', !expanded);
+});
+
 let toastTimer;
 function showToast(message) {
   toast.textContent = message;
