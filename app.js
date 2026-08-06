@@ -1,0 +1,15 @@
+const CONFIG={auctionUrl:'#',youthUrl:'#'};
+const qs=(s,p=document)=>p.querySelector(s),qsa=(s,p=document)=>[...p.querySelectorAll(s)];
+const toast=msg=>{const el=qs('#toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)};
+qsa('.reveal').forEach(el=>new IntersectionObserver(([e],o)=>{if(e.isIntersecting){el.classList.add('visible');o.disconnect()}},{threshold:.12}).observe(el));
+qs('#menuButton')?.addEventListener('click',()=>{const m=qs('#mobileMenu');m.classList.toggle('open')});
+qsa('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>qs('#mobileMenu').classList.remove('open')));
+qs('#themeButton')?.addEventListener('click',()=>{document.body.classList.toggle('dark');localStorage.setItem('rentcheck-theme',document.body.classList.contains('dark')?'dark':'light')});
+if(localStorage.getItem('rentcheck-theme')==='dark')document.body.classList.add('dark');
+qsa('[data-link]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const url=CONFIG[a.dataset.link+'Url'];if(!url||url==='#')toast('계산기 주소를 연결하면 바로 열립니다.');else location.href=url}));
+const modal=qs('#comingModal');qsa('[data-coming]').forEach(btn=>btn.addEventListener('click',()=>{qs('#modalTitle').textContent=`${btn.dataset.coming}는 준비 중입니다.`;modal.classList.add('open');modal.setAttribute('aria-hidden','false')}));
+qsa('[data-close-modal]').forEach(el=>el.addEventListener('click',()=>{modal.classList.remove('open');modal.setAttribute('aria-hidden','true')}));
+qs('#searchForm')?.addEventListener('submit',e=>{e.preventDefault();const v=qs('#searchInput').value.trim();toast(v?`“${v}” 통합 검색은 준비 중입니다.`:'검색어를 입력해주세요.')});
+qsa('[data-keyword]').forEach(b=>b.addEventListener('click',()=>{qs('#searchInput').value=b.dataset.keyword;qs('#searchInput').focus()}));
+qs('#newsletterForm')?.addEventListener('submit',e=>{e.preventDefault();toast('오픈 전이라 신청 기능은 잠시 꺼두었습니다.');e.target.reset()});
+const counterObs=new IntersectionObserver(([e],o)=>{if(!e.isIntersecting)return;qsa('[data-count]',e.target).forEach(el=>{const end=+el.dataset.count,start=performance.now(),dur=1100;const tick=t=>{const p=Math.min((t-start)/dur,1);el.textContent=Math.floor(end*(1-Math.pow(1-p,3))).toLocaleString()+(end>=1000?'+':'');if(p<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)});o.disconnect()},{threshold:.35});counterObs.observe(qs('.numbers-panel'));
