@@ -1,3 +1,5 @@
+const CONFIG = { auctionUrl: '#', youthUrl: '#' };
+
 const $ = (selector, parent = document) => parent.querySelector(selector);
 const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
 
@@ -53,6 +55,38 @@ $$('.action-card').forEach(card => card.addEventListener('click', event => {
   event.preventDefault();
   showToast(`${$('h3', card).textContent} 서비스가 곧 연결됩니다.`);
 }));
+
+$$('[data-tool]').forEach(card => card.addEventListener('click', event => {
+  event.preventDefault();
+  const url = CONFIG[`${card.dataset.tool}Url`];
+  if (url && url !== '#') {
+    window.location.href = url;
+    return;
+  }
+  showToast('기존 계산기 주소를 app.js에 연결하면 바로 열립니다.');
+}));
+
+const calculatorModal = $('#calculatorModal');
+let calculatorModalTrigger;
+
+function closeCalculatorModal() {
+  calculatorModal.classList.remove('open');
+  calculatorModal.setAttribute('aria-hidden', 'true');
+  calculatorModalTrigger?.focus();
+}
+
+$$('[data-coming]').forEach(card => card.addEventListener('click', () => {
+  calculatorModalTrigger = card;
+  $('#calculatorModalTitle').textContent = `${card.dataset.coming}는 준비 중입니다.`;
+  calculatorModal.classList.add('open');
+  calculatorModal.setAttribute('aria-hidden', 'false');
+  $('.calculator-modal-confirm', calculatorModal).focus();
+}));
+
+$$('[data-calculator-close]').forEach(control => control.addEventListener('click', closeCalculatorModal));
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && calculatorModal.classList.contains('open')) closeCalculatorModal();
+});
 
 if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver(entries => {
