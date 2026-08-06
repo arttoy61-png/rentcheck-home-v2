@@ -143,9 +143,10 @@
             <li><span aria-hidden="true">✓</span> 면적과 준공연도 차이까지 반영</li>
             <li><span aria-hidden="true">✓</span> 비싸 보이는 착시와 위험 거래 구분</li>
           </ul>
+          <button class="analysis-detail-toggle" type="button" aria-expanded="false" aria-controls="analysisDetail">상세 차트 보기 <span aria-hidden="true">⌄</span></button>
           <p class="scope-note">분석 범위: 국토교통부 실거래 자료를 활용한 강서구 및 선택 지역 비교</p>
         </div>
-        <div class="analysis-panel reveal" aria-label="강서구 거래 흐름 예시 화면">
+        <div class="analysis-panel reveal" id="analysisDetail" aria-label="강서구 거래 흐름 예시 화면">
           <div class="panel-head"><div><span>강서구 거래 흐름</span><strong>선택 지역 비교</strong></div><b class="sample-pill">예시 화면</b></div>
           <div class="district-tabs" aria-label="비교 지역"><span class="selected">화곡동</span><span>등촌동</span><span>염창동</span><span>가양동</span></div>
           <div class="flow-visual" aria-hidden="true"><i style="--h:42%"></i><i style="--h:58%"></i><i style="--h:49%"></i><i style="--h:72%"></i><i style="--h:65%"></i><i style="--h:84%"></i></div>
@@ -182,9 +183,9 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand"><a class="footer-logo" href="#top" aria-label="Rent Check 홈">Rent Check</a><p>국토부 데이터와 실전형 해석을 연결하는<br>강서구 부동산 데이터 도구입니다.</p></div>
-      <nav class="footer-group" aria-label="도구 메뉴"><h2>도구</h2><a href="#tools">경매 계산기</a><a href="#tools">청년 점수</a><a href="#tools">전세가율</a><a href="#tools">재개발 분담금</a></nav>
-      <nav class="footer-group" aria-label="콘텐츠 메뉴"><h2>콘텐츠</h2><a href="#analysis">실거래 분석</a><a href="#insights">최신 인사이트</a><span>네이버 블로그 <small>준비 중</small></span><span>티스토리 <small>준비 중</small></span></nav>
-      <nav class="footer-group" aria-label="서비스 메뉴"><h2>서비스</h2><span>소개 <small>준비 중</small></span><span>문의 <small>준비 중</small></span><span>개인정보처리방침 <small>준비 중</small></span><span>데이터 기준 안내 <small>준비 중</small></span></nav>
+      <nav class="footer-group" aria-label="도구 메뉴"><h2><button type="button" aria-expanded="false">도구 <span aria-hidden="true">⌄</span></button></h2><a href="#tools">경매 계산기</a><a href="#tools">청년 점수</a><a href="#tools">전세가율</a><a href="#tools">재개발 분담금</a></nav>
+      <nav class="footer-group" aria-label="콘텐츠 메뉴"><h2><button type="button" aria-expanded="false">콘텐츠 <span aria-hidden="true">⌄</span></button></h2><a href="#analysis">실거래 분석</a><a href="#insights">최신 인사이트</a><span>네이버 블로그 <small>준비 중</small></span><span>티스토리 <small>준비 중</small></span></nav>
+      <nav class="footer-group" aria-label="서비스 메뉴"><h2><button type="button" aria-expanded="false">서비스 <span aria-hidden="true">⌄</span></button></h2><span>소개 <small>준비 중</small></span><span>문의 <small>준비 중</small></span><span>개인정보처리방침 <small>준비 중</small></span><span>데이터 기준 안내 <small>준비 중</small></span></nav>
     </div>
     <div class="footer-bottom"><span>© 2026 Rent Check. All rights reserved.</span><span>Built for better real-estate decisions.</span></div>
   </footer>
