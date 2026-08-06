@@ -6,13 +6,15 @@ const calculators = [
   ['경매 계산기', '낙찰가와 취득비용, 예상 수익률을 계산합니다.', '연결 예정', '⚖'],
   ['취득세 계산기', '주택 취득 시 발생하는 세금과 비용을 정리합니다.', '준비 중', '₩'],
   ['실투자금 계산기', '취득비용과 대출을 반영한 실제 투자금을 계산합니다.', '준비 중', '↗'],
-  ['재개발 분담금 계산기', '권리가액과 조합원 분양가로 예상 분담금을 확인합니다.', '준비 중', '▥'],
+  ['재개발 분담금 계산기', '권리가액과 조합원 분양가로 예상 분담금을 확인합니다.', '이용 가능', '▥', 'calc/'],
   ['월세·전세 환산기', '월세를 전세로, 전세를 월세로 바꿔 비교합니다.', '준비 중', '⇄'],
   ['중개보수 계산기', '거래 금액에 따른 중개보수 범위를 확인합니다.', '준비 중', '⌂'],
   ['청년주택 점수 계산기', '청년주택 신청 전 예상 점수를 확인합니다.', '연결 예정', '✓']
 ];
 
-$('#calculatorGrid').innerHTML = calculators.map(([title, description, status, icon]) => `<button class="calculator-card" type="button" data-placeholder><span class="calculator-icon">${icon}</span><h3>${title}</h3><p>${description}</p><span class="status">${status}</span></button>`).join('');
+$('#calculatorGrid').innerHTML = calculators.map(([title, description, status, icon, url]) => url
+  ? `<a class="calculator-card" href="${url}"><span class="calculator-icon">${icon}</span><h3>${title}</h3><p>${description}</p><span class="status available">${status}</span></a>`
+  : `<button class="calculator-card" type="button" data-placeholder><span class="calculator-icon">${icon}</span><h3>${title}</h3><p>${description}</p><span class="status">${status}</span></button>`).join('');
 
 let toastTimer;
 function showToast(message) {
