@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f9fd">
   <meta name="description" content="Rent Check — 실거래 데이터와 부동산 계산을 한곳에서 확인하세요.">
-  <title>Rent Check | 부동산 데이터 플랫폼</title>
+  <title>Rent Check | 강서구 실거래와 부동산 계산</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -33,11 +33,11 @@
     <section class="hero">
       <div class="hero-inner">
         <div class="hero-copy reveal">
-          <div class="eyebrow"><span></span> 대한민국 부동산 데이터 플랫폼</div>
+          <div class="eyebrow"><span></span> 강서구 실거래와 부동산 계산 도구</div>
           <h1>부동산은 감이 아니라<br><em>데이터입니다</em></h1>
           <p class="hero-description">흩어진 실거래 정보부터 전세 위험, 경매와 세금 계산까지.<br>Rent Check에서 더 빠르고 정확한 판단을 시작하세요.</p>
           <div class="search-product">
-            <div class="search-product-head"><span>통합 부동산 검색</span><small><i></i> DATA LIVE</small></div>
+            <div class="search-product-head"><span>통합 부동산 검색</span><small><i></i> DATA SCOPE</small></div>
             <form class="search-box" id="searchForm" role="search">
               <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
               <label class="sr-only" for="searchInput">주소, 아파트명 또는 계산기 검색</label>
@@ -51,25 +51,26 @@
 
         <div class="dashboard-wrap reveal delay" id="dashboard">
           <div class="dashboard-glow"></div>
-          <div class="floating-metric floating-sale" aria-hidden="true"><span class="floating-icon"><svg viewBox="0 0 24 24"><path d="M4 18V10m5 8V6m5 12v-5m5 5V8"/></svg></span><span><small>최근 실거래</small><strong>1,284건</strong><b>+12.4%</b></span></div>
-          <div class="floating-metric floating-safety" aria-hidden="true"><span class="floating-icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-3.5 7-10V5l-7-3-7 3v6c0 6.5 7 10 7 10Z"/><path d="m9 11.5 2 2 4-5"/></svg></span><span><small>서울 전세가율</small><strong>53.7%</strong><b>안정</b></span></div>
-          <div class="floating-metric floating-ai" aria-hidden="true"><span class="floating-icon"><svg viewBox="0 0 24 24"><path d="M12 3c.55 4.8 3.2 7.45 8 8-4.8.55-7.45 3.2-8 8-.55-4.8-3.2-7.45-8-8 4.8-.55 7.45-3.2 8-8Z"/></svg></span><span><small>AI 분석 상태</small><strong>분석 완료</strong><b>매수 우위</b></span></div>
+          <div class="floating-metric floating-sale" aria-hidden="true"><span class="floating-icon"><svg viewBox="0 0 24 24"><path d="M4 18V10m5 8V6m5 12v-5m5 5V8"/></svg></span><span><small>강서구 최근 실거래</small><strong>1,284건</strong><b>예시</b></span></div>
+          <div class="floating-metric floating-safety" aria-hidden="true"><span class="floating-icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-3.5 7-10V5l-7-3-7 3v6c0 6.5 7 10 7 10Z"/><path d="m9 11.5 2 2 4-5"/></svg></span><span><small>강서구 전세가율 참고</small><strong>53.7%</strong><b>예시</b></span></div>
+          <div class="floating-metric floating-ai" aria-hidden="true"><span class="floating-icon"><svg viewBox="0 0 24 24"><path d="M12 3c.55 4.8 3.2 7.45 8 8-4.8.55-7.45 3.2-8 8-.55-4.8-3.2-7.45-8-8 4.8-.55 7.45-3.2 8-8Z"/></svg></span><span><small>분석 상태</small><strong>Rent Check 분석 요약</strong><b>예시</b></span></div>
           <article class="dashboard-card">
-            <header class="dash-header"><div><span class="dash-label">MARKET OVERVIEW</span><h2>서울 아파트 시장</h2></div><button type="button" class="period">최근 6개월 <span>⌄</span></button></header>
-            <div class="price-row"><div><span>평균 실거래가</span><strong>12억 4,580만</strong></div><span class="up"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6"/></svg>3.8%</span></div>
+            <header class="dash-header"><div><span class="dash-label">MARKET OVERVIEW</span><h2>강서구 실거래 흐름</h2></div><button type="button" class="period">최근 6개월 <span>⌄</span></button></header>
+            <div class="price-row"><div><span>예시 평균 실거래가</span><strong>12억 4,580만</strong></div><span class="up"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6"/></svg>예시</span></div>
             <div class="chart-wrap">
               <div class="chart-grid"><i></i><i></i><i></i><i></i></div>
-              <svg class="trend-chart" viewBox="0 0 560 190" preserveAspectRatio="none" aria-label="최근 6개월 가격 상승 추세 차트" role="img"><defs><linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#655cf6" stop-opacity=".25"/><stop offset="1" stop-color="#655cf6" stop-opacity="0"/></linearGradient></defs><path class="chart-area" d="M0 164 C55 155 78 148 115 152 S180 128 220 134 S286 99 330 108 S394 78 430 86 S495 45 560 38 V190 H0Z"/><path class="chart-line" d="M0 164 C55 155 78 148 115 152 S180 128 220 134 S286 99 330 108 S394 78 430 86 S495 45 560 38"/><circle cx="560" cy="38" r="6"/><circle class="pulse" cx="560" cy="38" r="12"/></svg>
+              <svg class="trend-chart" viewBox="0 0 560 190" preserveAspectRatio="none" aria-label="최근 6개월 예시 가격 흐름 차트" role="img"><defs><linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#655cf6" stop-opacity=".25"/><stop offset="1" stop-color="#655cf6" stop-opacity="0"/></linearGradient></defs><path class="chart-area" d="M0 164 C55 155 78 148 115 152 S180 128 220 134 S286 99 330 108 S394 78 430 86 S495 45 560 38 V190 H0Z"/><path class="chart-line" d="M0 164 C55 155 78 148 115 152 S180 128 220 134 S286 99 330 108 S394 78 430 86 S495 45 560 38"/><circle cx="560" cy="38" r="6"/><circle class="pulse" cx="560" cy="38" r="12"/></svg>
               <div class="chart-tooltip"><span>2026. 08</span><strong>12.45억</strong></div>
               <div class="chart-months"><span>3월</span><span>4월</span><span>5월</span><span>6월</span><span>7월</span><span>8월</span></div>
             </div>
             <div class="metric-grid">
-              <section><div class="metric-icon violet"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/><path d="m18 5-12 14"/></svg></div><div><span>서울 전세가율</span><strong>53.7%</strong></div><small>안정</small></section>
-              <section><div class="metric-icon blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17V9m5 8V5m5 12v-6m5 6V7"/></svg></div><div><span>최근 실거래</span><strong>1,284건</strong></div><small class="rise">+12.4%</small></section>
+              <section><div class="metric-icon violet"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/><path d="m18 5-12 14"/></svg></div><div><span>강서구 전세가율 참고</span><strong>53.7%</strong></div><small>예시</small></section>
+              <section><div class="metric-icon blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17V9m5 8V5m5 12v-6m5 6V7"/></svg></div><div><span>강서구 최근 실거래</span><strong>1,284건</strong></div><small class="rise">예시</small></section>
             </div>
-            <div class="ai-status"><span class="ai-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.55 4.8 3.2 7.45 8 8-4.8.55-7.45 3.2-8 8-.55-4.8-3.2-7.45-8-8 4.8-.55 7.45-3.2 8-8Z"/></svg></span><div><strong>AI 시장 분석 완료</strong><p>매수 우위 · 거래량 회복 구간</p></div><span class="status-dot"></span></div>
+            <div class="ai-status"><span class="ai-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.55 4.8 3.2 7.45 8 8-4.8.55-7.45 3.2-8 8-.55-4.8-3.2-7.45-8-8 4.8-.55 7.45-3.2 8-8Z"/></svg></span><div><strong>Rent Check 분석 요약</strong><p>선택한 강서구 자료의 예시 분석 화면</p></div><span class="status-dot"></span></div>
+            <p class="dashboard-disclosure">현재 대시보드는 강서구 실거래 데이터와 예시 지표를 바탕으로 구성되어 있습니다.</p>
           </article>
-          <div class="data-badge"><span>LIVE</span><strong>실시간 데이터 반영 중</strong><i></i></div>
+          <div class="data-badge"><span>DATA</span><strong>국토부 실거래 데이터 기준</strong><i></i></div>
         </div>
       </div>
     </section>
