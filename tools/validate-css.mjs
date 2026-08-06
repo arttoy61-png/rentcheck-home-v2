@@ -68,16 +68,16 @@ for (const match of css.matchAll(/grid-template-columns\s*:\s*([^;{}]+)\s*;/giu)
 }
 
 const responsiveChecks = [
-  [1440, /\.hero-inner\s*\{[^}]*minmax\(0,\s*52fr\)\s+minmax\(0,\s*48fr\)/su, /\.action-grid\s*\{[^}]*repeat\(3,\s*minmax\(0,\s*1fr\)\)/su],
-  [1280, /@media\s*\(max-width:\s*1280px\)[\s\S]*?\.hero-inner\s*\{[^}]*gap:\s*56px/su, /\.action-grid\s*\{[^}]*repeat\(3,\s*minmax\(0,\s*1fr\)\)/su],
-  [1024, /@media\s*\(max-width:\s*1024px\)[\s\S]*?\.hero-inner\s*\{[^}]*minmax\(0,\s*52fr\)\s+minmax\(430px,\s*48fr\)/su, /\.action-grid\s*\{[^}]*repeat\(3,\s*minmax\(0,\s*1fr\)\)/su],
-  [768, /@media\s*\(max-width:\s*768px\)[\s\S]*?\.hero-inner\s*\{[^}]*grid-template-columns:\s*1fr/su, /@media\s*\(max-width:\s*768px\)[\s\S]*?\.action-grid\s*\{[^}]*repeat\(2,\s*minmax\(0,\s*1fr\)\)/su],
-  [520, /@media\s*\(max-width:\s*520px\)[\s\S]*?\.hero-inner\s*\{[^}]*gap:\s*70px/su, /@media\s*\(max-width:\s*520px\)[\s\S]*?\.action-grid\s*\{[^}]*grid-template-columns:\s*1fr/su],
+  [1440, /\.hero-grid\{[^}]*grid-template-columns:\.94fr 1\.06fr/u, /\.calculator-grid\{[^}]*repeat\(4,minmax\(0,1fr\)\)/u],
+  [1024, /@media\(max-width:1024px\)/u, /calculator-grid\{grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/u],
+  [768, /@media\(max-width:768px\)[\s\S]*?hero-grid\{[^}]*grid-template-columns:1fr/u, /calculator-grid\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/u],
+  [520, /@media\(max-width:520px\)/u, /insight\{min-width:90%/u],
+  [360, /@media\(max-width:359px\)/u, /calculator-grid\{grid-template-columns:1fr/u],
 ];
 
-for (const [viewport, hero, actions] of responsiveChecks) {
-  if (!hero.test(css)) failures.push(`${viewport}px: expected hero layout is missing`);
-  if (!actions.test(css)) failures.push(`${viewport}px: expected Quick Actions grid is missing`);
+for (const [viewport, layout, content] of responsiveChecks) {
+  if (!layout.test(css)) failures.push(`${viewport}px: expected responsive layout is missing`);
+  if (!content.test(css)) failures.push(`${viewport}px: expected content grid is missing`);
 }
 
 if (failures.length) {
@@ -85,5 +85,5 @@ if (failures.length) {
   process.exitCode = 1;
 } else {
   console.log("styles.css: units, functions, grid columns, and media queries are valid");
-  console.log("Responsive hero and Quick Actions rules verified at 1440px, 1280px, 1024px, 768px, and 520px");
+  console.log("Responsive hero, calculator, and insight rules verified from 1440px through 360px");
 }
