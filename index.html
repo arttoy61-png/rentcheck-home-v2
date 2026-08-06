@@ -131,7 +131,63 @@
         </div>
       </div>
     </section>
+
+    <section class="analysis-section" id="analysis" aria-labelledby="analysis-title">
+      <div class="lower-shell analysis-layout">
+        <div class="analysis-copy reveal">
+          <span class="lower-kicker">DATA ANALYSIS</span>
+          <h2 id="analysis-title">숫자만 보여주지 않고<br>의미까지 설명합니다.</h2>
+          <p class="lower-lead">국토부 실거래 숫자를 그대로 나열하지 않습니다.<br>면적, 연식, 층, 거래 시점을 함께 보고<br>지금 확인해야 할 포인트를 정리합니다.</p>
+          <ul class="analysis-checks">
+            <li><span aria-hidden="true">✓</span> 같은 건물·같은 번지권 우선 비교</li>
+            <li><span aria-hidden="true">✓</span> 면적과 준공연도 차이까지 반영</li>
+            <li><span aria-hidden="true">✓</span> 비싸 보이는 착시와 위험 거래 구분</li>
+          </ul>
+          <p class="scope-note">분석 범위: 국토교통부 실거래 자료를 활용한 강서구 및 선택 지역 비교</p>
+        </div>
+        <div class="analysis-panel reveal" aria-label="강서구 거래 흐름 예시 화면">
+          <div class="panel-head"><div><span>강서구 거래 흐름</span><strong>선택 지역 비교</strong></div><b class="sample-pill">예시 화면</b></div>
+          <div class="district-tabs" aria-label="비교 지역"><span class="selected">화곡동</span><span>등촌동</span><span>염창동</span><span>가양동</span></div>
+          <div class="flow-visual" aria-hidden="true"><i style="--h:42%"></i><i style="--h:58%"></i><i style="--h:49%"></i><i style="--h:72%"></i><i style="--h:65%"></i><i style="--h:84%"></i></div>
+          <div class="example-insight"><span>EXAMPLE INSIGHT</span><p><strong>예시 분석</strong> — 같은 화곡동 거래라도 면적과 준공연도가 다르면 단순 평당가 비교가 실제 가치 차이를 왜곡할 수 있습니다.</p></div>
+          <p class="sample-disclosure">화면의 차트와 설명은 서비스 구성을 보여주기 위한 예시 데이터입니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="insights-section" id="insights" aria-labelledby="insights-title">
+      <div class="lower-shell">
+        <header class="lower-heading reveal"><span class="lower-kicker">INSIGHTS</span><h2 id="insights-title">최근 분석과 가이드</h2><p>거래 숫자 뒤에 숨은 조건과 판단 기준을 차분하게 짚어봅니다.</p></header>
+        <div class="insight-grid">
+          <article class="insight-card reveal"><span class="insight-category">실거래·시세</span><h3>화곡동 빌라, 평당가만 보면 놓치는 착시</h3><p>초소형 면적에서 평당가가 높게 보이는 이유를 실제 거래 기준으로 확인합니다.</p><div><span>5분 읽기</span><button type="button" disabled aria-label="화곡동 빌라 분석 글, 준비 중">준비 중</button></div></article>
+          <article class="insight-card reveal"><span class="insight-category">청년·공공주택</span><h3>청년 매입임대, 신청 후 지금 확인할 것</h3><p>접수 완료 뒤 서류심사와 발표 일정까지 현재 상태별로 정리합니다.</p><div><span>4분 읽기</span><button type="button" disabled aria-label="청년 매입임대 가이드, 준비 중">준비 중</button></div></article>
+          <article class="insight-card reveal"><span class="insight-category">경매·투자</span><h3>낙찰가보다 먼저 계산해야 하는 총비용</h3><p>취득세, 명도비, 수리비까지 포함해야 실제 수익률이 보입니다.</p><div><span>6분 읽기</span><button type="button" disabled aria-label="경매 총비용 가이드, 준비 중">준비 중</button></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="statistics-section" aria-label="Rent Check 서비스 현황">
+      <div class="lower-shell stats-grid">
+        <div class="stat reveal"><strong>준비 중</strong><span>누적 도구 사용</span></div>
+        <div class="stat reveal"><div><strong>161</strong><b>예시</b></div><span>발행 분석 글</span></div>
+        <div class="stat reveal"><div><strong>2</strong><b>예시</b></div><span>데이터 도구</span></div>
+        <div class="stat reveal"><div><strong>10</strong><b>예시</b></div><span>강서구 분석 지역</span></div>
+      </div>
+    </section>
+
+    <section class="final-cta" aria-labelledby="cta-title">
+      <div class="cta-inner reveal"><span>RENT CHECK</span><h2 id="cta-title">부동산 숫자,<br>혼자 해석하지 마세요.</h2><p>실거래와 계산 도구를 연결해<br>지금 필요한 판단부터 돕겠습니다.</p><div class="cta-actions"><a class="cta-primary" href="#tools">도구 살펴보기</a><a class="cta-secondary" href="#insights">최신 분석 보기</a></div></div>
+    </section>
   </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand"><a class="footer-logo" href="#top" aria-label="Rent Check 홈">Rent Check</a><p>국토부 데이터와 실전형 해석을 연결하는<br>강서구 부동산 데이터 도구입니다.</p></div>
+      <nav class="footer-group" aria-label="도구 메뉴"><h2>도구</h2><a href="#tools">경매 계산기</a><a href="#tools">청년 점수</a><a href="#tools">전세가율</a><a href="#tools">재개발 분담금</a></nav>
+      <nav class="footer-group" aria-label="콘텐츠 메뉴"><h2>콘텐츠</h2><a href="#analysis">실거래 분석</a><a href="#insights">최신 인사이트</a><span>네이버 블로그 <small>준비 중</small></span><span>티스토리 <small>준비 중</small></span></nav>
+      <nav class="footer-group" aria-label="서비스 메뉴"><h2>서비스</h2><span>소개 <small>준비 중</small></span><span>문의 <small>준비 중</small></span><span>개인정보처리방침 <small>준비 중</small></span><span>데이터 기준 안내 <small>준비 중</small></span></nav>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Rent Check. All rights reserved.</span><span>Built for better real-estate decisions.</span></div>
+  </footer>
   <div class="calculator-modal" id="calculatorModal" role="dialog" aria-modal="true" aria-labelledby="calculatorModalTitle" aria-hidden="true">
     <button class="calculator-modal-backdrop" type="button" data-calculator-close aria-label="미리보기 닫기"></button>
     <div class="calculator-modal-panel" role="document"><button class="calculator-modal-close" type="button" data-calculator-close aria-label="닫기">×</button><span>COMING SOON</span><h2 id="calculatorModalTitle">준비 중입니다.</h2><p>도구가 완성되면 이 카드에서 바로 이용할 수 있습니다.</p><button class="calculator-modal-confirm" type="button" data-calculator-close>확인</button></div>
