@@ -1,10 +1,69 @@
-const CONFIG={auctionUrl:'#',youthUrl:'#'};
-const $=(s,p=document)=>p.querySelector(s),$$=(s,p=document)=>[...p.querySelectorAll(s)];
-const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)};
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});$$('.reveal').forEach(el=>io.observe(el));
-$('#menuBtn').onclick=()=>$('#mobileNav').classList.toggle('open');
-$('#themeBtn').onclick=()=>{document.body.classList.toggle('dark');localStorage.setItem('rc-theme',document.body.classList.contains('dark')?'dark':'light')};if(localStorage.getItem('rc-theme')==='dark')document.body.classList.add('dark');
-$('#searchForm').addEventListener('submit',e=>{e.preventDefault();const v=$('#searchInput').value.trim();toast(v?`“${v}” 검색 연결은 오픈 때 활성화됩니다.`:'검색어를 입력하세요.')});$$('[data-keyword]').forEach(b=>b.onclick=()=>{$('#searchInput').value=b.dataset.keyword;$('#searchInput').focus()});
-$$('[data-tool]').forEach(a=>a.onclick=e=>{e.preventDefault();const url=CONFIG[a.dataset.tool+'Url'];url&&url!=='#'?location.href=url:toast('기존 계산기 주소를 app.js에 연결하면 바로 열립니다.')});
-const modal=$('#modal');$$('[data-coming]').forEach(b=>b.onclick=()=>{$('#modalTitle').textContent=`${b.dataset.coming}는 준비 중입니다.`;modal.classList.add('open')});$$('[data-close]').forEach(x=>x.onclick=()=>modal.classList.remove('open'));
-const numObs=new IntersectionObserver(es=>{if(!es[0].isIntersecting)return;$$('[data-count]').forEach(el=>{const end=+el.dataset.count,start=performance.now();function tick(t){const p=Math.min((t-start)/1000,1);el.textContent=Math.floor(end*(1-Math.pow(1-p,3))).toLocaleString()+(end>1000?'+':'');if(p<1)requestAnimationFrame(tick)}requestAnimationFrame(tick)});numObs.disconnect()},{threshold:.3});numObs.observe($('.numbers'));
+const $ = (selector, parent = document) => parent.querySelector(selector);
+const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
+
+const themeToggle = $('#themeToggle');
+const menuToggle = $('#menuToggle');
+const mobileNav = $('#mobileNav');
+const toast = $('#toast');
+
+function setTheme(theme) {
+  const dark = theme === 'dark';
+  document.body.classList.toggle('dark', dark);
+  themeToggle.setAttribute('aria-pressed', String(dark));
+  themeToggle.setAttribute('aria-label', dark ? '라이트 모드 켜기' : '다크 모드 켜기');
+  localStorage.setItem('rentcheck-theme', theme);
+}
+
+setTheme(localStorage.getItem('rentcheck-theme') || 'light');
+themeToggle.addEventListener('click', () => setTheme(document.body.classList.contains('dark') ? 'light' : 'dark'));
+
+menuToggle.addEventListener('click', () => {
+  const open = mobileNav.classList.toggle('open');
+  menuToggle.classList.toggle('open', open);
+  menuToggle.setAttribute('aria-expanded', String(open));
+  menuToggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+});
+
+$$('#mobileNav a').forEach(link => link.addEventListener('click', () => {
+  mobileNav.classList.remove('open');
+  menuToggle.classList.remove('open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+}));
+
+let toastTimer;
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+}
+
+$('#searchForm').addEventListener('submit', event => {
+  event.preventDefault();
+  const query = $('#searchInput').value.trim();
+  showToast(query ? `“${query}” 검색 결과를 준비하고 있습니다.` : '검색어를 입력해 주세요.');
+});
+
+$$('[data-query]').forEach(chip => chip.addEventListener('click', () => {
+  $('#searchInput').value = chip.dataset.query;
+  $('#searchInput').focus();
+}));
+
+$$('.action-card').forEach(card => card.addEventListener('click', event => {
+  event.preventDefault();
+  showToast(`${$('h3', card).textContent} 서비스가 곧 연결됩니다.`);
+}));
+
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  $$('.reveal').forEach(element => observer.observe(element));
+} else {
+  $$('.reveal').forEach(element => element.classList.add('visible'));
+}
