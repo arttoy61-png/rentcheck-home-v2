@@ -1,93 +1,87 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#f7fbff" />
-  <meta name="description" content="Rent Check - 부동산 실거래, 경매, 청년주택, 재개발 계산 도구" />
-  <title>Rent Check | 부동산 데이터 도구</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Rent Check — 실거래 데이터와 부동산 계산을 한곳에서 확인하세요.">
+  <title>Rent Check | 부동산 데이터 플랫폼</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="page-glow glow-a"></div><div class="page-glow glow-b"></div>
-  <header class="topbar">
-    <div class="container nav">
-      <a class="brand" href="#top" aria-label="Rent Check 홈">
-        <span class="brand-badge"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 22.5 24 9l14 13.5V38a3 3 0 0 1-3 3H13a3 3 0 0 1-3-3V22.5Z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M18 41V27h12v14M6 25 24 7l18 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="logo" href="#top" aria-label="Rent Check 홈">
+        <span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="m7 15 9-8 9 8v10H7Z"/><path d="m12 19 3 3 6-7"/></svg></span>
         <span>Rent Check</span>
       </a>
-      <nav class="desktop-nav">
-        <a href="#tools">계산기</a><a href="#data">실거래</a><a href="#insights">인사이트</a><a href="#about">서비스 소개</a>
+      <nav class="desktop-nav" aria-label="주요 메뉴">
+        <a class="active" href="#top">홈</a><a href="#quick-actions">부동산 도구</a><a href="#dashboard">실거래 분석</a><a href="#quick-actions">청년주택</a><a href="#quick-actions">경매</a>
       </nav>
-      <div class="nav-actions"><button class="icon-btn" id="themeBtn" aria-label="테마 변경">☾</button><a class="nav-cta" href="#tools">무료로 시작하기</a></div>
-      <button class="menu-btn" id="menuBtn" aria-label="메뉴">☰</button>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false"><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.2A8.5 8.5 0 0 1 8.8 4a8.5 8.5 0 1 0 11.2 11.2Z"/></svg><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span></button>
+      </div>
     </div>
-    <div class="mobile-nav" id="mobileNav"><a href="#tools">계산기</a><a href="#data">실거래</a><a href="#insights">인사이트</a><a href="#about">서비스 소개</a></div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="모바일 메뉴"><a href="#top">홈</a><a href="#quick-actions">부동산 도구</a><a href="#dashboard">실거래 분석</a><a href="#quick-actions">청년주택</a><a href="#quick-actions">경매</a></nav>
   </header>
 
   <main id="top">
-    <section class="hero container">
-      <div class="hero-copy reveal">
-        <div class="pill"><i></i> 2026 부동산 데이터 도구</div>
-        <h1>부동산 판단을<br><span>숫자로 더 쉽게.</span></h1>
-        <p>실거래, 경매, 청년주택, 재개발 정보를 한곳에서 확인하고 필요한 계산을 바로 시작하세요.</p>
-        <form class="hero-search" id="searchForm"><span>⌕</span><input id="searchInput" placeholder="주소, 단지명, 지역을 검색하세요"/><button>검색</button></form>
-        <div class="chips"><b>추천</b><button data-keyword="화곡동">화곡동</button><button data-keyword="청년 매입임대">청년 매입임대</button><button data-keyword="경매 계산기">경매 계산기</button></div>
-        <div class="hero-stats"><div><strong>24,800+</strong><span>누적 도구 사용</span></div><div><strong>12개</strong><span>분석 기능</span></div><div><strong>무료</strong><span>핵심 계산기</span></div></div>
-      </div>
-
-      <div class="hero-dashboard reveal delay">
-        <div class="dash-card main-dash">
-          <div class="dash-head"><div><small>지역 데이터</small><h2>화곡동 시장 흐름</h2></div><span class="live"><i></i>업데이트됨</span></div>
-          <div class="dash-metrics"><div><span>평균 매매가</span><strong>3.42억</strong><em>+2.8%</em></div><div><span>전세가율</span><strong>68.4%</strong><em class="stable">안정</em></div><div><span>이번 주 거래</span><strong>42건</strong><em>+11건</em></div></div>
-          <div class="chart-title"><span>최근 6개월 가격 흐름</span><b><i></i>매매가</b></div>
-          <svg class="chart" viewBox="0 0 640 235" preserveAspectRatio="none"><defs><linearGradient id="fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6c7cf6" stop-opacity=".34"/><stop offset="1" stop-color="#6c7cf6" stop-opacity="0"/></linearGradient></defs><g class="grid"><line x1="0" y1="35" x2="640" y2="35"/><line x1="0" y1="90" x2="640" y2="90"/><line x1="0" y1="145" x2="640" y2="145"/><line x1="0" y1="200" x2="640" y2="200"/></g><path class="area" d="M0 185 C62 170 94 178 142 153 C205 120 230 145 295 113 C350 84 392 108 448 77 C510 40 554 64 640 30 L640 235 L0 235Z"/><path class="line" d="M0 185 C62 170 94 178 142 153 C205 120 230 145 295 113 C350 84 392 108 448 77 C510 40 554 64 640 30"/><g class="dots"><circle cx="142" cy="153" r="5"/><circle cx="295" cy="113" r="5"/><circle cx="448" cy="77" r="5"/><circle cx="640" cy="30" r="6"/></g></svg>
-          <div class="months"><span>3월</span><span>4월</span><span>5월</span><span>6월</span><span>7월</span><span>8월</span></div>
+    <section class="hero">
+      <div class="hero-orb orb-one"></div><div class="hero-orb orb-two"></div>
+      <div class="hero-inner">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span></span> 대한민국 부동산 데이터 플랫폼</div>
+          <h1>부동산은 감이 아니라<br><em>데이터입니다</em></h1>
+          <p class="hero-description">흩어진 실거래 정보부터 전세 위험, 경매와 세금 계산까지.<br>Rent Check에서 더 빠르고 정확한 판단을 시작하세요.</p>
+          <form class="search-box" id="searchForm" role="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            <label class="sr-only" for="searchInput">주소, 아파트명 또는 계산기 검색</label>
+            <input id="searchInput" type="search" autocomplete="off" placeholder="주소, 아파트명 또는 계산기를 검색하세요">
+            <button type="submit">검색 <span>→</span></button>
+          </form>
+          <div class="suggestions"><span>추천 검색</span><button type="button" data-query="마포래미안푸르지오">마포래미안푸르지오</button><button type="button" data-query="전세가율 계산기">전세가율 계산기</button><button type="button" data-query="서울 경매">서울 경매</button></div>
+          <div class="trust-row"><span class="trust-avatars"><i>R</i><i>C</i><i>✓</i></span><p><strong>매일 업데이트되는 데이터</strong><br>국토교통부 실거래가 기반</p></div>
         </div>
-        <div class="float-card fc-one"><span class="float-ico violet">⌁</span><div><small>AI 진단</small><strong>현재 시세는 보통 수준</strong></div></div>
-        <div class="float-card fc-two"><span class="float-ico green">✓</span><div><small>데이터 상태</small><strong>최신 거래 반영 완료</strong></div></div>
+
+        <div class="dashboard-wrap reveal delay" id="dashboard">
+          <div class="dashboard-glow"></div>
+          <article class="dashboard-card">
+            <header class="dash-header"><div><span class="dash-label">MARKET OVERVIEW</span><h2>서울 아파트 시장</h2></div><button type="button" class="period">최근 6개월 <span>⌄</span></button></header>
+            <div class="price-row"><div><span>평균 실거래가</span><strong>12억 4,580만</strong></div><span class="up">↗ 3.8%</span></div>
+            <div class="chart-wrap">
+              <div class="chart-grid"><i></i><i></i><i></i><i></i></div>
+              <svg class="trend-chart" viewBox="0 0 560 190" preserveAspectRatio="none" aria-label="최근 6개월 가격 상승 추세 차트" role="img"><defs><linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#655cf6" stop-opacity=".25"/><stop offset="1" stop-color="#655cf6" stop-opacity="0"/></linearGradient></defs><path class="chart-area" d="M0 164 C55 155 78 148 115 152 S180 128 220 134 S286 99 330 108 S394 78 430 86 S495 45 560 38 V190 H0Z"/><path class="chart-line" d="M0 164 C55 155 78 148 115 152 S180 128 220 134 S286 99 330 108 S394 78 430 86 S495 45 560 38"/><circle cx="560" cy="38" r="6"/><circle class="pulse" cx="560" cy="38" r="12"/></svg>
+              <div class="chart-tooltip"><span>2026. 08</span><strong>12.45억</strong></div>
+              <div class="chart-months"><span>3월</span><span>4월</span><span>5월</span><span>6월</span><span>7월</span><span>8월</span></div>
+            </div>
+            <div class="metric-grid">
+              <section><div class="metric-icon violet">%</div><div><span>서울 전세가율</span><strong>53.7%</strong></div><small>안정</small></section>
+              <section><div class="metric-icon blue">⌁</div><div><span>최근 실거래</span><strong>1,284건</strong></div><small class="rise">+12.4%</small></section>
+            </div>
+            <div class="ai-status"><span class="ai-icon">✦</span><div><strong>AI 시장 분석 완료</strong><p>매수 우위 · 거래량 회복 구간</p></div><span class="status-dot"></span></div>
+          </article>
+          <div class="data-badge"><span>LIVE</span><strong>실시간 데이터 반영 중</strong><i></i></div>
+        </div>
       </div>
     </section>
 
-    <section class="proof"><div class="container proof-inner"><span>국토부 실거래 기반</span><i></i><span>모바일 최적화</span><i></i><span>무료 계산 도구</span><i></i><span>실전형 해석</span></div></section>
-
-    <section class="section container" id="tools">
-      <div class="section-title reveal"><div><span class="kicker">POPULAR TOOLS</span><h2>복잡한 계산은<br>도구에 맡기세요.</h2></div><p>주소와 숫자만 입력하면 필요한 결과를 빠르게 확인할 수 있습니다.</p></div>
-      <div class="tool-grid">
-        <a class="tool-card featured reveal" href="#" data-tool="auction"><div class="tool-top"><span class="tool-icon blue">⚖</span><span class="tag on">사용 가능</span></div><h3>경매 입찰가 계산기</h3><p>실거래 비교부터 취득비용, 수익률까지 한 번에 계산합니다.</p><div class="tool-foot"><span>분석 시작</span><b>→</b></div></a>
-        <a class="tool-card reveal" href="#" data-tool="youth"><div class="tool-top"><span class="tool-icon purple">◎</span><span class="tag on">사용 가능</span></div><h3>청년주택 점수 계산기</h3><p>내 조건을 입력하고 예상 순위와 준비 항목을 확인합니다.</p><div class="tool-foot"><span>계산하기</span><b>→</b></div></a>
-        <button class="tool-card reveal" data-coming="전세가율 계산기"><div class="tool-top"><span class="tool-icon mint">%</span><span class="tag">준비 중</span></div><h3>전세가율 계산기</h3><p>매매가 대비 전세금 비율과 위험 구간을 빠르게 봅니다.</p><div class="tool-foot"><span>미리보기</span><b>→</b></div></button>
-        <button class="tool-card reveal" data-coming="재개발 분담금 계산기"><div class="tool-top"><span class="tool-icon orange">▥</span><span class="tag">준비 중</span></div><h3>재개발 분담금 계산기</h3><p>권리가액과 조합원 분양가를 넣어 예상 분담금을 계산합니다.</p><div class="tool-foot"><span>미리보기</span><b>→</b></div></button>
-        <button class="tool-card reveal" data-coming="월세 환산 계산기"><div class="tool-top"><span class="tool-icon pink">↔</span><span class="tag">준비 중</span></div><h3>월세·전세 환산 계산기</h3><p>보증금과 월세를 바꿔 같은 조건인지 비교합니다.</p><div class="tool-foot"><span>미리보기</span><b>→</b></div></button>
-        <button class="tool-card reveal" data-coming="취득세 계산기"><div class="tool-top"><span class="tool-icon sky">₩</span><span class="tag">준비 중</span></div><h3>취득세 계산기</h3><p>주택 수와 취득가를 반영해 예상 세금을 확인합니다.</p><div class="tool-foot"><span>미리보기</span><b>→</b></div></button>
+    <section class="quick-actions" id="quick-actions">
+      <div class="section-heading reveal"><div><span class="section-kicker">QUICK ACTIONS</span><h2>무엇을 확인해 볼까요?</h2></div><p>자주 찾는 부동산 도구를 바로 시작하세요</p></div>
+      <div class="action-grid">
+        <a class="action-card reveal" href="#"><span class="action-icon indigo"><svg viewBox="0 0 24 24"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></span><div><h3>실거래 조회</h3><p>우리 동네 실제 거래가격</p></div><b>→</b></a>
+        <a class="action-card reveal" href="#"><span class="action-icon purple"><svg viewBox="0 0 24 24"><path d="m14 5 5 5M7 12l5 5M3 21l8-8M12 8l4-4 4 4-4 4ZM5 15l4 4"/></svg></span><div><h3>경매 분석</h3><p>수익률과 적정 입찰가</p></div><b>→</b></a>
+        <a class="action-card reveal" href="#"><span class="action-icon sky"><svg viewBox="0 0 24 24"><path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6M8 10h.01M12 10h.01M16 10h.01"/></svg></span><div><h3>청년주택</h3><p>내게 맞는 주거 지원</p></div><b>→</b></a>
+        <a class="action-card reveal" href="#"><span class="action-icon orange"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10h5v11M14 21V4h5v17M7 7V3M4 5h6"/></svg></span><div><h3>재개발</h3><p>사업성과 예상 분담금</p></div><b>→</b></a>
+        <a class="action-card reveal" href="#"><span class="action-icon green"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-5"/></svg></span><div><h3>전세 위험 확인</h3><p>보증금 안전도 진단</p></div><b>→</b></a>
+        <a class="action-card reveal" href="#"><span class="action-icon pink"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 16h.01M12 16h.01M16 16h.01"/></svg></span><div><h3>부동산 계산기</h3><p>세금부터 대출까지 한 번에</p></div><b>→</b></a>
       </div>
     </section>
-
-    <section class="soft-section" id="data"><div class="container data-layout">
-      <div class="data-copy reveal"><span class="kicker">LIVE DATA</span><h2>숫자만 보여주지 않고<br>의미까지 설명합니다.</h2><p>국토부 API의 거래 숫자를 그대로 나열하지 않습니다. 면적, 연식, 층, 거래 시점을 함께 보고 지금 확인할 포인트를 정리합니다.</p><ul><li><span>✓</span> 같은 건물·같은 번지권 우선 비교</li><li><span>✓</span> 면적과 준공연도 차이까지 반영</li><li><span>✓</span> 비싸 보이는 착시와 위험 거래 분리</li></ul><a href="#insights" class="text-link">분석 방식 보기 →</a></div>
-      <div class="mini-dashboard reveal delay"><div class="mini-head"><div><small>이번 주 거래</small><h3>강서구 거래 흐름</h3></div><span>2026.08</span></div><div class="bar-list"><div><div><span>화곡동</span><b>58건</b></div><i style="--w:92%"></i></div><div><div><span>등촌동</span><b>42건</b></div><i style="--w:70%"></i></div><div><div><span>염창동</span><b>31건</b></div><i style="--w:54%"></i></div><div><div><span>가양동</span><b>24건</b></div><i style="--w:42%"></i></div></div><div class="mini-note"><span>↗</span><div><small>이번 주 특이점</small><strong>소형 빌라 거래가 전주보다 증가했습니다.</strong></div></div></div>
-    </div></section>
-
-    <section class="section container" id="insights"><div class="section-title reveal"><div><span class="kicker">INSIGHTS</span><h2>최근 분석과 가이드</h2></div><a href="#">전체 보기 →</a></div>
-      <div class="insight-grid">
-        <article class="insight-card reveal"><div class="thumb thumb-one"><span>실거래 분석</span><svg viewBox="0 0 360 180"><path d="M15 145 C65 130 87 142 122 108 C160 73 184 104 220 72 C264 34 295 55 345 20" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/><circle cx="220" cy="72" r="7"/><circle cx="345" cy="20" r="8"/></svg></div><div class="insight-body"><small>실거래·시세</small><h3>화곡동 빌라, 평당가만 보면 놓치는 착시</h3><p>초소형 면적에서 평당가가 높게 보이는 이유를 실제 거래로 확인합니다.</p><span>5분 읽기</span></div></article>
-        <article class="insight-card reveal"><div class="thumb thumb-two"><span>청년주택</span><div class="doc-visual"><i></i><i></i><i></i><b>SH</b></div></div><div class="insight-body"><small>청년·공공주택</small><h3>청년 매입임대, 신청 후 지금 확인할 것</h3><p>접수 완료 뒤 서류심사와 발표 일정까지 현재 상태별로 정리합니다.</p><span>4분 읽기</span></div></article>
-        <article class="insight-card reveal"><div class="thumb thumb-three"><span>경매 가이드</span><div class="gavel">⚖</div></div><div class="insight-body"><small>경매·투자</small><h3>낙찰가보다 먼저 계산해야 하는 총비용</h3><p>취득세, 명도비, 수리비까지 포함해야 실제 수익률이 보입니다.</p><span>6분 읽기</span></div></article>
-      </div>
-    </section>
-
-    <section class="numbers"><div class="container number-grid"><div><strong data-count="24800">0</strong><span>누적 도구 사용</span></div><div><strong data-count="161">0</strong><span>발행 분석 글</span></div><div><strong data-count="12">0</strong><span>데이터 도구</span></div><div><strong data-count="10">0</strong><span>강서구 분석 지역</span></div></div></section>
-
-    <section class="container cta" id="about"><div><span>RENT CHECK</span><h2>부동산 숫자,<br>혼자 해석하지 마세요.</h2><p>실거래와 계산 도구를 연결해 지금 필요한 판단부터 돕겠습니다.</p></div><a href="#tools">도구 바로가기 <b>→</b></a></section>
   </main>
-
-  <footer><div class="container footer-grid"><div><a class="brand footer-brand" href="#top"><span class="brand-badge">⌂</span><span>Rent Check</span></a><p>국토부 데이터와 실전형 해석을 연결하는<br>부동산 데이터 도구입니다.</p></div><div><h4>도구</h4><a href="#tools">경매 계산기</a><a href="#tools">청년 점수</a><a href="#tools">전세가율</a></div><div><h4>콘텐츠</h4><a href="#data">실거래 분석</a><a href="#insights">최신 인사이트</a><a href="#">블로그</a></div><div><h4>서비스</h4><a href="#about">소개</a><a href="#">문의</a><a href="#">개인정보처리방침</a></div></div><div class="container copyright"><span>© 2026 Rent Check. All rights reserved.</span><span>Built for better real-estate decisions.</span></div></footer>
-
-  <div class="modal" id="modal"><div class="modal-bg" data-close></div><div class="modal-box"><button data-close>×</button><span>COMING SOON</span><h3 id="modalTitle">준비 중입니다.</h3><p>오픈 전 화면만 먼저 연결해두었습니다. 도구가 완성되면 이 카드에서 바로 열립니다.</p><a href="#tools" data-close>확인</a></div></div>
-  <div class="toast" id="toast"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="app.js"></script>
 </body>
 </html>
