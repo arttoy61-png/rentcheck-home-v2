@@ -1,0 +1,1 @@
+document.querySelectorAll('[data-tool-reset]').forEach(button=>button.addEventListener('click',()=>{const form=button.closest('form');form.reset();form.querySelectorAll('.tool-result').forEach(result=>result.hidden=true)}));
