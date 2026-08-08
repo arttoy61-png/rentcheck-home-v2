@@ -52,10 +52,10 @@
   {
     "id": "jeonse-ratio",
     "title": "전세가율 계산기",
-    "description": "매매가 대비 전세가율과 위험 수준을 확인합니다.",
-    "url": null,
-    "status": "preparing",
-    "badge": "준비 중",
+    "description": "매매가 대비 전세보증금 비중과 전세가율을 확인합니다.",
+    "url": "tools/jeonse-ratio/",
+    "status": "available",
+    "badge": "이용 가능",
     "icon": "％",
     "category": "safety"
   },
@@ -72,10 +72,10 @@
   {
     "id": "brokerage-fee",
     "title": "중개보수 계산기",
-    "description": "거래 유형별 중개보수 상한을 확인합니다.",
-    "url": null,
-    "status": "preparing",
-    "badge": "준비 중",
+    "description": "아파트·주택·오피스텔·상가의 거래 유형별 중개보수 상한을 확인합니다.",
+    "url": "tools/brokerage-fee/",
+    "status": "available",
+    "badge": "이용 가능",
     "icon": "◨",
     "category": "tax"
   }

@@ -3,7 +3,9 @@
     { id: 'redevelopment', label: '재개발', footerLabel: '재개발 계산기', path: 'calc/' },
     { id: 'youth-score', label: '청년주택', footerLabel: '청년주택 점수', path: 'tools/youth-score/' },
     { id: 'rent-check', label: '월세·전세', footerLabel: '월세·전세 확인', path: 'tools/rent-check/' },
-    { id: 'apartment', label: '아파트 시세', footerLabel: '아파트 시세', path: 'tools/apartment/' }
+    { id: 'apartment', label: '아파트 시세', footerLabel: '아파트 시세', path: 'tools/apartment/' },
+    { id: 'jeonse-ratio', label: '전세가율', footerLabel: '전세가율 계산기', path: 'tools/jeonse-ratio/' },
+    { id: 'brokerage-fee', label: '중개보수', footerLabel: '중개보수 계산기', path: 'tools/brokerage-fee/' }
   ];
 
   function join(root, path) {
