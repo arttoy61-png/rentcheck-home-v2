@@ -16,14 +16,5 @@
 }
 
 .site-header .header-actions {
-  margin-left: auto;
-}
-
-@media (max-width: 768px) {
-  .site-header .header-cta {
-    height: 38px;
-    padding: 0 12px;
-    display: flex;
-    font-size: 11px;
-  }
+  display: none;
 }
