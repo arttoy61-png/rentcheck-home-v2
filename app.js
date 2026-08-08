@@ -105,16 +105,23 @@ function searchData(query) {
 function closeSearch() {
   $('#searchResults').hidden = true;
   $('#searchInput').setAttribute('aria-expanded', 'false');
+  $('#searchInput').removeAttribute('aria-activedescendant');
   state.selectedIndex = -1;
 }
 
 function renderSearch() {
   const dropdown = $('#searchResults');
   const query = $('#searchInput').value.trim();
+  if (!query) {
+    state.results = [];
+    dropdown.replaceChildren();
+    closeSearch();
+    return;
+  }
   state.results = searchData(query);
   state.selectedIndex = -1;
   dropdown.replaceChildren();
-  if (query && !state.results.length) dropdown.append(element('p', 'search-empty', '검색 결과가 없습니다.'));
+  if (!state.results.length) dropdown.append(element('p', 'search-empty', '검색 결과가 없습니다.'));
   state.results.forEach((result, index) => {
     const item = element(result.valid ? 'a' : 'div', `search-result${result.valid ? '' : ' unavailable'}`);
     item.id = `search-result-${index}`;
@@ -180,7 +187,7 @@ $$('[data-to-top]').forEach(link => link.addEventListener('click', event => { ev
 
 const searchInput = $('#searchInput');
 searchInput.addEventListener('input', renderSearch);
-searchInput.addEventListener('focus', renderSearch);
+searchInput.addEventListener('focus', () => { if (searchInput.value.trim()) renderSearch(); });
 searchInput.addEventListener('keydown', event => {
   if (event.key === 'Escape') { closeSearch(); return; }
   if (event.key === 'ArrowDown' || event.key === 'ArrowUp') { event.preventDefault(); moveSelection(event.key === 'ArrowDown' ? 1 : -1); }
@@ -190,7 +197,15 @@ searchInput.addEventListener('keydown', event => {
     if (selected?.valid) selected.type === 'post' ? window.open(selected.url, '_blank', 'noopener,noreferrer') : location.assign(selected.url);
   }
 });
-$('#searchForm').addEventListener('submit', event => { event.preventDefault(); if ($('#searchResults').hidden) renderSearch(); });
+$('#searchForm').addEventListener('submit', event => {
+  event.preventDefault();
+  if (!searchInput.value.trim()) {
+    closeSearch();
+    $('#calculators').scrollIntoView({ behavior: 'smooth' });
+    return;
+  }
+  renderSearch();
+});
 document.addEventListener('click', event => { if (!event.target.closest('.search-wrap')) closeSearch(); });
 
 $$('.tabs button').forEach(button => button.addEventListener('click', () => {
