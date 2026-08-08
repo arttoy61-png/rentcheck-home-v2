@@ -8,8 +8,7 @@
 @media(max-width:520px){.container{width:calc(100% - 24px)}.brand{font-size:16px}.hero{padding-top:34px}.hero h1{margin-top:14px;font-size:35px}.hero-lead{font-size:14px}.search{height:55px;margin-top:22px;padding-left:13px;grid-template-columns:21px 1fr 42px}.search button{width:42px;height:41px}.trust{gap:9px;justify-content:space-between;font-size:11px}.product-stage{height:376px}.product-ui{left:0;width:100%;height:360px;border-radius:15px}.product-ui>header{height:46px;padding:0 12px}.source-dot{font-size:9px}.product-body{padding:13px}.product-top h2{font-size:17px}.map-panel{height:142px}.workflow{gap:5px}.product-link{height:35px}.float-card{padding:11px}.scope{left:-4px!important;bottom:-9px;width:155px}.scope strong{font-size:12px}.scope span{font-size:9px}.method{right:-4px;top:69px;width:154px}.method-icon{width:29px;height:29px}.method strong{font-size:10px}.service-strip{grid-template-columns:repeat(5,minmax(175px,1fr))}.section-head h2{font-size:24px}.section-head p:not(.kicker){font-size:13px;line-height:1.6}.tabs{margin-top:20px}.calculator-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.calculator-card{height:211px;padding:13px}.calculator-card h3{font-size:14px}.calculator-card p{font-size:12px}.category-label{font-size:10px}.stats div{padding:17px 14px}.stats strong{font-size:15px}.insight{min-width:88%}.insight-art{height:165px}.final-cta{min-height:0;margin-bottom:45px;padding:27px 22px;display:block}.final-cta h2{font-size:21px}.cta-actions{margin-top:20px;flex-direction:column}.cta-actions a{justify-content:space-between}.footer-grid{display:block}.footer-brand{margin-bottom:28px}.footer-group{border-top:1px solid var(--line)}.footer-group button{padding:15px 0;display:flex;justify-content:space-between}.footer-group button span{display:block}.footer-group div{display:none;margin:0;padding:0 0 15px}.footer-group.open div{display:flex}.footer-bottom{margin-top:20px}.search-result{grid-template-columns:31px 1fr auto;padding:9px}.search-result-icon{width:31px;height:31px}}
 @media(max-width:360px){.hero h1{font-size:32px}.trust{display:grid;gap:8px}.product-brand span{display:none}.calculator-grid{grid-template-columns:1fr}.calculator-card{height:190px}.insight{min-width:93%}.footer-bottom{display:block}.footer-bottom span{display:block;margin-top:5px}}
 
-/* The home header stays intentionally simple; tool pages keep their own nav. */
-.site-header .desktop-nav,
+/* Desktop keeps useful section links; mobile stays logo-only. */
 .site-header .menu-button,
 .site-header .mobile-nav {
   display: none !important;
@@ -17,4 +16,18 @@
 
 .site-header .header-actions {
   display: none;
+}
+
+.site-header .desktop-nav a:first-child {
+  display: none;
+}
+
+.site-header .desktop-nav a:first-child::after {
+  content: none;
+}
+
+@media (max-width: 768px) {
+  .site-header .desktop-nav {
+    display: none !important;
+  }
 }
