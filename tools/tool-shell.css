@@ -11,7 +11,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 76px;
+  scroll-padding-top: 72px;
 }
 
 body.v2-tool-page {
@@ -48,7 +48,7 @@ body.v2-tool-page :where(h1, h2, h3, h4) {
   top: 0;
   z-index: 1000;
   width: 100%;
-  height: 68px;
+  height: 64px;
   margin-left: 0;
   border-bottom: 1px solid rgba(223, 229, 239, .88);
   background: rgba(255, 255, 255, .96);
@@ -155,7 +155,7 @@ body[data-tool-id="youth-score"] > .wrap {
 }
 
 body[data-tool-id="apartment"] .crumbbar {
-  top: 68px;
+  top: 64px;
 }
 
 @media (max-width: 900px) {

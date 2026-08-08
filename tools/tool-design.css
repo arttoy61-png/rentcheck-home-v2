@@ -47,7 +47,7 @@ body.v2-tool-page > :is(.wrap, .container),
   max-width: 760px;
   min-height: 0;
   margin: 0 auto;
-  padding: 20px 0 0;
+  padding: 16px 0 0;
   background: transparent;
 }
 
@@ -63,7 +63,7 @@ body[data-tool-id="apartment"] .hd,
   height: 180px;
   min-height: 180px;
   overflow: hidden;
-  margin: 0 0 18px;
+  margin: 0 0 16px;
   padding: 24px 30px;
   display: flex;
   flex-direction: column;
@@ -334,7 +334,7 @@ body[data-tool-id="youth-score"] {
 
 body[data-tool-id="youth-score"] > .wrap {
   width: min(calc(100% - 32px), 760px);
-  padding-top: 20px;
+  padding-top: 16px;
 }
 
 body[data-tool-id="youth-score"] > .wrap > header {
@@ -544,7 +544,7 @@ body[data-tool-id="apartment"] > .wrap {
 }
 
 body[data-tool-id="apartment"] .crumbbar {
-  top: 80px;
+  top: 64px;
   margin: 0 0 14px;
   padding: 10px;
   border: 1px solid var(--line);
@@ -689,6 +689,19 @@ body.v2-tool-page .v2-tool-notes p {
   margin: 2px 0;
 }
 
+@media (min-width: 769px) {
+  body.v2-tool-page .v2-tool-notes {
+    margin-top: 24px;
+    padding: 16px 20px;
+  }
+
+  body[data-tool-id="youth-score"] .body > .v2-tool-notes {
+    width: calc(100% + 50px);
+    margin-right: -25px;
+    margin-left: -25px;
+  }
+}
+
 body.v2-tool-page > .v2-tool-footer {
   width: 100%;
   max-width: none;
@@ -780,6 +793,14 @@ body.v2-tool-page .v2-tool-footer__links .v2-tool-footer__home {
   color: var(--blue);
 }
 
+@media (min-width: 769px) {
+  .v2-tool-footer__inner {
+    padding-top: 28px;
+    padding-bottom: 28px;
+    gap: 24px;
+  }
+}
+
 @media (max-width: 768px) {
   body.v2-tool-page > :is(.wrap, .container),
   .v2-tool-main {
@@ -827,7 +848,7 @@ body.v2-tool-page .v2-tool-footer__links .v2-tool-footer__home {
   }
 
   body[data-tool-id="apartment"] .crumbbar {
-    top: 72px;
+    top: 62px;
   }
 
   body[data-tool-id="redevelopment"] .hero,
