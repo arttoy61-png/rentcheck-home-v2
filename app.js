@@ -18,6 +18,28 @@ function isAvailable(tool) {
   return tool?.status === 'available' && typeof tool.url === 'string' && tool.url.trim();
 }
 
+function statusLabel(tool) {
+  if (tool?.status === 'in-development') return '개발 중';
+  if (tool?.status === 'preparing') return '준비 중';
+  return isAvailable(tool) ? '이용 가능' : '현재 이용할 수 없음';
+}
+
+function resolveToolLinks() {
+  $$('[data-tool-link]').forEach(link => {
+    const tool = state.tools.find(item => item.id === link.dataset.toolLink);
+    if (isAvailable(tool)) {
+      link.href = tool.url;
+      link.removeAttribute('aria-disabled');
+      link.removeAttribute('tabindex');
+    } else {
+      link.removeAttribute('href');
+      link.setAttribute('aria-disabled', 'true');
+      link.setAttribute('tabindex', '-1');
+      if (link.classList.contains('market-tool-link')) link.textContent = '현재 이용할 수 없음';
+    }
+  });
+}
+
 function renderCalculators(tools = state.tools) {
   const grid = $('#calculatorGrid');
   grid.replaceChildren();
@@ -32,7 +54,7 @@ function renderCalculators(tools = state.tools) {
     card.append(element('span', 'calculator-icon', tool.icon || '·'));
     card.append(element('h3', '', tool.title || '이름 없는 도구'));
     card.append(element('p', '', tool.description || '설명이 없습니다.'));
-    const status = tool.status === 'in-development' ? '개발 중' : tool.status === 'preparing' ? '준비 중' : (tool.badge || '이용 가능');
+    const status = isAvailable(tool) ? (tool.badge || statusLabel(tool)) : statusLabel(tool);
     card.append(element('span', `status${isAvailable(tool) ? ' available' : ''}`, status));
     grid.append(card);
   });
@@ -96,7 +118,7 @@ function searchData(query) {
   const needle = normalized(query);
   if (!needle) return [];
   const tools = state.tools.filter(tool => [tool.title, tool.description, tool.category].some(value => normalized(value).includes(needle)))
-    .map(tool => ({ type: 'tool', title: tool.title, meta: tool.description, icon: tool.icon, valid: Boolean(isAvailable(tool)), url: tool.url }));
+    .map(tool => ({ type: 'tool', title: tool.title, meta: tool.description, icon: tool.icon, valid: Boolean(isAvailable(tool)), url: tool.url, status: statusLabel(tool) }));
   const posts = state.posts.filter(post => [post.title, post.category].some(value => normalized(value).includes(needle)))
     .map(post => ({ type: 'post', title: post.title, meta: [post.category, post.published_at].filter(Boolean).join(' · '), valid: post.status === 'published' && Boolean(post.url), url: post.url }));
   return [...tools, ...posts].slice(0, 6);
@@ -135,7 +157,7 @@ function renderSearch() {
     item.append(element('span', 'search-result-icon', result.type === 'tool' ? (result.icon || '·') : '▤'));
     const copy = element('span', 'search-result-copy');
     copy.append(element('strong', '', result.title || '제목 없음'), element('small', '', result.meta || ''));
-    item.append(copy, element('span', 'search-result-type', result.type === 'tool' ? '도구' : '분석 글'));
+    item.append(copy, element('span', 'search-result-type', result.type === 'tool' ? (result.valid ? '도구' : result.status) : '분석 글'));
     dropdown.append(item);
   });
   const all = element('a', 'search-all', '계산기 모음 보기');
@@ -172,6 +194,7 @@ async function loadData() {
   renderCalculators();
   renderServices();
   renderInsights();
+  resolveToolLinks();
   $('#availableToolCount').textContent = String(state.tools.filter(isAvailable).length);
   $('#publishedCount').textContent = String(state.posts.filter(post => post?.status === 'published').length);
 }
@@ -201,7 +224,6 @@ $('#searchForm').addEventListener('submit', event => {
   event.preventDefault();
   if (!searchInput.value.trim()) {
     closeSearch();
-    $('#calculators').scrollIntoView({ behavior: 'smooth' });
     return;
   }
   renderSearch();
@@ -213,6 +235,10 @@ $$('.tabs button').forEach(button => button.addEventListener('click', () => {
   button.classList.add('active');
   const label = button.textContent.trim();
   renderCalculators(label === '전체' ? state.tools : state.tools.filter(tool => categoryLabels[tool.category] === label));
+}));
+$$('[data-auction-link]').forEach(link => link.addEventListener('click', () => {
+  const investmentTab = $$('.tabs button').find(button => button.textContent.trim() === '투자 분석');
+  investmentTab?.click();
 }));
 $$('.footer-group > button').forEach(button => button.addEventListener('click', () => { const open = button.getAttribute('aria-expanded') === 'true'; button.setAttribute('aria-expanded', String(!open)); button.parentElement.classList.toggle('open', !open); }));
 
