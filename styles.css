@@ -31,3 +31,33 @@
     display: none !important;
   }
 }
+
+@media (min-width: 769px) {
+  html {
+    scroll-padding-top: 66px;
+  }
+
+  .site-header {
+    height: 64px;
+  }
+
+  .hero {
+    padding: 36px 0 56px;
+  }
+
+  .search {
+    margin-top: 20px;
+  }
+
+  .service-strip {
+    margin-top: -28px;
+  }
+
+  .section {
+    padding: 56px 0;
+  }
+
+  .insights {
+    padding-bottom: 56px;
+  }
+}
