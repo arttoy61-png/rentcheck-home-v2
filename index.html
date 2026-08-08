@@ -32,13 +32,19 @@
         <div class="hero-copy"><p class="eyebrow">부동산 계산과 실거래 해석 도구</p><h1>똑똑한 부동산<br><span>계산과 분석의 시작</span></h1><p class="hero-lead">복잡한 부동산 계산은 쉽게,<br>실거래 숫자는 판단하기 쉽게 정리합니다.</p>
           <div class="search-wrap"><form class="search" id="searchForm" role="search" autocomplete="off"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><label class="sr-only" for="searchInput">계산기와 분석 글 통합 검색</label><input id="searchInput" type="search" placeholder="계산기·분석 글을 검색하세요" aria-controls="searchResults" aria-expanded="false" aria-autocomplete="list"><button type="submit">검색</button></form><div class="search-results" id="searchResults" role="listbox" aria-label="검색 결과" hidden></div></div>
         </div>
-        <article class="market-card" aria-label="강서구 아파트 실거래 서비스 안내">
-          <div class="market-head"><div><p>MARKET DATA</p><h2>강서구 실거래 확인</h2></div></div>
-          <dl class="market-scope"><div><dt>현재 제공 지역</dt><dd>서울 강서구</dd></div><div><dt>자료 출처</dt><dd>국토교통부 실거래 신고자료</dd></div></dl>
-          <ul class="market-features"><li>매매 · 전세 · 월세 확인</li><li>동 → 단지 → 평형 순서로 조회</li><li>신고 취소·정정에 따라 데이터가 달라질 수 있음</li></ul>
-          <a class="market-tool-link" data-tool-link="apt-widget">강서구 아파트 실거래 보기 →</a>
-          <svg class="building" viewBox="0 0 120 90" aria-hidden="true"><path d="M8 82h104M20 82V28h42v54M62 82V8h38v74M29 39h9m10 0h5M29 52h9m10 0h5M29 65h9m10 0h5M72 21h8m9 0h4M72 35h8m9 0h4M72 49h8m9 0h4M72 63h8m9 0h4"/></svg>
-        </article>
+        <div class="market-visual">
+          <article class="market-card" aria-label="강서구 아파트 실거래 서비스 안내">
+            <div class="market-head"><div><p>APARTMENT DATA</p><h2>서울 강서구</h2></div><span>실거래 조회</span></div>
+            <div class="trade-tabs" aria-label="지원 거래 유형"><strong>매매</strong><span>전세</span><span>월세</span></div>
+            <div class="market-dashboard">
+              <svg class="district-map" viewBox="0 0 260 145" aria-hidden="true"><path class="map-region r1" d="m18 57 38-35 45 8 14 35-29 26-51-5z"/><path class="map-region r2" d="m115 20 50-9 30 26-12 43-45 10-23-25z"/><path class="map-region r3" d="m88 94 49-14 46 7 24 34-38 18-66-5z"/><path class="map-region r4" d="m190 41 39 9 18 43-39 28-25-34z"/><circle cx="151" cy="55" r="5"/><path class="map-line" d="M32 108c42-19 74 10 108-2s60-3 95 19"/></svg>
+              <div class="lookup-flow"><p>지역부터 차례로 선택하세요</p><div><span>동 <b>선택</b></span><i>→</i><span>단지 <b>선택</b></span><i>→</i><span>평형 <b>선택</b></span></div></div>
+            </div>
+            <a class="market-tool-link" data-tool-link="apt-widget">강서구 아파트 실거래 보기 →</a>
+          </article>
+          <aside class="support-card data-scope"><span>DATA SCOPE</span><strong>서울 강서구</strong><small>국토부 실거래 신고자료</small></aside>
+          <aside class="support-card lookup-method"><span>조회 방식</span><strong>동 → 단지 → 평형</strong></aside>
+        </div>
       </div>
     </section>
 
@@ -50,7 +56,7 @@
 
     <section class="section container" id="insights"><div class="section-head"><div><p class="kicker">INSIGHTS</p><h2>최신 부동산 인사이트</h2></div><p>숫자 너머의 판단 기준을 살펴보세요.</p></div><div class="insight-track" id="insightTrack"></div></section>
 
-    <section class="container final-cta"><div><h2>부동산 숫자, 혼자 해석하지 마세요.</h2><p>계산 도구와 실거래 분석을 연결해 지금 필요한 판단부터 돕겠습니다.</p></div><div><a class="button primary" href="#calculators">계산 도구 보기</a><a class="button secondary" href="#insights">최신 분석 보기</a></div></section>
+    <section class="container final-cta"><div class="cta-copy"><span>RENT CHECK</span><h2>부동산 숫자,<br>판단까지 이어져야 합니다.</h2><p>계산 도구와 실거래 분석을 연결해<br>지금 필요한 판단부터 확인하세요.</p></div><div class="cta-actions"><a class="button primary" href="#calculators">계산 도구 보기 →</a><a class="button secondary" data-tool-link="apt-widget">실거래 확인</a></div></section>
   </main>
 
   <footer><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="#top" data-to-top><span class="brand-mark"><svg viewBox="0 0 32 32"><path d="M5 15 16 6l11 9v11H5z"/><path d="m11 19 3 3 7-8"/></svg></span><strong>Rent Check</strong></a><p>국토부 실거래 데이터와 실전형 해석을 연결하는 부동산 계산 도구입니다. 현재 실거래 분석은 서울 강서구를 다룹니다.</p></div>

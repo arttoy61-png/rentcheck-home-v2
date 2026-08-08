@@ -51,11 +51,17 @@ function renderCalculators(tools = state.tools) {
     const card = element(isAvailable(tool) ? 'a' : 'article', 'calculator-card');
     if (isAvailable(tool)) card.href = tool.url;
     else card.setAttribute('aria-disabled', 'true');
-    card.append(element('span', 'calculator-icon', tool.icon || '·'));
+    const top = element('div', 'calculator-top');
+    top.append(element('span', 'calculator-icon', tool.icon || '·'));
+    top.append(element('span', 'calculator-category', categoryLabels[tool.category] || '부동산 도구'));
+    card.append(top);
     card.append(element('h3', '', tool.title || '이름 없는 도구'));
     card.append(element('p', '', tool.description || '설명이 없습니다.'));
     const status = isAvailable(tool) ? (tool.badge || statusLabel(tool)) : statusLabel(tool);
-    card.append(element('span', `status${isAvailable(tool) ? ' available' : ''}`, status));
+    const footer = element('div', 'calculator-footer');
+    footer.append(element('span', `status${isAvailable(tool) ? ' available' : ''}`, status));
+    footer.append(element('span', `tool-action${isAvailable(tool) ? ' available' : ''}`, isAvailable(tool) ? '도구 열기 →' : statusLabel(tool)));
+    card.append(footer);
     grid.append(card);
   });
 }
@@ -65,8 +71,9 @@ function renderServices() {
   const services = [
     { title: '계산기 모음', detail: '부동산 계산 도구', icon: '⌁', url: '#calculators' },
     { title: '실거래 조회', detail: '최근 거래 흐름', icon: '⌂', toolId: 'apt-widget' },
-    { title: '청년 지원 도구', detail: '청년주택 점수 확인', icon: '✓', toolId: 'youth-score' },
-    { title: '재개발 분석', detail: '분담금과 사업성', icon: '▥', toolId: 'redevelopment' }
+    { title: '청년 지원', detail: '청년주택 점수 확인', icon: '✓', toolId: 'youth-score' },
+    { title: '재개발', detail: '분담금과 사업성', icon: '▥', toolId: 'redevelopment' },
+    { title: '맞춤 가이드', detail: '판단 기준과 해설', icon: '≡', url: '#insights' }
   ];
   strip.replaceChildren(...services.map(service => {
     const tool = service.toolId && state.tools.find(item => item.id === service.toolId);
@@ -95,7 +102,14 @@ function renderInsights() {
   featured.forEach((post, index) => {
     const article = element('article', 'insight');
     const art = element('div', `insight-art art-${['one', 'two', 'three'][index]}`);
-    art.append(element('span', '', post.category || '분석 글'));
+    const artwork = element('div', 'editorial-artwork');
+    const visuals = [
+      '<div class="villa-blocks"><i></i><i></i><i></i></div><div class="compare-bars"><b></b><b></b></div><em>㎡</em>',
+      '<div class="plan-sheet"><i></i><i></i><i></i></div><div class="redev-blocks"><b></b><b></b><b></b></div><svg viewBox="0 0 120 40"><path d="M5 29C35 29 39 10 65 10h36"/><path d="m95 4 8 6-8 6"/></svg>',
+      '<div class="districts"><i>마곡</i><i>화곡</i><i>등촌</i></div><div class="market-bars"><b></b><b></b></div><em>84㎡</em>'
+    ];
+    artwork.innerHTML = visuals[index];
+    art.append(artwork, element('span', 'insight-identity', post.category || '분석 글'));
     const body = element('div', 'insight-body');
     body.append(element('span', '', post.category || '분석 글'));
     body.append(element('h3', '', post.title || '제목 없는 글'));
