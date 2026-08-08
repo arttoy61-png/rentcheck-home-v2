@@ -1,19 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="재개발·모아타운 분담금과 총투입금을 30초에 계산합니다. 감정평가액·비례율·조합원분양가만 입력하면 됩니다.">
-  <meta property="og:title" content="재개발 분담금 계산기 | Rent Check">
-  <meta property="og:description" content="소유주는 분담금, 매수자는 총투입금 — 숫자 몇 개면 됩니다.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://arttoy61-png.github.io/rentcheck-home-v2/calc/">
-  <title>재개발 분담금 계산기 | Rent Check</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css">
-  <!-- Google tag (gtag.js) -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../tools/tool-shell.css">
+<script defer src="../tools/tool-common.js"></script>
+<title>재개발 분담금·총투입금 계산기 — 30초 계산 | Rent Check 강서</title>
+<meta name="description" content="소유주는 분담금, 매수자는 총투입금. 감정평가액·비례율·매매가만 알면 강서구 화곡동 재개발·모아타운 자금 규모가 30초 만에 나옵니다.">
+<meta property="og:title" content="재개발 분담금 30초 계산기 | Rent Check 강서">
+<meta property="og:description" content="감정평가액과 비례율만 알면 분담금이 나옵니다">
+<meta property="og:image" content="https://arttoy61-png.github.io/rent-check/calc-og.png">
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MPRR3J99YQ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -21,28 +18,28 @@
   gtag('js', new Date());
   gtag('config', 'G-MPRR3J99YQ');
 </script>
-  <style>
-  .calc-shell{
+<style>
+  :root{
     --navy:#0d1f3c; --blue:#1565c0; --gold:#d4a73a; --gold-soft:#f0c75e;
     --ink:#1c2733; --muted:#5b6b7d; --line:#dfe6f0; --bg:#f4f6fa; --rowA:#eef4fb;
     --green:#2ea06e; --red:#d64c4c;
   }
-  .calc-shell *{box-sizing:border-box; margin:0; padding:0;}
-  .calc-shell{background:var(--bg); color:var(--ink); font-size:17px; line-height:1.7; padding:24px 0 40px;}
-  .wrap{max-width:560px; margin:0 auto; background:#fff; border:1px solid #e3e8f1; border-radius:18px; overflow:hidden; box-shadow:0 12px 36px rgba(26,39,74,.08);}
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--ink); font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif; font-size:17px; line-height:1.7; -webkit-text-size-adjust:100%;}
+  .wrap{max-width:560px; margin:0 auto; background:#fff; min-height:100vh;}
 
-  .chero{background:linear-gradient(150deg,var(--navy) 0%,#13306b 100%); color:#fff; padding:28px 22px 22px; text-align:center;}
-  .chero .badge{display:inline-block; border:1.5px solid var(--gold); color:var(--gold-soft); font-size:13px; font-weight:700; letter-spacing:.5px; padding:5px 14px; border-radius:20px; margin-bottom:13px;}
-  .chero h1{font-size:24px; font-weight:800; line-height:1.4;}
-  .chero h1 .g{color:var(--gold-soft);}
-  .chero p{font-size:14px; color:#b9c9e2; margin-top:7px;}
+  .hero{background:linear-gradient(150deg,var(--navy) 0%,#13306b 100%); color:#fff; padding:28px 22px 22px; text-align:center;}
+  .hero .badge{display:inline-block; border:1.5px solid var(--gold); color:var(--gold-soft); font-size:13px; font-weight:700; letter-spacing:.5px; padding:5px 14px; border-radius:20px; margin-bottom:13px;}
+  .hero h1{font-size:24px; font-weight:800; line-height:1.4;}
+  .hero h1 .g{color:var(--gold-soft);}
+  .hero p{font-size:14px; color:#b9c9e2; margin-top:7px;}
 
   /* 탭 */
-  .ctabs{display:flex; gap:8px; padding:16px 22px 0;}
-  .ctabs button{flex:1; font-family:inherit; font-size:14.5px; font-weight:800; padding:12px 4px; border-radius:12px; border:1.5px solid var(--line); background:#fafbfd; color:var(--muted); cursor:pointer;}
-  .ctabs button.on{background:var(--navy); border-color:var(--navy); color:#fff;}
-  .ctabs button.on .sub{color:var(--gold-soft);}
-  .ctabs button .sub{display:block; font-size:11.5px; font-weight:700; color:#9aa8bd; margin-top:1px;}
+  .tabs{display:flex; gap:8px; padding:16px 22px 0;}
+  .tabs button{flex:1; font-family:inherit; font-size:14.5px; font-weight:800; padding:12px 4px; border-radius:12px; border:1.5px solid var(--line); background:#fafbfd; color:var(--muted); cursor:pointer;}
+  .tabs button.on{background:var(--navy); border-color:var(--navy); color:#fff;}
+  .tabs button.on .sub{color:var(--gold-soft);}
+  .tabs button .sub{display:block; font-size:11.5px; font-weight:700; color:#9aa8bd; margin-top:1px;}
 
   .body{padding:20px 22px 10px;}
   .step-label{font-size:13px; font-weight:800; color:var(--blue); letter-spacing:.4px; margin:4px 0 10px;}
@@ -96,36 +93,18 @@
   .foot .logo .g{color:var(--gold-soft);}
   .foot .tagline{font-size:12.5px; color:#a9bdd6; margin-top:3px;}
   .foot a{color:#a9bdd6; font-size:12.5px;}
-
-  /* 내부 페이지 공통 */
-  .page-note{max-width:560px;margin:22px auto 0;padding:0 4px;}
-  .page-note h2{font-size:19px;color:#172033;margin:26px 0 10px;}
-  .page-note p{font-size:15px;line-height:1.8;color:#3d4a5c;margin:0 0 12px;}
-  .rel-card{display:block;border:1px solid #e3e8f1;border-radius:12px;padding:14px 16px;margin:10px 0;background:#fff;}
-  .rel-card small{color:#667085;font-size:12px;}
-  .rel-card strong{display:block;font-size:14px;color:#172033;margin-top:3px;line-height:1.5;}
-  </style>
+</style>
 </head>
-<body id="top">
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="../" aria-label="Rent Check 홈으로"><span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 15 16 6l11 9v11H5z"/><path d="m11 19 3 3 7-8"/></svg></span><strong>Rent Check</strong></a>
-      <nav class="desktop-nav" aria-label="주요 메뉴"><a href="../">홈</a><a href="../#calculators">계산 도구</a><a href="../#market">실거래 분석</a><a href="../#insights">가이드</a></nav>
-      <div class="header-actions"><a class="button primary header-cta" href="../#calculators">다른 도구 보기</a></div>
-    </div>
-  </header>
-
-  <main class="calc-shell">
-
+<body id="top" class="v2-tool-page" data-v2-root="../" data-tool-id="redevelopment">
 <div class="wrap">
 
-  <header class="chero">
+  <header class="hero">
     <span class="badge">재개발 · 모아타운</span>
     <h1>재개발 자금 <span class="g">30초 계산기</span></h1>
     <p>소유주는 분담금, 매수자는 총투입금 — 숫자 몇 개면 됩니다</p>
   </header>
 
-  <div class="ctabs">
+  <div class="tabs">
     <button id="tabOwner" class="on" onclick="switchTab('owner')">🏠 소유주<span class="sub">분담금 계산</span></button>
     <button id="tabBuyer" onclick="switchTab('buyer')">💰 매수 검토<span class="sub">총투입금 계산</span></button>
   </div>
@@ -247,7 +226,7 @@
   <div class="foot">
     <div class="logo">Rent Check <span class="g">강서</span></div>
     <div class="tagline">실거래로 더 정확하게</div>
-    <div style="margin-top:8px"><a href="index.html">← 전세·월세 시세 검증 위젯으로</a></div>
+    <div style="margin-top:8px"><a href="../tools/rent-check/">← 전세·월세 시세 검증 위젯으로</a></div>
   </div>
 </div>
 
@@ -370,14 +349,5 @@ function runBuyer(){
   document.getElementById('buyerResult').scrollIntoView({behavior:'smooth', block:'start'});
 }
 </script>
-
-  </main>
-<script>
-fetch('../data/posts.json').then(r=>r.json()).then(posts=>{
-  const rel = posts.filter(p=>p.status==='published' && p.tools && p.tools.includes('redevelopment')).slice(0,4);
-  const box = document.getElementById('relPosts');
-  if(!rel.length){ box.parentElement.style.display='none'; return; }
-  box.innerHTML = rel.map(p=>`<a class="rel-card" href="${p.url}" target="_blank" rel="noopener"><small>${p.published_at} · ${p.category}</small><strong>${p.title}</strong></a>`).join('');
-}).catch(()=>{ const b=document.getElementById('relPosts'); if(b) b.parentElement.style.display='none'; });
-</script>
-</body></html>
+</body>
+</html>
