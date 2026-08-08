@@ -1,9 +1,9 @@
 (() => {
   const toolLinks = [
-    { id: 'redevelopment', label: '재개발', path: 'calc/' },
-    { id: 'youth-score', label: '청년주택', path: 'tools/youth-score/' },
-    { id: 'rent-check', label: '월세·전세', path: 'tools/rent-check/' },
-    { id: 'apartment', label: '아파트 시세', path: 'tools/apartment/' }
+    { id: 'redevelopment', label: '재개발', footerLabel: '재개발 계산기', path: 'calc/' },
+    { id: 'youth-score', label: '청년주택', footerLabel: '청년주택 점수', path: 'tools/youth-score/' },
+    { id: 'rent-check', label: '월세·전세', footerLabel: '월세·전세 확인', path: 'tools/rent-check/' },
+    { id: 'apartment', label: '아파트 시세', footerLabel: '아파트 시세', path: 'tools/apartment/' }
   ];
 
   function join(root, path) {
@@ -21,7 +21,7 @@
   function renderFooterLink(item, root, activeTool) {
     const isCurrent = item.id === activeTool;
     const current = isCurrent ? ' aria-current="page"' : '';
-    return `<a href="${join(root, item.path)}"${current}>${item.label}<span aria-hidden="true">→</span></a>`;
+    return `<a href="${join(root, item.path)}"${current}>${item.footerLabel}<span aria-hidden="true">→</span></a>`;
   }
 
   function initializeToolShell() {
