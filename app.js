@@ -1,247 +1,39 @@
 const $ = (selector, parent = document) => parent.querySelector(selector);
 const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
-
 const state = { tools: [], posts: [], results: [], selectedIndex: -1 };
-const categoryLabels = {
-  rent: '매매·전세', safety: '매매·전세', tax: '세금·비용', invest: '투자 분석',
-  youth: '청년 지원', redev: '재개발'
+const categories = { rent: '매매·전세', safety: '매매·전세', tax: '세금·비용', invest: '투자 분석', youth: '청년 지원', redev: '재개발' };
+const tones = { rent: ['#3157d5','#edf1ff'], safety: ['#147d73','#e8f6f3'], tax: ['#a46116','#fff4e4'], invest: ['#6c4bc4','#f2edff'], youth: ['#16765a','#e8f7f0'], redev: ['#b04762','#fff0f3'] };
+const iconPaths = {
+  home:'<path d="M4 11.5 12 5l8 6.5V20H4z"/><path d="m8.5 14 2.2 2.2 4.8-5.2"/>', search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/>', check:'<path d="m5 12 4 4L19 6"/>', database:'<ellipse cx="12" cy="5" rx="7.5" ry="3"/><path d="M4.5 5v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V5M4.5 11v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6"/>', building:'<path d="M4 21V7l8-4v18M12 9h8v12M7 9h2m-2 4h2m-2 4h2m8-4h1m-1 4h1M2 21h20"/>', chevron:'<path d="m9 18 6-6-6-6"/>', calculator:'<rect x="4" y="2.5" width="16" height="19" rx="2"/><path d="M7 6h10v4H7zm1 8h1m3 0h1m3 0h1m-9 3h1m3 0h1m3 0h1"/>', pin:'<path d="M20 10c0 5.2-8 11-8 11S4 15.2 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>', youth:'<circle cx="12" cy="7" r="3"/><path d="M5 21c.7-5 3-8 7-8s6.3 3 7 8M17 4l1 1 2-2"/>', redev:'<path d="M3 21h18M5 21V9h6v12m0 0V3h8v18M7.5 12h1m-1 3h1m5-9h2m-2 4h2m-2 4h2"/>', guide:'<path d="M4 4.5A3.5 3.5 0 0 1 7.5 8H12v13H7.5A3.5 3.5 0 0 0 4 17.5zm16 0A3.5 3.5 0 0 0 16.5 8H12v13h4.5a3.5 3.5 0 0 1 3.5-3.5z"/>', document:'<path d="M6 2.5h8l4 4V21H6zM14 2.5V7h4M9 11h6m-6 4h6"/>', tool:'<path d="M14.5 6.5a4 4 0 0 0-5-5l2.2 2.2-2.8 2.8-2.2-2.2a4 4 0 0 0 5 5L19 17a2.1 2.1 0 0 1-3 3l-7.3-7.3"/>', money:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9h2m6 6h2m-7.5-3a2.5 2.5 0 1 0 5 0 2.5 2.5 0 0 0-5 0Z"/>', percent:'<path d="m7 18 10-12"/><circle cx="7" cy="7" r="2"/><circle cx="17" cy="17" r="2"/>', auction:'<path d="m5 9 6-6 4 4-6 6zm8-4 6 6M3 21h12m-9 0v-4h6v4"/>', receipt:'<path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6m-6 4h6m-6 4h4"/>'
 };
-
-function element(tag, className, text) {
-  const node = document.createElement(tag);
-  if (className) node.className = className;
-  if (text !== undefined) node.textContent = text;
-  return node;
-}
-
-function isAvailable(tool) {
-  return tool?.status === 'available' && typeof tool.url === 'string' && tool.url.trim();
-}
-
-function statusLabel(tool) {
-  if (tool?.status === 'in-development') return '개발 중';
-  if (tool?.status === 'preparing') return '준비 중';
-  return isAvailable(tool) ? '이용 가능' : '현재 이용할 수 없음';
-}
-
-function resolveToolLinks() {
-  $$('[data-tool-link]').forEach(link => {
-    const tool = state.tools.find(item => item.id === link.dataset.toolLink);
-    if (isAvailable(tool)) {
-      link.href = tool.url;
-      link.removeAttribute('aria-disabled');
-      link.removeAttribute('tabindex');
-    } else {
-      link.removeAttribute('href');
-      link.setAttribute('aria-disabled', 'true');
-      link.setAttribute('tabindex', '-1');
-      if (link.classList.contains('market-tool-link')) link.textContent = '현재 이용할 수 없음';
-    }
-  });
-}
-
-function renderCalculators(tools = state.tools) {
-  const grid = $('#calculatorGrid');
-  grid.replaceChildren();
-  if (!tools.length) {
-    grid.append(element('p', 'data-unavailable', '도구 정보를 불러올 수 없습니다.'));
-    return;
-  }
-  tools.forEach(tool => {
-    const card = element(isAvailable(tool) ? 'a' : 'article', 'calculator-card');
-    if (isAvailable(tool)) card.href = tool.url;
-    else card.setAttribute('aria-disabled', 'true');
-    card.append(element('span', 'calculator-icon', tool.icon || '·'));
-    card.append(element('h3', '', tool.title || '이름 없는 도구'));
-    card.append(element('p', '', tool.description || '설명이 없습니다.'));
-    const status = isAvailable(tool) ? (tool.badge || statusLabel(tool)) : statusLabel(tool);
-    card.append(element('span', `status${isAvailable(tool) ? ' available' : ''}`, status));
-    grid.append(card);
-  });
-}
-
-function renderServices() {
-  const strip = $('#services');
-  const services = [
-    { title: '계산기 모음', detail: '부동산 계산 도구', icon: '⌁', url: '#calculators' },
-    { title: '실거래 조회', detail: '최근 거래 흐름', icon: '⌂', toolId: 'apt-widget' },
-    { title: '청년 지원 도구', detail: '청년주택 점수 확인', icon: '✓', toolId: 'youth-score' },
-    { title: '재개발 분석', detail: '분담금과 사업성', icon: '▥', toolId: 'redevelopment' }
+function svg(name){ return `<svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">${iconPaths[name] || iconPaths.tool}</svg>`; }
+function hydrateIcons(root=document){ $$('[data-icon]',root).forEach(node => { node.innerHTML = svg(node.dataset.icon); }); }
+function el(tag,className,text){ const node=document.createElement(tag); if(className)node.className=className;if(text!==undefined)node.textContent=text;return node; }
+function available(tool){ return tool?.status==='available' && typeof tool.url==='string' && tool.url.trim().length>0; }
+function status(tool){ if(tool?.status==='in-development')return '개발 중';if(tool?.status==='preparing')return '준비 중';return available(tool)?'이용 가능':'이용 불가'; }
+function toolIcon(tool){ const map={redevelopment:'redev','youth-score':'youth',auction:'auction','rent-check':'money','apt-widget':'building','jeonse-ratio':'percent','acquisition-tax':'receipt','brokerage-fee':'calculator'};return map[tool.id]||'tool'; }
+function setResolvedLinks(){ $$('[data-tool-link]').forEach(link=>{const tool=state.tools.find(t=>t.id===link.dataset.toolLink);if(available(tool)){link.href=tool.url;link.removeAttribute('aria-disabled');}else{link.removeAttribute('href');link.setAttribute('aria-disabled','true');}}); }
+function renderServices(){
+  const services=[
+    {title:'계산기 모음',detail:'부동산 계산 도구',icon:'calculator',url:'#calculators',tone:'#3157d5',soft:'#edf1ff'},
+    {title:'실거래 조회',detail:'강서구 실제 거래 확인',icon:'pin',tool:'apt-widget',tone:'#167d73',soft:'#e8f6f3'},
+    {title:'청년 지원',detail:'청년주택 점수 확인',icon:'youth',tool:'youth-score',tone:'#8a5bba',soft:'#f3edfb'},
+    {title:'재개발',detail:'분담금과 사업성 확인',icon:'redev',tool:'redevelopment',tone:'#b26632',soft:'#fff1e7'},
+    {title:'맞춤 가이드',detail:'실전 부동산 판단 글',icon:'guide',url:'#insights',tone:'#b04465',soft:'#fff0f4'}
   ];
-  strip.replaceChildren(...services.map(service => {
-    const tool = service.toolId && state.tools.find(item => item.id === service.toolId);
-    const url = service.url || (isAvailable(tool) ? tool.url : '');
-    const item = element(url ? 'a' : 'div', 'service-item');
-    if (url) item.href = url;
-    else item.setAttribute('aria-disabled', 'true');
-    item.append(element('span', 'service-icon', service.icon));
-    const copy = element('span');
-    copy.append(element('strong', '', service.title), element('small', '', url ? service.detail : '현재 이용할 수 없음'));
-    item.append(copy);
-    return item;
-  }));
+  $('#services').replaceChildren(...services.map(s=>{const tool=s.tool&&state.tools.find(t=>t.id===s.tool);const url=s.url||(available(tool)?tool.url:null);const item=el(url?'a':'div','service-item');if(url)item.href=url;else item.setAttribute('aria-disabled','true');item.style.setProperty('--tone',s.tone);item.style.setProperty('--tone-bg',s.soft);const icon=el('span','service-icon');icon.innerHTML=svg(s.icon);const copy=el('span','service-copy');copy.append(el('strong','',s.title),el('small','',s.detail));item.append(icon,copy,el('span','service-arrow','→'));return item;}));
 }
-
-function renderInsights() {
-  const track = $('#insightTrack');
-  const featured = state.posts
-    .filter(post => [1, 2, 3].includes(post?.featured_rank))
-    .sort((a, b) => a.featured_rank - b.featured_rank);
-  track.replaceChildren();
-  if (!featured.length) {
-    track.append(element('p', 'data-unavailable', '분석 글을 불러올 수 없습니다.'));
-    return;
-  }
-  featured.forEach((post, index) => {
-    const article = element('article', 'insight');
-    const art = element('div', `insight-art art-${['one', 'two', 'three'][index]}`);
-    art.append(element('span', '', post.category || '분석 글'));
-    const body = element('div', 'insight-body');
-    body.append(element('span', '', post.category || '분석 글'));
-    body.append(element('h3', '', post.title || '제목 없는 글'));
-    body.append(element('p', '', post.published_at || ''));
-    if (typeof post.url === 'string' && post.url.trim()) {
-      const link = element('a', 'insight-link', '분석 글 보기');
-      link.href = post.url;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      body.append(link);
-    }
-    article.append(art, body);
-    track.append(article);
-  });
-}
-
-function normalized(value) { return String(value || '').trim().toLocaleLowerCase('ko-KR'); }
-
-function searchData(query) {
-  const needle = normalized(query);
-  if (!needle) return [];
-  const tools = state.tools.filter(tool => [tool.title, tool.description, tool.category].some(value => normalized(value).includes(needle)))
-    .map(tool => ({ type: 'tool', title: tool.title, meta: tool.description, icon: tool.icon, valid: Boolean(isAvailable(tool)), url: tool.url, status: statusLabel(tool) }));
-  const posts = state.posts.filter(post => [post.title, post.category].some(value => normalized(value).includes(needle)))
-    .map(post => ({ type: 'post', title: post.title, meta: [post.category, post.published_at].filter(Boolean).join(' · '), valid: post.status === 'published' && Boolean(post.url), url: post.url }));
-  return [...tools, ...posts].slice(0, 6);
-}
-
-function closeSearch() {
-  $('#searchResults').hidden = true;
-  $('#searchInput').setAttribute('aria-expanded', 'false');
-  $('#searchInput').removeAttribute('aria-activedescendant');
-  state.selectedIndex = -1;
-}
-
-function renderSearch() {
-  const dropdown = $('#searchResults');
-  const query = $('#searchInput').value.trim();
-  if (!query) {
-    state.results = [];
-    dropdown.replaceChildren();
-    closeSearch();
-    return;
-  }
-  state.results = searchData(query);
-  state.selectedIndex = -1;
-  dropdown.replaceChildren();
-  if (!state.results.length) dropdown.append(element('p', 'search-empty', '검색 결과가 없습니다.'));
-  state.results.forEach((result, index) => {
-    const item = element(result.valid ? 'a' : 'div', `search-result${result.valid ? '' : ' unavailable'}`);
-    item.id = `search-result-${index}`;
-    item.setAttribute('role', 'option');
-    item.setAttribute('aria-selected', 'false');
-    item.dataset.index = String(index);
-    if (result.valid) {
-      item.href = result.url;
-      if (result.type === 'post') { item.target = '_blank'; item.rel = 'noopener noreferrer'; }
-    } else item.setAttribute('aria-disabled', 'true');
-    item.append(element('span', 'search-result-icon', result.type === 'tool' ? (result.icon || '·') : '▤'));
-    const copy = element('span', 'search-result-copy');
-    copy.append(element('strong', '', result.title || '제목 없음'), element('small', '', result.meta || ''));
-    item.append(copy, element('span', 'search-result-type', result.type === 'tool' ? (result.valid ? '도구' : result.status) : '분석 글'));
-    dropdown.append(item);
-  });
-  const all = element('a', 'search-all', '계산기 모음 보기');
-  all.href = '#calculators';
-  all.addEventListener('click', closeSearch);
-  dropdown.append(all);
-  dropdown.hidden = false;
-  $('#searchInput').setAttribute('aria-expanded', 'true');
-}
-
-function moveSelection(direction) {
-  if (!state.results.length) return;
-  state.selectedIndex = (state.selectedIndex + direction + state.results.length) % state.results.length;
-  $$('.search-result').forEach((item, index) => {
-    const selected = index === state.selectedIndex;
-    item.classList.toggle('selected', selected);
-    item.setAttribute('aria-selected', String(selected));
-    if (selected) item.scrollIntoView({ block: 'nearest' });
-  });
-  $('#searchInput').setAttribute('aria-activedescendant', `search-result-${state.selectedIndex}`);
-}
-
-async function loadData() {
-  const load = async path => {
-    const response = await fetch(path);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
-    if (!Array.isArray(data)) throw new Error('Expected an array');
-    return data;
-  };
-  const [toolsResult, postsResult] = await Promise.allSettled([load('./data/tools.json'), load('./data/posts.json')]);
-  if (toolsResult.status === 'fulfilled') state.tools = toolsResult.value;
-  if (postsResult.status === 'fulfilled') state.posts = postsResult.value;
-  renderCalculators();
-  renderServices();
-  renderInsights();
-  resolveToolLinks();
-  $('#availableToolCount').textContent = String(state.tools.filter(isAvailable).length);
-  $('#publishedCount').textContent = String(state.posts.filter(post => post?.status === 'published').length);
-}
-
-const menuToggle = $('#menuToggle');
-const mobileNav = $('#mobileNav');
-menuToggle.addEventListener('click', () => {
-  const open = mobileNav.classList.toggle('open');
-  menuToggle.setAttribute('aria-expanded', String(open));
-});
-$$('#mobileNav a').forEach(link => link.addEventListener('click', () => { mobileNav.classList.remove('open'); menuToggle.setAttribute('aria-expanded', 'false'); }));
-$$('[data-to-top]').forEach(link => link.addEventListener('click', event => { event.preventDefault(); history.replaceState(null, '', '#top'); window.scrollTo({ top: 0, behavior: 'smooth' }); }));
-
-const searchInput = $('#searchInput');
-searchInput.addEventListener('input', renderSearch);
-searchInput.addEventListener('focus', () => { if (searchInput.value.trim()) renderSearch(); });
-searchInput.addEventListener('keydown', event => {
-  if (event.key === 'Escape') { closeSearch(); return; }
-  if (event.key === 'ArrowDown' || event.key === 'ArrowUp') { event.preventDefault(); moveSelection(event.key === 'ArrowDown' ? 1 : -1); }
-  if (event.key === 'Enter' && state.selectedIndex >= 0) {
-    event.preventDefault();
-    const selected = state.results[state.selectedIndex];
-    if (selected?.valid) selected.type === 'post' ? window.open(selected.url, '_blank', 'noopener,noreferrer') : location.assign(selected.url);
-  }
-});
-$('#searchForm').addEventListener('submit', event => {
-  event.preventDefault();
-  if (!searchInput.value.trim()) {
-    closeSearch();
-    return;
-  }
-  renderSearch();
-});
-document.addEventListener('click', event => { if (!event.target.closest('.search-wrap')) closeSearch(); });
-
-$$('.tabs button').forEach(button => button.addEventListener('click', () => {
-  $$('.tabs button').forEach(item => item.classList.remove('active'));
-  button.classList.add('active');
-  const label = button.textContent.trim();
-  renderCalculators(label === '전체' ? state.tools : state.tools.filter(tool => categoryLabels[tool.category] === label));
-}));
-$$('[data-auction-link]').forEach(link => link.addEventListener('click', () => {
-  const investmentTab = $$('.tabs button').find(button => button.textContent.trim() === '투자 분석');
-  investmentTab?.click();
-}));
-$$('.footer-group > button').forEach(button => button.addEventListener('click', () => { const open = button.getAttribute('aria-expanded') === 'true'; button.setAttribute('aria-expanded', String(!open)); button.parentElement.classList.toggle('open', !open); }));
-
-if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-window.addEventListener('load', () => { if (!location.hash || location.hash === '#top') window.scrollTo(0, 0); });
-loadData();
+function renderCalculators(list=state.tools){ const grid=$('#calculatorGrid');grid.replaceChildren();if(!list.length){grid.append(el('p','data-unavailable','해당 카테고리의 도구가 없습니다.'));return;}list.forEach(tool=>{const ok=available(tool);const card=el(ok?'a':'article',`calculator-card${ok?' available':''}`);if(ok)card.href=tool.url;else card.setAttribute('aria-disabled','true');const [tone,soft]=tones[tool.category]||tones.invest;card.style.setProperty('--tool',tone);card.style.setProperty('--tool-soft',soft);const top=el('div','card-top');const icon=el('span','calculator-icon');icon.innerHTML=svg(toolIcon(tool));const badge=el('span',`status${ok?' available':tool.status==='in-development'?' development':''}`,status(tool));top.append(icon,badge);card.append(top,el('span','category-hint',categories[tool.category]||'부동산 도구'),el('h3','',tool.title||'이름 없는 도구'),el('p','',tool.description||'설명이 없습니다.'));const affordance=el('div','card-affordance');affordance.append(el('b','',ok?'도구 열기':status(tool)),el('span','',ok?'→':'—'));card.append(affordance);grid.append(card);}); }
+function renderInsights(){const posts=state.posts.filter(p=>[1,2,3].includes(p.featured_rank)&&p.status==='published').sort((a,b)=>a.featured_rank-b.featured_rank);const track=$('#insightTrack');track.replaceChildren();posts.forEach((post,index)=>{const article=el('article','insight');const art=el('div',`insight-art art-${index+1}`);art.innerHTML='<i class="art-grid"></i><i class="art-route"></i><span></span><small>RENT CHECK · INSIGHT</small><div class="art-buildings"><i></i><i></i><i></i><i></i></div>';art.querySelector('span').textContent=post.category;const body=el('div','insight-body');body.append(el('span','',post.category),el('h3','',post.title));const meta=el('p','insight-meta');meta.append(el('time','',post.published_at));const link=el('a','insight-link','분석 글 보기 →');link.href=post.url;link.target='_blank';link.rel='noopener noreferrer';meta.append(link);body.append(meta);article.append(art,body);track.append(article);});}
+function normalized(value){return String(value||'').trim().toLocaleLowerCase('ko-KR');}
+function search(query){const needle=normalized(query);if(!needle)return[];const tools=state.tools.filter(t=>[t.title,t.description,t.category,categories[t.category]].some(v=>normalized(v).includes(needle))).map(t=>({type:'tool',title:t.title,meta:t.description,valid:available(t),url:t.url,label:status(t),icon:toolIcon(t)}));const posts=state.posts.filter(p=>[p.title,p.category].some(v=>normalized(v).includes(needle))).map(p=>({type:'post',title:p.title,meta:[p.category,p.published_at].filter(Boolean).join(' · '),valid:p.status==='published'&&Boolean(p.url),url:p.url,label:'분석 글',icon:'document'}));return [...tools,...posts].slice(0,6);}
+function closeSearch(){const box=$('#searchResults');box.hidden=true;$('#searchInput').setAttribute('aria-expanded','false');$('#searchInput').removeAttribute('aria-activedescendant');state.selectedIndex=-1;}
+function renderSearch(){const input=$('#searchInput'),box=$('#searchResults'),query=input.value.trim();if(!query){state.results=[];box.replaceChildren();closeSearch();return;}state.results=search(query);state.selectedIndex=-1;box.replaceChildren();if(!state.results.length)box.append(el('p','search-empty','검색 결과가 없습니다.'));state.results.forEach((result,index)=>{const item=el(result.valid?'a':'div',`search-result${result.valid?'':' unavailable'}`);item.id=`search-result-${index}`;item.setAttribute('role','option');item.setAttribute('aria-selected','false');if(result.valid){item.href=result.url;if(result.type==='post'){item.target='_blank';item.rel='noopener noreferrer';}}else item.setAttribute('aria-disabled','true');const icon=el('span','search-result-icon');icon.innerHTML=svg(result.icon);const copy=el('span','search-result-copy');copy.append(el('strong','',result.title),el('small','',result.meta));item.append(icon,copy,el('span','search-result-type',result.label));box.append(item);});const all=el('a','search-all','계산기 모음 보기 →');all.href='#calculators';all.addEventListener('click',closeSearch);box.append(all);box.hidden=false;input.setAttribute('aria-expanded','true');}
+function moveSelection(direction){if(!state.results.length)return;state.selectedIndex=(state.selectedIndex+direction+state.results.length)%state.results.length;$$('.search-result').forEach((item,index)=>{const selected=index===state.selectedIndex;item.classList.toggle('selected',selected);item.setAttribute('aria-selected',String(selected));if(selected)item.scrollIntoView({block:'nearest'});});$('#searchInput').setAttribute('aria-activedescendant',`search-result-${state.selectedIndex}`);}
+async function loadData(){const load=async path=>{const response=await fetch(path);if(!response.ok)throw new Error(`${path}: HTTP ${response.status}`);const data=await response.json();if(!Array.isArray(data))throw new Error(`${path}: 배열 형식이 아닙니다.`);return data;};const [tools,posts]=await Promise.all([load('./data/tools.json'),load('./data/posts.json')]);state.tools=tools;state.posts=posts;renderServices();renderCalculators();renderInsights();setResolvedLinks();$('#availableToolCount').textContent=String(tools.filter(available).length);$('#publishedCount').textContent=String(posts.filter(p=>p.status==='published').length);}
+hydrateIcons();
+const menu=$('#menuToggle'),mobile=$('#mobileNav');menu.addEventListener('click',()=>{const open=mobile.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});$$('#mobileNav a').forEach(a=>a.addEventListener('click',()=>{mobile.classList.remove('open');menu.setAttribute('aria-expanded','false');}));
+const input=$('#searchInput');input.addEventListener('input',renderSearch);input.addEventListener('focus',()=>{if(input.value.trim())renderSearch();});input.addEventListener('keydown',event=>{if(event.key==='Escape'){closeSearch();return;}if(event.key==='ArrowDown'||event.key==='ArrowUp'){event.preventDefault();moveSelection(event.key==='ArrowDown'?1:-1);}if(event.key==='Enter'&&state.selectedIndex>=0){event.preventDefault();const result=state.results[state.selectedIndex];if(result?.valid){if(result.type==='post')window.open(result.url,'_blank','noopener,noreferrer');else location.assign(result.url);}}});$('#searchForm').addEventListener('submit',event=>{event.preventDefault();renderSearch();});document.addEventListener('click',event=>{if(!event.target.closest('.search-wrap'))closeSearch();});
+$$('.tabs button').forEach(button=>button.addEventListener('click',()=>{$$('.tabs button').forEach(b=>b.classList.remove('active'));button.classList.add('active');const label=button.textContent.trim();renderCalculators(label==='전체'?state.tools:state.tools.filter(t=>categories[t.category]===label));}));
+$$('.footer-group>button').forEach(button=>button.addEventListener('click',()=>{const open=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',String(!open));button.parentElement.classList.toggle('open',!open);}));
+loadData().catch(error=>{console.error('홈페이지 데이터를 불러오지 못했습니다.',error);renderCalculators([]);});
