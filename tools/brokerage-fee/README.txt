@@ -1,0 +1,1 @@
+This calculator follows the Seoul brokerage commission schedule and the Public Licensed Real Estate Agents Act Enforcement Rule. The file exists only to record the legal basis used during implementation.
