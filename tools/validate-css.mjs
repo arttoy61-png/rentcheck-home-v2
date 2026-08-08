@@ -1,7 +1,10 @@
 import fs from "node:fs";
 
-const file = new URL("../styles.css", import.meta.url);
-const css = fs.readFileSync(file, "utf8");
+const files = [
+  new URL("../styles.css", import.meta.url),
+  new URL("./tool-design.css", import.meta.url)
+];
+const css = files.map((file) => fs.readFileSync(file, "utf8")).join("\n");
 const failures = [];
 
 const unit = String.raw`(?:px|r?em|%|vh|vw|vmin|vmax|svh|svw|lvh|lvw|dvh|dvw|fr|deg|rad|turn|s|ms|dpi|dpcm|ch|ex|cm|mm|in|pt|pc)`;
@@ -84,6 +87,6 @@ if (failures.length) {
   console.error(failures.join("\n"));
   process.exitCode = 1;
 } else {
-  console.log("styles.css: units, functions, grid columns, and media queries are valid");
+  console.log("styles.css and tool-design.css: units, functions, grid columns, and media queries are valid");
   console.log("Responsive hero, calculator, and insight rules verified from 1440px through 360px");
 }

@@ -30,6 +30,7 @@ for (const [sourcePath, destinationPath, toolId, root] of copies) {
   const destination = read(projectDirectory, destinationPath);
   assert.match(destination, new RegExp(`class="v2-tool-page"[^>]*data-v2-root="${root.replaceAll('.', '\\.')}"[^>]*data-tool-id="${toolId}"`, 'u'));
   assert.match(destination, /tool-shell\.css/u);
+  assert.match(destination, /tool-design\.css/u);
   assert.match(destination, /tool-common\.js/u);
 
   if (fs.existsSync(referenceDirectory)) {
@@ -80,7 +81,7 @@ if (fs.existsSync(referenceDirectory)) {
 }
 
 console.log('Four V2 tools are local and registered.');
-console.log('Shared header/font assets are attached to every tool page.');
+console.log('Shared header, font, and V2 design assets are attached to every tool page.');
 console.log(fs.existsSync(referenceDirectory)
   ? 'Inline tool logic and copied data match the read-only source.'
   : 'Reference checkout not present; local structure and data JSON were validated.');
