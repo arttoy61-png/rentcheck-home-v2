@@ -73,44 +73,37 @@ body.v2-tool-page :where(h1, h2, h3, h4) {
   text-decoration: none;
 }
 
-.v2-toolbar__brand {
+.v2-toolbar__home {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 8px;
   flex: none;
-  font-size: 18px;
+  font-size: 15px;
   white-space: nowrap;
 }
 
-.v2-toolbar__mark {
-  width: 31px;
-  height: 31px;
-  display: grid;
-  place-items: center;
-  border-radius: 9px;
-  color: #fff;
-  background: var(--v2-blue);
-  box-shadow: 0 6px 16px rgba(63, 95, 232, .22);
+.v2-toolbar__back {
+  color: var(--v2-blue);
+  font-size: 18px;
 }
 
-.v2-toolbar__mark svg {
-  width: 21px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.1;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.v2-toolbar__home-label {
+  padding-left: 8px;
+  border-left: 1px solid var(--v2-line);
+  color: var(--v2-muted);
+  font-size: 12px;
 }
 
 .v2-toolbar__nav {
-  margin: auto;
+  margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 29px;
+  gap: 7px;
 }
 
 .v2-toolbar__nav a {
-  position: relative;
+  padding: 8px 11px;
+  border-radius: 8px;
   color: #526078;
   font-size: 13px;
 }
@@ -118,30 +111,7 @@ body.v2-tool-page :where(h1, h2, h3, h4) {
 .v2-toolbar__nav a:hover,
 .v2-toolbar__nav a[aria-current="page"] {
   color: var(--v2-blue);
-}
-
-.v2-toolbar__nav a[aria-current="page"]::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -24px;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--v2-blue);
-}
-
-.v2-toolbar__cta {
-  height: 38px;
-  padding: 0 15px;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  flex: none;
-  border-radius: 9px;
-  color: #fff !important;
-  background: var(--v2-navy);
-  font-size: 12px;
+  background: #edf1ff;
 }
 
 .v2-toolbar__menu {
@@ -208,34 +178,32 @@ body[data-tool-id="apartment"] .crumbbar {
     justify-content: space-between;
   }
 
-  .v2-toolbar__brand {
-    font-size: 16px;
+  .v2-toolbar__home {
+    font-size: 14px;
   }
 
-  .v2-toolbar__nav,
-  .v2-toolbar__cta {
+  .v2-toolbar__nav {
     display: none;
   }
 
   .v2-toolbar__menu {
-    width: 40px;
+    width: auto;
     height: 40px;
-    padding: 0;
+    padding: 0 12px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: 6px;
     border: 1px solid var(--v2-line);
     border-radius: 9px;
     background: #fff;
+    color: #526078;
+    font-size: 12px;
   }
 
-  .v2-toolbar__menu i {
-    width: 17px;
-    height: 1.5px;
-    display: block;
-    background: var(--v2-ink);
+  .v2-toolbar__menu b {
+    color: var(--v2-blue);
+    font-size: 14px;
   }
 
   .v2-toolbar__mobile {
@@ -272,9 +240,8 @@ body[data-tool-id="apartment"] .crumbbar {
 }
 
 @media (max-width: 390px) {
-  .v2-toolbar__mark {
-    width: 29px;
-    height: 29px;
+  .v2-toolbar__home-label {
+    display: none;
   }
 
   .v2-toolbar__mobile {
