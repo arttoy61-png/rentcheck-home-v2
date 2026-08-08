@@ -1,0 +1,719 @@
+/*
+ * Rent Check V2 tool design layer
+ *
+ * This file loads after each migrated tool's legacy styles. It changes only
+ * presentation; the original markup hooks, element ids and calculation code
+ * remain untouched.
+ */
+
+body.v2-tool-page {
+  --navy: #101a33;
+  --navy2: #17254a;
+  --blue: #3f5fe8;
+  --blue-light: #edf1ff;
+  --blue-50: #f5f7ff;
+  --gold: #aebcff;
+  --gold-bright: #c8d1ff;
+  --gold-deep: #536bd8;
+  --ink: #17213a;
+  --muted: #68738a;
+  --sub: #68738a;
+  --line: #dfe5ef;
+  --border: #dfe5ef;
+  --bg: #f6f8fc;
+  --card: #fff;
+  --paper: #fff;
+  --soft: #edf1ff;
+  --gray: #526078;
+  --gray-lite: #7b879b;
+  --gray-bg: #f3f5f9;
+  --shadow: 0 10px 30px rgba(27, 40, 78, .07);
+  --shadow-lg: 0 22px 55px rgba(27, 40, 78, .13);
+  --v2-card-radius: 18px;
+  background: var(--bg) !important;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+body.v2-tool-page > :is(.wrap, .container),
+.v2-tool-main {
+  width: min(calc(100% - 32px), 760px);
+  max-width: 760px;
+  min-height: 0;
+  margin: 0 auto;
+  padding: 28px 0 64px;
+  background: transparent;
+}
+
+/* Shared tool introduction */
+body[data-tool-id="redevelopment"] .hero,
+body[data-tool-id="youth-score"] > .wrap > header,
+body[data-tool-id="rent-check"] > .container > header,
+body[data-tool-id="apartment"] .hd,
+.v2-tool-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin: 0 0 18px;
+  padding: 30px;
+  border: 0;
+  border-radius: var(--v2-card-radius);
+  background: linear-gradient(135deg, #172345 0%, #29449a 100%);
+  box-shadow: 0 18px 45px rgba(23, 35, 69, .18);
+  color: #fff;
+  text-align: left;
+}
+
+body[data-tool-id="redevelopment"] .hero::after,
+body[data-tool-id="youth-score"] > .wrap > header::after,
+body[data-tool-id="rent-check"] > .container > header::after,
+body[data-tool-id="apartment"] .hd::after,
+.v2-tool-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -115px;
+  right: -80px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(151, 171, 255, .34), transparent 67%);
+}
+
+body.v2-tool-page :is(.hero, .wrap > header, .container > header, .hd) h1,
+.v2-tool-hero h1 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(24px, 4vw, 30px) !important;
+  line-height: 1.35 !important;
+}
+
+body.v2-tool-page :is(.hero, .wrap > header, .container > header, .hd) :is(p, .sub, .subtitle),
+.v2-tool-hero p {
+  max-width: 620px;
+  margin: 8px 0 0;
+  color: #cbd4ec;
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+}
+
+body.v2-tool-page :is(.hero, .wrap > header, .container > header, .hd) :is(.g, b, strong),
+.v2-tool-hero :is(b, strong) {
+  color: #b8c5ff;
+}
+
+body[data-tool-id="redevelopment"] .hero .badge,
+body[data-tool-id="youth-score"] > .wrap > header .badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0 0 14px;
+  padding: 5px 10px;
+  border: 1px solid rgba(194, 207, 255, .45);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, .08);
+  color: #cbd5ff;
+  font-size: 11px;
+  letter-spacing: .04em;
+}
+
+body[data-tool-id="youth-score"] > .wrap > header .badge {
+  margin: 14px 0 0;
+}
+
+body[data-tool-id="youth-score"] > .wrap > header .trust,
+body[data-tool-id="rent-check"] > .container > header .owner-info {
+  margin-top: 10px;
+  color: #aebbd8;
+  font-size: 11px;
+}
+
+body[data-tool-id="rent-check"] > .container > header .brand {
+  margin-bottom: 8px;
+  color: #aebcff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+/* Shared surfaces and controls */
+.v2-tool-card,
+body[data-tool-id="rent-check"] .card,
+body[data-tool-id="apartment"] :is(.card, .det) {
+  border: 1px solid var(--line);
+  border-radius: var(--v2-card-radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+body.v2-tool-page :is(input:not([type="radio"]):not([type="checkbox"]):not([type="range"]), select, textarea) {
+  min-height: 50px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  outline: none;
+  background: #fff;
+  color: var(--ink);
+  font-size: 16px;
+  transition: border-color .15s, box-shadow .15s, background .15s;
+}
+
+body.v2-tool-page :is(input:not([type="radio"]):not([type="checkbox"]):not([type="range"]), select, textarea):focus {
+  border-color: var(--blue);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(63, 95, 232, .12);
+}
+
+body.v2-tool-page :is(.field label, .step-t, .step-label, .sub-label) {
+  color: var(--navy);
+}
+
+body.v2-tool-page :is(.field label .hint, .field .unit, .eok, .cd, .rd, .meta, .mi) {
+  color: var(--muted);
+}
+
+body.v2-tool-page :is(.calc-btn, .btn-primary, .m-cta) {
+  border: 0;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #304fc9, var(--blue));
+  box-shadow: 0 10px 24px rgba(63, 95, 232, .2);
+  color: #fff;
+  transition: transform .15s, box-shadow .15s;
+}
+
+body.v2-tool-page :is(.calc-btn, .btn-primary, .m-cta):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(63, 95, 232, .27);
+}
+
+/* Redevelopment calculator */
+body[data-tool-id="redevelopment"] > .wrap {
+  width: min(calc(100% - 32px), 760px);
+}
+
+body[data-tool-id="redevelopment"] .tabs {
+  gap: 10px;
+  margin: 0;
+  padding: 22px 24px 0;
+  border: 1px solid var(--line);
+  border-bottom: 0;
+  border-radius: var(--v2-card-radius) var(--v2-card-radius) 0 0;
+  background: #fff;
+}
+
+body[data-tool-id="redevelopment"] .tabs button {
+  padding: 12px 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #f8f9fc;
+  color: #5f6c84;
+  font-size: 14px;
+}
+
+body[data-tool-id="redevelopment"] .tabs button.on {
+  border-color: var(--blue);
+  background: var(--blue-light);
+  color: var(--blue);
+  box-shadow: 0 0 0 2px rgba(63, 95, 232, .08);
+}
+
+body[data-tool-id="redevelopment"] .tabs button :is(.sub),
+body[data-tool-id="redevelopment"] .tabs button.on .sub {
+  color: #7b879b;
+}
+
+body[data-tool-id="redevelopment"] .body {
+  padding: 22px 24px 28px;
+  border: 1px solid var(--line);
+  border-top: 0;
+  border-radius: 0 0 var(--v2-card-radius) var(--v2-card-radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+body[data-tool-id="redevelopment"] .step-label {
+  margin: 3px 0 13px;
+  color: var(--blue);
+  font-size: 12px;
+  letter-spacing: .05em;
+}
+
+body[data-tool-id="redevelopment"] .field {
+  margin-bottom: 17px;
+}
+
+body[data-tool-id="redevelopment"] .field label {
+  margin-bottom: 7px;
+  font-size: 14px;
+}
+
+body[data-tool-id="redevelopment"] .inwrap input {
+  padding: 13px 64px 13px 14px;
+  color: var(--navy);
+  font-size: 18px;
+}
+
+body[data-tool-id="redevelopment"] .calc-btn {
+  margin-top: 6px;
+  padding: 15px;
+  font-size: 16px;
+}
+
+body[data-tool-id="redevelopment"] :is(.rcard, .slider-box) {
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: #fff;
+}
+
+body[data-tool-id="redevelopment"] .rcard.main {
+  border-color: #bcc8f4;
+  background: var(--blue-50);
+}
+
+body[data-tool-id="redevelopment"] .rcard.main :is(.cap, .val .g),
+body[data-tool-id="redevelopment"] .sens {
+  color: #3754c4;
+}
+
+body[data-tool-id="redevelopment"] .sens {
+  border-color: #cdd6f7;
+  background: #f6f8ff;
+}
+
+body[data-tool-id="redevelopment"] .notice,
+body[data-tool-id="youth-score"] .rank-warn,
+body[data-tool-id="rent-check"] :is(.notice, .basis-box) {
+  border: 1px solid #e6ddc4;
+  border-left: 3px solid #c9a449;
+  border-radius: 10px;
+  background: #fffaf0;
+  color: #6d5c34;
+}
+
+body[data-tool-id="redevelopment"] .cta-area {
+  padding: 10px 0 0;
+}
+
+body[data-tool-id="redevelopment"] .cta {
+  border-radius: 11px;
+}
+
+body[data-tool-id="redevelopment"] .cta.primary {
+  background: var(--navy);
+}
+
+body[data-tool-id="redevelopment"] .cta.sub {
+  border-color: var(--line);
+  color: var(--blue);
+}
+
+/* Youth housing score */
+body[data-tool-id="youth-score"] {
+  padding: 0 0 90px;
+}
+
+body[data-tool-id="youth-score"] > .wrap {
+  width: min(calc(100% - 32px), 760px);
+  padding-top: 28px;
+}
+
+body[data-tool-id="youth-score"] > .wrap > header {
+  border-radius: var(--v2-card-radius);
+}
+
+body[data-tool-id="youth-score"] .body {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--v2-card-radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+body[data-tool-id="youth-score"] .rank-warn {
+  margin-bottom: 12px;
+  padding: 13px 14px;
+}
+
+body[data-tool-id="youth-score"] .rank-warn[style] {
+  border-color: #cfd8f7 !important;
+  border-left-color: var(--blue) !important;
+  background: #f5f7ff;
+  color: #445274;
+}
+
+body[data-tool-id="youth-score"] .step {
+  margin-top: 28px;
+}
+
+body[data-tool-id="youth-score"] .step-t {
+  margin-bottom: 14px;
+  font-size: 15px;
+}
+
+body[data-tool-id="youth-score"] .step-t .n {
+  width: 24px;
+  height: 24px;
+  background: var(--blue);
+}
+
+body[data-tool-id="youth-score"] :is(.rank label, .chk, .payq label) {
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #fff;
+}
+
+body[data-tool-id="youth-score"] :is(.rank label.sel, .chk.picked, .payq label.sel) {
+  border-color: #aebcf0;
+  background: var(--blue-light);
+  color: var(--blue);
+  box-shadow: 0 0 0 2px rgba(63, 95, 232, .08);
+}
+
+body[data-tool-id="youth-score"] .rtag {
+  background: var(--blue-light);
+  color: var(--blue);
+}
+
+body[data-tool-id="youth-score"] .help-btn {
+  border: 1px dashed #bac5d8;
+  border-radius: 10px;
+  color: var(--blue);
+}
+
+body[data-tool-id="youth-score"] :is(.help-box, .info3, .m-break, .rescred) {
+  background: #f6f8fc;
+}
+
+body[data-tool-id="youth-score"] .sticky {
+  max-width: 560px;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 14px 14px 0 0;
+  background: rgba(16, 26, 51, .97);
+  backdrop-filter: blur(12px);
+}
+
+body[data-tool-id="youth-score"] .sticky .sc b {
+  color: #b8c5ff;
+}
+
+body[data-tool-id="youth-score"] .sticky button {
+  border-radius: 9px;
+  background: var(--blue);
+  color: #fff;
+}
+
+body[data-tool-id="youth-score"] .modal {
+  border: 1px solid var(--line);
+  border-radius: var(--v2-card-radius);
+  box-shadow: var(--shadow-lg);
+}
+
+body[data-tool-id="youth-score"] .m-top {
+  border-radius: var(--v2-card-radius) var(--v2-card-radius) 0 0;
+  background: linear-gradient(135deg, #172345, #29449a) !important;
+}
+
+body[data-tool-id="youth-score"] .m-reset {
+  border-color: var(--line);
+}
+
+/* Rent / jeonse check */
+body[data-tool-id="rent-check"] > .container {
+  width: min(calc(100% - 32px), 760px);
+}
+
+body[data-tool-id="rent-check"] .card {
+  margin-bottom: 14px;
+  padding: 24px;
+}
+
+body[data-tool-id="rent-check"] .card h2 {
+  margin-bottom: 18px;
+  padding-left: 11px;
+  border-left: 3px solid var(--blue);
+  color: var(--navy);
+  font-size: 16px;
+}
+
+body[data-tool-id="rent-check"] .form-grid {
+  gap: 16px;
+}
+
+body[data-tool-id="rent-check"] .field {
+  gap: 7px;
+}
+
+body[data-tool-id="rent-check"] .field :is(select, input) {
+  padding: 12px 14px;
+  background: #fff;
+}
+
+body[data-tool-id="rent-check"] .seg {
+  gap: 7px;
+}
+
+body[data-tool-id="rent-check"] .seg button {
+  min-height: 43px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #f8f9fc;
+  color: #5f6c84;
+}
+
+body[data-tool-id="rent-check"] .seg button.active {
+  border-color: var(--blue);
+  background: var(--blue-light);
+  color: var(--blue);
+}
+
+body[data-tool-id="rent-check"] .btn-primary {
+  padding: 15px;
+}
+
+body[data-tool-id="rent-check"] .stat {
+  border: 1px solid #e2e7f5;
+  border-radius: 11px;
+  background: #f6f8ff;
+}
+
+body[data-tool-id="rent-check"] .deals-table {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+body[data-tool-id="rent-check"] .deals-table th {
+  background: var(--navy);
+}
+
+body[data-tool-id="rent-check"] .card.apt-shortcut-card,
+body[data-tool-id="rent-check"] .card.blog-recommend {
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+body[data-tool-id="rent-check"] .apt-card,
+body[data-tool-id="rent-check"] .blog-link-btn {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #f8f9fc;
+}
+
+body[data-tool-id="rent-check"] :is(.apt-card, .blog-link-btn):hover {
+  border-color: #aebcf0;
+  background: var(--blue-light);
+  color: var(--navy);
+}
+
+body[data-tool-id="rent-check"] .next-step-banner {
+  border-radius: var(--v2-card-radius);
+  background: linear-gradient(135deg, #172345, #29449a);
+}
+
+body[data-tool-id="rent-check"] footer {
+  margin-top: 6px;
+  padding: 24px 20px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+/* Apartment transaction map */
+body[data-tool-id="apartment"] > .wrap {
+  width: min(calc(100% - 32px), 760px);
+}
+
+body[data-tool-id="apartment"] .crumbbar {
+  top: 80px;
+  margin: 0 0 14px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, .95);
+  box-shadow: 0 8px 24px rgba(27, 40, 78, .07);
+  backdrop-filter: blur(12px);
+}
+
+body[data-tool-id="apartment"] .crumb {
+  gap: 7px;
+}
+
+body[data-tool-id="apartment"] .crumb a {
+  min-height: 34px;
+  padding: 6px 11px;
+  border: 1px solid #cfd8f7;
+  background: var(--blue-light);
+  color: var(--blue);
+}
+
+body[data-tool-id="apartment"] .crumb :is(.sep, .cur) {
+  color: var(--muted);
+}
+
+body[data-tool-id="apartment"] .search {
+  margin: 0 0 14px;
+}
+
+body[data-tool-id="apartment"] .search input {
+  min-height: 52px;
+  border-color: var(--line);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(27, 40, 78, .05);
+}
+
+body[data-tool-id="apartment"] .sres {
+  border-color: var(--line);
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+body[data-tool-id="apartment"] .sortbtn {
+  border-color: var(--line) !important;
+  background: #fff;
+  color: #5f6c84 !important;
+}
+
+body[data-tool-id="apartment"] .sortbtn.on {
+  border-color: var(--blue) !important;
+  background: var(--blue) !important;
+  color: #fff !important;
+}
+
+body[data-tool-id="apartment"] .card {
+  margin-bottom: 10px;
+  padding: 15px 16px;
+}
+
+body[data-tool-id="apartment"] .card:hover {
+  border-color: #aebcf0;
+  box-shadow: 0 12px 28px rgba(63, 95, 232, .1);
+}
+
+body[data-tool-id="apartment"] .sumline {
+  border: 1px solid #cfd8f7;
+  border-radius: 11px;
+  background: #f5f7ff;
+  color: #445274;
+}
+
+body[data-tool-id="apartment"] .rank,
+body[data-tool-id="apartment"] .rank.gold {
+  background: var(--navy);
+  color: #c8d1ff;
+}
+
+body[data-tool-id="apartment"] .more,
+body[data-tool-id="apartment"] .back,
+body[data-tool-id="apartment"] .bands button,
+body[data-tool-id="apartment"] .tabs button {
+  border-color: var(--line);
+  background: #fff;
+  color: #536078;
+}
+
+body[data-tool-id="apartment"] :is(.bands button.on, .tabs button.on) {
+  border-color: var(--blue);
+  background: var(--blue);
+  color: #fff;
+}
+
+body[data-tool-id="apartment"] .det {
+  padding: 20px;
+}
+
+body[data-tool-id="apartment"] .fixbar.on {
+  border-color: var(--line);
+  background: rgba(246, 248, 252, .96);
+  backdrop-filter: blur(12px);
+}
+
+body[data-tool-id="apartment"] .fixbar .db {
+  background: var(--navy);
+  color: #fff;
+}
+
+body[data-tool-id="apartment"] .foot,
+body[data-tool-id="redevelopment"] .foot,
+body[data-tool-id="youth-score"] .foot {
+  margin-top: 24px;
+  padding: 22px 12px 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+}
+
+body[data-tool-id="apartment"] .foot :is(.logo, b),
+body[data-tool-id="redevelopment"] .foot :is(.logo, b),
+body[data-tool-id="youth-score"] .foot :is(.logo, b) {
+  color: var(--navy);
+}
+
+@media (max-width: 768px) {
+  body.v2-tool-page > :is(.wrap, .container),
+  .v2-tool-main {
+    width: min(calc(100% - 24px), 760px) !important;
+    padding: 18px 0 48px;
+  }
+
+  body[data-tool-id="redevelopment"] .hero,
+  body[data-tool-id="youth-score"] > .wrap > header,
+  body[data-tool-id="rent-check"] > .container > header,
+  body[data-tool-id="apartment"] .hd,
+  .v2-tool-hero {
+    margin-bottom: 12px;
+    padding: 24px 20px;
+    border-radius: 15px;
+  }
+
+  body.v2-tool-page :is(.hero, .wrap > header, .container > header, .hd) h1,
+  .v2-tool-hero h1 {
+    font-size: 23px !important;
+  }
+
+  body[data-tool-id="redevelopment"] .tabs {
+    padding: 16px 16px 0;
+    border-radius: 15px 15px 0 0;
+  }
+
+  body[data-tool-id="redevelopment"] .body,
+  body[data-tool-id="youth-score"] .body,
+  body[data-tool-id="rent-check"] .card,
+  body[data-tool-id="apartment"] .det {
+    padding: 18px 16px;
+  }
+
+  body[data-tool-id="redevelopment"] .body {
+    border-radius: 0 0 15px 15px;
+  }
+
+  body[data-tool-id="youth-score"] .body,
+  body[data-tool-id="rent-check"] .card,
+  body[data-tool-id="apartment"] :is(.card, .det) {
+    border-radius: 15px;
+  }
+
+  body[data-tool-id="apartment"] .crumbbar {
+    top: 72px;
+  }
+}
+
+@media (max-width: 520px) {
+  body[data-tool-id="redevelopment"] .tabs button {
+    padding-inline: 5px;
+    font-size: 13px;
+  }
+
+  body[data-tool-id="rent-check"] .stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-tool-id="rent-check"] .stat {
+    padding: 12px;
+  }
+
+  body[data-tool-id="apartment"] .ac .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
