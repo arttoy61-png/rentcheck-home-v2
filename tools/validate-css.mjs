@@ -68,11 +68,11 @@ for (const match of css.matchAll(/grid-template-columns\s*:\s*([^;{}]+)\s*;/giu)
 }
 
 const responsiveChecks = [
-  [1440, /\.hero-grid\{[^}]*grid-template-columns:\.94fr 1\.06fr/u, /\.calculator-grid\{[^}]*repeat\(4,minmax\(0,1fr\)\)/u],
-  [1024, /@media\(max-width:1024px\)/u, /calculator-grid\{grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/u],
+  [1440, /\.hero-grid\{[^}]*grid-template-columns:\.86fr 1\.14fr/u, /\.calculator-grid\{[^}]*repeat\(4,minmax\(0,1fr\)\)/u],
+  [1024, /@media\(max-width:1024px\)/u, /calculator-grid\{grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/u],
   [768, /@media\(max-width:768px\)[\s\S]*?hero-grid\{[^}]*grid-template-columns:1fr/u, /calculator-grid\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/u],
-  [520, /@media\(max-width:520px\)/u, /insight\{min-width:90%/u],
-  [360, /@media\(max-width:359px\)/u, /calculator-grid\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/u],
+  [520, /@media\(max-width:520px\)/u, /insight\{min-width:88%/u],
+  [360, /@media\(max-width:360px\)/u, /calculator-grid\{grid-template-columns:1fr/u],
 ];
 
 for (const [viewport, layout, content] of responsiveChecks) {
