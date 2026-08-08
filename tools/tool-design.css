@@ -36,15 +36,6 @@ body.v2-tool-page {
   line-height: 1.65;
 }
 
-/* Tool pages need one clear escape route, not a second copy of the home nav. */
-body.v2-tool-page :is(.v2-toolbar__nav, .v2-toolbar__menu, .v2-toolbar__mobile) {
-  display: none !important;
-}
-
-body.v2-tool-page .v2-toolbar__cta {
-  margin-left: auto;
-}
-
 body[data-tool-id="youth-score"] > .v2-toolbar {
   width: 100%;
   margin-left: 0;
@@ -723,13 +714,6 @@ body[data-tool-id="youth-score"] .foot :is(.logo, b) {
   body[data-tool-id="rent-check"] .card,
   body[data-tool-id="apartment"] :is(.card, .det) {
     border-radius: 15px;
-  }
-
-  body.v2-tool-page .v2-toolbar__cta {
-    height: 38px;
-    padding: 0 12px;
-    display: flex;
-    font-size: 11px;
   }
 
   body[data-tool-id="apartment"] .crumbbar {
