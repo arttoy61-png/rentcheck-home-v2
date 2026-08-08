@@ -36,6 +36,20 @@ body.v2-tool-page {
   line-height: 1.65;
 }
 
+/* Tool pages need one clear escape route, not a second copy of the home nav. */
+body.v2-tool-page :is(.v2-toolbar__nav, .v2-toolbar__menu, .v2-toolbar__mobile) {
+  display: none !important;
+}
+
+body.v2-tool-page .v2-toolbar__cta {
+  margin-left: auto;
+}
+
+body[data-tool-id="youth-score"] > .v2-toolbar {
+  width: 100%;
+  margin-left: 0;
+}
+
 body.v2-tool-page > :is(.wrap, .container),
 .v2-tool-main {
   width: min(calc(100% - 32px), 760px);
@@ -54,9 +68,16 @@ body[data-tool-id="apartment"] .hd,
 .v2-tool-hero {
   position: relative;
   isolation: isolate;
+  box-sizing: border-box;
+  height: 220px;
+  min-height: 220px;
   overflow: hidden;
   margin: 0 0 18px;
-  padding: 30px;
+  padding: 24px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   border: 0;
   border-radius: var(--v2-card-radius);
   background: linear-gradient(135deg, #172345 0%, #29449a 100%);
@@ -127,6 +148,14 @@ body[data-tool-id="rent-check"] > .container > header .owner-info {
   margin-top: 10px;
   color: #aebbd8;
   font-size: 11px;
+}
+
+body[data-tool-id="youth-score"] > .wrap > header .trust {
+  display: none;
+}
+
+body[data-tool-id="youth-score"] > .wrap > header .sub br {
+  display: none;
 }
 
 body[data-tool-id="rent-check"] > .container > header .brand {
@@ -662,6 +691,8 @@ body[data-tool-id="youth-score"] .foot :is(.logo, b) {
   body[data-tool-id="rent-check"] > .container > header,
   body[data-tool-id="apartment"] .hd,
   .v2-tool-hero {
+    height: 220px;
+    min-height: 220px;
     margin-bottom: 12px;
     padding: 24px 20px;
     border-radius: 15px;
@@ -692,6 +723,13 @@ body[data-tool-id="youth-score"] .foot :is(.logo, b) {
   body[data-tool-id="rent-check"] .card,
   body[data-tool-id="apartment"] :is(.card, .det) {
     border-radius: 15px;
+  }
+
+  body.v2-tool-page .v2-toolbar__cta {
+    height: 38px;
+    padding: 0 12px;
+    display: flex;
+    font-size: 11px;
   }
 
   body[data-tool-id="apartment"] .crumbbar {
