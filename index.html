@@ -15,6 +15,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .service-strip{grid-template-columns:repeat(4,1fr)}
+    @media(max-width:768px){.service-strip{grid-template-columns:repeat(4,minmax(180px,1fr))}}
+    @media(max-width:520px){.service-strip{grid-template-columns:repeat(4,minmax(164px,1fr))}}
+  </style>
 </head>
 <body id="top">
   <header class="site-header">
