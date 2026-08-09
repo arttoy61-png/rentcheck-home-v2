@@ -1,34 +1,127 @@
-const $ = (selector, parent = document) => parent.querySelector(selector);
-const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
-const state = { tools: [], posts: [], results: [], selectedIndex: -1 };
-const categories = { rent: '매매·전세', safety: '매매·전세', tax: '세금·비용', invest: '투자 분석', youth: '청년 지원', redev: '재개발' };
-const tones = { rent:['#4263e8','#edf1ff'],safety:['#287d9b','#e8f7fb'],tax:['#bd6830','#fff1e9'],invest:['#7150bd','#f2edff'],youth:['#238769','#e9f7f1'],redev:['#b44865','#fbeaf0'] };
-const serviceIcons = [
+const $=(selector,parent=document)=>parent.querySelector(selector);
+const $$=(selector,parent=document)=>[...parent.querySelectorAll(selector)];
+const state={tools:[],posts:[],results:[],selectedIndex:-1,categoryMode:null,expandedCategories:new Set()};
+const categories={rent:'매매·전세',safety:'매매·전세',tax:'세금·비용',invest:'투자 분석',youth:'청년 지원',redev:'재개발'};
+const tones={
+  rent:['#1565c0','#eef5fc'],safety:['#1565c0','#eef5fc'],tax:['#d4a73a','#fff8e7'],invest:['#0d1f3c','#eef1f5'],youth:['#1565c0','#eef5fc'],redev:['#d4a73a','#fff8e7']
+};
+const articleCategories=['시세·실거래','청년·공공주택','재개발·정비','계약·가이드'];
+const serviceIcons=[
   '<svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 17h6m-3-3v6"/></svg>',
   '<svg viewBox="0 0 24 24"><path d="M4 19V7l8-3 8 3v12zM8 10h2m4 0h2M8 14h2m4 0h2"/><path d="M3 19h18"/></svg>',
   '<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M6 20c0-4 2-7 6-7s6 3 6 7M17 5l1 1 2-2"/></svg>',
-  '<svg viewBox="0 0 24 24"><path d="M4 20h16M6 20V9h5v11m2 0V4h5v16M8 12h1m6-5h1m-1 4h1"/></svg>',
-  '<svg viewBox="0 0 24 24"><path d="M5 4h14v16H5zM8 8h8m-8 4h5m-5 4h3"/><path d="m15 15 1.5 1.5L20 13"/></svg>'
+  '<svg viewBox="0 0 24 24"><path d="M4 20h16M6 20V9h5v11m2 0V4h5v16M8 12h1m6-5h1m-1 4h1"/></svg>'
 ];
-const art = [
-`<svg viewBox="0 0 420 190" aria-hidden="true"><rect width="420" height="190" fill="#eef2fb"/><path d="M0 158h420M28 131h364" stroke="#d3dbe9"/><g fill="#fff" stroke="#9eadd0" stroke-width="2"><path d="M54 148V61l58-27 57 27v87z"/><path d="M239 148V79l62-29 62 29v69z"/></g><g fill="#dfe6f9"><path d="M73 73h28v25H73zm0 37h28v24H73zm45-37h28v25h-28zm0 37h28v24h-28z"/><path d="M257 91h28v20h-28zm42 0h45v20h-45zm-42 31h28v19h-28zm42 0h45v19h-45z"/></g><path d="M195 48v93" stroke="#4864df" stroke-width="2" stroke-dasharray="4 5"/><path d="m187 57 8-9 8 9m-16 75 8 9 8-9" fill="none" stroke="#4864df" stroke-width="2"/><rect x="169" y="84" width="52" height="25" rx="6" fill="#4864df"/><text x="195" y="101" text-anchor="middle" fill="white" font-size="12" font-weight="700">㎡ 비교</text></svg>`,
-`<svg viewBox="0 0 420 190" aria-hidden="true"><rect width="420" height="190" fill="#edf5f5"/><path d="M28 155h364" stroke="#cbdcdc"/><g stroke="#5f8084" fill="none" stroke-width="2"><path d="M47 150V88h62v62m13 0V64h68v86"/><path d="M262 150V51h93v99" stroke="#315d65"/></g><g fill="#d9e9e8"><path d="M58 101h15v15H58zm24 0h15v15H82zm-24 26h15v15H58zm24 0h15v15H82zM136 78h17v17h-17zm25 0h17v17h-17zm-25 27h17v17h-17zm25 0h17v17h-17z"/></g><g fill="#c2dcda"><path d="M277 67h25v22h-25zm38 0h25v22h-25zm-38 34h25v22h-25zm38 0h25v22h-25z"/></g><path d="M70 49c46-29 107-24 145 12s61 44 94 25" fill="none" stroke="#4873d5" stroke-width="3" stroke-dasharray="6 5"/><path d="m300 78 12 8-13 6" fill="none" stroke="#4873d5" stroke-width="3"/><g transform="translate(188 89)"><rect width="58" height="72" rx="5" fill="#fff" stroke="#7a9a9c"/><path d="M12 17h34M12 29h27M12 41h31" stroke="#9bb0b2"/><path d="m15 56 7 7 20-21" fill="none" stroke="#3a6cdf" stroke-width="3"/></g></svg>`,
-`<svg viewBox="0 0 420 190" aria-hidden="true"><rect width="420" height="190" fill="#f1eff9"/><g fill="#e0dcf1" stroke="#aca2d3"><path d="m31 95 58-49 62 36-7 71-87 11-34-34z"/><path d="m151 82 81-43 58 51-16 73-92-2-38-35z"/><path d="m290 90 65-34 47 48-21 64-89-5-18-45z"/></g><g fill="#5146cf"><circle cx="87" cy="105" r="7"/><circle cx="218" cy="107" r="7"/><circle cx="339" cy="112" r="7"/></g><path d="M72 136h32v17H72zm119-42h21v59h-21zm30 18h21v41h-21zm92 8h18v33h-18zm27-39h19v72h-19" fill="#fff" stroke="#756bc0"/><rect x="174" y="57" width="66" height="26" rx="6" fill="#172345"/><text x="207" y="74" text-anchor="middle" fill="white" font-size="12" font-weight="700">84㎡</text><path d="M88 105c49-21 77 3 115 2s76-20 136 5" fill="none" stroke="#5146cf" stroke-width="2" stroke-dasharray="4 5"/></svg>`
+const art=[
+`<svg viewBox="0 0 420 190" aria-hidden="true"><rect width="420" height="190" fill="#f2f5f8"/><path d="M0 158h420M28 131h364" stroke="#d7dce3"/><g fill="#fff" stroke="#aeb8c7" stroke-width="2"><path d="M54 148V61l58-27 57 27v87z"/><path d="M239 148V79l62-29 62 29v69z"/></g><g fill="#e8edf3"><path d="M73 73h28v25H73zm0 37h28v24H73zm45-37h28v25h-28zm0 37h28v24h-28z"/><path d="M257 91h28v20h-28zm42 0h45v20h-45zm-42 31h28v19h-28zm42 0h45v19h-45z"/></g><path d="M195 48v93" stroke="#1565c0" stroke-width="2" stroke-dasharray="4 5"/><path d="m187 57 8-9 8 9m-16 75 8 9 8-9" fill="none" stroke="#1565c0" stroke-width="2"/><rect x="169" y="84" width="52" height="25" rx="6" fill="#0d1f3c"/><text x="195" y="101" text-anchor="middle" fill="white" font-size="12" font-weight="700">㎡ 비교</text></svg>`,
+`<svg viewBox="0 0 420 190" aria-hidden="true"><rect width="420" height="190" fill="#f6f4ed"/><path d="M28 155h364" stroke="#ddd7c8"/><g stroke="#526578" fill="none" stroke-width="2"><path d="M47 150V88h62v62m13 0V64h68v86"/><path d="M262 150V51h93v99" stroke="#0d1f3c"/></g><g fill="#ebe6d8"><path d="M58 101h15v15H58zm24 0h15v15H82zm-24 26h15v15H58zm24 0h15v15H82zM136 78h17v17h-17zm25 0h17v17h-17zm-25 27h17v17h-17zm25 0h17v17h-17z"/></g><path d="M70 49c46-29 107-24 145 12s61 44 94 25" fill="none" stroke="#d4a73a" stroke-width="3" stroke-dasharray="6 5"/><path d="m300 78 12 8-13 6" fill="none" stroke="#d4a73a" stroke-width="3"/><g transform="translate(188 89)"><rect width="58" height="72" rx="5" fill="#fff" stroke="#83909d"/><path d="M12 17h34M12 29h27M12 41h31" stroke="#a7b0ba"/><path d="m15 56 7 7 20-21" fill="none" stroke="#1565c0" stroke-width="3"/></g></svg>`,
+`<svg viewBox="0 0 420 190" aria-hidden="true"><rect width="420" height="190" fill="#f1f4f7"/><g fill="#e1e7ee" stroke="#9aa8b7"><path d="m31 95 58-49 62 36-7 71-87 11-34-34z"/><path d="m151 82 81-43 58 51-16 73-92-2-38-35z"/><path d="m290 90 65-34 47 48-21 64-89-5-18-45z"/></g><g fill="#0d1f3c"><circle cx="87" cy="105" r="7"/><circle cx="218" cy="107" r="7"/><circle cx="339" cy="112" r="7"/></g><path d="M72 136h32v17H72zm119-42h21v59h-21zm30 18h21v41h-21zm92 8h18v33h-18zm27-39h19v72h-19" fill="#fff" stroke="#667085"/><rect x="174" y="57" width="66" height="26" rx="6" fill="#d4a73a"/><text x="207" y="74" text-anchor="middle" fill="#0d1f3c" font-size="12" font-weight="700">84㎡</text><path d="M88 105c49-21 77 3 115 2s76-20 136 5" fill="none" stroke="#1565c0" stroke-width="2" stroke-dasharray="4 5"/></svg>`
 ];
-function element(tag, className, text) { const node=document.createElement(tag); if(className)node.className=className;if(text!==undefined)node.textContent=text;return node; }
+
+function element(tag,className,text){const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;}
 function isAvailable(tool){return tool?.status==='available'&&typeof tool.url==='string'&&tool.url.trim();}
 function statusLabel(tool){if(tool?.status==='in-development')return'개발 중';if(tool?.status==='preparing')return'준비 중';return isAvailable(tool)?'이용 가능':'현재 이용할 수 없음';}
-function resolveToolLinks(){ $$('[data-tool-link]').forEach(link=>{const tool=state.tools.find(item=>item.id===link.dataset.toolLink);if(isAvailable(tool)){link.href=tool.url;link.removeAttribute('aria-disabled');link.removeAttribute('tabindex');}else{link.removeAttribute('href');link.setAttribute('aria-disabled','true');link.setAttribute('tabindex','-1');}}); }
-function renderServices(){const specs=[['계산기 모음','부동산 계산 도구','#calculators',null],['실거래 조회','강서구 실제 거래 확인',null,'apt-widget'],['청년 지원','청년주택 점수 확인',null,'youth-score'],['재개발','분담금과 사업성 확인',null,'redevelopment'],['맞춤 가이드','실전 부동산 판단 글','#insights',null]];const palette=[['#6457d9','#f0edff'],['#3967da','#eaf0ff'],['#248a69','#e8f7f1'],['#b65c39','#fff0e9'],['#327f91','#e7f6f8']];$('#services').replaceChildren(...specs.map((s,i)=>{const tool=s[3]&&state.tools.find(t=>t.id===s[3]);const url=s[2]||(isAvailable(tool)?tool.url:'');const item=element(url?'a':'div','service-item');if(url)item.href=url;else item.setAttribute('aria-disabled','true');item.style.setProperty('--tone',palette[i][0]);item.style.setProperty('--tint',palette[i][1]);const icon=element('span','service-icon');icon.innerHTML=serviceIcons[i];const copy=element('span','service-copy');copy.append(element('strong','',s[0]),element('small','',url?s[1]:statusLabel(tool)));item.append(icon,copy,element('span','service-arrow','→'));return item;}));}
-function renderCalculators(tools=state.tools){const grid=$('#calculatorGrid');grid.replaceChildren();if(!tools.length){grid.append(element('p','data-unavailable','도구 정보를 불러올 수 없습니다.'));return;}tools.forEach(tool=>{const available=isAvailable(tool),card=element(available?'a':'article','calculator-card'),tone=tones[tool.category]||tones.rent;if(available)card.href=tool.url;else card.setAttribute('aria-disabled','true');card.style.setProperty('--accent',tone[0]);card.style.setProperty('--tint',tone[1]);const top=element('div','calculator-top');top.append(element('span','calculator-icon',tool.icon||'·'),element('span','category-label',categories[tool.category]||'부동산 도구'));card.append(top,element('h3','',tool.title||'이름 없는 도구'),element('p','',tool.description||'설명이 없습니다.'));const action=element('div','card-action');action.append(element('span','',available?'도구 열기 →':statusLabel(tool)),element('span',`status${available?' available':''}`,available?'이용 가능':statusLabel(tool)));card.append(action);grid.append(card);});}
-function renderInsights(){const featured=state.posts.filter(p=>[1,2,3].includes(p?.featured_rank)).sort((a,b)=>a.featured_rank-b.featured_rank),track=$('#insightTrack');track.replaceChildren();if(!featured.length){track.append(element('p','data-unavailable','분석 글을 불러올 수 없습니다.'));return;}featured.forEach((post,i)=>{const card=element('article','insight'),visual=element('div',`insight-art art-${i+1}`);visual.innerHTML=art[i];const body=element('div','insight-body');body.append(element('span','insight-category',post.category||'분석 글'),element('h3','',post.title||'제목 없는 글'));const meta=element('div','insight-meta');meta.append(element('span','',post.published_at||''));if(post.status==='published'&&post.url){const link=element('a','insight-link','분석 글 보기 →');link.href=post.url;link.target='_blank';link.rel='noopener noreferrer';meta.append(link);}body.append(meta);card.append(visual,body);track.append(card);});}
+function postDate(post){return String(post?.published_at||'');}
+function publishedPosts(){return state.posts.filter(p=>p?.status==='published'&&p?.url);}
+function sortedPosts(posts){return [...posts].sort((a,b)=>postDate(b).localeCompare(postDate(a)));}
+
+function resolveToolLinks(){
+  $$('[data-tool-link]').forEach(link=>{const tool=state.tools.find(item=>item.id===link.dataset.toolLink);if(isAvailable(tool)){link.href=tool.url;link.removeAttribute('aria-disabled');link.removeAttribute('tabindex');}else{link.removeAttribute('href');link.setAttribute('aria-disabled','true');link.setAttribute('tabindex','-1');}});
+}
+
+function renderServices(){
+  // 가이드 콘텐츠 축적 시 복귀
+  const specs=[
+    ['계산기 모음','부동산 계산 도구','#calculators',null],
+    ['실거래 조회','강서구 아파트 실거래',null,'apt-widget'],
+    ['청년 지원','청년주택 점수 확인',null,'youth-score'],
+    ['재개발','분담금과 사업성 확인',null,'redevelopment']
+  ];
+  const palette=[['#0d1f3c','#eef1f5'],['#1565c0','#eef5fc'],['#d4a73a','#fff8e7'],['#0d1f3c','#eef1f5']];
+  $('#services').replaceChildren(...specs.map((s,i)=>{const tool=s[3]&&state.tools.find(t=>t.id===s[3]);const url=s[2]||(isAvailable(tool)?tool.url:'');const item=element(url?'a':'div','service-item');if(url)item.href=url;else item.setAttribute('aria-disabled','true');item.style.setProperty('--tone',palette[i][0]);item.style.setProperty('--tint',palette[i][1]);const icon=element('span','service-icon');icon.innerHTML=serviceIcons[i];const copy=element('span','service-copy');copy.append(element('strong','',s[0]),element('small','',url?s[1]:statusLabel(tool)));item.append(icon,copy,element('span','service-arrow','→'));return item;}));
+}
+
+function renderCalculators(tools=state.tools){
+  const grid=$('#calculatorGrid');grid.replaceChildren();
+  if(!tools.length){grid.append(element('p','data-unavailable','도구 정보를 불러올 수 없습니다.'));return;}
+  tools.forEach(tool=>{const available=isAvailable(tool),card=element(available?'a':'article','calculator-card'),tone=tones[tool.category]||tones.rent;if(available)card.href=tool.url;else card.setAttribute('aria-disabled','true');card.style.setProperty('--accent',tone[0]);card.style.setProperty('--tint',tone[1]);const top=element('div','calculator-top');top.append(element('span','calculator-icon',tool.icon||'·'),element('span','category-label',categories[tool.category]||'부동산 도구'));card.append(top,element('h3','',tool.title||'이름 없는 도구'),element('p','',tool.description||'설명이 없습니다.'));const action=element('div','card-action');action.append(element('span','',available?'도구 열기 →':statusLabel(tool)),element('span',`status${available?' available':''}`,available?'이용 가능':statusLabel(tool)));card.append(action);grid.append(card);});
+}
+
+function renderInsights(){
+  const featured=state.posts.filter(p=>[1,2,3].includes(p?.featured_rank)).sort((a,b)=>a.featured_rank-b.featured_rank),track=$('#insightTrack');track.replaceChildren();
+  if(!featured.length){track.append(element('p','data-unavailable','분석 글을 불러올 수 없습니다.'));return;}
+  featured.forEach((post,i)=>{const card=element('article','insight'),visual=element('div',`insight-art art-${i+1}`);visual.innerHTML=art[i];const body=element('div','insight-body');body.append(element('span','insight-category',post.category||'분석 글'),element('h3','',post.title||'제목 없는 글'));const meta=element('div','insight-meta');meta.append(element('span','',post.published_at||''));if(post.status==='published'&&post.url){const link=element('a','insight-link','분석 글 보기 →');link.href=post.url;link.target='_blank';link.rel='noopener noreferrer';meta.append(link);}body.append(meta);card.append(visual,body);track.append(card);});
+}
+
+function renderArticleLibrary(){
+  const root=$('#articleLibrary');if(!root)return;root.replaceChildren();
+  const all=publishedPosts();
+  articleCategories.forEach(category=>{
+    const posts=sortedPosts(all.filter(p=>p.category===category));
+    const expanded=state.expandedCategories.has(category);
+    const shown=posts.slice(0,expanded?12:3);
+    const block=element('section','article-category');
+    const head=element('div','article-category-head');
+    const titleWrap=element('div','article-category-title');titleWrap.append(element('h3','',category),element('span','article-count',`${posts.length}편`));head.append(titleWrap);block.append(head);
+    const list=element('div','article-list');
+    shown.forEach(post=>{const link=element('a','article-row');link.href=post.url;link.target='_blank';link.rel='noopener noreferrer';const copy=element('span','article-row-copy');copy.append(element('strong','',post.title||'제목 없는 글'),element('small','',post.published_at||''));link.append(copy,element('span','article-row-arrow','→'));list.append(link);});
+    block.append(list);
+    const actions=element('div','article-actions');
+    if(posts.length>3){const more=element('button','article-more',expanded?'접기 ↑':'글 더 보기 ↓');more.type='button';more.addEventListener('click',()=>{if(expanded)state.expandedCategories.delete(category);else state.expandedCategories.add(category);renderArticleLibrary();requestAnimationFrame(()=>{const blocks=$$('.article-category');const target=blocks.find(x=>x.querySelector('h3')?.textContent===category);target?.scrollIntoView({behavior:'smooth',block:'nearest'});});});actions.append(more);}
+    const allLink=element('button','article-all','전체 보기');allLink.type='button';allLink.addEventListener('click',()=>openCategorySearch(category));actions.append(allLink);block.append(actions);root.append(block);
+  });
+}
+
 function normalized(value){return String(value||'').trim().toLocaleLowerCase('ko-KR');}
-function searchData(query){const q=normalized(query);if(!q)return[];const tools=state.tools.filter(t=>[t.title,t.description,t.category].some(v=>normalized(v).includes(q))).map(t=>({type:'tool',title:t.title,meta:t.description,icon:t.icon,valid:Boolean(isAvailable(t)),url:t.url,status:statusLabel(t)}));const posts=state.posts.filter(p=>[p.title,p.category].some(v=>normalized(v).includes(q))).map(p=>({type:'post',title:p.title,meta:[p.category,p.published_at].filter(Boolean).join(' · '),valid:p.status==='published'&&Boolean(p.url),url:p.url}));return[...tools,...posts].slice(0,6);}
+function postSearchText(p){return [p.title,p.description,p.category].map(normalized).join(' ');}
+function searchData(query){
+  if(state.categoryMode){return sortedPosts(publishedPosts().filter(p=>p.category===state.categoryMode)).map(p=>({type:'post',title:p.title,meta:[p.category,p.published_at].filter(Boolean).join(' · '),valid:true,url:p.url}));}
+  const q=normalized(query);if(!q)return[];
+  const tools=state.tools.filter(t=>[t.title,t.description,t.category].some(v=>normalized(v).includes(q))).map(t=>({type:'tool',title:t.title,meta:t.description,icon:t.icon,valid:Boolean(isAvailable(t)),url:t.url,status:statusLabel(t)}));
+  const posts=publishedPosts().filter(p=>postSearchText(p).includes(q)).map(p=>({type:'post',title:p.title,meta:[p.category,p.published_at].filter(Boolean).join(' · '),valid:true,url:p.url}));
+  return[...tools,...posts].slice(0,6);
+}
 function closeSearch(){const d=$('#searchResults');d.hidden=true;$('#searchInput').setAttribute('aria-expanded','false');$('#searchInput').removeAttribute('aria-activedescendant');state.selectedIndex=-1;}
-function renderSearch(){const d=$('#searchResults'),q=$('#searchInput').value.trim();if(!q){state.results=[];d.replaceChildren();closeSearch();return;}state.results=searchData(q);state.selectedIndex=-1;d.replaceChildren();if(!state.results.length)d.append(element('p','search-empty','검색 결과가 없습니다.'));state.results.forEach((r,i)=>{const item=element(r.valid?'a':'div',`search-result${r.valid?'':' unavailable'}`);item.id=`search-result-${i}`;item.setAttribute('role','option');item.setAttribute('aria-selected','false');if(r.valid){item.href=r.url;if(r.type==='post'){item.target='_blank';item.rel='noopener noreferrer';}}else item.setAttribute('aria-disabled','true');item.append(element('span','search-result-icon',r.type==='tool'?(r.icon||'·'):'▤'));const copy=element('span','search-result-copy');copy.append(element('strong','',r.title),element('small','',r.meta));item.append(copy,element('span','search-result-type',r.type==='tool'?(r.valid?'도구':r.status):'분석 글'));d.append(item);});const all=element('a','search-all','계산기 모음 보기');all.href='#calculators';all.addEventListener('click',closeSearch);d.append(all);d.hidden=false;$('#searchInput').setAttribute('aria-expanded','true');}
+function clearCategoryMode(){state.categoryMode=null;}
+function openCategorySearch(category){state.categoryMode=category;const input=$('#searchInput');input.value=category;renderSearch();$('.search-wrap')?.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>input.focus({preventScroll:true}),400);}
+function renderSearch(){
+  const d=$('#searchResults'),q=$('#searchInput').value.trim();if(!q&&!state.categoryMode){state.results=[];d.replaceChildren();closeSearch();return;}
+  state.results=searchData(q);state.selectedIndex=-1;d.replaceChildren();
+  if(state.categoryMode){const mode=element('div','search-mode');mode.append(element('strong','',state.categoryMode),element('span','',`전체 ${state.results.length}편 · 최신순`));d.append(mode);}
+  if(!state.results.length){const empty=element('div','search-empty');empty.append(document.createTextNode('결과가 없습니다 — '));const all=element('a','','계산기 모음 보기');all.href='#calculators';all.addEventListener('click',closeSearch);empty.append(all);d.append(empty);}
+  state.results.forEach((r,i)=>{const item=element(r.valid?'a':'div',`search-result${r.valid?'':' unavailable'}`);item.id=`search-result-${i}`;item.setAttribute('role','option');item.setAttribute('aria-selected','false');if(r.valid){item.href=r.url;if(r.type==='post'){item.target='_blank';item.rel='noopener noreferrer';}}else item.setAttribute('aria-disabled','true');item.append(element('span','search-result-icon',r.type==='tool'?(r.icon||'·'):'▤'));const copy=element('span','search-result-copy');copy.append(element('strong','',r.title),element('small','',r.meta));item.append(copy,element('span','search-result-type',r.type==='tool'?(r.valid?'도구':r.status):'분석 글'));d.append(item);});
+  if(!state.categoryMode&&state.results.length){const all=element('a','search-all','계산기 모음 보기');all.href='#calculators';all.addEventListener('click',closeSearch);d.append(all);}
+  d.hidden=false;$('#searchInput').setAttribute('aria-expanded','true');
+}
 function moveSelection(step){if(!state.results.length)return;state.selectedIndex=(state.selectedIndex+step+state.results.length)%state.results.length;$$('.search-result').forEach((item,i)=>{const on=i===state.selectedIndex;item.classList.toggle('selected',on);item.setAttribute('aria-selected',String(on));if(on)item.scrollIntoView({block:'nearest'});});$('#searchInput').setAttribute('aria-activedescendant',`search-result-${state.selectedIndex}`);}
-async function loadData(){const load=async path=>{const response=await fetch(path);if(!response.ok)throw new Error(`HTTP ${response.status}`);const json=await response.json();if(!Array.isArray(json))throw new Error('Expected array');return json;};const [tools,posts]=await Promise.allSettled([load('./data/tools.json'),load('./data/posts.json')]);if(tools.status==='fulfilled')state.tools=tools.value;if(posts.status==='fulfilled')state.posts=posts.value;renderServices();renderCalculators();renderInsights();resolveToolLinks();$('#availableToolCount').textContent=String(state.tools.filter(isAvailable).length);$('#publishedCount').textContent=String(state.posts.filter(p=>p.status==='published').length);}
-const menu=$('#menuToggle'),mobile=$('#mobileNav');menu.addEventListener('click',()=>{const open=mobile.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});$$('#mobileNav a').forEach(a=>a.addEventListener('click',()=>{mobile.classList.remove('open');menu.setAttribute('aria-expanded','false');}));$$('[data-to-top]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();history.replaceState(null,'','#top');window.scrollTo({top:0,behavior:'smooth'});}));
-const input=$('#searchInput');input.addEventListener('input',renderSearch);input.addEventListener('focus',()=>{if(input.value.trim())renderSearch();});input.addEventListener('keydown',e=>{if(e.key==='Escape')closeSearch();if(['ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();moveSelection(e.key==='ArrowDown'?1:-1);}if(e.key==='Enter'&&state.selectedIndex>=0){e.preventDefault();const r=state.results[state.selectedIndex];if(r?.valid)r.type==='post'?window.open(r.url,'_blank','noopener,noreferrer'):location.assign(r.url);}});$('#searchForm').addEventListener('submit',e=>{e.preventDefault();renderSearch();});document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap'))closeSearch();});
-$$('.tabs button').forEach(button=>button.addEventListener('click',()=>{$$('.tabs button').forEach(b=>b.classList.remove('active'));button.classList.add('active');const label=button.textContent.trim();renderCalculators(label==='전체'?state.tools:state.tools.filter(t=>categories[t.category]===label));}));$$('.footer-group button').forEach(button=>button.addEventListener('click',()=>{const open=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',String(!open));button.parentElement.classList.toggle('open',!open);}));
-if('scrollRestoration'in history)history.scrollRestoration='manual';loadData();
+
+function pickFirst(obj,paths){for(const path of paths){const parts=path.split('.');let value=obj;for(const key of parts)value=value?.[key];if(value!==undefined&&value!==null&&value!=='')return value;}return null;}
+function formatStatDate(value){const raw=String(value||'').slice(0,10);const m=raw.match(/(\d{4})[-.]?(\d{2})[-.]?(\d{2})/);return m?`${m[1]}.${m[2]}.${m[3]}`:raw;}
+async function loadHomeStats(){
+  try{
+    const response=await fetch('https://arttoy61-png.github.io/rent-check/home_stats.json',{cache:'no-cache'});if(!response.ok)throw new Error(`HTTP ${response.status}`);const data=await response.json();
+    const generated=pickFirst(data,['generated_at','meta.generated_at']);
+    if(generated){const age=Date.now()-new Date(generated).getTime();if(Number.isFinite(age)&&age>48*60*60*1000){$('#heroStale').hidden=false;return;}}
+    const count=pickFirst(data,['yesterday_count','yesterday.total','yesterday.count','transactions_yesterday','yesterday_transactions','summary.yesterday_count']);
+    const until=pickFirst(data,['data_until','as_of','date','summary.data_until','yesterday.date']);
+    if(count!==null&&until){const el=$('#heroLive');el.textContent=`어제 강서구 실거래 신고 ${Number(count).toLocaleString('ko-KR')}건 · ${formatStatDate(until)} 기준`;el.hidden=false;}
+  }catch(_){/* home_stats.json 미생성/일시 실패 시 기존 화면 유지 */}
+}
+
+async function loadData(){
+  const load=async path=>{const response=await fetch(path,{cache:'no-cache'});if(!response.ok)throw new Error(`HTTP ${response.status}`);const json=await response.json();if(!Array.isArray(json))throw new Error('Expected array');return json;};
+  const[tools,posts]=await Promise.allSettled([load('./data/tools.json'),load('./data/posts.json')]);if(tools.status==='fulfilled')state.tools=tools.value;if(posts.status==='fulfilled')state.posts=posts.value;renderServices();renderCalculators();renderInsights();renderArticleLibrary();resolveToolLinks();$('#availableToolCount').textContent=String(state.tools.filter(isAvailable).length);$('#publishedCount').textContent=String(publishedPosts().length);
+}
+
+const menu=$('#menuToggle'),mobile=$('#mobileNav');if(menu&&mobile){menu.addEventListener('click',()=>{const open=mobile.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});$$('#mobileNav a').forEach(a=>a.addEventListener('click',()=>{mobile.classList.remove('open');menu.setAttribute('aria-expanded','false');}));}
+$$('[data-to-top]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();history.replaceState(null,'','#top');window.scrollTo({top:0,behavior:'smooth'});}));
+const input=$('#searchInput');
+input.addEventListener('input',()=>{clearCategoryMode();renderSearch();});
+input.addEventListener('focus',()=>{if(input.value.trim())renderSearch();});
+input.addEventListener('keydown',e=>{if(e.key==='Escape'){clearCategoryMode();closeSearch();}if(['ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();moveSelection(e.key==='ArrowDown'?1:-1);}if(e.key==='Enter'&&state.selectedIndex>=0){e.preventDefault();const r=state.results[state.selectedIndex];if(r?.valid)r.type==='post'?window.open(r.url,'_blank','noopener,noreferrer'):location.assign(r.url);}});
+$('#searchForm').addEventListener('submit',e=>{e.preventDefault();if(!state.categoryMode)renderSearch();});
+document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap')&&!e.target.closest('.article-all')){clearCategoryMode();closeSearch();}});
+$$('.tabs button').forEach(button=>button.addEventListener('click',()=>{$$('.tabs button').forEach(b=>b.classList.remove('active'));button.classList.add('active');const label=button.textContent.trim();renderCalculators(label==='전체'?state.tools:state.tools.filter(t=>categories[t.category]===label));}));
+$$('.footer-group button').forEach(button=>button.addEventListener('click',()=>{const open=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',String(!open));button.parentElement.classList.toggle('open',!open);}));
+if('scrollRestoration'in history)history.scrollRestoration='manual';
+loadData();loadHomeStats();
