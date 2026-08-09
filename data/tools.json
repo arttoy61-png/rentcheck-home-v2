@@ -62,10 +62,10 @@
   {
     "id": "acquisition-tax",
     "title": "취득세 계산기",
-    "description": "주택 수·금액·조정대상지역 여부에 따른 취득세 본세를 확인합니다.",
-    "url": "tools/acquisition-tax/",
-    "status": "available",
-    "badge": "이용 가능",
+    "description": "부가세목과 최신 세율 검증을 완료한 뒤 공개합니다.",
+    "url": null,
+    "status": "preparing",
+    "badge": "준비 중",
     "icon": "◔",
     "category": "tax"
   },
@@ -81,8 +81,8 @@
   },
   {
     "id": "registration-cost",
-    "title": "등기비용 계산기",
-    "description": "취득세·국민주택채권 부담액·법무사비 등 등기 준비비용을 합산합니다.",
+    "title": "등기비용 합산기",
+    "description": "공식 조회·견적 금액을 입력해 취득세·채권·법무사비 등 준비비용을 합산합니다.",
     "url": "tools/registration-cost/",
     "status": "available",
     "badge": "이용 가능",
