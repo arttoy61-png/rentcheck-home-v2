@@ -10,58 +10,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    @media(max-width:520px){
+      .calculator-grid{gap:8px}.calculator-card{height:166px;padding:12px}.calculator-icon{width:32px;height:32px;border-radius:8px;font-size:15px}.category-label{font-size:11px}.calculator-card h3{margin:9px 0 4px;font-size:13px;line-height:1.35}.calculator-card p{font-size:11px;line-height:1.45;-webkit-line-clamp:2}.card-action{padding-top:7px;font-size:11px}.status{padding:2px 5px;font-size:11px}
+    }
+    @media(max-width:360px){.calculator-card{height:158px}}
+  </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MPRR3J99YQ"></script>
-  <script>
-    window.dataLayer=window.dataLayer||[];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js',new Date());
-    gtag('config','G-MPRR3J99YQ');
-  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MPRR3J99YQ');</script>
 </head>
 <body id="top">
-<header class="site-header"><div class="container header-inner">
-  <a class="brand" href="#top" data-to-top aria-label="Rent Check 홈"><span class="brand-mark"><svg viewBox="0 0 28 28"><path d="M4 13 14 5l10 8v10H4z"/><path d="m10 16 3 3 6-7"/></svg></span><strong>Rent Check</strong></a>
-  <nav class="desktop-nav" aria-label="주요 메뉴"><a href="#top" data-to-top>홈</a><a href="#calculators">계산 도구</a><a data-tool-link="apt-widget">실거래</a><a href="#article-library">분석 글</a><a data-tool-link="youth-score">청년주택</a><a data-tool-link="redevelopment">재개발</a></nav>
-  <div class="header-actions"><a class="header-cta" href="#calculators">도구 시작하기 <span>→</span></a><button class="menu-button" id="menuToggle" type="button" aria-controls="mobileNav" aria-expanded="false"><i></i><i></i><i></i><b class="sr-only">메뉴 열기</b></button></div>
-</div><nav class="mobile-nav" id="mobileNav" aria-label="모바일 메뉴"><div class="container"><a href="#top" data-to-top>홈</a><a href="#calculators">계산 도구</a><a data-tool-link="apt-widget">실거래</a><a href="#article-library">분석 글</a><a data-tool-link="youth-score">청년주택</a><a data-tool-link="redevelopment">재개발</a></div></nav></header>
-
+<header class="site-header"><div class="container header-inner"><a class="brand" href="#top" data-to-top aria-label="Rent Check 홈"><span class="brand-mark"><svg viewBox="0 0 28 28"><path d="M4 13 14 5l10 8v10H4z"/><path d="m10 16 3 3 6-7"/></svg></span><strong>Rent Check</strong></a><nav class="desktop-nav" aria-label="주요 메뉴"><a href="#top" data-to-top>홈</a><a href="#calculators">계산 도구</a><a data-tool-link="apt-widget">실거래</a><a href="#article-library">분석 글</a><a data-tool-link="youth-score">청년주택</a><a data-tool-link="redevelopment">재개발</a></nav><div class="header-actions"><a class="header-cta" href="#calculators">도구 시작하기 <span>→</span></a><button class="menu-button" id="menuToggle" type="button" aria-controls="mobileNav" aria-expanded="false"><i></i><i></i><i></i><b class="sr-only">메뉴 열기</b></button></div></div><nav class="mobile-nav" id="mobileNav" aria-label="모바일 메뉴"><div class="container"><a href="#top" data-to-top>홈</a><a href="#calculators">계산 도구</a><a data-tool-link="apt-widget">실거래</a><a href="#article-library">분석 글</a><a data-tool-link="youth-score">청년주택</a><a data-tool-link="redevelopment">재개발</a></div></nav></header>
 <main>
-<section class="hero"><div class="container hero-grid">
-  <div class="hero-copy">
-    <p class="eyebrow"><span></span> 부동산 계산과 실거래 해석 도구</p>
-    <h1>실거래로<br><em>더 정확하게</em></h1>
-    <p class="hero-lead">국토교통부 실거래 신고자료를 매일 정리해,<br>계산기와 분석으로 연결합니다.</p>
-    <p class="hero-live" id="heroLive" hidden></p>
-    <p class="hero-stale" id="heroStale" hidden>최근 데이터 갱신을 확인하고 있습니다.</p>
-    <div class="search-wrap"><form class="search" id="searchForm" role="search" autocomplete="off"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><label class="sr-only" for="searchInput">계산기·분석 글 검색</label><input id="searchInput" type="search" placeholder="계산기·분석 글 검색" aria-controls="searchResults" aria-expanded="false" aria-autocomplete="list"><button type="submit" aria-label="검색">→</button></form><div class="search-results" id="searchResults" role="listbox" hidden></div></div>
-    <div class="trust"><span><i>✓</i> 전국에서 쓰는 계산 도구</span><span><i>✓</i> 국토부 신고자료 기반</span></div>
-  </div>
-  <div class="product-stage">
-    <article class="product-ui"><header><div class="product-brand"><b>RC</b><span>아파트 실거래</span></div><div class="source-dot"><i></i> 국토부 실거래 신고자료</div></header>
-      <div class="product-body"><div class="product-top"><div><small>지역 선택</small><h2><span>서울</span> 강서구 <b>⌄</b></h2></div><div class="view-switch"><span></span><span></span><span></span></div></div>
-      <div class="transaction-tabs"><b>매매</b><span>전세</span><span>월세</span></div>
-      <div class="map-panel"><svg viewBox="0 0 520 210" aria-hidden="true"><defs><pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0V26"/></pattern></defs><rect width="520" height="210" fill="url(#grid)"/><path class="river" d="M-10 165c95-54 160 18 241-20s132-8 300-70"/><path class="district" d="M62 45 155 24l65 48-17 87-102 15-53-61z"/><path class="district selected" d="m220 72 91-43 82 53-21 84-94 22-75-29z"/><path class="district" d="m393 82 72-22 48 60-43 69-98-23z"/><g class="map-label"><circle cx="288" cy="106" r="19"/><path d="m280 106 8-8 8 8v10h-16z"/></g><text x="263" y="148">서울 강서구</text></svg><div class="map-key"><span><i></i> 선택 지역</span><span><i></i> 인접 지역</span></div></div>
-      <div class="workflow"><span class="done"><i>1</i> 동 선택</span><b>→</b><span><i>2</i> 단지 선택</span><b>→</b><span><i>3</i> 평형 선택</span></div>
-      <a class="product-link" data-tool-link="apt-widget">강서구 아파트 실거래 보기 <b>→</b></a></div>
-    </article>
-    <aside class="float-card scope"><small>데이터 범위</small><strong>서울 강서구</strong><span>국토부 실거래 신고자료</span></aside>
-    <aside class="float-card method"><span class="method-icon">⌘</span><div><small>조회 방식</small><strong>동 → 단지 → 평형</strong></div></aside>
-  </div>
-</div></section>
-
+<section class="hero"><div class="container hero-grid"><div class="hero-copy"><p class="eyebrow"><span></span> 부동산 계산과 실거래 해석 도구</p><h1>실거래로<br><em>더 정확하게</em></h1><p class="hero-lead">국토교통부 실거래 신고자료를 매일 정리해,<br>계산기와 분석으로 연결합니다.</p><p class="hero-live" id="heroLive" hidden></p><p class="hero-stale" id="heroStale" hidden>최근 데이터 갱신을 확인하고 있습니다.</p><div class="search-wrap"><form class="search" id="searchForm" role="search" autocomplete="off"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><label class="sr-only" for="searchInput">계산기·분석 글 검색</label><input id="searchInput" type="search" placeholder="계산기·분석 글 검색" aria-controls="searchResults" aria-expanded="false" aria-autocomplete="list"><button type="submit" aria-label="검색">→</button></form><div class="search-results" id="searchResults" role="listbox" hidden></div></div><div class="trust"><span><i>✓</i> 전국에서 쓰는 계산 도구</span><span><i>✓</i> 국토부 신고자료 기반</span></div></div><div class="product-stage"><article class="product-ui"><header><div class="product-brand"><b>RC</b><span>아파트 실거래</span></div><div class="source-dot"><i></i> 국토부 실거래 신고자료</div></header><div class="product-body"><div class="product-top"><div><small>지역 선택</small><h2><span>서울</span> 강서구 <b>⌄</b></h2></div><div class="view-switch"><span></span><span></span><span></span></div></div><div class="transaction-tabs"><b>매매</b><span>전세</span><span>월세</span></div><div class="map-panel"><svg viewBox="0 0 520 210" aria-hidden="true"><defs><pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0V26"/></pattern></defs><rect width="520" height="210" fill="url(#grid)"/><path class="river" d="M-10 165c95-54 160 18 241-20s132-8 300-70"/><path class="district" d="M62 45 155 24l65 48-17 87-102 15-53-61z"/><path class="district selected" d="m220 72 91-43 82 53-21 84-94 22-75-29z"/><path class="district" d="m393 82 72-22 48 60-43 69-98-23z"/><g class="map-label"><circle cx="288" cy="106" r="19"/><path d="m280 106 8-8 8 8v10h-16z"/></g><text x="263" y="148">서울 강서구</text></svg><div class="map-key"><span><i></i> 선택 지역</span><span><i></i> 인접 지역</span></div></div><div class="workflow"><span class="done"><i>1</i> 동 선택</span><b>→</b><span><i>2</i> 단지 선택</span><b>→</b><span><i>3</i> 평형 선택</span></div><a class="product-link" data-tool-link="apt-widget">강서구 아파트 실거래 보기 <b>→</b></a></div></article><aside class="float-card scope"><small>데이터 범위</small><strong>서울 강서구</strong><span>국토부 실거래 신고자료</span></aside><aside class="float-card method"><span class="method-icon">⌘</span><div><small>조회 방식</small><strong>동 → 단지 → 평형</strong></div></aside></div></div></section>
 <section class="container service-strip" id="services" aria-label="서비스 바로가기"></section>
 <section class="section calculators" id="calculators"><div class="container"><div class="section-head"><div><p class="kicker">계산 도구</p><h2>부동산 계산 도구</h2><p>계약부터 투자 판단까지, 필요한 계산을 한곳에서 확인하세요.</p></div></div><div class="tabs" role="tablist" aria-label="계산기 카테고리"><button class="active">전체</button><button>매매·전세</button><button>세금·비용</button><button>투자 분석</button><button>청년 지원</button><button>재개발</button></div><div class="calculator-grid" id="calculatorGrid"></div></div></section>
 <section class="container stats" aria-label="서비스 및 데이터 정보"><div><span>발행 분석 글</span><strong id="publishedCount">—</strong></div><div><span>이용 가능한 도구</span><strong id="availableToolCount">—</strong></div><div><span>실거래 분석 지역</span><strong>서울 강서구</strong></div><div><span>데이터 기준</span><strong>국토부 실거래 신고자료</strong></div></section>
-
 <section class="section insights" id="insights"><div class="container"><div class="section-head"><div><p class="kicker">선별 분석</p><h2>최신 부동산 인사이트</h2><p>실거래와 제도를 읽는 판단 기준을 정리합니다.</p></div></div><div class="insight-track" id="insightTrack"></div></div></section>
-
 <section class="section article-library" id="article-library"><div class="container"><div class="section-head"><div><p class="kicker">분석 글</p><h2>분석 글 모음</h2><p>주제별 최신 글을 바로 찾고, 더 필요한 글은 펼쳐서 확인하세요.</p></div></div><div class="article-library-grid" id="articleLibrary"></div></div></section>
-
 <section class="container final-cta"><div><p>Rent Check</p><h2>부동산 숫자,<br>판단까지 이어져야 합니다.</h2><span>계산 도구와 실거래 분석을 연결해<br>지금 필요한 판단부터 확인하세요.</span></div><div class="cta-actions"><a href="#calculators">계산 도구 보기 <b>→</b></a><a data-tool-link="apt-widget">실거래 확인</a></div></section>
 </main>
-
-<footer><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="#top" data-to-top><span class="brand-mark"><svg viewBox="0 0 28 28"><path d="M4 13 14 5l10 8v10H4z"/><path d="m10 16 3 3 6-7"/></svg></span><strong>Rent Check</strong></a><p>국토부 실거래 데이터와 실전형 해석을 연결하는<br>부동산 계산·분석 서비스입니다.</p></div>
-<div class="footer-group"><button aria-expanded="false">서비스 <span>＋</span></button><div><a href="#calculators">계산기 모음</a><a data-tool-link="apt-widget">아파트 실거래</a><a href="#article-library">분석 글 모음</a><a data-tool-link="youth-score">청년주택 점수</a><a data-tool-link="redevelopment">재개발 계산기</a></div></div>
-<div class="footer-group"><button aria-expanded="false">채널 <span>＋</span></button><div><a href="https://blog.naver.com/spitoon61" target="_blank" rel="noopener noreferrer">네이버 블로그 ↗</a><a href="https://rentcheckdata.tistory.com/" target="_blank" rel="noopener noreferrer">티스토리 ↗</a></div></div>
-<div class="footer-group muted-links"><button aria-expanded="false">안내 <span>＋</span></button><div><span>소개 · 준비 중</span><span>문의 · 준비 중</span><span>개인정보처리방침 · 준비 중</span><span>데이터 기준 안내 · 준비 중</span></div></div></div><div class="container footer-bottom"><span>© 2026 Rent Check</span><span>부동산 계산과 실거래 해석</span></div></footer>
+<footer><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="#top" data-to-top><span class="brand-mark"><svg viewBox="0 0 28 28"><path d="M4 13 14 5l10 8v10H4z"/><path d="m10 16 3 3 6-7"/></svg></span><strong>Rent Check</strong></a><p>국토부 실거래 데이터와 실전형 해석을 연결하는<br>부동산 계산·분석 서비스입니다.</p></div><div class="footer-group"><button aria-expanded="false">서비스 <span>＋</span></button><div><a href="#calculators">계산기 모음</a><a data-tool-link="apt-widget">아파트 실거래</a><a href="#article-library">분석 글 모음</a><a data-tool-link="youth-score">청년주택 점수</a><a data-tool-link="redevelopment">재개발 계산기</a></div></div><div class="footer-group"><button aria-expanded="false">채널 <span>＋</span></button><div><a href="https://blog.naver.com/spitoon61" target="_blank" rel="noopener noreferrer">네이버 블로그 ↗</a><a href="https://rentcheckdata.tistory.com/" target="_blank" rel="noopener noreferrer">티스토리 ↗</a></div></div><div class="footer-group muted-links"><button aria-expanded="false">안내 <span>＋</span></button><div><span>소개 · 준비 중</span><span>문의 · 준비 중</span><span>개인정보처리방침 · 준비 중</span><span>데이터 기준 안내 · 준비 중</span></div></div></div><div class="container footer-bottom"><span>© 2026 Rent Check</span><span>부동산 계산과 실거래 해석</span></div></footer>
 <script src="app.js"></script></body></html>
