@@ -1,112 +1,82 @@
 [
-  {
-    "id": "redevelopment",
-    "title": "재개발 분담금 계산기",
-    "description": "권리가액과 조합원 분양가로 예상 분담금을 확인합니다.",
-    "url": "calc/",
-    "status": "available",
-    "badge": "이용 가능",
-    "icon": "▥",
-    "category": "redev"
-  },
-  {
-    "id": "youth-score",
-    "title": "청년주택 점수 계산기",
-    "description": "청년 매입임대·안심주택 순위와 가점을 30초에 확인합니다.",
-    "url": "tools/youth-score/",
-    "status": "available",
-    "badge": "이용 가능",
-    "icon": "✓",
-    "category": "youth"
-  },
-  {
-    "id": "auction",
-    "title": "경매 물건 체크",
-    "description": "낙찰 전 확인할 권리·비용 항목을 점검합니다.",
-    "url": null,
-    "status": "in-development",
-    "badge": "개발 중",
-    "icon": "◱",
-    "category": "invest"
-  },
-  {
-    "id": "rent-check",
-    "title": "월세·전세 적정 확인",
-    "description": "화곡동 실거래 기준으로 내 계약 조건의 적정성을 확인합니다.",
-    "url": "tools/rent-check/",
-    "status": "available",
-    "badge": "이용 가능",
-    "icon": "₩",
-    "category": "rent"
-  },
-  {
-    "id": "apt-widget",
-    "title": "아파트 단지 시세 지도",
-    "description": "단지를 눌러 최근 실거래 흐름을 지도에서 확인합니다.",
-    "url": "tools/apartment/",
-    "status": "available",
-    "badge": "이용 가능",
-    "icon": "◫",
-    "category": "rent"
-  },
-  {
-    "id": "jeonse-ratio",
-    "title": "전세가율 계산기",
-    "description": "매매가 대비 전세보증금 비중과 전세가율을 확인합니다.",
-    "url": "tools/jeonse-ratio/",
-    "status": "available",
-    "badge": "이용 가능",
-    "icon": "％",
-    "category": "safety"
-  },
-  {
-    "id": "acquisition-tax",
-    "title": "취득세 계산기",
-    "description": "부가세목과 최신 세율 검증을 완료한 뒤 공개합니다.",
-    "url": null,
-    "status": "preparing",
-    "badge": "준비 중",
-    "icon": "◔",
-    "category": "tax"
-  },
-  {
-    "id": "brokerage-fee",
-    "title": "중개보수 계산기",
-    "description": "아파트·주택·오피스텔·상가의 거래 유형별 중개보수 상한을 확인합니다.",
-    "url": "tools/brokerage-fee/",
-    "status": "available",
-    "badge": "이용 가능",
-    "icon": "◨",
-    "category": "tax"
-  },
-  {
-    "id": "registration-cost",
-    "title": "등기비용 합산기",
-    "description": "공식 조회·견적 금액을 입력해 취득세·채권·법무사비 등 준비비용을 합산합니다.",
-    "url": "tools/registration-cost/",
-    "status": "available",
-    "badge": "이용 가능",
-    "icon": "▣",
-    "category": "tax"
-  },
-  {
-    "id": "rent-vs-monthly",
-    "title": "전세 vs 월세 비교",
-    "description": "보증금 차액의 자금비용과 월세를 월 기준으로 비교합니다.",
-    "url": "tools/rent-vs-monthly/",
-    "status": "available",
-    "badge": "이용 가능",
-    "icon": "⇄",
-    "category": "rent"
-  },
-  {
-    "id": "rent-conversion",
-    "title": "전월세 전환 계산기",
-    "description": "보증금 증감에 따른 월세 조정액과 법정 전환율 상한을 확인합니다.",
-    "url": "tools/rent-conversion/",
-    "status": "available",
-    "badge": "이용 가능",
-    "icon": "↔",
-    "category": "rent"
-  }
+ {
+  "id": "redevelopment",
+  "title": "재개발 분담금 계산기",
+  "description": "권리가액과 조합원 분양가로 예상 분담금을 확인합니다.",
+  "url": "calc/",
+  "status": "available",
+  "badge": "이용 가능",
+  "icon": "▥",
+  "category": "redev"
+ },
+ {
+  "id": "youth-score",
+  "title": "청년주택 점수 계산기",
+  "description": "청년 매입임대·안심주택 순위와 가점을 30초에 확인합니다.",
+  "url": "https://arttoy61-png.github.io/rent-check/youth_score.html",
+  "status": "available",
+  "badge": "이용 가능",
+  "icon": "✓",
+  "category": "youth"
+ },
+ {
+  "id": "auction",
+  "title": "경매 물건 체크",
+  "description": "낙찰 전 확인할 권리·비용 항목을 점검합니다.",
+  "url": "https://arttoy61-png.github.io/rent-check/auction_check.html",
+  "status": "available",
+  "badge": "이용 가능",
+  "icon": "◱",
+  "category": "invest"
+ },
+ {
+  "id": "rent-check",
+  "title": "월세·전세 적정 확인",
+  "description": "화곡동 실거래 기준으로 내 계약 조건의 적정성을 확인합니다.",
+  "url": "https://arttoy61-png.github.io/rent-check/",
+  "status": "available",
+  "badge": "이용 가능",
+  "icon": "₩",
+  "category": "rent"
+ },
+ {
+  "id": "apt-widget",
+  "title": "아파트 단지 시세 지도",
+  "description": "단지를 눌러 최근 실거래 흐름을 지도에서 확인합니다.",
+  "url": "https://arttoy61-png.github.io/rent-check/hwagok_map_widget.html",
+  "status": "available",
+  "badge": "이용 가능",
+  "icon": "◫",
+  "category": "rent"
+ },
+ {
+  "id": "jeonse-ratio",
+  "title": "전세가율 계산기",
+  "description": "매매가 대비 전세가율과 위험 수준을 확인합니다.",
+  "url": null,
+  "status": "preparing",
+  "badge": "준비 중",
+  "icon": "％",
+  "category": "safety"
+ },
+ {
+  "id": "acquisition-tax",
+  "title": "취득세 계산기",
+  "description": "주택 수·금액별 취득세를 확인합니다.",
+  "url": null,
+  "status": "preparing",
+  "badge": "준비 중",
+  "icon": "◔",
+  "category": "tax"
+ },
+ {
+  "id": "brokerage-fee",
+  "title": "중개보수 계산기",
+  "description": "거래 유형별 중개보수 상한을 확인합니다.",
+  "url": null,
+  "status": "preparing",
+  "badge": "준비 중",
+  "icon": "◨",
+  "category": "tax"
+ }
 ]
