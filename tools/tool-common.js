@@ -14,6 +14,11 @@
     { id: 'rent-conversion', label: '전월세 전환', footerLabel: '전월세 전환 계산기', path: 'tools/rent-conversion/' }
   ];
   const toolLinks = [...primaryLinks, ...extraLinks];
+  const footerGroups = [
+    { label: '매매·전세', ids: ['rent-check', 'apartment', 'jeonse-ratio', 'rent-vs-monthly', 'rent-conversion'] },
+    { label: '세금·비용', ids: ['brokerage-fee', 'acquisition-tax', 'registration-cost'] },
+    { label: '청년·재개발', ids: ['youth-score', 'redevelopment'] }
+  ];
 
   function join(root, path) {
     if (!path) return root;
@@ -30,7 +35,18 @@
   function renderFooterLink(item, root, activeTool) {
     const isCurrent = item.id === activeTool;
     const current = isCurrent ? ' aria-current="page"' : '';
-    return `<a href="${join(root, item.path)}"${current}>${item.footerLabel}<span aria-hidden="true">→</span></a>`;
+    return `<a href="${join(root, item.path)}"${current}>${item.footerLabel}</a>`;
+  }
+
+  function renderFooterGroups(root, activeTool) {
+    return footerGroups.map((group) => {
+      const links = group.ids
+        .map((id) => toolLinks.find((item) => item.id === id))
+        .filter(Boolean)
+        .map((item) => renderFooterLink(item, root, activeTool))
+        .join('');
+      return `<section class="v2-tool-footer__group"><strong>${group.label}</strong><div>${links}</div></section>`;
+    }).join('');
   }
 
   function addDisclaimer(body, activeTool) {
@@ -115,22 +131,34 @@
       footer.className = 'v2-tool-footer';
       footer.innerHTML = `
         <div class="v2-tool-footer__inner">
-          <div class="v2-tool-footer__brand-block">
+          <div class="v2-tool-footer__top">
             <a class="v2-tool-footer__brand" href="${root}" aria-label="Rent Check 홈">
               <span class="v2-tool-footer__mark" aria-hidden="true">
                 <svg viewBox="0 0 28 28"><path d="M4 13 14 5l10 8v10H4z"></path><path d="m10 16 3 3 6-7"></path></svg>
               </span>
-              <strong>Rent Check</strong>
+              <span><strong>Rent Check</strong><small>부동산 계산과 실거래 해석</small></span>
             </a>
-            <p>부동산 계산과 실거래 해석</p>
+            <nav class="v2-tool-footer__actions" aria-label="공통 하단 바로가기">
+              <a class="v2-tool-footer__home" href="${root}">홈으로</a>
+              <button class="v2-tool-footer__toggle" type="button" aria-expanded="false" aria-controls="v2-tool-footer-tools">다른 도구 보기 <span aria-hidden="true">⌄</span></button>
+              <a class="v2-tool-footer__notice" href="${join(root, 'tools/calculator-notice/')}"${activeTool === 'calculator-notice' ? ' aria-current="page"' : ''}>계산기 이용안내</a>
+            </nav>
           </div>
-          <nav class="v2-tool-footer__links" aria-label="공통 하단 바로가기">
-            <a class="v2-tool-footer__home" href="${root}">홈으로 <span aria-hidden="true">→</span></a>
-            ${toolLinks.map((item) => renderFooterLink(item, root, activeTool)).join('')}
-            <a class="v2-tool-footer__notice" href="${join(root, 'tools/calculator-notice/')}"${activeTool === 'calculator-notice' ? ' aria-current="page"' : ''}>계산기 이용안내 <span aria-hidden="true">→</span></a>
-          </nav>
+          <div class="v2-tool-footer__panel" id="v2-tool-footer-tools" hidden>
+            ${renderFooterGroups(root, activeTool)}
+          </div>
         </div>`;
       body.insertAdjacentElement('beforeend', footer);
+
+      const toggle = footer.querySelector('.v2-tool-footer__toggle');
+      const panel = footer.querySelector('.v2-tool-footer__panel');
+      toggle.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') !== 'true';
+        toggle.setAttribute('aria-expanded', String(open));
+        panel.hidden = !open;
+        panel.classList.toggle('is-open', open);
+        toggle.classList.toggle('is-open', open);
+      });
     }
   }
 
