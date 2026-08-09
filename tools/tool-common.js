@@ -1,5 +1,5 @@
 (() => {
-  const toolLinks = [
+  const primaryLinks = [
     { id: 'redevelopment', label: '재개발', footerLabel: '재개발 계산기', path: 'calc/' },
     { id: 'youth-score', label: '청년주택', footerLabel: '청년주택 점수', path: 'tools/youth-score/' },
     { id: 'rent-check', label: '월세·전세', footerLabel: '월세·전세 확인', path: 'tools/rent-check/' },
@@ -7,6 +7,13 @@
     { id: 'jeonse-ratio', label: '전세가율', footerLabel: '전세가율 계산기', path: 'tools/jeonse-ratio/' },
     { id: 'brokerage-fee', label: '중개보수', footerLabel: '중개보수 계산기', path: 'tools/brokerage-fee/' }
   ];
+  const extraLinks = [
+    { id: 'acquisition-tax', label: '취득세', footerLabel: '취득세 계산기', path: 'tools/acquisition-tax/' },
+    { id: 'registration-cost', label: '등기비용', footerLabel: '등기비용 계산기', path: 'tools/registration-cost/' },
+    { id: 'rent-vs-monthly', label: '전세 vs 월세', footerLabel: '전세 vs 월세 비교', path: 'tools/rent-vs-monthly/' },
+    { id: 'rent-conversion', label: '전월세 전환', footerLabel: '전월세 전환 계산기', path: 'tools/rent-conversion/' }
+  ];
+  const toolLinks = [...primaryLinks, ...extraLinks];
 
   function join(root, path) {
     if (!path) return root;
@@ -45,7 +52,7 @@
             <span class="v2-toolbar__home-label">홈으로</span>
           </a>
           <nav class="v2-toolbar__nav" aria-label="도구 바로가기">
-            ${toolLinks.map((item) => renderLink(item, root, activeTool)).join('')}
+            ${primaryLinks.map((item) => renderLink(item, root, activeTool)).join('')}
           </nav>
           <button class="v2-toolbar__menu" type="button" aria-label="도구 바로가기 열기" aria-expanded="false">
             <span>도구 바로가기</span><b aria-hidden="true">⌄</b>
