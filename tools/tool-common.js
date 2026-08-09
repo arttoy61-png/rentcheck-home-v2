@@ -33,6 +33,36 @@
     return `<a href="${join(root, item.path)}"${current}>${item.footerLabel}<span aria-hidden="true">→</span></a>`;
   }
 
+  function addDisclaimer(body, activeTool) {
+    if (activeTool === 'calculator-notice' || document.querySelector('.v2-tool-disclaimer')) return;
+    const main = body.querySelector('main');
+    if (!main) return;
+
+    if (!document.getElementById('v2-tool-disclaimer-style')) {
+      const style = document.createElement('style');
+      style.id = 'v2-tool-disclaimer-style';
+      style.textContent = `
+        .v2-tool-disclaimer {
+          margin: 12px 0 0;
+          color: #7a859a;
+          font-size: 11px;
+          line-height: 1.6;
+        }
+        @media (max-width: 560px) {
+          .v2-tool-disclaimer { font-size: 10px; }
+        }`;
+      document.head.appendChild(style);
+    }
+
+    const notice = document.createElement('p');
+    notice.className = 'v2-tool-disclaimer';
+    notice.textContent = '계산 결과는 참고용입니다. 실제 적용 전 공식 기준을 확인하세요.';
+
+    const result = main.querySelector('.result');
+    if (result) result.insertAdjacentElement('afterend', notice);
+    else main.appendChild(notice);
+  }
+
   function initializeToolShell() {
     const body = document.body;
     if (!body) return;
@@ -78,6 +108,8 @@
       }));
     }
 
+    addDisclaimer(body, activeTool);
+
     if (!document.querySelector('.v2-tool-footer')) {
       const footer = document.createElement('footer');
       footer.className = 'v2-tool-footer';
@@ -95,6 +127,7 @@
           <nav class="v2-tool-footer__links" aria-label="공통 하단 바로가기">
             <a class="v2-tool-footer__home" href="${root}">홈으로 <span aria-hidden="true">→</span></a>
             ${toolLinks.map((item) => renderFooterLink(item, root, activeTool)).join('')}
+            <a class="v2-tool-footer__notice" href="${join(root, 'tools/calculator-notice/')}"${activeTool === 'calculator-notice' ? ' aria-current="page"' : ''}>계산기 이용안내 <span aria-hidden="true">→</span></a>
           </nav>
         </div>`;
       body.insertAdjacentElement('beforeend', footer);
