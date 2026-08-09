@@ -158,6 +158,12 @@
         panel.hidden = !open;
         panel.classList.toggle('is-open', open);
         toggle.classList.toggle('is-open', open);
+
+        if (open) {
+          window.setTimeout(() => {
+            panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 60);
+        }
       });
     }
   }
