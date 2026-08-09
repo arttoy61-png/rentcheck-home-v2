@@ -1,176 +1,83 @@
 (() => {
-  const primaryLinks = [
-    { id: 'redevelopment', label: '재개발', footerLabel: '재개발 계산기', path: 'calc/' },
-    { id: 'youth-score', label: '청년주택', footerLabel: '청년주택 점수', path: 'tools/youth-score/' },
-    { id: 'rent-check', label: '월세·전세', footerLabel: '월세·전세 확인', path: 'tools/rent-check/' },
-    { id: 'apartment', label: '아파트 시세', footerLabel: '아파트 시세', path: 'tools/apartment/' },
-    { id: 'jeonse-ratio', label: '전세가율', footerLabel: '전세가율 계산기', path: 'tools/jeonse-ratio/' },
-    { id: 'brokerage-fee', label: '중개보수', footerLabel: '중개보수 계산기', path: 'tools/brokerage-fee/' }
+  const toolLinks = [
+    { id:'redevelopment', label:'재개발 계산기', path:'calc/', group:'청년·재개발' },
+    { id:'youth-score', label:'청년주택 점수', path:'tools/youth-score/', group:'청년·재개발' },
+    { id:'rent-check', label:'월세·전세 확인', path:'tools/rent-check/', group:'매매·전세' },
+    { id:'apartment', label:'아파트 실거래', path:'tools/apartment/', group:'매매·전세' },
+    { id:'jeonse-ratio', label:'전세가율 계산기', path:'tools/jeonse-ratio/', group:'매매·전세' },
+    { id:'rent-vs-monthly', label:'전세 vs 월세 비교', path:'tools/rent-vs-monthly/', group:'매매·전세' },
+    { id:'rent-conversion', label:'전월세 전환 계산기', path:'tools/rent-conversion/', group:'매매·전세' },
+    { id:'brokerage-fee', label:'중개보수 계산기', path:'tools/brokerage-fee/', group:'세금·비용' },
+    { id:'registration-cost', label:'등기비용 합산기', path:'tools/registration-cost/', group:'세금·비용' }
   ];
-  const extraLinks = [
-    { id: 'acquisition-tax', label: '취득세', footerLabel: '취득세 계산기', path: 'tools/acquisition-tax/' },
-    { id: 'registration-cost', label: '등기비용', footerLabel: '등기비용 계산기', path: 'tools/registration-cost/' },
-    { id: 'rent-vs-monthly', label: '전세 vs 월세', footerLabel: '전세 vs 월세 비교', path: 'tools/rent-vs-monthly/' },
-    { id: 'rent-conversion', label: '전월세 전환', footerLabel: '전월세 전환 계산기', path: 'tools/rent-conversion/' }
-  ];
-  const toolLinks = [...primaryLinks, ...extraLinks];
-  const footerGroups = [
-    { label: '매매·전세', ids: ['rent-check', 'apartment', 'jeonse-ratio', 'rent-vs-monthly', 'rent-conversion'] },
-    { label: '세금·비용', ids: ['brokerage-fee', 'acquisition-tax', 'registration-cost'] },
-    { label: '청년·재개발', ids: ['youth-score', 'redevelopment'] }
-  ];
+  const groups=['매매·전세','세금·비용','청년·재개발'];
+  const eventNames={
+    'jeonse-ratio':'jeonse_calc',
+    'acquisition-tax':'acquisition_calc',
+    'brokerage-fee':'brokerage_calc',
+    'registration-cost':'registration_calc',
+    'rent-vs-monthly':'rent_vs_monthly_calc',
+    'rent-conversion':'rent_conversion_calc',
+    'rent-check':'rent_check_calc',
+    'redevelopment':'redevelopment_calc',
+    'youth-score':'youth_score_calc'
+  };
+  const join=(root,path)=>`${root}${path||''}`;
 
-  function join(root, path) {
-    if (!path) return root;
-    if (path.startsWith('#')) return `${root}${path}`;
-    return `${root}${path}`;
+  function renderToolLink(item,root,activeTool){
+    return `<a href="${join(root,item.path)}"${item.id===activeTool?' aria-current="page"':''}>${item.label}</a>`;
   }
-
-  function renderLink(item, root, activeTool) {
-    const isCurrent = item.id === activeTool;
-    const current = isCurrent ? ' aria-current="page"' : '';
-    return `<a href="${join(root, item.path)}"${current}>${item.label}</a>`;
+  function renderGroups(root,activeTool){
+    return groups.map(group=>`<section class="v2-tool-footer__group"><strong>${group}</strong><div>${toolLinks.filter(x=>x.group===group).map(x=>renderToolLink(x,root,activeTool)).join('')}</div></section>`).join('');
   }
-
-  function renderFooterLink(item, root, activeTool) {
-    const isCurrent = item.id === activeTool;
-    const current = isCurrent ? ' aria-current="page"' : '';
-    return `<a href="${join(root, item.path)}"${current}>${item.footerLabel}</a>`;
-  }
-
-  function renderFooterGroups(root, activeTool) {
-    return footerGroups.map((group) => {
-      const links = group.ids
-        .map((id) => toolLinks.find((item) => item.id === id))
-        .filter(Boolean)
-        .map((item) => renderFooterLink(item, root, activeTool))
-        .join('');
-      return `<section class="v2-tool-footer__group"><strong>${group.label}</strong><div>${links}</div></section>`;
-    }).join('');
-  }
-
-  function addDisclaimer(body, activeTool) {
-    if (activeTool === 'calculator-notice' || document.querySelector('.v2-tool-disclaimer')) return;
-    const main = body.querySelector('main');
-    if (!main) return;
-
-    if (!document.getElementById('v2-tool-disclaimer-style')) {
-      const style = document.createElement('style');
-      style.id = 'v2-tool-disclaimer-style';
-      style.textContent = `
-        .v2-tool-disclaimer {
-          margin: 12px 0 0;
-          color: #7a859a;
-          font-size: 11px;
-          line-height: 1.6;
-        }
-        @media (max-width: 560px) {
-          .v2-tool-disclaimer { font-size: 10px; }
-        }`;
-      document.head.appendChild(style);
-    }
-
-    const notice = document.createElement('p');
-    notice.className = 'v2-tool-disclaimer';
-    notice.textContent = '계산 결과는 참고용입니다. 실제 적용 전 공식 기준을 확인하세요.';
-
-    const result = main.querySelector('.result');
-    if (result) result.insertAdjacentElement('afterend', notice);
-    else main.appendChild(notice);
-  }
-
-  function initializeToolShell() {
-    const body = document.body;
-    if (!body) return;
-
-    const root = body.dataset.v2Root || '../../';
-    const activeTool = body.dataset.toolId || '';
-
-    if (!document.querySelector('.v2-toolbar')) {
-      const toolbar = document.createElement('div');
-      toolbar.className = 'v2-toolbar';
-      toolbar.setAttribute('role', 'banner');
-      toolbar.innerHTML = `
-        <div class="v2-toolbar__inner">
-          <a class="v2-toolbar__home" href="${root}" aria-label="Rent Check 홈으로">
-            <span class="v2-toolbar__back" aria-hidden="true">←</span>
-            <strong>Rent Check</strong>
-            <span class="v2-toolbar__home-label">홈으로</span>
-          </a>
-          <nav class="v2-toolbar__nav" aria-label="도구 바로가기">
-            ${primaryLinks.map((item) => renderLink(item, root, activeTool)).join('')}
-          </nav>
-          <button class="v2-toolbar__menu" type="button" aria-label="도구 바로가기 열기" aria-expanded="false">
-            <span>도구 바로가기</span><b aria-hidden="true">⌄</b>
-          </button>
-        </div>
-        <nav class="v2-toolbar__mobile" aria-label="모바일 도구 바로가기">
-          ${toolLinks.map((item) => renderLink(item, root, activeTool)).join('')}
-        </nav>`;
-
-      body.insertAdjacentElement('afterbegin', toolbar);
-
-      const menu = toolbar.querySelector('.v2-toolbar__menu');
-      const mobile = toolbar.querySelector('.v2-toolbar__mobile');
-      menu.addEventListener('click', () => {
-        const open = mobile.classList.toggle('is-open');
-        menu.setAttribute('aria-expanded', String(open));
-        menu.setAttribute('aria-label', open ? '도구 바로가기 닫기' : '도구 바로가기 열기');
-      });
-      mobile.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-        mobile.classList.remove('is-open');
-        menu.setAttribute('aria-expanded', 'false');
-        menu.setAttribute('aria-label', '도구 바로가기 열기');
-      }));
-    }
-
-    addDisclaimer(body, activeTool);
-
-    if (!document.querySelector('.v2-tool-footer')) {
-      const footer = document.createElement('footer');
-      footer.className = 'v2-tool-footer';
-      footer.innerHTML = `
-        <div class="v2-tool-footer__inner">
-          <div class="v2-tool-footer__top">
-            <a class="v2-tool-footer__brand" href="${root}" aria-label="Rent Check 홈">
-              <span class="v2-tool-footer__mark" aria-hidden="true">
-                <svg viewBox="0 0 28 28"><path d="M4 13 14 5l10 8v10H4z"></path><path d="m10 16 3 3 6-7"></path></svg>
-              </span>
-              <span><strong>Rent Check</strong><small>부동산 계산과 실거래 해석</small></span>
-            </a>
-            <nav class="v2-tool-footer__actions" aria-label="공통 하단 바로가기">
-              <a class="v2-tool-footer__home" href="${root}">홈으로</a>
-              <button class="v2-tool-footer__toggle" type="button" aria-expanded="false" aria-controls="v2-tool-footer-tools">다른 도구 보기 <span aria-hidden="true">⌄</span></button>
-              <a class="v2-tool-footer__notice" href="${join(root, 'tools/calculator-notice/')}"${activeTool === 'calculator-notice' ? ' aria-current="page"' : ''}>계산기 이용안내</a>
-            </nav>
-          </div>
-          <div class="v2-tool-footer__panel" id="v2-tool-footer-tools" hidden>
-            ${renderFooterGroups(root, activeTool)}
-          </div>
-        </div>`;
-      body.insertAdjacentElement('beforeend', footer);
-
-      const toggle = footer.querySelector('.v2-tool-footer__toggle');
-      const panel = footer.querySelector('.v2-tool-footer__panel');
-      toggle.addEventListener('click', () => {
-        const open = toggle.getAttribute('aria-expanded') !== 'true';
-        toggle.setAttribute('aria-expanded', String(open));
-        panel.hidden = !open;
-        panel.classList.toggle('is-open', open);
-        toggle.classList.toggle('is-open', open);
-
-        if (open) {
-          window.setTimeout(() => {
-            panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 60);
-        }
-      });
+  function ensureGA(){
+    if(typeof window.gtag==='function')return;
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=function(){window.dataLayer.push(arguments);};
+    window.gtag('js',new Date());
+    window.gtag('config','G-MPRR3J99YQ');
+    if(!document.querySelector('script[src*="googletagmanager.com/gtag/js"]')){
+      const script=document.createElement('script');script.async=true;script.src='https://www.googletagmanager.com/gtag/js?id=G-MPRR3J99YQ';document.head.appendChild(script);
     }
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeToolShell, { once: true });
-  } else {
-    initializeToolShell();
+  function normalizeBrand(){
+    document.title=document.title.replace(/렌트체크\s*강서/gi,'Rent Check').replace(/Rent Check\s*강서/gi,'Rent Check');
+    document.querySelectorAll('.brandbar').forEach(el=>{el.style.display='none';});
+    document.querySelectorAll('.container > header .brand').forEach(el=>{if(/RENT CHECKER|렌트체크/.test(el.textContent))el.textContent='Rent Check';});
   }
+  function addDisclaimer(body,activeTool){
+    if(activeTool==='calculator-notice'||document.querySelector('.v2-tool-disclaimer'))return;
+    const main=body.querySelector('main,.wrap,.container');if(!main)return;
+    const notice=document.createElement('p');notice.className='v2-tool-disclaimer';notice.textContent='계산 결과는 참고용입니다. 실제 적용 전 공식 기준을 확인하세요.';main.appendChild(notice);
+  }
+  function addResultNext(body,root){
+    const result=body.querySelector('.result,#result');if(!result||document.querySelector('.v2-result-next'))return;
+    const row=document.createElement('nav');row.className='v2-result-next';row.setAttribute('aria-label','계산 후 이동');row.innerHTML=`<a href="${root}">홈으로</a><span>·</span><a href="${root}#calculators">다른 계산기</a>`;result.insertAdjacentElement('afterend',row);
+    const sync=()=>{const cs=getComputedStyle(result);const visible=cs.display!=='none'&&cs.visibility!=='hidden'&&(result.classList.contains('show')||result.offsetHeight>0);row.classList.toggle('is-visible',visible);};
+    new MutationObserver(sync).observe(result,{attributes:true,attributeFilter:['class','style']});sync();
+  }
+  function bindCalcEvent(activeTool){
+    const name=eventNames[activeTool];if(!name)return;
+    const selectors=['#calculate','.calculate','.calc-btn','#checkBtn'];
+    document.querySelectorAll(selectors.join(',')).forEach(btn=>{if(btn.dataset.gaBound)return;btn.dataset.gaBound='1';btn.addEventListener('click',()=>{try{window.gtag?.('event',name);}catch(_){}});});
+  }
+
+  function initializeToolShell(){
+    const body=document.body;if(!body)return;
+    const root=body.dataset.v2Root||'../../';const activeTool=body.dataset.toolId||'';
+    ensureGA();normalizeBrand();
+    if(!document.querySelector('.v2-toolbar')){
+      const toolbar=document.createElement('header');toolbar.className='v2-toolbar';
+      toolbar.innerHTML=`<div class="v2-toolbar__inner"><a class="v2-toolbar__home" href="${root}" aria-label="Rent Check 홈"><span class="v2-toolbar__mark" aria-hidden="true"><svg viewBox="0 0 28 28"><path d="M4 13 14 5l10 8v10H4z"></path><path d="m10 16 3 3 6-7"></path></svg></span><strong>Rent Check</strong></a><a class="v2-toolbar__tools" href="${root}#calculators">다른 도구 보기 <span aria-hidden="true">→</span></a></div>`;
+      body.insertAdjacentElement('afterbegin',toolbar);
+    }
+    addDisclaimer(body,activeTool);addResultNext(body,root);bindCalcEvent(activeTool);
+    if(!document.querySelector('.v2-tool-footer')){
+      const footer=document.createElement('footer');footer.className='v2-tool-footer';
+      footer.innerHTML=`<div class="v2-tool-footer__inner"><div class="v2-tool-footer__top"><a class="v2-tool-footer__brand" href="${root}" aria-label="Rent Check 홈"><span class="v2-tool-footer__mark" aria-hidden="true"><svg viewBox="0 0 28 28"><path d="M4 13 14 5l10 8v10H4z"></path><path d="m10 16 3 3 6-7"></path></svg></span><span><strong>Rent Check</strong><small>실거래로 더 정확하게</small></span></a><nav class="v2-tool-footer__actions" aria-label="공통 하단 바로가기"><a class="v2-tool-footer__home" href="${root}">홈으로</a><button class="v2-tool-footer__toggle" type="button" aria-expanded="false" aria-controls="v2-tool-footer-tools">다른 도구 보기 <span aria-hidden="true">⌄</span></button><a class="v2-tool-footer__notice" href="${join(root,'tools/calculator-notice/')}"${activeTool==='calculator-notice'?' aria-current="page"':''}>계산기 이용안내</a></nav></div><div class="v2-tool-footer__panel" id="v2-tool-footer-tools" hidden>${renderGroups(root,activeTool)}</div></div>`;
+      body.insertAdjacentElement('beforeend',footer);
+      const toggle=footer.querySelector('.v2-tool-footer__toggle'),panel=footer.querySelector('.v2-tool-footer__panel');toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));panel.hidden=!open;toggle.classList.toggle('is-open',open);if(open)setTimeout(()=>panel.scrollIntoView({behavior:'smooth',block:'start'}),60);});
+    }
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initializeToolShell,{once:true});else initializeToolShell();
 })();
