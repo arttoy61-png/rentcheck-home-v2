@@ -1,0 +1,80 @@
+name: Update V2 home stats
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/update-home-stats.yml"
+      - "scripts/make_home_stats.py"
+  schedule:
+    - cron: "30 16 * * *" # 매일 01:30 KST
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rentcheck-home-v2-home-stats
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Download current source data
+        run: |
+          mkdir -p .cache-home-stats
+          curl -fL --retry 3 --retry-delay 2 \
+            -o .cache-home-stats/molit_kangseo.csv \
+            https://raw.githubusercontent.com/arttoy61-png/rent-check/main/molit_kangseo.csv
+          curl -fL --retry 3 --retry-delay 2 \
+            -o .cache-home-stats/gangseo_apt_detail.json \
+            https://raw.githubusercontent.com/arttoy61-png/rent-check/main/gangseo_apt_detail.json
+
+      - name: Build home_stats
+        run: python scripts/make_home_stats.py
+
+      - name: Validate home_stats
+        run: |
+          python -m json.tool data/home_stats.json >/dev/null
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = json.loads(Path('data/home_stats.json').read_text(encoding='utf-8'))
+          assert p.get('schema_version') == 2
+          assert isinstance(p.get('recent_deals'), list)
+          assert len(p['recent_deals']) <= 3
+          assert isinstance(p.get('monthly_trend'), list) and len(p['monthly_trend']) == 6
+          print('home_stats validation OK')
+          PY
+
+      - name: Point V2 homepage at local stats
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('app.js')
+          text = path.read_text(encoding='utf-8')
+          old = 'https://arttoy61-png.github.io/rent-check/home_stats.json'
+          new = './data/home_stats.json'
+          if old in text:
+              text = text.replace(old, new)
+              path.write_text(text, encoding='utf-8')
+          elif new not in text:
+              raise SystemExit('home_stats fetch URL not found in app.js')
+          PY
+
+      - name: Commit generated homepage data
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add data/home_stats.json app.js
+          git diff --cached --quiet || git commit -m "stats: daily home_stats"
+          git push
