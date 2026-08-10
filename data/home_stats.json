@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-08-10T14:29:19+09:00",
+  "data_until": "2026-08-07",
+  "source": "국토교통부 실거래가 공개시스템",
+  "scope": "서울특별시 강서구",
+  "jeonse_ratio": null,
+  "recent_deals": [
+    {
+      "dong": "방화동",
+      "name": "방화3차우림필유",
+      "area_m2": 60,
+      "amount_eok": 6.25,
+      "date": "2026.08.06",
+      "complex_id": "9ace17b4"
+    },
+    {
+      "dong": "가양동",
+      "name": "강변",
+      "area_m2": 34,
+      "amount_eok": 8.03,
+      "date": "2026.08.06",
+      "complex_id": "de11b19d"
+    },
+    {
+      "dong": "등촌동",
+      "name": "주공5",
+      "area_m2": 58,
+      "amount_eok": 10.3,
+      "date": "2026.08.06",
+      "complex_id": "7765858a"
+    }
+  ],
+  "monthly_trend": [
+    {
+      "month": "2026-03",
+      "count": 356
+    },
+    {
+      "month": "2026-04",
+      "count": 603
+    },
+    {
+      "month": "2026-05",
+      "count": 571
+    },
+    {
+      "month": "2026-06",
+      "count": 369
+    },
+    {
+      "month": "2026-07",
+      "count": 290
+    },
+    {
+      "month": "2026-08",
+      "count": 10
+    }
+  ]
+}
