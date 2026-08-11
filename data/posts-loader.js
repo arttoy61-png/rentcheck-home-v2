@@ -6,6 +6,7 @@
     if(!response.ok)return;
     const recent=await response.json();
     if(!Array.isArray(recent)||!recent.length)return;
+    for(let i=0;i<100&&state.posts.length===0;i++)await new Promise(resolve=>setTimeout(resolve,50));
     const byUrl=new Map(state.posts.map(post=>[post.url,post]));
     recent.forEach(post=>{if(post?.url)byUrl.set(post.url,{...(byUrl.get(post.url)||{}),...post})});
     state.posts=[...byUrl.values()];
