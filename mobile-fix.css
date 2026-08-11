@@ -1,0 +1,10 @@
+@media (max-width: 760px){
+  .hero{overflow:visible;padding-bottom:42px}
+  .hero-grid{min-height:0;display:block}
+  .product-stage{height:auto;margin-top:28px}
+  .product-ui{position:relative;left:auto;top:auto;width:100%;height:auto;min-height:0;overflow:visible}
+  .product-body{padding-bottom:20px}
+  .deal-ticker{min-height:0}
+  .workflow{height:auto;min-height:36px;padding:10px 0;flex-wrap:wrap;row-gap:6px}
+  .product-link{height:auto;min-height:44px;padding:12px 14px;margin-top:4px;line-height:1.35}
+}
