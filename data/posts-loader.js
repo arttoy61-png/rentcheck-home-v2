@@ -1,8 +1,8 @@
-// Loads small incremental post files after the legacy archive.
+// Loads the shared incremental post feed used by both Rent Check home sites.
 // Also refreshes the homepage apartment ticker directly from the live Rent Check dataset.
 (async()=>{
   try{
-    const response=await fetch('./data/posts_recent.json',{cache:'no-cache'});
+    const response=await fetch('./data/posts_shared.json',{cache:'no-cache'});
     if(response.ok){
       const recent=await response.json();
       if(Array.isArray(recent)&&recent.length){
@@ -16,7 +16,7 @@
         if(count)count.textContent=String(publishedPosts().length);
       }
     }
-  }catch(_){/* Keep the legacy archive working if the incremental file is unavailable. */}
+  }catch(_){/* Keep the legacy archive working if the shared feed is unavailable. */}
 
   try{
     const liveResponse=await fetch('https://arttoy61-png.github.io/rent-check/gangseo_apt_summary.json',{cache:'no-cache'});
@@ -25,8 +25,6 @@
     const complexes=Array.isArray(live?.complexes)?live.complexes:[];
     if(!complexes.length)return;
 
-    // The displayed 기준일 follows the newest actual contract date in the live dataset,
-    // not today's calendar date and not a manually edited home_stats.json value.
     const dates=[];
     complexes.forEach(item=>{
       if(item?.rc?.d)dates.push(String(item.rc.d));
@@ -34,7 +32,6 @@
     });
     const latestDate=dates.sort().at(-1)||'';
 
-    // Homepage ticker = three most recent apartment sale contracts from the same live source.
     const deals=complexes
       .filter(item=>item?.last?.date&&Number.isFinite(Number(item?.last?.amt)))
       .sort((a,b)=>String(b.last.date).localeCompare(String(a.last.date))||Number(b.last.amt)-Number(a.last.amt))
