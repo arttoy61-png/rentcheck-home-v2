@@ -80,16 +80,6 @@
     "category": "tax"
   },
   {
-    "id": "registration-cost",
-    "title": "등기비용 합산기",
-    "description": "공식 조회·견적 금액을 입력해 취득세·채권·법무사비 등 준비비용을 합산합니다.",
-    "url": "tools/registration-cost/",
-    "status": "available",
-    "badge": "이용 가능",
-    "icon": "▣",
-    "category": "tax"
-  },
-  {
     "id": "rent-vs-monthly",
     "title": "전세 vs 월세 비교",
     "description": "보증금 차액의 자금비용과 월세를 월 기준으로 비교합니다.",
