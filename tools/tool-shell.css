@@ -17,8 +17,6 @@ body.v2-tool-page .v2-normalized-hero>.v2-legacy-hero-label{display:none!importa
 body.v2-tool-page .v2-normalized-hero h1{position:relative!important;z-index:2!important;margin:0!important;color:#fff!important;font-size:28px!important;font-weight:700!important;line-height:1.35!important;letter-spacing:-.035em!important}
 body.v2-tool-page .v2-normalized-hero :where(p,.sub,.subtitle){position:relative!important;z-index:2!important;max-width:620px!important;margin:8px 0 0!important;color:#d6dde6!important;font-size:14px!important;line-height:1.7!important}
 body.v2-tool-page .v2-normalized-hero :where(p,.sub,.subtitle) :where(strong,b){color:var(--v2-gold)!important}
-body[data-tool-id="rent-check"] .v2-normalized-hero .owner-info{position:relative!important;z-index:2!important;margin:10px 0 0!important;padding:0!important;border:0!important;background:transparent!important;color:#aeb9c7!important;font-size:11px!important;line-height:1.55!important}
-body[data-tool-id="rent-check"] .v2-normalized-hero .owner-info a{color:#f0d68d!important;font-weight:700!important;text-decoration:none!important}
 body.v2-tool-page :where(.card,.basis,.body,.det,.rcard){color:var(--v2-ink)}
 body.v2-tool-page :where(.card,.basis,.body,.det) :where(h2,h3,h4){color:var(--v2-navy)!important}
 body.v2-tool-page :where(.field label,.step-t,.step-label,.sub-label){color:#52606e!important}
@@ -26,4 +24,45 @@ body.v2-tool-page :where(.note,.hint,.unit,.basis p,.meta,.mi,.cd,.rd){color:var
 body.v2-tool-page a:not(.v2-toolbar a):not(.v2-tool-footer a):not(.btn-primary):not(.calculate):not(.calc-btn){text-decoration:none}
 body.v2-tool-page footer:not(.v2-tool-footer),body.v2-tool-page .foot{display:none!important}
 body.v2-tool-page>.v2-tool-footer{display:block!important}
-@media(max-width:560px){body.v2-tool-page :where(main.page,main.v2-tool-main,.wrap,.container){width:min(calc(100% - 20px),760px)!important}body.v2-tool-page .v2-normalized-hero{min-height:154px!important;padding:22px 18px!important;border-radius:16px!important}body.v2-tool-page .v2-normalized-hero h1{font-size:23px!important}body.v2-tool-page .v2-normalized-hero :where(p,.sub,.subtitle){font-size:13px!important;line-height:1.65!important}}
+
+/* Public tool hero: exactly Rent Check / title / one-line description. */
+body[data-tool-id="redevelopment"] .v2-normalized-hero>.badge,
+body[data-tool-id="youth-score"] .v2-normalized-hero>.badge,
+body[data-tool-id="youth-score"] .v2-normalized-hero>.trust,
+body[data-tool-id="rent-check"] .v2-normalized-hero>.owner-info{display:none!important}
+body[data-tool-id="redevelopment"] .v2-normalized-hero h1,
+body[data-tool-id="youth-score"] .v2-normalized-hero h1,
+body[data-tool-id="rent-check"] .v2-normalized-hero h1,
+body[data-tool-id="apartment"] .v2-normalized-hero h1,
+body[data-tool-id="jeonse-ratio"] .v2-normalized-hero h1,
+body[data-tool-id="rent-vs-monthly"] .v2-normalized-hero h1,
+body[data-tool-id="rent-conversion"] .v2-normalized-hero h1,
+body[data-tool-id="brokerage-fee"] .v2-normalized-hero h1{font-size:0!important}
+body[data-tool-id="redevelopment"] .v2-normalized-hero h1::after{content:"재개발 자금 30초 계산기"}
+body[data-tool-id="youth-score"] .v2-normalized-hero h1::after{content:"청년주택 점수 계산기"}
+body[data-tool-id="rent-check"] .v2-normalized-hero h1::after{content:"내 월세·전세, 적정한가요?"}
+body[data-tool-id="apartment"] .v2-normalized-hero h1::after{content:"강서구 아파트 실거래"}
+body[data-tool-id="jeonse-ratio"] .v2-normalized-hero h1::after{content:"전세가율 계산기"}
+body[data-tool-id="rent-vs-monthly"] .v2-normalized-hero h1::after{content:"전세 vs 월세 비교"}
+body[data-tool-id="rent-conversion"] .v2-normalized-hero h1::after{content:"전월세 전환 계산기"}
+body[data-tool-id="brokerage-fee"] .v2-normalized-hero h1::after{content:"중개보수 계산기"}
+body.v2-tool-page .v2-normalized-hero h1::after{display:block;color:#fff;font-size:28px;font-weight:700;line-height:1.35;letter-spacing:-.035em}
+body[data-tool-id="redevelopment"] .v2-normalized-hero>p,
+body[data-tool-id="youth-score"] .v2-normalized-hero>.sub,
+body[data-tool-id="rent-check"] .v2-normalized-hero>.subtitle,
+body[data-tool-id="apartment"] .v2-normalized-hero>.sub,
+body[data-tool-id="jeonse-ratio"] .v2-normalized-hero>p:not(.eyebrow),
+body[data-tool-id="rent-vs-monthly"] .v2-normalized-hero>p:not(.eyebrow),
+body[data-tool-id="rent-conversion"] .v2-normalized-hero>p:not(.eyebrow),
+body[data-tool-id="brokerage-fee"] .v2-normalized-hero>p:not(.eyebrow){font-size:0!important}
+body[data-tool-id="redevelopment"] .v2-normalized-hero>p::after{content:"소유주는 분담금, 매수자는 총투입금을 계산합니다."}
+body[data-tool-id="youth-score"] .v2-normalized-hero>.sub::after{content:"LH·SH 매입임대·청년안심주택 순위와 가점을 확인합니다."}
+body[data-tool-id="rent-check"] .v2-normalized-hero>.subtitle::after{content:"강서구 화곡동 실거래 기준으로 내 계약 조건을 비교합니다."}
+body[data-tool-id="apartment"] .v2-normalized-hero>.sub::after{content:"동과 단지를 골라 매매·전세·월세 실거래를 확인합니다."}
+body[data-tool-id="jeonse-ratio"] .v2-normalized-hero>p:not(.eyebrow)::after{content:"매매가에서 전세보증금이 차지하는 비율을 확인합니다."}
+body[data-tool-id="rent-vs-monthly"] .v2-normalized-hero>p:not(.eyebrow)::after{content:"두 계약의 월 부담을 같은 기준으로 비교합니다."}
+body[data-tool-id="rent-conversion"] .v2-normalized-hero>p:not(.eyebrow)::after{content:"보증금을 바꿀 때 월세가 얼마나 달라지는지 계산합니다."}
+body[data-tool-id="brokerage-fee"] .v2-normalized-hero>p:not(.eyebrow)::after{content:"매매·전세·월세의 최대 중개보수를 계산합니다."}
+body.v2-tool-page .v2-normalized-hero :is(p,.sub,.subtitle)::after{display:block;color:#d6dde6;font-size:14px;font-weight:400;line-height:1.7;letter-spacing:-.02em}
+
+@media(max-width:560px){body.v2-tool-page :where(main.page,main.v2-tool-main,.wrap,.container){width:min(calc(100% - 20px),760px)!important}body.v2-tool-page .v2-normalized-hero{min-height:154px!important;padding:22px 18px!important;border-radius:16px!important}body.v2-tool-page .v2-normalized-hero h1{font-size:0!important}body.v2-tool-page .v2-normalized-hero h1::after{font-size:23px!important}body.v2-tool-page .v2-normalized-hero :where(p,.sub,.subtitle){font-size:0!important}body.v2-tool-page .v2-normalized-hero :is(p,.sub,.subtitle)::after{font-size:13px!important;line-height:1.65!important}}
