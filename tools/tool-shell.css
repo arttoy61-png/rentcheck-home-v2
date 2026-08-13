@@ -8,3 +8,22 @@ body.v2-tool-page :where(.hero,.chero,.hd,.container>header) h1{font-size:clamp(
 .v2-tool-disclaimer{margin:12px auto 0!important;color:var(--v2-muted)!important;font-size:11px!important;line-height:1.65!important}.v2-result-next{display:none;margin:12px 0 0;align-items:center;gap:7px;color:var(--v2-muted);font-size:12px}.v2-result-next.is-visible{display:flex}.v2-result-next a{color:var(--v2-blue);font-weight:700;text-decoration:none}
 @media(max-width:768px){html{scroll-padding-top:70px}.v2-toolbar{height:62px}.v2-toolbar__inner{width:calc(100% - 24px)}.v2-toolbar__home{font-size:14px}.v2-toolbar__tools{min-height:38px;padding:0 10px;font-size:12px}body[data-tool-id="apartment"] .crumbbar{top:62px}.v2-tool-disclaimer{font-size:11px!important}.v2-result-next{font-size:12px}}
 @media(max-width:390px){.v2-toolbar__tools{font-size:11px;padding-inline:9px}}
+
+/* Shared tool-page lock: keep every calculator visually consistent even when legacy inline CSS differs. */
+body.v2-tool-page :where(main.page,main.v2-tool-main,.wrap,.container){width:min(calc(100% - 32px),760px)!important;max-width:760px!important;margin-left:auto!important;margin-right:auto!important}
+body.v2-tool-page .v2-normalized-hero{box-sizing:border-box!important;min-height:172px!important;margin:0 0 16px!important;padding:24px 30px!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:center!important;overflow:hidden!important;border:0!important;border-radius:18px!important;background:linear-gradient(135deg,#0d1f3c 0%,#16385f 100%)!important;box-shadow:0 18px 45px rgba(13,31,60,.16)!important;color:#fff!important;text-align:left!important}
+body.v2-tool-page .v2-normalized-hero .v2-hero-brand{position:relative!important;z-index:2!important;margin:0 0 8px!important;color:var(--v2-gold)!important;font-size:12px!important;font-weight:700!important;line-height:1.35!important;letter-spacing:.01em!important}
+body.v2-tool-page .v2-normalized-hero>.v2-legacy-hero-label{display:none!important}
+body.v2-tool-page .v2-normalized-hero h1{position:relative!important;z-index:2!important;margin:0!important;color:#fff!important;font-size:28px!important;font-weight:700!important;line-height:1.35!important;letter-spacing:-.035em!important}
+body.v2-tool-page .v2-normalized-hero :where(p,.sub,.subtitle){position:relative!important;z-index:2!important;max-width:620px!important;margin:8px 0 0!important;color:#d6dde6!important;font-size:14px!important;line-height:1.7!important}
+body.v2-tool-page .v2-normalized-hero :where(p,.sub,.subtitle) :where(strong,b){color:var(--v2-gold)!important}
+body[data-tool-id="rent-check"] .v2-normalized-hero .owner-info{position:relative!important;z-index:2!important;margin:10px 0 0!important;padding:0!important;border:0!important;background:transparent!important;color:#aeb9c7!important;font-size:11px!important;line-height:1.55!important}
+body[data-tool-id="rent-check"] .v2-normalized-hero .owner-info a{color:#f0d68d!important;font-weight:700!important;text-decoration:none!important}
+body.v2-tool-page :where(.card,.basis,.body,.det,.rcard){color:var(--v2-ink)}
+body.v2-tool-page :where(.card,.basis,.body,.det) :where(h2,h3,h4){color:var(--v2-navy)!important}
+body.v2-tool-page :where(.field label,.step-t,.step-label,.sub-label){color:#52606e!important}
+body.v2-tool-page :where(.note,.hint,.unit,.basis p,.meta,.mi,.cd,.rd){color:var(--v2-muted)!important}
+body.v2-tool-page a:not(.v2-toolbar a):not(.v2-tool-footer a):not(.btn-primary):not(.calculate):not(.calc-btn){text-decoration:none}
+body.v2-tool-page footer:not(.v2-tool-footer),body.v2-tool-page .foot{display:none!important}
+body.v2-tool-page>.v2-tool-footer{display:block!important}
+@media(max-width:560px){body.v2-tool-page :where(main.page,main.v2-tool-main,.wrap,.container){width:min(calc(100% - 20px),760px)!important}body.v2-tool-page .v2-normalized-hero{min-height:154px!important;padding:22px 18px!important;border-radius:16px!important}body.v2-tool-page .v2-normalized-hero h1{font-size:23px!important}body.v2-tool-page .v2-normalized-hero :where(p,.sub,.subtitle){font-size:13px!important;line-height:1.65!important}}
