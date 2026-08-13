@@ -8,3 +8,26 @@
   .workflow{height:auto;min-height:36px;padding:10px 0;flex-wrap:wrap;row-gap:6px}
   .product-link{height:auto;min-height:44px;padding:12px 14px;margin-top:4px;line-height:1.35}
 }
+
+/* Four equal shortcuts: remove the step-flow feeling and align icon/copy. */
+.service-item{grid-template-columns:38px minmax(0,1fr);gap:12px}
+.service-arrow{display:none!important}
+.service-copy{min-width:0}
+.service-copy strong,.service-copy small{line-height:1.35}
+.service-item:nth-child(4) .service-copy small{font-size:0}
+.service-item:nth-child(4) .service-copy small::after{content:"예상 분담금 계산";font-size:12px}
+
+/* Pull the final action groups toward the center on wide screens. */
+.final-cta{justify-content:center;gap:clamp(54px,8vw,118px)}
+.final-cta>div:first-child{width:min(430px,48%)}
+.cta-actions{flex:none}
+
+@media (max-width: 900px) and (min-width: 521px){
+  .final-cta{gap:40px;padding-left:30px;padding-right:30px}
+  .final-cta>div:first-child{width:auto;flex:1}
+}
+
+@media (max-width: 520px){
+  .service-item{grid-template-columns:38px minmax(0,1fr)}
+  .final-cta>div:first-child{width:auto}
+}
