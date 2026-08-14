@@ -64,9 +64,14 @@ def decimal_value(value: object) -> Decimal | None:
 
 
 def rounded_int(value: object) -> int | None:
+    """Apartment display area: keep 59/84 market labels, otherwise existing rounding."""
     number = decimal_value(value)
     if number is None:
         return None
+    if Decimal("59") <= number < Decimal("60"):
+        return 59
+    if Decimal("84") <= number < Decimal("85"):
+        return 84
     return int(number.quantize(Decimal("1"), rounding=ROUND_HALF_UP))
 
 
