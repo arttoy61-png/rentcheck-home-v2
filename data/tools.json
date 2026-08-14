@@ -98,5 +98,15 @@
     "badge": "이용 가능",
     "icon": "↔",
     "category": "rent"
+  },
+  {
+    "id": "rent-yield",
+    "title": "임대 수익률 계산기",
+    "description": "주택·오피스텔·상가의 보증금·월세·대출 조건으로 실투자금과 예상 수익률을 확인합니다.",
+    "url": "tools/rent-yield/",
+    "status": "available",
+    "badge": "이용 가능",
+    "icon": "↗",
+    "category": "invest"
   }
 ]
