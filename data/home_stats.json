@@ -1,44 +1,44 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-14T02:29:10+09:00",
-  "data_until": "2026-08-12",
+  "generated_at": "2026-08-15T01:27:37+09:00",
+  "data_until": "2026-08-13",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
     {
+      "dong": "방화동",
+      "name": "장미",
+      "area_m2": 40,
+      "amount_eok": 5.5,
+      "date": "2026.08.13",
+      "complex_id": "0906dfd0"
+    },
+    {
+      "dong": "방화동",
+      "name": "방화5",
+      "area_m2": 33,
+      "amount_eok": 5.05,
+      "date": "2026.08.12",
+      "complex_id": "38d0233d"
+    },
+    {
       "dong": "염창동",
-      "name": "삼정그린코아",
-      "area_m2": 84,
-      "amount_eok": 13.75,
-      "date": "2026.08.11",
-      "complex_id": "29e9f861"
-    },
-    {
-      "dong": "등촌동",
-      "name": "등촌지와인아파트,비지니스센터",
-      "area_m2": 60,
-      "amount_eok": 11.0,
-      "date": "2026.08.10",
-      "complex_id": "cb43f55b"
-    },
-    {
-      "dong": "마곡동",
-      "name": "마곡13단지힐스테이트마스터",
-      "area_m2": 60,
-      "amount_eok": 16.6,
-      "date": "2026.08.10",
-      "complex_id": "6576ba12"
+      "name": "동아",
+      "area_m2": 115,
+      "amount_eok": 14.75,
+      "date": "2026.08.12",
+      "complex_id": "cc211f33"
     }
   ],
   "monthly_trend": [
     {
       "month": "2026-03",
-      "count": 0
+      "count": 347
     },
     {
       "month": "2026-04",
-      "count": 0
+      "count": 591
     },
     {
       "month": "2026-05",
@@ -50,11 +50,11 @@
     },
     {
       "month": "2026-07",
-      "count": 325
+      "count": 335
     },
     {
       "month": "2026-08",
-      "count": 37
+      "count": 44
     }
   ]
 }
