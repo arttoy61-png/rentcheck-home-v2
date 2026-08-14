@@ -17,7 +17,7 @@
 .service-copy{min-width:0}
 .service-copy strong,.service-copy small{line-height:1.35}
 .service-item:nth-child(4) .service-copy small{font-size:0}
-.service-item:nth-child(4) .service-copy small::after{content:"예상 분담금 계산";font-size:12px}
+.service-item:nth-child(4) .service-copy small::after{content:"예상 분담금 계산";font-size:14px}
 
 /* Featured cards use public-domain real photos instead of fallback vector art. */
 .insight-art{background-position:center;background-size:cover;background-repeat:no-repeat}
@@ -38,4 +38,99 @@
 @media (max-width: 520px){
   .service-item{grid-template-columns:38px minmax(0,1fr)}
   .final-cta>div:first-child{width:auto}
+}
+
+/* 2026-08-14 readability/accessibility pass.
+   Keep the large display type and brand gold, but move repeated reading text
+   toward a 13-16px scale and give touch controls a 44px floor. */
+:root{--gold-text:#956600}
+
+/* Desktop repeated text */
+.desktop-nav a{font-size:14px}
+.header-cta{min-height:44px;height:44px;font-size:14px}
+.hero h1 em{color:var(--gold-text)}
+.hero-live,.hero-stale{font-size:13px}
+.trust{font-size:13px}
+.product-brand,.source-dot,.product-top small,.float-card small,.transaction-tabs>*,.map-key,.workflow,.scope span{font-size:13px}
+.product-link{min-height:44px;height:44px;font-size:13px}
+.service-copy strong{font-size:15px}
+.service-copy small{font-size:14px;color:#667085}
+.section-head p:not(.kicker){font-size:14px;line-height:1.65}
+.tabs button{min-height:44px;padding:9px 15px;font-size:14px}
+.calculator-card{height:236px}
+.calculator-card h3{font-size:16px}
+.calculator-card p{font-size:14px;line-height:1.6}
+.category-label,.card-action,.status{font-size:13px}
+.calculator-card[style*="#d4a73a"] .category-label{color:var(--gold-text)}
+.stats span{font-size:13px}
+.insight-category{font-size:13px}
+.insight-meta{color:#667085;font-size:13px}
+.insight-link{font-size:13px}
+.article-count{font-size:13px}
+.article-row-copy strong{font-size:15px}
+.article-row-copy small{color:#667085;font-size:13px}
+.article-actions button{min-height:44px;font-size:14px}
+.final-cta p{font-size:13px}
+.final-cta span{font-size:14px}
+.cta-actions a{min-height:44px;height:44px;font-size:14px}
+.footer-group button{min-height:44px;font-size:14px}
+.footer-group a,.footer-group div>span{font-size:13px}
+.footer-bottom{font-size:13px}
+.search-mode{font-size:13px}
+.search-result{min-height:54px}
+.search-result-copy strong{font-size:14px}
+.search-result-copy small,.search-result-type,.search-all{font-size:13px}
+.search-empty{font-size:13px}
+
+/* Keep gold decorative elements bright; use darker gold only where it is actual text on white. */
+.calculator-card[style*="#d4a73a"] .category-label,
+.service-item[style*="#d4a73a"] .service-copy strong{color:var(--gold-text)}
+
+@media (max-width: 960px){
+  .menu-button{width:44px;height:44px}
+  .mobile-nav a{min-height:44px;display:flex;align-items:center;font-size:14px}
+}
+
+@media (max-width: 760px){
+  /* Make horizontal sections visibly continue beyond the viewport. */
+  .service-strip{grid-template-columns:repeat(4,minmax(210px,1fr));padding-right:22px;scroll-padding-right:22px}
+  .insight-track{padding-right:36px;scroll-padding-right:36px}
+  .insight{min-width:84%}
+}
+
+@media (max-width: 520px){
+  .hero-lead{font-size:16px;line-height:1.7}
+  .hero-live,.hero-stale,.trust{font-size:13px}
+  .search{grid-template-columns:21px 1fr 46px}
+  .search input{font-size:16px}
+  .search button{width:46px;height:44px;min-height:44px}
+  .product-brand,.source-dot,.product-top small,.float-card small,.workflow,.map-key,.scope span,.method strong{font-size:13px}
+  .product-link{font-size:13px}
+  .service-copy strong{font-size:16px}
+  .service-copy small{font-size:14px}
+  .tabs{gap:8px}
+  .tabs button{min-height:44px;font-size:14px}
+  .calculator-card{height:230px;padding:15px}
+  .calculator-card h3{margin:12px 0 7px;font-size:16px;line-height:1.4}
+  .calculator-card p{font-size:14px;line-height:1.55}
+  .category-label,.card-action,.status{font-size:13px}
+  .stats span{font-size:13px}
+  .stats strong{font-size:16px}
+  .insight-category,.insight-meta,.insight-link{font-size:13px}
+  .article-count,.article-row-copy small{font-size:13px}
+  .article-row-copy strong{font-size:15px}
+  .article-actions button{min-height:44px;font-size:14px}
+  .final-cta p{font-size:13px}
+  .final-cta span{font-size:14px}
+  .cta-actions a{min-height:48px;font-size:14px}
+  .footer-group button{min-height:48px;font-size:14px}
+  .footer-group a,.footer-group div>span,.footer-bottom{font-size:13px}
+  .search-result-copy strong{font-size:14px}
+  .search-result-copy small,.search-result-type,.search-mode{font-size:13px}
+}
+
+/* On phone widths, readability wins over density: one calculator per row. */
+@media (max-width: 430px){
+  .calculator-grid{grid-template-columns:1fr;gap:12px}
+  .calculator-card{height:auto;min-height:190px;padding:17px}
 }
