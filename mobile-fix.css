@@ -86,6 +86,24 @@
 .calculator-card[style*="#d4a73a"] .category-label,
 .service-item[style*="#d4a73a"] .service-copy strong{color:var(--gold-text)}
 
+/* Keep the numbered apartment workflow optically aligned. */
+.workflow>span{display:inline-flex;align-items:center;gap:5px;line-height:1.2;white-space:nowrap}
+.workflow>span>i{width:18px;height:18px;flex:0 0 18px;margin:0;display:inline-grid;place-items:center;line-height:1}
+.workflow>b{display:inline-flex;align-items:center;line-height:1}
+
+/* Search opens with three real destinations before the user types. */
+.search-quick-head{padding:12px 14px 9px;border-bottom:1px solid #eceff2;color:var(--navy);font-size:13px;font-weight:700}
+.search-quick-list{display:grid}
+.search-quick-item{min-height:64px;padding:10px 14px;display:grid;grid-template-columns:38px minmax(0,1fr) 18px;align-items:center;gap:11px;border-bottom:1px solid #eceff2;background:#fff;transition:background .15s ease}
+.search-quick-item:last-child{border-bottom:0}
+.search-quick-item:hover,.search-quick-item:focus-visible{background:#f7f8fa;outline:none}
+.search-quick-icon{width:36px;height:36px;display:grid;place-items:center;border-radius:9px;color:var(--navy);background:var(--gold-soft);font-size:13px;font-weight:700}
+.search-quick-copy{min-width:0}
+.search-quick-copy strong,.search-quick-copy small{display:block}
+.search-quick-copy strong{color:var(--navy);font-size:14px;line-height:1.35}
+.search-quick-copy small{margin-top:3px;color:#667085;font-size:13px;line-height:1.4}
+.search-quick-arrow{color:var(--blue);font-size:16px;font-weight:700}
+
 @media (max-width: 960px){
   .menu-button{width:44px;height:44px}
   .mobile-nav a{min-height:44px;display:flex;align-items:center;font-size:14px}
@@ -104,13 +122,20 @@
   .search{grid-template-columns:21px 1fr 46px}
   .search input{font-size:16px}
   .search button{width:46px;height:44px;min-height:44px}
+  .search-results{max-height:min(66vh,520px)}
+  .search-quick-head{padding:11px 12px 8px;font-size:13px}
+  .search-quick-item{min-height:62px;padding:9px 12px;grid-template-columns:36px minmax(0,1fr) 18px;gap:10px}
+  .search-quick-icon{width:34px;height:34px}
+  .search-quick-copy strong{font-size:14px}
+  .search-quick-copy small{font-size:13px}
   .product-brand,.source-dot,.product-top small,.float-card small,.workflow,.map-key,.scope span,.method strong{font-size:13px}
   .product-link{font-size:13px}
   .service-copy strong{font-size:16px}
   .service-copy small{font-size:14px}
   .tabs{gap:8px}
   .tabs button{min-height:44px;font-size:14px}
-  .calculator-card{height:230px;padding:15px}
+  .calculator-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .calculator-card{height:230px;min-height:230px;padding:15px}
   .calculator-card h3{margin:12px 0 7px;font-size:16px;line-height:1.4}
   .calculator-card p{font-size:14px;line-height:1.55}
   .category-label,.card-action,.status{font-size:13px}
@@ -129,8 +154,8 @@
   .search-result-copy small,.search-result-type,.search-mode{font-size:13px}
 }
 
-/* On phone widths, readability wins over density: one calculator per row. */
+/* Keep two calculator columns on phones, including compact 360px screens. */
 @media (max-width: 430px){
-  .calculator-grid{grid-template-columns:1fr;gap:12px}
-  .calculator-card{height:auto;min-height:190px;padding:17px}
+  .calculator-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .calculator-card{height:232px;min-height:232px;padding:13px}
 }
