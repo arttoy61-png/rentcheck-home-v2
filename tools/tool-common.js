@@ -7,6 +7,7 @@
     {id:'jeonse-ratio',label:'전세가율 계산기',path:'tools/jeonse-ratio/',group:'매매·전세'},
     {id:'rent-vs-monthly',label:'전세 vs 월세 비교',path:'tools/rent-vs-monthly/',group:'매매·전세'},
     {id:'rent-conversion',label:'전월세 전환 계산기',path:'tools/rent-conversion/',group:'매매·전세'},
+    {id:'rent-yield',label:'임대 수익률 계산기',path:'tools/rent-yield/',group:'매매·전세'},
     {id:'brokerage-fee',label:'중개보수 계산기',path:'tools/brokerage-fee/',group:'세금·비용'}
   ];
   const heroCopy={
@@ -17,6 +18,7 @@
     'jeonse-ratio':{title:'전세가율 계산기',desc:'매매가에서 전세보증금이 차지하는 비율을 확인합니다.'},
     'rent-vs-monthly':{title:'전세 vs 월세 비교',desc:'두 계약의 월 부담을 같은 기준으로 비교합니다.'},
     'rent-conversion':{title:'전월세 전환 계산기',desc:'보증금을 바꿀 때 월세가 얼마나 달라지는지 계산합니다.'},
+    'rent-yield':{title:'임대 수익률 계산기',desc:'매매가·보증금·월세·대출 조건으로 실투자금과 세전 현금수익률을 계산합니다.'},
     'brokerage-fee':{title:'중개보수 계산기',desc:'매매·전세·월세의 최대 중개보수를 계산합니다.'}
   };
   const groups=['매매·전세','세금·비용','청년·재개발'];
