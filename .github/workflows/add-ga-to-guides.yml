@@ -1,0 +1,46 @@
+name: Add GA to guide pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/add-ga-to-guides.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  add-ga:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add GA4 tag to guide HTML
+        shell: python
+        run: |
+          from pathlib import Path
+
+          ga = """<script async src=\"https://www.googletagmanager.com/gtag/js?id=G-MPRR3J99YQ\"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MPRR3J99YQ');</script>"""
+
+          changed = []
+          for path in Path('blog').rglob('index.html'):
+              text = path.read_text(encoding='utf-8')
+              if 'G-MPRR3J99YQ' in text:
+                  continue
+              if '</head>' not in text:
+                  continue
+              text = text.replace('</head>', ga + '</head>', 1)
+              path.write_text(text, encoding='utf-8')
+              changed.append(str(path))
+
+          print('Updated:', ', '.join(changed) if changed else 'none')
+      - name: Commit changes
+        run: |
+          if git diff --quiet -- blog; then
+            echo "No changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add blog
+          git commit -m "Add GA4 to guide pages"
+          git push
