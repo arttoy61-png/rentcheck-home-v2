@@ -322,6 +322,7 @@
         <p class="nearby-note">500m 안에서 조건이 비슷한 거래 ${total}건 중 최대 5건을 보여줍니다. 주소는 카카오 위치검색에만 사용하며 Rent Check에 저장하지 않습니다.</p>
       </div>`;
     box.style.display = 'block';
+    document.body.classList.add('nearby-mode');
     const old = $('#result');
     if (old) old.style.display = 'none';
     renderMap(rows);
@@ -350,6 +351,7 @@
       .nearby-address-status{font-size:11px;color:var(--gray-lite);margin-top:7px;line-height:1.5}
       .nearby-address-status.ok{color:var(--green);font-weight:700}
       .nearby-result{display:none}
+      body.nearby-mode #result{display:none!important}
       .nearby-card{overflow:hidden}
       .nearby-summary{font-size:12px;line-height:1.7;color:var(--gray-lite);margin:-4px 0 10px}
       .nearby-summary b{color:var(--navy)}
@@ -389,6 +391,9 @@
     });
     $('#nearbyAddress')?.addEventListener('input', () => {
       state.location = null;
+      document.body.classList.remove('nearby-mode');
+      const box = $('#nearbyResult');
+      if (box) box.style.display = 'none';
       setAddressStatus('주소를 수정했습니다. 주소 찾기를 다시 눌러주세요.');
     });
   }
