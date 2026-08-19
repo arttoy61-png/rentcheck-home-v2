@@ -27,7 +27,8 @@ jobs:
           const fs=require('fs');
           (async()=>{
             const browser=await chromium.launch({headless:true});
-            const page=await browser.newPage({viewport:{width:390,height:844}});
+            const ctx=await browser.newContext({viewport:{width:390,height:844}});
+            const page=await ctx.newPage();
             const bad=[];
             page.on('response',r=>{if(r.status()>=400)bad.push({status:r.status(),url:r.url(),type:r.request().resourceType()})});
             await page.goto('https://rent-check.kr/tools/rent-check/?trace='+Date.now(),{waitUntil:'networkidle',timeout:60000});
