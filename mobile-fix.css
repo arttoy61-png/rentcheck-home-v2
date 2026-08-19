@@ -160,26 +160,50 @@
   .calculator-card{height:232px;min-height:232px;padding:13px}
 }
 
-
-/* Service strip: 3 + 2 grid on mobile, no horizontal scroll. */
+/* Service strip: balanced 2 + 2 + 1 grid on mobile, no horizontal scroll. */
 @media (max-width: 768px){
-  .service-strip{overflow:visible!important;display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;padding-right:0!important;scroll-padding-right:0!important;scroll-snap-type:none!important}
-  .service-item{min-width:0!important;height:92px;padding:10px 8px;grid-template-columns:34px minmax(0,1fr);gap:8px;scroll-snap-align:none;border-right:0;border-bottom:1px solid #e7eaee}
-  .service-icon{width:34px;height:34px}
-  .service-item:nth-child(-n+3){grid-column:span 2}
-  .service-item:nth-child(n+4){grid-column:span 3;border-bottom:0}
-  .service-item:nth-child(1),.service-item:nth-child(2),.service-item:nth-child(4){border-right:1px solid #e7eaee}
+  .service-strip{
+    overflow:visible!important;
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:1px!important;
+    padding:1px!important;
+    background:#e7eaee;
+    border-radius:14px;
+    scroll-padding-right:0!important;
+    scroll-snap-type:none!important;
+  }
+  .service-item{
+    min-width:0!important;
+    height:86px;
+    padding:12px 13px;
+    grid-template-columns:36px minmax(0,1fr);
+    gap:10px;
+    background:#fff;
+    border:0!important;
+    scroll-snap-align:none;
+  }
+  .service-item:nth-child(1){border-radius:13px 0 0 0!important}
+  .service-item:nth-child(2){border-radius:0 13px 0 0!important}
+  .service-item:nth-child(5){
+    grid-column:1 / -1!important;
+    height:78px;
+    border-radius:0 0 13px 13px!important;
+    grid-template-columns:36px auto;
+    justify-content:center;
+  }
+  .service-icon{width:36px;height:36px}
   .service-copy strong{font-size:14px;line-height:1.3}
   .service-copy small{font-size:12px;line-height:1.35;white-space:normal}
 }
 @media (max-width: 430px){
-  .service-item{height:96px;padding:9px 6px;grid-template-columns:30px minmax(0,1fr);gap:6px}
-  .service-icon{width:30px;height:30px;border-radius:8px}
+  .service-item{height:84px;padding:11px 10px;grid-template-columns:32px minmax(0,1fr);gap:8px}
+  .service-item:nth-child(5){height:74px;grid-template-columns:32px auto}
+  .service-icon{width:32px;height:32px;border-radius:8px}
   .service-icon svg{width:17px;height:17px}
   .service-copy strong{font-size:13px}
   .service-copy small{font-size:11px}
 }
-
 
 /* Keep home CTA labels on one line. */
 .cta-actions a{white-space:nowrap}
