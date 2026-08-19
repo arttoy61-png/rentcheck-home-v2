@@ -1,0 +1,48 @@
+name: Remove old OSM apartment renderer
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/remove-osm-apartment.yml"
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove legacy Leaflet renderer
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('tools/apartment/index.html')
+          text = p.read_text(encoding='utf-8')
+          start = text.find('function miniMap(lat,lng,nm){if(window.L)return draw();')
+          if start < 0:
+              if 'tile.openstreetmap.org' not in text and 'leaflet' not in text.lower():
+                  print('legacy renderer already removed')
+                  raise SystemExit(0)
+              raise SystemExit('legacy miniMap start not found')
+          end_marker = "}}document.addEventListener('click',e=>"
+          end = text.find(end_marker, start)
+          if end < 0:
+              raise SystemExit('legacy miniMap end not found')
+          replacement = "function miniMap(lat,lng,nm){if(typeof window.__rentcheckKakaoMiniMap==='function')return window.__rentcheckKakaoMiniMap(lat,lng,nm)}document.addEventListener('click',e=>"
+          text = text[:start] + replacement + text[end+len(end_marker):]
+          if 'tile.openstreetmap.org' in text or 'leaflet' in text.lower():
+              raise SystemExit('OpenStreetMap/Leaflet reference remains')
+          p.write_text(text, encoding='utf-8')
+          PY
+      - name: Validate
+        run: |
+          ! grep -qi 'openstreetmap\|leaflet' tools/apartment/index.html
+          grep -q '__rentcheckKakaoMiniMap' tools/apartment/index.html
+          grep -q 'kakao-map.js' tools/apartment/index.html
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add tools/apartment/index.html
+          git diff --cached --quiet || git commit -m "Remove legacy OpenStreetMap renderer"
+          git pull --rebase --autostash || true
+          git push
