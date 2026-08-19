@@ -9,32 +9,31 @@ permissions:
 jobs:
   qa:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Wait for rebuilt source geo data
+      - name: Confirm rebuilt source geo data
         run: |
           node <<'JS'
           const sleep=ms=>new Promise(r=>setTimeout(r,ms));
           async function get(u){const r=await fetch(u+'?t='+Date.now(),{headers:{'cache-control':'no-cache'}});if(!r.ok)throw new Error(String(r.status));return r.json()}
-          for(let i=0;i<60;i++){
-            try{
-              const [a,s]=await Promise.all([
-                get('https://raw.githubusercontent.com/arttoy61-png/rent-check/main/auction_data.json'),
-                get('https://raw.githubusercontent.com/arttoy61-png/rent-check/main/gangseo_apt_summary.json')
-              ]);
-              const rentals=[...(a.jeonse||[]),...(a.wolse||[])];
-              const rentalJ=rentals.filter(x=>x.j).length;
-              const apt=(s.complexes||[]).filter(x=>x.lat&&x.lng).length;
-              console.log(`attempt ${i+1}: rentalJ=${rentalJ}, aptGeo=${apt}`);
-              if(rentalJ>1000 && apt>600) process.exit(0);
-            }catch(e){console.log('waiting:',e.message)}
-            await sleep(15000);
+          for(let i=0;i<5;i++){
+            const [a,s]=await Promise.all([
+              get('https://raw.githubusercontent.com/arttoy61-png/rent-check/main/auction_data.json'),
+              get('https://raw.githubusercontent.com/arttoy61-png/rent-check/main/gangseo_apt_summary.json')
+            ]);
+            const rentals=[...(a.jeonse||[]),...(a.wolse||[])];
+            const rentalJ=rentals.filter(x=>x.j).length;
+            const rentalGeo=rentals.filter(x=>x.j && a.geo?.[`${x.u} ${x.j}`]).length;
+            const apt=(s.complexes||[]).filter(x=>x.lat&&x.lng).length;
+            console.log(`attempt ${i+1}: rentalJ=${rentalJ}, rentalGeo=${rentalGeo}, aptGeo=${apt}`);
+            if(rentalJ>70000 && rentalGeo>70000 && apt===685) process.exit(0);
+            await sleep(5000);
           }
-          throw new Error('rebuilt geo data did not become ready');
+          throw new Error('rebuilt geo data is not ready');
           JS
       - name: Install Playwright Chromium
         run: |
@@ -48,13 +47,13 @@ jobs:
           const fs=require('fs');
           (async()=>{
             const browser=await chromium.launch({headless:true});
-            const ctx=await browser.newContext({viewport:{width:390,height:844}});
+            const ctx=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:1});
             const report={rent:{},apartments:[]};
+
             const page=await ctx.newPage();
             const errors=[];
             page.on('pageerror',e=>errors.push('pageerror:'+e.message));
             page.on('console',m=>{if(m.type()==='error') errors.push('console:'+m.text())});
-
             await page.goto('https://rent-check.kr/tools/rent-check/?qa='+Date.now(),{waitUntil:'networkidle',timeout:60000});
             await page.locator('#nearbyAddress').fill('서울 강서구 화곡로 지하 168');
             await page.locator('#nearbyAddressBtn').click();
@@ -64,12 +63,15 @@ jobs:
             await page.locator('#rent').fill('60');
             await page.locator('#checkBtn').click();
             await page.waitForSelector('#nearbyResult',{state:'visible',timeout:30000});
+            await page.waitForFunction(()=>document.querySelectorAll('#nearbyResult tbody tr').length>0,null,{timeout:30000});
             const rentText=await page.locator('#nearbyResult').innerText();
             const match=rentText.match(/거래\s+(\d+)건\s+중/);
             const count=match?Number(match[1]):-1;
             const mapChildren=await page.locator('#nearbyMap').evaluate(el=>el.children.length);
-            report.rent={address:'서울 강서구 화곡로 지하 168',area:30,deposit:1000,rent:60,count,mapChildren,text:rentText.slice(0,1000)};
+            const tableRows=await page.locator('#nearbyResult tbody tr').count();
+            report.rent={address:'서울 강서구 화곡로 지하 168',area:30,deposit:1000,rent:60,count,tableRows,mapChildren,text:rentText.slice(0,1200),errors:errors.slice(0,10)};
             if(count<=0) throw new Error('live rent comparison still returns zero matches');
+            if(tableRows<=0) throw new Error('live rent table has no rows');
             if(mapChildren<=0) throw new Error('live rent Kakao map did not render');
 
             const tests=['강서힐스테이트','화곡푸르지오','등촌동아이파크','마곡엠밸리9단지','방화5'];
@@ -87,12 +89,13 @@ jobs:
               const title=await p.locator('.det h2').innerText();
               const childCount=await p.locator('#map').evaluate(el=>el.children.length);
               report.apartments.push({query:name,title,mapChildren:childCount,errors:localErrors.slice(0,5)});
+              if(!title.replace(/\s/g,'').includes(name.replace(/\s/g,''))) throw new Error(`${name}: wrong apartment opened (${title})`);
               if(childCount<=0) throw new Error(`${name}: Kakao map not rendered`);
               await p.close();
             }
-            report.consoleErrors=errors.slice(0,10);
             report.ok=true;
             report.checkedAt=new Date().toISOString();
+            fs.mkdirSync('data',{recursive:true});
             fs.writeFileSync('data/live-kakao-qa.json',JSON.stringify(report,null,2)+'\n');
             await browser.close();
           })().catch(e=>{console.error(e);process.exit(1)});
@@ -102,6 +105,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/live-kakao-qa.json
-          git commit -m "test: live click QA Kakao tools"
+          git commit -m "test: live click QA Kakao tools" || exit 0
           git pull --rebase --autostash || true
           git push
