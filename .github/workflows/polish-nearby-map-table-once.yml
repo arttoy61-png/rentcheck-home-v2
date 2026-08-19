@@ -11,147 +11,88 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Patch nearby map interaction and mobile table
+      - name: Patch nearby UI safely
         run: |
           python - <<'PY'
           from pathlib import Path
-          import re
-
           p=Path('tools/rent-check/nearby.js')
           s=p.read_text(encoding='utf-8')
 
-          # 1) Price cell: keep comparison logic untouched, only format display.
-          old="  function price(r,kind){return kind==='전세'?fmtMoney(r.p):`${fmtMoney(r.dp)} / 월 ${Math.round(num(r.m)).toLocaleString()}만원`;}"
-          new="""  function price(r,kind){return kind==='전세'?fmtMoney(r.p):`${fmtMoney(r.dp)} / 월 ${Math.round(num(r.m)).toLocaleString()}만원`;}
-  function priceHtml(r,kind){
-    if(kind==='전세') return `<b>${esc(fmtMoney(r.p))}</b>`;
-    return `<b>${esc(fmtMoney(r.dp))}</b><span>월 ${Math.round(num(r.m)).toLocaleString()}만원</span>`;
-  }"""
-          if old not in s:
-              raise SystemExit('price target not found')
-          s=s.replace(old,new,1)
+          # Price display helper: comparison calculation is untouched.
+          anchor="  function price(r,kind){return kind==='전세'?fmtMoney(r.p):`${fmtMoney(r.dp)} / 월 ${Math.round(num(r.m)).toLocaleString()}만원`;}"
+          if 'function priceHtml(' not in s:
+              if anchor not in s: raise SystemExit('price anchor missing')
+              s=s.replace(anchor, anchor+"\n  function priceHtml(r,kind){\n    if(kind==='전세') return `<b>${esc(fmtMoney(r.p))}</b>`;\n    return `<b>${esc(fmtMoney(r.dp))}</b><span>월 ${Math.round(num(r.m)).toLocaleString()}만원</span>`;\n  }",1)
 
-          # 2) Map: no popup open by default, one popup at a time, tap blank/same marker to close,
-          # numbered comparison pins, gold home pin, and table selection sync.
-          pattern=r"  function drawMap\(rows\)\{.*?\n  \}\n\n  function resultBox\(\)\{"
-          replacement=r'''  function drawMap(rows){
+          # Replace the whole map function by stable function boundaries.
+          a=s.index('  function drawMap(rows){')
+          b=s.index('\n  function resultBox(){',a)
+          new_map="""  function drawMap(rows){
     const target=$('#nearbyMap');
     if(!target||!window.kakao?.maps||!state.location)return;
     const kakao=window.kakao,center=new kakao.maps.LatLng(state.location.lat,state.location.lng),map=new kakao.maps.Map(target,{center,level:4}),bounds=new kakao.maps.LatLngBounds();
     bounds.extend(center);
-
-    let activeIndex=null, activePopup=null;
+    let activeIndex=null,activePopup=null;
     const pins=[];
     const rowEls=()=>[...document.querySelectorAll('#nearbyResult tbody tr[data-nearby-index]')];
     const clearRows=()=>rowEls().forEach(el=>el.classList.remove('is-active'));
-    const closePopup=()=>{
-      if(activePopup){activePopup.setMap(null);activePopup=null;}
-      activeIndex=null;
-      clearRows();
-    };
+    const closePopup=()=>{if(activePopup){activePopup.setMap(null);activePopup=null;}activeIndex=null;clearRows();};
     const popupAt=(pos,text,index)=>{
       if(activePopup)activePopup.setMap(null);
-      const el=document.createElement('div');
-      el.className='nearby-map-popup';
+      const el=document.createElement('div');el.className='nearby-map-popup';
       const label=document.createElement('span');label.textContent=text;el.appendChild(label);
       const close=document.createElement('button');close.type='button';close.className='nearby-map-popup-close';close.setAttribute('aria-label','닫기');close.textContent='×';
-      close.addEventListener('click',e=>{e.stopPropagation();closePopup();});
-      el.appendChild(close);
+      close.addEventListener('click',e=>{e.stopPropagation();closePopup();});el.appendChild(close);
       activePopup=new kakao.maps.CustomOverlay({position:pos,content:el,yAnchor:1.65,zIndex:12,map});
-      activeIndex=index;
-      clearRows();
-      if(Number.isInteger(index)) rowEls()[index]?.classList.add('is-active');
+      activeIndex=index;clearRows();if(index>=0)rowEls()[index]?.classList.add('is-active');
     };
     const makePin=(pos,label,cls,index,text)=>{
-      const btn=document.createElement('button');
-      btn.type='button';btn.className=`nearby-map-pin ${cls}`;btn.textContent=label;btn.setAttribute('aria-label',text);
-      const overlay=new kakao.maps.CustomOverlay({position:pos,content:btn,yAnchor:1.1,zIndex:5,map});
-      btn.addEventListener('click',e=>{
-        e.stopPropagation();
-        if(activeIndex===index){closePopup();return;}
-        popupAt(pos,text,index);
-      });
-      pins.push({pos,btn,overlay,index,text});
+      const btn=document.createElement('button');btn.type='button';btn.className=`nearby-map-pin ${cls}`;btn.textContent=label;btn.setAttribute('aria-label',text);
+      new kakao.maps.CustomOverlay({position:pos,content:btn,yAnchor:1.1,zIndex:5,map});
+      btn.addEventListener('click',e=>{e.stopPropagation();if(activeIndex===index){closePopup();return;}popupAt(pos,text,index);});
+      pins.push({pos,index,text});
     };
-
     makePin(center,'⌂','home',-1,'입력 주소');
-    rows.forEach((r,i)=>{
-      const pos=new kakao.maps.LatLng(r.lat,r.lng);bounds.extend(pos);
-      makePin(pos,String(i+1),'deal',i,`${r.b||typeLabel(r.t)} · ${Math.round(r.distance)}m`);
-    });
-    if(rows.length) map.setBounds(bounds,38,38,38,38);
+    rows.forEach((r,i)=>{const pos=new kakao.maps.LatLng(r.lat,r.lng);bounds.extend(pos);makePin(pos,String(i+1),'deal',i,`${r.b||typeLabel(r.t)} · ${Math.round(r.distance)}m`);});
+    if(rows.length)map.setBounds(bounds,38,38,38,38);
     kakao.maps.event.addListener(map,'click',closePopup);
-
-    state.mapController={
-      close:closePopup,
-      select(index){
-        const pin=pins.find(x=>x.index===index);if(!pin)return;
-        map.panTo(pin.pos);
-        if(activeIndex===index){closePopup();return;}
-        popupAt(pin.pos,pin.text,index);
-      }
-    };
+    state.mapController={close:closePopup,select(index){const pin=pins.find(x=>x.index===index);if(!pin)return;map.panTo(pin.pos);if(activeIndex===index){closePopup();return;}popupAt(pin.pos,pin.text,index);}};
   }
+"""
+          s=s[:a]+new_map+s[b:]
 
-  function resultBox(){'''
-          s2,n=re.subn(pattern,replacement,s,flags=re.S)
-          if n!=1:
-              raise SystemExit(f'drawMap replacement count={n}')
-          s=s2
+          # Replace only the generated table row line.
+          start=s.index('    const rows=info.rows.length?',s.index('  function render(info){'))
+          end=s.index('\n',start)
+          s=s[:start]+"    const rows=info.rows.length?info.rows.map((r,i)=>`<tr data-nearby-index=\"${i}\"><td class=\"nearby-place\"><b>${esc(r.b||r.u)}</b><small>${esc(typeLabel(r.t))} · ${esc(fmtDate(r))}</small></td><td class=\"nearby-distance\">${Math.round(r.distance)}m${r.same?'<small>같은 지번</small>':''}</td><td class=\"nearby-area\">${num(r.a).toFixed(1).replace(/\\.0$/,'')}㎡</td><td class=\"nearby-price\">${priceHtml(r,kind)}</td></tr>`).join(''):'<tr><td colspan=\"4\">조건에 맞는 주변 실거래를 찾지 못했습니다.</td></tr>';"+s[end:]
 
-          # 3) Table rows: clickable, 2-line name, type/date under name, clean 2-line monthly price.
-          old_rows="""    const rows=info.rows.length?info.rows.map(r=>`<tr><td class=\"nearby-place\"><b>${esc(r.b||r.u)}</b><br><small>${esc(typeLabel(r.t))} · ${esc(fmtDate(r))}</small></td><td class=\"nearby-distance\">${Math.round(r.distance)}m${r.same?'<br><small>같은 지번</small>':''}</td><td class=\"nearby-area\">${num(r.a).toFixed(1).replace(/\\.0$/,'')}㎡</td><td class=\"nearby-price\"><b>${esc(price(r,kind))}</b></td></tr>`).join(''):'<tr><td colspan=\"4\">조건에 맞는 주변 실거래를 찾지 못했습니다.</td></tr>';"""
-          new_rows="""    const rows=info.rows.length?info.rows.map((r,i)=>`<tr data-nearby-index=\"${i}\"><td class=\"nearby-place\"><b>${esc(r.b||r.u)}</b><small>${esc(typeLabel(r.t))} · ${esc(fmtDate(r))}</small></td><td class=\"nearby-distance\">${Math.round(r.distance)}m${r.same?'<small>같은 지번</small>':''}</td><td class=\"nearby-area\">${num(r.a).toFixed(1).replace(/\\.0$/,'')}㎡</td><td class=\"nearby-price\">${priceHtml(r,kind)}</td></tr>`).join(''):'<tr><td colspan=\"4\">조건에 맞는 주변 실거래를 찾지 못했습니다.</td></tr>';"""
-          if old_rows not in s:
-              raise SystemExit('table rows target not found')
-          s=s.replace(old_rows,new_rows,1)
+          draw="    drawMap(info.rows);\n    box.scrollIntoView({behavior:'smooth',block:'start'});"
+          if draw not in s: raise SystemExit('draw anchor missing')
+          s=s.replace(draw,"    drawMap(info.rows);\n    box.querySelectorAll('tbody tr[data-nearby-index]').forEach(tr=>tr.addEventListener('click',()=>state.mapController?.select(Number(tr.dataset.nearbyIndex))));\n    box.scrollIntoView({behavior:'smooth',block:'start'});",1)
 
-          old_draw="""    drawMap(info.rows);
-    box.scrollIntoView({behavior:'smooth',block:'start'});"""
-          new_draw="""    drawMap(info.rows);
-    box.querySelectorAll('tbody tr[data-nearby-index]').forEach(tr=>tr.addEventListener('click',()=>state.mapController?.select(Number(tr.dataset.nearbyIndex))));
-    box.scrollIntoView({behavior:'smooth',block:'start'});"""
-          if old_draw not in s:
-              raise SystemExit('draw call target not found')
-          s=s.replace(old_draw,new_draw,1)
-
-          # 4) Add final overrides only; do not disturb comparison/data logic.
-          marker="    `;document.head.appendChild(style);"
-          overrides=r'''      .nearby-map-pin{width:28px;height:28px;border:2px solid #fff;border-radius:50%;box-shadow:0 2px 7px rgba(15,39,75,.28);display:flex;align-items:center;justify-content:center;padding:0;font-size:12px;font-weight:900;line-height:1;cursor:pointer}
+          css_end='    `;document.head.appendChild(style);'
+          if css_end not in s: raise SystemExit('style end missing')
+          css="""      .nearby-map-pin{width:28px;height:28px;border:2px solid #fff;border-radius:50%;box-shadow:0 2px 7px rgba(15,39,75,.28);display:flex;align-items:center;justify-content:center;padding:0;font-size:12px;font-weight:900;line-height:1;cursor:pointer}
       .nearby-map-pin.deal{background:#2f80ed;color:#fff}.nearby-map-pin.home{background:#d9aa2f;color:#0f274b;font-size:17px}
       .nearby-map-popup{display:flex;align-items:center;gap:8px;max-width:210px;padding:8px 9px 8px 11px;border:1px solid #cfd7e3;border-radius:9px;background:#fff;box-shadow:0 3px 12px rgba(15,39,75,.2);font-size:12px;font-weight:800;color:var(--navy);white-space:nowrap}
       .nearby-map-popup span{overflow:hidden;text-overflow:ellipsis}.nearby-map-popup-close{flex:0 0 24px;width:24px;height:24px;border:0;border-radius:50%;background:#eef2f7;color:#475569;font-size:18px;line-height:22px;padding:0;cursor:pointer}
       .nearby-table tbody tr[data-nearby-index]{cursor:pointer;transition:background .15s ease}.nearby-table tbody tr[data-nearby-index].is-active{background:#f3f7ff}
-      .nearby-place b{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;white-space:normal;line-height:1.3;margin-bottom:4px}
-      .nearby-place small,.nearby-distance small{display:block}.nearby-price b{display:block;white-space:nowrap}.nearby-price span{display:block;margin-top:2px;font-weight:800;white-space:nowrap;color:var(--navy)}
-      @media(max-width:520px){
-        .nearby-map{height:200px}
-        .nearby-table-wrap{overflow-x:hidden}
-        .nearby-table{font-size:11px}
-        .nearby-table th{padding:7px 2px}.nearby-table td{padding:7px 2px}
-        .nearby-table th:nth-child(1),.nearby-table td:nth-child(1){width:37%;padding-left:6px}
-        .nearby-table th:nth-child(2),.nearby-table td:nth-child(2){width:11%}
-        .nearby-table th:nth-child(3),.nearby-table td:nth-child(3){width:14%}
-        .nearby-table th:nth-child(4),.nearby-table td:nth-child(4){width:38%}
-        .nearby-place small,.nearby-table small{font-size:9.5px}.nearby-distance,.nearby-area{font-size:10.5px}.nearby-price{font-size:11px;line-height:1.25}
-        .nearby-map-popup{max-width:180px;font-size:11px;padding:7px 8px 7px 10px}
-      }
-'''
-          if marker not in s:
-              raise SystemExit('style end marker not found')
-          s=s.replace(marker,overrides+marker,1)
-
+      .nearby-place b{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;white-space:normal;line-height:1.3;margin-bottom:4px}.nearby-place small,.nearby-distance small{display:block}
+      .nearby-price b,.nearby-price span{display:block;white-space:nowrap}.nearby-price span{margin-top:2px;font-weight:800;color:var(--navy)}
+      @media(max-width:520px){.nearby-map{height:200px}.nearby-table-wrap{overflow-x:hidden}.nearby-table th{padding:7px 2px}.nearby-table td{padding:7px 2px}.nearby-table th:nth-child(1),.nearby-table td:nth-child(1){width:37%;padding-left:6px}.nearby-table th:nth-child(2),.nearby-table td:nth-child(2){width:11%}.nearby-table th:nth-child(3),.nearby-table td:nth-child(3){width:14%}.nearby-table th:nth-child(4),.nearby-table td:nth-child(4){width:38%}.nearby-place small,.nearby-table small{font-size:9.5px}.nearby-distance,.nearby-area{font-size:10.5px}.nearby-price{font-size:11px;line-height:1.25}.nearby-map-popup{max-width:180px;font-size:11px}}
+"""
+          if '.nearby-map-popup-close{' not in s:
+              s=s.replace(css_end,css+css_end,1)
           p.write_text(s,encoding='utf-8')
           PY
-      - name: Verify syntax and UI markers
+      - name: Verify
         run: |
           node --check tools/rent-check/nearby.js
           grep -q 'nearby-map-popup-close' tools/rent-check/nearby.js
           grep -q 'data-nearby-index' tools/rent-check/nearby.js
           grep -q 'width:37%' tools/rent-check/nearby.js
           grep -q 'height:200px' tools/rent-check/nearby.js
-          grep -q 'mapController' tools/rent-check/nearby.js
-      - name: Commit polished UI
+      - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
