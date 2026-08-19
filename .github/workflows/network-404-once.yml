@@ -15,6 +15,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Wait for Pages deployment
+        run: sleep 35
       - name: Install browser
         run: |
           npm init -y >/dev/null 2>&1
@@ -31,7 +33,7 @@ jobs:
             const page=await ctx.newPage();
             const bad=[];
             page.on('response',r=>{if(r.status()>=400)bad.push({status:r.status(),url:r.url(),type:r.request().resourceType()})});
-            await page.goto('https://rent-check.kr/tools/rent-check/?trace='+Date.now(),{waitUntil:'networkidle',timeout:60000});
+            await page.goto('https://rent-check.kr/tools/rent-check/',{waitUntil:'networkidle',timeout:60000});
             await page.locator('#nearbyAddress').fill('서울 강서구 화곡로 지하 168');
             await page.locator('#nearbyAddressBtn').click();
             await page.waitForFunction(()=>document.querySelector('#nearbyAddressStatus')?.textContent?.includes('확인됨'),null,{timeout:30000});
@@ -52,6 +54,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/network-404.json
-          git commit -m "test: trace rent-check network errors" || exit 0
+          git commit -m "test: final rent-check network trace" || exit 0
           git pull --rebase --autostash || true
           git push
