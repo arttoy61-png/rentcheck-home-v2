@@ -32,12 +32,15 @@ jobs:
       - name: Download current source data
         run: |
           mkdir -p .cache-home-stats
+          TS="$(date +%s)"
           curl -fL --retry 3 --retry-delay 2 \
+            -H "Cache-Control: no-cache" \
             -o .cache-home-stats/molit_kangseo.csv \
-            https://raw.githubusercontent.com/arttoy61-png/rent-check/main/molit_kangseo.csv
+            "https://raw.githubusercontent.com/arttoy61-png/rent-check/main/molit_kangseo.csv?ts=${TS}"
           curl -fL --retry 3 --retry-delay 2 \
+            -H "Cache-Control: no-cache" \
             -o .cache-home-stats/gangseo_apt_detail.json \
-            https://raw.githubusercontent.com/arttoy61-png/rent-check/main/gangseo_apt_detail.json
+            "https://raw.githubusercontent.com/arttoy61-png/rent-check/main/gangseo_apt_detail.json?ts=${TS}"
 
       - name: Build home_stats
         run: python scripts/make_home_stats.py
@@ -50,10 +53,14 @@ jobs:
           from pathlib import Path
           p = json.loads(Path('data/home_stats.json').read_text(encoding='utf-8'))
           assert p.get('schema_version') == 2
+          assert p.get('data_until')
           assert isinstance(p.get('recent_deals'), list)
           assert len(p['recent_deals']) <= 3
           assert isinstance(p.get('monthly_trend'), list) and len(p['monthly_trend']) == 6
           print('home_stats validation OK')
+          print('latest contract:', p['data_until'])
+          for d in p['recent_deals']:
+              print(d.get('date'), d.get('dong'), d.get('name'), d.get('amount_eok'))
           PY
 
       - name: Point V2 homepage at local stats
