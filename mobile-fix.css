@@ -179,3 +179,7 @@
   .service-copy strong{font-size:13px}
   .service-copy small{font-size:11px}
 }
+
+
+/* Keep home CTA labels on one line. */
+.cta-actions a{white-space:nowrap}
