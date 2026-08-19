@@ -16,8 +16,8 @@
 .service-arrow{display:none!important}
 .service-copy{min-width:0}
 .service-copy strong,.service-copy small{line-height:1.35}
-.service-item:nth-child(4) .service-copy small{font-size:0}
-.service-item:nth-child(4) .service-copy small::after{content:"예상 분담금 계산";font-size:14px}
+.service-item:nth-child(5) .service-copy small{font-size:0}
+.service-item:nth-child(5) .service-copy small::after{content:"예상 분담금 계산";font-size:14px}
 
 /* Featured cards use public-domain real photos instead of fallback vector art. */
 .insight-art{background-position:center;background-size:cover;background-repeat:no-repeat}
@@ -158,4 +158,24 @@
 @media (max-width: 430px){
   .calculator-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
   .calculator-card{height:232px;min-height:232px;padding:13px}
+}
+
+
+/* Service strip: 3 + 2 grid on mobile, no horizontal scroll. */
+@media (max-width: 768px){
+  .service-strip{overflow:visible!important;display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;padding-right:0!important;scroll-padding-right:0!important;scroll-snap-type:none!important}
+  .service-item{min-width:0!important;height:92px;padding:10px 8px;grid-template-columns:34px minmax(0,1fr);gap:8px;scroll-snap-align:none;border-right:0;border-bottom:1px solid #e7eaee}
+  .service-icon{width:34px;height:34px}
+  .service-item:nth-child(-n+3){grid-column:span 2}
+  .service-item:nth-child(n+4){grid-column:span 3;border-bottom:0}
+  .service-item:nth-child(1),.service-item:nth-child(2),.service-item:nth-child(4){border-right:1px solid #e7eaee}
+  .service-copy strong{font-size:14px;line-height:1.3}
+  .service-copy small{font-size:12px;line-height:1.35;white-space:normal}
+}
+@media (max-width: 430px){
+  .service-item{height:96px;padding:9px 6px;grid-template-columns:30px minmax(0,1fr);gap:6px}
+  .service-icon{width:30px;height:30px;border-radius:8px}
+  .service-icon svg{width:17px;height:17px}
+  .service-copy strong{font-size:13px}
+  .service-copy small{font-size:11px}
 }
