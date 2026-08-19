@@ -92,3 +92,97 @@
     }
   });
 })();
+
+// Home showcase is separate from the Naver article archive below it.
+// Keep the archive data-driven, but curate these four cards as Rent Check's storefront.
+(()=>{
+  const homeInsights=[
+    {
+      category:'시세·실거래',
+      title:'강서구 7월 시세, 같은 84㎡가 5.8억과 18.3억',
+      date:'2026-08-03',
+      url:'https://blog.naver.com/spitoon61/224366549389',
+      external:true,
+      image:'https://images.pexels.com/photos/17760623/pexels-photo-17760623.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
+      alt:'서울의 고층 아파트 전경'
+    },
+    {
+      category:'재개발·정비',
+      title:'화곡6동 957-1 모아타운, 조합설립인가까지 왔습니다',
+      date:'2026-08-19',
+      url:'/analysis/hwagok6-957-a1/',
+      image:'https://images.pexels.com/photos/34360419/pexels-photo-34360419.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
+      alt:'주거단지와 공사 크레인이 보이는 재개발 이미지'
+    },
+    {
+      category:'정책·개발',
+      title:'염창근린공원 1,000가구, 그 공원이 20년 비어 있던 이유',
+      date:'2026-08-19',
+      url:'/analysis/yeomchang-1000-homes/',
+      image:'https://images.pexels.com/photos/32203742/pexels-photo-32203742.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
+      alt:'도심 공원과 주거 건물이 함께 보이는 이미지'
+    },
+    {
+      category:'대출·가이드',
+      title:'신생아 특례대출 9억인데 왜 4억만 나오나요',
+      date:'2026-08-19',
+      url:'/blog/newborn-special-loan/',
+      image:'https://images.pexels.com/photos/6963909/pexels-photo-6963909.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
+      alt:'가정에서 계산기와 서류를 보며 재정을 확인하는 모습'
+    }
+  ];
+
+  const style=document.createElement('style');
+  style.id='curatedInsightStyle';
+  style.textContent=`
+    #insightTrack{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:14px!important;overflow:visible!important;scroll-snap-type:none!important}
+    #insightTrack .insight{display:flex!important;flex-direction:column;min-width:0!important;width:auto!important;height:100%;text-decoration:none;color:inherit;overflow:hidden}
+    #insightTrack .insight-art{width:100%;aspect-ratio:16/10;height:auto!important;overflow:hidden;background:#eef1f5}
+    #insightTrack .insight-art img{display:block;width:100%;height:100%;object-fit:cover}
+    #insightTrack .insight-body{display:flex;flex:1;flex-direction:column;min-width:0}
+    #insightTrack .insight-body h3{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;min-height:3em}
+    #insightTrack .insight-meta{margin-top:auto}
+    #insightTrack .insight-go{color:#1565c0;font-weight:800;white-space:nowrap}
+    @media(max-width:900px){#insightTrack{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+    @media(max-width:520px){
+      #insightTrack{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+      #insightTrack .insight-art{aspect-ratio:4/3}
+      #insightTrack .insight-body{padding:11px 10px!important}
+      #insightTrack .insight-category{font-size:10px!important}
+      #insightTrack .insight-body h3{font-size:14px!important;line-height:1.42!important;min-height:2.84em;margin:6px 0 10px!important}
+      #insightTrack .insight-meta{font-size:10px!important;gap:5px!important;align-items:flex-start!important;flex-direction:column!important}
+      #insightTrack .insight-go{font-size:10px!important}
+    }
+  `;
+  document.head.appendChild(style);
+
+  function renderCuratedInsights(){
+    const track=document.querySelector('#insightTrack');
+    if(!track)return;
+    const heading=document.querySelector('#insights .section-head h2');
+    const desc=document.querySelector('#insights .section-head p:not(.kicker)');
+    if(heading)heading.textContent='실거래와 제도로 읽는 부동산';
+    if(desc)desc.textContent='시세·정비사업·정책·대출에서 판단에 필요한 글을 골랐습니다.';
+    track.replaceChildren(...homeInsights.map(item=>{
+      const card=document.createElement('a');
+      card.className='insight insight-home';
+      card.href=item.url;
+      if(item.external){card.target='_blank';card.rel='noopener noreferrer';}
+      const visual=document.createElement('div');
+      visual.className='insight-art';
+      const img=document.createElement('img');
+      img.src=item.image;img.alt=item.alt;img.loading='lazy';img.decoding='async';img.referrerPolicy='no-referrer';
+      visual.append(img);
+      const body=document.createElement('div');body.className='insight-body';
+      const cat=document.createElement('span');cat.className='insight-category';cat.textContent=item.category;
+      const title=document.createElement('h3');title.textContent=item.title;
+      const meta=document.createElement('div');meta.className='insight-meta';
+      const date=document.createElement('span');date.textContent=item.date;
+      const go=document.createElement('span');go.className='insight-go';go.textContent='글 보기 →';
+      meta.append(date,go);body.append(cat,title,meta);card.append(visual,body);return card;
+    }));
+  }
+
+  renderInsights=renderCuratedInsights;
+  renderCuratedInsights();
+})();
