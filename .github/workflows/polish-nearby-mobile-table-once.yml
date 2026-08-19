@@ -1,0 +1,60 @@
+name: Polish nearby mobile table once
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/polish-nearby-mobile-table-once.yml"
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch nearby result table only
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('tools/rent-check/nearby.js')
+          s=p.read_text(encoding='utf-8')
+
+          old_rows="""    const rows=info.rows.length?info.rows.map((r,i)=>`<tr><td><b>${i+1}</b></td><td>${Math.round(r.distance)}m${r.same?'<br><small>같은 지번</small>':''}</td><td>${esc(typeLabel(r.t))}<br><small>${esc(r.b||r.u)}</small></td><td>${num(r.a).toFixed(1).replace(/\\.0$/,'')}㎡</td><td>${esc(price(r,kind))}<br><small>${esc(fmtDate(r))}</small></td></tr>`).join(''):'<tr><td colspan=\"5\">조건에 맞는 주변 실거래를 찾지 못했습니다.</td></tr>';"""
+          new_rows="""    const rows=info.rows.length?info.rows.map(r=>`<tr><td class=\"nearby-place\"><b>${esc(r.b||r.u)}</b><br><small>${esc(typeLabel(r.t))} · ${esc(fmtDate(r))}</small></td><td class=\"nearby-distance\">${Math.round(r.distance)}m${r.same?'<br><small>같은 지번</small>':''}</td><td class=\"nearby-area\">${num(r.a).toFixed(1).replace(/\\.0$/,'')}㎡</td><td class=\"nearby-price\"><b>${esc(price(r,kind))}</b></td></tr>`).join(''):'<tr><td colspan=\"4\">조건에 맞는 주변 실거래를 찾지 못했습니다.</td></tr>';"""
+          if old_rows not in s:
+              raise SystemExit('old rows block not found')
+          s=s.replace(old_rows,new_rows,1)
+
+          old_head='<thead><tr><th>#</th><th>거리</th><th>유형</th><th>면적</th><th>${kind===\'전세\'?\'보증금\':\'보증금 / 월세\'}</th></tr></thead>'
+          new_head='<thead><tr><th>현장명</th><th>거리</th><th>면적</th><th>금액</th></tr></thead>'
+          if old_head not in s:
+              raise SystemExit('old table head not found')
+          s=s.replace(old_head,new_head,1)
+
+          old_css='.nearby-table-wrap{overflow-x:auto}.nearby-table{width:100%;border-collapse:collapse;font-size:12px;min-width:560px}.nearby-table th{padding:9px 6px;background:var(--navy);color:#fff;text-align:center;white-space:nowrap}.nearby-table td{padding:9px 6px;border-bottom:1px solid var(--border);text-align:center;vertical-align:middle}.nearby-table small{font-size:10px;color:var(--gray-lite)}'
+          new_css='.nearby-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}.nearby-table{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed;min-width:0}.nearby-table th{padding:9px 4px;background:var(--navy);color:#fff;text-align:center;white-space:nowrap}.nearby-table td{padding:9px 4px;border-bottom:1px solid var(--border);text-align:center;vertical-align:middle}.nearby-table th:nth-child(1),.nearby-table td:nth-child(1){width:42%;text-align:left;padding-left:8px}.nearby-table th:nth-child(2),.nearby-table td:nth-child(2){width:13%}.nearby-table th:nth-child(3),.nearby-table td:nth-child(3){width:17%}.nearby-table th:nth-child(4),.nearby-table td:nth-child(4){width:28%}.nearby-table small{font-size:10px;color:var(--gray-lite);line-height:1.35}.nearby-place b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--navy)}.nearby-distance,.nearby-area{white-space:nowrap}.nearby-price{font-size:12px;line-height:1.4;word-break:keep-all}.nearby-price b{font-weight:800;color:var(--navy)}'
+          if old_css not in s:
+              raise SystemExit('old table css not found')
+          s=s.replace(old_css,new_css,1)
+
+          mobile_old='@media(max-width:520px){.nearby-address-row{display:grid;grid-template-columns:1fr auto}.nearby-address-row button{min-width:86px}.nearby-map{height:220px}}'
+          mobile_new='@media(max-width:520px){.nearby-address-row{display:grid;grid-template-columns:1fr auto}.nearby-address-row button{min-width:86px}.nearby-map{height:220px}.nearby-table{font-size:11px}.nearby-table th{padding:8px 2px}.nearby-table td{padding:8px 2px}.nearby-table th:nth-child(1),.nearby-table td:nth-child(1){width:43%;padding-left:6px}.nearby-table th:nth-child(2),.nearby-table td:nth-child(2){width:13%}.nearby-table th:nth-child(3),.nearby-table td:nth-child(3){width:17%}.nearby-table th:nth-child(4),.nearby-table td:nth-child(4){width:27%}.nearby-price{font-size:11px}}'
+          if mobile_old not in s:
+              raise SystemExit('mobile css target not found')
+          s=s.replace(mobile_old,mobile_new,1)
+
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Verify syntax and layout markers
+        run: |
+          node --check tools/rent-check/nearby.js
+          grep -q '<th>현장명</th><th>거리</th><th>면적</th><th>금액</th>' tools/rent-check/nearby.js
+          grep -q 'nearby-place' tools/rent-check/nearby.js
+          ! grep -q '<th>#</th>' tools/rent-check/nearby.js
+      - name: Commit result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add tools/rent-check/nearby.js
+          git commit -m "Polish mobile nearby transaction table"
+          git pull --rebase --autostash || true
+          git push
