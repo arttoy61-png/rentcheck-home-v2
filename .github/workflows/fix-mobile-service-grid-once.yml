@@ -1,0 +1,58 @@
+name: Fix mobile service grid once
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/fix-mobile-service-grid-once.yml"
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Make five mobile links equal width and centered
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('mobile-fix.css')
+          s=p.read_text(encoding='utf-8')
+          start=s.index('/* Service strip: 3 + 2 grid on mobile, no horizontal scroll. */')
+          end=s.index('/* Keep home CTA labels on one line. */')
+          block=r'''/* Service strip: five equal-width links, 3 + 2 centered on mobile. */
+          @media (max-width: 768px){
+            .service-strip{overflow:visible!important;display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;padding-right:0!important;scroll-padding-right:0!important;scroll-snap-type:none!important}
+            .service-item{min-width:0!important;height:90px;padding:10px 8px;grid-template-columns:34px minmax(0,1fr);gap:8px;scroll-snap-align:none;border-right:0;border-bottom:1px solid #e7eaee}
+            .service-icon{width:34px;height:34px}
+            .service-item:nth-child(-n+3){grid-column:span 2}
+            .service-item:nth-child(4){grid-column:2 / span 2;border-bottom:0}
+            .service-item:nth-child(5){grid-column:4 / span 2;border-bottom:0}
+            .service-item:nth-child(1),.service-item:nth-child(2),.service-item:nth-child(4){border-right:1px solid #e7eaee}
+            .service-copy strong{font-size:14px;line-height:1.3}
+            .service-copy small{font-size:12px;line-height:1.35;white-space:normal}
+          }
+          @media (max-width: 430px){
+            .service-item{height:90px;padding:9px 6px;grid-template-columns:30px minmax(0,1fr);gap:6px}
+            .service-icon{width:30px;height:30px;border-radius:8px}
+            .service-icon svg{width:17px;height:17px}
+            .service-copy strong{font-size:13px}
+            .service-copy small{font-size:11px}
+          }
+
+
+'''
+          p.write_text(s[:start]+block+s[end:],encoding='utf-8')
+          PY
+      - name: Validate mobile grid CSS
+        run: |
+          grep -q 'service-item:nth-child(4){grid-column:2 / span 2' mobile-fix.css
+          grep -q 'service-item:nth-child(5){grid-column:4 / span 2' mobile-fix.css
+          ! grep -q 'service-item:nth-child(n+4){grid-column:span 3' mobile-fix.css
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add mobile-fix.css
+          git commit -m "Polish mobile five-link service layout"
+          git pull --rebase --autostash || true
+          git push
