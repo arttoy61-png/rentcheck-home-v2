@@ -3,7 +3,7 @@
 
   const KAKAO_JS_KEY = '222563608848ddea15db9b5ddf83e859';
   const DATA_URL = 'https://arttoy61-png.github.io/rent-check/auction_data.json';
-  const state = {location:null, data:null, kakaoReady:null};
+  const state = {location:null, data:null, kakaoReady:null, mapController:null};
   const $ = (s,p=document) => p.querySelector(s);
   const esc = v => String(v ?? '').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
   const num = v => { const x=Number(String(v ?? '').replace(/,/g,'')); return Number.isFinite(x)?x:0; };
@@ -190,21 +190,41 @@
   }
 
   function price(r,kind){return kind==='전세'?fmtMoney(r.p):`${fmtMoney(r.dp)} / 월 ${Math.round(num(r.m)).toLocaleString()}만원`;}
+  function priceHtml(r,kind){
+    if(kind==='전세') return `<b>${esc(fmtMoney(r.p))}</b>`;
+    return `<b>${esc(fmtMoney(r.dp))}</b><span>월 ${Math.round(num(r.m)).toLocaleString()}만원</span>`;
+  }
 
   function drawMap(rows){
     const target=$('#nearbyMap');
     if(!target||!window.kakao?.maps||!state.location)return;
     const kakao=window.kakao,center=new kakao.maps.LatLng(state.location.lat,state.location.lng),map=new kakao.maps.Map(target,{center,level:4}),bounds=new kakao.maps.LatLngBounds();
     bounds.extend(center);
-    const home=new kakao.maps.Marker({position:center,map}),homeInfo=new kakao.maps.InfoWindow({content:'<div style="padding:5px 8px;font-size:12px;font-weight:700">입력 주소</div>'});
-    homeInfo.open(map,home);
-    rows.forEach((r,i)=>{
-      const pos=new kakao.maps.LatLng(r.lat,r.lng);bounds.extend(pos);
-      const marker=new kakao.maps.Marker({position:pos,map});
-      const info=new kakao.maps.InfoWindow({content:`<div style="padding:5px 8px;font-size:12px;white-space:nowrap">${i+1}. ${esc(r.b||typeLabel(r.t))} · ${Math.round(r.distance)}m</div>`});
-      kakao.maps.event.addListener(marker,'click',()=>info.open(map,marker));
-    });
-    if(rows.length) map.setBounds(bounds,40,40,40,40);
+    let activeIndex=null,activePopup=null;
+    const pins=[];
+    const rowEls=()=>[...document.querySelectorAll('#nearbyResult tbody tr[data-nearby-index]')];
+    const clearRows=()=>rowEls().forEach(el=>el.classList.remove('is-active'));
+    const closePopup=()=>{if(activePopup){activePopup.setMap(null);activePopup=null;}activeIndex=null;clearRows();};
+    const popupAt=(pos,text,index)=>{
+      if(activePopup)activePopup.setMap(null);
+      const el=document.createElement('div');el.className='nearby-map-popup';
+      const label=document.createElement('span');label.textContent=text;el.appendChild(label);
+      const close=document.createElement('button');close.type='button';close.className='nearby-map-popup-close';close.setAttribute('aria-label','닫기');close.textContent='×';
+      close.addEventListener('click',e=>{e.stopPropagation();closePopup();});el.appendChild(close);
+      activePopup=new kakao.maps.CustomOverlay({position:pos,content:el,yAnchor:1.65,zIndex:12,map});
+      activeIndex=index;clearRows();if(index>=0)rowEls()[index]?.classList.add('is-active');
+    };
+    const makePin=(pos,label,cls,index,text)=>{
+      const btn=document.createElement('button');btn.type='button';btn.className=`nearby-map-pin ${cls}`;btn.textContent=label;btn.setAttribute('aria-label',text);
+      new kakao.maps.CustomOverlay({position:pos,content:btn,yAnchor:1.1,zIndex:5,map});
+      btn.addEventListener('click',e=>{e.stopPropagation();if(activeIndex===index){closePopup();return;}popupAt(pos,text,index);});
+      pins.push({pos,index,text});
+    };
+    makePin(center,'⌂','home',-1,'입력 주소');
+    rows.forEach((r,i)=>{const pos=new kakao.maps.LatLng(r.lat,r.lng);bounds.extend(pos);makePin(pos,String(i+1),'deal',i,`${r.b||typeLabel(r.t)} · ${Math.round(r.distance)}m`);});
+    if(rows.length)map.setBounds(bounds,38,38,38,38);
+    kakao.maps.event.addListener(map,'click',closePopup);
+    state.mapController={close:closePopup,select(index){const pin=pins.find(x=>x.index===index);if(!pin)return;map.panTo(pin.pos);if(activeIndex===index){closePopup();return;}popupAt(pin.pos,pin.text,index);}};
   }
 
   function resultBox(){
@@ -215,11 +235,12 @@
 
   function render(info){
     const kind=dealKind(),v=verdict(info.rows,kind),box=resultBox();
-    const rows=info.rows.length?info.rows.map(r=>`<tr><td class="nearby-place"><b>${esc(r.b||r.u)}</b><br><small>${esc(typeLabel(r.t))} · ${esc(fmtDate(r))}</small></td><td class="nearby-distance">${Math.round(r.distance)}m${r.same?'<br><small>같은 지번</small>':''}</td><td class="nearby-area">${num(r.a).toFixed(1).replace(/\.0$/,'')}㎡</td><td class="nearby-price"><b>${esc(price(r,kind))}</b></td></tr>`).join(''):'<tr><td colspan="4">조건에 맞는 주변 실거래를 찾지 못했습니다.</td></tr>';
+    const rows=info.rows.length?info.rows.map((r,i)=>`<tr data-nearby-index="${i}"><td class="nearby-place"><b>${esc(r.b||r.u)}</b><small>${esc(typeLabel(r.t))} · ${esc(fmtDate(r))}</small></td><td class="nearby-distance">${Math.round(r.distance)}m${r.same?'<small>같은 지번</small>':''}</td><td class="nearby-area">${num(r.a).toFixed(1).replace(/\.0$/,'')}㎡</td><td class="nearby-price">${priceHtml(r,kind)}</td></tr>`).join(''):'<tr><td colspan="4">조건에 맞는 주변 실거래를 찾지 못했습니다.</td></tr>';
     box.innerHTML=`<div class="verdict ${esc(v.cls)}"><div class="title">${esc(v.title)}</div><div class="sub">${esc(v.sub)}</div></div><div class="card nearby-card"><h2>입력 주소 주변 실거래</h2><div class="nearby-summary"><b>${esc(state.location.address)}</b><br>반경 500m · ${esc(info.typeInfo.label)} · 비슷한 면적 · 최근 ${info.period}개월</div><div id="nearbyMap" class="nearby-map" aria-label="주소 주변 실거래 지도"></div><div class="nearby-table-wrap"><table class="nearby-table"><thead><tr><th>현장명</th><th>거리</th><th>면적</th><th>금액</th></tr></thead><tbody>${rows}</tbody></table></div><p class="nearby-note">500m 안에서 조건이 비슷한 거래 ${info.total}건 중 최대 5건을 보여줍니다. 입력 주소는 카카오 위치검색에만 사용하며 Rent Check에 저장하지 않습니다.</p></div>`;
     box.style.display='block';
     document.body.classList.add('nearby-mode');
     drawMap(info.rows);
+    box.querySelectorAll('tbody tr[data-nearby-index]').forEach(tr=>tr.addEventListener('click',()=>state.mapController?.select(Number(tr.dataset.nearbyIndex))));
     box.scrollIntoView({behavior:'smooth',block:'start'});
   }
 
@@ -241,6 +262,14 @@
       .apt-shortcut-card{display:none!important}
       .nearby-address-block{margin-bottom:16px;padding:14px;border:1.5px solid var(--blue);border-radius:12px;background:var(--blue-50)}
       .nearby-address-block label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:7px}.nearby-address-row{display:flex;gap:8px}.nearby-address-row input{flex:1;min-width:0;padding:12px 13px;border:1.5px solid var(--border);border-radius:10px;font-size:15px;background:#fff}.nearby-address-row button{flex:0 0 auto;border:0;border-radius:10px;padding:0 14px;background:var(--blue);color:#fff;font-weight:700;cursor:pointer}.nearby-address-row button:disabled{opacity:.65}.nearby-address-status{font-size:11px;color:var(--gray-lite);margin-top:7px;line-height:1.5}.nearby-address-status.ok{color:var(--green);font-weight:700}.nearby-result{display:none}body.nearby-mode #result{display:none!important}.nearby-card{overflow:hidden}.nearby-summary{font-size:12px;line-height:1.7;color:var(--gray-lite);margin:-4px 0 10px}.nearby-summary b{color:var(--navy)}.nearby-map{height:240px;border:1px solid var(--border);border-radius:10px;margin:8px 0 12px;background:#eef1f5}.nearby-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}.nearby-table{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed;min-width:0}.nearby-table th{padding:9px 4px;background:var(--navy);color:#fff;text-align:center;white-space:nowrap}.nearby-table td{padding:9px 4px;border-bottom:1px solid var(--border);text-align:center;vertical-align:middle}.nearby-table th:nth-child(1),.nearby-table td:nth-child(1){width:42%;text-align:left;padding-left:8px}.nearby-table th:nth-child(2),.nearby-table td:nth-child(2){width:13%}.nearby-table th:nth-child(3),.nearby-table td:nth-child(3){width:17%}.nearby-table th:nth-child(4),.nearby-table td:nth-child(4){width:28%}.nearby-table small{font-size:10px;color:var(--gray-lite);line-height:1.35}.nearby-place b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--navy)}.nearby-distance,.nearby-area{white-space:nowrap}.nearby-price{font-size:12px;line-height:1.4;word-break:keep-all}.nearby-price b{font-weight:800;color:var(--navy)}.nearby-note{font-size:11px;color:var(--gray-lite);line-height:1.65;margin-top:10px}@media(max-width:520px){.nearby-address-row{display:grid;grid-template-columns:1fr auto}.nearby-address-row button{min-width:86px}.nearby-map{height:220px}.nearby-table{font-size:11px}.nearby-table th{padding:8px 2px}.nearby-table td{padding:8px 2px}.nearby-table th:nth-child(1),.nearby-table td:nth-child(1){width:43%;padding-left:6px}.nearby-table th:nth-child(2),.nearby-table td:nth-child(2){width:13%}.nearby-table th:nth-child(3),.nearby-table td:nth-child(3){width:17%}.nearby-table th:nth-child(4),.nearby-table td:nth-child(4){width:27%}.nearby-price{font-size:11px}}
+      .nearby-map-pin{width:28px;height:28px;border:2px solid #fff;border-radius:50%;box-shadow:0 2px 7px rgba(15,39,75,.28);display:flex;align-items:center;justify-content:center;padding:0;font-size:12px;font-weight:900;line-height:1;cursor:pointer}
+      .nearby-map-pin.deal{background:#2f80ed;color:#fff}.nearby-map-pin.home{background:#d9aa2f;color:#0f274b;font-size:17px}
+      .nearby-map-popup{display:flex;align-items:center;gap:8px;max-width:210px;padding:8px 9px 8px 11px;border:1px solid #cfd7e3;border-radius:9px;background:#fff;box-shadow:0 3px 12px rgba(15,39,75,.2);font-size:12px;font-weight:800;color:var(--navy);white-space:nowrap}
+      .nearby-map-popup span{overflow:hidden;text-overflow:ellipsis}.nearby-map-popup-close{flex:0 0 24px;width:24px;height:24px;border:0;border-radius:50%;background:#eef2f7;color:#475569;font-size:18px;line-height:22px;padding:0;cursor:pointer}
+      .nearby-table tbody tr[data-nearby-index]{cursor:pointer;transition:background .15s ease}.nearby-table tbody tr[data-nearby-index].is-active{background:#f3f7ff}
+      .nearby-place b{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;white-space:normal;line-height:1.3;margin-bottom:4px}.nearby-place small,.nearby-distance small{display:block}
+      .nearby-price b,.nearby-price span{display:block;white-space:nowrap}.nearby-price span{margin-top:2px;font-weight:800;color:var(--navy)}
+      @media(max-width:520px){.nearby-map{height:200px}.nearby-table-wrap{overflow-x:hidden}.nearby-table th{padding:7px 2px}.nearby-table td{padding:7px 2px}.nearby-table th:nth-child(1),.nearby-table td:nth-child(1){width:37%;padding-left:6px}.nearby-table th:nth-child(2),.nearby-table td:nth-child(2){width:11%}.nearby-table th:nth-child(3),.nearby-table td:nth-child(3){width:14%}.nearby-table th:nth-child(4),.nearby-table td:nth-child(4){width:38%}.nearby-place small,.nearby-table small{font-size:9.5px}.nearby-distance,.nearby-area{font-size:10.5px}.nearby-price{font-size:11px;line-height:1.25}.nearby-map-popup{max-width:180px;font-size:11px}}
     `;document.head.appendChild(style);
   }
 
@@ -255,7 +284,7 @@
 
     $('#nearbyAddressBtn')?.addEventListener('click',searchAddress);
     $('#nearbyAddress')?.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();searchAddress();}});
-    $('#nearbyAddress')?.addEventListener('input',()=>{state.location=null;document.body.classList.remove('nearby-mode');const b=$('#nearbyResult');if(b)b.style.display='none';status('주소를 수정했습니다. 주소 찾기를 다시 눌러주세요.');});
+    $('#nearbyAddress')?.addEventListener('input',()=>{state.location=null;state.mapController=null;document.body.classList.remove('nearby-mode');const b=$('#nearbyResult');if(b)b.style.display='none';status('주소를 수정했습니다. 주소 찾기를 다시 눌러주세요.');});
   }
 
   function bindCheck(){
