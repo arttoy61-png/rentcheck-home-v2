@@ -28,7 +28,7 @@
     return ready;
   }
 
-  window.miniMap = function miniMapKakao(lat, lng, nm) {
+  function miniMapKakao(lat, lng, nm) {
     const target = document.getElementById('map');
     if (!target) return;
     target.textContent = '카카오맵 불러오는 중…';
@@ -51,7 +51,9 @@
     }).catch(() => {
       target.textContent = '지도를 불러오지 못했습니다.';
     });
-  };
+  }
 
+  window.__rentcheckKakaoMiniMap = miniMapKakao;
+  window.miniMap = miniMapKakao;
   loadKakao().catch(() => {});
 })();
