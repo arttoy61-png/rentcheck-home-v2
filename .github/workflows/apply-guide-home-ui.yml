@@ -1,0 +1,135 @@
+name: Apply guide and home UI updates
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/apply-guide-home-ui.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply requested UI changes
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+          import html
+
+          def write_if_changed(path, text):
+              p = Path(path)
+              old = p.read_text(encoding='utf-8')
+              if old != text:
+                  p.write_text(text, encoding='utf-8')
+                  print('updated', path)
+
+          # Home: rename guide entry points and add guide to the dark CTA.
+          p = Path('index.html')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace('href="/blog/">가이드</a>', 'href="/blog/">실전 가이드</a>')
+          old_cta = '<div class="cta-actions"><a href="#calculators">계산 도구 보기 <b>→</b></a><a data-tool-link="apt-widget">실거래 확인</a></div>'
+          new_cta = '<div class="cta-actions"><a href="#calculators">계산 도구 보기 <b>→</b></a><a data-tool-link="apt-widget">실거래 확인</a><a href="/blog/">실전 가이드</a></div>'
+          if old_cta in text:
+              text = text.replace(old_cta, new_cta, 1)
+          write_if_changed('index.html', text)
+
+          # Home service strip: 5 items, guide placed in the first row on mobile.
+          p = Path('app.js')
+          text = p.read_text(encoding='utf-8')
+          guide_icon = '<svg viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M8 4v16M11 8h5M11 12h5"/></svg>'
+          m = re.search(r"const serviceIcons=\[(.*?)\];", text, flags=re.S)
+          if m and 'M5 4h11a3 3' not in m.group(1):
+              body = m.group(1) + ",'" + guide_icon + "'"
+              text = text[:m.start()] + 'const serviceIcons=[' + body + '];' + text[m.end():]
+          old_specs = "const specs=[['계산기 모음','부동산 계산 도구','#calculators',null],['실거래 조회','강서구 아파트 실거래',null,'apt-widget'],['청년 지원','청년주택 점수 확인',null,'youth-score'],['재개발','분담금과 사업성 확인',null,'redevelopment']],palette=[['#0d1f3c','#eef1f5'],['#1565c0','#eef5fc'],['#d4a73a','#fff8e7'],['#0d1f3c','#eef1f5']];"
+          new_specs = "const specs=[['계산기 모음','부동산 계산 도구','#calculators',null],['실거래 조회','강서구 아파트 실거래',null,'apt-widget'],['실전 가이드','계약·청년·재개발 답변','/blog/',null],['청년 지원','청년주택 점수 확인',null,'youth-score'],['재개발','분담금과 사업성 확인',null,'redevelopment']],palette=[['#0d1f3c','#eef1f5'],['#1565c0','#eef5fc'],['#d4a73a','#fff8e7'],['#d4a73a','#fff8e7'],['#0d1f3c','#eef1f5']];"
+          if old_specs in text:
+              text = text.replace(old_specs, new_specs, 1)
+          write_if_changed('app.js', text)
+
+          # Desktop service strip: 5 equal columns.
+          p = Path('styles.css')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace('.service-strip{position:relative;z-index:8;margin-top:-39px;display:grid;grid-template-columns:repeat(4,1fr);', '.service-strip{position:relative;z-index:8;margin-top:-39px;display:grid;grid-template-columns:repeat(5,1fr);', 1)
+          write_if_changed('styles.css', text)
+
+          # Mobile: no horizontal scroll. First row 3, second row 2.
+          p = Path('mobile-fix.css')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace('.service-item:nth-child(4) .service-copy small', '.service-item:nth-child(5) .service-copy small')
+          marker = '/* Service strip: 3 + 2 grid on mobile, no horizontal scroll. */'
+          if marker not in text:
+              text += '''\n\n/* Service strip: 3 + 2 grid on mobile, no horizontal scroll. */\n@media (max-width: 768px){\n  .service-strip{overflow:visible!important;display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;padding-right:0!important;scroll-padding-right:0!important;scroll-snap-type:none!important}\n  .service-item{min-width:0!important;height:92px;padding:10px 8px;grid-template-columns:34px minmax(0,1fr);gap:8px;scroll-snap-align:none;border-right:0;border-bottom:1px solid #e7eaee}\n  .service-icon{width:34px;height:34px}\n  .service-item:nth-child(-n+3){grid-column:span 2}\n  .service-item:nth-child(n+4){grid-column:span 3;border-bottom:0}\n  .service-item:nth-child(1),.service-item:nth-child(2),.service-item:nth-child(4){border-right:1px solid #e7eaee}\n  .service-copy strong{font-size:14px;line-height:1.3}\n  .service-copy small{font-size:12px;line-height:1.35;white-space:normal}\n}\n@media (max-width: 430px){\n  .service-item{height:96px;padding:9px 6px;grid-template-columns:30px minmax(0,1fr);gap:6px}\n  .service-icon{width:30px;height:30px;border-radius:8px}\n  .service-icon svg{width:17px;height:17px}\n  .service-copy strong{font-size:13px}\n  .service-copy small{font-size:11px}\n}\n'''
+          write_if_changed('mobile-fix.css', text)
+
+          # Guide index naming.
+          p = Path('blog/index.html')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace('Rent Check 가이드｜전세·재개발·청년주거 상시 가이드', 'Rent Check 부동산 실전 가이드｜전세·재개발·청년주거')
+          text = text.replace('<div class="eyebrow">Rent Check 상시 가이드</div>', '<div class="eyebrow">Rent Check 실전 가이드</div>')
+          text = text.replace('<h1>계약할 때, 청약할 때, 재개발을 볼 때 다시 찾는 가이드</h1>', '<h1>부동산 실전 가이드</h1>')
+          text = text.replace('전세계약부터 임대차 갱신, 재개발 분담금과 권리, 청년 매입임대까지 실제로 확인해야 할 순서와 핵심 기준을 한 번에 찾을 수 있게 정리했습니다.', '계약·청년주택·재개발에서 실제로 필요한 답을 먼저 확인하고, 바로 계산하고 비교할 수 있게 정리했습니다.')
+          write_if_changed('blog/index.html', text)
+
+          # Guide articles: replace outbound official-source links with plain reference text,
+          # and add relevant Rent Check tool shortcuts.
+          tool_links = {
+              'blog/jeonse-safety/index.html': [
+                  ('전세가율 계산기', '/tools/jeonse-ratio/'),
+                  ('월세·전세 적정 확인', '/tools/rent-check/')],
+              'blog/lease-cost-renewal/index.html': [
+                  ('중개보수 계산기', '/tools/brokerage-fee/'),
+                  ('전월세 전환 계산기', '/tools/rent-conversion/')],
+              'blog/redevelopment-contribution/index.html': [
+                  ('내 재개발 분담금 계산하기', '/calc/')],
+              'blog/redevelopment-rights/index.html': [
+                  ('재개발 총투입금 계산하기', '/calc/')],
+              'blog/redevelopment-tenant/index.html': [
+                  ('재개발 계산기 보기', '/calc/')],
+              'blog/youth-rental/index.html': [
+                  ('내 청년주택 점수 확인하기', '/tools/youth-score/')],
+          }
+
+          src_re = re.compile(r'<section class="sources"><h2>공식자료</h2><ol>(.*?)</ol></section>', re.S)
+          anchor_re = re.compile(r'<a\s+[^>]*>(.*?)</a>', re.S)
+          for path, links in tool_links.items():
+              p = Path(path)
+              text = p.read_text(encoding='utf-8')
+              def repl_sources(m):
+                  labels = []
+                  for raw in anchor_re.findall(m.group(1)):
+                      label = re.sub(r'<[^>]+>', '', raw)
+                      label = html.unescape(label).strip()
+                      if label:
+                          labels.append(label)
+                  return '<p class="reference-note">참고 기준: ' + ' · '.join(labels) + '</p>'
+              text = src_re.sub(repl_sources, text, count=1)
+              if 'guide-tool-cta' not in text:
+                  link_html = ''.join(f'<a href="{url}">{label} →</a>' for label, url in links)
+                  block = '<div class="guide-tool-cta"><strong>Rent Check 도구 바로가기</strong><div>' + link_html + '</div></div>'
+                  if '<div class="related">' in text:
+                      text = text.replace('<div class="related">', block + '<div class="related">', 1)
+                  else:
+                      text = text.replace('<p class="notice">', block + '<p class="notice">', 1)
+              write_if_changed(path, text)
+
+          # Shared guide styling for reference note + tool shortcut.
+          p = Path('blog/article.css')
+          text = p.read_text(encoding='utf-8')
+          marker = '.guide-tool-cta{'
+          if marker not in text:
+              text += '''\n.reference-note{border-top:1px solid #ddd;margin-top:40px!important;padding-top:18px;font-size:13px!important;color:#6b7280}\n.guide-tool-cta{margin:32px 0 8px;padding:18px;border:1px solid #c9d4e1;background:#f7f9fc}\n.guide-tool-cta>strong{display:block;margin-bottom:11px;color:var(--navy);font-size:17px}\n.guide-tool-cta>div{display:flex;flex-wrap:wrap;gap:8px}\n.guide-tool-cta a{display:inline-flex;align-items:center;min-height:44px;padding:10px 14px;border-radius:8px;background:var(--navy);color:#fff;text-decoration:none;font-size:14px;font-weight:800}\n.guide-tool-cta a+ a{background:#fff;color:var(--blue);border:1px solid #b9c7d6}\n@media(max-width:680px){.guide-tool-cta>div{display:grid}.guide-tool-cta a{width:100%;justify-content:space-between}}\n'''
+          write_if_changed('blog/article.css', text)
+
+      - name: Commit requested changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html app.js styles.css mobile-fix.css blog
+          git diff --cached --quiet || git commit -m "Improve guide entry points and tool shortcuts"
+          git push
