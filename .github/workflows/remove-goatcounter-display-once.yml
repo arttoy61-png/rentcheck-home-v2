@@ -1,0 +1,40 @@
+name: Remove obsolete GoatCounter display once
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/remove-goatcounter-display-once.yml"
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove obsolete manual counter fetch only
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('tools/rent-check/index.html')
+          s=p.read_text(encoding='utf-8')
+          start=s.find("<script>(function(){var base='https://kangseo-rent.goatcounter.com/counter/'")
+          if start<0:
+              raise SystemExit('manual GoatCounter counter script not found')
+          end=s.find('</script>',start)
+          if end<0:
+              raise SystemExit('script end not found')
+          end+=len('</script>')
+          s=s[:start]+s[end:]
+          p.write_text(s,encoding='utf-8')
+          assert 'kangseo-rent.goatcounter.com/counter/' not in s
+          assert 'data-goatcounter="https://kangseo-rent.goatcounter.com/count"' in s
+          print('manual counter display fetch removed; tracking script retained')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add tools/rent-check/index.html
+          git commit -m "Remove obsolete GoatCounter counter fetch" || exit 0
+          git pull --rebase --autostash || true
+          git push
