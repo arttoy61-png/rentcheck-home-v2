@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-08-19T08:04:40.709Z",
+  "bad": [
+    {
+      "status": 404,
+      "url": "https://kangseo-rent.goatcounter.com/counter/%2Ftools%2Frent-check%2F%3Ftrace%3D1787126674294.json",
+      "type": "fetch"
+    },
+    {
+      "status": 404,
+      "url": "https://kangseo-rent.goatcounter.com/counter/%2Ftools%2Frent-check%2F%3Ftrace%3D1787126674294.json?start=2026-08-19",
+      "type": "fetch"
+    }
+  ]
+}
