@@ -1,0 +1,75 @@
+name: Final nearby rent live QA
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/rent-nearby-final-qa.yml"
+permissions:
+  contents: write
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Playwright Chromium
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm i playwright@1.55.0 >/dev/null
+          npx playwright install --with-deps chromium >/dev/null
+      - name: Test deployed nearby rent tool
+        run: |
+          node <<'JS'
+          const {chromium}=require('playwright');
+          const fs=require('fs');
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const page=await browser.newPage({viewport:{width:390,height:844}});
+            const errors=[];
+            page.on('pageerror',e=>errors.push('pageerror:'+e.message));
+            page.on('console',m=>{ if(m.type()==='error') errors.push('console:'+m.text()); });
+            await page.goto('https://rent-check.kr/tools/rent-check/?finalqa='+Date.now(),{waitUntil:'domcontentloaded',timeout:60000});
+            await page.waitForSelector('#nearbyAddress',{timeout:30000});
+            await page.locator('#nearbyAddress').fill('서울 강서구 화곡로 지하 168');
+            await page.locator('#nearbyAddressBtn').click();
+            await page.waitForFunction(()=>document.querySelector('#nearbyAddressStatus')?.textContent?.includes('확인됨'),null,{timeout:30000});
+            await page.locator('#area').fill('30');
+            await page.locator('#deposit').fill('1000');
+            await page.locator('#rent').fill('60');
+            await page.locator('#checkBtn').click();
+            await page.waitForSelector('#nearbyResult',{state:'visible',timeout:30000});
+            await page.waitForTimeout(1500);
+            const text=await page.locator('#nearbyResult').innerText();
+            const match=text.match(/거래\s+(\d+)건\s+중/);
+            const count=match?Number(match[1]):-1;
+            const rowCount=await page.locator('#nearbyResult tbody tr').count();
+            const mapChildren=await page.locator('#nearbyMap').evaluate(el=>el.children.length);
+            const firstRows=await page.locator('#nearbyResult tbody tr').allInnerTexts();
+            const report={
+              ok:count>0&&rowCount>0&&mapChildren>0,
+              address:'서울 강서구 화곡로 지하 168',
+              area:30,deposit:1000,rent:60,
+              count,rowCount,mapChildren,
+              firstRows:firstRows.slice(0,5),
+              errors:errors.slice(0,10),
+              text:text.slice(0,1600),
+              checkedAt:new Date().toISOString()
+            };
+            fs.mkdirSync('data',{recursive:true});
+            fs.writeFileSync('data/rent-nearby-final-qa.json',JSON.stringify(report,null,2)+'\n');
+            await browser.close();
+            console.log(JSON.stringify(report,null,2));
+            if(!report.ok) process.exit(1);
+          })().catch(e=>{console.error(e);process.exit(1)});
+          JS
+      - name: Commit QA report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/rent-nearby-final-qa.json
+          git commit -m "test: final nearby rent QA"
+          git pull --rebase --autostash || true
+          git push
