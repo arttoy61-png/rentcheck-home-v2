@@ -1,60 +1,60 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-19T01:58:25+09:00",
-  "data_until": "2026-08-15",
+  "generated_at": "2026-08-19T15:18:03+09:00",
+  "data_until": "2026-08-18",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
     {
-      "dong": "방화동",
-      "name": "장미",
-      "area_m2": 40,
-      "amount_eok": 5.5,
-      "date": "2026.08.13",
-      "complex_id": "0906dfd0"
+      "dong": "공항동",
+      "name": "해태",
+      "area_m2": 59,
+      "amount_eok": 7.2,
+      "date": "2026.08.15",
+      "complex_id": "15e4454b"
     },
     {
       "dong": "방화동",
-      "name": "방화5",
-      "area_m2": 33,
-      "amount_eok": 5.05,
-      "date": "2026.08.12",
-      "complex_id": "38d0233d"
+      "name": "삼성꽃마을",
+      "area_m2": 59,
+      "amount_eok": 5.65,
+      "date": "2026.08.15",
+      "complex_id": "2e0ebfec"
     },
     {
-      "dong": "염창동",
-      "name": "동아",
-      "area_m2": 115,
-      "amount_eok": 14.75,
-      "date": "2026.08.12",
-      "complex_id": "cc211f33"
+      "dong": "방화동",
+      "name": "현대",
+      "area_m2": 84,
+      "amount_eok": 8.15,
+      "date": "2026.08.14",
+      "complex_id": "2145f974"
     }
   ],
   "monthly_trend": [
     {
       "month": "2026-03",
-      "count": 347
+      "count": 356
     },
     {
       "month": "2026-04",
-      "count": 591
+      "count": 603
     },
     {
       "month": "2026-05",
-      "count": 560
+      "count": 570
     },
     {
       "month": "2026-06",
-      "count": 358
+      "count": 370
     },
     {
       "month": "2026-07",
-      "count": 341
+      "count": 359
     },
     {
       "month": "2026-08",
-      "count": 50
+      "count": 68
     }
   ]
 }
