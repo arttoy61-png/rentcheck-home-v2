@@ -4,13 +4,19 @@
   let stats=null;
   let applying=false;
 
+  function setValue(el,value){
+    if(!el)return;
+    const next=String(value);
+    if(el.textContent!==next)el.textContent=next;
+  }
+
   function apply(){
     if(!stats||applying)return;
     applying=true;
     const post=document.getElementById(POST_ID);
     const tool=document.getElementById(TOOL_ID);
-    if(post&&Number.isFinite(Number(stats.published_posts)))post.textContent=String(stats.published_posts);
-    if(tool&&Number.isFinite(Number(stats.available_tools)))tool.textContent=String(stats.available_tools);
+    if(Number.isFinite(Number(stats.published_posts)))setValue(post,stats.published_posts);
+    if(Number.isFinite(Number(stats.available_tools)))setValue(tool,stats.available_tools);
     applying=false;
   }
 
