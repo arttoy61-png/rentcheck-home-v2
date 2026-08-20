@@ -1,0 +1,5 @@
+Rent Check proprietary notice
+
+Copyright (c) 2026 Rent Check. All rights reserved.
+The public website may be viewed and used through rent-check.kr.
+Copying, republishing, reselling, or redistributing the calculator code, logic, or compiled/obfuscated builds is not permitted without written permission.
