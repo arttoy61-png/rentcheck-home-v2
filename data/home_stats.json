@@ -1,11 +1,19 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-20T01:56:30+09:00",
-  "data_until": "2026-08-18",
+  "generated_at": "2026-08-21T02:01:16+09:00",
+  "data_until": "2026-08-19",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
+    {
+      "dong": "방화동",
+      "name": "개화",
+      "area_m2": 102,
+      "amount_eok": 9.35,
+      "date": "2026.08.17",
+      "complex_id": "a277c78d"
+    },
     {
       "dong": "공항동",
       "name": "해태",
@@ -21,14 +29,6 @@
       "amount_eok": 5.65,
       "date": "2026.08.15",
       "complex_id": "2e0ebfec"
-    },
-    {
-      "dong": "방화동",
-      "name": "현대",
-      "area_m2": 84,
-      "amount_eok": 8.15,
-      "date": "2026.08.14",
-      "complex_id": "2145f974"
     }
   ],
   "monthly_trend": [
@@ -50,11 +50,11 @@
     },
     {
       "month": "2026-07",
-      "count": 359
+      "count": 363
     },
     {
       "month": "2026-08",
-      "count": 68
+      "count": 76
     }
   ]
 }
