@@ -53,7 +53,63 @@
     });
   }
 
+  function detailHref() {
+    try {
+      if (typeof state !== 'undefined' && state?.id) {
+        return `../../analysis/apartment/?id=${encodeURIComponent(state.id)}`;
+      }
+    } catch (_) {}
+    return null;
+  }
+
+  function updateDetailEntry() {
+    const cta = document.querySelector('.cta');
+    if (cta) {
+      cta.innerHTML = '<b>단지별 상세 거래</b><br>단지를 선택하면 최근 실거래뿐 아니라 가격 흐름·전세가율·주변 단지 비교까지 확인할 수 있습니다.';
+    }
+
+    const href = detailHref();
+    const fixbar = document.getElementById('fixbar');
+    if (fixbar) {
+      const old = fixbar.querySelector('a.db');
+      if (old && href) {
+        old.href = href;
+        old.textContent = '이 단지 상세보기';
+        old.removeAttribute('target');
+      }
+    }
+
+    const det = document.querySelector('.det');
+    let link = document.querySelector('.detail-analysis-link');
+    if (det && href) {
+      if (!link) {
+        link = document.createElement('a');
+        link.className = 'detail-analysis-link';
+        link.style.display = 'flex';
+        link.style.alignItems = 'center';
+        link.style.justifyContent = 'center';
+        link.style.minHeight = '48px';
+        link.style.marginTop = '9px';
+        link.style.borderRadius = '12px';
+        link.style.background = '#0d1f3c';
+        link.style.color = '#f0c75e';
+        link.style.fontSize = '14px';
+        link.style.fontWeight = '900';
+        link.style.textDecoration = 'none';
+        link.textContent = '이 단지 상세보기 →';
+        det.appendChild(link);
+      }
+      link.href = href;
+    } else if (link) {
+      link.remove();
+    }
+  }
+
   window.__rentcheckKakaoMiniMap = miniMapKakao;
   window.miniMap = miniMapKakao;
+
+  const observer = new MutationObserver(updateDetailEntry);
+  observer.observe(document.body, {subtree:true, childList:true});
+  updateDetailEntry();
   loadKakao().catch(() => {});
 })();
