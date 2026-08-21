@@ -64,7 +64,8 @@
 
   function updateDetailEntry() {
     const cta = document.querySelector('.cta');
-    if (cta) {
+    if (cta && cta.dataset.detailCopy !== '1') {
+      cta.dataset.detailCopy = '1';
       cta.innerHTML = '<b>단지별 상세 거래</b><br>단지를 선택하면 최근 실거래뿐 아니라 가격 흐름·전세가율·주변 단지 비교까지 확인할 수 있습니다.';
     }
 
@@ -73,8 +74,8 @@
     if (fixbar) {
       const old = fixbar.querySelector('a.db');
       if (old && href) {
-        old.href = href;
-        old.textContent = '이 단지 상세보기';
+        if (old.getAttribute('href') !== href) old.href = href;
+        if (old.textContent !== '이 단지 상세보기') old.textContent = '이 단지 상세보기';
         old.removeAttribute('target');
       }
     }
@@ -97,9 +98,11 @@
         link.style.fontWeight = '900';
         link.style.textDecoration = 'none';
         link.textContent = '이 단지 상세보기 →';
+        link.href = href;
         det.appendChild(link);
+      } else if (link.getAttribute('href') !== href) {
+        link.href = href;
       }
-      link.href = href;
     } else if (link) {
       link.remove();
     }
