@@ -1,11 +1,19 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-22T02:01:43+09:00",
-  "data_until": "2026-08-20",
+  "generated_at": "2026-08-23T01:50:50+09:00",
+  "data_until": "2026-08-21",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
+    {
+      "dong": "염창동",
+      "name": "현대1",
+      "area_m2": 84,
+      "amount_eok": 7.4,
+      "date": "2026.08.19",
+      "complex_id": "c8cbb667"
+    },
     {
       "dong": "방화동",
       "name": "개화",
@@ -21,14 +29,6 @@
       "amount_eok": 7.2,
       "date": "2026.08.15",
       "complex_id": "15e4454b"
-    },
-    {
-      "dong": "방화동",
-      "name": "삼성꽃마을",
-      "area_m2": 59,
-      "amount_eok": 5.65,
-      "date": "2026.08.15",
-      "complex_id": "2e0ebfec"
     }
   ],
   "monthly_trend": [
@@ -50,11 +50,11 @@
     },
     {
       "month": "2026-07",
-      "count": 366
+      "count": 372
     },
     {
       "month": "2026-08",
-      "count": 80
+      "count": 89
     }
   ]
 }
