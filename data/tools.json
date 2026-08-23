@@ -60,6 +60,16 @@
     "category": "safety"
   },
   {
+    "id": "tenant-message",
+    "title": "집주인 문자 만들기",
+    "description": "계약 갱신·수리·퇴거·보증금 반환 상황에 맞는 문자를 만들어 바로 복사합니다.",
+    "url": "tools/tenant-message/",
+    "status": "available",
+    "badge": "이용 가능",
+    "icon": "✎",
+    "category": "safety"
+  },
+  {
     "id": "acquisition-tax",
     "title": "취득세 계산기",
     "description": "부가세목과 최신 세율 검증을 완료한 뒤 공개합니다.",
