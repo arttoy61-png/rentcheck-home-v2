@@ -64,9 +64,9 @@
     },
     {
       category:'시세·실거래',
-      title:'화곡동 전세 매물이 왜 없나요?',
+      title:'강서구 전세가 정말 줄었나｜최근 24개월 빌라·오피스텔 전월세 실거래',
       date:'2026-08-23',
-      url:'/analysis/hwagok-jeonse-shortage/',
+      url:'/analysis/gangseo-jeonse-trend/',
       image:'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
       alt:'서울 주거지역의 다세대 주택과 주택가'
     },
@@ -96,7 +96,7 @@
     const heading=document.querySelector('#insights .section-head h2');
     const desc=document.querySelector('#insights .section-head p:not(.kicker)');
     if(heading)heading.textContent='Rent Check 자체 분석';
-    if(desc)desc.textContent='검색 이슈를 그대로 옮기지 않고 공식자료와 확인 가능한 숫자로 다시 정리합니다.';
+    if(desc)desc.textContent='검색 이슈는 질문만 가져오고, 공식자료와 Rent Check 자체 데이터로 다시 답합니다.';
     track.replaceChildren(...homeInsights.map(item=>{
       const card=document.createElement('a');card.className='insight insight-home';card.href=item.url;
       const visual=document.createElement('div');visual.className='insight-art';
