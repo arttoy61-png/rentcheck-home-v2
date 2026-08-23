@@ -61,8 +61,8 @@
   },
   {
     "id": "tenant-message",
-    "title": "집주인 문자 만들기",
-    "description": "계약 갱신·수리·퇴거·보증금 반환 상황에 맞는 문자를 만들어 바로 복사합니다.",
+    "title": "전월세 문자 만들기",
+    "description": "세입자·집주인 입장에서 계약 갱신·수리·퇴거·보증금·월세 미납 문자를 만들어 바로 복사합니다.",
     "url": "tools/tenant-message/",
     "status": "available",
     "badge": "이용 가능",
