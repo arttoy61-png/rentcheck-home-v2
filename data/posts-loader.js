@@ -64,7 +64,7 @@
     },
     {
       category:'시세·실거래',
-      title:'강서구 전세가 정말 줄었나｜최근 24개월 빌라·오피스텔 전월세 실거래',
+      title:'강서구 전세가 월세로 바뀌고 있나｜아파트·주택·오피스텔 23개월 실거래 비교',
       date:'2026-08-23',
       url:'/analysis/gangseo-jeonse-trend/',
       image:'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
