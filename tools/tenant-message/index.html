@@ -3,195 +3,131 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>집주인 문자 만들기 | 전세·월세 갱신·보증금·수리 문자 | Rent Check</title>
-  <meta name="description" content="전세·월세 계약 연장, 계약갱신요구권, 수리 요청, 퇴거·보증금 반환, 전세보증금 반환보증 관련 문자를 상황별로 만들어 복사합니다.">
+  <title>전월세 문자 만들기 | 세입자·집주인 상황별 문자 | Rent Check</title>
+  <meta name="description" content="전세·월세 계약 갱신, 갱신요구권, 수리, 퇴거·보증금 반환, 월세 미납, 실거주 갱신거절 등 상황별 문자를 세입자와 집주인 입장에서 만들어 복사합니다.">
   <link rel="canonical" href="https://rent-check.kr/tools/tenant-message/">
-  <meta property="og:title" content="집주인 문자 만들기 | Rent Check">
-  <meta property="og:description" content="상황을 고르고 필요한 정보만 넣으면 집주인에게 보낼 문자를 바로 만들 수 있습니다.">
+  <meta property="og:title" content="전월세 문자 만들기 | Rent Check">
+  <meta property="og:description" content="세입자 또는 집주인을 고르고 상황을 선택하면 바로 보낼 문자를 만들어 복사할 수 있습니다.">
   <meta property="og:url" content="https://rent-check.kr/tools/tenant-message/">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="../tool-shell.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MPRR3J99YQ"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MPRR3J99YQ');</script>
   <style>
-    :root{--navy:#0d1f3c;--gold:#d4a73a;--blue:#1565c0;--ink:#111;--muted:#667085;--line:#d7dce3;--bg:#f5f7fa;--soft:#f7f8fa;--goldsoft:#fff8e7}
-    *{box-sizing:border-box}
-    body{background:var(--bg);color:var(--ink)}
-    .page{width:min(calc(100% - 28px),760px);margin:0 auto;padding:18px 0 44px}
-    .v2-tool-hero{margin-bottom:14px}
-    .v2-tool-hero .brandline{margin:0 0 8px;color:var(--gold);font-size:12px;font-weight:700}
-    .v2-tool-hero h1{margin:0;color:#fff;font-size:28px;line-height:1.35}
-    .v2-tool-hero p{margin:8px 0 0;color:#d6dde6;font-size:14px;line-height:1.7}
-    .card{margin-top:14px;padding:22px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 10px 30px rgba(13,31,60,.07)}
-    .card h2{margin:0 0 7px;color:var(--navy);font-size:17px}
-    .card-lead{margin:0 0 16px;color:var(--muted);font-size:13px;line-height:1.7}
-    .situations{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
-    .situations button{min-height:62px;padding:8px 6px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#52606e;font-size:12px;line-height:1.35}
-    .situations button.active{border-color:var(--navy);background:var(--navy);color:#fff;box-shadow:0 8px 18px rgba(13,31,60,.13)}
-    .form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:17px}
-    .field{display:flex;flex-direction:column;gap:6px}
-    .field.full{grid-column:1/-1}
-    .field[hidden]{display:none!important}
-    .field label{color:#52606e;font-size:12px;font-weight:700}
-    .field input{width:100%;height:50px;padding:0 13px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--ink);font-size:16px}
-    .field input:focus,.message:focus{border-color:var(--blue);outline:0;box-shadow:0 0 0 3px rgba(21,101,192,.12)}
-    .make{width:100%;height:52px;margin-top:16px;border:0;border-radius:11px;background:var(--navy);color:#fff;font-size:15px;font-weight:700;box-shadow:0 10px 24px rgba(13,31,60,.14)}
-    .resultbox{margin-top:14px;padding:22px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 10px 30px rgba(13,31,60,.07)}
-    .resulthead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
-    .resulthead h2{margin:0;color:var(--navy);font-size:17px}
-    .resulthead span{padding:4px 8px;border-radius:999px;background:var(--goldsoft);color:#745b13;font-size:11px;font-weight:700}
-    .message{width:100%;min-height:190px;padding:15px;border:1px solid var(--line);border-radius:12px;resize:vertical;background:#fff;color:var(--ink);font-size:15px;line-height:1.75}
-    .copy{width:100%;height:50px;margin-top:10px;border:0;border-radius:11px;background:var(--gold);color:var(--navy);font-size:14px;font-weight:700}
-    .copy.done{background:#e9f4ee;color:#1f6d46}
-    .tip{margin-top:12px;padding:13px 14px;border-left:3px solid var(--gold);border-radius:10px;background:var(--goldsoft);color:#62501f;font-size:12px;line-height:1.7}
-    .legal-grid{display:grid;gap:10px;margin-top:12px}
-    .legal-item{padding:14px;border:1px solid var(--line);border-radius:12px;background:#fff}
-    .legal-item strong{display:block;color:var(--navy);font-size:13px}
-    .legal-item p{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.72}
-    .source{margin-top:12px;color:var(--muted);font-size:11px;line-height:1.65}
-    .source a{color:var(--blue);font-weight:700}
-    .v2-tool-disclaimer{margin:14px 0 0!important;padding:13px 14px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--muted)!important;font-size:12px!important;line-height:1.7!important}
-    @media(max-width:650px){.situations{grid-template-columns:1fr 1fr}.situations button:last-child{grid-column:1/-1}.form{grid-template-columns:1fr}.field.full{grid-column:auto}.page{width:min(calc(100% - 20px),760px);padding-top:12px}.card,.resultbox{padding:17px}.v2-tool-hero{padding:22px 18px!important}.v2-tool-hero h1{font-size:23px}.message{min-height:220px;font-size:15px}}
+    :root{--navy:#0d1f3c;--gold:#d4a73a;--blue:#1565c0;--ink:#111;--muted:#667085;--line:#d7dce3;--bg:#f5f7fa;--soft:#f7f8fa;--goldsoft:#fff8e7;--bluesoft:#eef5fc}
+    *{box-sizing:border-box}body{background:var(--bg);color:var(--ink)}
+    .page{width:min(calc(100% - 28px),760px);margin:0 auto;padding:18px 0 44px}.v2-tool-hero{margin-bottom:14px}.v2-tool-hero .brandline{margin:0 0 8px;color:var(--gold);font-size:12px;font-weight:700}.v2-tool-hero h1{margin:0;color:#fff;font-size:28px;line-height:1.35}.v2-tool-hero p{margin:8px 0 0;color:#d6dde6;font-size:14px;line-height:1.7}
+    .card,.resultbox{margin-top:14px;padding:22px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 10px 30px rgba(13,31,60,.07)}.card h2,.resultbox h2{margin:0;color:var(--navy);font-size:17px}.lead{margin:6px 0 15px;color:var(--muted);font-size:13px;line-height:1.7}
+    .role-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px}.role-tabs button{min-height:54px;border:1px solid var(--line);border-radius:12px;background:#fff;color:#52606e;font-size:14px;font-weight:700}.role-tabs button.active{border-color:var(--navy);background:var(--navy);color:#fff;box-shadow:0 8px 18px rgba(13,31,60,.13)}.role-tabs small{display:block;margin-top:2px;font-size:11px;font-weight:400;opacity:.82}
+    .situations{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:16px}.situations button{min-height:62px;padding:8px 6px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#52606e;font-size:12px;line-height:1.35}.situations button.active{border-color:var(--blue);background:var(--bluesoft);color:var(--navy);font-weight:700;box-shadow:inset 0 0 0 1px rgba(21,101,192,.08)}
+    .form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:17px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field[hidden]{display:none!important}.field label{color:#52606e;font-size:12px;font-weight:700}.field input{width:100%;height:50px;padding:0 13px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--ink);font-size:16px}.field input:focus,.message:focus{border-color:var(--blue);outline:0;box-shadow:0 0 0 3px rgba(21,101,192,.12)}.make{width:100%;height:52px;margin-top:16px;border:0;border-radius:11px;background:var(--navy);color:#fff;font-size:15px;font-weight:700;box-shadow:0 10px 24px rgba(13,31,60,.14)}
+    .resulthead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.resulthead span{padding:4px 8px;border-radius:999px;background:var(--goldsoft);color:#745b13;font-size:11px;font-weight:700}.message{width:100%;min-height:205px;padding:15px;border:1px solid var(--line);border-radius:12px;resize:vertical;background:#fff;color:var(--ink);font-size:15px;line-height:1.75}.copy{width:100%;height:50px;margin-top:10px;border:0;border-radius:11px;background:var(--gold);color:var(--navy);font-size:14px;font-weight:700}.copy.done{background:#e9f4ee;color:#1f6d46}.tip{margin-top:12px;padding:13px 14px;border-left:3px solid var(--gold);border-radius:10px;background:var(--goldsoft);color:#62501f;font-size:12px;line-height:1.7}
+    .quick{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}.quick div{padding:14px;border:1px solid var(--line);border-radius:12px;background:#fff}.quick strong{display:block;color:var(--navy);font-size:13px}.quick p{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.7}.source{margin-top:13px;color:var(--muted);font-size:11px;line-height:1.65}.source a{color:var(--blue);font-weight:700}.search-note{margin-top:12px;padding:12px 13px;border-radius:10px;background:var(--soft);color:var(--muted);font-size:12px;line-height:1.7}
+    @media(max-width:650px){.situations{grid-template-columns:1fr 1fr}.situations button:last-child{grid-column:1/-1}.form,.quick{grid-template-columns:1fr}.field.full{grid-column:auto}.page{width:min(calc(100% - 20px),760px);padding-top:12px}.card,.resultbox{padding:17px}.v2-tool-hero{padding:22px 18px!important}.v2-tool-hero h1{font-size:23px}.message{min-height:230px;font-size:15px}}
   </style>
   <script defer src="../tool-common.js"></script>
-  <script type="application/ld+json">{
-    "@context":"https://schema.org",
-    "@type":"WebApplication",
-    "name":"집주인 문자 만들기",
-    "url":"https://rent-check.kr/tools/tenant-message/",
-    "applicationCategory":"UtilitiesApplication",
-    "operatingSystem":"Any",
-    "description":"전세·월세 계약 갱신, 수리, 퇴거와 보증금 반환 등 상황별로 집주인에게 보낼 문자를 만드는 무료 도구입니다."
-  }</script>
-  <script type="application/ld+json">{
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"계약갱신요구권은 언제 행사하나요?","acceptedAnswer":{"@type":"Answer","text":"주택임대차보호법상 임차인은 임대차기간이 끝나기 6개월 전부터 2개월 전까지의 기간 안에 계약갱신을 요구할 수 있습니다."}},
-      {"@type":"Question","name":"묵시적 갱신 뒤에는 언제 나갈 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"묵시적으로 갱신된 경우 임차인은 언제든 해지를 통지할 수 있고, 임대인이 통지를 받은 날부터 3개월이 지나면 효력이 발생합니다."}},
-      {"@type":"Question","name":"계약갱신요구권을 쓰면 임대료는 얼마나 올릴 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"주택임대차보호법상 차임이나 보증금의 증액청구는 원칙적으로 약정한 금액의 20분의 1, 즉 5%를 초과하지 못합니다. 개별 상황과 예외는 최신 법령을 확인해야 합니다."}}
-    ]
-  }</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"전월세 문자 만들기","url":"https://rent-check.kr/tools/tenant-message/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","description":"전세·월세 임대차에서 세입자와 집주인이 상황별 문자를 만들어 복사하는 무료 도구입니다."}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"전세 갱신 문자는 언제 보내나요?","acceptedAnswer":{"@type":"Answer","text":"묵시적 갱신을 피하거나 계약갱신요구권을 행사하려면 계약 만료일과 법정 통지 기간을 먼저 확인해야 합니다. 주택임대차보호법상 관련 기간은 만료 6개월 전부터 2개월 전까지입니다."}},{"@type":"Question","name":"집주인이 실거주를 이유로 갱신을 거절할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"주택임대차보호법은 임대인 또는 직계존속·직계비속이 실제 거주하려는 경우를 계약갱신요구 거절 사유 중 하나로 정하고 있습니다. 실제 적용은 시기와 사실관계를 함께 확인해야 합니다."}},{"@type":"Question","name":"월세가 밀렸을 때 집주인은 문자를 어떻게 보내나요?","acceptedAnswer":{"@type":"Answer","text":"미납 월과 금액, 납부 요청일을 정확히 적고 감정적인 표현보다 사실 확인과 지급 요청을 분명히 남기는 방식이 좋습니다. 계약 해지 여부는 연체액과 계약 상황을 별도로 확인해야 합니다."}}]}</script>
 </head>
 <body class="v2-tool-page" data-v2-root="../../" data-tool-id="tenant-message">
 <main class="page">
-  <section class="v2-tool-hero">
-    <p class="brandline">Rent Check</p>
-    <h1>집주인 문자 만들기</h1>
-    <p>상황을 고르고 필요한 정보만 넣으면 전세·월세 집주인에게 보낼 문자를 바로 만들어 복사할 수 있습니다.</p>
-  </section>
+  <section class="v2-tool-hero"><p class="brandline">Rent Check</p><h1>전월세 문자 만들기</h1><p>세입자·집주인 중 내 입장을 고르고 상황만 선택하면 바로 보낼 문자를 만들어 복사할 수 있습니다.</p></section>
 
   <section class="card">
-    <h2>1. 어떤 문자를 보내나요?</h2>
-    <p class="card-lead">계약 연장부터 보증금 반환까지, 지금 상황을 먼저 고르세요.</p>
-    <div class="situations" id="situations">
-      <button type="button" class="active" data-mode="renew">계약 연장</button>
-      <button type="button" data-mode="renewRight">갱신요구권</button>
-      <button type="button" data-mode="repair">수리 요청</button>
-      <button type="button" data-mode="moveout">퇴거·보증금</button>
-      <button type="button" data-mode="guarantee">보증 반환보증</button>
+    <h2>1. 나는 누구인가요?</h2><p class="lead">먼저 보내는 사람의 입장을 고르세요.</p>
+    <div class="role-tabs" id="roleTabs">
+      <button type="button" class="active" data-role="tenant">세입자<small>임차인 → 집주인</small></button>
+      <button type="button" data-role="landlord">집주인<small>임대인 → 세입자</small></button>
     </div>
+
+    <div class="situations" id="situations"></div>
 
     <div class="form">
       <div class="field"><label for="unit">호수 또는 집 표시</label><input id="unit" placeholder="예: 101호"></div>
-      <div class="field"><label for="name">세입자 이름</label><input id="name" placeholder="예: 김민수"></div>
-      <div class="field" data-for="renew renewRight moveout"><label for="expiry">계약 만료일</label><input id="expiry" placeholder="예: 2026년 12월 31일"></div>
-      <div class="field" data-for="moveout"><label for="deposit">보증금</label><input id="deposit" placeholder="예: 2억원"></div>
-      <div class="field" data-for="moveout"><label for="bank">은행</label><input id="bank" placeholder="예: 국민은행"></div>
-      <div class="field" data-for="moveout"><label for="account">반환받을 계좌</label><input id="account" placeholder="예: 123-456-789012"></div>
-      <div class="field full" data-for="repair"><label for="issue">수리가 필요한 문제</label><input id="issue" placeholder="예: 보일러가 작동하지 않습니다"></div>
-      <div class="field" data-for="repair"><label for="issueDate">문제가 생긴 날짜</label><input id="issueDate" placeholder="예: 8월 24일"></div>
+      <div class="field"><label for="sender" id="senderLabel">세입자 이름</label><input id="sender" placeholder="예: 김민수"></div>
+      <div class="field" id="recipientField" hidden><label for="recipient">세입자 이름</label><input id="recipient" placeholder="예: 이지은"></div>
+      <div class="field" data-show="expiry"><label for="expiry">계약 만료일</label><input id="expiry" placeholder="예: 2026년 12월 31일"></div>
+      <div class="field" data-show="deposit"><label for="deposit">보증금</label><input id="deposit" placeholder="예: 2억원"></div>
+      <div class="field" data-show="bank"><label for="bank">은행</label><input id="bank" placeholder="예: 국민은행"></div>
+      <div class="field" data-show="account"><label for="account">반환받을 계좌</label><input id="account" placeholder="예: 123-456-789012"></div>
+      <div class="field full" data-show="issue"><label for="issue">문제 또는 요청 내용</label><input id="issue" placeholder="예: 보일러가 작동하지 않습니다"></div>
+      <div class="field" data-show="issueDate"><label for="issueDate">문제가 생긴 날짜</label><input id="issueDate" placeholder="예: 8월 24일"></div>
+      <div class="field full" data-show="terms"><label for="terms">제안할 갱신 조건</label><input id="terms" placeholder="예: 기존 조건 유지 / 보증금 2억원으로 협의 희망"></div>
+      <div class="field" data-show="resident"><label for="resident">실거주 예정자</label><input id="resident" placeholder="예: 임대인 본인"></div>
+      <div class="field" data-show="moveInDate"><label for="moveInDate">실거주 예정 시점</label><input id="moveInDate" placeholder="예: 2027년 1월"></div>
+      <div class="field" data-show="unpaid"><label for="unpaid">미납 금액</label><input id="unpaid" placeholder="예: 120만원"></div>
+      <div class="field" data-show="payBy"><label for="payBy">확인 요청일</label><input id="payBy" placeholder="예: 8월 28일"></div>
+      <div class="field full" data-show="visitPurpose"><label for="visitPurpose">방문 목적</label><input id="visitPurpose" placeholder="예: 보일러 점검 / 매물 확인"></div>
+      <div class="field" data-show="visitDate"><label for="visitDate">희망 방문 일정</label><input id="visitDate" placeholder="예: 8월 29일 오후 3시"></div>
+      <div class="field full" data-show="settlement"><label for="settlement">정산 관련 메모</label><input id="settlement" placeholder="예: 관리비·공과금 확인 후 보증금 반환 예정"></div>
     </div>
     <button class="make" id="make" type="button">문자 만들기</button>
   </section>
 
-  <section class="resultbox" id="messageResult">
+  <section class="resultbox">
     <div class="resulthead"><h2>2. 완성된 문자</h2><span id="modeLabel">계약 연장</span></div>
     <textarea class="message" id="message" aria-label="완성된 문자"></textarea>
     <button class="copy" id="copy" type="button">문자 복사하기</button>
-    <div class="tip" id="tip">계약을 계속하고 싶다면 만료 직전에 급하게 연락하기보다 조건을 정리해 미리 의사를 남겨두는 편이 좋습니다.</div>
+    <div class="tip" id="tip"></div>
   </section>
 
   <section class="card">
-    <h2>보내기 전에 이것만 확인하세요</h2>
-    <div class="legal-grid">
-      <div class="legal-item"><strong>계약갱신요구권</strong><p>법정 계약갱신요구권은 임대차기간이 끝나기 6개월 전부터 2개월 전까지의 기간 안에 행사합니다. 임차인은 1회 행사할 수 있고, 갱신되는 기간은 2년으로 봅니다.</p></div>
-      <div class="legal-item"><strong>보증금·월세 인상</strong><p>주택임대차보호법상 차임이나 보증금의 증액청구는 원칙적으로 약정 금액의 5%를 초과하지 못합니다. 5%는 자동 인상액이 아니라 상한입니다.</p></div>
-      <div class="legal-item"><strong>묵시적 갱신 뒤 퇴거</strong><p>묵시적으로 갱신된 경우 임차인은 언제든 해지를 통지할 수 있고, 임대인이 통지를 받은 날부터 3개월이 지나면 효력이 생깁니다.</p></div>
-      <div class="legal-item"><strong>문자는 보관하기 쉽게</strong><p>문자는 보낸 내용과 시각을 남기기 쉬운 방법입니다. 다만 문자 한 번으로 모든 법적 요건이 자동으로 충족되는 것은 아니므로 중요한 통지는 수신 여부와 계약 상황까지 확인하세요.</p></div>
+    <h2>문자 보내기 전 확인</h2>
+    <div class="quick">
+      <div><strong>갱신·갱신거절 통지</strong><p>주택임대차보호법의 통지 기간과 내 계약의 만료일을 먼저 확인하세요. 문자만 보냈다는 사실보다 상대방에게 의사가 제대로 전달됐는지도 중요합니다.</p></div>
+      <div><strong>계약갱신요구권</strong><p>임차인의 법정 갱신요구권은 1회 행사할 수 있고, 갱신되는 임대차기간은 2년으로 봅니다. 임대인에게 법에서 정한 거절 사유가 있는지는 별도로 확인해야 합니다.</p></div>
+      <div><strong>실거주 갱신거절</strong><p>임대인 또는 직계존속·직계비속의 실제 거주는 법정 거절 사유 중 하나입니다. 실제 거주 의사와 통지 시기 등 사실관계가 중요하므로 단순히 문구만 복사해 보내면 되는 문제는 아닙니다.</p></div>
+      <div><strong>월세 미납</strong><p>미납 사실과 금액을 먼저 정확히 적으세요. 건물 임대차에서 차임 연체액이 2기의 차임액에 달하면 민법 제640조상 해지 문제가 생길 수 있으므로 실제 조치는 계약과 연체 내역을 함께 확인해야 합니다.</p></div>
     </div>
-    <p class="source">법령 확인: 주택임대차보호법 2026. 1. 2. 시행본 기준 · 페이지 확인일 2026. 8. 24. · <a href="https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=276291" target="_blank" rel="noopener noreferrer">국가법령정보센터에서 최신 조문 확인 →</a></p>
+    <p class="source">법령 확인: 주택임대차보호법 제6조·제6조의2·제6조의3, 민법 제640조 · 2026. 8. 24. 확인 · <a href="https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=276291" target="_blank" rel="noopener noreferrer">국가법령정보센터</a></p>
+    <div class="search-note">이 도구는 법률문서를 대신 작성하는 서비스가 아닙니다. 보증금 반환, 갱신거절, 계약해지처럼 분쟁 가능성이 큰 상황은 계약서와 최신 법령을 함께 확인하세요.</div>
   </section>
-
-  <p class="v2-tool-disclaimer">이 도구의 문자는 일반적인 상황을 바탕으로 만든 참고 예시입니다. 실제 계약 내용, 통지 시점, 임대인의 답변에 따라 필요한 표현과 대응이 달라질 수 있습니다.</p>
 </main>
-
 <script>
-(() => {
-  let mode='renew';
-  const $=s=>document.querySelector(s);
-  const modes={
-    renew:{label:'계약 연장',tip:'계약을 계속하고 싶다면 만료 직전에 급하게 연락하기보다 조건을 정리해 미리 의사를 남겨두는 편이 좋습니다.'},
-    renewRight:{label:'갱신요구권',tip:'계약갱신요구권은 만료 6개월 전부터 2개월 전까지의 기간 안에 행사합니다. 보낸 문자와 상대방의 답변을 함께 보관하세요.'},
-    repair:{label:'수리 요청',tip:'사진이나 영상을 함께 보내고, 언제부터 어떤 문제가 있었는지 날짜를 남기면 상황을 설명하기 쉽습니다.'},
-    moveout:{label:'퇴거·보증금',tip:'만기에 맞춰 나가는 경우와 묵시적 갱신 뒤 해지하는 경우는 통지 시점 계산이 다릅니다. 내 계약 상태를 먼저 확인하세요.'},
-    guarantee:{label:'보증 반환보증',tip:'보증기관마다 확인 항목과 가입 요건이 다를 수 있으니 기관의 최신 안내를 먼저 확인한 뒤 필요한 협조만 구하세요.'}
+(()=>{
+  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+  const scenarios={
+    tenant:[
+      {id:'renew',label:'계약 연장',fields:['expiry'],tip:'연장 의사는 만료 직전에 급하게 말하기보다 날짜와 조건을 문자로 남겨두는 편이 좋습니다.'},
+      {id:'renewRight',label:'갱신요구권',fields:['expiry'],tip:'계약갱신요구권은 법정 행사 기간과 기존 행사 여부를 먼저 확인하세요.'},
+      {id:'repair',label:'수리 요청',fields:['issue','issueDate'],tip:'고장 사진이나 영상을 함께 보내고, 처음 요청한 날짜와 답변을 보관하세요.'},
+      {id:'moveout',label:'퇴거·보증금',fields:['expiry','deposit','bank','account'],tip:'계약 종료 의사와 보증금 반환일을 명확히 남기세요. 중요한 통지는 상대방에게 도달했는지도 확인하는 편이 안전합니다.'},
+      {id:'guarantee',label:'보증 반환보증',fields:[],tip:'보증기관마다 필요한 확인사항과 서류가 다르므로 먼저 해당 기관의 최신 가입기준을 확인하세요.'}
+    ],
+    landlord:[
+      {id:'renewOffer',label:'갱신 제안',fields:['expiry','terms'],tip:'조건 변경은 일방적으로 확정하기보다 제안 내용과 상대방의 답을 문자로 남겨 협의 과정을 분명히 하세요.'},
+      {id:'liveIn',label:'실거주·갱신거절',fields:['expiry','resident','moveInDate'],tip:'실거주 문구만 보냈다고 갱신거절이 자동으로 유효해지는 것은 아닙니다. 실제 법정 사유와 통지 시기를 꼭 확인하세요.'},
+      {id:'arrears',label:'월세 미납',fields:['unpaid','payBy'],tip:'감정적인 표현보다 미납 월·금액·확인 요청일을 정확히 적는 편이 좋습니다.'},
+      {id:'visit',label:'수리·방문 협의',fields:['visitPurpose','visitDate'],tip:'임차인의 생활공간이므로 방문 목적과 시간을 먼저 협의하고 동의 없이 임의로 출입하지 마세요.'},
+      {id:'settle',label:'퇴거·정산',fields:['expiry','deposit','settlement'],tip:'퇴거일, 열쇠 인도, 관리비·공과금 정산, 보증금 반환 일정을 서로 같은 날짜 기준으로 확인하세요.'}
+    ]
   };
-  const val=id=>$(id).value.trim();
-  const fallback=(v,t)=>v||t;
-  function renderFields(){
-    document.querySelectorAll('[data-for]').forEach(el=>{
-      el.hidden=!el.dataset.for.split(/\s+/).includes(mode);
-    });
-    $('#modeLabel').textContent=modes[mode].label;
-    $('#tip').textContent=modes[mode].tip;
-  }
-  function makeMessage(){
-    const unit=fallback(val('#unit'),'○○○호');
-    const name=fallback(val('#name'),'○○○');
-    const expiry=fallback(val('#expiry'),'20○○년 ○월 ○일');
-    const deposit=fallback(val('#deposit'),'○○○원');
-    const bank=val('#bank');
-    const account=val('#account');
-    const issue=fallback(val('#issue'),'보일러(또는 수리가 필요한 부분)에 문제가 발생했습니다');
-    const issueDate=fallback(val('#issueDate'),'○월 ○일');
-    let text='';
-    if(mode==='renew'){
-      text=`안녕하세요, ${unit} 세입자 ${name}입니다. 현재 계약이 ${expiry} 만료 예정인데요, 같은 집에서 계속 거주하고 싶어 계약 연장을 요청드립니다. 갱신 조건 관련해 편하실 때 연락 부탁드립니다. 감사합니다.`;
-    }else if(mode==='renewRight'){
-      text=`안녕하세요, ${unit} 세입자 ${name}입니다. 현재 계약 만료일은 ${expiry}입니다. 주택임대차보호법에 따른 계약갱신요구권을 행사하여 계약 갱신을 요청드립니다. 차임과 보증금은 관련 법령 범위 안에서 협의하고자 합니다. 확인 부탁드립니다.`;
-    }else if(mode==='repair'){
-      text=`안녕하세요, ${unit} 세입자 ${name}입니다. ${issueDate}부터 ${issue} 생활에 불편이 있어 연락드립니다. 현재 상태를 확인하실 수 있도록 사진이나 영상을 함께 보내드리겠습니다. 수리 가능한 일정을 알려주시면 감사하겠습니다.`;
-    }else if(mode==='moveout'){
-      const acct=(bank||account)?` 같은 날 보증금 ${deposit}을 ${[bank,account].filter(Boolean).join(' ')} 계좌로 반환 부탁드립니다.`:` 같은 날 보증금 ${deposit} 반환 일정도 함께 확인 부탁드립니다.`;
-      text=`안녕하세요, ${unit} 세입자 ${name}입니다. 계약 만료일인 ${expiry}에 맞춰 퇴거하려 합니다.${acct} 퇴거와 보증금 반환 일정 확인 부탁드립니다.`;
+  let role='tenant', mode='renew';
+  const val=id=>$("#"+id)?.value.trim()||'';
+  const show=v=>v||'○○';
+  function active(){return scenarios[role].find(x=>x.id===mode)||scenarios[role][0]}
+  function renderSituations(){const box=$('#situations');box.innerHTML=scenarios[role].map((s,i)=>`<button type="button" data-mode="${s.id}" class="${i===0?'active':''}">${s.label}</button>`).join('');mode=scenarios[role][0].id;box.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{box.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));mode=b.dataset.mode;syncFields();makeMessage();try{gtag('event','rental_message_scenario',{role,scenario:mode})}catch(e){}}));syncFields()}
+  function syncFields(){const s=active();$$('[data-show]').forEach(f=>f.hidden=!s.fields.includes(f.dataset.show));$('#recipientField').hidden=role!=='landlord';$('#senderLabel').textContent=role==='tenant'?'세입자 이름':'집주인 이름';$('#modeLabel').textContent=(role==='tenant'?'세입자 · ':'집주인 · ')+s.label;$('#tip').textContent=s.tip}
+  function makeMessage(){const unit=show(val('unit')),sender=show(val('sender')),recipient=show(val('recipient')),expiry=show(val('expiry'));let text='';
+    if(role==='tenant'){
+      if(mode==='renew') text=`안녕하세요, ${unit} 세입자 ${sender}입니다. 현재 계약이 ${expiry} 만료 예정인데요, 계속 거주하고 싶어 계약 연장 가능 여부를 문의드립니다. 갱신 조건도 함께 협의하고 싶습니다. 확인 후 문자로 회신 부탁드립니다. 감사합니다.`;
+      if(mode==='renewRight') text=`안녕하세요, ${unit} 세입자 ${sender}입니다. 현재 계약이 ${expiry} 만료 예정이며, 주택임대차보호법에 따른 계약갱신요구권을 행사하여 계약 갱신을 요청드립니다. 갱신 조건은 관련 법령 범위 안에서 협의하고자 합니다. 확인 후 회신 부탁드립니다.`;
+      if(mode==='repair') text=`안녕하세요, ${unit} 세입자 ${sender}입니다. ${show(val('issueDate'))}부터 ${show(val('issue'))} 문제가 발생해 연락드립니다. 현재 상태를 확인하실 수 있도록 사진이나 영상을 함께 보내드리겠습니다. 수리 가능한 일정을 알려주시면 감사하겠습니다.`;
+      if(mode==='moveout') text=`안녕하세요, ${unit} 세입자 ${sender}입니다. 계약 만료일인 ${expiry}에 맞춰 퇴거하려 합니다. 같은 날 보증금 ${show(val('deposit'))} 반환 일정도 확인 부탁드립니다. 반환 계좌는 ${show(val('bank'))} ${show(val('account'))}입니다. 퇴거와 보증금 반환 일정을 문자로 회신해 주시면 감사하겠습니다.`;
+      if(mode==='guarantee') text=`안녕하세요, ${unit} 세입자 ${sender}입니다. 전세보증금 반환보증 가입을 준비하고 있어 연락드립니다. 보증기관 절차상 임대인 관련 확인이나 협조가 필요한 경우가 있어 미리 문의드립니다. 필요한 사항이 확인되는 대로 다시 말씀드리겠습니다. 협조 가능하실지 회신 부탁드립니다.`;
     }else{
-      text=`안녕하세요, ${unit} 세입자 ${name}입니다. 전세보증금 반환보증 가입을 준비 중입니다. 절차상 임대인 관련 확인이나 협조가 필요한 부분이 있어 문의드립니다. 보증기관에서 요청하는 항목을 확인한 뒤 필요한 내용을 다시 전달드리겠습니다. 협조 가능하실지 확인 부탁드립니다. 감사합니다.`;
+      if(mode==='renewOffer') text=`안녕하세요, ${unit} 임대인 ${sender}입니다. ${recipient}님과의 임대차계약이 ${expiry} 만료 예정이라 갱신 의사를 미리 확인드리려고 연락드립니다. 제가 제안드리는 조건은 '${show(val('terms'))}'입니다. 갱신 의사가 있으시면 회신 부탁드리며, 변경 조건은 서로 협의한 뒤 계약서에 반영하겠습니다.`;
+      if(mode==='liveIn') text=`안녕하세요, ${unit} 임대인 ${sender}입니다. 현재 임대차계약이 ${expiry} 만료 예정입니다. 계약 종료 후 ${show(val('resident'))}이(가) ${show(val('moveInDate'))}부터 실제 거주할 예정이어서 갱신이 어렵다는 점을 미리 안내드립니다. 퇴거 및 보증금 반환 일정은 서로 확인해 정리하고 싶습니다. 확인 후 회신 부탁드립니다.`;
+      if(mode==='arrears') text=`안녕하세요, ${unit} 임대인 ${sender}입니다. ${recipient}님, 현재 확인되는 미납 월세가 ${show(val('unpaid'))} 있어 연락드립니다. 입금 내역에 착오가 있을 수 있으니 먼저 확인 부탁드리며, 미납이 맞다면 ${show(val('payBy'))}까지 납부 가능 여부를 회신해 주세요. 사정이 있으시면 일정도 함께 말씀 부탁드립니다.`;
+      if(mode==='visit') text=`안녕하세요, ${unit} 임대인 ${sender}입니다. ${recipient}님께 ${show(val('visitPurpose'))} 때문에 방문 일정을 협의드리려고 연락드립니다. ${show(val('visitDate'))} 방문이 가능하실까요? 불편한 시간이면 가능한 일정을 알려주세요. 동의 없이 방문하지 않고 일정 확인 후 찾아뵙겠습니다.`;
+      if(mode==='settle') text=`안녕하세요, ${unit} 임대인 ${sender}입니다. 임대차계약 만료일 ${expiry}에 맞춰 퇴거 일정을 확인드리려고 연락드립니다. 보증금은 ${show(val('deposit'))}이며, ${show(val('settlement'))}. 퇴거일·열쇠 인도·정산 및 보증금 반환 일정을 서로 확인해 두고 싶으니 회신 부탁드립니다.`;
     }
-    $('#message').value=text;
-    $('#copy').textContent='문자 복사하기';
-    $('#copy').classList.remove('done');
-    if(typeof gtag==='function')gtag('event','tenant_message_generate',{message_type:mode});
+    $('#message').value=text;return text
   }
-  $('#situations').addEventListener('click',e=>{
-    const b=e.target.closest('button[data-mode]'); if(!b)return;
-    mode=b.dataset.mode;
-    document.querySelectorAll('#situations button').forEach(x=>x.classList.toggle('active',x===b));
-    renderFields(); makeMessage();
-  });
-  $('#make').addEventListener('click',makeMessage);
-  $('#copy').addEventListener('click',async()=>{
-    const text=$('#message').value;
-    try{
-      await navigator.clipboard.writeText(text);
-    }catch(err){
-      $('#message').focus(); $('#message').select(); document.execCommand('copy');
-    }
-    $('#copy').textContent='복사했습니다';
-    $('#copy').classList.add('done');
-    if(typeof gtag==='function')gtag('event','tenant_message_copy',{message_type:mode});
-  });
-  renderFields(); makeMessage();
+  $('#roleTabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;role=b.dataset.role;$('#roleTabs').querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));renderSituations();makeMessage();try{gtag('event','rental_message_role',{role})}catch(e){}});
+  $('#make').addEventListener('click',()=>{makeMessage();$('#message').focus();try{gtag('event','rental_message_generate',{role,scenario:mode})}catch(e){}});
+  $('#copy').addEventListener('click',async()=>{const t=makeMessage();try{await navigator.clipboard.writeText(t)}catch(e){$('#message').select();document.execCommand('copy')}const b=$('#copy');b.textContent='복사됐습니다';b.classList.add('done');setTimeout(()=>{b.textContent='문자 복사하기';b.classList.remove('done')},1800);try{gtag('event','rental_message_copy',{role,scenario:mode})}catch(e){}});
+  renderSituations();makeMessage();
 })();
 </script>
 </body>
