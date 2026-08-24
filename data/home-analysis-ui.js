@@ -1,23 +1,5 @@
 (()=>{
   const KEY='rentcheck:home-scroll-v1';
-
-  const footer=document.querySelector('body > footer');
-  if(footer){
-    const footerStyle=document.createElement('style');
-    footerStyle.textContent=`
-      .rc-simple-footer{padding:28px 0 32px!important;border-top:1px solid #d7dce3!important;background:#fff!important;color:#667085!important}
-      .rc-simple-footer .rc-footer-inner{width:calc(100% - 48px);max-width:1280px;margin:0 auto;text-align:center}
-      .rc-simple-footer .rc-footer-links{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:7px 10px;margin-bottom:10px;font-size:12px}
-      .rc-simple-footer .rc-footer-links a{color:#485466!important;text-decoration:none!important}
-      .rc-simple-footer .rc-footer-links a:hover{color:#0d1f3c!important;text-decoration:underline!important;text-underline-offset:3px}
-      .rc-simple-footer .rc-footer-copy{margin:0!important;color:#667085!important;font-size:12px!important}
-      @media(max-width:520px){.rc-simple-footer{padding:23px 0 27px!important}.rc-simple-footer .rc-footer-inner{width:calc(100% - 28px)}.rc-simple-footer .rc-footer-links{font-size:11.5px}}
-    `;
-    document.head.appendChild(footerStyle);
-    footer.className='rc-simple-footer';
-    footer.innerHTML=`<div class="rc-footer-inner"><nav class="rc-footer-links" aria-label="사이트 안내"><a href="/about/">소개</a><span>|</span><a href="/privacy.html">개인정보처리방침</a><span>|</span><a href="/contact/">문의</a><span>|</span><a href="/sponsor/">광고/제휴</a></nav><p class="rc-footer-copy">Copyright © 2026 Rent Check</p></div>`;
-  }
-
   const section=document.querySelector('#insights .container');
   const track=document.querySelector('#insightTrack');
   if(section&&track&&!document.querySelector('.insight-all-wrap')){
