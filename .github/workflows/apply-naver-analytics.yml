@@ -1,0 +1,74 @@
+name: Apply Naver Analytics
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - '.github/workflows/apply-naver-analytics.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Insert Naver Analytics into every HTML page
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          marker = '1a98778bd0f06a0'
+          snippet = '''<script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
+          <script type="text/javascript">
+          if(!wcs_add) var wcs_add = {};
+          wcs_add["wa"] = "1a98778bd0f06a0";
+          if(window.wcs) {
+          wcs_do();
+          }
+          </script>'''
+
+          changed = []
+          skipped = []
+          no_body = []
+
+          for path in sorted(Path('.').rglob('*.html')):
+              text = path.read_text(encoding='utf-8')
+              if marker in text:
+                  skipped.append(str(path))
+                  continue
+              matches = list(re.finditer(r'</body\s*>', text, flags=re.I))
+              if not matches:
+                  no_body.append(str(path))
+                  continue
+              m = matches[-1]
+              text = text[:m.start()] + snippet + '\n' + text[m.start():]
+              path.write_text(text, encoding='utf-8')
+              changed.append(str(path))
+
+          print(f'changed={len(changed)} skipped={len(skipped)} no_body={len(no_body)}')
+          if changed:
+              print('Updated:')
+              print('\n'.join(changed))
+          if no_body:
+              print('No </body> tag:')
+              print('\n'.join(no_body))
+
+      - name: Commit analytics insertion
+        run: |
+          if git diff --quiet; then
+            echo "No analytics changes needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -u
+          git commit -m "analytics: apply Naver Analytics to all HTML pages"
+          git push
