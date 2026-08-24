@@ -11,7 +11,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="mobile-fix.css?v=20260814-2">
-  <style>#insightTrack{padding-right:0!important;scroll-padding-right:0!important}</style>
+  <style>
+    #insightTrack{padding-right:0!important;scroll-padding-right:0!important}
+    .rc-site-footer{border-top:1px solid #d7dce3;background:#f7f8fa;color:#667085}
+    .rc-site-footer-main{padding:34px 0 28px;display:flex;align-items:flex-start;justify-content:space-between;gap:40px}
+    .rc-site-footer .footer-brand{max-width:380px}
+    .rc-site-footer .footer-brand p{margin:12px 0 0;color:#667085;font-size:12px;line-height:1.75}
+    .rc-site-footer-links{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-wrap:wrap;padding-top:8px;font-size:12px}
+    .rc-site-footer-links a{color:#485466;text-decoration:none}
+    .rc-site-footer-links a:hover{color:#0d1f3c;text-decoration:underline;text-underline-offset:3px}
+    .rc-site-footer-links span{color:#a7afb9}
+    .rc-site-footer .footer-bottom{padding:18px 0 20px;border-top:1px solid #d7dce3;display:flex;align-items:center;justify-content:space-between;gap:20px;color:#737b86;font-size:11px}
+    @media(max-width:720px){
+      .rc-site-footer-main{padding:26px 0 22px;display:block}
+      .rc-site-footer-links{justify-content:flex-start;padding-top:22px}
+      .rc-site-footer .footer-bottom{padding:16px 0 18px;display:flex;align-items:flex-start;flex-direction:column;gap:5px}
+    }
+  </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MPRR3J99YQ"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MPRR3J99YQ');</script>
 </head>
@@ -26,5 +42,5 @@
 <section class="section article-library" id="article-library"><div class="container"><div class="section-head"><div><p class="kicker">분석 글</p><h2>분석 글 모음</h2><p>주제별 최신 글을 바로 찾고, 더 필요한 글은 펼쳐서 확인하세요.</p></div></div><div class="article-library-grid" id="articleLibrary"></div></div></section>
 <section class="container final-cta"><div><p>Rent Check</p><h2>부동산 숫자,<br>판단까지 이어져야 합니다.</h2><span>계산 도구와 실거래 분석을 연결해<br>지금 필요한 판단부터 확인하세요.</span></div><div class="cta-actions"><a href="#calculators">계산 도구 보기 <b>→</b></a><a data-tool-link="apt-widget">실거래 확인</a><a href="/blog/">실전 가이드</a></div></section>
 </main>
-<footer><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="#top" data-to-top><span class="brand-mark"><svg viewBox="0 0 28 28"><path d="M4 13 14 5l10 8v10H4z"/><path d="m10 16 3 3 6-7"/></svg></span><strong>Rent Check</strong></a><p>국토부 실거래 데이터와 실전형 해석을 연결하는<br>부동산 계산·분석 서비스입니다.</p></div><div class="footer-group"><button aria-expanded="false">서비스 <span>＋</span></button><div><a href="#calculators">계산기 모음</a><a data-tool-link="apt-widget">아파트 실거래</a><a href="#article-library">분석 글 모음</a><a href="/blog/">실전 가이드</a><a data-tool-link="youth-score">청년주택 점수</a><a data-tool-link="redevelopment">재개발 계산기</a></div></div><div class="footer-group"><button aria-expanded="false">채널·문의 <span>＋</span></button><div><a href="https://blog.naver.com/spitoon61" target="_blank" rel="noopener noreferrer">네이버 블로그 ↗</a><a href="https://rentcheckdata.tistory.com/" target="_blank" rel="noopener noreferrer">티스토리 ↗</a></div></div><div class="footer-group footer-notes"><button aria-expanded="false">데이터 안내 <span>＋</span></button><div><span><b>출처</b> 국토교통부 실거래 신고자료</span><span><b>용도</b> 계산·분석 참고 정보</span><span><b>확인</b> 계약·세무 결정 전 관련 기관 확인</span><a href="privacy.html">개인정보 처리방침</a></div></div></div><div class="container footer-bottom"><span>© 2026 Rent Check</span><span>부동산 계산과 실거래 해석</span></div></footer>
-<script src="app.js?v=20260811-1"></script><script src="data/posts-loader.js?v=20260820-1"></script><script src="data/home-analysis-ui.js?v=20260819-1"></script><script src="data/site-stats-loader.js?v=20260824-2"></script></body></html>
+<footer class="rc-site-footer"><div class="container rc-site-footer-main"><div class="footer-brand"><a class="brand" href="#top" data-to-top><span class="brand-mark"><svg viewBox="0 0 28 28"><path d="M4 13 14 5l10 8v10H4z"/><path d="m10 16 3 3 6-7"/></svg></span><strong>Rent Check</strong></a><p>국토부 실거래 데이터와 실전형 해석을 연결하는<br>부동산 계산·분석 서비스입니다.</p></div><nav class="rc-site-footer-links" aria-label="사이트 안내"><a href="/about/">소개</a><span>|</span><a href="/privacy.html">개인정보처리방침</a><span>|</span><a href="/contact/">문의</a><span>|</span><a href="/sponsor/">광고/제휴</a></nav></div><div class="container footer-bottom"><span>© 2026 Rent Check</span><span>부동산 계산과 실거래 해석</span></div></footer>
+<script src="app.js?v=20260811-1"></script><script src="data/posts-loader.js?v=20260820-1"></script><script src="data/home-analysis-ui.js?v=20260824-20"></script><script src="data/site-stats-loader.js?v=20260824-2"></script></body></html>
