@@ -105,5 +105,13 @@ function recentText(c){const parts=[];if(c.lastSale)parts.push('최근 매매 '+
 function setBand(m2){band=m2;render()}function setTab(t){tab=t;render()}
 Promise.all([fetch(SUM,{cache:'no-cache'}).then(r=>r.json()),fetch(DET,{cache:'no-cache'}).then(r=>r.json())]).then(([s,d])=>{S=s;D=d;if(!id||!D[id])throw new Error('missing');APT=D[id];SM=S.complexes.find(x=>x.id===id)||{};band=APT.areas?.[0]?.m2;if(!band)throw new Error('no areas');document.title=APT.nm+' 단지 상세 거래 | Rent Check';$('#title').textContent=APT.nm+' 단지 상세 거래';$('#meta').textContent=APT.dong+' · '+(APT.yr?APT.yr+'년 준공':'준공연도 미상')+(SM.un?' · '+Number(SM.un).toLocaleString()+'세대':'');$('#updated').textContent='국토부 실거래 신고자료 · '+(S.meta?.updated?String(S.meta.updated).slice(0,4)+'.'+String(S.meta.updated).slice(4,6)+' 기준':'매일 갱신');$('#rawLink').href='../../tools/apartment/?id='+encodeURIComponent(id);$('#backLink').href='../../tools/apartment/?id='+encodeURIComponent(id);render();try{gtag('event','apt_detail_open',{apt:APT.nm,dong:APT.dong})}catch(e){}}).catch(()=>{$('#app').className='loading';$('#app').textContent='단지 상세 정보를 찾지 못했습니다. 아파트 실거래 화면에서 다시 선택해 주세요.'});
 </script>
+<script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "1a98778bd0f06a0";
+if(window.wcs) {
+wcs_do();
+}
+</script>
 </body>
 </html>
