@@ -1,11 +1,19 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-25T02:05:26+09:00",
-  "data_until": "2026-08-21",
+  "generated_at": "2026-08-26T02:05:47+09:00",
+  "data_until": "2026-08-24",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
+    {
+      "dong": "화곡동",
+      "name": "한양아이클래스",
+      "area_m2": 14,
+      "amount_eok": 0.6,
+      "date": "2026.08.24",
+      "complex_id": "9aa745e7"
+    },
     {
       "dong": "염창동",
       "name": "현대1",
@@ -15,20 +23,12 @@
       "complex_id": "c8cbb667"
     },
     {
-      "dong": "방화동",
-      "name": "개화",
-      "area_m2": 102,
-      "amount_eok": 9.35,
-      "date": "2026.08.17",
-      "complex_id": "a277c78d"
-    },
-    {
-      "dong": "공항동",
-      "name": "해태",
-      "area_m2": 59,
-      "amount_eok": 7.2,
-      "date": "2026.08.15",
-      "complex_id": "15e4454b"
+      "dong": "가양동",
+      "name": "가양2단지(성지)",
+      "area_m2": 34,
+      "amount_eok": 7.6,
+      "date": "2026.08.18",
+      "complex_id": "2f9f0f81"
     }
   ],
   "monthly_trend": [
@@ -50,11 +50,11 @@
     },
     {
       "month": "2026-07",
-      "count": 372
+      "count": 378
     },
     {
       "month": "2026-08",
-      "count": 89
+      "count": 98
     }
   ]
 }
