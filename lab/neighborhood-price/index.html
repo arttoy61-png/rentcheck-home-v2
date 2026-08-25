@@ -63,5 +63,13 @@ function render(){document.title=`${selectedDong} 집값 | 아파트·빌라·�
 async function init(){try{const r=await fetch(DATA_URL,{cache:'no-store'});if(!r.ok)throw new Error('데이터 응답 '+r.status);const text=await r.text();const lines=text.replace(/^\ufeff/,'').split(/\r?\n/);latestYM=latestMonth(lines);if(!latestYM)throw new Error('월 정보를 찾지 못했습니다');const months=new Set([latestYM,prevYM(latestYM,1),prevYM(latestYM,2)]);ingest(lines,months);const dongs=Object.keys(DB).sort((a,b)=>a.localeCompare(b,'ko'));if(!dongs.length)throw new Error('법정동 데이터를 찾지 못했습니다');selectedDong=dongs.includes('화곡동')?'화곡동':dongs[0];$('#dongSelect').innerHTML=dongs.map(d=>`<option value="${escapeHtml(d)}" ${d===selectedDong?'selected':''}>서울 강서구 ${escapeHtml(d)}</option>`).join('');$('#dongSelect').addEventListener('change',e=>{selectedDong=e.target.value;render()});document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));b.classList.add('on');mode=b.dataset.mode;render()}));render()}catch(e){$('#result').className='loading err';$('#result').textContent='데이터를 불러오지 못했습니다. 잠시 뒤 다시 열어주세요. ('+e.message+')';$('#statusText').textContent='데이터 연결 확인 필요'}}
 init();
 </script>
+<script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "1a98778bd0f06a0";
+if(window.wcs) {
+wcs_do();
+}
+</script>
 </body>
 </html>
