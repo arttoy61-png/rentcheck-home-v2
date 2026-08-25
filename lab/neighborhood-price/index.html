@@ -64,5 +64,13 @@ function setOn(group,key,val){document.querySelectorAll(group+' button').forEach
 async function init(){try{const res=await fetch(DATA_URL,{cache:'no-store'});if(!res.ok)throw new Error(res.status);ingest(await res.text());const dongs=[...new Set(rows.map(r=>r.dong))].sort((a,b)=>a.localeCompare(b,'ko'));state.dong=dongs.includes('화곡동')?'화곡동':dongs[0];$('#dong').innerHTML=dongs.map(d=>`<option value="${esc(d)}" ${d===state.dong?'selected':''}>서울 강서구 ${esc(d)}</option>`).join('');$('#dong').addEventListener('change',e=>{state.dong=e.target.value;state.area='all';state.building='all';render()});document.querySelectorAll('#houseSeg button').forEach(b=>b.addEventListener('click',()=>{state.house=b.dataset.house;state.area='all';state.building='all';setOn('#houseSeg','house',state.house);render()}));document.querySelectorAll('#modeSeg button').forEach(b=>b.addEventListener('click',()=>{state.mode=b.dataset.mode;state.area='all';state.building='all';setOn('#modeSeg','mode',state.mode);render()}));$('#area').addEventListener('change',e=>{state.area=e.target.value;state.building='all';render()});$('#building').addEventListener('change',e=>{state.building=e.target.value;render()});render()}catch(e){$('#deals').className='empty';$('#deals').textContent='데이터를 불러오지 못했습니다. 잠시 뒤 다시 열어주세요.';$('#status').textContent='데이터 연결 확인 필요'}}
 init();
 </script>
+<script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "1a98778bd0f06a0";
+if(window.wcs) {
+wcs_do();
+}
+</script>
 </body>
 </html>
