@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>강서구 집값 | 아파트·빌라·오피스텔 실거래 | Rent Check</title>
+<meta name="description" content="강서구 아파트·빌라·오피스텔 집값을 최근 실거래로 한 번에 보고, 동·역세권·매매·전세·월세·면적 조건으로 좁혀 확인합니다.">
+<link rel="canonical" href="https://rent-check.kr/tools/neighborhood-price/">
+<meta property="og:title" content="강서구 집값 | Rent Check">
+<meta property="og:description" content="강서구 전체 집값을 먼저 보고 동·역세권·주택유형·면적으로 최근 실거래를 좁혀보세요.">
+<link rel="stylesheet" href="../tool-shell.css">
+<script defer src="../tool-common.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"강서구 집값","url":"https://rent-check.kr/tools/neighborhood-price/","applicationCategory":"RealEstateApplication","operatingSystem":"Web","description":"강서구 아파트·빌라·오피스텔 실거래를 동·역세권·거래유형·면적 조건으로 확인하는 도구"}</script>
+<style>
+:root{--navy:#0d1f3c;--navy2:#17375f;--gold:#d4a73a;--blue:#1565c0;--ink:#111827;--muted:#667085;--line:#d7dce3;--bg:#faf8f3;--paper:#fff;--soft:#f4efe4;--green:#17804d;--sale:#b85f24;--je:#1565c0;--wo:#9a6d0b;--radius:14px}
+*{box-sizing:border-box}body.v2-tool-page{background:var(--bg);color:var(--ink);line-height:1.55}.wrap{padding:16px 0 36px!important}.v2-normalized-hero{margin-bottom:14px!important}.v2-normalized-hero h1::after,.v2-normalized-hero .v2-hero-description::after{content:none!important;display:none!important}.v2-normalized-hero h1{font-size:28px!important}.v2-normalized-hero .v2-hero-description{font-size:14px!important;line-height:1.7!important;margin-top:8px!important}.section-title{margin:18px 2px 9px}.section-title h2{margin:0;color:var(--navy);font-size:20px;letter-spacing:-.4px}.section-title p{margin:4px 0 0;color:var(--muted);font-size:12.5px}.answer-cards{display:grid;grid-template-columns:1fr;gap:9px}.answer-card{width:100%;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:var(--radius);padding:14px;cursor:pointer;box-shadow:0 1px 5px rgba(13,31,60,.05)}.answer-card:hover{border-color:var(--blue);box-shadow:0 3px 12px rgba(21,101,192,.12)}.answer-top{display:flex;justify-content:space-between;align-items:center;gap:8px}.answer-name{font-size:17px;font-weight:800;color:var(--navy)}.answer-go{font-size:11px;font-weight:800;color:var(--blue)}.answer-price{margin-top:7px;color:var(--navy);font-size:23px;font-weight:800;letter-spacing:-.5px}.answer-sub{margin-top:3px;color:var(--muted);font-size:11.5px}.answer-mini{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}.mini{background:var(--soft);border-radius:10px;padding:8px 9px}.mini .k{font-size:10px;color:var(--muted);font-weight:700}.mini .v{margin-top:2px;font-size:12.5px;color:var(--ink);font-weight:800}.trend{margin-top:8px;color:var(--muted);font-size:11.5px;font-weight:700;line-height:1.65}.panel,.result,.quick{background:#fff;border:1.5px solid var(--line);border-radius:var(--radius)}.panel{padding:14px}.step{margin-top:13px}.step:first-child{margin-top:0}.label{display:flex;align-items:center;gap:7px;margin-bottom:7px;color:#52606e;font-size:13px;font-weight:800}.num{width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;border-radius:50%;background:var(--navy);color:#fff;font-size:11px}.select,.search-input{width:100%;min-height:48px;border:1.5px solid var(--line);border-radius:12px;background:#fff;padding:0 12px;color:var(--navy);font-size:16px;font-weight:700}.select:disabled{background:#f4f5f7;color:#9aa1aa}.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.seg button{min-height:44px;border:1.5px solid var(--line);border-radius:11px;background:#fff;color:var(--muted);font-size:14px;font-weight:800;cursor:pointer}.seg button.on{background:var(--navy);border-color:var(--navy);color:#fff}.status{display:flex;align-items:center;gap:7px;margin-top:11px;color:var(--muted);font-size:12px}.dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex:0 0 auto}.summary{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px}.sum{background:#fff;border:1.5px solid var(--line);border-radius:13px;padding:11px}.sum .k{font-size:10.5px;font-weight:700;color:var(--muted)}.sum .v{margin-top:3px;color:var(--navy);font-size:15px;font-weight:800;word-break:keep-all}.result{margin-top:10px;overflow:hidden}.result-head{padding:14px 15px;border-bottom:1px solid #eee8dc}.result-head h2{margin:0;color:var(--navy);font-size:18px}.result-head p{margin:4px 0 0;color:var(--muted);font-size:12px}.deal{display:grid;grid-template-columns:78px minmax(0,1fr) auto;gap:8px;align-items:center;padding:11px 15px;border-top:1px solid #f0ece4;font-size:12.5px}.deal:first-child{border-top:0}.date{color:var(--muted);font-variant-numeric:tabular-nums}.nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--navy);font-weight:800}.meta{margin-top:2px;color:var(--muted);font-size:11px}.amt{font-weight:800;white-space:nowrap}.sale{color:var(--sale)}.je{color:var(--je)}.wo{color:var(--wo)}.badge{display:inline-block;margin-right:4px;padding:2px 6px;border-radius:999px;background:var(--soft);color:#6c5b32;font-size:9.5px;font-weight:800}.empty,.loading{padding:28px 15px;text-align:center;color:var(--muted);font-size:13px}.quick{padding:14px;margin-top:10px}.quick h3{margin:0 0 5px;color:var(--navy);font-size:15px}.quick p{margin:0 0 9px;color:var(--muted);font-size:11.5px}.search-row{display:grid;grid-template-columns:1fr auto;gap:7px}.search-btn{min-width:76px;border:0;border-radius:12px;background:var(--navy);color:#fff;font-size:13px;font-weight:800;padding:0 13px;cursor:pointer}.reset-search{display:none;margin-top:7px;border:0;background:transparent;color:var(--blue);font-size:12px;font-weight:800;padding:4px 0;cursor:pointer}.v2-tool-disclaimer{margin:11px 0 0!important;padding:13px 14px;border:1px solid #ead9a4;border-radius:14px;background:#fff9e9;color:#66572f!important;font-size:12.5px!important;line-height:1.7!important}.v2-tool-disclaimer b{color:var(--navy)}.source-note{margin:12px 0 0;color:var(--muted);font-size:11.5px;text-align:center;line-height:1.8}.source-note a{color:var(--blue);font-weight:800}@media(min-width:650px){.answer-cards{grid-template-columns:repeat(3,1fr)}.answer-price{font-size:20px}}@media(max-width:560px){.wrap{padding-top:10px!important}.v2-normalized-hero h1{font-size:23px!important}.v2-normalized-hero .v2-hero-description{font-size:13px!important}.deal{grid-template-columns:70px minmax(0,1fr)}.amt{grid-column:2}.search-row{grid-template-columns:1fr}.search-btn{min-height:44px}}
+</style>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=222563608848ddea15db9b5ddf83e859&autoload=false&libraries=services"></script>
+</head>
+<body class="v2-tool-page" data-v2-root="../../" data-tool-id="neighborhood-price">
+<div class="wrap">
+  <section class="v2-normalized-hero">
+    <div class="v2-hero-brand">Rent Check</div>
+    <h1>강서구 집값</h1>
+    <p class="v2-hero-description">아파트·빌라·오피스텔을 먼저 비교하고, 동·역세권·거래유형·면적으로 좁혀보세요.</p>
+  </section>
+
+  <div class="section-title"><h2 id="overviewTitle">강서구 매매 한눈에</h2><p>최근 3개월 신고분 · 중위값과 중간 50% 가격대</p></div>
+  <section class="answer-cards" id="answerCards"><div class="loading">실거래 데이터를 불러오는 중…</div></section>
+
+  <div class="section-title"><h2>내가 찾는 집으로 좁혀보기</h2><p>건물 이름을 몰라도 됩니다. 동네와 역, 집 종류, 크기만 고르세요.</p></div>
+  <section class="panel">
+    <div class="step"><div class="label"><span class="num">1</span>동네</div><select class="select" id="dong"><option>데이터 불러오는 중…</option></select></div>
+    <div class="step"><div class="label"><span class="num">2</span>매매·전세·월세</div><div class="seg" id="modeSeg"><button class="on" data-mode="sale">매매</button><button data-mode="jeonse">전세</button><button data-mode="wolse">월세</button></div></div>
+    <div class="step"><div class="label"><span class="num">3</span>집 종류</div><div class="seg" id="houseSeg"><button class="on" data-house="apt">아파트</button><button data-house="villa">빌라·연립</button><button data-house="offi">오피스텔</button></div></div>
+    <div class="step"><div class="label"><span class="num">4</span>역세권</div><select class="select" id="station" disabled><option value="all">동네를 고르면 역세권 선택 가능</option></select></div>
+    <div class="step"><div class="label"><span class="num">5</span>집 크기</div><select class="select" id="area"><option value="all">전체 면적</option></select></div>
+    <div class="status"><span class="dot"></span><span id="status">국토부 실거래와 위치 데이터를 읽는 중입니다.</span></div>
+  </section>
+
+  <section class="summary" id="summary"></section>
+  <section class="result"><div class="result-head"><h2 id="resultTitle">실거래 결과</h2><p id="resultSub">조건을 고르면 최근 계약부터 보여줍니다.</p></div><div id="deals" class="loading">데이터 불러오는 중…</div></section>
+
+  <section class="quick">
+    <h3>보고 있는 집이 있다면 바로 찾기</h3>
+    <p><b>지번 또는 건물명</b>을 입력하세요. 예: 1075-27, 강서힐스테이트</p>
+    <div class="search-row"><input class="search-input" id="quickSearch" type="search" placeholder="지번·건물명 검색" autocomplete="off"><button class="search-btn" id="searchBtn">찾기</button></div>
+    <button class="reset-search" id="resetSearch">검색 결과 닫기</button>
+  </section>
+
+  <p class="v2-tool-disclaimer"><b>확인 기준</b><br>역세권은 선택한 역에서 직선거리 800m 안쪽의 실제 지번 좌표로 계산합니다. 최근 월은 신고가 계속 추가됩니다. 빌라·오피스텔은 면적·준공연도 차이가 커 중위값과 가격대는 참고용으로 보세요.</p>
+  <div class="source-note">자료 · 국토교통부 실거래가 공개시스템 · 계약일 기준<br><a href="../apartment/">강서구 아파트 단지별 실거래 보기 →</a></div>
+</div>
+<script>
+const DATA_URL='https://arttoy61-png.github.io/rent-check/auction_data.json';
+const HOUSES={apt:{label:'아파트',t:'a'},villa:{label:'빌라·연립',t:'v'},offi:{label:'오피스텔',t:'o'}};
+const MODES={sale:'매매',jeonse:'전세',wolse:'월세'};
+const AREA_BANDS=[['all','전체 면적'],['u40','40㎡ 이하'],['40_60','40~60㎡'],['60_85','60~85㎡'],['o85','85㎡ 초과']];
+const STATIONS_BY_DONG={
+  '화곡동':['화곡','까치산','우장산'],
+  '등촌동':['등촌','증미','가양'],
+  '염창동':['염창','등촌'],
+  '가양동':['가양','양천향교','증미'],
+  '마곡동':['마곡','발산','마곡나루','신방화'],
+  '방화동':['방화','개화산','신방화','공항시장','개화'],
+  '공항동':['송정','공항시장','김포공항'],
+  '내발산동':['발산','우장산','마곡'],
+  '외발산동':['발산','마곡'],
+  '개화동':['개화']
+};
+let data=null,geo={},rows=[],latestYM='',stationCache={},renderSeq=0;
+let state={dong:'all',mode:'sale',house:'apt',station:'all',area:'all'};
+const $=s=>document.querySelector(s);
+function n(v){const x=Number(v);return Number.isFinite(x)?x:null}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function prevYM(ym,k){let y=+ym.slice(0,4),m=+ym.slice(4);m-=k;while(m<=0){m+=12;y--}return String(y)+String(m).padStart(2,'0')}
+function areaOk(v,b){if(b==='all')return true;if(!Number.isFinite(v))return false;if(b==='u40')return v<=40;if(b==='40_60')return v>40&&v<=60;if(b==='60_85')return v>60&&v<=85;return v>85}
+function sortedVals(a){return a.filter(Number.isFinite).sort((x,y)=>x-y)}
+function quantile(a,q){const b=sortedVals(a);if(!b.length)return null;if(b.length===1)return b[0];const p=(b.length-1)*q,lo=Math.floor(p),hi=Math.ceil(p);return b[lo]+(b[hi]-b[lo])*(p-lo)}
+function med(a){return quantile(a,.5)}
+function money(v){if(v==null)return '-';if(v>=10000){const e=v/10000;return e.toFixed(e>=10?1:2).replace(/\.?0+$/,'')+'억'}return Math.round(v).toLocaleString()+'만원'}
+function rentMoney(d,r){return `${money(d)} / ${Math.round(r||0).toLocaleString()}만`}
+function keyDate(r){return Number(r.ym)*100+Number(r.d||0)}
+function dateText(r){return `${String(r.ym).slice(0,4)}.${String(r.ym).slice(4)}.${String(r.d||0).padStart(2,'0')}`}
+function modeValue(r,mode){return mode==='wolse'?n(r.m):n(r.p)}
+function displayAmount(r,mode){return mode==='sale'?money(r.p):mode==='jeonse'?money(r.p):rentMoney(r.dp,r.m)}
+function priceStats(list,mode){const vals=list.map(r=>modeValue(r,mode)).filter(Number.isFinite);return {mid:med(vals),q1:quantile(vals,.25),q3:quantile(vals,.75),dep:mode==='wolse'?med(list.map(r=>n(r.dp))):null}}
+function rangeText(s,mode){if(s.q1==null||s.q3==null)return '-';if(mode==='wolse')return `${Math.round(s.q1)}~${Math.round(s.q3)}만원`;return `${money(s.q1)}~${money(s.q3)}`}
+function midText(s,mode){if(s.mid==null)return '-';if(mode==='wolse')return `${Math.round(s.mid).toLocaleString()}만원`;return money(s.mid)}
+function distM(lat1,lng1,lat2,lng2){const R=6371000,p1=lat1*Math.PI/180,p2=lat2*Math.PI/180,dp=(lat2-lat1)*Math.PI/180,dl=(lng2-lng1)*Math.PI/180;const a=Math.sin(dp/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin(dl/2)**2;return 2*R*Math.asin(Math.sqrt(a))}
+function normalizeRows(d){const out=[];for(const mode of ['sale','jeonse','wolse'])for(const r of (d[mode]||[]))out.push({...r,mode});return out}
+function recent3(list){const months=new Set([latestYM,prevYM(latestYM,1),prevYM(latestYM,2)]);return list.filter(r=>months.has(String(r.ym)))}
+function scopeLabel(){return state.dong==='all'?'강서구':state.dong}
+function houseRows(dong,house,mode,onlyRecent=true){let f=rows.filter(r=>(dong==='all'||r.u===dong)&&r.t===HOUSES[house].t&&r.mode===mode);return onlyRecent?recent3(f):f}
+function trendText(dong,house,mode){const m1=prevYM(latestYM,1),m2=prevYM(latestYM,2);const scope=r=>(dong==='all'||r.u===dong)&&r.t===HOUSES[house].t&&r.mode===mode;const a=rows.filter(r=>scope(r)&&r.ym===m1),b=rows.filter(r=>scope(r)&&r.ym===m2);if(a.length<5||b.length<5)return '직전 2개 완결월 · 표본 적음';const va=med(a.map(r=>modeValue(r,mode))),vb=med(b.map(r=>modeValue(r,mode)));if(!va||!vb)return '직전 2개 완결월 · 비교 어려움';const pct=(va-vb)/vb*100;if(Math.abs(pct)<3)return '직전 2개 완결월 · 비슷한 수준';return `직전 2개 완결월 · 중위값 ${pct>0?'↑':'↓'} ${Math.abs(pct).toFixed(1)}%`}
+function renderOverview(){const mode=state.mode,label=scopeLabel();$('#overviewTitle').textContent=`${label} ${MODES[mode]} 한눈에`;$('#answerCards').innerHTML=Object.entries(HOUSES).map(([house,h])=>{const f=houseRows(state.dong,house,mode,true).sort((a,b)=>keyDate(b)-keyDate(a)),s=priceStats(f,mode),last=f[0];const sub=mode==='wolse'&&s.dep!=null?`보증금 중위 ${money(s.dep)}`:'최근 3개월 중위값';return `<button class="answer-card" data-pick-house="${house}"><div class="answer-top"><span class="answer-name">${h.label}</span><span class="answer-go">조건 좁히기 →</span></div><div class="answer-price">${midText(s,mode)}</div><div class="answer-sub">${sub}</div><div class="answer-mini"><div class="mini"><div class="k">중간 50% 가격대</div><div class="v">${rangeText(s,mode)}</div></div><div class="mini"><div class="k">최근 3개월 거래</div><div class="v">${f.length.toLocaleString()}건</div></div></div><div class="trend">${last?`최근 계약 ${dateText(last)} · ${displayAmount(last,mode)}`:'최근 거래 없음'}<br>${trendText(state.dong,house,mode)}</div></button>`}).join('');document.querySelectorAll('[data-pick-house]').forEach(b=>b.addEventListener('click',()=>{state.house=b.dataset.pickHouse;setOn('#houseSeg','house',state.house);renderResults();document.querySelector('.panel').scrollIntoView({behavior:'smooth',block:'start'})}))}
+function updateStationOptions(){const el=$('#station');if(state.dong==='all'){state.station='all';el.disabled=true;el.innerHTML='<option value="all">동네를 고르면 역세권 선택 가능</option>';return}el.disabled=false;const names=STATIONS_BY_DONG[state.dong]||[];if(state.station!=='all'&&!names.includes(state.station))state.station='all';el.innerHTML='<option value="all">동네 전체</option>'+names.map(x=>`<option value="${esc(x)}" ${x===state.station?'selected':''}>${esc(x)}역 800m</option>`).join('')}
+function updateAreaOptions(){const base=houseRows(state.dong,state.house,state.mode,true);const bands=AREA_BANDS.filter(([k])=>k==='all'||base.some(r=>areaOk(n(r.a),k)));if(!bands.some(([k])=>k===state.area))state.area='all';$('#area').innerHTML=bands.map(([k,l])=>`<option value="${k}" ${k===state.area?'selected':''}>${l}</option>`).join('')}
+function ensureKakao(){return new Promise((resolve,reject)=>{if(!window.kakao?.maps)return reject(new Error('카카오 지도 SDK 없음'));window.kakao.maps.load(()=>resolve(window.kakao))})}
+async function stationCoord(name){if(stationCache[name])return stationCache[name];const kakao=await ensureKakao();const places=new kakao.maps.services.Places();const xy=await new Promise((resolve,reject)=>{places.keywordSearch(`${name}역 서울 강서구`,(result,status)=>{if(status!==kakao.maps.services.Status.OK||!result.length)return reject(new Error(name+'역 위치 검색 실패'));const exact=result.find(x=>String(x.place_name||'').replace(/\s/g,'').includes(name+'역'))||result[0];resolve([Number(exact.y),Number(exact.x)])})});stationCache[name]=xy;return xy}
+async function filteredRows(){let f=houseRows(state.dong,state.house,state.mode,true).filter(r=>areaOk(n(r.a),state.area));if(state.station!=='all'){const xy=await stationCoord(state.station);f=f.map(r=>{const g=geo[`${r.u} ${r.j||''}`];if(!g)return null;const dm=distM(xy[0],xy[1],Number(g[0]),Number(g[1]));return dm<=800?{...r,_dist:Math.round(dm)}:null}).filter(Boolean)}return f.sort((a,b)=>keyDate(b)-keyDate(a))}
+function setOn(group,key,val){document.querySelectorAll(group+' button').forEach(b=>b.classList.toggle('on',b.dataset[key]===val))}
+function renderSummary(f){const s=priceStats(f,state.mode),last=f[0];$('#summary').innerHTML=`<div class="sum"><div class="k">최근 3개월 거래</div><div class="v">${f.length.toLocaleString()}건</div></div><div class="sum"><div class="k">중간값</div><div class="v">${midText(s,state.mode)}</div></div><div class="sum"><div class="k">중간 50% 가격대</div><div class="v">${rangeText(s,state.mode)}</div></div><div class="sum"><div class="k">가장 최근 계약</div><div class="v">${last?displayAmount(last,state.mode):'-'}</div></div>`}
+function dealHtml(r,mode=state.mode,searchMode=false){const h=Object.values(HOUSES).find(x=>x.t===r.t)?.label||r.t;const dist=r._dist!=null?` · ${state.station}역 ${r._dist}m`:'';const badge=searchMode?`<span class="badge">${h}</span><span class="badge">${MODES[r.mode]}</span>`:'';return `<div class="deal"><div class="date">${dateText(r)}</div><div><div class="nm">${badge}${esc(r.b||'(건물명 없음)')}</div><div class="meta">${esc(r.u||'')} ${esc(r.j||'')} · ${Number.isFinite(n(r.a))?Math.round(n(r.a))+'㎡':'면적 미상'} · ${r.f?esc(r.f)+'층':'층 미상'}${r.y?' · '+esc(r.y)+'년 준공':''}${dist}</div></div><div class="amt ${mode==='sale'?'sale':mode==='jeonse'?'je':'wo'}">${displayAmount(r,mode)}</div></div>`}
+async function renderResults(){const seq=++renderSeq;updateStationOptions();updateAreaOptions();$('#deals').className='loading';$('#deals').textContent=state.station==='all'?'조건에 맞는 실거래를 찾는 중…':`${state.station}역 800m 안 실거래를 찾는 중…`;try{const f=await filteredRows();if(seq!==renderSeq)return;const stationText=state.dong==='all'?'강서구 전체':state.station==='all'?'동네 전체':`${state.station}역 800m`;const areaText=AREA_BANDS.find(x=>x[0]===state.area)?.[1]||'전체 면적';$('#resultTitle').textContent=`${scopeLabel()} ${HOUSES[state.house].label} ${MODES[state.mode]}`;$('#resultSub').textContent=`최근 3개월 · ${stationText} · ${areaText}`;$('#status').textContent=`${prevYM(latestYM,2).slice(0,4)}.${prevYM(latestYM,2).slice(4)}~${latestYM.slice(0,4)}.${latestYM.slice(4)} · 최신월은 신고 진행 중`;renderSummary(f);if(!f.length){$('#deals').className='empty';$('#deals').textContent='선택한 조건에 최근 3개월 거래가 없습니다.';return}$('#deals').className='';$('#deals').innerHTML=f.slice(0,20).map(r=>dealHtml(r)).join('')}catch(e){if(seq!==renderSeq)return;$('#summary').innerHTML='';$('#deals').className='empty';$('#deals').textContent='역 위치 또는 거래 위치를 불러오지 못했습니다. 동네 전체로 다시 확인해주세요.'}}
+function doQuickSearch(){const q=$('#quickSearch').value.trim().toLowerCase();if(!q){renderResults();return}const f=rows.filter(r=>(state.dong==='all'||r.u===state.dong)&&(`${r.u||''} ${r.j||''} ${r.b||''}`).toLowerCase().includes(q)).sort((a,b)=>keyDate(b)-keyDate(a));$('#resultTitle').textContent=`${scopeLabel()} “${q}” 검색 결과`;$('#resultSub').textContent='최근 24개월 데이터 · 주택유형과 거래유형 전체';$('#summary').innerHTML=`<div class="sum"><div class="k">검색된 거래</div><div class="v">${f.length.toLocaleString()}건</div></div><div class="sum"><div class="k">검색 범위</div><div class="v">최근 24개월</div></div>`;$('#resetSearch').style.display='inline-block';if(!f.length){$('#deals').className='empty';$('#deals').textContent='해당 지번·건물명 거래를 찾지 못했습니다.';return}$('#deals').className='';$('#deals').innerHTML=f.slice(0,30).map(r=>dealHtml(r,r.mode,true)).join('');document.querySelector('.result').scrollIntoView({behavior:'smooth',block:'start'})}
+async function init(){try{const res=await fetch(DATA_URL,{cache:'no-store'});if(!res.ok)throw new Error(res.status);data=await res.json();geo=data.geo||{};latestYM=String(data.updated||'');rows=normalizeRows(data);const dongs=(data.regions||[...new Set(rows.map(r=>r.u))]).filter(Boolean).sort((a,b)=>a.localeCompare(b,'ko'));state.dong='all';$('#dong').innerHTML='<option value="all" selected>서울 강서구 전체</option>'+dongs.map(d=>`<option value="${esc(d)}">서울 강서구 ${esc(d)}</option>`).join('');$('#dong').addEventListener('change',e=>{state.dong=e.target.value;state.station='all';state.area='all';$('#quickSearch').value='';$('#resetSearch').style.display='none';renderOverview();renderResults()});document.querySelectorAll('#modeSeg button').forEach(b=>b.addEventListener('click',()=>{state.mode=b.dataset.mode;state.station='all';state.area='all';setOn('#modeSeg','mode',state.mode);renderOverview();renderResults()}));document.querySelectorAll('#houseSeg button').forEach(b=>b.addEventListener('click',()=>{state.house=b.dataset.house;state.area='all';setOn('#houseSeg','house',state.house);renderResults()}));$('#station').addEventListener('change',e=>{state.station=e.target.value;renderResults()});$('#area').addEventListener('change',e=>{state.area=e.target.value;renderResults()});$('#searchBtn').addEventListener('click',doQuickSearch);$('#quickSearch').addEventListener('keydown',e=>{if(e.key==='Enter')doQuickSearch()});$('#resetSearch').addEventListener('click',()=>{$('#quickSearch').value='';$('#resetSearch').style.display='none';renderResults()});renderOverview();renderResults()}catch(e){$('#answerCards').innerHTML='<div class="empty">데이터를 불러오지 못했습니다.</div>';$('#deals').className='empty';$('#deals').textContent='데이터를 불러오지 못했습니다. 잠시 뒤 다시 열어주세요.';$('#status').textContent='데이터 연결 확인 필요'}}
+init();
+</script>
+<script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
+<script type="text/javascript">if(!wcs_add)var wcs_add={};wcs_add["wa"]="1a98778bd0f06a0";if(window.wcs)wcs_do();</script>
+</body>
+</html>
