@@ -1,0 +1,113 @@
+name: Apply Social Share Meta
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - 'assets/share/**'
+      - '.github/workflows/apply-share-meta.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Ensure Open Graph metadata on every HTML page
+        shell: python
+        run: |
+          from pathlib import Path
+          import html
+          import re
+
+          SITE = 'https://rent-check.kr'
+          DEFAULT_IMAGE = f'{SITE}/assets/share/rent-check-og.png'
+
+          def find(pattern, text):
+              m = re.search(pattern, text, flags=re.I | re.S)
+              return html.unescape(m.group(1).strip()) if m else ''
+
+          def has_meta(text, key, value):
+              return bool(re.search(rf'<meta\s+[^>]*{key}=["\']{re.escape(value)}["\'][^>]*>', text, flags=re.I))
+
+          def page_url(path):
+              rel = path.as_posix()
+              if rel == 'index.html':
+                  return SITE + '/'
+              if rel.endswith('/index.html'):
+                  return SITE + '/' + rel[:-10].strip('/') + '/'
+              return SITE + '/' + rel.lstrip('/')
+
+          changed = []
+          for path in sorted(Path('.').rglob('*.html')):
+              text = path.read_text(encoding='utf-8')
+              if not re.search(r'</head\s*>', text, flags=re.I):
+                  continue
+
+              title = find(r'<title[^>]*>(.*?)</title>', text) or 'Rent Check'
+              desc = find(r'<meta\s+[^>]*name=["\']description["\'][^>]*content=["\'](.*?)["\'][^>]*>', text)
+              if not desc:
+                  desc = '부동산 계산과 실거래 해석을 연결하는 Rent Check입니다.'
+              canonical = find(r'<link\s+[^>]*rel=["\']canonical["\'][^>]*href=["\'](.*?)["\'][^>]*>', text) or page_url(path)
+              is_article = path.parts and path.parts[0] in {'blog','analysis'} and path.name == 'index.html' and len(path.parts) > 2
+              og_type = 'article' if is_article else 'website'
+
+              existing_image = find(r'<meta\s+[^>]*property=["\']og:image["\'][^>]*content=["\'](.*?)["\'][^>]*>', text)
+              image_url = existing_image or DEFAULT_IMAGE
+
+              tags = []
+              if not has_meta(text, 'property', 'og:site_name'):
+                  tags.append('<meta property="og:site_name" content="Rent Check">')
+              if not has_meta(text, 'property', 'og:title'):
+                  tags.append(f'<meta property="og:title" content="{html.escape(title, quote=True)}">')
+              if not has_meta(text, 'property', 'og:description'):
+                  tags.append(f'<meta property="og:description" content="{html.escape(desc, quote=True)}">')
+              if not has_meta(text, 'property', 'og:url'):
+                  tags.append(f'<meta property="og:url" content="{html.escape(canonical, quote=True)}">')
+              if not has_meta(text, 'property', 'og:type'):
+                  tags.append(f'<meta property="og:type" content="{og_type}">')
+              if not existing_image:
+                  tags.append(f'<meta property="og:image" content="{DEFAULT_IMAGE}">')
+                  tags.append('<meta property="og:image:width" content="1200">')
+                  tags.append('<meta property="og:image:height" content="630">')
+                  tags.append('<meta property="og:image:type" content="image/png">')
+              if not has_meta(text, 'property', 'og:image:alt'):
+                  tags.append('<meta property="og:image:alt" content="Rent Check - 실거래로 더 정확하게">')
+              if not has_meta(text, 'name', 'twitter:card'):
+                  tags.append('<meta name="twitter:card" content="summary_large_image">')
+              if not has_meta(text, 'name', 'twitter:title'):
+                  tags.append(f'<meta name="twitter:title" content="{html.escape(title, quote=True)}">')
+              if not has_meta(text, 'name', 'twitter:description'):
+                  tags.append(f'<meta name="twitter:description" content="{html.escape(desc, quote=True)}">')
+              if not has_meta(text, 'name', 'twitter:image'):
+                  tags.append(f'<meta name="twitter:image" content="{html.escape(image_url, quote=True)}">')
+
+              if not tags:
+                  continue
+              block = '\n<!-- Rent Check share preview -->\n' + '\n'.join(tags) + '\n<!-- /Rent Check share preview -->\n'
+              text = re.sub(r'</head\s*>', block + '</head>', text, count=1, flags=re.I)
+              path.write_text(text, encoding='utf-8')
+              changed.append(str(path))
+
+          print(f'updated={len(changed)}')
+          if changed:
+              print('\n'.join(changed))
+
+      - name: Commit share metadata
+        run: |
+          if git diff --quiet; then
+            echo "No share metadata changes needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -u
+          git commit -m "seo: apply social share metadata to HTML pages"
+          git push
