@@ -107,5 +107,13 @@ function resetAll(){state={dong:'all',mode:'sale',house:'apt',station:'all',area
 async function init(){try{const res=await fetch(DATA_URL,{cache:'no-store'});if(!res.ok)throw new Error(res.status);data=await res.json();geo=data.geo||{};latestYM=String(data.updated||'');rows=normalizeRows(data);const dongs=(data.regions||[...new Set(rows.map(r=>r.u))]).filter(Boolean).sort((a,b)=>a.localeCompare(b,'ko'));$('#dong').innerHTML='<option value="all" selected>서울 강서구 전체</option>'+dongs.map(d=>`<option value="${esc(d)}">서울 강서구 ${esc(d)}</option>`).join('');$('#dong').onchange=e=>{state.dong=e.target.value;state.station='all';state.area='all';state.sort='recent';renderOverview();renderResults()};document.querySelectorAll('#modeSeg button').forEach(b=>b.onclick=()=>{state.mode=b.dataset.mode;state.station='all';state.area='all';state.sort='recent';setOn('#modeSeg','mode',state.mode);renderOverview();renderResults()});document.querySelectorAll('#houseSeg button').forEach(b=>b.onclick=()=>{state.house=b.dataset.house;state.area='all';setOn('#houseSeg','house',state.house);renderResults()});$('#station').onchange=e=>{state.station=e.target.value;state.sort=state.station==='all'?'recent':'distance';renderResults()};$('#area').onchange=e=>{state.area=e.target.value;renderResults()};document.querySelectorAll('#sortRow button').forEach(b=>b.onclick=()=>{state.sort=b.dataset.sort;renderResults()});$('#searchBtn').onclick=doQuickSearch;$('#quickSearch').onkeydown=e=>{if(e.key==='Enter')doQuickSearch()};$('#resetSearch').onclick=()=>{$('#quickSearch').value='';$('#resetSearch').style.display='none';renderResults()};$('#resetAll').onclick=resetAll;renderOverview();renderResults()}catch(e){$('#answerCards').innerHTML='<div class="empty">데이터를 불러오지 못했습니다.</div>';$('#deals').className='empty';$('#deals').textContent='데이터를 불러오지 못했습니다. 잠시 뒤 다시 열어주세요.';$('#status').textContent='데이터 연결 확인 필요'}}
 init();
 </script>
+<script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "1a98778bd0f06a0";
+if(window.wcs) {
+wcs_do();
+}
+</script>
 </body>
 </html>
