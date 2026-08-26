@@ -92,6 +92,50 @@
     });
   }
 
+  function addNumericClearButtons(body){
+    if(!document.getElementById('v2-input-clear-style')){
+      const style=document.createElement('style');
+      style.id='v2-input-clear-style';
+      style.textContent='.v2-clear-host{position:relative!important}.v2-input-clear{position:absolute;z-index:5;top:50%;right:10px;transform:translateY(-50%);width:28px;height:28px;padding:0;border:0;border-radius:50%;background:#edf1f5;color:#52606e;font-family:inherit;font-size:20px;font-weight:500;line-height:1;display:none;align-items:center;justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent}.v2-input-clear.is-visible{display:flex}.v2-input-clear:active{background:#dfe5ec}.v2-clear-host>input[data-v2-clear-ready="1"]{padding-right:48px!important}.v2-clear-host.v2-clear-has-unit>.v2-input-clear{right:58px}.v2-clear-host.v2-clear-has-unit>input[data-v2-clear-ready="1"]{padding-right:94px!important}';
+      document.head.appendChild(style);
+    }
+    const selector='input[inputmode="numeric"],input[inputmode="decimal"],input[type="number"]';
+    const enhance=input=>{
+      if(!(input instanceof HTMLInputElement)||input.dataset.v2ClearReady==='1'||input.type==='range'||input.disabled||input.readOnly)return;
+      const parent=input.parentElement;
+      if(!parent)return;
+      input.dataset.v2ClearReady='1';
+      parent.classList.add('v2-clear-host');
+      const hasUnit=[...parent.children].some(el=>el!==input&&el.tagName!=='BUTTON'&&(el.classList.contains('unit')||el.tagName==='SPAN')&&getComputedStyle(el).position==='absolute');
+      if(hasUnit)parent.classList.add('v2-clear-has-unit');
+      const button=document.createElement('button');
+      button.type='button';
+      button.className='v2-input-clear';
+      button.setAttribute('aria-label','입력값 지우기');
+      button.title='입력값 지우기';
+      button.textContent='×';
+      parent.appendChild(button);
+      const sync=()=>button.classList.toggle('is-visible',String(input.value||'').trim()!=='');
+      button.addEventListener('click',()=>{
+        input.value='';
+        input.dispatchEvent(new Event('input',{bubbles:true}));
+        input.dispatchEvent(new Event('change',{bubbles:true}));
+        try{input.focus({preventScroll:true})}catch(_){input.focus()}
+        sync();
+      });
+      input.addEventListener('input',sync);
+      input.addEventListener('change',sync);
+      sync();
+    };
+    body.querySelectorAll(selector).forEach(enhance);
+    const observer=new MutationObserver(records=>records.forEach(record=>record.addedNodes.forEach(node=>{
+      if(!(node instanceof Element))return;
+      if(node.matches(selector))enhance(node);
+      node.querySelectorAll?.(selector).forEach(enhance);
+    })));
+    observer.observe(body,{childList:true,subtree:true});
+  }
+
   function fixAnalysisLinks(){
     document.querySelectorAll('a[href$="#article-library"]').forEach(a=>{
       if((a.textContent||'').includes('분석 글'))a.setAttribute('href','https://rent-check.kr/#article-library');
@@ -107,6 +151,7 @@
     normalizeBrand();
     normalizeHero(body,activeTool);
     fixAnalysisLinks();
+    addNumericClearButtons(body);
 
     if(!document.querySelector('.v2-toolbar')){
       const toolbar=document.createElement('header');
