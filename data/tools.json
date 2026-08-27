@@ -40,6 +40,16 @@
     "category": "rent"
   },
   {
+    "id": "neighborhood-price",
+    "title": "강서구 집값",
+    "description": "아파트·빌라·오피스텔 매매·전세·월세 시세를 최근 실거래로 확인합니다.",
+    "url": "tools/neighborhood-price/",
+    "status": "available",
+    "badge": "이용 가능",
+    "icon": "⌂",
+    "category": "rent"
+  },
+  {
     "id": "apt-widget",
     "title": "아파트 단지 시세 지도",
     "description": "단지를 눌러 최근 실거래 흐름을 지도에서 확인합니다.",

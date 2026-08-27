@@ -21,6 +21,46 @@
     track.insertAdjacentElement('afterend',wrap);
   }
 
+  function featureGangseoPriceGuide(){
+    const homeTrack=document.querySelector('#insightTrack');
+    if(!homeTrack||homeTrack.querySelector('a[href="/blog/gangseo-home-price/"]'))return;
+    const cards=[...homeTrack.querySelectorAll('.insight')];
+    if(!cards.length)return;
+    const card=document.createElement('a');
+    card.className='insight insight-home';
+    card.href='/blog/gangseo-home-price/';
+    const visual=document.createElement('div');
+    visual.className='insight-art';
+    const img=document.createElement('img');
+    img.src='/assets/share/rent-check-og.png';
+    img.alt='Rent Check 강서구 집값 가이드';
+    img.loading='lazy';
+    img.decoding='async';
+    visual.append(img);
+    const body=document.createElement('div');
+    body.className='insight-body';
+    const cat=document.createElement('span');
+    cat.className='insight-category';
+    cat.textContent='시세·실거래·가이드';
+    const title=document.createElement('h3');
+    title.textContent='강서구 집값 얼마예요?｜아파트·빌라·오피스텔 시세 한 번에 보기';
+    const meta=document.createElement('div');
+    meta.className='insight-meta';
+    const date=document.createElement('span');
+    date.textContent='2026-08-27';
+    const go=document.createElement('span');
+    go.className='insight-go';
+    go.textContent='글 보기 →';
+    meta.append(date,go);
+    body.append(cat,title,meta);
+    card.append(visual,body);
+    cards[cards.length-1].replaceWith(card);
+    const heading=document.querySelector('#insights .section-head h2');
+    if(heading)heading.textContent='Rent Check 자체 글';
+  }
+
+  featureGangseoPriceGuide();
+
   function saveHomePosition(){
     try{sessionStorage.setItem(KEY,JSON.stringify({y:Math.max(0,window.scrollY||0),time:Date.now()}));}catch(_){/* ignore */}
   }
