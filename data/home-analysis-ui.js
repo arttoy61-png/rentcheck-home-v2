@@ -90,6 +90,18 @@
     });
   });
 
+  if(!document.querySelector('style[data-redevelopment-subtitle-fix]')){
+    const serviceStyle=document.createElement('style');
+    serviceStyle.dataset.redevelopmentSubtitleFix='1';
+    serviceStyle.textContent=`
+      .service-strip.notice-ready .service-item:nth-child(5) .service-copy small{font-size:0!important;white-space:nowrap!important}
+      .service-strip.notice-ready .service-item:nth-child(5) .service-copy small::after{content:"예상 분담금 계산";font-size:14px!important;line-height:1.35;white-space:nowrap}
+      @media(max-width:768px){.service-strip.notice-ready .service-item:nth-child(5) .service-copy small::after{font-size:12px!important}}
+      @media(max-width:430px){.service-strip.notice-ready .service-item:nth-child(5) .service-copy small::after{font-size:11px!important}}
+    `;
+    document.head.appendChild(serviceStyle);
+  }
+
   if(!document.querySelector('link[data-public-housing-popup]')){
     const popupStyle=document.createElement('link');
     popupStyle.rel='stylesheet';
