@@ -28,7 +28,10 @@ jobs:
           import re
 
           SITE = 'https://rent-check.kr'
-          DEFAULT_IMAGE = f'{SITE}/assets/share/rent-check-og.png'
+          OLD_DEFAULT_IMAGE = f'{SITE}/assets/share/rent-check-og.png'
+          DEFAULT_IMAGE = f'{SITE}/assets/share/rent-check-og-v2.png'
+          HOME_OLD_DESC = '부동산 계산 · 실거래 · 분석을 한곳에서 확인하세요.'
+          HOME_NEW_DESC = '부동산 실거래·계산·분석을 한 번에.'
 
           def find(pattern, text):
               m = re.search(pattern, text, flags=re.I | re.S)
@@ -50,6 +53,14 @@ jobs:
               text = path.read_text(encoding='utf-8')
               if not re.search(r'</head\s*>', text, flags=re.I):
                   continue
+
+              original_text = text
+              text = text.replace(OLD_DEFAULT_IMAGE, DEFAULT_IMAGE)
+              if path.as_posix() == 'index.html':
+                  text = text.replace(
+                      f'<meta property="og:description" content="{HOME_OLD_DESC}">',
+                      f'<meta property="og:description" content="{HOME_NEW_DESC}">'
+                  )
 
               title = find(r'<title[^>]*>(.*?)</title>', text) or 'Rent Check'
               desc = find(r'<meta\s+[^>]*name=["\']description["\'][^>]*content=["\'](.*?)["\'][^>]*>', text)
@@ -89,10 +100,12 @@ jobs:
               if not has_meta(text, 'name', 'twitter:image'):
                   tags.append(f'<meta name="twitter:image" content="{html.escape(image_url, quote=True)}">')
 
-              if not tags:
+              if tags:
+                  block = '\n<!-- Rent Check share preview -->\n' + '\n'.join(tags) + '\n<!-- /Rent Check share preview -->\n'
+                  text = re.sub(r'</head\s*>', block + '</head>', text, count=1, flags=re.I)
+
+              if text == original_text:
                   continue
-              block = '\n<!-- Rent Check share preview -->\n' + '\n'.join(tags) + '\n<!-- /Rent Check share preview -->\n'
-              text = re.sub(r'</head\s*>', block + '</head>', text, count=1, flags=re.I)
               path.write_text(text, encoding='utf-8')
               changed.append(str(path))
 
