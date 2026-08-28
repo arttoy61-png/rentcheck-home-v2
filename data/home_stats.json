@@ -1,11 +1,19 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-27T03:16:15+09:00",
-  "data_until": "2026-08-25",
+  "generated_at": "2026-08-28T10:03:27+09:00",
+  "data_until": "2026-08-27",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
+    {
+      "dong": "방화동",
+      "name": "방화메이빌",
+      "area_m2": 45,
+      "amount_eok": 5.0,
+      "date": "2026.08.25",
+      "complex_id": "932c18d0"
+    },
     {
       "dong": "화곡동",
       "name": "한양아이클래스",
@@ -15,20 +23,12 @@
       "complex_id": "9aa745e7"
     },
     {
-      "dong": "화곡동",
-      "name": "화곡푸르지오",
-      "area_m2": 125,
-      "amount_eok": 12.7,
-      "date": "2026.08.22",
-      "complex_id": "243a6b5f"
-    },
-    {
-      "dong": "등촌동",
-      "name": "등촌동아이파크",
-      "area_m2": 84,
-      "amount_eok": 13.7,
-      "date": "2026.08.20",
-      "complex_id": "938ec140"
+      "dong": "염창동",
+      "name": "염창1차보람더하임",
+      "area_m2": 117,
+      "amount_eok": 14.0,
+      "date": "2026.08.23",
+      "complex_id": "ba5f2ef8"
     }
   ],
   "monthly_trend": [
@@ -50,11 +50,11 @@
     },
     {
       "month": "2026-07",
-      "count": 381
+      "count": 384
     },
     {
       "month": "2026-08",
-      "count": 111
+      "count": 125
     }
   ]
 }
