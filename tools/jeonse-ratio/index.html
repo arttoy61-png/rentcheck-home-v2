@@ -7,16 +7,16 @@
 <meta property="og:description" content="매매가 대비 전세보증금 비중을 계산해 전세가율을 확인합니다.">
 <meta property="og:url" content="https://rent-check.kr/tools/jeonse-ratio/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://rent-check.kr/assets/share/rent-check-kakao-20260829.jpg">
-<meta property="og:image:secure_url" content="https://rent-check.kr/assets/share/rent-check-kakao-20260829.jpg">
+<meta property="og:image" content="https://rent-check.kr/assets/share/rent-check-og-v2.png?v=20260829-2">
+<meta property="og:image:secure_url" content="https://rent-check.kr/assets/share/rent-check-og-v2.png?v=20260829-2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:alt" content="Rent Check - 실거래로 더 정확하게">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="전세가율 계산기 | Rent Check">
 <meta name="twitter:description" content="매매가 대비 전세보증금 비중을 계산해 전세가율을 확인합니다.">
-<meta name="twitter:image" content="https://rent-check.kr/assets/share/rent-check-kakao-20260829.jpg">
+<meta name="twitter:image" content="https://rent-check.kr/assets/share/rent-check-og-v2.png?v=20260829-2">
 <!-- /Rent Check share preview -->
 </head><body class="v2-tool-page" data-v2-root="../../" data-tool-id="jeonse-ratio"><main class="page"><section class="hero"><p class="eyebrow">전세가율</p><h1>전세가율 계산기</h1><p>매매가에서 전세보증금이 차지하는 비율을 확인합니다.</p></section><section class="card"><div class="form"><div class="field"><label for="sale">매매가</label><div class="input"><input id="sale" inputmode="decimal" placeholder="예: 50000"><span>만원</span></div></div><div class="field"><label for="jeonse">전세보증금</label><div class="input"><input id="jeonse" inputmode="decimal" placeholder="예: 35000"><span>만원</span></div></div></div><button class="calculate" id="calculate" type="button">전세가율 계산하기</button></section><section class="result" id="result"><div class="main"><small>전세가율</small><strong id="ratio">-</strong><p id="guide"></p></div><div class="grid"><div class="stat"><span>매매가</span><b id="saleValue">-</b></div><div class="stat"><span>전세보증금</span><b id="jeonseValue">-</b></div></div></section><section class="basis"><h3>참고 기준</h3><p>전세가율은 전세보증금 ÷ 매매가 × 100으로 계산합니다.</p><p class="warning">60·70·80% 구간은 일반적 참고 구간이며 보증보험 기준과는 다릅니다. 전세가율 하나만으로 보증금 안전 여부를 판단하지 마세요.</p></section></main><script>(()=>{const $=s=>document.querySelector(s),n=id=>Number(String($(id).value).replace(/[^0-9.]/g,''))||0,fmt=v=>v.toLocaleString('ko-KR')+'만원';$('#calculate').addEventListener('click',()=>{const sale=n('#sale'),jeonse=n('#jeonse');gtag('event','jeonse_calc');if(!sale||!jeonse){alert('매매가와 전세보증금을 입력해 주세요.');return}const ratio=jeonse/sale*100;$('#ratio').textContent=ratio.toFixed(1)+'%';$('#saleValue').textContent=fmt(sale);$('#jeonseValue').textContent=fmt(jeonse);$('#guide').textContent=ratio<60?'낮은 편의 참고 구간입니다.':ratio<70?'일반적인 참고 구간입니다.':ratio<80?'높은 편의 참고 구간입니다.':'매우 높은 편의 참고 구간입니다.';$('#result').classList.add('show');$('#result').scrollIntoView({behavior:'smooth',block:'nearest'})})})();</script><script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
 <script type="text/javascript">
