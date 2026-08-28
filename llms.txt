@@ -1,0 +1,30 @@
+# Rent Check
+
+> 국토교통부 실거래 신고자료와 공식 제도 자료를 부동산 계산 도구와 분석으로 연결하는 한국어 서비스입니다.
+
+## 핵심 도구
+
+- [강서구 집값](https://rent-check.kr/tools/neighborhood-price/): 강서구 아파트·빌라·오피스텔의 최근 매매·전세·월세 실거래를 조건별로 확인합니다.
+- [강서구 아파트 실거래](https://rent-check.kr/tools/apartment/): 동·단지·평형별 아파트 매매·전세·월세 실거래를 확인합니다.
+- [청년임대 순위·가점 계산기](https://rent-check.kr/tools/youth-score/): LH·SH 청년 매입임대와 청년안심주택의 순위와 가점을 공고 기준으로 계산합니다.
+- [재개발 분담금 계산기](https://rent-check.kr/calc/): 감정평가액·비례율·조합원 분양가로 예상 분담금과 총투입금을 계산합니다.
+- [월세·전세 적정 확인](https://rent-check.kr/tools/rent-check/): 화곡동 실거래와 입력한 계약 조건을 같은 기준으로 비교합니다.
+- [부동산 계산 도구 모음](https://rent-check.kr/#calculators): 전세가율·중개보수·전월세 전환·임대 수익률 등 전체 도구를 안내합니다.
+
+## 핵심 가이드와 분석
+
+- [강서구 집값 가이드](https://rent-check.kr/blog/gangseo-home-price/): 강서구 집값을 주택 유형과 실거래 기준으로 확인하는 방법입니다.
+- [청년 매입임대 가이드](https://rent-check.kr/blog/youth-rental/): 1·2·3순위, 부모 기준, 가점과 예비순번을 설명합니다.
+- [청년 매입임대 순위 확인](https://rent-check.kr/blog/youth-rank-check/): 신청 순위와 가점을 확인하는 순서를 설명합니다.
+- [재개발 분담금 계산 가이드](https://rent-check.kr/blog/redevelopment-contribution/): 권리가액·비례율·조합원 분양가의 관계를 설명합니다.
+- [Rent Check 분석](https://rent-check.kr/analysis/): 강서구 실거래·정비사업·주거정책 분석을 모았습니다.
+
+## 데이터와 인용 정책
+
+- 실거래 출처: 국토교통부 실거래가 공개시스템의 신고자료
+- 정책·제도 출처: 정부·공공기관·국가법령정보센터 등 각 페이지에 표시한 공식자료
+- 갱신 기준: 실거래 도구는 페이지에 표시된 데이터 기준일을 따르고, 제도 글은 게시·수정일과 공고 기준을 표시합니다.
+- 계산 결과는 참고 정보이며, 실제 계약·세무·법률 판단은 공식 문서와 관계 기관 확인이 필요합니다.
+- 인용 시 표기: Rent Check (rent-check.kr)
+- 서비스 소개: https://rent-check.kr/about/
+- 문의: https://rent-check.kr/contact/
