@@ -17,6 +17,18 @@
   function daysUntil(date){if(!date)return null;return Math.round((dayStart(date)-dayStart())/86400000)}
   function ddayLabel(date){const diff=daysUntil(date);if(diff===null)return'';if(diff===0)return'D-DAY';if(diff>0)return`D-${diff}`;return'마감'}
   function shortDate(date){return date?`${date.getMonth()+1}/${date.getDate()}`:''}
+  function sameDate(date,iso){return Boolean(date&&isoLocal(date)===iso)}
+  function isApplicationOpenOn(item,iso){
+    const start=applicationStartDate(item),deadline=deadlineDate(item);
+    if(!start)return false;
+    const target=parseDate(iso);if(!target)return false;
+    const t=dayStart(target).getTime(),s=dayStart(start).getTime();
+    if(deadline)return t>=s&&t<=dayStart(deadline).getTime();
+    return t===s;
+  }
+  function isDeadlineOn(item,iso){return sameDate(deadlineDate(item),iso)}
+  function isPublishedOn(item,iso){return sameDate(publishedDate(item),iso)}
+  function internalNoticeUrl(item){return `/public-housing/?id=${encodeURIComponent(item?.id||'')}`}
 
   function displayState(item){
     const start=applicationStartDate(item),deadline=deadlineDate(item),today=dayStart();
@@ -58,19 +70,29 @@
     else if(activeFilter==='임대주택')filtered=items.filter(item=>(item.housing_types||[]).some(v=>v!=='주거비지원'));
     return sortItems(filtered);
   }
-  function itemHasDate(item,iso){const pub=publishedDate(item),start=applicationStartDate(item),deadline=deadlineDate(item);return(pub&&isoLocal(pub)===iso)||(start&&isoLocal(start)===iso)||(deadline&&isoLocal(deadline)===iso)}
+  function itemHasDate(item,iso){return isPublishedOn(item,iso)||isApplicationOpenOn(item,iso)}
   function filteredItems(){const items=categoryItems();return activeDate?items.filter(item=>itemHasDate(item,activeDate)):items}
 
   function metaText(item){
     const parts=[item.agency||item.agency_group,(item.housing_types||[])[0]].filter(Boolean);
     const start=applicationStartDate(item),deadline=deadlineDate(item),state=displayState(item);
     if(state==='접수예정'&&start)parts.push(`${shortDate(start)} 접수 시작`);
-    if(deadline){
-      parts.push(`${shortDate(deadline)} 마감`);
-      const dday=ddayLabel(deadline);
-      if(dday&&dday!=='마감')parts.push(dday);
-    }
+    if(deadline){parts.push(`${shortDate(deadline)} 마감`);const dday=ddayLabel(deadline);if(dday&&dday!=='마감')parts.push(dday)}
     return [...new Set(parts.filter(Boolean))].join(' · ');
+  }
+  function selectedDateLabel(item){
+    if(!activeDate)return displayState(item);
+    if(isDeadlineOn(item,activeDate))return'접수마감일';
+    if(isApplicationOpenOn(item,activeDate))return'접수가능';
+    if(isPublishedOn(item,activeDate))return'신규공고';
+    return displayState(item);
+  }
+  function selectedDateFoot(item){
+    const pub=publishedDate(item),start=applicationStartDate(item),deadline=deadlineDate(item);
+    if(activeDate&&isDeadlineOn(item,activeDate))return `접수마감일 · ${shortDate(deadline)}`;
+    if(activeDate&&isApplicationOpenOn(item,activeDate))return `접수 가능 · ${shortDate(start)}~${shortDate(deadline||start)}`;
+    if(activeDate&&isPublishedOn(item,activeDate))return `신규공고 · ${shortDate(pub)}`;
+    return pub?`공고 ${shortDate(pub)}`:'공고일 확인 중';
   }
   function nearestDeadline(){return categoryItems().map(item=>({item,date:deadlineDate(item)})).filter(x=>x.date&&daysUntil(x.date)>=0).sort((a,b)=>a.date-b.date)[0]||null}
 
@@ -84,19 +106,48 @@
     const {item,date}=next,box=el('div','notice-deadline-card'),top=el('div','notice-deadline-top');top.append(el('span','notice-deadline-kicker','다음 마감'),el('b','notice-dday',ddayLabel(date)));box.append(top,el('strong','notice-deadline-title',cleanTitle(item.title)),el('small','',`${item.agency||item.agency_group||''} · ${date.getMonth()+1}월 ${date.getDate()}일 마감`));root.append(box);
   }
   function weekDates(){const base=dayStart(),day=base.getDay(),offset=day===0?-6:1-day,monday=new Date(base);monday.setDate(base.getDate()+offset);return Array.from({length:7},(_,i)=>{const d=new Date(monday);d.setDate(monday.getDate()+i);return d})}
-  function eventsForDate(date){const iso=isoLocal(date),events=[];categoryItems().forEach(item=>{const pub=publishedDate(item),start=applicationStartDate(item),deadline=deadlineDate(item);if(start&&isoLocal(start)===iso)events.push({item,kind:'접수'});if(deadline&&isoLocal(deadline)===iso)events.push({item,kind:'마감'});if(pub&&isoLocal(pub)===iso)events.push({item,kind:'공고'})});return events}
+  function eventsForDate(date){
+    const iso=isoLocal(date),events=[];
+    categoryItems().forEach(item=>{
+      if(isPublishedOn(item,iso))events.push({item,kind:'신규'});
+      if(isApplicationOpenOn(item,iso))events.push({item,kind:'접수'});
+      if(isDeadlineOn(item,iso))events.push({item,kind:'마감'});
+    });
+    return events;
+  }
   function renderCalendar(){
     const root=document.querySelector('#publicHousingCalendar'),range=document.querySelector('#publicHousingWeekRange');if(!root)return;root.replaceChildren();const dates=weekDates();if(range)range.textContent=`${dates[0].getMonth()+1}.${dates[0].getDate()}–${dates[6].getMonth()+1}.${dates[6].getDate()}`;const todayIso=isoLocal(new Date());
-    dates.forEach(date=>{const iso=isoLocal(date),events=eventsForDate(date),button=el('button','notice-day');button.type='button';button.dataset.date=iso;if(iso===todayIso)button.classList.add('today');if(activeDate===iso)button.classList.add('active');if(events.length)button.classList.add('has-event');button.append(el('span','notice-day-week',WEEKDAYS[date.getDay()]),el('strong','notice-day-number',String(date.getDate())));const markers=el('span','notice-day-events'),startCount=events.filter(x=>x.kind==='접수').length,closeCount=events.filter(x=>x.kind==='마감').length,pubCount=events.filter(x=>x.kind==='공고').length;if(startCount)markers.append(el('i','open',`접수 ${startCount}`));if(closeCount)markers.append(el('i','close',`마감 ${closeCount}`));if(!startCount&&!closeCount&&pubCount)markers.append(el('i','open',`공고 ${pubCount}`));if(!events.length)markers.append(el('i','empty','—'));button.append(markers);button.addEventListener('click',()=>{activeDate=activeDate===iso?'':iso;renderCalendar();renderList()});root.append(button)});
+    dates.forEach(date=>{
+      const iso=isoLocal(date),events=eventsForDate(date),button=el('button','notice-day');button.type='button';button.dataset.date=iso;if(iso===todayIso)button.classList.add('today');if(activeDate===iso)button.classList.add('active');if(events.length)button.classList.add('has-event');button.append(el('span','notice-day-week',WEEKDAYS[date.getDay()]),el('strong','notice-day-number',String(date.getDate())));
+      const markers=el('span','notice-day-events'),newCount=events.filter(x=>x.kind==='신규').length,openCount=events.filter(x=>x.kind==='접수').length,closeCount=events.filter(x=>x.kind==='마감').length;
+      if(newCount)markers.append(el('i','new',`신규 ${newCount}`));
+      if(openCount)markers.append(el('i','open',`접수 ${openCount}`));
+      if(closeCount)markers.append(el('i','close',`마감 ${closeCount}`));
+      if(!events.length)markers.append(el('i','empty','—'));
+      button.append(markers);button.addEventListener('click',()=>{activeDate=activeDate===iso?'':iso;renderCalendar();renderList()});root.append(button)
+    });
   }
   function renderList(){
-    const list=document.querySelector('#publicHousingNoticeList'),total=document.querySelector('#publicHousingModalTotal'),listTitle=document.querySelector('#publicHousingListTitle');if(!list)return;list.replaceChildren();const items=filteredItems();if(total)total.textContent=`${feed?.summary?.total||feed?.items?.length||0}건`;if(listTitle)listTitle.textContent=activeDate?`${Number(activeDate.slice(5,7))}/${Number(activeDate.slice(8,10))} 일정`:'전체 공고';if(!items.length){list.append(el('p','notice-empty',activeDate?'선택한 날짜의 공고 일정이 없습니다.':'해당 조건의 공고가 없습니다.'));return}
-    items.slice(0,30).forEach(item=>{const row=el('article','notice-row'),top=el('div','notice-row-top'),state=displayState(item),status=el('span',`notice-status${['접수중','마감임박'].includes(state)?' open':''}`,state);top.append(status,el('span','notice-meta',metaText(item)));const title=el('strong','notice-title',cleanTitle(item.title)),tags=el('div','notice-tags');[...(item.housing_types||[]),...(item.audiences||[])].slice(0,3).forEach(tag=>tags.append(el('span','',tag)));const foot=el('div','notice-row-foot'),pub=publishedDate(item);foot.append(el('span','notice-published',pub?`공고 ${shortDate(pub)}`:'공고일 확인 중'));const link=el('a','notice-go','공식 공고 보기 →');link.href=item.url||'#';link.target='_blank';link.rel='noopener noreferrer';foot.append(link);row.append(top,title,tags,foot);list.append(row)});
+    const list=document.querySelector('#publicHousingNoticeList'),total=document.querySelector('#publicHousingModalTotal'),listTitle=document.querySelector('#publicHousingListTitle');if(!list)return;list.replaceChildren();const items=filteredItems();if(total)total.textContent=`${feed?.summary?.total||feed?.items?.length||0}건`;
+    if(listTitle){
+      if(activeDate){const events=eventsForDate(parseDate(activeDate)),n=events.filter(x=>x.kind==='신규').length,o=events.filter(x=>x.kind==='접수').length,c=events.filter(x=>x.kind==='마감').length;listTitle.textContent=`${Number(activeDate.slice(5,7))}/${Number(activeDate.slice(8,10))} 일정 · 신규 ${n} · 접수 ${o} · 마감 ${c}`}
+      else listTitle.textContent='전체 공고';
+    }
+    if(!items.length){list.append(el('p','notice-empty',activeDate?'선택한 날짜에 신규 또는 접수 가능한 공고가 없습니다.':'해당 조건의 공고가 없습니다.'));return}
+    items.slice(0,30).forEach(item=>{
+      const row=el('article','notice-row'),top=el('div','notice-row-top'),state=selectedDateLabel(item),status=el('span',`notice-status${['접수중','마감임박','접수가능','접수마감일'].includes(state)?' open':''}`,state);
+      top.append(status,el('span','notice-meta',metaText(item)));
+      const title=el('strong','notice-title',cleanTitle(item.title)),tags=el('div','notice-tags');[...(item.housing_types||[]),...(item.audiences||[])].slice(0,3).forEach(tag=>tags.append(el('span','',tag)));
+      const foot=el('div','notice-row-foot');foot.append(el('span','notice-published',selectedDateFoot(item)));
+      const link=el('a','notice-go','Rent Check에서 보기 →');link.href=internalNoticeUrl(item);foot.append(link);
+      row.append(top,title,tags,foot);list.append(row)
+    });
   }
   function refreshView(){renderSummary();renderNextDeadline();renderCalendar();renderList()}
 
   function ensureModal(){
-    if(document.querySelector('#publicHousingModal'))return;const wrap=el('div','notice-modal');wrap.id='publicHousingModal';wrap.hidden=true;wrap.innerHTML=`<button class="notice-backdrop" type="button" aria-label="닫기"></button><section class="notice-sheet" role="dialog" aria-modal="true" aria-labelledby="publicHousingModalTitle"><header class="notice-sheet-head"><div><p>공공주거 캘린더 <span id="publicHousingModalTotal"></span></p><h2 id="publicHousingModalTitle">이번 주 모집 일정</h2></div><button class="notice-close" type="button" aria-label="닫기">×</button></header><div class="notice-body"><div class="notice-summary" id="publicHousingSummary"></div><div id="publicHousingNextDeadline"></div><div class="notice-filter" role="tablist" aria-label="공고 필터"><button class="active" type="button" data-filter="전체">전체</button><button type="button" data-filter="청년">청년</button><button type="button" data-filter="신혼·신생아">신혼·신생아</button><button type="button" data-filter="임대주택">임대주택</button></div><section class="notice-calendar-block"><div class="notice-subhead"><strong>이번 주 캘린더</strong><span id="publicHousingWeekRange"></span></div><div class="notice-calendar" id="publicHousingCalendar"></div><p class="notice-calendar-note">접수 시작일·마감일을 우선 표시하고, 일정 미확인 공고는 목록에서 따로 보여줍니다.</p></section><section class="notice-list-block"><div class="notice-subhead"><strong id="publicHousingListTitle">전체 공고</strong></div><div class="notice-list" id="publicHousingNoticeList"><p class="notice-empty">공고를 불러오는 중입니다.</p></div></section></div><footer>자격·신청기간은 공식 공고 원문이 최종 기준입니다.</footer></section>`;document.body.append(wrap);wrap.querySelector('.notice-backdrop').addEventListener('click',closeModal);wrap.querySelector('.notice-close').addEventListener('click',closeModal);wrap.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{activeFilter=button.dataset.filter;activeDate='';wrap.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('active',b===button));renderCalendar();renderList()}));document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!wrap.hidden)closeModal()});
+    if(document.querySelector('#publicHousingModal'))return;const wrap=el('div','notice-modal');wrap.id='publicHousingModal';wrap.hidden=true;wrap.innerHTML=`<button class="notice-backdrop" type="button" aria-label="닫기"></button><section class="notice-sheet" role="dialog" aria-modal="true" aria-labelledby="publicHousingModalTitle"><header class="notice-sheet-head"><div><p>공공주거 캘린더 <span id="publicHousingModalTotal"></span></p><h2 id="publicHousingModalTitle">이번 주 모집 일정</h2></div><button class="notice-close" type="button" aria-label="닫기">×</button></header><div class="notice-body"><div class="notice-summary" id="publicHousingSummary"></div><div id="publicHousingNextDeadline"></div><div class="notice-filter" role="tablist" aria-label="공고 필터"><button class="active" type="button" data-filter="전체">전체</button><button type="button" data-filter="청년">청년</button><button type="button" data-filter="신혼·신생아">신혼·신생아</button><button type="button" data-filter="임대주택">임대주택</button></div><section class="notice-calendar-block"><div class="notice-subhead"><strong>이번 주 캘린더</strong><span id="publicHousingWeekRange"></span></div><div class="notice-calendar" id="publicHousingCalendar"></div><p class="notice-calendar-note">신규는 공고가 올라온 날, 접수는 실제 신청 가능한 모든 날짜에 표시합니다. 마지막 날은 마감도 함께 표시합니다.</p></section><section class="notice-list-block"><div class="notice-subhead"><strong id="publicHousingListTitle">전체 공고</strong></div><div class="notice-list" id="publicHousingNoticeList"><p class="notice-empty">공고를 불러오는 중입니다.</p></div></section></div><footer>먼저 Rent Check에서 핵심 일정을 확인하고, 공식 원문은 각 공고 상세 페이지에서 확인할 수 있습니다.</footer></section>`;
+    document.body.append(wrap);wrap.querySelector('.notice-backdrop').addEventListener('click',closeModal);wrap.querySelector('.notice-close').addEventListener('click',closeModal);wrap.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{activeFilter=button.dataset.filter;activeDate='';wrap.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('active',b===button));renderCalendar();renderList()}));document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!wrap.hidden)closeModal()});
   }
   async function openModal(){ensureModal();const modal=document.querySelector('#publicHousingModal');modal.hidden=false;document.body.classList.add('notice-modal-open');try{await loadFeed();refreshView();try{localStorage.setItem(STORAGE_KEY,signature(feed))}catch(_){}const badge=document.querySelector('#publicHousingNoticeBadge');if(badge)badge.hidden=true}catch(_){const list=document.querySelector('#publicHousingNoticeList');if(list)list.innerHTML='<p class="notice-empty">공고를 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.</p>'}}
   function closeModal(){const modal=document.querySelector('#publicHousingModal');if(modal)modal.hidden=true;document.body.classList.remove('notice-modal-open')}
