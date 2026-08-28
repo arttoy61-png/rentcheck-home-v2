@@ -1,7 +1,7 @@
 (() => {
   const heroCopy={
     'redevelopment':{title:'재개발 자금 30초 계산기',desc:'소유주는 분담금, 매수자는 총투입금을 계산합니다.'},
-    'youth-score':{title:'청년주택 점수 계산기',desc:'LH·SH 매입임대·청년안심주택 순위와 가점을 확인합니다.'},
+    'youth-score':{title:'청년임대 계산기',desc:'LH·SH 매입임대·청년안심주택 순위와 가점을 확인합니다.'},
     'rent-check':{title:'내 월세·전세, 적정한가요?',desc:'주소 주변 실거래로 내 계약 조건을 비교합니다.'},
     'apartment':{title:'강서구 아파트 실거래',desc:'동과 단지를 골라 매매·전세·월세 실거래를 확인합니다.'},
     'jeonse-ratio':{title:'전세가율 계산기',desc:'매매가에서 전세보증금이 차지하는 비율을 확인합니다.'},

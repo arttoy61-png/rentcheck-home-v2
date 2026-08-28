@@ -11,7 +11,7 @@
   },
   {
     "id": "youth-score",
-    "title": "청년주택 점수 계산기",
+    "title": "청년임대 계산기",
     "description": "청년 매입임대·안심주택 순위와 가점을 30초에 확인합니다.",
     "url": "tools/youth-score/",
     "status": "available",
