@@ -16,6 +16,7 @@
         a.textContent=label;a.href=href;
         if(kind==='home')a.dataset.toTop='';
         if(kind==='housing')a.dataset.publicHousingOpen='';
+        if(nav.closest('.mobile-nav'))a.addEventListener('click',()=>{const mobile=document.querySelector('#mobileNav'),menu=document.querySelector('#menuToggle');mobile?.classList.remove('open');menu?.setAttribute('aria-expanded','false')});
         return a;
       });
       nav.replaceChildren(...links);
