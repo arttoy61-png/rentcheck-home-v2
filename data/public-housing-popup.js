@@ -31,10 +31,12 @@
 
   function cleanTitle(title){
     let out=String(title||'').replace(/&nbsp;/gi,' ').trim();
-    for(let i=0;i<4;i++){
+    for(let i=0;i<6;i++){
       const before=out;
       out=out.replace(/^\s*(?:lh|sh|공지|수요)(?=[가-힣0-9[(])/i,'').trim();
       out=out.replace(/^\s*국민(?=20\d{2}년)/,'').trim();
+      out=out.replace(/^\s*장기(?=제\d+차)/,'').trim();
+      out=out.replace(/^\s*두레(?=20\d{2}-\d+차)/,'').trim();
       if(out===before)break;
     }
     return out;
@@ -63,8 +65,11 @@
     const parts=[item.agency||item.agency_group,(item.housing_types||[])[0]].filter(Boolean);
     const start=applicationStartDate(item),deadline=deadlineDate(item),state=displayState(item);
     if(state==='접수예정'&&start)parts.push(`${shortDate(start)} 접수 시작`);
-    if(deadline)parts.push(`${shortDate(deadline)} 마감`,ddayLabel(deadline));
-    else if(!start)parts.push('일정 확인 중');
+    if(deadline){
+      parts.push(`${shortDate(deadline)} 마감`);
+      const dday=ddayLabel(deadline);
+      if(dday&&dday!=='마감')parts.push(dday);
+    }
     return [...new Set(parts.filter(Boolean))].join(' · ');
   }
   function nearestDeadline(){return categoryItems().map(item=>({item,date:deadlineDate(item)})).filter(x=>x.date&&daysUntil(x.date)>=0).sort((a,b)=>a.date-b.date)[0]||null}
@@ -91,12 +96,13 @@
   function refreshView(){renderSummary();renderNextDeadline();renderCalendar();renderList()}
 
   function ensureModal(){
-    if(document.querySelector('#publicHousingModal'))return;const wrap=el('div','notice-modal');wrap.id='publicHousingModal';wrap.hidden=true;wrap.innerHTML=`<button class="notice-backdrop" type="button" aria-label="닫기"></button><section class="notice-sheet" role="dialog" aria-modal="true" aria-labelledby="publicHousingModalTitle"><header class="notice-sheet-head"><div><p>공공주거 캘린더 <span id="publicHousingModalTotal"></span></p><h2 id="publicHousingModalTitle">이번 주 모집 일정</h2></div><button class="notice-close" type="button" aria-label="닫기">×</button></header><div class="notice-body"><div class="notice-summary" id="publicHousingSummary"></div><div id="publicHousingNextDeadline"></div><div class="notice-filter" role="tablist" aria-label="공고 필터"><button class="active" type="button" data-filter="전체">전체</button><button type="button" data-filter="청년">청년</button><button type="button" data-filter="신혼·신생아">신혼·신생아</button><button type="button" data-filter="임대주택">임대주택</button></div><section class="notice-calendar-block"><div class="notice-subhead"><strong>이번 주 캘린더</strong><span id="publicHousingWeekRange"></span></div><div class="notice-calendar" id="publicHousingCalendar"></div><p class="notice-calendar-note">접수 시작일·마감일을 우선 표시하고, 일정 미확인 공고는 목록에서 따로 보여줍니다.</p></section><section class="notice-list-block"><div class="notice-subhead"><strong id="publicHousingListTitle">전체 공고</strong><span>Rent Check 정리</span></div><div class="notice-list" id="publicHousingNoticeList"><p class="notice-empty">공고를 불러오는 중입니다.</p></div></section></div><footer>자격·신청기간은 공식 공고 원문이 최종 기준입니다.</footer></section>`;document.body.append(wrap);wrap.querySelector('.notice-backdrop').addEventListener('click',closeModal);wrap.querySelector('.notice-close').addEventListener('click',closeModal);wrap.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{activeFilter=button.dataset.filter;activeDate='';wrap.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('active',b===button));renderCalendar();renderList()}));document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!wrap.hidden)closeModal()});
+    if(document.querySelector('#publicHousingModal'))return;const wrap=el('div','notice-modal');wrap.id='publicHousingModal';wrap.hidden=true;wrap.innerHTML=`<button class="notice-backdrop" type="button" aria-label="닫기"></button><section class="notice-sheet" role="dialog" aria-modal="true" aria-labelledby="publicHousingModalTitle"><header class="notice-sheet-head"><div><p>공공주거 캘린더 <span id="publicHousingModalTotal"></span></p><h2 id="publicHousingModalTitle">이번 주 모집 일정</h2></div><button class="notice-close" type="button" aria-label="닫기">×</button></header><div class="notice-body"><div class="notice-summary" id="publicHousingSummary"></div><div id="publicHousingNextDeadline"></div><div class="notice-filter" role="tablist" aria-label="공고 필터"><button class="active" type="button" data-filter="전체">전체</button><button type="button" data-filter="청년">청년</button><button type="button" data-filter="신혼·신생아">신혼·신생아</button><button type="button" data-filter="임대주택">임대주택</button></div><section class="notice-calendar-block"><div class="notice-subhead"><strong>이번 주 캘린더</strong><span id="publicHousingWeekRange"></span></div><div class="notice-calendar" id="publicHousingCalendar"></div><p class="notice-calendar-note">접수 시작일·마감일을 우선 표시하고, 일정 미확인 공고는 목록에서 따로 보여줍니다.</p></section><section class="notice-list-block"><div class="notice-subhead"><strong id="publicHousingListTitle">전체 공고</strong></div><div class="notice-list" id="publicHousingNoticeList"><p class="notice-empty">공고를 불러오는 중입니다.</p></div></section></div><footer>자격·신청기간은 공식 공고 원문이 최종 기준입니다.</footer></section>`;document.body.append(wrap);wrap.querySelector('.notice-backdrop').addEventListener('click',closeModal);wrap.querySelector('.notice-close').addEventListener('click',closeModal);wrap.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{activeFilter=button.dataset.filter;activeDate='';wrap.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('active',b===button));renderCalendar();renderList()}));document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!wrap.hidden)closeModal()});
   }
   async function openModal(){ensureModal();const modal=document.querySelector('#publicHousingModal');modal.hidden=false;document.body.classList.add('notice-modal-open');try{await loadFeed();refreshView();try{localStorage.setItem(STORAGE_KEY,signature(feed))}catch(_){}const badge=document.querySelector('#publicHousingNoticeBadge');if(badge)badge.hidden=true}catch(_){const list=document.querySelector('#publicHousingNoticeList');if(list)list.innerHTML='<p class="notice-empty">공고를 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.</p>'}}
   function closeModal(){const modal=document.querySelector('#publicHousingModal');if(modal)modal.hidden=true;document.body.classList.remove('notice-modal-open')}
+  function bindNavOpeners(){document.querySelectorAll('[data-public-housing-open]').forEach(link=>{if(link.dataset.noticeBound)return;link.dataset.noticeBound='1';link.addEventListener('click',event=>{event.preventDefault();openModal()})})}
   function buildServiceItem(){const button=el('button','service-item notice-service-item');button.type='button';button.id='publicHousingNoticeButton';button.style.setProperty('--tone','#1565c0');button.style.setProperty('--tint','#eef5fc');const iconWrap=el('span','service-icon');iconWrap.innerHTML=icon;const copy=el('span','service-copy'),title=el('strong','','공공주거 공고'),sub=el('small','');sub.append(document.createTextNode('LH·SH 일정 확인 '),el('b','notice-count','—'));sub.querySelector('b').id='publicHousingNoticeCount';copy.append(title,sub);const badge=el('span','notice-new','NEW');badge.id='publicHousingNoticeBadge';badge.hidden=true;button.append(iconWrap,copy,badge);button.addEventListener('click',openModal);return button}
   function ensureServiceItem(){const services=document.querySelector('#services');if(!services)return false;services.classList.add('notice-ready');if(!services.querySelector('#publicHousingNoticeButton'))services.append(buildServiceItem());return true}
-  function watchServices(){const services=document.querySelector('#services');if(!services)return;ensureServiceItem();const observer=new MutationObserver(()=>{if(!services.querySelector('#publicHousingNoticeButton'))services.append(buildServiceItem())});observer.observe(services,{childList:true})}
+  function watchServices(){const services=document.querySelector('#services');if(!services)return;ensureServiceItem();bindNavOpeners();const observer=new MutationObserver(()=>{if(!services.querySelector('#publicHousingNoticeButton'))services.append(buildServiceItem())});observer.observe(services,{childList:true})}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',watchServices,{once:true});else watchServices();setTimeout(()=>loadFeed().catch(()=>{}),500);
 })();
