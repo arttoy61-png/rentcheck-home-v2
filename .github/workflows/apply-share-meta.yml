@@ -35,8 +35,9 @@ jobs:
           OLD_DEFAULT_IMAGES = [
               f'{SITE}/assets/share/rent-check-og.png',
               f'{SITE}/assets/share/rent-check-og-v2.png',
+              f'{SITE}/assets/share/kakao-share-small.jpg',
           ]
-          DEFAULT_IMAGE = f'{SITE}/assets/share/kakao-share-small.jpg'
+          DEFAULT_IMAGE = f'{SITE}/assets/share/kakao-share-small.jpg?v=20260829-1'
           HOME_OLD_DESC = '부동산 계산 · 실거래 · 분석을 한곳에서 확인하세요.'
           HOME_NEW_DESC = '부동산 실거래·계산·분석을 한 번에.'
 
