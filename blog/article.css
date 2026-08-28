@@ -6,3 +6,5 @@
 .guide-tool-cta a{display:inline-flex;align-items:center;min-height:44px;padding:10px 14px;border-radius:8px;background:var(--navy);color:#fff;text-decoration:none;font-size:14px;font-weight:800}
 .guide-tool-cta a+ a{background:#fff;color:var(--blue);border:1px solid #b9c7d6}
 @media(max-width:680px){.guide-tool-cta>div{display:grid}.guide-tool-cta a{width:100%;justify-content:space-between}}
+/* 자체 글 공통 상단: 브랜드만 남기고 우측 보조 링크·강서 표기를 숨긴다. */
+.site-head .brand b,.site-head .home-link{display:none!important}
