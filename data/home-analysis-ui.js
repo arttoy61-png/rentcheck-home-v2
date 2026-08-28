@@ -1,10 +1,27 @@
 (()=>{
   const KEY='rentcheck:home-scroll-v1';
 
-  // 홈의 분석 글 메뉴는 홈 내부 앵커가 아니라 자체 분석 글 전체목록으로 연결한다.
-  document.querySelectorAll('.desktop-nav a,.mobile-nav a').forEach(link=>{
-    if(link.textContent.trim()==='분석 글')link.href='/analysis/';
-  });
+  function normalizeTopNavigation(){
+    const items=[
+      ['홈','#top','home'],
+      ['실거래','/tools/apartment/'],
+      ['계산 도구','#calculators'],
+      ['공공주거','#services','housing'],
+      ['분석 글','/analysis/'],
+      ['실전 가이드','/blog/']
+    ];
+    document.querySelectorAll('.desktop-nav,.mobile-nav .container').forEach(nav=>{
+      const links=items.map(([label,href,kind])=>{
+        const a=document.createElement('a');
+        a.textContent=label;a.href=href;
+        if(kind==='home')a.dataset.toTop='';
+        if(kind==='housing')a.dataset.publicHousingOpen='';
+        return a;
+      });
+      nav.replaceChildren(...links);
+    });
+  }
+  normalizeTopNavigation();
 
   const section=document.querySelector('#insights .container');
   const track=document.querySelector('#insightTrack');
