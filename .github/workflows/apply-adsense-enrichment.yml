@@ -1,0 +1,44 @@
+name: Apply AdSense content enrichment
+
+on:
+  push:
+    branches:
+      - content/adsense-audit-and-evergreen-20260828
+    paths:
+      - 'scripts/enrich_adsense_short_articles.py'
+      - '.github/workflows/apply-adsense-enrichment.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  enrich:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: content/adsense-audit-and-evergreen-20260828
+      - name: Enrich short articles
+        run: python3 scripts/enrich_adsense_short_articles.py
+      - name: Re-audit content length
+        run: python3 scripts/audit_content_length.py
+      - name: Commit targeted article updates
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- \
+            analysis/gangseo-jeonse-trend/index.html \
+            analysis/youth-universal-jeonse/index.html \
+            analysis/yeomchang-woosung-samchulli/index.html \
+            blog/apartment-real-deal-reading/index.html \
+            blog/monthly-rent-deposit-compare/index.html \
+            blog/recent-transaction-incomplete/index.html \
+            blog/jeonse-new-vs-renewal/index.html \
+            blog/rent-conversion-check/index.html
+          if git diff --cached --quiet; then
+            echo 'No enrichment changes to commit.'
+          else
+            git commit -m 'content: enrich eight short guides for AdSense quality'
+            git push origin HEAD:content/adsense-audit-and-evergreen-20260828
+          fi

@@ -1,0 +1,36 @@
+name: Register AdSense evergreen guides
+
+on:
+  push:
+    branches:
+      - content/adsense-audit-and-evergreen-20260828
+    paths:
+      - 'scripts/register_adsense_evergreen_guides.py'
+      - '.github/workflows/register-adsense-evergreen-guides.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  register:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: content/adsense-audit-and-evergreen-20260828
+      - name: Register guides
+        run: python3 scripts/register_adsense_evergreen_guides.py
+      - name: Audit all sitemap articles
+        run: python3 scripts/audit_content_length.py
+      - name: Commit index and sitemap
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- blog/index.html sitemap.xml
+          if git diff --cached --quiet; then
+            echo 'No registration changes to commit.'
+          else
+            git commit -m 'content: register five evergreen guides'
+            git push origin HEAD:content/adsense-audit-and-evergreen-20260828
+          fi

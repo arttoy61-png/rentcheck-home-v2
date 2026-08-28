@@ -1,0 +1,45 @@
+name: Content length audit
+
+on:
+  push:
+    paths:
+      - 'blog/**'
+      - 'analysis/**'
+      - 'sitemap.xml'
+      - 'scripts/audit_content_length.py'
+      - '.github/workflows/content-length-audit.yml'
+  pull_request:
+    paths:
+      - 'blog/**'
+      - 'analysis/**'
+      - 'sitemap.xml'
+      - 'scripts/audit_content_length.py'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Audit reader-visible article text
+        run: python3 scripts/audit_content_length.py | tee content_length_audit.txt
+      - name: Add summary
+        run: |
+          echo '## Rent Check content length audit' >> "$GITHUB_STEP_SUMMARY"
+          echo '' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Conservative threshold: 1,500 non-whitespace visible characters.' >> "$GITHUB_STEP_SUMMARY"
+          echo '' >> "$GITHUB_STEP_SUMMARY"
+          echo '```text' >> "$GITHUB_STEP_SUMMARY"
+          cat content_length_audit.txt >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload audit files
+        uses: actions/upload-artifact@v4
+        with:
+          name: content-length-audit
+          path: |
+            content_length_audit.csv
+            content_length_audit.txt
+          retention-days: 30
