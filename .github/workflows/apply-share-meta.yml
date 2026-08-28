@@ -33,12 +33,12 @@ jobs:
 
           SITE = 'https://rent-check.kr'
           OLD_DEFAULT_IMAGES = [
+              f'{SITE}/assets/share/rent-check-kakao-20260829.jpg',
               f'{SITE}/assets/share/kakao-share-small.jpg?v=20260829-1',
               f'{SITE}/assets/share/rent-check-og.png',
-              f'{SITE}/assets/share/rent-check-og-v2.png',
               f'{SITE}/assets/share/kakao-share-small.jpg',
           ]
-          DEFAULT_IMAGE = f'{SITE}/assets/share/rent-check-kakao-20260829.jpg'
+          DEFAULT_IMAGE = f'{SITE}/assets/share/rent-check-og-v2.png?v=20260829-2'
           HOME_OLD_DESC = '부동산 계산 · 실거래 · 분석을 한곳에서 확인하세요.'
           HOME_NEW_DESC = '부동산 실거래·계산·분석을 한 번에.'
 
@@ -51,10 +51,8 @@ jobs:
 
           def page_url(path):
               rel = path.as_posix()
-              if rel == 'index.html':
-                  return SITE + '/'
-              if rel.endswith('/index.html'):
-                  return SITE + '/' + rel[:-10].strip('/') + '/'
+              if rel == 'index.html': return SITE + '/'
+              if rel.endswith('/index.html'): return SITE + '/' + rel[:-10].strip('/') + '/'
               return SITE + '/' + rel.lstrip('/')
 
           def set_meta_content(text, prop, value):
@@ -64,9 +62,7 @@ jobs:
           changed = []
           for path in sorted(Path('.').rglob('*.html')):
               text = path.read_text(encoding='utf-8')
-              if not re.search(r'</head\s*>', text, flags=re.I):
-                  continue
-
+              if not re.search(r'</head\s*>', text, flags=re.I): continue
               original_text = text
               for old_image in OLD_DEFAULT_IMAGES:
                   text = text.replace(old_image, DEFAULT_IMAGE)
@@ -74,68 +70,45 @@ jobs:
               if DEFAULT_IMAGE in text:
                   text = set_meta_content(text, 'og:image:width', '1200')
                   text = set_meta_content(text, 'og:image:height', '630')
-                  text = set_meta_content(text, 'og:image:type', 'image/jpeg')
+                  text = set_meta_content(text, 'og:image:type', 'image/png')
                   if not has_meta(text, 'property', 'og:image:secure_url'):
                       secure = f'<meta property="og:image:secure_url" content="{DEFAULT_IMAGE}">\n'
                       text = re.sub(r'(<meta\s+[^>]*property=["\']og:image["\'][^>]*>\s*)', r'\1' + secure, text, count=1, flags=re.I)
 
               if path.as_posix() == 'index.html':
-                  text = text.replace(
-                      f'<meta property="og:description" content="{HOME_OLD_DESC}">',
-                      f'<meta property="og:description" content="{HOME_NEW_DESC}">'
-                  )
+                  text = text.replace(f'<meta property="og:description" content="{HOME_OLD_DESC}">', f'<meta property="og:description" content="{HOME_NEW_DESC}">')
 
               title = find(r'<title[^>]*>(.*?)</title>', text) or 'Rent Check'
-              desc = find(r'<meta\s+[^>]*name=["\']description["\'][^>]*content=["\'](.*?)["\'][^>]*>', text)
-              if not desc:
-                  desc = '부동산 계산과 실거래 해석을 연결하는 Rent Check입니다.'
+              desc = find(r'<meta\s+[^>]*name=["\']description["\'][^>]*content=["\'](.*?)["\'][^>]*>', text) or '부동산 계산과 실거래 해석을 연결하는 Rent Check입니다.'
               canonical = find(r'<link\s+[^>]*rel=["\']canonical["\'][^>]*href=["\'](.*?)["\'][^>]*>', text) or page_url(path)
               is_article = path.parts and path.parts[0] in {'blog','analysis'} and path.name == 'index.html' and len(path.parts) > 2
               og_type = 'article' if is_article else 'website'
-
               existing_image = find(r'<meta\s+[^>]*property=["\']og:image["\'][^>]*content=["\'](.*?)["\'][^>]*>', text)
               image_url = existing_image or DEFAULT_IMAGE
 
               tags = []
-              if not has_meta(text, 'property', 'og:site_name'):
-                  tags.append('<meta property="og:site_name" content="Rent Check">')
-              if not has_meta(text, 'property', 'og:title'):
-                  tags.append(f'<meta property="og:title" content="{html.escape(title, quote=True)}">')
-              if not has_meta(text, 'property', 'og:description'):
-                  tags.append(f'<meta property="og:description" content="{html.escape(desc, quote=True)}">')
-              if not has_meta(text, 'property', 'og:url'):
-                  tags.append(f'<meta property="og:url" content="{html.escape(canonical, quote=True)}">')
-              if not has_meta(text, 'property', 'og:type'):
-                  tags.append(f'<meta property="og:type" content="{og_type}">')
+              if not has_meta(text, 'property', 'og:site_name'): tags.append('<meta property="og:site_name" content="Rent Check">')
+              if not has_meta(text, 'property', 'og:title'): tags.append(f'<meta property="og:title" content="{html.escape(title, quote=True)}">')
+              if not has_meta(text, 'property', 'og:description'): tags.append(f'<meta property="og:description" content="{html.escape(desc, quote=True)}">')
+              if not has_meta(text, 'property', 'og:url'): tags.append(f'<meta property="og:url" content="{html.escape(canonical, quote=True)}">')
+              if not has_meta(text, 'property', 'og:type'): tags.append(f'<meta property="og:type" content="{og_type}">')
               if not existing_image:
-                  tags.append(f'<meta property="og:image" content="{DEFAULT_IMAGE}">')
-                  tags.append(f'<meta property="og:image:secure_url" content="{DEFAULT_IMAGE}">')
-                  tags.append('<meta property="og:image:width" content="1200">')
-                  tags.append('<meta property="og:image:height" content="630">')
-                  tags.append('<meta property="og:image:type" content="image/jpeg">')
-              if not has_meta(text, 'property', 'og:image:alt'):
-                  tags.append('<meta property="og:image:alt" content="Rent Check - 실거래로 더 정확하게">')
-              if not has_meta(text, 'name', 'twitter:card'):
-                  tags.append('<meta name="twitter:card" content="summary_large_image">')
-              if not has_meta(text, 'name', 'twitter:title'):
-                  tags.append(f'<meta name="twitter:title" content="{html.escape(title, quote=True)}">')
-              if not has_meta(text, 'name', 'twitter:description'):
-                  tags.append(f'<meta name="twitter:description" content="{html.escape(desc, quote=True)}">')
-              if not has_meta(text, 'name', 'twitter:image'):
-                  tags.append(f'<meta name="twitter:image" content="{html.escape(image_url, quote=True)}">')
+                  tags += [f'<meta property="og:image" content="{DEFAULT_IMAGE}">', f'<meta property="og:image:secure_url" content="{DEFAULT_IMAGE}">', '<meta property="og:image:width" content="1200">', '<meta property="og:image:height" content="630">', '<meta property="og:image:type" content="image/png">']
+              if not has_meta(text, 'property', 'og:image:alt'): tags.append('<meta property="og:image:alt" content="Rent Check - 실거래로 더 정확하게">')
+              if not has_meta(text, 'name', 'twitter:card'): tags.append('<meta name="twitter:card" content="summary_large_image">')
+              if not has_meta(text, 'name', 'twitter:title'): tags.append(f'<meta name="twitter:title" content="{html.escape(title, quote=True)}">')
+              if not has_meta(text, 'name', 'twitter:description'): tags.append(f'<meta name="twitter:description" content="{html.escape(desc, quote=True)}">')
+              if not has_meta(text, 'name', 'twitter:image'): tags.append(f'<meta name="twitter:image" content="{html.escape(image_url, quote=True)}">')
 
               if tags:
                   block = '\n<!-- Rent Check share preview -->\n' + '\n'.join(tags) + '\n<!-- /Rent Check share preview -->\n'
                   text = re.sub(r'</head\s*>', block + '</head>', text, count=1, flags=re.I)
-
-              if text == original_text:
-                  continue
+              if text == original_text: continue
               path.write_text(text, encoding='utf-8')
               changed.append(str(path))
 
           print(f'updated={len(changed)}')
-          if changed:
-              print('\n'.join(changed))
+          if changed: print('\n'.join(changed))
 
       - name: Commit share metadata
         run: |
@@ -148,9 +121,7 @@ jobs:
           git add -u
           git commit -m "seo: apply social share metadata to HTML pages"
           for attempt in 1 2 3; do
-            if git push origin HEAD:main; then
-              exit 0
-            fi
+            if git push origin HEAD:main; then exit 0; fi
             echo "Push raced with another HTML post-processor; rebasing (attempt ${attempt}/3)."
             git fetch origin main
             if ! git rebase origin/main; then
