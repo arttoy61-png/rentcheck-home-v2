@@ -1,5 +1,11 @@
 (()=>{
   const KEY='rentcheck:home-scroll-v1';
+
+  // 홈의 분석 글 메뉴는 홈 내부 앵커가 아니라 자체 분석 글 전체목록으로 연결한다.
+  document.querySelectorAll('.desktop-nav a,.mobile-nav a').forEach(link=>{
+    if(link.textContent.trim()==='분석 글')link.href='/analysis/';
+  });
+
   const section=document.querySelector('#insights .container');
   const track=document.querySelector('#insightTrack');
   if(section&&track&&!document.querySelector('.insight-all-wrap')){
@@ -105,13 +111,13 @@
   if(!document.querySelector('link[data-public-housing-popup]')){
     const popupStyle=document.createElement('link');
     popupStyle.rel='stylesheet';
-    popupStyle.href='/data/public-housing-popup.css?v=20260828-2';
+    popupStyle.href='/data/public-housing-popup.css?v=20260828-3';
     popupStyle.dataset.publicHousingPopup='1';
     document.head.appendChild(popupStyle);
   }
   if(!document.querySelector('script[data-public-housing-popup]')){
     const popupScript=document.createElement('script');
-    popupScript.src='/data/public-housing-popup.js?v=20260828-2';
+    popupScript.src='/data/public-housing-popup.js?v=20260828-3';
     popupScript.defer=true;
     popupScript.dataset.publicHousingPopup='1';
     document.body.appendChild(popupScript);
