@@ -83,7 +83,7 @@
       const recruit=(data.items||[]).filter(isRecruitmentNotice).map(item=>({...item,_pub:isoDate(item.published_at)})).filter(item=>item._pub);
       if(!recruit.length)return;
       const latest=[...new Set(recruit.map(x=>x._pub))].sort().pop();
-      if(dayDiffFromToday(latest)<0||dayDiffFromToday(latest)>1)return;
+      if(dayDiffFromToday(latest)<0)return;
       const items=recruit.filter(x=>x._pub===latest).sort((a,b)=>String(a.agency||'').localeCompare(String(b.agency||''),'ko'));
       if(items.length)render(items,latest);
     }catch(_){/* 신규공고 알림 실패는 홈 이용을 막지 않는다. */}
