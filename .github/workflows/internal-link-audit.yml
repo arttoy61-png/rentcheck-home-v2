@@ -1,0 +1,31 @@
+name: Internal link audit
+
+on:
+  push:
+    paths:
+      - '**/*.html'
+      - '**/*.css'
+      - 'data/tools.json'
+      - 'sitemap.xml'
+      - 'scripts/audit_internal_links.py'
+      - '.github/workflows/internal-link-audit.yml'
+  pull_request:
+    paths:
+      - '**/*.html'
+      - '**/*.css'
+      - 'data/tools.json'
+      - 'sitemap.xml'
+      - 'scripts/audit_internal_links.py'
+      - '.github/workflows/internal-link-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Check internal links and assets
+        run: python3 scripts/audit_internal_links.py
