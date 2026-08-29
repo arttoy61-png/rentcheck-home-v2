@@ -51,8 +51,8 @@
   },
   {
     "id": "apt-widget",
-    "title": "아파트 단지 시세 지도",
-    "description": "단지를 눌러 최근 실거래 흐름을 지도에서 확인합니다.",
+    "title": "강서구 아파트 실거래",
+    "description": "동·단지·평형을 골라 매매·전세·월세 실거래와 최근 흐름을 확인합니다.",
     "url": "tools/apartment/",
     "status": "available",
     "badge": "이용 가능",
@@ -128,5 +128,15 @@
     "badge": "이용 가능",
     "icon": "↗",
     "category": "invest"
+  },
+  {
+    "id": "registration-cost",
+    "title": "등기비용 합산기",
+    "description": "취득세·국민주택채권·법무사비 등 확인한 등기 준비비용을 한 번에 합산합니다.",
+    "url": "tools/registration-cost/",
+    "status": "available",
+    "badge": "이용 가능",
+    "icon": "＋",
+    "category": "tax"
   }
 ]
