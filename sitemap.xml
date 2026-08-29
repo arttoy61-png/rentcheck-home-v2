@@ -6,15 +6,19 @@
   <url><loc>https://rent-check.kr/public-housing/sh-happy-housing-2026-2/</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://rent-check.kr/public-housing/sh-long-vacant-purchase-2026-2/</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
 
-  <url><loc>https://rent-check.kr/analysis/</loc><lastmod>2026-08-25</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://rent-check.kr/analysis/</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://rent-check.kr/analysis/seoul-apartment-volume-price/</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://rent-check.kr/analysis/youth-universal-jeonse/</loc><lastmod>2026-08-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://rent-check.kr/analysis/gangseo-jeonse-trend/</loc><lastmod>2026-08-23</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
   <url><loc>https://rent-check.kr/analysis/yeomchang-woosung-samchulli/</loc><lastmod>2026-08-20</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://rent-check.kr/analysis/hwagok6-957-a1/</loc><lastmod>2026-08-19</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://rent-check.kr/analysis/yeomchang-1000-homes/</loc><lastmod>2026-08-19</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://rent-check.kr/analysis/ujangsan-hillstate/</loc><lastmod>2026-08-29</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
 
-  <url><loc>https://rent-check.kr/blog/</loc><lastmod>2026-08-28</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://rent-check.kr/blog/</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://rent-check.kr/blog/rent-yield-good-rate/</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://rent-check.kr/blog/registration-cost-budget/</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://rent-check.kr/blog/public-housing-notice-application-date/</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://rent-check.kr/blog/landlord-account-transfer/</loc><lastmod>2026-08-28</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://rent-check.kr/blog/jeonse-mortgage-check/</loc><lastmod>2026-08-28</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://rent-check.kr/blog/asking-price-vs-actual-price/</loc><lastmod>2026-08-28</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
@@ -56,8 +60,9 @@
   <url><loc>https://rent-check.kr/tools/tenant-message/</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://rent-check.kr/tools/brokerage-fee/</loc><lastmod>2026-08-28</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://rent-check.kr/tools/rent-vs-monthly/</loc><lastmod>2026-08-28</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://rent-check.kr/tools/rent-conversion/</loc><lastmod>2026-08-28</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://rent-check.kr/tools/rent-conversion/</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://rent-check.kr/tools/rent-yield/</loc><lastmod>2026-08-28</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://rent-check.kr/tools/registration-cost/</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 
   <url><loc>https://rent-check.kr/about/</loc><lastmod>2026-08-28</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
   <url><loc>https://rent-check.kr/privacy.html</loc><lastmod>2026-08-28</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>

@@ -9,10 +9,23 @@
 - [청년임대 순위·가점 계산기](https://rent-check.kr/tools/youth-score/): LH·SH 청년 매입임대와 청년안심주택의 순위와 가점을 공고 기준으로 계산합니다.
 - [재개발 분담금 계산기](https://rent-check.kr/calc/): 감정평가액·비례율·조합원 분양가로 예상 분담금과 총투입금을 계산합니다.
 - [월세·전세 적정 확인](https://rent-check.kr/tools/rent-check/): 화곡동 실거래와 입력한 계약 조건을 같은 기준으로 비교합니다.
-- [부동산 계산 도구 모음](https://rent-check.kr/#calculators): 전세가율·중개보수·전월세 전환·임대 수익률 등 전체 도구를 안내합니다.
+- [전세가율 계산기](https://rent-check.kr/tools/jeonse-ratio/): 매매가 대비 전세보증금 비중을 계산합니다.
+- [전월세 전환 계산기](https://rent-check.kr/tools/rent-conversion/): 보증금 증감에 따른 월세 조정액과 법정 전환율 상한 참고값을 계산합니다.
+- [임대 수익률 계산기](https://rent-check.kr/tools/rent-yield/): 실투자금·대출이자·공실·운영비를 반영한 세전 현금수익률을 비교합니다.
+- [등기비용 합산기](https://rent-check.kr/tools/registration-cost/): 공식 확인한 취득세·채권 부담액·법무사비·서류비를 합산합니다.
+- [부동산 계산 도구 모음](https://rent-check.kr/#calculators): 전체 이용 가능한 도구를 안내합니다.
+
+## LH·SH 임대주택
+
+- [LH·SH 임대주택 모집공고](https://rent-check.kr/public-housing/): 서울권 LH·SH 모집공고의 공고일, 접수기간, 대상과 자격을 Rent Check 내부에서 확인합니다.
+- [2026년 2차 SH 행복주택](https://rent-check.kr/public-housing/sh-happy-housing-2026-2/): 1,484호 모집의 신청기간과 핵심 자격을 정리합니다.
+- [2026년 2차 장기미임대 매입임대](https://rent-check.kr/public-housing/sh-long-vacant-purchase-2026-2/): 476호 모집의 신청기간과 핵심 조건을 정리합니다.
 
 ## 핵심 가이드와 분석
 
+- [임대 수익률 몇 %면 괜찮나요?](https://rent-check.kr/blog/rent-yield-good-rate/): 실투자금·대출·공실을 같은 기준으로 비교하는 방법입니다.
+- [집 살 때 등기비용 얼마 준비해야 하나요?](https://rent-check.kr/blog/registration-cost-budget/): 취득세·채권·법무사비를 잔금 전에 확인하는 순서입니다.
+- [LH·SH 공고일과 신청일은 왜 다른가요?](https://rent-check.kr/blog/public-housing-notice-application-date/): 신규공고·접수기간·접수마감일을 구분하는 방법입니다.
 - [강서구 집값 가이드](https://rent-check.kr/blog/gangseo-home-price/): 강서구 집값을 주택 유형과 실거래 기준으로 확인하는 방법입니다.
 - [청년 매입임대 가이드](https://rent-check.kr/blog/youth-rental/): 1·2·3순위, 부모 기준, 가점과 예비순번을 설명합니다.
 - [청년 매입임대 순위 확인](https://rent-check.kr/blog/youth-rank-check/): 신청 순위와 가점을 확인하는 순서를 설명합니다.
