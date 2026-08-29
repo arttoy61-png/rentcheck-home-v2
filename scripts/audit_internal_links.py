@@ -143,9 +143,60 @@ def scan_css_urls() -> list[str]:
     return broken
 
 
+def scan_home_regressions() -> list[str]:
+    broken: list[str] = []
+    required_assets = [
+        ROOT / "data" / "public-housing-popup.css",
+        ROOT / "data" / "public-housing-popup.js",
+        ROOT / "data" / "new-housing-alert.css",
+        ROOT / "data" / "new-housing-alert.js",
+    ]
+    for path in required_assets:
+        if not path.exists():
+            broken.append(f"required home housing asset missing: {path.relative_to(ROOT)}")
+
+    ui_path = ROOT / "data" / "home-analysis-ui.js"
+    if not ui_path.exists():
+        broken.append("data/home-analysis-ui.js missing")
+    else:
+        ui = ui_path.read_text(encoding="utf-8", errors="replace")
+        for token in (
+            "public-housing-popup.css",
+            "public-housing-popup.js",
+            "new-housing-alert.css",
+            "new-housing-alert.js",
+        ):
+            if token not in ui:
+                broken.append(f"home housing loader missing: {token}")
+
+    tools_path = ROOT / "data" / "tools.json"
+    stats_path = ROOT / "data" / "site_stats.json"
+    if tools_path.exists() and stats_path.exists():
+        tools = json.loads(tools_path.read_text(encoding="utf-8"))
+        stats = json.loads(stats_path.read_text(encoding="utf-8"))
+        available = sum(1 for tool in tools if tool.get("status") == "available")
+        if stats.get("available_tools") != available:
+            broken.append(
+                f"available tool count mismatch: tools.json={available}, site_stats.json={stats.get('available_tools')}"
+            )
+        index = (ROOT / "index.html").read_text(encoding="utf-8", errors="replace")
+        match = re.search(r'id=["\']availableToolCount["\'][^>]*>\s*(\d+)\s*<', index)
+        if match and int(match.group(1)) != available:
+            broken.append(
+                f"available tool count mismatch: tools.json={available}, index.html={match.group(1)}"
+            )
+
+    alert_path = ROOT / "data" / "new-housing-alert.js"
+    if alert_path.exists():
+        alert = alert_path.read_text(encoding="utf-8", errors="replace")
+        if "dayDiffFromToday(latest)>" in alert:
+            broken.append("new housing alert must not expire automatically by age; dismissal/signature should control visibility")
+    return broken
+
+
 def main() -> int:
     html_broken, warnings = scan_html()
-    broken = html_broken + scan_tools_json() + scan_sitemap() + scan_css_urls()
+    broken = html_broken + scan_tools_json() + scan_sitemap() + scan_css_urls() + scan_home_regressions()
     print("== Rent Check internal link audit ==")
     print(f"broken={len(broken)} warnings={len(warnings)}")
     if warnings:
@@ -157,7 +208,7 @@ def main() -> int:
         for item in sorted(set(broken)):
             print("-", item)
         return 1
-    print("\nOK: no broken local href/src, tool URL, sitemap URL, or CSS asset URL found.")
+    print("\nOK: no broken local links/assets or guarded home regressions found.")
     return 0
 
 

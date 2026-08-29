@@ -144,13 +144,13 @@
   if(!document.querySelector('link[data-new-housing-alert]')){
     const alertStyle=document.createElement('link');
     alertStyle.rel='stylesheet';
-    alertStyle.href='/data/new-housing-alert.css?v=20260829-1';
+    alertStyle.href='/data/new-housing-alert.css?v=20260830-1';
     alertStyle.dataset.newHousingAlert='1';
     document.head.appendChild(alertStyle);
   }
   if(!document.querySelector('script[data-new-housing-alert]')){
     const alertScript=document.createElement('script');
-    alertScript.src='/data/new-housing-alert.js?v=20260829-1';
+    alertScript.src='/data/new-housing-alert.js?v=20260830-1';
     alertScript.defer=true;
     alertScript.dataset.newHousingAlert='1';
     document.body.appendChild(alertScript);
