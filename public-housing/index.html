@@ -40,19 +40,30 @@
   if(id&&ROUTES[id]){location.replace(ROUTES[id]);return}
   const parse=v=>{const m=String(v||'').match(/(20\d{2})[-./](\d{1,2})[-./](\d{1,2})/);return m?new Date(+m[1],+m[2]-1,+m[3]):null};
   const fmt=v=>{const d=parse(v);return d?`${d.getFullYear()}년 ${d.getMonth()+1}월 ${d.getDate()}일`:'확인 중'};
+  const fmtShort=v=>{const d=parse(v);return d?`${d.getMonth()+1}/${d.getDate()}`:'일정 확인 중'};
   const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const status=item=>{const now=new Date();now.setHours(0,0,0,0);const s=parse(item.application_start),e=parse(item.deadline);if(e&&e<now)return'접수 마감';if(s&&s>now)return'접수 예정';if(s&&e&&s<=now&&now<=e)return e.getTime()===now.getTime()?'오늘 접수마감':'접수 중';return'일정 확인 중'};
+  const route=item=>ROUTES[String(item.id)]||`/public-housing/?id=${encodeURIComponent(item.id)}`;
+  const isRecruitment=item=>{const t=String(item.title||'');return /모집/.test(t)&&!/발표|결과|당첨|선정결과|예비\s*\d*차\s*입주대상자/.test(t)};
+  const publishedKey=item=>String(item.published_at||'');
 
-  function renderIndex(){
+  function renderIndexShell(){
     app.innerHTML=`
       <div class="eyebrow">Rent Check 임대주택</div>
       <h1>LH·SH 임대주택 모집공고</h1>
       <p class="intro">신규 공고가 뜨면 <strong>신청기간부터 먼저</strong> 확인합니다.<br>행복주택·매입임대 등 신청일·대상·자격·서류 일정을 짧게 정리해 지금 무엇을 확인해야 하는지 보여드립니다.</p>
-      <div class="housing-latest">
-        <a class="housing-card" href="/public-housing/sh-happy-housing-2026-2/"><small>SH · 2026.08.28 신규</small><strong>2026년 2차 행복주택 1,484호</strong><span>9월 9~11일 신청 · 대학생·청년·신혼부부·고령자 등</span></a>
-        <a class="housing-card" href="/public-housing/sh-long-vacant-purchase-2026-2/"><small>SH · 2026.08.28 신규</small><strong>2026년 2차 장기미임대 매입임대 476호</strong><span>9월 28~30일 신청 · 서울 거주 성년 무주택세대 구성원</span></a>
-      </div>
-      <section class="housing-section"><h2>공고를 보는 순서</h2><ul><li>먼저 신청 가능한 날짜를 확인합니다.</li><li>그다음 내 대상·무주택·소득·자산 조건을 봅니다.</li><li>세부 조건이 애매하면 네이버 상세글 댓글 질문을 받아 보강합니다.</li></ul><div class="housing-links"><a href="/">Rent Check 홈 →</a><a class="alt" href="/tools/youth-score/">청년임대 계산기</a></div></section>`;
+      <div class="housing-latest" id="housingLatest"><p class="loading">최신 모집공고를 불러오는 중입니다.</p></div>
+      <section class="housing-section"><h2>공고를 보는 순서</h2><ul><li>먼저 신청 가능한 날짜를 확인합니다.</li><li>그다음 내 대상·무주택·소득·자산 조건을 봅니다.</li><li>세부 조건이 애매하면 관련 상세글과 공고 기준을 다시 확인합니다.</li></ul><div class="housing-links"><a href="/">Rent Check 홈 →</a><a class="alt" href="/tools/youth-score/">청년임대 계산기</a></div></section>`;
+  }
+
+  function renderLatest(items){
+    const box=document.querySelector('#housingLatest');if(!box)return;
+    const notices=[...(items||[])].filter(isRecruitment).sort((a,b)=>publishedKey(b).localeCompare(publishedKey(a))).slice(0,12);
+    if(!notices.length){box.innerHTML='<p class="error">현재 표시할 모집공고를 확인 중입니다.</p>';return}
+    box.innerHTML=notices.map(item=>{
+      const s=fmtShort(item.application_start),e=fmtShort(item.deadline),period=s==='일정 확인 중'&&e==='일정 확인 중'?'신청일정 확인 중':`${s}~${e} 신청`;
+      return `<a class="housing-card" href="${route(item)}"><small>${esc(item.agency||item.agency_group||'임대주택')} · ${esc(String(item.published_at||'').replaceAll('-','.'))} · ${status(item)}</small><strong>${esc(item.title)}</strong><span>${period}${item.region?' · '+esc(item.region):''}</span></a>`;
+    }).join('');
   }
 
   function renderGeneric(item){
@@ -62,10 +73,14 @@
       <a class="housing-back" href="/public-housing/">← 임대주택 모집공고</a>
       <section class="housing-generic"><p class="kicker">${esc(item.agency||item.agency_group||'임대주택')} 공고</p><h1>${esc(item.title)}</h1><p>${status(item)}</p><div class="housing-tags">${types.slice(0,5).map(t=>`<span>${esc(t)}</span>`).join('')}</div></section>
       <div class="housing-grid"><div class="housing-stat"><span>공고일</span><strong>${fmt(item.published_at)}</strong></div><div class="housing-stat"><span>접수 시작</span><strong>${fmt(item.application_start)}</strong></div><div class="housing-stat"><span>접수 마감</span><strong>${fmt(item.deadline)}</strong></div><div class="housing-stat"><span>지역</span><strong>${esc(item.region||'확인 중')}</strong></div></div>
-      <section class="housing-section"><h2>지금 확인할 것</h2><ul><li>신청기간 안에 접수 가능한 공고인지 먼저 확인하세요.</li><li>주택유형과 대상에 따라 무주택·소득·자산 기준이 달라질 수 있습니다.</li><li>세부 조건은 네이버 상세글에서 더 풀어서 정리합니다.</li></ul><div class="housing-links"><a href="/public-housing/">다른 공고 보기 →</a><a class="alt" href="/">홈으로</a></div></section>`;
+      <section class="housing-section"><h2>지금 확인할 것</h2><ul><li>신청기간 안에 접수 가능한 공고인지 먼저 확인하세요.</li><li>주택유형과 대상에 따라 무주택·소득·자산 기준이 달라질 수 있습니다.</li><li>세부 자격은 공고별 상세 정리가 추가되면 이 페이지에서 바로 연결합니다.</li></ul><div class="housing-links"><a href="/public-housing/">다른 공고 보기 →</a><a class="alt" href="/">홈으로</a></div></section>`;
   }
 
-  if(!id){renderIndex();return}
+  if(!id){
+    renderIndexShell();
+    fetch(`${FEED}?v=${Date.now()}`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json()}).then(data=>renderLatest(data.items||[])).catch(()=>{const box=document.querySelector('#housingLatest');if(box)box.innerHTML='<p class="error">최신 공고 목록을 불러오지 못했습니다. 잠시 뒤 다시 확인해 주세요.</p>'});
+    return;
+  }
   app.className='loading';app.textContent='공고를 불러오는 중입니다.';
   fetch(`${FEED}?v=${Date.now()}`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json()}).then(data=>{const item=(data.items||[]).find(x=>String(x.id)===id);if(!item)throw new Error();app.className='';renderGeneric(item)}).catch(()=>{app.className='error';app.innerHTML='<strong>공고를 찾지 못했습니다.</strong><p><a href="/public-housing/">임대주택 모집공고로 돌아가기 →</a></p>'});
 })();
