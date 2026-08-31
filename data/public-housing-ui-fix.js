@@ -24,13 +24,15 @@
     return [['전체',items.length],['접수중',open],['접수예정',upcoming],['이번 주 마감',weekDeadline]];
   }
 
+  function setText(node,value){if(node&&node.textContent!==value)node.textContent=value}
+
   function updateSummary(){
     const root=document.querySelector('#publicHousingSummary');if(!root||!feed)return;
     const cards=[...root.querySelectorAll('.notice-summary-card')],counts=summaryCounts();
     counts.forEach(([label,value],i)=>{
       const card=cards[i];if(!card)return;
-      let name=card.querySelector('span'),number=card.querySelector('strong');
-      if(name)name.textContent=label;if(number)number.textContent=`${value}건`;
+      setText(card.querySelector('span'),label);
+      setText(card.querySelector('strong'),`${value}건`);
       card.classList.toggle('week-deadline',label==='이번 주 마감'&&value>0);
     });
   }
@@ -40,13 +42,13 @@
     const text=note.textContent||'';
     const empty=/이번 주 신청 일정은 확인되지 않았습니다|확인된 신청 일정 없음/.test(text);
     note.classList.toggle('schedule-empty',empty);
-    if(empty&&!text.startsWith('확인된 신청 일정 없음')){
-      note.textContent=`확인된 신청 일정 없음 · ${text}`;
-    }
+    if(empty&&!text.startsWith('확인된 신청 일정 없음'))setText(note,`확인된 신청 일정 없음 · ${text}`);
   }
 
   function apply(){
-    document.querySelectorAll('.desktop-nav a,.mobile-nav a').forEach(a=>{if(a.dataset.publicHousingOpen!==undefined||a.textContent.trim()==='임대주택')a.textContent='LH·SH 공고'});
+    document.querySelectorAll('.desktop-nav a,.mobile-nav a').forEach(a=>{
+      if((a.dataset.publicHousingOpen!==undefined||a.textContent.trim()==='임대주택')&&a.textContent!=='LH·SH 공고')a.textContent='LH·SH 공고';
+    });
     updateSummary();
     emphasizeEmptySchedule();
   }
@@ -59,8 +61,11 @@
   `;
   document.head.appendChild(style);
 
-  const observer=new MutationObserver(()=>apply());
-  observer.observe(document.documentElement,{subtree:true,childList:true,characterData:true});
-  loadFeed().then(()=>apply()).catch(()=>apply());
+  function applySoon(){setTimeout(()=>{loadFeed().then(apply).catch(apply)},30)}
+  document.addEventListener('click',event=>{
+    if(event.target.closest('[data-public-housing-open],#publicHousingNoticeButton,#publicHousingModal [data-filter],#publicHousingCalendar .notice-day'))applySoon();
+  },true);
+
+  loadFeed().then(apply).catch(apply);
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();
 })();
