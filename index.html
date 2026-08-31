@@ -64,7 +64,7 @@
     @media(max-width:768px){html.rc-new-alert-open,body.notice-modal-open{overflow:auto!important}}
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MPRR3J99YQ"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MPRR3J99YQ');</script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MPRR3J99YQ');</script>
 
 <!-- Rent Check share preview -->
 <meta property="og:site_name" content="Rent Check">
@@ -110,18 +110,12 @@
 <script>
 (function(){
   if(!(window.matchMedia&&window.matchMedia('(max-width: 768px)').matches))return;
-  const unlock=()=>{
-    document.documentElement.classList.remove('rc-new-alert-open');
-    document.body?.classList.remove('notice-modal-open');
-    document.querySelectorAll('#rcNewHousingAlert,.rc-new-alert').forEach(node=>node.remove());
-  };
-  unlock();
-  const observer=new MutationObserver(unlock);
-  observer.observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
-  setTimeout(()=>observer.disconnect(),5000);
+  document.documentElement.classList.remove('rc-new-alert-open');
+  document.body?.classList.remove('notice-modal-open');
+  document.querySelectorAll('#rcNewHousingAlert,.rc-new-alert').forEach(node=>node.remove());
 })();
 </script>
-<script src="app.js?v=20260811-1"></script><script src="data/posts-loader.js?v=20260820-1"></script><script src="data/home-analysis-ui.js?v=20260831-3"></script><script src="data/site-stats-loader.js?v=20260824-2"></script><script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
+<script src="app.js?v=20260811-1"></script><script src="data/posts-loader.js?v=20260820-1"></script><script src="data/home-analysis-ui.js?v=20260831-4"></script><script src="data/site-stats-loader.js?v=20260824-2"></script><script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
 <script type="text/javascript">
 if(!wcs_add) var wcs_add = {};
 wcs_add["wa"] = "1a98778bd0f06a0";
