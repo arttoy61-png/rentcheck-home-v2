@@ -61,6 +61,7 @@
       .rc-site-footer-links{justify-content:flex-start;padding-top:22px}
       .rc-site-footer .footer-bottom{padding:16px 0 18px;display:flex;align-items:flex-start;flex-direction:column;gap:5px}
     }
+    @media(max-width:768px){html.rc-new-alert-open,body.notice-modal-open{overflow:auto!important}}
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MPRR3J99YQ"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MPRR3J99YQ');</script>
@@ -106,7 +107,21 @@
 <section class="container final-cta"><div><p>Rent Check</p><h2>부동산 숫자,<br>판단까지 이어져야 합니다.</h2><span>계산 도구와 실거래 분석을 연결해<br>지금 필요한 판단부터 확인하세요.</span></div><div class="cta-actions"><a href="#calculators">계산 도구 보기 <b>→</b></a><a href="/tools/apartment/" data-tool-link="apt-widget">실거래 확인</a><a href="/blog/">실전 가이드</a></div></section>
 </main>
 <footer class="rc-site-footer"><div class="container rc-site-footer-main"><div class="footer-brand"><a class="brand" href="#top" data-to-top><span class="brand-mark"><svg viewBox="0 0 28 28"><path d="M4 13 14 5l10 8v10H4z"/><path d="m10 16 3 3 6-7"/></svg></span><strong>Rent Check</strong></a><p>국토부 실거래 데이터와 실전형 해석을 연결하는<br>부동산 계산·분석 서비스입니다.</p></div><nav class="rc-site-footer-links" aria-label="사이트 안내"><a href="/about/">소개</a><span>|</span><a href="/privacy.html">개인정보처리방침</a><span>|</span><a href="/contact/">문의</a><span>|</span><a href="/sponsor/">광고/제휴</a></nav></div><div class="container footer-bottom"><span>© 2026 Rent Check</span><span>부동산 계산과 실거래 해석</span></div></footer>
-<script src="app.js?v=20260811-1"></script><script src="data/posts-loader.js?v=20260820-1"></script><script src="data/home-analysis-ui.js?v=20260831-1"></script><script src="data/site-stats-loader.js?v=20260824-2"></script><script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
+<script>
+(function(){
+  if(!(window.matchMedia&&window.matchMedia('(max-width: 768px)').matches))return;
+  const unlock=()=>{
+    document.documentElement.classList.remove('rc-new-alert-open');
+    document.body?.classList.remove('notice-modal-open');
+    document.querySelectorAll('#rcNewHousingAlert,.rc-new-alert').forEach(node=>node.remove());
+  };
+  unlock();
+  const observer=new MutationObserver(unlock);
+  observer.observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+  setTimeout(()=>observer.disconnect(),5000);
+})();
+</script>
+<script src="app.js?v=20260811-1"></script><script src="data/posts-loader.js?v=20260820-1"></script><script src="data/home-analysis-ui.js?v=20260831-3"></script><script src="data/site-stats-loader.js?v=20260824-2"></script><script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
 <script type="text/javascript">
 if(!wcs_add) var wcs_add = {};
 wcs_add["wa"] = "1a98778bd0f06a0";
