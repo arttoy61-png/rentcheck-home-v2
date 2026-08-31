@@ -1,11 +1,13 @@
 (()=>{
   const FEED_URL='https://arttoy61-png.github.io/rent-check/public_housing_notices.json';
   const DISMISS_KEY='rentcheck:new-housing-alert-dismissed-v1';
+  const MOBILE_BREAKPOINT='(max-width: 768px)';
   const ROUTES={
     'SH:seq:309337':'/public-housing/sh-happy-housing-2026-2/',
     'SH:seq:309403':'/public-housing/sh-long-vacant-purchase-2026-2/'
   };
 
+  function isMobile(){return Boolean(window.matchMedia&&window.matchMedia(MOBILE_BREAKPOINT).matches)}
   function datePartsKST(date=new Date()){
     const parts=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(date);
     const map=Object.fromEntries(parts.map(x=>[x.type,x.value]));
@@ -76,14 +78,17 @@
     setTimeout(()=>{root.hidden=false;document.documentElement.classList.add('rc-new-alert-open')},550);
   }
   async function init(){
+    document.documentElement.classList.remove('rc-new-alert-open');
     if(location.pathname!=='/'&&location.pathname!=='/index.html')return;
+    if(isMobile())return;
     try{
       const res=await fetch(`${FEED_URL}?v=${Date.now()}`,{cache:'no-store'});if(!res.ok)return;
       const data=await res.json();
       const recruit=(data.items||[]).filter(isRecruitmentNotice).map(item=>({...item,_pub:isoDate(item.published_at)})).filter(item=>item._pub);
       if(!recruit.length)return;
       const latest=[...new Set(recruit.map(x=>x._pub))].sort().pop();
-      if(dayDiffFromToday(latest)<0)return;
+      const age=dayDiffFromToday(latest);
+      if(age<0||age>3)return;
       const items=recruit.filter(x=>x._pub===latest).sort((a,b)=>String(a.agency||'').localeCompare(String(b.agency||''),'ko'));
       if(items.length)render(items,latest);
     }catch(_){/* 신규공고 알림 실패는 홈 이용을 막지 않는다. */}
