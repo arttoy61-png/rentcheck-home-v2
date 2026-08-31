@@ -62,6 +62,30 @@
 (()=>{
   const homeInsights=[
     {
+      category:'시세·실거래',
+      title:'강서구 8월 실거래 월결산｜동마다 많이 거래되는 면적이 달랐습니다',
+      date:'2026-09-01',
+      url:'/analysis/gangseo-august-2026/',
+      image:'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
+      alt:'서울 주거지역의 아파트와 주택'
+    },
+    {
+      category:'시세·실거래',
+      title:'우장산힐스테이트 실거래 분석',
+      date:'2026-08-29',
+      url:'/analysis/ujangsan-hillstate/',
+      image:'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
+      alt:'아파트 단지가 보이는 주거지역'
+    },
+    {
+      category:'시세·실거래',
+      title:'서울 아파트 거래가 많은 구와 비싼 구는 같은 곳일까?｜25개 구 실거래 비교',
+      date:'2026-08-25',
+      url:'/analysis/seoul-apartment-volume-price/',
+      image:'https://images.pexels.com/photos/32203742/pexels-photo-32203742.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
+      alt:'서울 도심과 주거 건물이 보이는 이미지'
+    },
+    {
       category:'청년·공공주택',
       title:'청년 보편형 전세임대, 누가 신청할 수 있나요?',
       date:'2026-08-23',
@@ -76,6 +100,14 @@
       url:'/analysis/gangseo-jeonse-trend/',
       image:'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
       alt:'서울 주거지역의 다세대 주택과 주택가'
+    },
+    {
+      category:'재개발·정비',
+      title:'염창 우성1·2차·삼천리 통합재건축, 지금은 추진위 단계입니다',
+      date:'2026-08-20',
+      url:'/analysis/yeomchang-woosung-samchulli/',
+      image:'https://images.pexels.com/photos/34360419/pexels-photo-34360419.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
+      alt:'주거단지와 공사 크레인이 보이는 재건축 이미지'
     },
     {
       category:'재개발·정비',
