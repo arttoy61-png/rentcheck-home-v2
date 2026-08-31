@@ -31,6 +31,11 @@
 <script>
 (()=>{
   const FEED='https://arttoy61-png.github.io/rent-check/public_housing_notices.json';
+  const SH_APPLY='https://www.i-sh.co.kr/app/index.do';
+  const LH_APPLY='https://apply.lh.or.kr/lhapply/apply/pcrt/pcrt01.do';
+  const NAVER_LINKS=[
+    ['2026년 국민임대주택 입주자 모집공고','https://blog.naver.com/spitoon61/224385432176']
+  ];
   const ROUTES={
     'SH:seq:309337':'/public-housing/sh-happy-housing-2026-2/',
     'SH:seq:309403':'/public-housing/sh-long-vacant-purchase-2026-2/'
@@ -58,6 +63,10 @@
   const route=item=>ROUTES[String(item.id)]||`/public-housing/?id=${encodeURIComponent(item.id)}`;
   const isRecruitment=item=>{const t=String(item.title||'');return /모집/.test(t)&&!/발표|결과|당첨|선정결과|예비\s*\d*차\s*입주대상자/.test(t)};
   const publishedKey=item=>String(item.published_at||'');
+  const agency=item=>String(item.agency||item.agency_group||'').toUpperCase();
+  const applyUrl=item=>agency(item)==='LH'?LH_APPLY:agency(item)==='SH'?SH_APPLY:'';
+  const canApply=item=>['오늘 접수 시작','오늘 접수일','오늘 접수마감','접수 중','접수 예정'].includes(status(item));
+  const naverUrl=item=>{const title=String(item.title||'');const found=NAVER_LINKS.find(([needle])=>title.includes(needle));return found?found[1]:''};
 
   function renderIndexShell(){
     app.innerHTML=`
@@ -81,11 +90,14 @@
   function renderGeneric(item){
     document.title=`${item.title} | Rent Check`;
     const types=[...(item.housing_types||[]),...(item.audiences||[])];
+    const apply=applyUrl(item),naver=naverUrl(item),buttons=[];
+    if(apply&&canApply(item))buttons.push(`<a class="housing-apply-link" href="${apply}" target="_blank" rel="noopener">${agency(item)}에서 신청하기 →</a>`);
+    if(naver)buttons.push(`<a class="alt" href="${naver}" target="_blank" rel="noopener">네이버 상세글 바로가기 →</a>`);
     app.innerHTML=`
       <a class="housing-back" href="/public-housing/">← 임대주택 모집공고</a>
       <section class="housing-generic"><p class="kicker">${esc(item.agency||item.agency_group||'임대주택')} 공고</p><h1>${esc(item.title)}</h1><p>${status(item)}</p><div class="housing-tags">${types.slice(0,5).map(t=>`<span>${esc(t)}</span>`).join('')}</div></section>
       <div class="housing-grid"><div class="housing-stat"><span>공고일</span><strong>${fmt(item.published_at)}</strong></div><div class="housing-stat"><span>접수 시작</span><strong>${fmt(item.application_start)}</strong></div><div class="housing-stat"><span>접수 마감</span><strong>${fmt(item.deadline)}</strong></div><div class="housing-stat"><span>지역</span><strong>${esc(item.region||'확인 중')}</strong></div></div>
-      <section class="housing-section"><h2>지금 확인할 것</h2><ul><li>신청기간과 접수 시작 시간을 먼저 확인하세요.</li><li>주택유형과 대상에 따라 무주택·소득·자산 기준이 달라질 수 있습니다.</li><li>세부 자격은 공고별 상세 정리가 추가되면 이 페이지에서 바로 연결합니다.</li></ul><div class="housing-links"><a href="/public-housing/">다른 공고 보기 →</a><a class="alt" href="/">홈으로</a></div></section>`;
+      <section class="housing-section"><h2>지금 확인할 것</h2><ul><li>신청기간과 접수 시작 시간을 먼저 확인하세요.</li><li>주택유형과 대상에 따라 무주택·소득·자산 기준이 달라질 수 있습니다.</li><li>세부 자격은 공고별 상세 정리가 추가되면 이 페이지에서 바로 연결합니다.</li></ul>${buttons.length?`<div class="housing-links housing-primary-links">${buttons.join('')}</div>`:''}<div class="housing-links"><a href="/public-housing/">다른 공고 보기 →</a><a class="alt" href="/">홈으로</a></div></section>`;
   }
 
   if(!id){
@@ -97,7 +109,6 @@
   fetch(`${FEED}?v=${Date.now()}`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json()}).then(data=>{const item=(data.items||[]).find(x=>String(x.id)===id);if(!item)throw new Error();app.className='';renderGeneric(item)}).catch(()=>{app.className='error';app.innerHTML='<strong>공고를 찾지 못했습니다.</strong><p><a href="/public-housing/">임대주택 모집공고로 돌아가기 →</a></p>'});
 })();
 </script>
-<script src="/public-housing/apply-link-inject.js?v=20260831-1"></script>
 <script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script><script type="text/javascript">if(!wcs_add)var wcs_add={};wcs_add["wa"]="1a98778bd0f06a0";if(window.wcs)wcs_do();</script>
 </body>
 </html>
