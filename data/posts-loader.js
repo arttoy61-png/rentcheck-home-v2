@@ -66,8 +66,8 @@
       title:'강서구 8월 실거래 월결산｜동마다 많이 거래되는 면적이 달랐습니다',
       date:'2026-09-01',
       url:'/analysis/gangseo-august-2026/',
-      image:'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
-      alt:'서울 주거지역의 아파트와 주택'
+      image:'https://images.pexels.com/photos/14452238/pexels-photo-14452238.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
+      alt:'서울 아파트 단지 항공 전경'
     },
     {
       category:'시세·실거래',
@@ -92,38 +92,6 @@
       url:'/analysis/youth-universal-jeonse/',
       image:'https://images.pexels.com/photos/7578989/pexels-photo-7578989.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
       alt:'주택 계약 서류를 확인하는 청년'
-    },
-    {
-      category:'시세·실거래',
-      title:'강서구 전세가 월세로 바뀌고 있나｜아파트·주택·오피스텔 23개월 실거래 비교',
-      date:'2026-08-23',
-      url:'/analysis/gangseo-jeonse-trend/',
-      image:'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
-      alt:'서울 주거지역의 다세대 주택과 주택가'
-    },
-    {
-      category:'재개발·정비',
-      title:'염창 우성1·2차·삼천리 통합재건축, 지금은 추진위 단계입니다',
-      date:'2026-08-20',
-      url:'/analysis/yeomchang-woosung-samchulli/',
-      image:'https://images.pexels.com/photos/34360419/pexels-photo-34360419.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
-      alt:'주거단지와 공사 크레인이 보이는 재건축 이미지'
-    },
-    {
-      category:'재개발·정비',
-      title:'화곡6동 957-1 모아타운, 조합설립인가까지 왔습니다',
-      date:'2026-08-19',
-      url:'/analysis/hwagok6-957-a1/',
-      image:'https://images.pexels.com/photos/34360419/pexels-photo-34360419.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
-      alt:'주거단지와 공사 크레인이 보이는 재개발 이미지'
-    },
-    {
-      category:'정책·개발',
-      title:'염창근린공원 1,000가구, 그 공원이 20년 비어 있던 이유',
-      date:'2026-08-19',
-      url:'/analysis/yeomchang-1000-homes/',
-      image:'https://images.pexels.com/photos/32203742/pexels-photo-32203742.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
-      alt:'도심 공원과 주거 건물이 함께 보이는 이미지'
     }
   ];
   const style=document.createElement('style');
