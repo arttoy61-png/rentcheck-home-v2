@@ -6,7 +6,7 @@
       ['홈','#top','home'],
       ['실거래','/tools/apartment/'],
       ['계산 도구','#calculators'],
-      ['임대주택','#services','housing'],
+      ['LH·SH 공고','#services','housing'],
       ['분석 글','/analysis/'],
       ['실전 가이드','/blog/']
     ];
@@ -139,6 +139,13 @@
     popupScript.defer=true;
     popupScript.dataset.publicHousingPopup='1';
     document.body.appendChild(popupScript);
+  }
+  if(!document.querySelector('script[data-public-housing-ui-fix]')){
+    const uiFixScript=document.createElement('script');
+    uiFixScript.src='/data/public-housing-ui-fix.js?v=20260831-1';
+    uiFixScript.defer=true;
+    uiFixScript.dataset.publicHousingUiFix='1';
+    document.body.appendChild(uiFixScript);
   }
 
   if(!document.querySelector('link[data-new-housing-alert]')){
