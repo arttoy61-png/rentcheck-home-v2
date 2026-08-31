@@ -135,7 +135,7 @@
   }
   if(!document.querySelector('script[data-public-housing-popup]')){
     const popupScript=document.createElement('script');
-    popupScript.src='/data/public-housing-popup.js?v=20260829-2';
+    popupScript.src='/data/public-housing-popup.js?v=20260831-1';
     popupScript.defer=true;
     popupScript.dataset.publicHousingPopup='1';
     document.body.appendChild(popupScript);
