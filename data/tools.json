@@ -84,8 +84,8 @@
     "title": "취득세 계산기",
     "description": "주택·오피스텔·상가·토지의 취득세와 부가세목을 조건별로 계산합니다.",
     "url": "tools/acquisition-tax/",
-    "status": "available",
-    "badge": "이용 가능",
+    "status": "preparing",
+    "badge": "준비 중",
     "icon": "◔",
     "category": "tax"
   },
