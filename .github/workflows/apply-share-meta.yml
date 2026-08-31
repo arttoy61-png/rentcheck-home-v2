@@ -39,7 +39,8 @@ jobs:
               f'{SITE}/assets/share/kakao-share-small.jpg',
           ]
           DEFAULT_IMAGE = f'{SITE}/assets/share/rent-check-og-v2.png?v=20260829-2'
-          HOME_IMAGE = f'{SITE}/assets/share/rent-check-og-20260831.png'
+          OLD_HOME_IMAGE = f'{SITE}/assets/share/rent-check-og-20260831.png'
+          HOME_IMAGE = f'{SITE}/assets/share/rent-check-og-20260831-v2.png'
           HOME_OLD_DESC = '부동산 계산 · 실거래 · 분석을 한곳에서 확인하세요.'
           HOME_NEW_DESC = '부동산 실거래·계산·분석을 한 번에.'
 
@@ -69,6 +70,7 @@ jobs:
                   text = text.replace(old_image, DEFAULT_IMAGE)
 
               if path.as_posix() == 'index.html':
+                  text = text.replace(OLD_HOME_IMAGE, HOME_IMAGE)
                   text = text.replace(DEFAULT_IMAGE, HOME_IMAGE)
                   text = text.replace(f'<meta property="og:description" content="{HOME_OLD_DESC}">', f'<meta property="og:description" content="{HOME_NEW_DESC}">')
 
