@@ -1,11 +1,27 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-01T06:33:30+09:00",
-  "data_until": "2026-08-28",
+  "generated_at": "2026-09-01T07:08:38+09:00",
+  "data_until": "2026-08-31",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
+    {
+      "dong": "공항동",
+      "name": "더트루엘마곡HQ",
+      "area_m2": 48,
+      "amount_eok": 5.99,
+      "date": "2026.08.30",
+      "complex_id": null
+    },
+    {
+      "dong": "등촌동",
+      "name": "등촌퀸즈포디엄삼익",
+      "area_m2": 45,
+      "amount_eok": 4.3,
+      "date": "2026.08.27",
+      "complex_id": null
+    },
     {
       "dong": "방화동",
       "name": "방화메이빌",
@@ -13,22 +29,6 @@
       "amount_eok": 5.0,
       "date": "2026.08.25",
       "complex_id": "932c18d0"
-    },
-    {
-      "dong": "화곡동",
-      "name": "한양아이클래스",
-      "area_m2": 14,
-      "amount_eok": 0.6,
-      "date": "2026.08.24",
-      "complex_id": "9aa745e7"
-    },
-    {
-      "dong": "염창동",
-      "name": "염창1차보람더하임",
-      "area_m2": 117,
-      "amount_eok": 14.0,
-      "date": "2026.08.23",
-      "complex_id": "ba5f2ef8"
     }
   ],
   "monthly_trend": [
