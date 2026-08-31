@@ -1,19 +1,26 @@
 // Shared post feed
 (async()=>{
   try{
-    const response=await fetch('./data/posts_shared.json',{cache:'no-cache'});
-    if(response.ok){
-      const recent=await response.json();
-      if(Array.isArray(recent)&&recent.length){
-        for(let i=0;i<100&&state.posts.length===0;i++)await new Promise(resolve=>setTimeout(resolve,50));
-        const byUrl=new Map(state.posts.map(post=>[post.url,post]));
-        recent.forEach(post=>{if(post?.url)byUrl.set(post.url,{...(byUrl.get(post.url)||{}),...post})});
-        state.posts=[...byUrl.values()];
-        renderInsights();
-        renderArticleLibrary();
-        const count=document.querySelector('#publishedCount');
-        if(count)count.textContent=String(publishedPosts().length);
+    const responses=await Promise.all([
+      fetch('./data/posts_shared.json',{cache:'no-cache'}),
+      fetch('./data/posts_latest.json',{cache:'no-cache'})
+    ]);
+    const feeds=[];
+    for(const response of responses){
+      if(response.ok){
+        const rows=await response.json();
+        if(Array.isArray(rows))feeds.push(...rows);
       }
+    }
+    if(feeds.length){
+      for(let i=0;i<100&&state.posts.length===0;i++)await new Promise(resolve=>setTimeout(resolve,50));
+      const byUrl=new Map(state.posts.map(post=>[post.url,post]));
+      feeds.forEach(post=>{if(post?.url)byUrl.set(post.url,{...(byUrl.get(post.url)||{}),...post})});
+      state.posts=[...byUrl.values()];
+      renderInsights();
+      renderArticleLibrary();
+      const count=document.querySelector('#publishedCount');
+      if(count)count.textContent=String(publishedPosts().length);
     }
   }catch(_){/* keep legacy archive */}
 })();
