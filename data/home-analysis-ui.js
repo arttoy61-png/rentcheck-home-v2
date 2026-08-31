@@ -142,7 +142,7 @@
   }
   if(!document.querySelector('script[data-public-housing-ui-fix]')){
     const uiFixScript=document.createElement('script');
-    uiFixScript.src='/data/public-housing-ui-fix.js?v=20260831-1';
+    uiFixScript.src='/data/public-housing-ui-fix.js?v=20260831-2';
     uiFixScript.defer=true;
     uiFixScript.dataset.publicHousingUiFix='1';
     document.body.appendChild(uiFixScript);
