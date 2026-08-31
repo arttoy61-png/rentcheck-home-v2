@@ -97,6 +97,7 @@
   fetch(`${FEED}?v=${Date.now()}`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json()}).then(data=>{const item=(data.items||[]).find(x=>String(x.id)===id);if(!item)throw new Error();app.className='';renderGeneric(item)}).catch(()=>{app.className='error';app.innerHTML='<strong>공고를 찾지 못했습니다.</strong><p><a href="/public-housing/">임대주택 모집공고로 돌아가기 →</a></p>'});
 })();
 </script>
+<script src="/public-housing/apply-link-inject.js?v=20260831-1"></script>
 <script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script><script type="text/javascript">if(!wcs_add)var wcs_add={};wcs_add["wa"]="1a98778bd0f06a0";if(window.wcs)wcs_do();</script>
 </body>
 </html>
