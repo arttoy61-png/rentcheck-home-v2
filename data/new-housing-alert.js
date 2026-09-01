@@ -109,7 +109,7 @@
     if(location.pathname!=='/'&&location.pathname!=='/index.html')return;
     if(document.querySelector('script[data-rc-ask-popup]'))return;
     const script=document.createElement('script');
-    script.src='/data/ask-popup.js?v=20260901-1';
+    script.src='/data/ask-popup.js?v=20260901-2';
     script.defer=true;
     script.dataset.rcAskPopup='1';
     document.head.append(script);
