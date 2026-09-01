@@ -22,8 +22,9 @@
   const style=document.createElement('style');
   style.id='rcAskPopupStyle';
   style.textContent=`
-    .rc-ask-fab{position:fixed;right:14px;bottom:max(14px,env(safe-area-inset-bottom));z-index:75;border:0;border-radius:999px;background:#0d1f3c;color:#fff;padding:12px 15px;box-shadow:0 12px 30px rgba(13,31,60,.26);font:800 13px/1.2 inherit;display:none;align-items:center;gap:7px}
-    .rc-ask-fab i{width:8px;height:8px;border-radius:50%;background:#6db4ff;display:block}
+    .rc-ask-fab{position:fixed;right:22px;bottom:22px;z-index:75;border:0;border-radius:999px;background:#0d1f3c;color:#fff;padding:15px 18px;box-shadow:0 16px 36px rgba(13,31,60,.28);font:900 13px/1.2 inherit;display:none;align-items:center;gap:10px}
+    .rc-ask-fab i{width:10px;height:10px;border-radius:50%;background:#70b7ff;box-shadow:0 0 0 5px rgba(112,183,255,.15);display:block;flex:0 0 auto}
+    .rc-ask-fab small{font-weight:700;opacity:.78}
     .rc-ask-backdrop{position:fixed;inset:0;z-index:190;background:rgba(8,20,38,.48);border:0;opacity:0;pointer-events:none;transition:.18s}
     .rc-ask-sheet{position:fixed;z-index:191;left:50%;top:50%;width:min(600px,calc(100vw - 28px));max-height:min(720px,calc(100vh - 36px));overflow:auto;transform:translate(-50%,-47%);background:#fff;border-radius:22px;box-shadow:0 24px 70px rgba(13,31,60,.26);opacity:0;pointer-events:none;transition:.18s;padding:24px}
     .rc-ask-open .rc-ask-backdrop{opacity:1;pointer-events:auto}.rc-ask-open .rc-ask-sheet{opacity:1;pointer-events:auto;transform:translate(-50%,-50%)}
@@ -32,7 +33,7 @@
     .rc-ask-form{display:grid;grid-template-columns:1fr auto;gap:8px;border:2px solid #0d1f3c;border-radius:14px;padding:6px}.rc-ask-input{min-width:0;border:0;outline:0;padding:11px 10px;font-size:15px}.rc-ask-submit{border:0;border-radius:10px;background:#0d1f3c;color:#fff;font-weight:900;padding:0 16px}
     .rc-ask-label{margin:15px 0 8px;color:#344054;font-size:12px;font-weight:900}.rc-ask-chips{display:grid;grid-template-columns:1fr 1fr;gap:7px}.rc-ask-chip{border:1px solid #d9e0e8;background:#fff;border-radius:11px;padding:10px 11px;text-align:left;color:#344054;font-size:12px;line-height:1.4}
     .rc-ask-result{margin-top:16px}.rc-ask-card{border:1px solid #d9e0e8;border-radius:15px;padding:16px;background:#fff}.rc-ask-card small{color:#1565c0;font-weight:900}.rc-ask-card h3{margin:5px 0 8px;color:#0d1f3c;font-size:18px;line-height:1.45}.rc-ask-card p{margin:0;color:#344054;font-size:14px;line-height:1.65}.rc-ask-now{margin-top:12px;background:#eef5fc;border-left:4px solid #1565c0;border-radius:8px;padding:11px 12px;font-size:13px;line-height:1.55}.rc-ask-now b{display:block;color:#0d1f3c;margin-bottom:2px}.rc-ask-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}.rc-ask-actions a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:9px;padding:10px 12px;font-size:12px;font-weight:900}.rc-ask-primary{background:#0d1f3c;color:#fff}.rc-ask-secondary{border:1px solid #d9e0e8;color:#0d1f3c;background:#fff}
-    @media(max-width:720px){.rc-ask-fab{display:flex}.rc-ask-sheet{left:0;right:0;top:auto;bottom:0;width:100%;max-height:88dvh;border-radius:22px 22px 0 0;transform:translateY(28px);padding:20px 17px calc(20px + env(safe-area-inset-bottom))}.rc-ask-open .rc-ask-sheet{transform:translateY(0)}.rc-ask-title{font-size:22px}.rc-ask-chips{grid-template-columns:1fr}.rc-ask-form{grid-template-columns:1fr auto}}
+    @media(max-width:720px){.rc-ask-fab{display:flex;right:14px;bottom:max(14px,env(safe-area-inset-bottom));padding:14px 16px}.rc-ask-fab small{display:none}.rc-ask-sheet{left:0;right:0;top:auto;bottom:0;width:100%;max-height:88dvh;border-radius:22px 22px 0 0;transform:translateY(28px);padding:20px 17px calc(20px + env(safe-area-inset-bottom))}.rc-ask-open .rc-ask-sheet{transform:translateY(0)}.rc-ask-title{font-size:22px}.rc-ask-chips{grid-template-columns:1fr}.rc-ask-form{grid-template-columns:1fr auto}}
   `;
   document.head.append(style);
 
@@ -41,7 +42,7 @@
   sheet.innerHTML=`<button class="rc-ask-close" type="button" aria-label="닫기">×</button><p class="rc-ask-kicker">질문 → 답 → 바로 확인</p><h2 class="rc-ask-title" id="rcAskTitle">Rent Check에 물어보세요</h2><p class="rc-ask-sub">부동산 용어를 몰라도 됩니다. 궁금한 걸 그대로 적어보세요.</p><form class="rc-ask-form"><input class="rc-ask-input" type="search" placeholder="예: 부모님 집 있어도 청년임대 되나요?" autocomplete="off"><button class="rc-ask-submit" type="submit">답 보기</button></form><p class="rc-ask-label">많이 물어볼 질문</p><div class="rc-ask-chips"></div><div class="rc-ask-result" aria-live="polite"></div>`;
   document.body.append(backdrop,sheet);
 
-  const fab=document.createElement('button');fab.type='button';fab.className='rc-ask-fab';fab.innerHTML='<i></i><span>물어보세요</span>';document.body.append(fab);
+  const fab=document.createElement('button');fab.type='button';fab.className='rc-ask-fab';fab.innerHTML='<i></i><span>Rent Check에 물어보세요</span><small>→</small>';document.body.append(fab);
   const modalInput=sheet.querySelector('.rc-ask-input'),result=sheet.querySelector('.rc-ask-result'),chips=sheet.querySelector('.rc-ask-chips');
   ['부모님 집 있어도 청년임대 되나요?','모아타운 분담금 얼마 나올까요?','관리처분인가 나면 언제 이사하나요?','보증금 1000·월세 60 중개수수료 얼마예요?'].forEach(q=>{const b=document.createElement('button');b.type='button';b.className='rc-ask-chip';b.textContent=q;b.addEventListener('click',()=>{modalInput.value=q;answer(q)});chips.append(b)});
 
@@ -50,7 +51,7 @@
   function answer(q){
     const item=best(q);
     if(!item){result.innerHTML=`<article class="rc-ask-card"><small>아직 등록되지 않은 질문</small><h3>${escapeHtml(q)}</h3><p>지금은 실제 유입에서 확인된 질문부터 답을 연결하고 있습니다. 아래 계산 도구나 분석 글에서 먼저 확인해보세요.</p><div class="rc-ask-actions"><a class="rc-ask-primary" href="#calculators">계산 도구 보기 →</a><a class="rc-ask-secondary" href="/analysis/">분석 글 보기</a></div></article>`;return}
-    result.innerHTML=`<article class="rc-ask-card"><small>한 줄 Answer · ${escapeHtml(item.cat)}</small><h3>${escapeHtml(item.q)}</h3><p>${escapeHtml(item.answer)}</p><div class="rc-ask-now"><b>지금 할 일</b>${escapeHtml(item.action)}</div><div class="rc-ask-actions"><a class="rc-ask-primary" href="${item.url}">${escapeHtml(item.tool)} →</a>${item.secondary?`<a class="rc-ask-secondary" href="${item.secondaryUrl}">${escapeHtml(item.secondary)}</a>`:''}</div></article>`;
+    result.innerHTML=`<article class="rc-ask-card"><small>한 줄 요약 · ${escapeHtml(item.cat)}</small><h3>${escapeHtml(item.q)}</h3><p>${escapeHtml(item.answer)}</p><div class="rc-ask-now"><b>지금 할 일</b>${escapeHtml(item.action)}</div><div class="rc-ask-actions"><a class="rc-ask-primary" href="${item.url}">${escapeHtml(item.tool)} →</a>${item.secondary?`<a class="rc-ask-secondary" href="${item.secondaryUrl}">${escapeHtml(item.secondary)}</a>`:''}</div></article>`;
   }
   function escapeHtml(v){return String(v||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
   function open(q=''){document.documentElement.classList.add('rc-ask-open');if(q){modalInput.value=q;answer(q)}else result.innerHTML='';setTimeout(()=>modalInput.focus(),80)}
