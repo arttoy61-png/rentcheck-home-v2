@@ -1,6 +1,7 @@
 (()=>{
   const FEED_URL='https://arttoy61-png.github.io/rent-check/public_housing_notices.json';
   const DISMISS_KEY='rentcheck:new-housing-alert-dismissed-v2';
+  const LEGACY_DISMISS_KEY='rentcheck:new-housing-alert-dismissed-v1';
   const ROUTES={
     'SH:seq:309337':'/public-housing/sh-happy-housing-2026-2/',
     'SH:seq:309403':'/public-housing/sh-long-vacant-purchase-2026-2/'
@@ -47,7 +48,11 @@
   function dismissedIds(){
     try{
       const saved=JSON.parse(localStorage.getItem(DISMISS_KEY)||'null');
-      return new Set(Array.isArray(saved?.ids)?saved.ids.map(String):[]);
+      const ids=new Set(Array.isArray(saved?.ids)?saved.ids.map(String):[]);
+      const legacy=JSON.parse(localStorage.getItem(LEGACY_DISMISS_KEY)||'null');
+      const signature=String(legacy?.signature||'');
+      if(signature){signature.split('|').slice(1).filter(Boolean).forEach(id=>ids.add(String(id)))}
+      return ids;
     }catch(_){return new Set()}
   }
   function storeDismiss(items){
