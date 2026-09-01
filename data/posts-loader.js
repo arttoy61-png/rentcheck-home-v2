@@ -74,16 +74,16 @@
       title:'우장산힐스테이트 실거래 분석',
       date:'2026-08-29',
       url:'/analysis/ujangsan-hillstate/',
-      image:'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
-      alt:'아파트 단지가 보이는 주거지역'
+      image:'https://images.pexels.com/photos/37323647/pexels-photo-37323647.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
+      alt:'서울 고층 주거 건물 전경'
     },
     {
       category:'시세·실거래',
       title:'서울 아파트 거래가 많은 구와 비싼 구는 같은 곳일까?｜25개 구 실거래 비교',
       date:'2026-08-25',
       url:'/analysis/seoul-apartment-volume-price/',
-      image:'https://images.pexels.com/photos/32203742/pexels-photo-32203742.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
-      alt:'서울 도심과 주거 건물이 보이는 이미지'
+      image:'https://images.pexels.com/photos/27976252/pexels-photo-27976252.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop',
+      alt:'서울 한강과 아파트 주거타워 전경'
     },
     {
       category:'청년·공공주택',
