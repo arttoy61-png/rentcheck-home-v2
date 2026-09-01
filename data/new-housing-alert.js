@@ -1,6 +1,7 @@
 (()=>{
   const FEED_URL='https://arttoy61-png.github.io/rent-check/public_housing_notices.json';
-  const DISMISS_KEY='rentcheck:new-housing-alert-dismissed-v1';
+  const DISMISS_KEY='rentcheck:new-housing-alert-dismissed-v2';
+  const LEGACY_DISMISS_KEY='rentcheck:new-housing-alert-dismissed-v1';
   const ROUTES={
     'SH:seq:309337':'/public-housing/sh-happy-housing-2026-2/',
     'SH:seq:309403':'/public-housing/sh-long-vacant-purchase-2026-2/'
@@ -44,16 +45,26 @@
     const types=(item?.housing_types||[]).filter(Boolean).slice(0,2);
     return types.join('·');
   }
-  function signature(items,pubDate){return `${pubDate}|${items.map(x=>String(x.id||'')).sort().join('|')}`}
-  function dismissed(sig){
-    try{return JSON.parse(localStorage.getItem(DISMISS_KEY)||'null')?.signature===sig}catch(_){return false}
+  function dismissedIds(){
+    try{
+      const saved=JSON.parse(localStorage.getItem(DISMISS_KEY)||'null');
+      const ids=new Set(Array.isArray(saved?.ids)?saved.ids.map(String):[]);
+      const legacy=JSON.parse(localStorage.getItem(LEGACY_DISMISS_KEY)||'null');
+      const signature=String(legacy?.signature||'');
+      if(signature){signature.split('|').slice(1).filter(Boolean).forEach(id=>ids.add(String(id)))}
+      return ids;
+    }catch(_){return new Set()}
   }
-  function storeDismiss(sig){
-    try{localStorage.setItem(DISMISS_KEY,JSON.stringify({signature:sig,at:Date.now()}))}catch(_){}
+  function storeDismiss(items){
+    try{
+      const ids=dismissedIds();
+      items.forEach(item=>{if(item?.id)ids.add(String(item.id))});
+      localStorage.setItem(DISMISS_KEY,JSON.stringify({ids:[...ids],at:Date.now()}));
+    }catch(_){}
   }
   function close(root){root.hidden=true;document.documentElement.classList.remove('rc-new-alert-open')}
   function render(items,pubDate){
-    const sig=signature(items,pubDate);if(dismissed(sig))return;
+    if(!items.length)return;
     const root=document.createElement('div');root.className='rc-new-alert';root.hidden=true;root.id='rcNewHousingAlert';
     const shown=items.slice(0,3),extra=Math.max(0,items.length-shown.length);
     root.innerHTML=`<button class="rc-new-alert__backdrop" type="button" aria-label="신규공고 알림 닫기"></button><section class="rc-new-alert__sheet" role="dialog" aria-modal="true" aria-labelledby="rcNewHousingAlertTitle"><div class="rc-new-alert__handle"></div><header class="rc-new-alert__head"><p class="rc-new-alert__eyebrow"><span class="rc-new-alert__dot"></span>Rent Check 신규공고 <span class="rc-new-alert__count">${items.length}건</span></p><h2 id="rcNewHousingAlertTitle">새 임대주택 공고가 나왔어요</h2><p class="rc-new-alert__sub">신청은 공고일과 다를 수 있어요. 접수일을 먼저 확인하세요.</p><button class="rc-new-alert__close" type="button" aria-label="닫기">×</button></header><div class="rc-new-alert__body"><div class="rc-new-alert__list"></div>${extra?`<p class="rc-new-alert__more">외 ${extra}건은 모집공고 모음에서 확인할 수 있습니다.</p>`:''}</div><footer class="rc-new-alert__foot"><a class="rc-new-alert__all" href="/public-housing/">신규공고 ${items.length}건 모두 보기 →</a><button class="rc-new-alert__dismiss" type="button">이 신규공고는 다시 보지 않기</button></footer><p class="rc-new-alert__hint">공고 카드를 누르면 Rent Check 내부 페이지로 이동합니다.</p></section>`;
@@ -70,7 +81,7 @@
     });
     root.querySelector('.rc-new-alert__backdrop').addEventListener('click',()=>close(root));
     root.querySelector('.rc-new-alert__close').addEventListener('click',()=>close(root));
-    root.querySelector('.rc-new-alert__dismiss').addEventListener('click',()=>{storeDismiss(sig);close(root)});
+    root.querySelector('.rc-new-alert__dismiss').addEventListener('click',()=>{storeDismiss(items);close(root)});
     document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!root.hidden)close(root)});
     document.body.append(root);
     setTimeout(()=>{root.hidden=false;document.documentElement.classList.add('rc-new-alert-open')},550);
@@ -83,10 +94,25 @@
       const recruit=(data.items||[]).filter(isRecruitmentNotice).map(item=>({...item,_pub:isoDate(item.published_at)})).filter(item=>item._pub);
       if(!recruit.length)return;
       const latest=[...new Set(recruit.map(x=>x._pub))].sort().pop();
-      if(dayDiffFromToday(latest)<0)return;
-      const items=recruit.filter(x=>x._pub===latest).sort((a,b)=>String(a.agency||'').localeCompare(String(b.agency||''),'ko'));
+      const age=dayDiffFromToday(latest);
+      if(age<0||age>2)return;
+      const hidden=dismissedIds();
+      const items=recruit.filter(x=>x._pub===latest&&!hidden.has(String(x.id||''))).sort((a,b)=>String(a.agency||'').localeCompare(String(b.agency||''),'ko'));
       if(items.length)render(items,latest);
     }catch(_){/* 신규공고 알림 실패는 홈 이용을 막지 않는다. */}
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+
+(()=>{
+  function loadAskPopup(){
+    if(location.pathname!=='/'&&location.pathname!=='/index.html')return;
+    if(document.querySelector('script[data-rc-ask-popup]'))return;
+    const script=document.createElement('script');
+    script.src='/data/ask-popup.js?v=20260901-1';
+    script.defer=true;
+    script.dataset.rcAskPopup='1';
+    document.head.append(script);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadAskPopup,{once:true});else loadAskPopup();
 })();
