@@ -67,5 +67,13 @@ function render(){const list=notices.filter(match).slice(0,9);document.querySele
 async function load(){try{const r=await fetch(FEED+'?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error(r.status);const j=await r.json();notices=(j.items||[]).filter(x=>x&&x.title);document.querySelector('#feed').textContent=`실제 공고 ${notices.length}건 · ${String(j.generated_at||'').replace('T',' ')}`;render()}catch(e){document.querySelector('#feed').textContent='공고 피드 연결 확인 필요';document.querySelector('#summary').textContent='실시간 공고 피드를 불러오지 못했습니다.'}}
 function resize(){const el=document.querySelector('#scene'),w=el.clientWidth,h=el.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}window.addEventListener('resize',resize);resize();document.querySelectorAll('.q').forEach(b=>b.onclick=()=>{if(b.dataset.q==='무주택')b.classList.add('on');else b.classList.toggle('on');document.querySelector('#qualText').textContent=qualify().filter(v=>v!=='무주택').join('·')||'기본';render()});['region','type','state'].forEach(id=>document.querySelector('#'+id).onchange=render);(function loop(){requestAnimationFrame(loop);mapGroup.rotation.z=rz;mapGroup.rotation.x=rx;if(active)active.cap.rotation.y+=.04;renderer.render(scene,camera)})();load();
 </script>
+<script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "1a98778bd0f06a0";
+if(window.wcs) {
+wcs_do();
+}
+</script>
 </body>
 </html>
