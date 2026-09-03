@@ -1,41 +1,37 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-03T04:27:09+09:00",
-  "data_until": "2026-08-31",
+  "generated_at": "2026-09-03T10:12:25+09:00",
+  "data_until": "2026-09-02",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
     {
-      "dong": "등촌동",
-      "name": "등촌퀸즈포디엄삼익",
-      "area_m2": 45,
-      "amount_eok": 4.3,
-      "date": "2026.08.27",
-      "complex_id": "ed82c88e"
+      "dong": "마곡동",
+      "name": "마곡우림필유아파트",
+      "area_m2": 84,
+      "amount_eok": 10.85,
+      "date": "2026.08.31",
+      "complex_id": "5c31711e"
     },
     {
       "dong": "방화동",
-      "name": "방화메이빌",
-      "area_m2": 45,
-      "amount_eok": 5.0,
-      "date": "2026.08.25",
-      "complex_id": "932c18d0"
+      "name": "마곡서광(치현마을)",
+      "area_m2": 84,
+      "amount_eok": 7.6,
+      "date": "2026.08.30",
+      "complex_id": "0ccbb9a6"
     },
     {
-      "dong": "화곡동",
-      "name": "한양아이클래스",
-      "area_m2": 14,
-      "amount_eok": 0.6,
-      "date": "2026.08.24",
-      "complex_id": "9aa745e7"
+      "dong": "내발산동",
+      "name": "청솔숲속마을101동",
+      "area_m2": 81,
+      "amount_eok": 9.0,
+      "date": "2026.08.29",
+      "complex_id": "c3af4929"
     }
   ],
   "monthly_trend": [
-    {
-      "month": "2026-03",
-      "count": 356
-    },
     {
       "month": "2026-04",
       "count": 603
@@ -54,7 +50,11 @@
     },
     {
       "month": "2026-08",
-      "count": 148
+      "count": 182
+    },
+    {
+      "month": "2026-09",
+      "count": 0
     }
   ]
 }
