@@ -9,8 +9,8 @@ on:
       - ".github/workflows/update-home-stats.yml"
       - "scripts/make_home_stats.py"
   schedule:
-    - cron: "30 16 * * *" # 매일 01:30 KST
-    - cron: "0 2 * * *"   # 매일 11:00 KST - 당일/현재월 지연 신고 반영
+    - cron: "30 0 * * *" # 매일 09:30 KST - 오전 실거래 수집 이후
+    - cron: "0 7 * * *"  # 매일 16:00 KST - 오후 실거래 수집 이후
 
 permissions:
   contents: write
