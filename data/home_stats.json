@@ -1,11 +1,19 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-08T05:05:12+09:00",
-  "data_until": "2026-09-04",
+  "generated_at": "2026-09-08T08:50:57+09:00",
+  "data_until": "2026-09-07",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
+    {
+      "dong": "방화동",
+      "name": "삼도",
+      "area_m2": 84,
+      "amount_eok": 5.07,
+      "date": "2026.09.05",
+      "complex_id": "9ee78edd"
+    },
     {
       "dong": "화곡동",
       "name": "유림노르웨이숲(919-1)",
@@ -15,20 +23,12 @@
       "complex_id": "97fb4b67"
     },
     {
-      "dong": "마곡동",
-      "name": "마곡우림필유아파트",
+      "dong": "염창동",
+      "name": "벽산늘푸른",
       "area_m2": 84,
-      "amount_eok": 10.85,
-      "date": "2026.08.31",
-      "complex_id": "5c31711e"
-    },
-    {
-      "dong": "방화동",
-      "name": "마곡서광(치현마을)",
-      "area_m2": 84,
-      "amount_eok": 7.6,
-      "date": "2026.08.30",
-      "complex_id": "0ccbb9a6"
+      "amount_eok": 10.2,
+      "date": "2026.09.03",
+      "complex_id": "0f9907fc"
     }
   ],
   "monthly_trend": [
@@ -50,11 +50,11 @@
     },
     {
       "month": "2026-08",
-      "count": 193
+      "count": 206
     },
     {
       "month": "2026-09",
-      "count": 3
+      "count": 7
     }
   ]
 }
