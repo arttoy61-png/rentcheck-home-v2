@@ -47,7 +47,7 @@
 
   function featureGangseoPriceGuide(){
     const homeTrack=document.querySelector('#insightTrack');
-    if(!homeTrack||homeTrack.querySelector('a[href="/blog/gangseo-home-price/"]'))return;
+    if(!homeTrack||homeTrack.dataset.prerendered==='true'||homeTrack.querySelector('a[href="/blog/gangseo-home-price/"]'))return;
     const cards=[...homeTrack.querySelectorAll('.insight')];
     if(!cards.length)return;
     const card=document.createElement('a');
