@@ -1,0 +1,14 @@
+/* Evidence figures: used only by the five revised articles. */
+.evidence-meta{font-size:14px!important;color:#596273;margin:10px 0 24px!important}
+.evidence-figure{margin:28px 0;border:1px solid #d7dce3;background:#fff;overflow:hidden}
+.evidence-figure img{display:block;width:100%;height:auto}
+.evidence-figure figcaption{padding:12px 16px;border-top:1px solid #d7dce3;font-size:14px;line-height:1.75;color:#4b5563}
+.evidence-note{padding:16px 18px;border-left:4px solid #7a3fb0;background:#fff;margin:22px 0}
+.evidence-note p:last-child{margin-bottom:0}
+.evidence-table table{min-width:520px}
+.evidence-table caption{text-align:left;font-weight:700;color:#0d1f3c;margin-bottom:10px}
+.evidence-table th[scope=row]{background:#f5f7fa;color:#111;font-weight:600}
+.evidence-caption{font-size:14px!important;color:#596273}
+.evidence-faq h3{font-size:18px}
+.article sup{font-size:12px}.article sup a{text-decoration:none}
+@media(max-width:680px){.evidence-figure figcaption{font-size:13px;padding:10px 12px}}
