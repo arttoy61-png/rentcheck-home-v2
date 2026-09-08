@@ -24,11 +24,14 @@ threading.Thread(target=server.serve_forever,daemon=True).start()
 base=f'http://127.0.0.1:{server.server_port}'
 source_s=json.loads((ROOT/'.cache-home-stats/gangseo_apt_summary.json').read_text())
 source_d=json.loads((ROOT/'.cache-home-stats/gangseo_apt_detail.json').read_text())
+artifacts=ROOT/'test-artifacts/static-first'
+artifacts.mkdir(parents=True,exist_ok=True)
+metrics=[]
 checks=0
 try:
     with sync_playwright() as p:
         browser=p.chromium.launch()
-        for width in [390,1280]:
+        for width in [360,390,768,1280,1440]:
             for js in [False,True]:
                 for mode in (['offline','healthy','malformed'] if js else ['offline']):
                     ctx=browser.new_context(viewport={'width':width,'height':900},java_script_enabled=js)
@@ -52,9 +55,37 @@ try:
                     assert page.locator('#insightTrack .rc-insight-summary').count()==4
                     assert page.locator('#articleLibrary .article-row').count()>=9
                     assert page.locator('#articleLibrary .article-category').count()==4
+                    assert page.locator('#rentcheck-value,.rc-value-card').count()==0
+                    assert page.locator('#rc-featured-guide').count()==1
+                    guide=page.locator('#rc-featured-guide .rc-guide-link')
+                    assert guide.count()==1
+                    href=guide.get_attribute('href')
+                    assert href=='/blog/public-housing-application-documents/'
+                    assert (ROOT/href.lstrip('/')/'index.html').exists()
+                    assert guide.inner_text().strip().startswith('추천 가이드')
+                    bounds=guide.bounding_box()
+                    container=page.locator('#calculators > .container').bounding_box()
+                    assert 44<=bounds['height']<=88, bounds
+                    assert abs(bounds['x']-container['x'])<=1, (bounds,container)
+                    assert abs(bounds['width']-container['width'])<=1, (bounds,container)
+                    heading=page.locator('#calculators .section-head').bounding_box()
+                    gap=heading['y']-bounds['y']-bounds['height']
+                    assert abs(gap-(28 if width<=768 else 40))<=1, gap
+                    assert page.locator('#rc-featured-guide').evaluate('(el)=>el.previousElementSibling.id')=='services'
+                    assert page.locator('#rc-featured-guide').evaluate('(el)=>el.nextElementSibling.id')=='calculators'
+                    for selector in ['.rc-guide-label','.rc-guide-title','.rc-guide-arrow']:
+                        child=guide.locator(selector).bounding_box()
+                        assert child['x']>=bounds['x'] and child['x']+child['width']<=bounds['x']+bounds['width']+1
                     for href in page.locator('#insightTrack a').evaluate_all('(xs)=>xs.map(x=>x.getAttribute("href"))'):
                         assert (ROOT/href.lstrip('/')/'index.html').exists(),href
                     assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1')
+                    if js and mode=='healthy':
+                        question_controls=page.locator('a,button').evaluate_all('(xs)=>xs.filter(x=>/무엇이든|물어보세요/.test(x.textContent)).map(x=>({text:x.textContent.trim(),id:x.id,classes:x.className}))')
+                        record={'width':width,'guide_height':bounds['height'],'left':bounds['x'],'content_width':bounds['width'],'gap_to_calculators':gap,'question_controls':question_controls}
+                        metrics.append(record)
+                        print('LAYOUT '+json.dumps(record,ensure_ascii=False),flush=True)
+                        page.screenshot(path=str(artifacts/f'home-{width}.png'),full_page=True)
+                        guide.screenshot(path=str(artifacts/f'guide-{width}.png'))
                     checks+=1
                     page.goto(base+'/tools/jeonse-ratio/',wait_until='networkidle')
                     assert page.locator('.v2-content-guide').count()==1
@@ -84,9 +115,10 @@ try:
                         assert page.locator('#rc-recent-records table').count()==1
                     assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1')
                     checks+=1
-                    print(f'PASS width={width} js={js} network={mode}: three pages, no duplicate, no overflow')
+                    print(f'PASS width={width} js={js} network={mode}: three pages, aligned guide, no duplicate, no overflow',flush=True)
                     ctx.close()
         browser.close()
 finally:
+    (artifacts/'layout.json').write_text(json.dumps(metrics,ensure_ascii=False,indent=2),encoding='utf-8')
     server.shutdown()
 print(f'PASS {checks} page checks; calculator 70/80/50%; offline tabs; byte-identical repeat build')
