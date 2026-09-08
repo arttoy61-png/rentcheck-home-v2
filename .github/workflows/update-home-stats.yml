@@ -5,26 +5,36 @@ on:
   push:
     branches:
       - main
+      - 'content/static-first-*'
     paths:
-      - ".github/workflows/update-home-stats.yml"
-      - "scripts/make_home_stats.py"
-      - "scripts/wait_public_collection.py"
-      - "scripts/test_wait_public_collection.py"
+      - '.github/workflows/update-home-stats.yml'
+      - 'scripts/make_home_stats.py'
+      - 'scripts/wait_public_collection.py'
+      - 'scripts/test_wait_public_collection.py'
+      - 'scripts/render-core-content.mjs'
+      - 'scripts/analysis-snapshot-runtime.js'
+      - 'scripts/test_static_first.py'
+      - 'data/posts*.json'
+      - 'data/posts-loader.js'
+      - 'tools/tool-common.js'
   pull_request:
     paths:
-      - ".github/workflows/update-home-stats.yml"
-      - "scripts/wait_public_collection.py"
-      - "scripts/test_wait_public_collection.py"
+      - '.github/workflows/update-home-stats.yml'
+      - 'scripts/wait_public_collection.py'
+      - 'scripts/test_wait_public_collection.py'
+      - 'scripts/render-core-content.mjs'
+      - 'scripts/analysis-snapshot-runtime.js'
+      - 'scripts/test_static_first.py'
   schedule:
-    - cron: "0 21 * * *"  # 매일 06:00 KST - 05:15 수집 이후
-    - cron: "45 22 * * *" # 매일 07:45 KST - 07:15 보조 재수집 이후
-    - cron: "0 7 * * *"   # 매일 16:00 KST - 오후 실거래 수집 이후
+    - cron: '0 21 * * *'  # 매일 06:00 KST - 05:15 수집 이후
+    - cron: '45 22 * * *' # 매일 07:45 KST - 07:15 보조 재수집 이후
+    - cron: '0 7 * * *'   # 매일 16:00 KST - 오후 실거래 수집 이후
 
 permissions:
   contents: read
 
 concurrency:
-  group: rentcheck-home-v2-home-stats-${{ github.event_name == 'pull_request' && github.ref || 'main' }}
+  group: rentcheck-home-v2-home-stats-${{ github.event_name == 'pull_request' && github.ref || github.ref_name }}
   cancel-in-progress: false
 
 jobs:
@@ -35,8 +45,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.11'
       - run: python -m unittest discover -s scripts -p 'test_wait_public_collection.py' -v
+      - name: Check static renderer syntax
+        run: |
+          node --check scripts/render-core-content.mjs
+          node --check scripts/analysis-snapshot-runtime.js
+          python -m py_compile scripts/test_static_first.py
   update:
     needs: test
     if: github.event_name != 'pull_request'
@@ -47,11 +62,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ github.ref_name }}
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.11'
+
+      - name: Pre-render existing home lists and calculator guide
+        run: node scripts/render-core-content.mjs --content-only
 
       - name: Wait for completed public collection and pin snapshot
         id: source
@@ -65,18 +83,22 @@ jobs:
           SOURCE_SHA: ${{ steps.source.outputs.source_sha }}
         run: |
           mkdir -p .cache-home-stats
-          curl -fL --retry 3 --retry-delay 2 \
-            -H "Cache-Control: no-cache" \
-            -o .cache-home-stats/molit_kangseo.csv \
-            "https://raw.githubusercontent.com/arttoy61-png/rent-check/${SOURCE_SHA}/molit_kangseo.csv"
-          curl -fL --retry 3 --retry-delay 2 \
-            -H "Cache-Control: no-cache" \
-            -o .cache-home-stats/gangseo_apt_detail.json \
-            "https://raw.githubusercontent.com/arttoy61-png/rent-check/${SOURCE_SHA}/gangseo_apt_detail.json"
+          for NAME in molit_kangseo.csv gangseo_apt_detail.json gangseo_apt_summary.json; do
+            curl -fL --retry 3 --retry-delay 2 \
+              -H 'Cache-Control: no-cache' \
+              -o ".cache-home-stats/${NAME}" \
+              "https://raw.githubusercontent.com/arttoy61-png/rent-check/${SOURCE_SHA}/${NAME}"
+          done
 
       - name: Build home_stats
         if: steps.source.outputs.ready == 'true'
         run: python scripts/make_home_stats.py
+
+      - name: Pre-render the validated apartment analysis snapshot
+        if: steps.source.outputs.ready == 'true'
+        env:
+          SOURCE_SHA: ${{ steps.source.outputs.source_sha }}
+        run: node scripts/render-core-content.mjs
 
       - name: Validate home_stats
         if: steps.source.outputs.ready == 'true'
@@ -97,6 +119,17 @@ jobs:
               print(d.get('date'), d.get('dong'), d.get('name'), d.get('amount_eok'))
           PY
 
+      - name: Browser regression before publishing a preview branch
+        if: github.ref_name != 'main'
+        env:
+          SOURCE_SHA: ${{ steps.source.outputs.source_sha }}
+          SOURCE_READY: ${{ steps.source.outputs.ready }}
+        run: |
+          test "$SOURCE_READY" = true
+          pip install playwright
+          python -m playwright install --with-deps chromium
+          python scripts/test_static_first.py
+
       - name: Point V2 homepage at local stats
         if: steps.source.outputs.ready == 'true'
         run: |
@@ -113,12 +146,13 @@ jobs:
               raise SystemExit('home_stats fetch URL not found in app.js')
           PY
 
-      - name: Commit generated homepage data
-        if: steps.source.outputs.ready == 'true'
+      - name: Commit generated homepage data and static content
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@users.noreply.github.com"
-          git add data/home_stats.json app.js
-          git diff --cached --quiet || git commit -m "stats: daily home_stats"
+          git config user.name 'github-actions'
+          git config user.email 'github-actions@users.noreply.github.com'
+          git add data/home_stats.json app.js index.html \
+            data/posts-loader.js data/home-analysis-ui.js \
+            tools/jeonse-ratio/index.html analysis/ujangsan-hillstate/index.html
+          git diff --cached --quiet || git commit -m 'build: refresh home stats and initial HTML snapshots'
           git pull --rebase --autostash
           git push
