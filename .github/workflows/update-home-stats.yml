@@ -130,6 +130,15 @@ jobs:
           python -m playwright install --with-deps chromium
           python scripts/test_static_first.py
 
+      - name: Save preview layout screenshots
+        if: always() && github.ref_name != 'main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-first-layout-${{ github.run_id }}
+          path: test-artifacts/static-first/
+          retention-days: 3
+          if-no-files-found: ignore
+
       - name: Point V2 homepage at local stats
         if: steps.source.outputs.ready == 'true'
         run: |
