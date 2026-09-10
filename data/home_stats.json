@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-10T21:03:53+09:00",
-  "data_until": "2026-09-09",
+  "generated_at": "2026-09-11T07:51:58+09:00",
+  "data_until": "2026-09-10",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
@@ -16,19 +16,19 @@
     },
     {
       "dong": "방화동",
+      "name": "장미",
+      "area_m2": 40,
+      "amount_eok": 5.5,
+      "date": "2026.09.05",
+      "complex_id": "0906dfd0"
+    },
+    {
+      "dong": "방화동",
       "name": "삼도",
       "area_m2": 84,
       "amount_eok": 5.07,
       "date": "2026.09.05",
       "complex_id": "9ee78edd"
-    },
-    {
-      "dong": "화곡동",
-      "name": "유림노르웨이숲(919-1)",
-      "area_m2": 64,
-      "amount_eok": 5.5,
-      "date": "2026.09.03",
-      "complex_id": "97fb4b67"
     }
   ],
   "monthly_trend": [
@@ -50,11 +50,11 @@
     },
     {
       "month": "2026-08",
-      "count": 220
+      "count": 228
     },
     {
       "month": "2026-09",
-      "count": 10
+      "count": 14
     }
   ]
 }
