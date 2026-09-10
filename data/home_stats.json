@@ -1,11 +1,19 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-10T07:50:37+09:00",
-  "data_until": "2026-09-08",
+  "generated_at": "2026-09-10T09:33:53+09:00",
+  "data_until": "2026-09-09",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
+    {
+      "dong": "화곡동",
+      "name": "경동엠파이어스테이트",
+      "area_m2": 14,
+      "amount_eok": 0.85,
+      "date": "2026.09.08",
+      "complex_id": "0efcc58a"
+    },
     {
       "dong": "방화동",
       "name": "삼도",
@@ -21,14 +29,6 @@
       "amount_eok": 5.5,
       "date": "2026.09.03",
       "complex_id": "97fb4b67"
-    },
-    {
-      "dong": "염창동",
-      "name": "벽산늘푸른",
-      "area_m2": 84,
-      "amount_eok": 10.2,
-      "date": "2026.09.03",
-      "complex_id": "0f9907fc"
     }
   ],
   "monthly_trend": [
@@ -50,11 +50,11 @@
     },
     {
       "month": "2026-08",
-      "count": 218
+      "count": 220
     },
     {
       "month": "2026-09",
-      "count": 8
+      "count": 10
     }
   ]
 }
