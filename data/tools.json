@@ -24,7 +24,7 @@
     "title": "제51차 장기전세 내 순위 찾기",
     "description": "단지·면적을 고르면 제51차 SH 장기전세 일반공급 순위와 신청일을 확인합니다.",
     "url": "tools/longterm-jeonse-51/",
-    "status": "available",
+    "status": "campaign",
     "badge": "9월 접수",
     "icon": "51",
     "category": "public"
