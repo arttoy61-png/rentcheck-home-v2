@@ -16,6 +16,7 @@ on:
       - 'scripts/test_static_first.py'
       - 'data/posts*.json'
       - 'data/posts-loader.js'
+      - 'data/tools.json'
       - 'tools/tool-common.js'
   pull_request:
     paths:
@@ -70,6 +71,45 @@ jobs:
 
       - name: Pre-render existing home lists and calculator guide
         run: node scripts/render-core-content.mjs --content-only
+
+      - name: Sync available tool count in static home
+        run: |
+          python - <<'PY'
+          import json
+          import re
+          from pathlib import Path
+
+          hidden = {'auction', 'acquisition-tax'}
+          tools = json.loads(Path('data/tools.json').read_text(encoding='utf-8'))
+          count = sum(
+              1 for tool in tools
+              if tool.get('status') == 'available'
+              and isinstance(tool.get('url'), str)
+              and tool['url'].strip()
+              and tool.get('id') not in hidden
+          )
+
+          home_path = Path('index.html')
+          home = home_path.read_text(encoding='utf-8')
+          home, changed = re.subn(
+              r'(<strong id="availableToolCount">)\d+(</strong>)',
+              rf'\g<1>{count}\g<2>',
+              home,
+              count=1,
+          )
+          if changed != 1:
+              raise SystemExit('availableToolCount marker not found in index.html')
+          home_path.write_text(home, encoding='utf-8')
+
+          stats_path = Path('data/site_stats.json')
+          stats = json.loads(stats_path.read_text(encoding='utf-8'))
+          stats['available_tools'] = count
+          stats_path.write_text(
+              json.dumps(stats, ensure_ascii=False, separators=(',', ':')),
+              encoding='utf-8',
+          )
+          print(f'available tools synced: {count}')
+          PY
 
       - name: Wait for completed public collection and pin snapshot
         id: source
@@ -159,7 +199,7 @@ jobs:
         run: |
           git config user.name 'github-actions'
           git config user.email 'github-actions@users.noreply.github.com'
-          git add data/home_stats.json app.js index.html \
+          git add data/home_stats.json data/site_stats.json app.js index.html \
             data/posts-loader.js data/home-analysis-ui.js \
             tools/jeonse-ratio/index.html analysis/ujangsan-hillstate/index.html
           git diff --cached --quiet || git commit -m 'build: refresh home stats and initial HTML snapshots'
