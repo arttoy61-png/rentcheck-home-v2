@@ -24,11 +24,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Ensure Open Graph metadata on every HTML page
+      - name: Ensure Open Graph metadata and core schema on every HTML page
         shell: python
         run: |
           from pathlib import Path
           import html
+          import json
           import re
 
           SITE = 'https://rent-check.kr'
@@ -43,6 +44,8 @@ jobs:
           HOME_IMAGE = f'{SITE}/assets/share/rent-check-og-20260831-v2.png'
           HOME_OLD_DESC = '부동산 계산 · 실거래 · 분석을 한곳에서 확인하세요.'
           HOME_NEW_DESC = '부동산 실거래·계산·분석을 한 번에.'
+          ORG_ID = f'{SITE}/#organization'
+          WEBSITE_ID = f'{SITE}/#website'
 
           def find(pattern, text):
               m = re.search(pattern, text, flags=re.I | re.S)
@@ -60,6 +63,75 @@ jobs:
           def set_meta_content(text, prop, value):
               pattern = rf'(<meta\s+[^>]*property=["\']{re.escape(prop)}["\'][^>]*content=["\'])(.*?)(["\'][^>]*>)'
               return re.sub(pattern, lambda m: m.group(1) + value + m.group(3), text, flags=re.I)
+
+          def publisher_with_logo(existing=None):
+              data = dict(existing) if isinstance(existing, dict) else {}
+              data.setdefault('@type', 'Organization')
+              data.setdefault('@id', ORG_ID)
+              data.setdefault('name', 'Rent Check')
+              data.setdefault('url', SITE + '/')
+              data.setdefault('logo', {'@type': 'ImageObject', 'url': HOME_IMAGE})
+              return data
+
+          def enrich_jsonld(text, image_url):
+              pattern = re.compile(r'(<script\s+[^>]*type=["\']application/ld\+json["\'][^>]*>)(.*?)(</script>)', re.I | re.S)
+
+              def repl(match):
+                  raw = match.group(2).strip()
+                  try:
+                      data = json.loads(raw)
+                  except Exception:
+                      return match.group(0)
+
+                  changed = False
+                  nodes = []
+                  if isinstance(data, dict):
+                      nodes.append(data)
+                      graph = data.get('@graph')
+                      if isinstance(graph, list):
+                          nodes.extend(item for item in graph if isinstance(item, dict))
+
+                  for item in nodes:
+                      item_type = item.get('@type')
+                      types = set(item_type if isinstance(item_type, list) else [item_type])
+
+                      if 'Article' in types or 'NewsArticle' in types or 'BlogPosting' in types:
+                          if not item.get('image'):
+                              item['image'] = image_url
+                              changed = True
+                          before = json.dumps(item.get('publisher'), ensure_ascii=False, sort_keys=True) if item.get('publisher') is not None else ''
+                          item['publisher'] = publisher_with_logo(item.get('publisher'))
+                          after = json.dumps(item['publisher'], ensure_ascii=False, sort_keys=True)
+                          if before != after:
+                              changed = True
+
+                      if 'WebApplication' in types:
+                          if not item.get('image'):
+                              item['image'] = image_url
+                              changed = True
+                          if not item.get('provider'):
+                              item['provider'] = {'@id': ORG_ID}
+                              changed = True
+                          if not item.get('isPartOf'):
+                              item['isPartOf'] = {'@id': WEBSITE_ID}
+                              changed = True
+
+                      if 'Organization' in types and 'Rent Check' in str(item.get('name', '')):
+                          if not item.get('@id'):
+                              item['@id'] = ORG_ID
+                              changed = True
+                          if not item.get('url'):
+                              item['url'] = SITE + '/'
+                              changed = True
+                          if not item.get('logo'):
+                              item['logo'] = {'@type': 'ImageObject', 'url': HOME_IMAGE}
+                              changed = True
+
+                  if not changed:
+                      return match.group(0)
+                  return match.group(1) + json.dumps(data, ensure_ascii=False, separators=(',', ':')) + match.group(3)
+
+              return pattern.sub(repl, text)
 
           changed = []
           for path in sorted(Path('.').rglob('*.html')):
@@ -90,6 +162,8 @@ jobs:
               og_type = 'article' if is_article else 'website'
               existing_image = find(r'<meta\s+[^>]*property=["\']og:image["\'][^>]*content=["\'](.*?)["\'][^>]*>', text)
               image_url = existing_image or (HOME_IMAGE if path.as_posix() == 'index.html' else DEFAULT_IMAGE)
+
+              text = enrich_jsonld(text, image_url)
 
               tags = []
               if not has_meta(text, 'property', 'og:site_name'): tags.append('<meta property="og:site_name" content="Rent Check">')
