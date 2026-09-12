@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-12T07:54:15+09:00",
-  "data_until": "2026-09-10",
+  "generated_at": "2026-09-12T09:37:06+09:00",
+  "data_until": "2026-09-11",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
@@ -15,20 +15,20 @@
       "complex_id": "0efcc58a"
     },
     {
+      "dong": "마곡동",
+      "name": "마곡나루경남아파트",
+      "area_m2": 84,
+      "amount_eok": 10.5,
+      "date": "2026.09.05",
+      "complex_id": "612f4836"
+    },
+    {
       "dong": "방화동",
       "name": "장미",
       "area_m2": 40,
       "amount_eok": 5.5,
       "date": "2026.09.05",
       "complex_id": "0906dfd0"
-    },
-    {
-      "dong": "방화동",
-      "name": "삼도",
-      "area_m2": 84,
-      "amount_eok": 5.07,
-      "date": "2026.09.05",
-      "complex_id": "9ee78edd"
     }
   ],
   "monthly_trend": [
@@ -50,11 +50,11 @@
     },
     {
       "month": "2026-08",
-      "count": 228
+      "count": 233
     },
     {
       "month": "2026-09",
-      "count": 14
+      "count": 62
     }
   ]
 }
