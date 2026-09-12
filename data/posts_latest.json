@@ -1,9 +1,212 @@
 [
-  {"id":"2026-09-04-마곡13단지-힐스테이트마스터-84㎡-실거래","published_at":"2026-09-04","title":"마곡13단지 힐스테이트마스터 84㎡ 실거래｜최근 2년 가격은 어떻게 움직였을까","url":"https://blog.naver.com/spitoon61/224400826968","source":"naver","category":"시세·실거래","tools":["apt-widget"],"status":"published"},
-  {"id":"2026-09-03-내발산동-우장산힐스테이트-실거래","published_at":"2026-09-03","title":"내발산동 우장산힐스테이트 실거래｜2,198세대 대단지, 59㎡·84㎡ 매매와 전세는 얼마일까","url":"https://blog.naver.com/spitoon61/224399361092","source":"naver","category":"시세·실거래","tools":["apt-widget"],"status":"published"},
-  {"id":"2026-09-03-sh-장기미임대-매입임대-476호","published_at":"2026-09-03","title":"SH 장기미임대 매입임대 476호｜소득 130% 넘으면 신청 못할까요?","url":"https://blog.naver.com/spitoon61/224399339832","source":"naver","category":"청년·공공주택","tools":[],"status":"published"},
-  {"id":"2026-09-02-서울-lh-번동3-행복주택-오늘-17시-마감","published_at":"2026-09-02","title":"서울 LH 번동3 행복주택 오늘 17시 마감｜65명, 신청 완료 뒤 접수내역까지 확인하세요","url":"https://blog.naver.com/spitoon61/224398228049","source":"naver","category":"청년·공공주택","tools":[],"status":"published"},
-  {"id":"2026-09-01-lh-서울번동3-행복주택-16a-21a-44a-평면도","published_at":"2026-09-01","title":"LH 서울번동3 행복주택 16A·21A·44A 평면도｜대학생·청년·신혼부부 집 구조 이렇게 생겼습니다","url":"https://blog.naver.com/spitoon61/224397230061","source":"naver","category":"청년·공공주택","tools":[],"status":"published"},
-  {"id":"2026-09-01-8월-28일-sh-새-공고-2개","published_at":"2026-09-01","title":"8월 28일 SH 새 공고 2개｜행복주택 1,484호·장기미임대 476호, 나는 어디를 봐야 할까요?","url":"https://blog.naver.com/spitoon61/224396700517","source":"naver","category":"청년·공공주택","tools":[],"status":"published"},
-  {"id":"2026-09-01-강서구-8월-실거래-월결산","published_at":"2026-09-01","title":"강서구 8월 실거래 월결산｜화곡·마곡은 84㎡, 등촌·염창은 59㎡가 많이 거래됐습니다","url":"https://blog.naver.com/spitoon61/224396663888","source":"naver","category":"시세·실거래","tools":["apt-widget","rent-check"],"status":"published"}
+  {
+    "id": "2026-09-12-224408882017",
+    "published_at": "2026-09-12",
+    "title": "제51차 SH 장기전세 강서구 70명｜등촌·마곡 전부 예비입주자, 전세금 2.64억~5.99억",
+    "url": "https://blog.naver.com/spitoon61/224408882017",
+    "source": "naver",
+    "category": "청년·공공주택",
+    "tools": [],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-12-224408871639",
+    "published_at": "2026-09-12",
+    "title": "제51차 SH 장기전세 서초구 153호｜디에이치방배 133호·오티에르반포 20호, 이번엔 신규공급입니다",
+    "url": "https://blog.naver.com/spitoon61/224408871639",
+    "source": "naver",
+    "category": "청년·공공주택",
+    "tools": [],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-11-224408279448",
+    "published_at": "2026-09-11",
+    "title": "제51차 SH 장기전세 1,381세대｜나는 몇 순위? 9월 14일 접수 전 확인",
+    "url": "https://blog.naver.com/spitoon61/224408279448",
+    "source": "naver",
+    "category": "청년·공공주택",
+    "tools": [],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-11-224407641110",
+    "published_at": "2026-09-11",
+    "title": "SH 행복주택 오늘 17시 마감｜중복신청·신청실수, 지금 무엇부터 확인할까",
+    "url": "https://blog.naver.com/spitoon61/224407641110",
+    "source": "naver",
+    "category": "청년·공공주택",
+    "tools": [],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-09-224404885106",
+    "published_at": "2026-09-09",
+    "title": "월세 중도해지, 3개월 전에 말하면 끝일까요?｜처음 계약과 갱신계약의 차이",
+    "url": "https://blog.naver.com/spitoon61/224404885106",
+    "source": "naver",
+    "category": "계약·가이드",
+    "tools": [],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-09-224404882178",
+    "published_at": "2026-09-09",
+    "title": "경매 낙찰 후 대출이 안 나오면?｜잔금 못 내면 입찰보증금 돌려받을까",
+    "url": "https://blog.naver.com/spitoon61/224404882178",
+    "source": "naver",
+    "category": "계약·가이드",
+    "tools": [],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-09-224404890378",
+    "published_at": "2026-09-09",
+    "title": "SH 행복주택 오늘 10시 신청｜서류도 함께 내야 하나요?",
+    "url": "https://blog.naver.com/spitoon61/224404890378",
+    "source": "naver",
+    "category": "청년·공공주택",
+    "tools": [],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-08-224404193985",
+    "published_at": "2026-09-08",
+    "title": "가양동 모듈러 행복주택 16㎡ 청년 13명｜보증금 3,536만~3,744만원·월 15만~16만원",
+    "url": "https://blog.naver.com/spitoon61/224404193985",
+    "source": "naver",
+    "category": "청년·공공주택",
+    "tools": [],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-08-224404192270",
+    "published_at": "2026-09-08",
+    "title": "e편한세상 염창 행복주택 51㎡ 18명｜신혼부부, 실제 공급 8호·보증금 1억4,160만원",
+    "url": "https://blog.naver.com/spitoon61/224404192270",
+    "source": "naver",
+    "category": "청년·공공주택",
+    "tools": [],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-08-224404187700",
+    "published_at": "2026-09-08",
+    "title": "방화스카이포레 행복주택 40명 모집｜청년·신혼부부, 지금 공급은 9호입니다",
+    "url": "https://blog.naver.com/spitoon61/224404187700",
+    "source": "naver",
+    "category": "청년·공공주택",
+    "tools": [],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-07-224403495564",
+    "published_at": "2026-09-07",
+    "title": "SH 행복주택 강서구 71명 모집｜9월 9일 접수, 가양·방화·염창 어디에 넣을까?",
+    "url": "https://blog.naver.com/spitoon61/224403495564",
+    "source": "naver",
+    "category": "청년·공공주택",
+    "tools": [],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-07-224403641260",
+    "published_at": "2026-09-07",
+    "title": "SH 미리내집 오늘 접수 시작｜강서구 마곡엠밸리 10개 단지 32호, 전세금 얼마?",
+    "url": "https://blog.naver.com/spitoon61/224403641260",
+    "source": "naver",
+    "category": "청년·공공주택",
+    "tools": [],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-07-224403493498",
+    "published_at": "2026-09-07",
+    "title": "제8차 미리내집 오늘 접수 시작｜496세대 어디에 나오고, 신청 전 무엇부터 볼까",
+    "url": "https://blog.naver.com/spitoon61/224403493498",
+    "source": "naver",
+    "category": "청년·공공주택",
+    "tools": [],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-05-224401941538",
+    "published_at": "2026-09-05",
+    "title": "부모님이 집 있어도 LH 청년매입임대 신청할 수 있을까요?｜무주택 기준 쉽게 보기",
+    "url": "https://blog.naver.com/spitoon61/224401941538",
+    "source": "naver",
+    "category": "청년·공공주택",
+    "tools": [],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-04-224400826968",
+    "published_at": "2026-09-04",
+    "title": "마곡13단지 힐스테이트마스터 84㎡ 실거래｜최근 2년 가격은 어떻게 움직였을까",
+    "url": "https://blog.naver.com/spitoon61/224400826968",
+    "source": "naver",
+    "category": "시세·실거래",
+    "tools": ["apt-widget"],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-03-224399361092",
+    "published_at": "2026-09-03",
+    "title": "내발산동 우장산힐스테이트 실거래｜2,198세대 대단지, 59㎡·84㎡ 매매와 전세는 얼마일까",
+    "url": "https://blog.naver.com/spitoon61/224399361092",
+    "source": "naver",
+    "category": "시세·실거래",
+    "tools": ["apt-widget"],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-03-224399339832",
+    "published_at": "2026-09-03",
+    "title": "SH 장기미임대 매입임대 476호｜소득 130% 넘으면 신청 못할까요?",
+    "url": "https://blog.naver.com/spitoon61/224399339832",
+    "source": "naver",
+    "category": "청년·공공주택",
+    "tools": [],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-02-224398228049",
+    "published_at": "2026-09-02",
+    "title": "서울 LH 번동3 행복주택 오늘 17시 마감｜65명, 신청 완료 뒤 접수내역까지 확인하세요",
+    "url": "https://blog.naver.com/spitoon61/224398228049",
+    "source": "naver",
+    "category": "청년·공공주택",
+    "tools": [],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-01-224397230061",
+    "published_at": "2026-09-01",
+    "title": "LH 서울번동3 행복주택 16A·21A·44A 평면도｜대학생·청년·신혼부부 집 구조 이렇게 생겼습니다",
+    "url": "https://blog.naver.com/spitoon61/224397230061",
+    "source": "naver",
+    "category": "청년·공공주택",
+    "tools": [],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-01-224396700517",
+    "published_at": "2026-09-01",
+    "title": "8월 28일 SH 새 공고 2개｜행복주택 1,484호·장기미임대 476호, 나는 어디를 봐야 할까요?",
+    "url": "https://blog.naver.com/spitoon61/224396700517",
+    "source": "naver",
+    "category": "청년·공공주택",
+    "tools": [],
+    "status": "published"
+  },
+  {
+    "id": "2026-09-01-224396663888",
+    "published_at": "2026-09-01",
+    "title": "강서구 8월 실거래 월결산｜화곡·마곡은 84㎡, 등촌·염창은 59㎡가 많이 거래됐습니다",
+    "url": "https://blog.naver.com/spitoon61/224396663888",
+    "source": "naver",
+    "category": "시세·실거래",
+    "tools": ["apt-widget", "rent-check"],
+    "status": "published"
+  }
 ]
