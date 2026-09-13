@@ -9,6 +9,7 @@ from pathlib import Path
 SOURCE = Path('.cache-home-stats/public_housing_notices.json')
 OUT_ROOT = Path('public-housing/notices')
 ROUTES_PATH = Path('public-housing/routes.json')
+STYLE_VERSION = '20260913-2'
 
 CURATED_ROUTES = {
     'SH:seq:309337': '/public-housing/sh-happy-housing-2026-2/',
@@ -61,6 +62,71 @@ def is_recruitment(item: dict) -> bool:
     return bool(RECRUIT_MARKERS.search(title))
 
 
+def normalize_duplicate_title(value: object) -> str:
+    title = clean_title(value)
+    title = re.sub(r'^\(수정\)\s*', '', title)
+    title = re.sub(r'^매입(?=20\d{2}년)', '', title)
+    return re.sub(r'\s+', '', title).lower()
+
+
+def duplicate_key(item: dict) -> str:
+    published = parse_date(item.get('published_at'))
+    published_key = published.isoformat() if published else ''
+    return f'{published_key}|{normalize_duplicate_title(item.get("title"))}'
+
+
+def direct_official_url(item: dict) -> bool:
+    url = str(item.get('url') or '')
+    return bool(
+        re.match(r'^https://', url, re.I)
+        and (
+            ('i-sh.co.kr' in url and ('/view.do' in url or re.search(r'[?&]seq=\d+', url)))
+            or ('apply.lh.or.kr' in url and 'selectWrtancInfo.do' in url)
+            or ('housing.seoul.go.kr/site/main/board/notice/' in url)
+        )
+    )
+
+
+def prefer_item(current: dict, candidate: dict) -> dict:
+    def score(item: dict) -> tuple[int, int, int, int, int]:
+        item_id = str(item.get('id') or '')
+        return (
+            1 if item_id in CURATED_ROUTES else 0,
+            1 if direct_official_url(item) else 0,
+            1 if re.match(r'^SH:seq:', item_id, re.I) else 0,
+            1 if parse_date(item.get('application_start')) else 0,
+            1 if parse_date(item.get('deadline')) else 0,
+        )
+
+    return candidate if score(candidate) > score(current) else current
+
+
+def dedupe_recruitments(items: list[dict]) -> tuple[list[dict], dict[str, list[str]]]:
+    groups: dict[str, dict] = {}
+    members: dict[str, list[str]] = {}
+    order: list[str] = []
+
+    for item in items:
+        key = duplicate_key(item)
+        item_id = str(item.get('id') or '')
+        if key not in groups:
+            groups[key] = item
+            members[key] = [item_id] if item_id else []
+            order.append(key)
+            continue
+        groups[key] = prefer_item(groups[key], item)
+        if item_id and item_id not in members[key]:
+            members[key].append(item_id)
+
+    canonical_items = [groups[key] for key in order]
+    alias_map = {
+        str(groups[key].get('id') or ''): members[key]
+        for key in order
+        if str(groups[key].get('id') or '')
+    }
+    return canonical_items, alias_map
+
+
 def notice_slug(item: dict) -> str:
     raw = str(item.get('id') or '').strip().lower()
     patterns = (
@@ -77,23 +143,20 @@ def notice_slug(item: dict) -> str:
     return safe or 'notice'
 
 
-def route_for(item: dict) -> str:
-    item_id = str(item.get('id') or '')
-    if item_id in CURATED_ROUTES:
-        return CURATED_ROUTES[item_id]
+def natural_route(item: dict) -> str:
     return f'/public-housing/notices/{notice_slug(item)}/'
 
 
-def direct_official_url(item: dict) -> bool:
-    url = str(item.get('url') or '')
-    return bool(
-        re.match(r'^https://', url, re.I)
-        and (
-            ('i-sh.co.kr' in url and ('/view.do' in url or re.search(r'[?&]seq=\d+', url)))
-            or ('apply.lh.or.kr' in url and 'selectWrtancInfo.do' in url)
-            or ('housing.seoul.go.kr/site/main/board/notice/' in url)
-        )
-    )
+def canonical_route(item: dict, member_ids: list[str]) -> str:
+    curated = {CURATED_ROUTES[item_id] for item_id in member_ids if item_id in CURATED_ROUTES}
+    if len(curated) > 1:
+        raise SystemExit(f'conflicting curated routes for duplicate notice: {member_ids}')
+    if curated:
+        return next(iter(curated))
+    item_id = str(item.get('id') or '')
+    if item_id in CURATED_ROUTES:
+        return CURATED_ROUTES[item_id]
+    return natural_route(item)
 
 
 def state(item: dict) -> str:
@@ -227,7 +290,7 @@ def render_page(item: dict, route: str) -> str:
   <title>{esc(title)} | Rent Check</title>
   <meta name="description" content="{esc(agency)} {esc(title)}의 공고일, 신청기간, 대상 분류와 지금 확인할 일을 Rent Check에서 정리합니다.">
   <link rel="canonical" href="{esc(canonical)}">
-  <link rel="stylesheet" href="/public-housing/public-housing.css?v=20260829-1">
+  <link rel="stylesheet" href="/public-housing/public-housing.css?v={STYLE_VERSION}">
   {schema}
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MPRR3J99YQ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag('js',new Date());gtag('config','G-MPRR3J99YQ');</script>
   <meta property="og:site_name" content="Rent Check"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="신청기간부터 먼저 확인하는 Rent Check 임대주택 공고 안내"><meta property="og:url" content="{esc(canonical)}"><meta property="og:type" content="article"><meta property="og:image" content="https://rent-check.kr/assets/share/rent-check-og-v2.png?v=20260829-2">
@@ -279,35 +342,82 @@ def render_page(item: dict, route: str) -> str:
 '''
 
 
+def render_redirect(route: str) -> str:
+    canonical = f'https://rent-check.kr{route}'
+    return f'''<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="{esc(canonical)}">
+  <meta http-equiv="refresh" content="0;url={esc(route)}">
+  <title>모집공고 안내 이동 | Rent Check</title>
+  <script>location.replace({json.dumps(route, ensure_ascii=False)});</script>
+</head>
+<body><p><a href="{esc(route)}">같은 모집공고의 Rent Check 안내글로 이동 →</a></p></body>
+</html>
+'''
+
+
 def main() -> None:
     if not SOURCE.exists():
         raise SystemExit(f'missing source feed: {SOURCE}')
     data = json.loads(SOURCE.read_text(encoding='utf-8'))
-    items = [item for item in data.get('items', []) if isinstance(item, dict) and is_recruitment(item)]
+    raw_items = [item for item in data.get('items', []) if isinstance(item, dict) and is_recruitment(item)]
+    items, alias_map = dedupe_recruitments(raw_items)
     OUT_ROOT.mkdir(parents=True, exist_ok=True)
 
     routes = dict(CURATED_ROUTES)
     generated = 0
+    redirects = 0
+    duplicate_groups = []
+
     for item in items:
-        item_id = str(item.get('id') or '')
-        route = route_for(item)
-        routes[item_id] = route
-        if item_id in CURATED_ROUTES:
-            continue
-        folder = OUT_ROOT / notice_slug(item)
-        folder.mkdir(parents=True, exist_ok=True)
-        (folder / 'index.html').write_text(render_page(item, route), encoding='utf-8')
-        generated += 1
+        canonical_id = str(item.get('id') or '')
+        member_ids = alias_map.get(canonical_id, [canonical_id])
+        route = canonical_route(item, member_ids)
+        for item_id in member_ids:
+            routes[item_id] = route
+
+        if len(member_ids) > 1:
+            duplicate_groups.append({'canonical_id': canonical_id, 'ids': member_ids, 'route': route})
+
+        if route not in CURATED_ROUTES.values():
+            folder = OUT_ROOT / notice_slug(item)
+            folder.mkdir(parents=True, exist_ok=True)
+            (folder / 'index.html').write_text(render_page(item, route), encoding='utf-8')
+            generated += 1
+
+        for alias_id in member_ids:
+            if alias_id == canonical_id or alias_id in CURATED_ROUTES:
+                continue
+            alias_item = {'id': alias_id}
+            alias_route = natural_route(alias_item)
+            if alias_route == route:
+                continue
+            alias_folder = OUT_ROOT / notice_slug(alias_item)
+            alias_folder.mkdir(parents=True, exist_ok=True)
+            (alias_folder / 'index.html').write_text(render_redirect(route), encoding='utf-8')
+            redirects += 1
 
     payload = {
         'generated_at': datetime.now().astimezone().isoformat(timespec='seconds'),
         'source_generated_at': data.get('generated_at', ''),
+        'source_recruitment_count': len(raw_items),
         'recruitment_count': len(items),
+        'duplicate_count': len(raw_items) - len(items),
         'generated_count': generated,
+        'redirect_count': redirects,
+        'duplicate_groups': duplicate_groups,
         'routes': routes,
     }
     ROUTES_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    print(f'public housing recruitment pages: {len(items)} notices, {generated} generated, {len(items)-generated} curated')
+    print(
+        'public housing recruitment pages: '
+        f'{len(items)} unique notices from {len(raw_items)} source items, '
+        f'{generated} generated, {redirects} duplicate redirects'
+    )
 
 
 if __name__ == '__main__':
