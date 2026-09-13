@@ -33,7 +33,7 @@ body{background:#fff;color:#172033;line-height:1.65;overflow-x:hidden}
 .housing-detail{max-width:760px;margin:0 auto;padding:30px 20px 64px;overflow-x:hidden}
 .housing-detail article,.housing-hero,.housing-detail .section,.housing-detail .grid,.housing-detail .card{min-width:0;max-width:100%}
 .housing-detail img,.housing-detail video,.housing-detail iframe{max-width:100%;height:auto}
-.housing-detail table{width:100%!important;max-width:100%;table-layout:fixed}
+.housing-detail table{width:100%!important;max-width:100%;min-width:0!important;table-layout:fixed}
 .housing-detail th,.housing-detail td{min-width:0;max-width:100%;overflow-wrap:anywhere;word-break:keep-all}
 .housing-back{display:inline-block;margin-bottom:18px;color:#596273;text-decoration:none;font-size:13px;font-weight:700}
 .housing-hero,.housing-detail .section,.housing-detail .card{border:1px solid #dfe5ec;background:#fff}
