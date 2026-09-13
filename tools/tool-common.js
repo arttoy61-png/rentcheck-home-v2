@@ -266,6 +266,40 @@
     observer.observe(body,{childList:true,subtree:true});
   }
 
+  function prioritizeInternalResultLinks(body,activeTool,root){
+    const makeInternal=(link,href,label,target)=>{
+      if(!link)return;
+      link.setAttribute('href',join(root,href));
+      link.textContent=label;
+      link.removeAttribute('target');
+      link.removeAttribute('rel');
+      link.removeAttribute('onclick');
+      link.addEventListener('click',()=>{try{window.gtag?.('event','cta_click',{target})}catch(_){ }});
+    };
+
+    if(activeTool==='youth-score'){
+      const primary=body.querySelector('#ctaMain');
+      const hint=primary?.nextElementSibling;
+      makeInternal(primary,'blog/youth-rank-check/','내 순위 기준 다시 확인하기 →','internal_youth_rank');
+      if(hint&&(hint.textContent||'').includes('새 창'))hint.textContent='Rent Check 내부 가이드에서 순위 기준을 다시 확인합니다.';
+      if(primary&&!body.querySelector('.v2-youth-result-links')){
+        const nav=document.createElement('div');
+        nav.className='m-links v2-youth-result-links';
+        nav.innerHTML=`<a href="${join(root,'blog/public-housing-application-documents/')}">신청 후 서류 순서 →</a><a href="${join(root,'public-housing/')}">LH·SH 최신 공고 →</a>`;
+        primary.insertAdjacentElement('afterend',nav);
+      }
+    }
+
+    if(activeTool==='redevelopment'){
+      const rights=body.querySelector('.notice a[href*="blog.naver.com"]');
+      makeInternal(rights,'blog/redevelopment-rights/','입주권·현금청산 체크 가이드 보기 →','internal_redevelopment_rights');
+      const primary=body.querySelector('.cta-area .cta.primary');
+      makeInternal(primary,'blog/redevelopment-contribution/','📖 Rent Check 분담금 계산 가이드 보기 →','internal_redevelopment_contribution');
+      const secondary=body.querySelector('.cta-area .cta.sub');
+      makeInternal(secondary,'blog/redevelopment-rights/','권리산정기준일·입주권 체크 →','internal_redevelopment_rights');
+    }
+  }
+
   function fixAnalysisLinks(){
     document.querySelectorAll('a[href$="#article-library"]').forEach(a=>{
       if((a.textContent||'').includes('분석 글'))a.setAttribute('href','https://rent-check.kr/#article-library');
@@ -282,6 +316,7 @@
     normalizeHero(body,activeTool);
     ensureStructuredData(activeTool);
     fixAnalysisLinks();
+    prioritizeInternalResultLinks(body,activeTool,root);
     addNumericClearButtons(body);
 
     if(!document.querySelector('.v2-toolbar')){
