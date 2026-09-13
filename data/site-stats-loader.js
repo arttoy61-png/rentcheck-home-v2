@@ -1,14 +1,34 @@
 (()=>{
+  function markExternalPublishing(){
+    const section=document.getElementById('article-library');
+    if(section){
+      const kicker=section.querySelector('.section-head .kicker');
+      const heading=section.querySelector('.section-head h2');
+      const desc=section.querySelector('.section-head p:not(.kicker)');
+      if(kicker)kicker.textContent='외부 발행';
+      if(heading)heading.textContent='네이버 외부 발행 글';
+      if(desc)desc.textContent='Rent Check 자체 분석은 위에서 먼저 보여주고, 이 목록은 네이버 블로그에 외부 발행한 글입니다.';
+    }
+    const published=document.getElementById('publishedCount');
+    const label=published?.closest('div')?.querySelector('span');
+    if(label)label.textContent='네이버 외부 발행';
+  }
+
   async function applyStats(){
+    markExternalPublishing();
     try{
-      const res=await fetch('./data/site_stats.json?v=20260824-1',{cache:'no-store'});
+      const res=await fetch('./data/site_stats.json?v=20260913-1',{cache:'no-store'});
       if(!res.ok)return;
       const stats=await res.json();
+      const published=document.getElementById('publishedCount');
       const tool=document.getElementById('availableToolCount');
+      if(published&&Number.isFinite(Number(stats.published_posts)))published.textContent=String(stats.published_posts);
       if(tool&&Number.isFinite(Number(stats.available_tools)))tool.textContent=String(stats.available_tools);
     }catch(_){/* Keep the page usable even if summary stats fail to load. */}
   }
 
   applyStats();
-  setTimeout(applyStats,1200);
+  setTimeout(applyStats,400);
+  setTimeout(applyStats,1400);
+  setTimeout(applyStats,3000);
 })();
