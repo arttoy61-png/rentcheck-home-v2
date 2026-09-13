@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-09-13T03:21:37+00:00",
+  "source_generated_at": "2026-09-13T09:46:24",
+  "recruitment_count": 20,
+  "generated_count": 17,
+  "routes": {
+    "SH:seq:309337": "/public-housing/sh-happy-housing-2026-2/",
+    "SH:seq:309403": "/public-housing/sh-long-vacant-purchase-2026-2/",
+    "SH:seq:309467": "/public-housing/sh-longterm-jeonse-51/",
+    "SH:seq:310107": "/public-housing/sh-long-vacant-purchase-2026-2/",
+    "SHYOUTH:f55e60eb7f854e40f169": "/public-housing/notices/shyouth-f55e60eb7f854e40f169/",
+    "SH:seq:310041": "/public-housing/notices/sh-310041/",
+    "SHYOUTH:fa01df725a9d3ceaf32c": "/public-housing/notices/shyouth-fa01df725a9d3ceaf32c/",
+    "SHYOUTH:807ba55b1308f4dedf26": "/public-housing/notices/shyouth-807ba55b1308f4dedf26/",
+    "LH:panId:2015122300019657": "/public-housing/notices/lh-2015122300019657/",
+    "SH:seq:309802": "/public-housing/notices/sh-309802/",
+    "SH:seq:308971": "/public-housing/notices/sh-308971/",
+    "SHYOUTH:834e79674e01df2485b3": "/public-housing/notices/shyouth-834e79674e01df2485b3/",
+    "LH:panId:2015122300020605": "/public-housing/notices/lh-2015122300020605/",
+    "SHYOUTH:a33e18d6d2d8ccdc889a": "/public-housing/notices/shyouth-a33e18d6d2d8ccdc889a/",
+    "SH:seq:308446": "/public-housing/notices/sh-308446/",
+    "LH:panId:2015122300020326": "/public-housing/notices/lh-2015122300020326/",
+    "LH:panId:2015122300019941": "/public-housing/notices/lh-2015122300019941/",
+    "LH:panId:2015122300019968": "/public-housing/notices/lh-2015122300019968/",
+    "LH:panId:2015122300019890": "/public-housing/notices/lh-2015122300019890/",
+    "LH:panId:2015122300018941": "/public-housing/notices/lh-2015122300018941/",
+    "LH:panId:2015122300019045": "/public-housing/notices/lh-2015122300019045/"
+  }
+}
