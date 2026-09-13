@@ -7,7 +7,7 @@
   <meta name="description" content="LH·SH 임대주택 모집공고를 공고가 올라온 날짜 최신순으로 모아 신청기간, 대상, 자격, 서류 일정을 확인합니다.">
   <title>LH·SH 임대주택 모집공고 | Rent Check</title>
   <link rel="canonical" href="https://rent-check.kr/public-housing/">
-  <link rel="stylesheet" href="/public-housing/public-housing.css?v=20260829-1">
+  <link rel="stylesheet" href="/public-housing/public-housing.css?v=20260913-2">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MPRR3J99YQ"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MPRR3J99YQ');</script>
   <meta property="og:site_name" content="Rent Check">
@@ -69,6 +69,31 @@
     if(/^https:\/\//i.test(url)&&/housing\.seoul\.go\.kr\/site\/main\/board\/notice\//i.test(url))return url;
     return'';
   };
+  const duplicateKey=item=>{
+    const title=cleanTitle(item&&item.title)
+      .replace(/^\(수정\)\s*/,'')
+      .replace(/^매입(?=20\d{2}년)/,'')
+      .replace(/\s+/g,'')
+      .toLowerCase();
+    return `${noticeDate(item)}|${title}`;
+  };
+  const preferNotice=(current,candidate)=>{
+    const currentOfficial=!!directOfficialUrl(current),candidateOfficial=!!directOfficialUrl(candidate);
+    if(currentOfficial!==candidateOfficial)return candidateOfficial?candidate:current;
+    const currentDirect=/^SH:seq:/i.test(String(current&&current.id||''));
+    const candidateDirect=/^SH:seq:/i.test(String(candidate&&candidate.id||''));
+    if(currentDirect!==candidateDirect)return candidateDirect?candidate:current;
+    return current;
+  };
+  const dedupeNotices=items=>{
+    const seen=new Map();
+    items.forEach(item=>{
+      const key=duplicateKey(item);
+      if(!seen.has(key)){seen.set(key,item);return}
+      seen.set(key,preferNotice(seen.get(key),item));
+    });
+    return [...seen.values()];
+  };
   const status=item=>{
     const now=dayStart(new Date()),s=parse(item.application_start),e=parse(item.deadline),sd=s?dayStart(s):null,ed=e?dayStart(e):null;
     if(ed&&ed<now)return'접수 마감';
@@ -107,7 +132,7 @@
 
   function renderNotices(items){
     const box=document.querySelector('#housingLatest');if(!box)return;
-    const notices=sortNotices((items||[]).filter(isRecruitment));
+    const notices=sortNotices(dedupeNotices((items||[]).filter(isRecruitment)));
     if(!notices.length){box.innerHTML='<p class="error">현재 표시할 모집공고를 확인 중입니다.</p>';return}
     box.innerHTML=`<p style="margin:0 0 2px;color:#667085;font-size:13px">현재 모집공고 ${notices.length}건 · 공고가 올라온 날짜 최신순입니다.</p>`+notices.map(item=>{
       const published=noticeDate(item),period=scheduleText(item),href=articleUrl(item);
