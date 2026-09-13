@@ -14,6 +14,7 @@ on:
       - 'scripts/render-core-content.mjs'
       - 'scripts/analysis-snapshot-runtime.js'
       - 'scripts/test_static_first.py'
+      - 'scripts/generate-public-housing-pages.py'
       - 'data/posts*.json'
       - 'data/posts-loader.js'
       - 'data/tools.json'
@@ -26,6 +27,7 @@ on:
       - 'scripts/render-core-content.mjs'
       - 'scripts/analysis-snapshot-runtime.js'
       - 'scripts/test_static_first.py'
+      - 'scripts/generate-public-housing-pages.py'
   schedule:
     - cron: '0 21 * * *'  # 매일 06:00 KST - 05:15 수집 이후
     - cron: '45 22 * * *' # 매일 07:45 KST - 07:15 보조 재수집 이후
@@ -52,7 +54,7 @@ jobs:
         run: |
           node --check scripts/render-core-content.mjs
           node --check scripts/analysis-snapshot-runtime.js
-          python -m py_compile scripts/test_static_first.py
+          python -m py_compile scripts/test_static_first.py scripts/generate-public-housing-pages.py
   update:
     needs: test
     if: github.event_name != 'pull_request'
@@ -123,12 +125,16 @@ jobs:
           SOURCE_SHA: ${{ steps.source.outputs.source_sha }}
         run: |
           mkdir -p .cache-home-stats
-          for NAME in molit_kangseo.csv gangseo_apt_detail.json gangseo_apt_summary.json; do
+          for NAME in molit_kangseo.csv gangseo_apt_detail.json gangseo_apt_summary.json public_housing_notices.json; do
             curl -fL --retry 3 --retry-delay 2 \
               -H 'Cache-Control: no-cache' \
               -o ".cache-home-stats/${NAME}" \
               "https://raw.githubusercontent.com/arttoy61-png/rent-check/${SOURCE_SHA}/${NAME}"
           done
+
+      - name: Generate public housing notice articles
+        if: steps.source.outputs.ready == 'true'
+        run: python scripts/generate-public-housing-pages.py
 
       - name: Build home_stats
         if: steps.source.outputs.ready == 'true'
@@ -144,6 +150,7 @@ jobs:
         if: steps.source.outputs.ready == 'true'
         run: |
           python -m json.tool data/home_stats.json >/dev/null
+          python -m json.tool public-housing/routes.json >/dev/null
           python - <<'PY'
           import json
           from pathlib import Path
@@ -153,8 +160,11 @@ jobs:
           assert isinstance(p.get('recent_deals'), list)
           assert len(p['recent_deals']) <= 3
           assert isinstance(p.get('monthly_trend'), list) and len(p['monthly_trend']) == 6
+          routes = json.loads(Path('public-housing/routes.json').read_text(encoding='utf-8'))
+          assert routes.get('recruitment_count', 0) >= routes.get('generated_count', 0)
           print('home_stats validation OK')
           print('latest contract:', p['data_until'])
+          print('public housing recruitment pages:', routes.get('recruitment_count'))
           for d in p['recent_deals']:
               print(d.get('date'), d.get('dong'), d.get('name'), d.get('amount_eok'))
           PY
@@ -201,7 +211,8 @@ jobs:
           git config user.email 'github-actions@users.noreply.github.com'
           git add data/home_stats.json data/site_stats.json app.js index.html \
             data/posts-loader.js data/home-analysis-ui.js \
-            tools/jeonse-ratio/index.html analysis/ujangsan-hillstate/index.html
-          git diff --cached --quiet || git commit -m 'build: refresh home stats and initial HTML snapshots'
+            tools/jeonse-ratio/index.html analysis/ujangsan-hillstate/index.html \
+            public-housing/routes.json public-housing/notices
+          git diff --cached --quiet || git commit -m 'build: refresh home stats and public housing notice articles'
           git pull --rebase --autostash
           git push
