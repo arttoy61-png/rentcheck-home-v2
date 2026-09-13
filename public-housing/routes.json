@@ -1,8 +1,21 @@
 {
-  "generated_at": "2026-09-13T03:21:37+00:00",
+  "generated_at": "2026-09-13T04:45:00+00:00",
   "source_generated_at": "2026-09-13T09:46:24",
-  "recruitment_count": 20,
-  "generated_count": 17,
+  "source_recruitment_count": 20,
+  "recruitment_count": 19,
+  "duplicate_count": 1,
+  "generated_count": 16,
+  "redirect_count": 1,
+  "duplicate_groups": [
+    {
+      "canonical_id": "SH:seq:308971",
+      "ids": [
+        "SH:seq:308971",
+        "SHYOUTH:834e79674e01df2485b3"
+      ],
+      "route": "/public-housing/notices/sh-308971/"
+    }
+  ],
   "routes": {
     "SH:seq:309337": "/public-housing/sh-happy-housing-2026-2/",
     "SH:seq:309403": "/public-housing/sh-long-vacant-purchase-2026-2/",
