@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-13T13:52:04+00:00",
-  "source_generated_at": "2026-09-13T09:46:24",
+  "generated_at": "2026-09-13T22:43:57+00:00",
+  "source_generated_at": "2026-09-14T05:50:47",
   "recruitment_count": 19,
   "items": [
     {
@@ -79,7 +79,7 @@
       "region": "서울",
       "published_at": "2026-08-31",
       "deadline": "2026-09-17",
-      "open_state": "접수예정",
+      "open_state": "마감임박",
       "event": "신규",
       "change": "동일",
       "status_text": "",
@@ -222,7 +222,7 @@
       "deadline": "",
       "open_state": "확인필요",
       "event": "신규",
-      "change": "동일",
+      "change": "신규",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [
@@ -284,7 +284,7 @@
       "deadline": "",
       "open_state": "확인필요",
       "event": "신규",
-      "change": "동일",
+      "change": "신규",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [],
@@ -314,7 +314,7 @@
       "deadline": "2026-09-03",
       "open_state": "마감",
       "event": "신규",
-      "change": "동일",
+      "change": "신규",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [],
@@ -343,9 +343,9 @@
       "region": "서울",
       "published_at": "2026-08-19",
       "deadline": "2026-09-17",
-      "open_state": "접수중",
+      "open_state": "마감임박",
       "event": "신규",
-      "change": "동일",
+      "change": "신규",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [
