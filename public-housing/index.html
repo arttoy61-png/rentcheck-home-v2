@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="LH·SH 임대주택 모집공고를 캘린더와 같은 공고 기준으로 모아 신청기간, 대상, 자격, 서류 일정을 확인합니다.">
+  <meta name="description" content="LH·SH 임대주택 모집공고를 공고가 올라온 날짜 최신순으로 모아 신청기간, 대상, 자격, 서류 일정을 확인합니다.">
   <title>LH·SH 임대주택 모집공고 | Rent Check</title>
   <link rel="canonical" href="https://rent-check.kr/public-housing/">
   <link rel="stylesheet" href="/public-housing/public-housing.css?v=20260829-1">
@@ -12,7 +12,7 @@
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MPRR3J99YQ');</script>
   <meta property="og:site_name" content="Rent Check">
   <meta property="og:title" content="LH·SH 임대주택 모집공고 | Rent Check">
-  <meta property="og:description" content="캘린더에 잡히는 실제 모집공고를 공고별 안내글로 연결해 신청기간과 확인 순서를 봅니다.">
+  <meta property="og:description" content="캘린더에 잡히는 실제 모집공고를 공고일 최신순으로 보고 신청기간과 확인 순서를 함께 확인합니다.">
   <meta property="og:url" content="https://rent-check.kr/public-housing/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://rent-check.kr/assets/share/rent-check-og-v2.png?v=20260829-2">
@@ -20,7 +20,7 @@
   <meta property="og:image:alt" content="Rent Check - 실거래로 더 정확하게">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="LH·SH 임대주택 모집공고 | Rent Check">
-  <meta name="twitter:description" content="캘린더와 같은 모집공고를 공고별 안내글로 확인합니다.">
+  <meta name="twitter:description" content="캘린더와 같은 모집공고를 공고일 최신순으로 확인합니다.">
   <meta name="twitter:image" content="https://rent-check.kr/assets/share/rent-check-og-v2.png?v=20260829-2">
 </head>
 <body>
@@ -79,7 +79,6 @@
     if(['접수중','마감임박'].includes(item.open_state))return'접수 중';
     return'일정 확인 중';
   };
-  const stateRank=item=>({'오늘 접수 시작':0,'오늘 접수일':0,'오늘 접수마감':0,'접수 중':1,'접수 예정':2,'일정 확인 중':3,'접수 마감':4}[status(item)]??3);
   const scheduleText=item=>{
     const windows=Array.isArray(item.application_windows)?item.application_windows:[];
     if(windows.length){
@@ -92,26 +91,25 @@
     return`${s}${s===e?'':`~${e}`} 신청`;
   };
   const sortNotices=items=>[...items].sort((a,b)=>{
-    const rank=stateRank(a)-stateRank(b);if(rank)return rank;
-    const ad=parse(a.application_start)||parse(a.deadline),bd=parse(b.application_start)||parse(b.deadline);
-    if(ad&&bd&&ad.getTime()!==bd.getTime())return ad-bd;
-    return noticeDate(b).localeCompare(noticeDate(a));
+    const ad=noticeDate(a),bd=noticeDate(b);
+    if(ad!==bd)return bd.localeCompare(ad);
+    return cleanTitle(a&&a.title).localeCompare(cleanTitle(b&&b.title),'ko');
   });
 
   function renderShell(){
     app.innerHTML=`
       <div class="eyebrow">Rent Check 임대주택</div>
       <h1>LH·SH 임대주택 모집공고</h1>
-      <p class="intro">홈 캘린더에 잡히는 <strong>실제 모집공고를 같은 기준으로</strong> 보여줍니다.<br>공고를 누르면 먼저 Rent Check 안내글에서 신청기간과 확인 순서를 보고, 마지막에 기관 원문으로 이동합니다.</p>
+      <p class="intro">홈 캘린더에 잡히는 <strong>실제 모집공고를 공고가 올라온 날짜 최신순으로</strong> 보여줍니다.<br>접수일은 각 공고 카드에서 함께 확인하고, 공고를 누르면 Rent Check 안내글에서 신청기간과 확인 순서를 봅니다.</p>
       <div class="housing-latest" id="housingLatest"><p class="loading">모집공고를 불러오는 중입니다.</p></div>
-      <section class="housing-section"><h2>공고를 보는 순서</h2><ul><li>먼저 내 신청 가능한 날짜를 확인합니다.</li><li>순위별 접수일이 다르면 본인 순위 날짜를 따로 봅니다.</li><li>그다음 무주택·소득·자산·대상 조건을 공식 공고와 맞춥니다.</li><li>신청 후 서류제출이 별도라면 신청 완료와 서류제출을 같은 단계로 보지 않습니다.</li></ul><div class="housing-links"><a href="/">Rent Check 홈 →</a><a class="alt" href="/blog/public-housing-application-documents/">신청 후 서류 순서</a><a class="alt" href="/tools/youth-score/">청년임대 계산기</a></div></section>`;
+      <section class="housing-section"><h2>공고를 보는 순서</h2><ul><li>먼저 공고가 올라온 날짜와 신청 가능한 날짜를 함께 확인합니다.</li><li>순위별 접수일이 다르면 본인 순위 날짜를 따로 봅니다.</li><li>그다음 무주택·소득·자산·대상 조건을 공식 공고와 맞춥니다.</li><li>신청 후 서류제출이 별도라면 신청 완료와 서류제출을 같은 단계로 보지 않습니다.</li></ul><div class="housing-links"><a href="/">Rent Check 홈 →</a><a class="alt" href="/blog/public-housing-application-documents/">신청 후 서류 순서</a><a class="alt" href="/tools/youth-score/">청년임대 계산기</a></div></section>`;
   }
 
   function renderNotices(items){
     const box=document.querySelector('#housingLatest');if(!box)return;
     const notices=sortNotices((items||[]).filter(isRecruitment));
     if(!notices.length){box.innerHTML='<p class="error">현재 표시할 모집공고를 확인 중입니다.</p>';return}
-    box.innerHTML=`<p style="margin:0 0 2px;color:#667085;font-size:13px">현재 모집공고 ${notices.length}건 · 접수중·예정 공고를 먼저 표시합니다.</p>`+notices.map(item=>{
+    box.innerHTML=`<p style="margin:0 0 2px;color:#667085;font-size:13px">현재 모집공고 ${notices.length}건 · 공고가 올라온 날짜 최신순입니다.</p>`+notices.map(item=>{
       const published=noticeDate(item),period=scheduleText(item),href=articleUrl(item);
       return `<a class="housing-card" href="${esc(href)}"><small>${esc(item.agency||item.agency_group||'임대주택')} · ${esc(published?published.replaceAll('-','.'):'공고일 확인')} · ${esc(status(item))}</small><strong>${esc(cleanTitle(item.title))}</strong><span>${esc(period)}${item.region?' · '+esc(item.region):''} · Rent Check 안내</span></a>`;
     }).join('');
