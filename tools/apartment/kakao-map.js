@@ -62,7 +62,48 @@
     return null;
   }
 
+  function periodText() {
+    try {
+      const meta = typeof S !== 'undefined' ? S?.meta : null;
+      const period = Array.isArray(meta?.period) ? meta.period : [];
+      if (period.length === 2) {
+        const fmt = value => String(value || '').replaceAll('-', '.');
+        return `${fmt(period[0])}~${fmt(period[1])} · ${meta?.period_basis || '계약일 기준'}`;
+      }
+    } catch (_) {}
+    return '최근 6개월 · 계약일 기준';
+  }
+
+  function updatePeriodCopy() {
+    const text = periodText();
+    const footerSource = document.querySelector('.v2-tool-notes p');
+    if (footerSource) footerSource.textContent = `자료 · 국토교통부 실거래가 공개시스템 · ${text}`;
+
+    const rtsub = document.querySelector('.rtline .rtsub');
+    if (rtsub) rtsub.textContent = text;
+
+    try {
+      const view = document.getElementById('view');
+      if (view && typeof state !== 'undefined' && state?.view === 'dong' && !view.querySelector('.apt-period-head')) {
+        const line = document.createElement('div');
+        line.className = 'rtline apt-period-head';
+        line.innerHTML = `<span class="led"></span><b>최근 6개월</b><span class="rtsub">${text}</span>`;
+        view.prepend(line);
+      }
+    } catch (_) {}
+
+    const detailMeta = document.querySelector('.det .meta');
+    if (detailMeta && !detailMeta.querySelector('.apt-period-meta')) {
+      const span = document.createElement('span');
+      span.className = 'apt-period-meta';
+      span.textContent = ` · 조회기간 ${text}`;
+      detailMeta.appendChild(span);
+    }
+  }
+
   function updateDetailEntry() {
+    updatePeriodCopy();
+
     const cta = document.querySelector('.cta');
     if (cta && cta.dataset.detailCopy !== '1') {
       cta.dataset.detailCopy = '1';
