@@ -30,7 +30,6 @@ body{margin:0;background:#fff;color:#172033;line-height:1.65}
 .housing-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}.housing-tags span{padding:6px 9px;border-radius:999px;background:#eef5fc;color:#315f90;font-size:12px;font-weight:700}
 .housing-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:16px;min-width:0}.housing-stat{min-width:0;padding:17px;border:1px solid #dfe5ec;background:#fff}.housing-stat span{display:block;margin-bottom:5px;color:#7b8796;font-size:12px}.housing-stat strong{font-size:16px}
 .loading,.error{padding:50px 18px;text-align:center;border:1px solid #dfe5ec;background:#fff;color:#667085}
-
 .housing-detail{max-width:760px;margin:0 auto;padding:30px 20px 64px;overflow-x:hidden}
 .housing-detail article,.housing-hero,.housing-detail .section,.housing-detail .grid,.housing-detail .card{width:100%;min-width:0;max-width:100%;overflow-wrap:anywhere}
 .housing-detail img,.housing-detail video,.housing-detail iframe{display:block;max-width:100%;height:auto}
@@ -48,7 +47,6 @@ body{margin:0;background:#fff;color:#172033;line-height:1.65}
 .housing-detail .section{margin-top:16px;padding:22px}.housing-detail .section h2{margin:0 0 12px;color:#0d1f3c;font-size:19px}.housing-detail .section ul,.housing-detail .section ol{max-width:100%;margin:0;padding-left:20px}.housing-detail .section li{margin:7px 0}.point{font-weight:800;color:#0d1f3c}
 .housing-detail .cta{max-width:100%;margin-top:18px;padding:18px;border:1px solid #ead8a6;background:#fff8e7}.housing-detail .cta strong{display:block;margin-bottom:5px}
 .housing-detail .note{margin-top:16px;color:#7b8796;font-size:12px;line-height:1.7}
-
 @media(max-width:680px){
   .housing-index>div>h1{font-size:29px}.housing-index .intro{font-size:16.5px}
   .housing-detail{padding:24px 16px 50px}.housing-hero{padding:22px 16px}.housing-hero h1{font-size:25px}.housing-hero .lead{padding:15px 14px;font-size:17px}
@@ -61,4 +59,7 @@ body{margin:0;background:#fff;color:#172033;line-height:1.65}
   .housing-detail table th,.housing-detail table td{border:0!important;padding:8px 10px!important;text-align:left!important}
   .housing-detail table th[scope="row"]{background:#f4f7fb;color:#0d1f3c;font-weight:800}
   .housing-detail table td{border-top:1px solid #dfe5ec!important}
+  .housing-detail article>.section:nth-of-type(2) .tbl td::before,.housing-detail article>.section:nth-of-type(3) .tbl td::before{display:block;margin-bottom:2px;color:#667085;font-size:11px;font-weight:800}
+  .housing-detail article>.section:nth-of-type(2) .tbl td:nth-child(1)::before{content:"순위"}.housing-detail article>.section:nth-of-type(2) .tbl td:nth-child(2)::before{content:"접수일"}.housing-detail article>.section:nth-of-type(2) .tbl td:nth-child(3)::before{content:"시간"}.housing-detail article>.section:nth-of-type(2) .tbl td:nth-child(4)::before{content:"다음 확인"}
+  .housing-detail article>.section:nth-of-type(3) .tbl td:nth-child(1)::before{content:"자치구"}.housing-detail article>.section:nth-of-type(3) .tbl td:nth-child(2)::before{content:"공급 단지·지구"}.housing-detail article>.section:nth-of-type(3) .tbl td:nth-child(3)::before{content:"전용면적"}
 }

@@ -7,12 +7,12 @@
   <meta name="description" content="LH·SH 임대주택 모집공고를 공고가 올라온 날짜 최신순으로 모아 신청기간, 대상, 자격, 서류 일정을 확인합니다.">
   <title>LH·SH 임대주택 모집공고 | Rent Check</title>
   <link rel="canonical" href="https://rent-check.kr/public-housing/">
-  <link rel="stylesheet" href="/public-housing/public-housing.css?v=20260913-2">
+  <link rel="stylesheet" href="/public-housing/public-housing.css?v=20260913-3">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MPRR3J99YQ"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MPRR3J99YQ');</script>
   <meta property="og:site_name" content="Rent Check">
   <meta property="og:title" content="LH·SH 임대주택 모집공고 | Rent Check">
-  <meta property="og:description" content="캘린더에 잡히는 실제 모집공고를 공고일 최신순으로 보고 신청기간과 확인 순서를 함께 확인합니다.">
+  <meta property="og:description" content="캘린더와 같은 모집공고를 공고일 최신순으로 보고 신청기간과 확인 순서를 함께 확인합니다.">
   <meta property="og:url" content="https://rent-check.kr/public-housing/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://rent-check.kr/assets/share/rent-check-og-v2.png?v=20260829-2">
@@ -28,133 +28,35 @@
 <main class="guide-index housing-index"><div id="app"></div></main>
 <script>
 (()=>{
-  const FEED='https://arttoy61-png.github.io/rent-check/public_housing_notices.json';
-  const CURATED_ROUTES={
-    'SH:seq:309337':'/public-housing/sh-happy-housing-2026-2/',
-    'SH:seq:309403':'/public-housing/sh-long-vacant-purchase-2026-2/',
-    'SH:seq:309467':'/public-housing/sh-longterm-jeonse-51/',
-    'SH:seq:310107':'/public-housing/sh-long-vacant-purchase-2026-2/'
-  };
+  const MANIFEST='/public-housing/current.json';
+  const ROUTES='/public-housing/routes.json';
+  const FALLBACK_FEED='https://arttoy61-png.github.io/rent-check/public_housing_notices.json';
   const app=document.querySelector('#app');
-  const id=new URLSearchParams(location.search).get('id')||'';
+  const requestedId=new URLSearchParams(location.search).get('id')||'';
+  let routeMap={};
   const parse=v=>{const m=String(v||'').match(/(20\d{2})[-./](\d{1,2})[-./](\d{1,2})/);return m?new Date(+m[1],+m[2]-1,+m[3]):null};
   const dayStart=d=>new Date(d.getFullYear(),d.getMonth(),d.getDate());
   const fmtShort=v=>{const d=parse(v);return d?`${d.getMonth()+1}/${d.getDate()}`:'일정 확인 중'};
   const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const cleanTitle=t=>String(t||'').replace(/&nbsp;/gi,' ').replace(/\s+/g,' ').trim();
-  const noticeDate=item=>{
-    if(parse(item.published_at))return String(item.published_at);
-    const m=String(item.title||'').match(/(20\d{2})\s*[-./]\s*(\d{1,2})\s*[-./]\s*(\d{1,2})/);
-    return m?`${m[1]}-${String(m[2]).padStart(2,'0')}-${String(m[3]).padStart(2,'0')}`:'';
-  };
-  const isRecruitment=item=>{
-    const t=cleanTitle(item&&item.title);
-    if(!t)return false;
-    if(/발표|최종\s*청약접수\s*결과|계약결과|당첨|선정결과|서류심사\s*대상자|재계약\s*안내|입주안내문/i.test(t))return false;
-    return /모집공고|입주자\s*모집|예비입주자\s*모집|행복주택.*모집|매입임대.*모집|전세임대.*모집|임대주택.*모집/i.test(t);
-  };
-  const noticeSlug=item=>{
-    const raw=String(item&&item.id||'').trim().toLowerCase();
-    let m=raw.match(/^sh:seq:(\d+)$/);if(m)return`sh-${m[1]}`;
-    m=raw.match(/^lh:panid:([a-z0-9_-]+)$/);if(m)return`lh-${m[1]}`;
-    m=raw.match(/^shyouth:([a-z0-9_-]+)$/);if(m)return`shyouth-${m[1]}`;
-    m=raw.match(/^seoul:([a-z0-9_-]+)$/);if(m)return`seoul-${m[1]}`;
-    return raw.replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')||'notice';
-  };
-  const articleUrl=item=>CURATED_ROUTES[String(item&&item.id||'')]||`/public-housing/notices/${noticeSlug(item)}/`;
-  const directOfficialUrl=item=>{
-    const url=String(item&&item.url||'');
-    if(/^https:\/\//i.test(url)&&/i-sh\.co\.kr/i.test(url)&&(/\/view\.do/i.test(url)||/[?&]seq=\d+/i.test(url)))return url;
-    if(/^https:\/\//i.test(url)&&/apply\.lh\.or\.kr/i.test(url)&&/selectWrtancInfo\.do/i.test(url))return url;
-    if(/^https:\/\//i.test(url)&&/housing\.seoul\.go\.kr\/site\/main\/board\/notice\//i.test(url))return url;
-    return'';
-  };
-  const duplicateKey=item=>{
-    const title=cleanTitle(item&&item.title)
-      .replace(/^\(수정\)\s*/,'')
-      .replace(/^매입(?=20\d{2}년)/,'')
-      .replace(/\s+/g,'')
-      .toLowerCase();
-    return `${noticeDate(item)}|${title}`;
-  };
-  const preferNotice=(current,candidate)=>{
-    const currentOfficial=!!directOfficialUrl(current),candidateOfficial=!!directOfficialUrl(candidate);
-    if(currentOfficial!==candidateOfficial)return candidateOfficial?candidate:current;
-    const currentDirect=/^SH:seq:/i.test(String(current&&current.id||''));
-    const candidateDirect=/^SH:seq:/i.test(String(candidate&&candidate.id||''));
-    if(currentDirect!==candidateDirect)return candidateDirect?candidate:current;
-    return current;
-  };
-  const dedupeNotices=items=>{
-    const seen=new Map();
-    items.forEach(item=>{
-      const key=duplicateKey(item);
-      if(!seen.has(key)){seen.set(key,item);return}
-      seen.set(key,preferNotice(seen.get(key),item));
-    });
-    return [...seen.values()];
-  };
-  const status=item=>{
-    const now=dayStart(new Date()),s=parse(item.application_start),e=parse(item.deadline),sd=s?dayStart(s):null,ed=e?dayStart(e):null;
-    if(ed&&ed<now)return'접수 마감';
-    if(sd&&sd.getTime()===now.getTime())return ed&&ed.getTime()===now.getTime()?'오늘 접수일':'오늘 접수 시작';
-    if(sd&&sd>now)return'접수 예정';
-    if(ed&&ed.getTime()===now.getTime())return'오늘 접수마감';
-    if(sd&&ed&&sd<now&&now<ed)return'접수 중';
-    if(['접수중','마감임박'].includes(item.open_state))return'접수 중';
-    return'일정 확인 중';
-  };
-  const scheduleText=item=>{
-    const windows=Array.isArray(item.application_windows)?item.application_windows:[];
-    if(windows.length){
-      return windows.map(w=>{const s=fmtShort(w.start),e=fmtShort(w.end||w.start);return`${w.label||'접수'} ${s}${e!==s?`~${e}`:''}`}).join(' · ');
-    }
-    const s=fmtShort(item.application_start),e=fmtShort(item.deadline);
-    if(s==='일정 확인 중'&&e==='일정 확인 중')return'신청일정 확인 중';
-    if(s==='일정 확인 중')return`${e} 마감`;
-    if(e==='일정 확인 중')return`${s} 접수 시작`;
-    return`${s}${s===e?'':`~${e}`} 신청`;
-  };
-  const sortNotices=items=>[...items].sort((a,b)=>{
-    const ad=noticeDate(a),bd=noticeDate(b);
-    if(ad!==bd)return bd.localeCompare(ad);
-    return cleanTitle(a&&a.title).localeCompare(cleanTitle(b&&b.title),'ko');
-  });
-
-  function renderShell(){
-    app.innerHTML=`
-      <div class="eyebrow">Rent Check 임대주택</div>
-      <h1>LH·SH 임대주택 모집공고</h1>
-      <p class="intro">홈 캘린더에 잡히는 <strong>실제 모집공고를 공고가 올라온 날짜 최신순으로</strong> 보여줍니다.<br>접수일은 각 공고 카드에서 함께 확인하고, 공고를 누르면 Rent Check 안내글에서 신청기간과 확인 순서를 봅니다.</p>
-      <div class="housing-latest" id="housingLatest"><p class="loading">모집공고를 불러오는 중입니다.</p></div>
-      <section class="housing-section"><h2>공고를 보는 순서</h2><ul><li>먼저 공고가 올라온 날짜와 신청 가능한 날짜를 함께 확인합니다.</li><li>순위별 접수일이 다르면 본인 순위 날짜를 따로 봅니다.</li><li>그다음 무주택·소득·자산·대상 조건을 공식 공고와 맞춥니다.</li><li>신청 후 서류제출이 별도라면 신청 완료와 서류제출을 같은 단계로 보지 않습니다.</li></ul><div class="housing-links"><a href="/">Rent Check 홈 →</a><a class="alt" href="/blog/public-housing-application-documents/">신청 후 서류 순서</a><a class="alt" href="/tools/youth-score/">청년임대 계산기</a></div></section>`;
-  }
-
-  function renderNotices(items){
-    const box=document.querySelector('#housingLatest');if(!box)return;
-    const notices=sortNotices(dedupeNotices((items||[]).filter(isRecruitment)));
-    if(!notices.length){box.innerHTML='<p class="error">현재 표시할 모집공고를 확인 중입니다.</p>';return}
-    box.innerHTML=`<p style="margin:0 0 2px;color:#667085;font-size:13px">현재 모집공고 ${notices.length}건 · 공고가 올라온 날짜 최신순입니다.</p>`+notices.map(item=>{
-      const published=noticeDate(item),period=scheduleText(item),href=articleUrl(item);
-      return `<a class="housing-card" href="${esc(href)}"><small>${esc(item.agency||item.agency_group||'임대주택')} · ${esc(published?published.replaceAll('-','.'):'공고일 확인')} · ${esc(status(item))}</small><strong>${esc(cleanTitle(item.title))}</strong><span>${esc(period)}${item.region?' · '+esc(item.region):''} · Rent Check 안내</span></a>`;
-    }).join('');
-  }
-
-  async function loadFeed(){const r=await fetch(`${FEED}?v=${Date.now()}`,{cache:'no-store'});if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.json()}
-
-  if(id){
-    app.className='loading';app.textContent='공고 안내글을 찾는 중입니다.';
-    loadFeed().then(data=>{
-      const item=(data.items||[]).find(x=>String(x.id)===id);if(!item)throw new Error('notice not found');
-      if(isRecruitment(item)){location.replace(articleUrl(item));return}
-      const official=directOfficialUrl(item);if(official){location.replace(official);return}
-      location.replace('/public-housing/');
-    }).catch(()=>{app.className='error';app.innerHTML='<strong>공고를 찾지 못했습니다.</strong><p><a href="/public-housing/">임대주택 모집공고로 돌아가기 →</a></p>'});
-    return;
-  }
-
-  renderShell();
-  loadFeed().then(data=>renderNotices(data.items||[])).catch(()=>{const box=document.querySelector('#housingLatest');if(box)box.innerHTML='<p class="error">최신 공고 목록을 불러오지 못했습니다. 잠시 뒤 다시 확인해 주세요.</p>'});
+  const noticeDate=item=>{if(parse(item&&item.published_at))return String(item.published_at);const m=String(item&&item.title||'').match(/(20\d{2})\s*[-./]\s*(\d{1,2})\s*[-./]\s*(\d{1,2})/);return m?`${m[1]}-${String(m[2]).padStart(2,'0')}-${String(m[3]).padStart(2,'0')}`:''};
+  const isRecruitment=item=>{const t=cleanTitle(item&&item.title);if(!t||/발표|최종\s*청약접수\s*결과|계약결과|당첨|선정결과|서류심사\s*대상자|재계약\s*안내|입주안내문/i.test(t))return false;return /모집공고|모집\s*공고|입주자\s*모집|예비입주자\s*모집|행복주택.*모집|매입임대.*모집|전세임대.*모집|임대주택.*모집/i.test(t)};
+  const noticeSlug=item=>{const raw=String(item&&item.id||'').trim().toLowerCase();let m=raw.match(/^sh:seq:(\d+)$/);if(m)return`sh-${m[1]}`;m=raw.match(/^lh:panid:([a-z0-9_-]+)$/);if(m)return`lh-${m[1]}`;m=raw.match(/^shyouth:([a-z0-9_-]+)$/);if(m)return`shyouth-${m[1]}`;m=raw.match(/^seoul:([a-z0-9_-]+)$/);if(m)return`seoul-${m[1]}`;return raw.replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')||'notice'};
+  const articleUrl=item=>String(item&&item.route||routeMap[String(item&&item.id||'')]||`/public-housing/notices/${noticeSlug(item)}/`);
+  const directOfficialUrl=item=>{const url=String(item&&item.url||'');if(/^https:\/\//i.test(url)&&/i-sh\.co\.kr/i.test(url)&&(/\/view\.do/i.test(url)||/[?&]seq=\d+/i.test(url)))return url;if(/^https:\/\//i.test(url)&&/apply\.lh\.or\.kr/i.test(url)&&/selectWrtancInfo\.do/i.test(url))return url;if(/^https:\/\//i.test(url)&&/housing\.seoul\.go\.kr\/site\/main\/board\/notice\//i.test(url))return url;return''};
+  const duplicateKey=item=>{const title=cleanTitle(item&&item.title).replace(/^(?:\[정정공고\]|\[정정\]|\(정정\)|\(수정\))\s*/i,'').replace(/^매입(?=20\d{2}년)/,'').replace(/\s+/g,'').toLowerCase();return `${noticeDate(item)}|${title}`};
+  const preferNotice=(current,candidate)=>{const currentOfficial=!!directOfficialUrl(current),candidateOfficial=!!directOfficialUrl(candidate);if(currentOfficial!==candidateOfficial)return candidateOfficial?candidate:current;const currentDirect=/^SH:seq:/i.test(String(current&&current.id||''));const candidateDirect=/^SH:seq:/i.test(String(candidate&&candidate.id||''));if(currentDirect!==candidateDirect)return candidateDirect?candidate:current;return current};
+  const dedupeNotices=items=>{const seen=new Map();items.forEach(item=>{const key=duplicateKey(item);seen.set(key,seen.has(key)?preferNotice(seen.get(key),item):item)});return [...seen.values()]};
+  const status=item=>{const now=dayStart(new Date()),s=parse(item.application_start),e=parse(item.deadline),sd=s?dayStart(s):null,ed=e?dayStart(e):null;if(ed&&ed<now)return'접수 마감';if(sd&&sd.getTime()===now.getTime())return ed&&ed.getTime()===now.getTime()?'오늘 접수일':'오늘 접수 시작';if(sd&&sd>now)return'접수 예정';if(ed&&ed.getTime()===now.getTime())return'오늘 접수마감';if(sd&&ed&&sd<now&&now<ed)return'접수 중';if(['접수중','마감임박'].includes(item.open_state))return'접수 중';return'일정 확인 중'};
+  const scheduleText=item=>{const windows=Array.isArray(item.application_windows)?item.application_windows:[];if(windows.length)return windows.map(w=>{const s=fmtShort(w.start),e=fmtShort(w.end||w.start);return`${w.label||'접수'} ${s}${e!==s?`~${e}`:''}`}).join(' · ');const s=fmtShort(item.application_start),e=fmtShort(item.deadline);if(s==='일정 확인 중'&&e==='일정 확인 중')return'신청일정 확인 중';if(s==='일정 확인 중')return`${e} 마감`;if(e==='일정 확인 중')return`${s} 접수 시작`;return`${s}${s===e?'':`~${e}`} 신청`};
+  const sortNotices=items=>[...items].sort((a,b)=>{const ad=noticeDate(a),bd=noticeDate(b);if(ad!==bd)return bd.localeCompare(ad);return cleanTitle(a&&a.title).localeCompare(cleanTitle(b&&b.title),'ko')});
+  async function fetchJson(url){const r=await fetch(`${url}${url.includes('?')?'&':'?'}v=${Date.now()}`,{cache:'no-store'});if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.json()}
+  async function loadRoutes(){try{const data=await fetchJson(ROUTES);routeMap=(data&&data.routes)||{};return routeMap}catch(_){routeMap={};return routeMap}}
+  async function loadItems(){try{const data=await fetchJson(MANIFEST);if(Array.isArray(data&&data.items)&&data.items.length)return data.items}catch(_){}const data=await fetchJson(FALLBACK_FEED);return sortNotices(dedupeNotices((data.items||[]).filter(isRecruitment))).map(item=>({...item,route:routeMap[String(item.id)]||undefined}))}
+  function renderShell(){app.innerHTML=`<div class="eyebrow">Rent Check 임대주택</div><h1>LH·SH 임대주택 모집공고</h1><p class="intro">홈 캘린더와 같은 <strong>실제 모집공고를 공고가 올라온 날짜 최신순으로</strong> 보여줍니다.<br>접수일은 각 공고 카드에서 함께 확인하고, 공고를 누르면 Rent Check 안내글에서 신청기간과 확인 순서를 봅니다.</p><div class="housing-latest" id="housingLatest"><p class="loading">모집공고를 불러오는 중입니다.</p></div><section class="housing-section"><h2>공고를 보는 순서</h2><ul><li>먼저 공고가 올라온 날짜와 신청 가능한 날짜를 함께 확인합니다.</li><li>순위별 접수일이 다르면 본인 순위 날짜를 따로 봅니다.</li><li>그다음 무주택·소득·자산·대상 조건을 공식 공고와 맞춥니다.</li><li>신청 후 서류제출이 별도라면 신청 완료와 서류제출을 같은 단계로 보지 않습니다.</li></ul><div class="housing-links"><a href="/">Rent Check 홈 →</a><a class="alt" href="/blog/public-housing-application-documents/">신청 후 서류 순서</a><a class="alt" href="/tools/youth-score/">청년임대 계산기</a></div></section>`}
+  function renderNotices(items){const box=document.querySelector('#housingLatest');if(!box)return;const notices=sortNotices(items||[]);if(!notices.length){box.innerHTML='<p class="error">현재 표시할 모집공고를 확인 중입니다.</p>';return}box.innerHTML=`<p style="margin:0 0 2px;color:#667085;font-size:13px">현재 모집공고 ${notices.length}건 · 공고가 올라온 날짜 최신순입니다.</p>`+notices.map(item=>{const published=noticeDate(item),period=scheduleText(item),href=articleUrl(item);return `<a class="housing-card" href="${esc(href)}"><small>${esc(item.agency||item.agency_group||'임대주택')} · ${esc(published?published.replaceAll('-','.'):'공고일 확인')} · ${esc(status(item))}</small><strong>${esc(cleanTitle(item.title))}</strong><span>${esc(period)}${item.region?' · '+esc(item.region):''} · Rent Check 안내</span></a>`}).join('')}
+  if(requestedId){app.className='loading';app.textContent='공고 안내글을 찾는 중입니다.';loadRoutes().then(async routes=>{if(routes[requestedId]){location.replace(routes[requestedId]);return}const items=await loadItems();const item=(items||[]).find(x=>String(x.id)===requestedId);if(item){location.replace(articleUrl(item));return}throw new Error('notice not found')}).catch(()=>{app.className='error';app.innerHTML='<strong>공고를 찾지 못했습니다.</strong><p><a href="/public-housing/">임대주택 모집공고로 돌아가기 →</a></p>'});return}
+  renderShell();loadRoutes().then(loadItems).then(renderNotices).catch(()=>{const box=document.querySelector('#housingLatest');if(box)box.innerHTML='<p class="error">최신 공고 목록을 불러오지 못했습니다. 잠시 뒤 다시 확인해 주세요.</p>'});
 })();
 </script>
 <script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script><script type="text/javascript">if(!wcs_add)var wcs_add={};wcs_add["wa"]="1a98778bd0f06a0";if(window.wcs){wcs_do();}</script>

@@ -37,3 +37,4 @@ User-agent: CCBot
 Allow: /
 
 Sitemap: https://rent-check.kr/sitemap.xml
+Sitemap: https://rent-check.kr/public-housing/sitemap.xml
