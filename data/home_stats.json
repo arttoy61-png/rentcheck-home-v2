@@ -1,11 +1,19 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-15T09:54:01+09:00",
-  "data_until": "2026-09-14",
+  "generated_at": "2026-09-16T08:19:47+09:00",
+  "data_until": "2026-09-15",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
+    {
+      "dong": "방화동",
+      "name": "마곡중앙하이츠아파트",
+      "area_m2": 59,
+      "amount_eok": 7.68,
+      "date": "2026.09.12",
+      "complex_id": "6d74f926"
+    },
     {
       "dong": "방화동",
       "name": "방화그린",
@@ -15,20 +23,12 @@
       "complex_id": "c842b6f2"
     },
     {
-      "dong": "방화동",
-      "name": "방화동동부센트레빌(875번지)",
+      "dong": "내발산동",
+      "name": "마곡수명산파크7단지",
       "area_m2": 84,
-      "amount_eok": 9.2,
+      "amount_eok": 11.47,
       "date": "2026.09.11",
-      "complex_id": "cb6a99c4"
-    },
-    {
-      "dong": "방화동",
-      "name": "방화5",
-      "area_m2": 40,
-      "amount_eok": 6.3,
-      "date": "2026.09.10",
-      "complex_id": "38d0233d"
+      "complex_id": "33ee09bf"
     }
   ],
   "monthly_trend": [
@@ -54,7 +54,7 @@
     },
     {
       "month": "2026-09",
-      "count": 70
+      "count": 81
     }
   ]
 }

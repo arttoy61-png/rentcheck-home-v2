@@ -1,40 +1,65 @@
 {
-  "generated_at": "2026-09-15T00:54:01+00:00",
-  "source_generated_at": "2026-09-15T08:54:12",
-  "recruitment_count": 19,
+  "generated_at": "2026-09-15T23:19:46+00:00",
+  "source_generated_at": "2026-09-16T06:21:16",
+  "recruitment_count": 20,
   "items": [
     {
-      "id": "SH:seq:309802",
+      "id": "SH:seq:310300",
       "agency": "SH",
       "agency_group": "SH",
-      "title": "[청년형] 특화형 매입임대주택(금천구) 입주자 모집 공고(운영기관 : 한지붕 협동조합)",
+      "title": "[토지임대부 사회주택] 옥류서원 입주자 모집 공고문",
       "housing_types": [
-        "매입임대"
+        "기타임대"
       ],
-      "audiences": [
-        "청년"
-      ],
+      "audiences": [],
       "region": "서울",
-      "published_at": "2026-09-10",
-      "deadline": "2026-09-10",
-      "open_state": "마감",
+      "published_at": "2026-09-15",
+      "deadline": "2026-09-20",
+      "open_state": "접수중",
+      "event": "신규",
+      "change": "동일",
+      "status_text": "",
+      "is_gangseo": false,
+      "keywords": [],
+      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310300",
+      "source": "SH 공식 주택임대 게시판",
+      "content_signature": "72ca9da61883ac8644524261e6b4d9991f69df5933a5a22e4069c3ec2094645c",
+      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
+      "application_start": "2026-09-15",
+      "schedule_source": "official_detail_html",
+      "route": "/public-housing/notices/sh-310300/",
+      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310300",
+      "official_link_label": "공식 모집공고 원문 →",
+      "indexable": true
+    },
+    {
+      "id": "SH:seq:310319",
+      "agency": "SH",
+      "agency_group": "SH",
+      "title": "(유니버설하우징협동조합) 토지임대부 사회주택 유니버설하우징협동조합 수유 입주자 모집공고",
+      "housing_types": [
+        "기타임대"
+      ],
+      "audiences": [],
+      "region": "서울",
+      "published_at": "2026-09-15",
+      "deadline": "",
+      "open_state": "확인필요",
       "event": "신규",
       "change": "동일",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [
-        "청년",
-        "매입임대",
         "협동조합"
       ],
-      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=309802",
+      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310319",
       "source": "SH 공식 주택임대 게시판",
-      "content_signature": "b8ad6d7b5381fbfbb977f458aabe42594a0ce99e0d4ff747163819c8ecb709f7",
+      "content_signature": "e1d8eeef2192b03a1055bb645fd9018ccf3da919125649ad1fdac2514022aa73",
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "application_start": "",
       "schedule_source": "source_list",
-      "route": "/public-housing/notices/sh-309802/",
-      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=309802",
+      "route": "/public-housing/notices/sh-310319/",
+      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310319",
       "official_link_label": "공식 모집공고 원문 →",
       "indexable": false
     },
