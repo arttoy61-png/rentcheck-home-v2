@@ -15,6 +15,7 @@ on:
       - 'scripts/analysis-snapshot-runtime.js'
       - 'scripts/test_static_first.py'
       - 'scripts/generate-public-housing-pages.py'
+      - 'scripts/public_housing_quality_gate.py'
       - 'public-housing/editorial-overrides.json'
       - 'data/posts*.json'
       - 'data/posts-loader.js'
@@ -29,6 +30,7 @@ on:
       - 'scripts/analysis-snapshot-runtime.js'
       - 'scripts/test_static_first.py'
       - 'scripts/generate-public-housing-pages.py'
+      - 'scripts/public_housing_quality_gate.py'
       - 'public-housing/editorial-overrides.json'
   schedule:
     - cron: '0 21 * * *'
@@ -56,7 +58,7 @@ jobs:
         run: |
           node --check scripts/render-core-content.mjs
           node --check scripts/analysis-snapshot-runtime.js
-          python -m py_compile scripts/test_static_first.py scripts/generate-public-housing-pages.py
+          python -m py_compile scripts/test_static_first.py scripts/generate-public-housing-pages.py scripts/public_housing_quality_gate.py
   update:
     needs: test
     if: github.event_name != 'pull_request'
@@ -110,6 +112,9 @@ jobs:
       - name: Generate public housing notice articles
         if: steps.source.outputs.ready == 'true'
         run: python scripts/generate-public-housing-pages.py
+      - name: Apply public housing quality gate
+        if: steps.source.outputs.ready == 'true'
+        run: python scripts/public_housing_quality_gate.py
       - name: Build home_stats
         if: steps.source.outputs.ready == 'true'
         run: python scripts/make_home_stats.py
