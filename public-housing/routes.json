@@ -1,35 +1,25 @@
 {
-  "generated_at": "2026-09-16T14:40:44+00:00",
-  "source_generated_at": "2026-09-16T20:32:39",
-  "source_recruitment_count": 21,
+  "generated_at": "2026-09-16T23:25:17+00:00",
+  "source_generated_at": "2026-09-17T06:18:53",
+  "source_recruitment_count": 20,
   "recruitment_count": 20,
-  "duplicate_count": 1,
+  "duplicate_count": 0,
   "generated_count": 17,
-  "redirect_count": 1,
-  "duplicate_groups": [
-    {
-      "canonical_id": "SH:seq:308971",
-      "ids": [
-        "SH:seq:308971",
-        "SHYOUTH:834e79674e01df2485b3"
-      ],
-      "route": "/public-housing/notices/sh-308971/"
-    }
-  ],
+  "redirect_count": 0,
+  "duplicate_groups": [],
   "routes": {
     "SH:seq:309337": "/public-housing/sh-happy-housing-2026-2/",
     "SH:seq:309403": "/public-housing/sh-long-vacant-purchase-2026-2/",
     "SH:seq:309467": "/public-housing/sh-longterm-jeonse-51/",
     "SH:seq:310107": "/public-housing/sh-long-vacant-purchase-2026-2/",
-    "SHYOUTH:f55e60eb7f854e40f169": "/public-housing/notices/shyouth-f55e60eb7f854e40f169/",
     "SH:seq:310300": "/public-housing/notices/sh-310300/",
     "SH:seq:310041": "/public-housing/notices/sh-310041/",
+    "SHYOUTH:ac0c542c9045e8e7d0ce": "/public-housing/notices/shyouth-ac0c542c9045e8e7d0ce/",
     "SHYOUTH:fa01df725a9d3ceaf32c": "/public-housing/notices/shyouth-fa01df725a9d3ceaf32c/",
     "SHYOUTH:807ba55b1308f4dedf26": "/public-housing/notices/shyouth-807ba55b1308f4dedf26/",
     "LH:panId:2015122300019657": "/public-housing/notices/lh-2015122300019657/",
     "SH:seq:310319": "/public-housing/notices/sh-310319/",
-    "SH:seq:308971": "/public-housing/notices/sh-308971/",
-    "SHYOUTH:834e79674e01df2485b3": "/public-housing/notices/sh-308971/",
+    "SHYOUTH:834e79674e01df2485b3": "/public-housing/notices/shyouth-834e79674e01df2485b3/",
     "LH:panId:2015122300020605": "/public-housing/notices/lh-2015122300020605/",
     "SHYOUTH:a33e18d6d2d8ccdc889a": "/public-housing/notices/shyouth-a33e18d6d2d8ccdc889a/",
     "SH:seq:308446": "/public-housing/notices/sh-308446/",
