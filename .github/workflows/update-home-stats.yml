@@ -16,6 +16,7 @@ on:
       - 'scripts/test_static_first.py'
       - 'scripts/generate-public-housing-pages.py'
       - 'scripts/public_housing_quality_gate.py'
+      - 'scripts/update_sh51_status.py'
       - 'public-housing/editorial-overrides.json'
       - 'data/posts*.json'
       - 'data/posts-loader.js'
@@ -31,6 +32,7 @@ on:
       - 'scripts/test_static_first.py'
       - 'scripts/generate-public-housing-pages.py'
       - 'scripts/public_housing_quality_gate.py'
+      - 'scripts/update_sh51_status.py'
       - 'public-housing/editorial-overrides.json'
   schedule:
     - cron: '0 21 * * *'
@@ -58,7 +60,7 @@ jobs:
         run: |
           node --check scripts/render-core-content.mjs
           node --check scripts/analysis-snapshot-runtime.js
-          python -m py_compile scripts/test_static_first.py scripts/generate-public-housing-pages.py scripts/public_housing_quality_gate.py
+          python -m py_compile scripts/test_static_first.py scripts/generate-public-housing-pages.py scripts/public_housing_quality_gate.py scripts/update_sh51_status.py
   update:
     needs: test
     if: github.event_name != 'pull_request'
@@ -115,6 +117,8 @@ jobs:
       - name: Apply public housing quality gate
         if: steps.source.outputs.ready == 'true'
         run: python scripts/public_housing_quality_gate.py
+      - name: Refresh SH51 date-sensitive banner
+        run: python scripts/update_sh51_status.py
       - name: Build home_stats
         if: steps.source.outputs.ready == 'true'
         run: python scripts/make_home_stats.py
@@ -191,7 +195,7 @@ jobs:
         run: |
           git config user.name 'github-actions'
           git config user.email 'github-actions@users.noreply.github.com'
-          git add data/home_stats.json data/site_stats.json app.js index.html data/posts-loader.js data/home-analysis-ui.js tools/jeonse-ratio/index.html analysis/ujangsan-hillstate/index.html public-housing/routes.json public-housing/current.json public-housing/sitemap.xml public-housing/notices
+          git add data/home_stats.json data/site_stats.json app.js index.html data/posts-loader.js data/home-analysis-ui.js tools/jeonse-ratio/index.html tools/longterm-jeonse-51/index.html analysis/ujangsan-hillstate/index.html public-housing/sh-longterm-jeonse-51/index.html public-housing/routes.json public-housing/current.json public-housing/sitemap.xml public-housing/notices
           git diff --cached --quiet || git commit -m 'build: refresh home stats and public housing notice articles'
           git pull --rebase --autostash
           git push
