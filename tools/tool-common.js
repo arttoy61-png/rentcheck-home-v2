@@ -40,7 +40,7 @@
       caution:'실제 사업에서는 추가분담금, 금융비용, 옵션·발코니, 취득 관련 비용, 사업비 변경 등이 더해질 수 있습니다. 계산 결과는 사업시행계획·관리처분계획·조합 공지보다 우선하지 않습니다.',
       source:'계산 구조 · 권리가액 = 감정평가액 × 비례율 · 예상 분담금 = 조합원분양가 − 권리가액',
       faq:[['비례율 100%면 좋은 건가요?','100%는 감정평가액이 권리가액으로 그대로 반영되는 단순 기준점입니다. 사업성 판단은 비례율 하나만이 아니라 분양수입·사업비·종전자산평가와 함께 봐야 합니다.'],['분담금이 음수면 바로 환급받나요?','계산상 권리가액이 조합원분양가보다 크다는 뜻입니다. 실제 청산금·환급 여부와 시점은 사업계획과 조합 기준을 확인해야 합니다.'],['매수자는 무엇을 더 봐야 하나요?','매매가와 예상 분담금뿐 아니라 취득세·대출이자·이주비 조건·추가 사업비 등 실제 현금흐름을 별도로 확인해야 합니다.']],
-      related:[['blog/redevelopment-contribution/','재개발 분담금 읽는 법'],['blog/redevelopment-rights/','권리가액 계산 이해하기'],['analysis/hwagok6-957-a1/','화곡6동 모아타운 A1 진행상황']]
+      related:[['blog/redevelopment-contribution/','재개발 분담금 읽는 법'],['blog/redevelopment-rights/','권리산정기준일·입주권 체크'],['analysis/hwagok6-957-a1/','화곡6동 모아타운 A1 진행상황']]
     },
     'youth-score':{
       title:'청년임대는 “몇 점”보다 먼저 내 순위를 확인해야 합니다',
@@ -300,6 +300,29 @@
     }
   }
 
+  function normalizeYouthScoreResult(body,activeTool){
+    if(activeTool!=='youth-score')return;
+    const note=body.querySelector('.m-note');
+    if(note){
+      note.innerHTML='<b>· 결과 해석</b>: 계산된 점수는 선택한 공고의 배점항목을 정리한 참고값입니다. 과거 회차 커트라인을 현재 당첨 가능성 판단에 사용하지 않습니다.<br><b>· 청약</b>은 순위(가입)확인서의 납입인정회차 기준입니다.<br><b>· 배점</b>은 신청하려는 LH·SH 공고의 최신 배점표를 최종 기준으로 확인하세요.';
+    }
+    const judge=body.querySelector('#mJudge');
+    const desc=body.querySelector('#mDesc');
+    const neutralDesc='계산된 점수만으로 당첨 가능성을 판단할 수 없습니다. 같은 순위 안에서 해당 공고의 배점·동점자·추첨 기준을 확인하세요.';
+    const sync=()=>{
+      if(judge&&judge.textContent!=='가점 합계 확인')judge.textContent='가점 합계 확인';
+      if(desc&&desc.textContent!==neutralDesc)desc.textContent=neutralDesc;
+    };
+    sync();
+    const targets=[judge,desc].filter(Boolean);
+    if(targets.length){
+      const observer=new MutationObserver(sync);
+      targets.forEach(target=>observer.observe(target,{childList:true,subtree:true,characterData:true}));
+    }
+    const modal=body.querySelector('#modalBg');
+    if(modal)new MutationObserver(sync).observe(modal,{attributes:true,attributeFilter:['class']});
+  }
+
   function fixAnalysisLinks(){
     document.querySelectorAll('a[href$="#article-library"]').forEach(a=>{
       if((a.textContent||'').includes('분석 글'))a.setAttribute('href','https://rent-check.kr/#article-library');
@@ -317,6 +340,7 @@
     ensureStructuredData(activeTool);
     fixAnalysisLinks();
     prioritizeInternalResultLinks(body,activeTool,root);
+    normalizeYouthScoreResult(body,activeTool);
     addNumericClearButtons(body);
 
     if(!document.querySelector('.v2-toolbar')){
