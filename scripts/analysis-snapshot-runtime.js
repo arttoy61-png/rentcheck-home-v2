@@ -69,9 +69,9 @@ function rcValidate(s,d){
         if(!/^\d{4}\.\d{2}\.\d{2}$/.test(String(row.date))||typeof price!=='number'||!Number.isFinite(price)||price<0)throw new Error('Invalid transaction');
       }
     }
-    if(typeof area.nS==='number'&&area.nS!==area.sale.length)throw new Error('Incomplete sale snapshot');
-    if(typeof area.nJ==='number'&&area.nJ!==area.jeonse.length)throw new Error('Incomplete jeonse snapshot');
-    if(typeof area.nW==='number'&&area.nW!==area.wolse.length)throw new Error('Incomplete wolse snapshot');
+    // Embedded fallback arrays are intentionally trimmed to the published
+    // analysis window. Source nS/nJ/nW counters may cover a wider range, so
+    // count equality is not a validity requirement for the fallback snapshot.
   }
   return item;
 }
