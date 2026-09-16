@@ -113,20 +113,18 @@ try:
                     assert '불러오는 중' not in page.locator('#app').inner_text()
                     assert '자료 생성' in page.locator('#updated').inner_text()
                     if js:
-                        page.locator('.tabs button').nth(1).click()
-                        page.wait_for_timeout(250)
-                        trend_rows=page.locator('#app table.trend tbody tr').count()
-                        # An exact six-month date window can touch seven calendar months
-                        # when both endpoint months are partial (e.g. Mar 15~Sep 15).
+                        assert page.evaluate("typeof setTab === 'function'")
+                        page.evaluate("setTab('trend')")
+                        page.wait_for_function("document.querySelector('#app .panel') && document.querySelector('#app .panel').innerText.includes('매매 6개월 흐름')")
+                        trend_rows=page.locator('#app .panel table.trend tbody tr').count()
                         assert 6<=trend_rows<=7, trend_rows
                         bands=page.locator('.bands button').count()
                         if bands>1:
-                            page.locator('.bands button').nth(1).click()
-                            page.wait_for_timeout(150)
+                            page.evaluate("setBand(Number(document.querySelectorAll('.bands button')[1].textContent.match(/\\d+/)[0]))")
+                            page.wait_for_timeout(100)
                         assert page.locator('#rc-recent-records table').count()==1
-                        page.locator('.tabs button').nth(2).click()
-                        page.wait_for_timeout(250)
-                        assert '주변' in page.locator('#app .panel').inner_text() or '반경' in page.locator('#app .panel').inner_text()
+                        page.evaluate("setTab('compare')")
+                        page.wait_for_function("document.querySelector('#app .panel') && (/주변|반경/.test(document.querySelector('#app .panel').innerText))")
                         assert page.locator('#rc-recent-records table').count()==1
                     assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1')
                     checks+=1
