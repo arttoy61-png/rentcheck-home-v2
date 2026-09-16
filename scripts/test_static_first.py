@@ -114,11 +114,15 @@ try:
                     assert '자료 생성' in page.locator('#updated').inner_text()
                     if js:
                         page.locator('.tabs button').nth(1).click()
+                        page.wait_for_timeout(250)
                         assert page.locator('#app table.trend tbody tr').count()==6
                         bands=page.locator('.bands button').count()
-                        if bands>1: page.locator('.bands button').nth(1).click()
+                        if bands>1:
+                            page.locator('.bands button').nth(1).click()
+                            page.wait_for_timeout(150)
                         assert page.locator('#rc-recent-records table').count()==1
                         page.locator('.tabs button').nth(2).click()
+                        page.wait_for_timeout(250)
                         assert '주변' in page.locator('#app .panel').inner_text() or '반경' in page.locator('#app .panel').inner_text()
                         assert page.locator('#rc-recent-records table').count()==1
                     assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1')
