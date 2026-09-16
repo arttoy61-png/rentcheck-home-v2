@@ -28,6 +28,14 @@ artifacts=ROOT/'test-artifacts/static-first'
 artifacts.mkdir(parents=True,exist_ok=True)
 metrics=[]
 checks=0
+REVIEW_PAGES=[
+    ('/blog/','부동산 실전 가이드','.guide-card',10),
+    ('/tools/youth-score/','청년임대 계산기','h1',1),
+    ('/public-housing/','LH·SH 임대주택 모집공고','.housing-card',3),
+    ('/about/','Rent Check','h1',1),
+    ('/privacy.html','개인정보 처리방침','h1',1),
+    ('/contact/','문의','h1',1),
+]
 try:
     with sync_playwright() as p:
         browser=p.chromium.launch()
@@ -105,20 +113,42 @@ try:
                     assert '불러오는 중' not in page.locator('#app').inner_text()
                     assert '자료 생성' in page.locator('#updated').inner_text()
                     if js:
-                        page.locator('.tabs button').nth(1).click()
-                        assert page.locator('#app table.trend tbody tr').count()==6
+                        assert page.evaluate("typeof setTab === 'function'")
+                        page.evaluate("setTab('trend')")
+                        page.wait_for_function("document.querySelector('#app .panel') && document.querySelector('#app .panel').innerText.includes('매매 6개월 흐름')")
+                        trend_rows=page.locator('#app .panel table.trend tbody tr').count()
+                        assert 6<=trend_rows<=7, trend_rows
                         bands=page.locator('.bands button').count()
-                        if bands>1: page.locator('.bands button').nth(1).click()
+                        if bands>1:
+                            page.evaluate("setBand(Number(document.querySelectorAll('.bands button')[1].textContent.match(/\\d+/)[0]))")
+                            page.wait_for_timeout(100)
                         assert page.locator('#rc-recent-records table').count()==1
-                        page.locator('.tabs button').nth(2).click()
-                        assert '주변' in page.locator('#app .panel').inner_text() or '반경' in page.locator('#app .panel').inner_text()
+                        page.evaluate("setTab('compare')")
+                        page.wait_for_function("document.querySelector('#app .panel') && (/주변|반경/.test(document.querySelector('#app .panel').innerText))")
                         assert page.locator('#rc-recent-records table').count()==1
                     assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1')
                     checks+=1
-                    print(f'PASS width={width} js={js} network={mode}: three pages, aligned guide, no duplicate, no overflow',flush=True)
+
+                    for path,needle,selector,min_count in REVIEW_PAGES:
+                        page.goto(base+path,wait_until='networkidle')
+                        body_text=page.locator('body').inner_text()
+                        assert needle in body_text,(path,needle)
+                        assert page.locator(selector).count()>=min_count,(path,selector,page.locator(selector).count())
+                        assert len(body_text.strip())>=180,(path,len(body_text.strip()))
+                        assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),path
+                        if path=='/public-housing/':
+                            assert '최종 청약 경쟁률' not in body_text
+                            assert '청약접수결과' not in body_text
+                        if js and mode=='healthy' and width in [390,1280]:
+                            slug=path.strip('/').replace('/','-') or 'home'
+                            if path.endswith('.html'): slug=Path(path).stem
+                            page.screenshot(path=str(artifacts/f'adsense-{slug}-{width}.png'),full_page=True)
+                        checks+=1
+
+                    print(f'PASS width={width} js={js} network={mode}: core + AdSense pages, no overflow',flush=True)
                     ctx.close()
         browser.close()
 finally:
     (artifacts/'layout.json').write_text(json.dumps(metrics,ensure_ascii=False,indent=2),encoding='utf-8')
     server.shutdown()
-print(f'PASS {checks} page checks; calculator 70/80/50%; offline tabs; byte-identical repeat build')
+print(f'PASS {checks} page checks; calculator 70/80/50%; public housing filtered; trust pages readable; no overflow')
