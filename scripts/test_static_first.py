@@ -115,7 +115,10 @@ try:
                     if js:
                         page.locator('.tabs button').nth(1).click()
                         page.wait_for_timeout(250)
-                        assert page.locator('#app table.trend tbody tr').count()==6
+                        trend_rows=page.locator('#app table.trend tbody tr').count()
+                        # An exact six-month date window can touch seven calendar months
+                        # when both endpoint months are partial (e.g. Mar 15~Sep 15).
+                        assert 6<=trend_rows<=7, trend_rows
                         bands=page.locator('.bands button').count()
                         if bands>1:
                             page.locator('.bands button').nth(1).click()
