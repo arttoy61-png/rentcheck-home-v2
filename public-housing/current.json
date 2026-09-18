@@ -1,8 +1,39 @@
 {
-  "generated_at": "2026-09-18T02:05:10+00:00",
-  "source_generated_at": "2026-09-18T06:22:58",
+  "generated_at": "2026-09-18T07:18:13+00:00",
+  "source_generated_at": "2026-09-18T13:44:04",
   "recruitment_count": 22,
   "items": [
+    {
+      "id": "SH:seq:310258",
+      "agency": "SH",
+      "agency_group": "SH",
+      "title": "2026년 2차 희망하우징(공공기숙사) 입주자 모집공고(2026. 9. 17.)",
+      "housing_types": [
+        "기숙사"
+      ],
+      "audiences": [],
+      "region": "서울",
+      "published_at": "2026-09-18",
+      "deadline": "2026-09-17",
+      "open_state": "마감",
+      "event": "수정",
+      "change": "수정",
+      "status_text": "",
+      "is_gangseo": false,
+      "keywords": [
+        "기숙사"
+      ],
+      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310258",
+      "source": "SH 공식 주택임대 게시판",
+      "content_signature": "7f9a4e14c2325aef857a2c539abb81690b455894e38e03827d19f3c866a30767",
+      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
+      "application_start": "",
+      "schedule_source": "source_list",
+      "route": "/public-housing/notices/sh-310258/",
+      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310258",
+      "official_link_label": "공식 모집공고 원문 →",
+      "indexable": false
+    },
     {
       "id": "LH:panId:2015122300020753",
       "agency": "LH",
@@ -144,37 +175,6 @@
       "editorial_ready": false,
       "route": "/public-housing/notices/lh-2015122300020750/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?aisTpCd=26&ccrCnntSysDsCd=03&mi=1026&panId=2015122300020750&uppAisTpCd=13",
-      "official_link_label": "공식 모집공고 원문 →",
-      "indexable": false
-    },
-    {
-      "id": "SH:seq:310258",
-      "agency": "SH",
-      "agency_group": "SH",
-      "title": "2026년 2차 희망하우징(공공기숙사) 입주자 모집공고(2026. 9. 17.)",
-      "housing_types": [
-        "기숙사"
-      ],
-      "audiences": [],
-      "region": "서울",
-      "published_at": "2026-09-17",
-      "deadline": "2026-09-17",
-      "open_state": "마감",
-      "event": "신규",
-      "change": "동일",
-      "status_text": "",
-      "is_gangseo": false,
-      "keywords": [
-        "기숙사"
-      ],
-      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310258",
-      "source": "SH 공식 주택임대 게시판",
-      "content_signature": "e1b1a70bbc2695b041bccf05245706303ba5aacf2f4d62a76e9ba3c841709ef8",
-      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
-      "application_start": "",
-      "schedule_source": "source_list",
-      "route": "/public-housing/notices/sh-310258/",
-      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310258",
       "official_link_label": "공식 모집공고 원문 →",
       "indexable": false
     },
