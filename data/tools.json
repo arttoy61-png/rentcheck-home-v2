@@ -141,9 +141,9 @@
   },
   {
     "id": "registration-cost",
-    "title": "취득세 계산기",
-    "description": "부동산 종류와 취득원인, 주택 수·지역 조건을 골라 취득세·지방교육세·농어촌특별세를 계산합니다.",
-    "url": "tools/acquisition-tax/",
+    "title": "등기비용 합산기",
+    "description": "취득세·국민주택채권·법무사비 등 확인한 등기 준비비용을 한 번에 합산합니다.",
+    "url": "tools/registration-cost/",
     "status": "available",
     "badge": "이용 가능",
     "icon": "＋",
