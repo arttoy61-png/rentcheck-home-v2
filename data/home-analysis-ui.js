@@ -135,7 +135,7 @@
   }
   if(!document.querySelector('script[data-public-housing-popup]')){
     const popupScript=document.createElement('script');
-    popupScript.src='/data/public-housing-popup.js?v=20260831-2';
+    popupScript.src='/data/public-housing-popup.js?v=20260918-1';
     popupScript.defer=true;
     popupScript.dataset.publicHousingPopup='1';
     document.body.appendChild(popupScript);
@@ -157,7 +157,7 @@
   }
   if(!document.querySelector('script[data-new-housing-alert]')){
     const alertScript=document.createElement('script');
-    alertScript.src='/data/new-housing-alert.js?v=20260830-1';
+    alertScript.src='/data/new-housing-alert.js?v=20260918-1';
     alertScript.defer=true;
     alertScript.dataset.newHousingAlert='1';
     document.body.appendChild(alertScript);
