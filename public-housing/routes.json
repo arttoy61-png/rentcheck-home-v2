@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-18T12:44:40+00:00",
-  "source_generated_at": "2026-09-18T20:14:04",
+  "generated_at": "2026-09-18T22:55:17+00:00",
+  "source_generated_at": "2026-09-19T05:55:48",
   "source_recruitment_count": 22,
   "recruitment_count": 22,
   "duplicate_count": 0,
@@ -14,7 +14,6 @@
     "SH:seq:310107": "/public-housing/sh-long-vacant-purchase-2026-2/",
     "SH:seq:310041": "/public-housing/notices/sh-310041/",
     "SHYOUTH:ac0c542c9045e8e7d0ce": "/public-housing/notices/shyouth-ac0c542c9045e8e7d0ce/",
-    "LH:panId:2015122300020759": "/public-housing/notices/lh-2015122300020759/",
     "SHYOUTH:fa01df725a9d3ceaf32c": "/public-housing/notices/shyouth-fa01df725a9d3ceaf32c/",
     "SHYOUTH:807ba55b1308f4dedf26": "/public-housing/notices/shyouth-807ba55b1308f4dedf26/",
     "LH:panId:2015122300019657": "/public-housing/notices/lh-2015122300019657/",
@@ -29,6 +28,7 @@
     "LH:panId:2015122300018941": "/public-housing/notices/lh-2015122300018941/",
     "LH:panId:2015122300019045": "/public-housing/notices/lh-2015122300019045/",
     "LH:panId:2015122300020753": "/public-housing/notices/lh-2015122300020753/",
+    "LH:panId:2015122300020759": "/public-housing/notices/lh-2015122300020759/",
     "LH:panId:2015122300020750": "/public-housing/notices/lh-2015122300020750/",
     "LH:panId:2015122300020749": "/public-housing/notices/lh-2015122300020749/"
   }

@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-18T12:44:40+00:00",
-  "source_generated_at": "2026-09-18T20:14:04",
+  "generated_at": "2026-09-18T22:55:17+00:00",
+  "source_generated_at": "2026-09-19T05:55:48",
   "recruitment_count": 22,
   "items": [
     {
@@ -81,6 +81,7 @@
       ],
       "region": "서울특별시",
       "published_at": "2026-09-17",
+      "application_start": "2026-09-28",
       "deadline": "2026-09-30",
       "open_state": "접수예정",
       "event": "신규",
@@ -93,10 +94,9 @@
       ],
       "url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?aisTpCd=26&ccrCnntSysDsCd=03&mi=1026&panId=2015122300020759&uppAisTpCd=13",
       "source": "LH청약플러스",
+      "schedule_source": "source_list",
       "content_signature": "manual-official-lh-2015122300020759-20260917",
       "classification_note": "LH청약플러스 공식 모집공고 기준 보완 항목입니다.",
-      "application_start": "2026-09-28",
-      "schedule_source": "source_list",
       "editorial_ready": false,
       "route": "/public-housing/notices/lh-2015122300020759/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?aisTpCd=26&ccrCnntSysDsCd=03&mi=1026&panId=2015122300020759&uppAisTpCd=13",
