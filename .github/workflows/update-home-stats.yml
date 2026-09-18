@@ -18,6 +18,7 @@ on:
       - 'scripts/public_housing_quality_gate.py'
       - 'scripts/update_sh51_status.py'
       - 'public-housing/editorial-overrides.json'
+      - 'public-housing/source-supplements.json'
       - 'data/posts*.json'
       - 'data/posts-loader.js'
       - 'data/tools.json'
@@ -34,6 +35,7 @@ on:
       - 'scripts/public_housing_quality_gate.py'
       - 'scripts/update_sh51_status.py'
       - 'public-housing/editorial-overrides.json'
+      - 'public-housing/source-supplements.json'
   schedule:
     - cron: '0 21 * * *'
     - cron: '45 22 * * *'
