@@ -157,7 +157,7 @@
   }
   if(!document.querySelector('script[data-new-housing-alert]')){
     const alertScript=document.createElement('script');
-    alertScript.src='/data/new-housing-alert.js?v=20260918-1';
+    alertScript.src='/data/new-housing-alert.js?v=20260918-2';
     alertScript.defer=true;
     alertScript.dataset.newHousingAlert='1';
     document.body.appendChild(alertScript);

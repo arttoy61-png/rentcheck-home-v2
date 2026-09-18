@@ -30,7 +30,7 @@
     if(/발표|결과|정정|변경|취소|당첨|선정결과|서류심사\s*대상자/i.test(title))return false;
     return /모집공고|입주자\s*모집|예비입주자\s*모집|행복주택.*모집|매입임대.*모집|전세임대.*모집|임대주택.*모집/i.test(title);
   }
-  function internalUrl(item){return ROUTES[String(item?.id||'')]||`/public-housing/?id=${encodeURIComponent(item?.id||'')}`}
+  function internalUrl(item){const route=String(item?.route||'').trim();if(route.startsWith('/'))return route;return ROUTES[String(item?.id||'')]||`/public-housing/?id=${encodeURIComponent(item?.id||'')}`}
   function shortDate(value){
     const m=String(value||'').match(/20\d{2}[-./](\d{1,2})[-./](\d{1,2})/);return m?`${+m[1]}/${+m[2]}`:'';
   }
