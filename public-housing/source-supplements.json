@@ -27,9 +27,11 @@
       ],
       "url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?aisTpCd=48&ccrCnntSysDsCd=03&mi=1026&panId=2015122300020753&uppAisTpCd=06",
       "source": "LH청약플러스",
-      "schedule_source": "official_detail_html",
+      "schedule_source": "source_list",
       "content_signature": "manual-official-lh-2015122300020753-20260917",
-      "classification_note": "LH청약플러스 공식 모집공고 기준 보완 항목입니다."
+      "classification_note": "LH청약플러스 공식 모집공고 기준 보완 항목입니다.",
+      "editorial_ready": false,
+      "supplement_note": "LH 공식 상세 공고에서 공고일과 9/29~10/1 접수 일정을 확인한 보완 항목입니다."
     },
     {
       "id": "LH:panId:2015122300020759",
@@ -44,9 +46,9 @@
       ],
       "region": "서울특별시",
       "published_at": "2026-09-17",
-      "application_start": "",
+      "application_start": "2026-09-28",
       "deadline": "2026-09-30",
-      "open_state": "공고중",
+      "open_state": "접수예정",
       "event": "신규",
       "change": "신규",
       "status_text": "공고중",
@@ -59,7 +61,9 @@
       "source": "LH청약플러스",
       "schedule_source": "source_list",
       "content_signature": "manual-official-lh-2015122300020759-20260917",
-      "classification_note": "LH청약플러스 공식 모집공고 기준 보완 항목입니다."
+      "classification_note": "LH청약플러스 공식 모집공고 기준 보완 항목입니다.",
+      "editorial_ready": false,
+      "supplement_note": "LH 공식 공고일·공고 상태를 확인하고, 접수기간은 공고 첨부 일정 대조값으로 보완했습니다."
     },
     {
       "id": "LH:panId:2015122300020750",
@@ -75,9 +79,9 @@
       ],
       "region": "서울특별시",
       "published_at": "2026-09-17",
-      "application_start": "",
+      "application_start": "2026-09-28",
       "deadline": "2026-09-30",
-      "open_state": "공고중",
+      "open_state": "접수예정",
       "event": "신규",
       "change": "신규",
       "status_text": "공고중",
@@ -91,7 +95,9 @@
       "source": "LH청약플러스",
       "schedule_source": "source_list",
       "content_signature": "manual-official-lh-2015122300020750-20260917",
-      "classification_note": "LH청약플러스 공식 모집공고 기준 보완 항목입니다."
+      "classification_note": "LH청약플러스 공식 모집공고 기준 보완 항목입니다.",
+      "editorial_ready": false,
+      "supplement_note": "LH 공식 공고일·공고 상태를 확인하고, 접수기간은 공고 첨부 일정 대조값으로 보완했습니다."
     },
     {
       "id": "LH:panId:2015122300020749",
@@ -107,9 +113,9 @@
       ],
       "region": "서울특별시",
       "published_at": "2026-09-17",
-      "application_start": "",
+      "application_start": "2026-09-28",
       "deadline": "2026-09-30",
-      "open_state": "공고중",
+      "open_state": "접수예정",
       "event": "신규",
       "change": "신규",
       "status_text": "공고중",
@@ -124,7 +130,9 @@
       "source": "LH청약플러스",
       "schedule_source": "source_list",
       "content_signature": "manual-official-lh-2015122300020749-20260917",
-      "classification_note": "LH청약플러스 공식 모집공고 기준 보완 항목입니다."
+      "classification_note": "LH청약플러스 공식 모집공고 기준 보완 항목입니다.",
+      "editorial_ready": false,
+      "supplement_note": "LH 공식 공고일·공고 상태를 확인하고, 접수기간은 공고 첨부 일정 대조값으로 보완했습니다."
     }
   ]
 }
