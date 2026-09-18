@@ -138,16 +138,22 @@ def load_source_supplements() -> list[dict]:
 
 
 def merge_source_items(source_items: list[dict], supplements: list[dict]) -> list[dict]:
-    """Use manual official supplements only when the upstream feed missed that notice ID."""
-    merged = list(source_items)
-    seen_ids = {str(item.get('id') or '') for item in source_items if str(item.get('id') or '')}
+    """Add missed notices and patch known-bad upstream fields with verified official values."""
+    merged = [dict(item) for item in source_items]
+    positions = {
+        str(item.get('id') or ''): idx
+        for idx, item in enumerate(merged)
+        if str(item.get('id') or '')
+    }
     for item in supplements:
         item_id = str(item.get('id') or '')
-        if item_id and item_id in seen_ids:
-            continue
-        merged.append(item)
-        if item_id:
-            seen_ids.add(item_id)
+        patch = {key: value for key, value in item.items() if key != 'supplement_note'}
+        if item_id and item_id in positions:
+            merged[positions[item_id]].update(patch)
+        else:
+            merged.append(dict(patch))
+            if item_id:
+                positions[item_id] = len(merged) - 1
     return merged
 
 
