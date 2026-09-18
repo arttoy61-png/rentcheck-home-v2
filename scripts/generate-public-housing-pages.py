@@ -11,6 +11,7 @@ OUT_ROOT = Path('public-housing/notices')
 ROUTES_PATH = Path('public-housing/routes.json')
 CURRENT_PATH = Path('public-housing/current.json')
 OVERRIDES_PATH = Path('public-housing/editorial-overrides.json')
+SUPPLEMENTS_PATH = Path('public-housing/source-supplements.json')
 SITEMAP_PATH = Path('public-housing/sitemap.xml')
 STYLE_VERSION = '20260913-3'
 
@@ -126,6 +127,34 @@ def load_editorial_overrides() -> dict[str, dict]:
         return {}
     data = json.loads(OVERRIDES_PATH.read_text(encoding='utf-8'))
     return data if isinstance(data, dict) else {}
+
+
+def load_source_supplements() -> list[dict]:
+    if not SUPPLEMENTS_PATH.exists():
+        return []
+    data = json.loads(SUPPLEMENTS_PATH.read_text(encoding='utf-8'))
+    items = data.get('items', []) if isinstance(data, dict) else data
+    return [item for item in items if isinstance(item, dict)] if isinstance(items, list) else []
+
+
+def merge_source_items(source_items: list[dict], supplements: list[dict]) -> list[dict]:
+    """Add missed notices and patch known-bad upstream fields with verified official values."""
+    merged = [dict(item) for item in source_items]
+    positions = {
+        str(item.get('id') or ''): idx
+        for idx, item in enumerate(merged)
+        if str(item.get('id') or '')
+    }
+    for item in supplements:
+        item_id = str(item.get('id') or '')
+        patch = {key: value for key, value in item.items() if key != 'supplement_note'}
+        if item_id and item_id in positions:
+            merged[positions[item_id]].update(patch)
+        else:
+            merged.append(dict(patch))
+            if item_id:
+                positions[item_id] = len(merged) - 1
+    return merged
 
 
 def apply_editorial_override(item: dict, overrides: dict[str, dict]) -> dict:
@@ -548,7 +577,9 @@ def main() -> None:
         raise SystemExit(f'missing source feed: {SOURCE}')
     data = json.loads(SOURCE.read_text(encoding='utf-8'))
     overrides = load_editorial_overrides()
-    source_items = [apply_editorial_override(item, overrides) for item in data.get('items', []) if isinstance(item, dict)]
+    upstream_items = [item for item in data.get('items', []) if isinstance(item, dict)]
+    combined_items = merge_source_items(upstream_items, load_source_supplements())
+    source_items = [apply_editorial_override(item, overrides) for item in combined_items]
     raw_items = [item for item in source_items if is_recruitment(item)]
     items, alias_map = dedupe_recruitments(raw_items)
     OUT_ROOT.mkdir(parents=True, exist_ok=True)

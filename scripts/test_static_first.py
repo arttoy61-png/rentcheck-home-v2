@@ -24,6 +24,17 @@ threading.Thread(target=server.serve_forever,daemon=True).start()
 base=f'http://127.0.0.1:{server.server_port}'
 source_s=json.loads((ROOT/'.cache-home-stats/gangseo_apt_summary.json').read_text())
 source_d=json.loads((ROOT/'.cache-home-stats/gangseo_apt_detail.json').read_text())
+housing_current=json.loads((ROOT/'public-housing/current.json').read_text(encoding='utf-8'))
+supplements=json.loads((ROOT/'public-housing/source-supplements.json').read_text(encoding='utf-8'))
+current_by_id={str(item.get('id') or ''):item for item in housing_current.get('items',[]) if isinstance(item,dict)}
+for item in supplements.get('items',[]):
+    item_id=str(item.get('id') or '')
+    assert item_id in current_by_id, f'supplemented housing notice missing from current feed: {item_id}'
+    assert current_by_id[item_id].get('title')==item.get('title'), f'supplement title mismatch: {item_id}'
+    if item.get('published_at'):
+        assert current_by_id[item_id].get('published_at')==item.get('published_at'), f'supplement publish date mismatch: {item_id}'
+alert_js=(ROOT/'data/new-housing-alert.js').read_text(encoding='utf-8')
+assert "FEED_URL='/public-housing/current.json'" in alert_js, 'new housing alert must use canonical local feed first'
 artifacts=ROOT/'test-artifacts/static-first'
 artifacts.mkdir(parents=True,exist_ok=True)
 metrics=[]

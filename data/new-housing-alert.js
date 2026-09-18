@@ -1,5 +1,6 @@
 (()=>{
-  const FEED_URL='https://arttoy61-png.github.io/rent-check/public_housing_notices.json';
+  const FEED_URL='/public-housing/current.json';
+  const FALLBACK_FEED_URL='https://arttoy61-png.github.io/rent-check/public_housing_notices.json';
   const DISMISS_KEY='rentcheck:new-housing-alert-dismissed-v2';
   const LEGACY_DISMISS_KEY='rentcheck:new-housing-alert-dismissed-v1';
   const ROUTES={
@@ -89,8 +90,11 @@
   async function init(){
     if(location.pathname!=='/'&&location.pathname!=='/index.html')return;
     try{
-      const res=await fetch(`${FEED_URL}?v=${Date.now()}`,{cache:'no-store'});if(!res.ok)return;
-      const data=await res.json();
+      let data=null;
+      for(const url of [FEED_URL,FALLBACK_FEED_URL]){
+        try{const sep=url.includes('?')?'&':'?';const res=await fetch(`${url}${sep}v=${Date.now()}`,{cache:'no-store'});if(!res.ok)continue;const json=await res.json();if(Array.isArray(json?.items)){data=json;break}}catch(_){}
+      }
+      if(!data)return;
       const recruit=(data.items||[]).filter(isRecruitmentNotice).map(item=>({...item,_pub:isoDate(item.published_at)})).filter(item=>item._pub);
       if(!recruit.length)return;
       const latest=[...new Set(recruit.map(x=>x._pub))].sort().pop();
