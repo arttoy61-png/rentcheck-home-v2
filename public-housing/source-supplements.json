@@ -1,0 +1,130 @@
+{
+  "updated_at": "2026-09-18",
+  "note": "Official LH notices temporarily supplemented when the upstream public-housing feed misses them. The generator ignores a supplement once the same notice ID appears upstream.",
+  "items": [
+    {
+      "id": "LH:panId:2015122300020753",
+      "agency": "LH",
+      "agency_group": "LH",
+      "title": "강서염창 통합공공임대주택 최초 입주자 모집공고",
+      "housing_types": [
+        "통합공공임대"
+      ],
+      "audiences": [],
+      "region": "서울특별시",
+      "published_at": "2026-09-17",
+      "application_start": "2026-09-29",
+      "deadline": "2026-10-01",
+      "open_state": "공고중",
+      "event": "신규",
+      "change": "신규",
+      "status_text": "공고중",
+      "is_gangseo": true,
+      "keywords": [
+        "통합공공임대",
+        "강서",
+        "염창"
+      ],
+      "url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?aisTpCd=48&ccrCnntSysDsCd=03&mi=1026&panId=2015122300020753&uppAisTpCd=06",
+      "source": "LH청약플러스",
+      "schedule_source": "official_detail_html",
+      "content_signature": "manual-official-lh-2015122300020753-20260917",
+      "classification_note": "LH청약플러스 공식 모집공고 기준 보완 항목입니다."
+    },
+    {
+      "id": "LH:panId:2015122300020759",
+      "agency": "LH",
+      "agency_group": "LH",
+      "title": "[서울지역본부] 26년 3차 청년 매입임대주택 예비입주자 모집공고",
+      "housing_types": [
+        "매입임대"
+      ],
+      "audiences": [
+        "청년"
+      ],
+      "region": "서울특별시",
+      "published_at": "2026-09-17",
+      "application_start": "",
+      "deadline": "2026-09-30",
+      "open_state": "공고중",
+      "event": "신규",
+      "change": "신규",
+      "status_text": "공고중",
+      "is_gangseo": false,
+      "keywords": [
+        "매입임대",
+        "청년"
+      ],
+      "url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?aisTpCd=26&ccrCnntSysDsCd=03&mi=1026&panId=2015122300020759&uppAisTpCd=13",
+      "source": "LH청약플러스",
+      "schedule_source": "source_list",
+      "content_signature": "manual-official-lh-2015122300020759-20260917",
+      "classification_note": "LH청약플러스 공식 모집공고 기준 보완 항목입니다."
+    },
+    {
+      "id": "LH:panId:2015122300020750",
+      "agency": "LH",
+      "agency_group": "LH",
+      "title": "[서울지역본부] 26년 3차 신혼·신생아 매입임대Ⅰ 예비입주자 모집공고",
+      "housing_types": [
+        "매입임대"
+      ],
+      "audiences": [
+        "신혼부부",
+        "신생아"
+      ],
+      "region": "서울특별시",
+      "published_at": "2026-09-17",
+      "application_start": "",
+      "deadline": "2026-09-30",
+      "open_state": "공고중",
+      "event": "신규",
+      "change": "신규",
+      "status_text": "공고중",
+      "is_gangseo": false,
+      "keywords": [
+        "매입임대",
+        "신혼",
+        "신생아"
+      ],
+      "url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?aisTpCd=26&ccrCnntSysDsCd=03&mi=1026&panId=2015122300020750&uppAisTpCd=13",
+      "source": "LH청약플러스",
+      "schedule_source": "source_list",
+      "content_signature": "manual-official-lh-2015122300020750-20260917",
+      "classification_note": "LH청약플러스 공식 모집공고 기준 보완 항목입니다."
+    },
+    {
+      "id": "LH:panId:2015122300020749",
+      "agency": "LH",
+      "agency_group": "LH",
+      "title": "[서울지역본부] 26년 3차 신혼·신생아매입임대주택Ⅱ(전세형) 예비입주자 모집공고",
+      "housing_types": [
+        "매입임대"
+      ],
+      "audiences": [
+        "신혼부부",
+        "신생아"
+      ],
+      "region": "서울특별시",
+      "published_at": "2026-09-17",
+      "application_start": "",
+      "deadline": "2026-09-30",
+      "open_state": "공고중",
+      "event": "신규",
+      "change": "신규",
+      "status_text": "공고중",
+      "is_gangseo": false,
+      "keywords": [
+        "매입임대",
+        "신혼",
+        "신생아",
+        "전세형"
+      ],
+      "url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?aisTpCd=26&ccrCnntSysDsCd=03&mi=1026&panId=2015122300020749&uppAisTpCd=13",
+      "source": "LH청약플러스",
+      "schedule_source": "source_list",
+      "content_signature": "manual-official-lh-2015122300020749-20260917",
+      "classification_note": "LH청약플러스 공식 모집공고 기준 보완 항목입니다."
+    }
+  ]
+}
