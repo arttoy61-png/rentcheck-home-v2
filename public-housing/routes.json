@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-18T00:46:14+00:00",
+  "generated_at": "2026-09-18T01:59:04+00:00",
   "source_generated_at": "2026-09-18T06:22:58",
-  "source_recruitment_count": 19,
-  "recruitment_count": 19,
+  "source_recruitment_count": 22,
+  "recruitment_count": 22,
   "duplicate_count": 0,
-  "generated_count": 16,
+  "generated_count": 19,
   "redirect_count": 0,
   "duplicate_groups": [],
   "routes": {
@@ -27,6 +27,9 @@
     "LH:panId:2015122300019968": "/public-housing/notices/lh-2015122300019968/",
     "LH:panId:2015122300019890": "/public-housing/notices/lh-2015122300019890/",
     "LH:panId:2015122300018941": "/public-housing/notices/lh-2015122300018941/",
-    "LH:panId:2015122300019045": "/public-housing/notices/lh-2015122300019045/"
+    "LH:panId:2015122300019045": "/public-housing/notices/lh-2015122300019045/",
+    "LH:panId:2015122300020753": "/public-housing/notices/lh-2015122300020753/",
+    "LH:panId:2015122300020750": "/public-housing/notices/lh-2015122300020750/",
+    "LH:panId:2015122300020749": "/public-housing/notices/lh-2015122300020749/"
   }
 }
