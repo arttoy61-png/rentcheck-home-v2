@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-21T23:44:17+00:00",
-  "source_generated_at": "2026-09-22T05:01:14",
+  "generated_at": "2026-09-22T01:08:14+00:00",
+  "source_generated_at": "2026-09-22T09:08:23",
   "recruitment_count": 23,
   "items": [
     {
@@ -16,8 +16,8 @@
       "published_at": "2026-09-21",
       "deadline": "2026-09-21",
       "open_state": "마감",
-      "event": "수정",
-      "change": "수정",
+      "event": "신규",
+      "change": "동일",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [],
