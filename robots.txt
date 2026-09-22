@@ -36,6 +36,7 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-# Public-housing canonical pages are listed in a dedicated generated sitemap.
+# Canonical pages are listed in generated sitemaps.
 Sitemap: https://rent-check.kr/sitemap.xml
+Sitemap: https://rent-check.kr/analysis/sitemap.xml
 Sitemap: https://rent-check.kr/public-housing/sitemap.xml
