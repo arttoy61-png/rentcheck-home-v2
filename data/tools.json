@@ -63,7 +63,7 @@
     "id": "apt-widget",
     "title": "강서구 아파트 실거래",
     "description": "동·단지·평형을 골라 매매·전세·월세 실거래와 최근 흐름을 확인합니다.",
-    "url": "tools/apartment/",
+    "url": "/tools/apartment/",
     "status": "available",
     "badge": "이용 가능",
     "icon": "◫",
