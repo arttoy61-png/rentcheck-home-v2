@@ -1,34 +1,34 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-22T21:22:25+09:00",
-  "data_until": "2026-09-21",
+  "generated_at": "2026-09-23T08:23:15+09:00",
+  "data_until": "2026-09-22",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
     {
-      "dong": "등촌동",
-      "name": "등촌1,2단지주공아파트",
-      "area_m2": 41,
-      "amount_eok": 8.0,
-      "date": "2026.09.16",
-      "complex_id": "250fbb3b"
+      "dong": "화곡동",
+      "name": "세교예지안6차",
+      "area_m2": 26,
+      "amount_eok": 1.63,
+      "date": "2026.09.22",
+      "complex_id": "527ae269"
     },
     {
-      "dong": "방화동",
-      "name": "한미(286-1)",
-      "area_m2": 40,
-      "amount_eok": 3.95,
-      "date": "2026.09.16",
-      "complex_id": "51958822"
+      "dong": "염창동",
+      "name": "현대2",
+      "area_m2": 59,
+      "amount_eok": 8.65,
+      "date": "2026.09.21",
+      "complex_id": "54584f3f"
     },
     {
-      "dong": "등촌동",
-      "name": "등촌퀸즈포디엄삼익",
-      "area_m2": 34,
-      "amount_eok": 2.7,
-      "date": "2026.09.15",
-      "complex_id": "ed82c88e"
+      "dong": "마곡동",
+      "name": "마곡힐스테이트",
+      "area_m2": 84,
+      "amount_eok": 17.4,
+      "date": "2026.09.21",
+      "complex_id": "819aa1b2"
     }
   ],
   "monthly_trend": [
@@ -50,11 +50,11 @@
     },
     {
       "month": "2026-08",
-      "count": 252
+      "count": 254
     },
     {
       "month": "2026-09",
-      "count": 109
+      "count": 127
     }
   ]
 }
