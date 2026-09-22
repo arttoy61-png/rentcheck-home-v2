@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-22T01:08:14+00:00",
-  "source_generated_at": "2026-09-22T09:08:23",
-  "recruitment_count": 23,
+  "generated_at": "2026-09-22T12:22:24+00:00",
+  "source_generated_at": "2026-09-22T20:38:37",
+  "recruitment_count": 24,
   "items": [
     {
       "id": "SH:seq:310575",
@@ -747,6 +747,35 @@
       "schedule_source": "official_detail_html",
       "route": "/public-housing/notices/lh-2015122300019045/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019045&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=09&mi=1026",
+      "official_link_label": "공식 모집공고 원문 →",
+      "indexable": false
+    },
+    {
+      "id": "SH:seq:310629",
+      "agency": "SH",
+      "agency_group": "SH",
+      "title": "NEW [토지임대부 사회주택] 옥류서원 입주자 모집 공고문",
+      "housing_types": [
+        "기타임대"
+      ],
+      "audiences": [],
+      "region": "서울",
+      "published_at": "",
+      "deadline": "2026-09-30",
+      "open_state": "접수중",
+      "event": "신규",
+      "change": "동일",
+      "status_text": "",
+      "is_gangseo": false,
+      "keywords": [],
+      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310629",
+      "source": "SH 공식 주택임대 게시판",
+      "content_signature": "36a039ca7825f4e0947b9aa77f3c9238b6041aa4c67c8536b20f6fd13e614664",
+      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
+      "application_start": "2026-09-21",
+      "schedule_source": "official_detail_html",
+      "route": "/public-housing/notices/sh-310629/",
+      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310629",
       "official_link_label": "공식 모집공고 원문 →",
       "indexable": false
     }
