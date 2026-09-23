@@ -77,10 +77,11 @@
   function updatePeriodCopy() {
     const text = periodText();
     const footerSource = document.querySelector('.v2-tool-notes p');
-    if (footerSource) footerSource.textContent = `자료 · 국토교통부 실거래가 공개시스템 · ${text}`;
+    const footerText = `자료 · 국토교통부 실거래가 공개시스템 · ${text}`;
+    if (footerSource && footerSource.textContent !== footerText) footerSource.textContent = footerText;
 
     const rtsub = document.querySelector('.rtline .rtsub');
-    if (rtsub) rtsub.textContent = text;
+    if (rtsub && rtsub.textContent !== text) rtsub.textContent = text;
 
     try {
       const view = document.getElementById('view');
@@ -155,5 +156,4 @@
   const observer = new MutationObserver(updateDetailEntry);
   observer.observe(document.body, {subtree:true, childList:true});
   updateDetailEntry();
-  loadKakao().catch(() => {});
 })();
