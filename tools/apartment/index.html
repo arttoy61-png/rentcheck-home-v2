@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script>
+(function(){
+  var ua=navigator.userAgent||'';
+  var isiOS=/iPhone|iPad|iPod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  if(isiOS)location.replace('/tools/apartment/mobile/?v=20260923-4');
+})();
+</script>
 <link rel="stylesheet" href="../tool-shell.css">
 <script defer src="../tool-common.js"></script>
 <title>강서구 아파트 시세·실거래가 | 단지별 매매·전세·월세 | Rent Check</title>
