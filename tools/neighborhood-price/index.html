@@ -11,7 +11,7 @@
 <meta property="og:title" content="강서구 집값 | Rent Check">
 <meta property="og:description" content="강서구 집값을 아파트·빌라·오피스텔별로 보고 동·역세권·면적으로 좁혀보세요.">
 <link rel="stylesheet" href="../tool-shell.css">
-<script defer src="../tool-common.js"></script>
+<script defer src="../tool-common.js?v=journeys-20260925"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"강서구 집값","url":"https://rent-check.kr/tools/neighborhood-price/","applicationCategory":"RealEstateApplication","operatingSystem":"Web","description":"강서구 아파트·빌라·오피스텔 실거래 시세를 동·역세권·거래유형·면적으로 확인하는 도구","image":"https://rent-check.kr/assets/share/rent-check-og-v2.png?v=20260829-2","provider":{"@id":"https://rent-check.kr/#organization"},"isPartOf":{"@id":"https://rent-check.kr/#website"}}</script>
 <style>
 :root{--navy:#0d1f3c;--navy2:#17375f;--gold:#d4a73a;--blue:#1565c0;--ink:#111827;--muted:#667085;--line:#d7dce3;--bg:#faf8f3;--paper:#fff;--soft:#f4efe4;--green:#17804d;--sale:#b85f24;--je:#1565c0;--wo:#9a6d0b;--radius:14px}
@@ -40,9 +40,9 @@
 <meta name="twitter:description" content="강서구 아파트·빌라·오피스텔 시세를 최근 실거래로 확인하고 동·역세권·매매·전세·월세·면적으로 좁혀봅니다.">
 <meta name="twitter:image" content="https://rent-check.kr/assets/share/rent-check-og-v2.png?v=20260829-2">
 <!-- /Rent Check share preview -->
-</head>
+<!-- rc-journey:tool-style --><link rel="stylesheet" href="../tool-guides.css?v=20260925"><!-- /rc-journey:tool-style --></head>
 <body class="v2-tool-page" data-v2-root="../../" data-tool-id="neighborhood-price">
-<div class="wrap">
+<div class="wrap"><!-- rc-journey:tool-nav --><nav class="rc-tool-reading-nav" aria-label="도구 사용 안내"><a href="#v2-content-guide-title">입력 전 확인</a><a href="#rc-guide-interpretation">결과 해석</a><a href="#rc-guide-next">다음 행동</a></nav><!-- /rc-journey:tool-nav -->
   <section class="price-hero">
     <div class="brand">Rent Check</div>
     <h1>강서구 집값</h1>
@@ -78,7 +78,7 @@
 
   <p class="v2-tool-disclaimer"><b>확인 기준</b><br>역세권은 선택한 역에서 직선거리 800m 안쪽의 지번 좌표가 확인되는 실거래만 보여줍니다. 역을 고르면 가까운 순이 기본입니다. 최근 월은 신고가 계속 추가됩니다.</p>
   <div class="source-note">자료 · 국토교통부 실거래가 공개시스템 · 계약일 기준<br><a href="../apartment/">강서구 아파트 단지별 실거래 보기 →</a></div>
-</div>
+<!-- rc-journey:tool-guide --><section class="v2-content-guide" data-journey-version="20260925" aria-labelledby="v2-content-guide-title"><p class="v2-content-guide__eyebrow">입력 전 확인 · 결과 해석</p><h2 id="v2-content-guide-title">강서구 집값은 평균 하나보다 집 종류부터 나누는 게 먼저입니다</h2><p class="v2-content-guide__lead">강서구 전체 평균만 보면 아파트·빌라·오피스텔의 서로 다른 가격대가 한 숫자에 섞입니다. 이 도구는 주택유형을 먼저 나누고 동, 거래유형, 역세권, 면적으로 좁혀 최근 실거래를 확인하도록 만들었습니다. 검색한 집과 비슷한 조건의 거래가 충분하지 않다면 결과가 적게 나오는 것이 정상이며, 그때는 조건을 한 단계씩 넓혀 비교하는 편이 안전합니다.</p><ol><li>아파트·빌라·오피스텔 중 실제로 찾는 집 종류를 먼저 선택합니다.</li><li>매매·전세·월세를 구분한 뒤 동과 면적을 맞춰 비교합니다.</li><li>역을 선택했다면 거리순과 최근 거래순을 번갈아 보며 위치 차이도 확인합니다.</li></ol><div class="v2-content-guide__box v2-content-guide__example rc-tool-interpretation" id="rc-guide-interpretation"><strong>결과는 이렇게 읽으세요</strong><br>거래가 없거나 적게 나오는 결과는 가격이 0원이거나 싼 집이라는 뜻이 아닙니다. 집 종류를 유지한 채 면적·지역 조건을 한 단계씩 넓혀 비교하세요.</div><div class="v2-content-guide__box v2-content-guide__example"><strong>비교 예시</strong><br>예를 들어 화곡동 월세를 찾는다면 강서구 전체 월세 평균보다 화곡동의 같은 주택유형·비슷한 면적 거래를 모아 보는 편이 실제 계약 조건을 판단하는 데 더 도움이 됩니다. 빌라는 같은 동이라도 준공연도와 지번 차이가 커서 같은 건물 또는 가까운 지번부터 보는 것이 좋습니다.</div><div class="v2-content-guide__box v2-content-guide__caution"><strong>이 결과로 확정할 수 없는 것</strong><br>거래건수가 적은 조건은 중간값 하나만으로 시세를 확정하기 어렵습니다. 최근 계약의 위치·면적·준공연도·층 등 개별 조건을 함께 확인하세요. 신고 이후 해제·정정되는 거래도 있을 수 있습니다.</div><div class="v2-content-guide__faq"><h3>자주 묻는 질문</h3><details><summary>왜 강서구 평균가격 하나만 보여주지 않나요?</summary><p>아파트·빌라·오피스텔의 가격 구조가 다르고, 같은 동 안에서도 면적과 연식에 따라 차이가 커서 한 평균으로 묶으면 실제 계약 판단에 도움이 되기 어렵기 때문입니다.</p></details><details><summary>최근 거래가 한 건뿐이면 그 가격이 시세인가요?</summary><p>아닙니다. 한 건은 참고점일 뿐입니다. 조건을 조금 넓혀 여러 거래가 반복되는 가격 구간을 함께 보세요.</p></details><details><summary>월세는 무엇을 같이 봐야 하나요?</summary><p>월세 숫자만 보지 말고 보증금과 면적을 함께 맞춰야 합니다. 관리비·옵션·주차처럼 신고자료에 없는 조건은 별도로 확인해야 합니다.</p></details></div><p class="v2-content-guide__source">자료 기준 · 국토교통부 실거래 신고자료 · 최근 신고분은 계속 추가될 수 있음</p><h3 id="rc-guide-next" style="margin:18px 0 8px;font-size:16px;color:#0d1f3c">확인한 뒤, 다음 단계</h3><nav class="v2-content-guide__links" aria-label="관련 Rent Check 페이지"><a class="v2-content-guide__link" data-primary-guide="true" href="../../analysis/gangseo-august-2026/">강서구 8월 실거래 월결산 →</a><a class="v2-content-guide__link alt" href="../../tools/apartment/">강서구 아파트 실거래 →</a><a class="v2-content-guide__link alt" href="../../blog/gangseo-home-price/">강서구 집값 읽는 순서 →</a></nav><p class="rc-tool-help"><a href="../../about/">자료·계산 안내 원칙</a> · <a href="../../contact/">계산·표시 오류 제보</a></p><noscript><p class="rc-tool-help">계산 버튼은 JavaScript가 켜진 브라우저에서 작동합니다. 사용 설명과 관련 글은 이 상태에서도 읽을 수 있습니다.</p></noscript></section><!-- /rc-journey:tool-guide --></div>
 <script>
 const DATA_URL='https://arttoy61-png.github.io/rent-check/auction_data.json';
 const HOUSES={apt:{label:'아파트',t:'a'},villa:{label:'빌라·연립',t:'v'},offi:{label:'오피스텔',t:'o'}};

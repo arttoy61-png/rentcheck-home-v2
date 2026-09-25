@@ -210,7 +210,16 @@
       const row=document.createElement('nav');
       row.className='v2-result-next';
       row.setAttribute('aria-label','계산 후 이동');
+      const guide=body.querySelector('.v2-content-guide [data-primary-guide]');
+      if(guide){
+        const interpret=document.createElement('a');interpret.href='#rc-guide-interpretation';interpret.textContent='결과 해석 보기';
+        const article=document.createElement('a');article.href=guide.getAttribute('href');article.textContent=guide.textContent;
+        const home=document.createElement('a');home.href=root;home.textContent='홈으로';
+        const tools=document.createElement('a');tools.href=root+'#calculators';tools.textContent='다른 계산기';
+        row.replaceChildren(interpret,article,home,tools);
+      }else{
       row.innerHTML=`<a href="${root}">홈으로</a><span>·</span><a href="${root}#calculators">다른 계산기</a>`;
+      }
       result.insertAdjacentElement('afterend',row);
       const sync=()=>{
         const cs=getComputedStyle(result);

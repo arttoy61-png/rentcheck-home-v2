@@ -25,7 +25,7 @@
     .quick{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}.quick div{padding:14px;border:1px solid var(--line);border-radius:12px;background:#fff}.quick strong{display:block;color:var(--navy);font-size:13px}.quick p{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.7}.source{margin-top:13px;color:var(--muted);font-size:11px;line-height:1.65}.source a{color:var(--blue);font-weight:700}.search-note{margin-top:12px;padding:12px 13px;border-radius:10px;background:var(--soft);color:var(--muted);font-size:12px;line-height:1.7}
     @media(max-width:650px){.situations{grid-template-columns:1fr 1fr}.situations button:last-child{grid-column:1/-1}.form,.quick{grid-template-columns:1fr}.field.full{grid-column:auto}.page{width:min(calc(100% - 20px),760px);padding-top:12px}.card,.resultbox{padding:17px}.v2-tool-hero{padding:22px 18px!important}.v2-tool-hero h1{font-size:23px}.message{min-height:230px;font-size:15px}}
   </style>
-  <script defer src="../tool-common.js"></script>
+  <script defer src="../tool-common.js?v=journeys-20260925"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"전월세 문자 만들기","url":"https://rent-check.kr/tools/tenant-message/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","description":"전세·월세 임대차에서 세입자와 집주인이 상황별 문자를 만들어 복사하는 무료 도구입니다.","image":"https://rent-check.kr/assets/share/rent-check-og-v2.png?v=20260829-2","provider":{"@id":"https://rent-check.kr/#organization"},"isPartOf":{"@id":"https://rent-check.kr/#website"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"전세 갱신 문자는 언제 보내나요?","acceptedAnswer":{"@type":"Answer","text":"묵시적 갱신을 피하거나 계약갱신요구권을 행사하려면 계약 만료일과 법정 통지 기간을 먼저 확인해야 합니다. 주택임대차보호법상 관련 기간은 만료 6개월 전부터 2개월 전까지입니다."}},{"@type":"Question","name":"집주인이 실거주를 이유로 갱신을 거절할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"주택임대차보호법은 임대인 또는 직계존속·직계비속이 실제 거주하려는 경우를 계약갱신요구 거절 사유 중 하나로 정하고 있습니다. 실제 적용은 시기와 사실관계를 함께 확인해야 합니다."}},{"@type":"Question","name":"월세가 밀렸을 때 집주인은 문자를 어떻게 보내나요?","acceptedAnswer":{"@type":"Answer","text":"미납 월과 금액, 납부 요청일을 정확히 적고 감정적인 표현보다 사실 확인과 지급 요청을 분명히 남기는 방식이 좋습니다. 계약 해지 여부는 연체액과 계약 상황을 별도로 확인해야 합니다."}}]}</script>
 
@@ -42,9 +42,9 @@
 <meta name="twitter:description" content="전세·월세 계약 갱신, 갱신요구권, 수리, 퇴거·보증금 반환, 월세 미납, 실거주 갱신거절 등 상황별 문자를 세입자와 집주인 입장에서 만들어 복사합니다.">
 <meta name="twitter:image" content="https://rent-check.kr/assets/share/rent-check-og-v2.png?v=20260829-2">
 <!-- /Rent Check share preview -->
-</head>
+<!-- rc-journey:tool-style --><link rel="stylesheet" href="../tool-guides.css?v=20260925"><!-- /rc-journey:tool-style --></head>
 <body class="v2-tool-page" data-v2-root="../../" data-tool-id="tenant-message">
-<main class="page">
+<main class="page"><!-- rc-journey:tool-nav --><nav class="rc-tool-reading-nav" aria-label="도구 사용 안내"><a href="#v2-content-guide-title">입력 전 확인</a><a href="#rc-guide-interpretation">결과 해석</a><a href="#rc-guide-next">다음 행동</a></nav><!-- /rc-journey:tool-nav -->
   <section class="v2-tool-hero"><p class="brandline">Rent Check</p><h1>전월세 문자 만들기</h1><p>세입자·집주인 중 내 입장을 고르고 상황만 선택하면 바로 보낼 문자를 만들어 복사할 수 있습니다.</p></section>
 
   <section class="card">
@@ -96,7 +96,7 @@
     <p class="source">법령 확인: 주택임대차보호법 제6조·제6조의2·제6조의3, 민법 제640조 · 2026. 8. 24. 확인 · <a href="https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=276291" target="_blank" rel="noopener noreferrer">국가법령정보센터</a></p>
     <div class="search-note">이 도구는 법률문서를 대신 작성하는 서비스가 아닙니다. 보증금 반환, 갱신거절, 계약해지처럼 분쟁 가능성이 큰 상황은 계약서와 최신 법령을 함께 확인하세요.</div>
   </section>
-</main>
+<!-- rc-journey:tool-guide --><section class="v2-content-guide" data-journey-version="20260925" aria-labelledby="v2-content-guide-title"><p class="v2-content-guide__eyebrow">입력 전 확인 · 결과 해석</p><h2 id="v2-content-guide-title">문자는 자동 발송되지 않습니다. 계약 상황을 확인하고 복사하세요</h2><p class="v2-content-guide__lead">상황별 문구를 만드는 보조도구입니다. 세입자·집주인 입장과 요청 목적을 선택한 뒤 실제 계약과 다른 표현이 없는지 읽어보세요. 문구를 만들었다는 사실만으로 계약 해지나 보증금 반환 일정이 확정되는 것은 아닙니다.</p><ol><li>내 입장과 계약 갱신·수리·퇴거·보증금 등 해당 상황을 고릅니다.</li><li>날짜·금액·요청 내용을 확인하고 본인 계약에 맞지 않는 표현을 고칩니다.</li><li>복사한 문구를 직접 보내고 발송일·수신 여부·합의 내용을 따로 보관합니다.</li></ol><div class="v2-content-guide__box v2-content-guide__example rc-tool-interpretation" id="rc-guide-interpretation"><strong>결과는 이렇게 읽으세요</strong><br>문구는 검토할 초안입니다. 복사·발송·상대방의 확인·합의는 각각 별개 단계입니다.</div><div class="v2-content-guide__box v2-content-guide__example"><strong>비교 예시</strong><br>확인할 날짜가 정해지지 않았다면 확정일처럼 적지 말고 협의 요청으로 표현하세요. 예를 들어 원하는 이사일과 보증금 반환 가능일이 서로 맞는지 묻는 문장으로 시작할 수 있습니다.</div><div class="v2-content-guide__box v2-content-guide__caution"><strong>이 결과로 확정할 수 없는 것</strong><br>분쟁 중인 계약의 법적 효력이나 상대방의 의무를 자동 판정하지 않습니다. 연락처·계좌·주민등록번호 등 민감한 정보는 오류 제보에 넣지 마세요.</div><p class="v2-content-guide__source">상황별 문구 작성 보조용입니다. 계약 유형에 따른 차이는 관련 가이드와 해당 계약서에서 확인합니다.</p><h3 id="rc-guide-next" style="margin:18px 0 8px;font-size:16px;color:#0d1f3c">확인한 뒤, 다음 단계</h3><nav class="v2-content-guide__links" aria-label="관련 Rent Check 페이지"><a class="v2-content-guide__link" data-primary-guide="true" href="../../blog/early-move-deposit-return/">중도퇴거와 보증금 반환 확인 →</a><a class="v2-content-guide__link alt" href="../../blog/tacit-renewal-move-out-3-months/">갱신된 계약인지 먼저 구분 →</a></nav><p class="rc-tool-help"><a href="../../about/">자료·계산 안내 원칙</a> · <a href="../../contact/">계산·표시 오류 제보</a></p><noscript><p class="rc-tool-help">계산 버튼은 JavaScript가 켜진 브라우저에서 작동합니다. 사용 설명과 관련 글은 이 상태에서도 읽을 수 있습니다.</p></noscript></section><!-- /rc-journey:tool-guide --></main>
 <script>
 (()=>{
   const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];

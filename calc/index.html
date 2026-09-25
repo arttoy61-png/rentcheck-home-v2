@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="../tools/tool-shell.css">
-<script defer src="../tools/tool-common.js"></script>
+<script defer src="../tools/tool-common.js?v=journeys-20260925"></script>
 <title>재개발 분담금·총투입금 계산기 — 30초 계산 | Rent Check 강서</title>
 <meta name="description" content="소유주는 분담금, 매수자는 총투입금. 감정평가액·비례율·매매가만 알면 강서구 화곡동 재개발·모아타운 자금 규모가 30초 만에 나옵니다.">
 <link rel="canonical" href="https://rent-check.kr/calc/">
@@ -108,9 +108,9 @@
 <meta name="twitter:description" content="소유주는 분담금, 매수자는 총투입금. 감정평가액·비례율·매매가만 알면 강서구 화곡동 재개발·모아타운 자금 규모가 30초 만에 나옵니다.">
 <meta name="twitter:image" content="https://arttoy61-png.github.io/rent-check/calc-og.png">
 <!-- /Rent Check share preview -->
-</head>
+<!-- rc-journey:tool-style --><link rel="stylesheet" href="../tools/tool-guides.css?v=20260925"><!-- /rc-journey:tool-style --></head>
 <body id="top" class="v2-tool-page" data-v2-root="../" data-tool-id="redevelopment">
-<div class="wrap">
+<div class="wrap"><!-- rc-journey:tool-nav --><nav class="rc-tool-reading-nav" aria-label="도구 사용 안내"><a href="#v2-content-guide-title">입력 전 확인</a><a href="#rc-guide-interpretation">결과 해석</a><a href="#rc-guide-next">다음 행동</a></nav><!-- /rc-journey:tool-nav -->
 
   <header class="hero">
     <span class="badge">재개발 · 모아타운</span>
@@ -237,7 +237,7 @@
     <a class="cta sub" href="https://blog.naver.com/spitoon61/224312967527" onclick="gaEvent('cta_click','consult')">💬 내 구역 분담금이 궁금하면 — 블로그 댓글로 문의</a>
   </div>
 
-</div>
+<!-- rc-journey:tool-guide --><section class="v2-content-guide" data-journey-version="20260925" aria-labelledby="v2-content-guide-title"><p class="v2-content-guide__eyebrow">입력 전 확인 · 결과 해석</p><h2 id="v2-content-guide-title">재개발 분담금은 권리가액을 먼저 계산해야 합니다</h2><p class="v2-content-guide__lead">분담금은 새 아파트 조합원 분양가에서 내 종전자산의 권리가액을 뺀 값입니다. 권리가액은 감정평가액에 비례율을 곱해 계산하므로, 감정평가액만 보고 “내 집값이 얼마 인정된다”라고 생각하면 실제 분담금과 차이가 생길 수 있습니다. 이 도구는 소유주와 매수 검토자의 계산을 나눠 보여줍니다.</p><ol><li>소유주는 감정평가액·비례율·조합원 분양가를 넣어 권리가액과 예상 분담금을 봅니다.</li><li>매수 검토자는 매매가와 예상 분담금을 합쳐 총투입금이 어느 정도인지 확인합니다.</li><li>비례율이 바뀌면 결과도 달라지므로 슬라이더로 민감도를 보고 한 숫자를 확정값처럼 쓰지 않습니다.</li></ol><div class="v2-content-guide__box v2-content-guide__example rc-tool-interpretation" id="rc-guide-interpretation"><strong>결과는 이렇게 읽으세요</strong><br>예상 분담금은 권리가액과 조합원 분양가를 넣은 시나리오입니다. 감정평가액을 모르면 매매가로 자동 대체하지 말고 여러 가정값을 구분해 비교하세요. 확정 청구액이 아닙니다.</div><div class="v2-content-guide__box v2-content-guide__example"><strong>비교 예시</strong><br>감정평가액 3억원, 비례율 100%, 조합원 분양가 9억원이라면 권리가액은 3억원이고 단순 예상 분담금은 6억원입니다. 비례율이 110%라면 권리가액은 3억3천만원으로 바뀌어 같은 분양가에서도 분담금이 달라집니다.</div><div class="v2-content-guide__box v2-content-guide__caution"><strong>이 결과로 확정할 수 없는 것</strong><br>실제 사업에서는 추가분담금, 금융비용, 옵션·발코니, 취득 관련 비용, 사업비 변경 등이 더해질 수 있습니다. 계산 결과는 사업시행계획·관리처분계획·조합 공지보다 우선하지 않습니다.</div><div class="v2-content-guide__faq"><h3>자주 묻는 질문</h3><details><summary>비례율 100%면 좋은 건가요?</summary><p>100%는 감정평가액이 권리가액으로 그대로 반영되는 단순 기준점입니다. 사업성 판단은 비례율 하나만이 아니라 분양수입·사업비·종전자산평가와 함께 봐야 합니다.</p></details><details><summary>분담금이 음수면 바로 환급받나요?</summary><p>계산상 권리가액이 조합원분양가보다 크다는 뜻입니다. 실제 청산금·환급 여부와 시점은 사업계획과 조합 기준을 확인해야 합니다.</p></details><details><summary>매수자는 무엇을 더 봐야 하나요?</summary><p>매매가와 예상 분담금뿐 아니라 취득세·대출이자·이주비 조건·추가 사업비 등 실제 현금흐름을 별도로 확인해야 합니다.</p></details></div><p class="v2-content-guide__source">계산 구조 · 권리가액 = 감정평가액 × 비례율 · 예상 분담금 = 조합원분양가 − 권리가액</p><h3 id="rc-guide-next" style="margin:18px 0 8px;font-size:16px;color:#0d1f3c">확인한 뒤, 다음 단계</h3><nav class="v2-content-guide__links" aria-label="관련 Rent Check 페이지"><a class="v2-content-guide__link" data-primary-guide="true" href="../blog/redevelopment-contribution/">재개발 분담금 읽는 법 →</a><a class="v2-content-guide__link alt" href="../blog/redevelopment-rights/">권리가액 계산 이해하기 →</a><a class="v2-content-guide__link alt" href="../analysis/hwagok6-957-a1/">화곡6동 모아타운 A1 진행상황 →</a></nav><p class="rc-tool-help"><a href="../about/">자료·계산 안내 원칙</a> · <a href="../contact/">계산·표시 오류 제보</a></p><noscript><p class="rc-tool-help">계산 버튼은 JavaScript가 켜진 브라우저에서 작동합니다. 사용 설명과 관련 글은 이 상태에서도 읽을 수 있습니다.</p></noscript></section><!-- /rc-journey:tool-guide --></div>
 
 <script>
 let sliderUsed = false;

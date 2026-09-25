@@ -1,0 +1,95 @@
+name: Public reference journey review
+on:
+  push:
+    branches: [improve/tool-journeys-20260925]
+    paths: [.github/workflows/reference-journey-review.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: |
+          python -m pip install requests beautifulsoup4 playwright
+          python -m playwright install --with-deps chromium
+      - name: Read public navigation and representative pages
+        run: |
+          mkdir -p /tmp/reference-review
+          python - <<'PY'
+          import json, time, hashlib
+          from pathlib import Path
+          from urllib.parse import urljoin,urlsplit,unquote
+          import requests
+          from bs4 import BeautifulSoup
+          from playwright.sync_api import sync_playwright
+          out=Path('/tmp/reference-review')
+          base='https://findtax.kr'
+          queue=['/','/calculator','/blog','/region','/situation','/terms','/privacy','/support','/calculator/양도세','/calculator/증여세','/calculator/종합소득세','/calculator/1인사업자','/situation/income_tax']
+          seen=set();rows=[];selected=[]
+          session=requests.Session()
+          session.headers['User-Agent']='RentCheckReferenceReview/1.0 (public read-only; no form submission)'
+          while queue and len(seen)<27:
+              path=queue.pop(0)
+              if path in seen:continue
+              seen.add(path);url=base+path
+              try:
+                  r=session.get(url,timeout=20)
+                  soup=BeautifulSoup(r.text,'html.parser')
+                  links=[{'text':a.get_text(' ',strip=True),'url':urljoin(r.url,a.get('href',''))} for a in soup.select('a[href]')]
+                  main=soup.find('main') or soup.find('body') or soup
+                  for el in main.select('script,style'):el.decompose()
+                  text=main.get_text('\n',strip=True)
+                  name=hashlib.sha256(path.encode()).hexdigest()[:12]
+                  (out/(name+'.txt')).write_text(text,encoding='utf8')
+                  row={'path':path,'status':r.status_code,'final_url':r.url,'title':soup.title.get_text() if soup.title else '', 'headings':[x.get_text(' ',strip=True) for x in main.select('h1,h2,h3')], 'text_file':name+'.txt','text_characters':len(text),'links':links,'form_count':len(soup.select('form')),'input_count':len(soup.select('input,select'))}
+                  rows.append(row)
+                  if path=='/blog':
+                      blogs=[]
+                      for link in links:
+                          p=unquote(urlsplit(link['url']).path)
+                          if p.startswith('/blog/') and p not in blogs:blogs.append(p)
+                      queue+=blogs[:5]
+                  if path in ['/','/situation','/region']:
+                      choices=[]
+                      for link in links:
+                          p=unquote(urlsplit(link['url']).path)
+                          if urlsplit(link['url']).hostname=='findtax.kr' and p.startswith(('/situation/','/region/')) and p not in choices:choices.append(p)
+                      queue+=choices[:2]
+                  print(json.dumps({k:row[k] for k in ['path','status','title','headings','text_characters','input_count']},ensure_ascii=False))
+              except Exception as e:rows.append({'path':path,'error':str(e)})
+              time.sleep(.15)
+          (out/'inventory.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2),encoding='utf8')
+          with sync_playwright() as p:
+              b=p.chromium.launch()
+              routes=['/','/calculator/양도세','/calculator/종합소득세','/calculator/1인사업자','/support']
+              routes += [x['path'] for x in rows if x['path'].startswith('/blog/')][:2]
+              rendered=[]
+              for route in routes:
+                  for width in ([390,1280] if route=='/' else [390]):
+                      page=b.new_page(viewport={'width':width,'height':900})
+                      errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
+                      try:
+                          response=page.goto(base+route,wait_until='domcontentloaded',timeout=30000)
+                          page.wait_for_timeout(1500)
+                          name=hashlib.sha256(route.encode()).hexdigest()[:12]+'-'+str(width)
+                          (out/(name+'-rendered.txt')).write_text(page.locator('body').inner_text(),encoding='utf8')
+                          page.screenshot(path=str(out/(name+'.png')),full_page=True)
+                          rendered.append({'route':route,'width':width,'status':response.status,'errors':errors,'overflow':page.evaluate('document.documentElement.scrollWidth>innerWidth+2'),'text_file':name+'-rendered.txt','screenshot':name+'.png'})
+                      except Exception as e:rendered.append({'route':route,'width':width,'error':str(e)})
+                      page.close()
+              b.close()
+          (out/'browser.json').write_text(json.dumps(rendered,ensure_ascii=False,indent=2),encoding='utf8')
+          print('REFERENCE_RENDERING='+json.dumps(rendered,ensure_ascii=False))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reference-journey-review-${{ github.run_id }}
+          path: /tmp/reference-review
+          retention-days: 14
