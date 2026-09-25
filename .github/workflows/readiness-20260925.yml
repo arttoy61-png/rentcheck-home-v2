@@ -1,0 +1,83 @@
+name: Readiness repair and browser evidence
+on:
+  push:
+    branches: [fix/adsense-readiness-20260925]
+    paths:
+      - scripts/readiness_20260925.py
+      - .github/workflows/readiness-20260925.yml
+  workflow_dispatch:
+    inputs:
+      apply_repairs:
+        description: Apply only on the dedicated repair branch; false is read-only
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: readiness-20260925-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      READINESS_OUT: ${{ runner.temp }}/rentcheck-readiness
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser test dependencies
+        run: |
+          python -m pip install playwright beautifulsoup4
+          python -m playwright install --with-deps chromium
+      - name: Capture baseline browser state
+        if: github.ref_name == 'fix/adsense-readiness-20260925' && (github.event_name == 'push' || inputs.apply_repairs)
+        run: python scripts/readiness_20260925.py --browser before
+      - name: Apply narrowly scoped repairs
+        if: github.ref_name == 'fix/adsense-readiness-20260925' && (github.event_name == 'push' || inputs.apply_repairs)
+        run: python scripts/readiness_20260925.py --apply
+      - name: Verify source and generated links
+        run: python scripts/readiness_20260925.py --verify
+      - name: Compare repaired browser state
+        if: github.ref_name == 'fix/adsense-readiness-20260925' && (github.event_name == 'push' || inputs.apply_repairs)
+        run: python scripts/readiness_20260925.py --browser after
+      - name: Inventory all HTML without editing content
+        if: always()
+        run: python scripts/readiness_20260925.py --inventory
+      - name: Observe public site without assuming branch deployment
+        if: always()
+        run: python scripts/readiness_20260925.py --browser live
+      - name: Commit only tested repairs to the isolated branch
+        if: success() && github.ref_name == 'fix/adsense-readiness-20260925' && (github.event_name == 'push' || inputs.apply_repairs)
+        run: |
+          git diff --check
+          python - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+          paths=json.loads((Path(os.environ['READINESS_OUT'])/'changed-files.json').read_text())
+          allowed={'app.js','index.html','scripts/render-core-content.mjs','scripts/generate-public-housing-pages.py'}
+          allowed.update('public-housing/notices/lh-'+x+'/index.html' for x in ['2015122300020753','2015122300020759','2015122300020750','2015122300020749'])
+          assert set(paths) <= allowed
+          if paths:subprocess.run(['git','add','--',*paths],check=True)
+          PY
+          if ! git diff --cached --quiet; then
+            git config user.name github-actions
+            git config user.email github-actions@users.noreply.github.com
+            git commit -m 'fix: repair home initialization and connect existing editorial guides'
+            git push origin HEAD:fix/adsense-readiness-20260925
+          fi
+      - name: Upload evidence and original files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: readiness-evidence-${{ github.run_id }}
+          path: ${{ runner.temp }}/rentcheck-readiness
+          retention-days: 7
+          if-no-files-found: warn
