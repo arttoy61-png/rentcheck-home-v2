@@ -416,6 +416,10 @@ def action_items(item: dict) -> list[str]:
     ]
 
 
+
+# Existing editorial guides; schedules and public notice routes are unchanged.
+EDITORIAL_GUIDES = {'LH:panId:2015122300020753': '/blog/gangseo-yeomchang-integrated-public-rental-2026/', 'LH:panId:2015122300020759': '/blog/lh-seoul-youth-purchase-rental-2026-3/', 'LH:panId:2015122300020750': '/blog/lh-seoul-newlywed-purchase-rental-1-2026-3/', 'LH:panId:2015122300020749': '/blog/lh-seoul-newlywed-purchase-rental-2-2026-3/'}
+
 def render_page(item: dict, route: str) -> str:
     title = clean_title(item.get('title'))
     agency = str(item.get('agency') or item.get('agency_group') or '임대주택')
@@ -436,6 +440,11 @@ def render_page(item: dict, route: str) -> str:
     )
     official_url, source_label = official_link(item)
     youth_link = '<a class="alt" href="/tools/youth-score/">청년임대 계산기</a>' if '청년' in audiences else ''
+    guide_url = EDITORIAL_GUIDES.get(str(item.get('id') or ''), '')
+    editorial_button = (
+        f'<a class="alt" href="{esc(guide_url)}">이 공고의 신청 가이드 →</a>'
+        if guide_url and Path(guide_url.lstrip('/') + 'index.html').is_file() else ''
+    )
     canonical = f'https://rent-check.kr{route}'
     schema = ''
     if indexable:
@@ -514,7 +523,7 @@ def render_page(item: dict, route: str) -> str:
       <h2>자료 확인 기준</h2>
       <p><strong>{esc(source)}</strong>에서 수집한 공고 정보를 바탕으로 정리했습니다. {esc(schedule_source_label(item))}했습니다.</p>
       <p>마지막 자동 확인일은 <strong>{esc(checked)}</strong>입니다. 신청 직전에는 공식 원문에서 접수시간, 제출서류 발급기준, 중복신청 제한, 공급주택 목록을 다시 확인하세요.</p>
-      <div class="housing-links">{official_button}<a class="alt" href="/blog/public-housing-application-documents/">신청 후 서류 순서</a>{youth_link}<a class="alt" href="/public-housing/">다른 LH·SH 공고</a></div>
+      <div class="housing-links">{editorial_button}{official_button}<a class="alt" href="/blog/public-housing-application-documents/">신청 후 서류 순서</a>{youth_link}<a class="alt" href="/public-housing/">다른 LH·SH 공고</a></div>
       <p class="note">Rent Check 공고 안내 · 공고 ID {esc(item.get('id'))}. 공식 기관의 최신 공고와 후속 정정 공지가 최종 기준입니다.</p>
     </section>
   </article>
