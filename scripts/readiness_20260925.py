@@ -103,7 +103,7 @@ def apply():
 def verify():
     assert "function resolveToolLinks(){$$('[data-tool-link]').forEach(" in read('app.js')
     assert '<span>네이버 발행 글</span><strong id="publishedCount">' in read('index.html')
-    assert 'src="app.js?v=readiness-20260925"' in read('index.html')
+    assert re.search(r'src="app\.js\?v=(?:readiness|journeys)-20260925"', read('index.html'))
     # An empty selection is a valid page state, not an initialization error.
     import runpy
     namespace = runpy.run_path(GEN, run_name='readiness_generator_test')
