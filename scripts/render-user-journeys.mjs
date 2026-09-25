@@ -65,7 +65,27 @@ const interpretations={
  'tenant-message':'문구는 검토할 초안입니다. 복사·발송·상대방의 확인·합의는 각각 별개 단계입니다.'
 };
 function copies(){const common=read('tools/tool-common.js');const object=extract(common,/const contentGuide=([\s\S]*?);\s*const join=/,'existing tool guide');return {...vm.runInNewContext('('+object+')',Object.create(null),{timeout:1000}),...extra}}
-function css(){const common=read('tools/tool-common.js');return extract(common,/style\.id='v2-content-guide-style';\s*style\.textContent='([^']*)';/,'guide styles')+'\n/* Only the explanatory panel is restyled; inputs and results are untouched. */\n.v2-content-guide{overflow-wrap:anywhere}.v2-content-guide__lead,.v2-content-guide li,.v2-content-guide__box,.v2-content-guide__faq summary,.v2-content-guide__faq p{font-size:14px;line-height:1.8}.v2-content-guide__source{font-size:12px;color:#4f5a68}.v2-content-guide__link{font-size:14px;padding:10px 14px;line-height:1.5;max-width:100%}.rc-tool-reading-nav{display:flex;flex-wrap:wrap;gap:8px 16px;margin:0 0 12px;font-size:13px}.rc-tool-reading-nav a,.rc-tool-help a{color:#1565c0;text-underline-offset:3px}.rc-tool-help{font-size:13px;line-height:1.7;margin:16px 0 0}.rc-tool-interpretation{scroll-margin-top:90px}.v2-result-next{flex-wrap:wrap;gap:8px!important}.v2-result-next a{white-space:normal!important;line-height:1.5!important}.v2-content-guide :focus-visible,.rc-tool-reading-nav :focus-visible{outline:3px solid #1565c0;outline-offset:3px}.v2-content-guide__source a{color:#1565c0}\n'}
+function css(){const common=read('tools/tool-common.js');return extract(common,/style\.id='v2-content-guide-style';\s*style\.textContent='([^']*)';/,'guide styles')+`
+/* Scoped explanations and navigation; calculator inputs and formulas are preserved. */
+.v2-content-guide{overflow-wrap:anywhere}
+.v2-content-guide__lead,.v2-content-guide li,.v2-content-guide__box,.v2-content-guide__faq summary,.v2-content-guide__faq p{font-size:14px;line-height:1.8}
+.v2-content-guide__source{font-size:12px;color:#4f5a68}
+.v2-content-guide__link{font-size:14px;padding:10px 14px;line-height:1.5;max-width:100%}
+.rc-tool-reading-nav{display:flex;flex-wrap:wrap;gap:8px 16px;margin:0 0 12px;font-size:13px}
+.rc-tool-reading-nav a,.rc-tool-help a{color:#1565c0;text-underline-offset:3px}
+.rc-tool-help{font-size:13px;line-height:1.7;margin:16px 0 0}
+.rc-tool-interpretation{scroll-margin-top:90px}
+.v2-tool-page .v2-result-next{flex-wrap:wrap;gap:8px 14px!important;align-items:center}
+.v2-tool-page .v2-result-next a{white-space:normal!important;line-height:1.6!important;font-size:13px;padding:4px 0}
+.v2-content-guide :focus-visible,.rc-tool-reading-nav :focus-visible{outline:3px solid #1565c0;outline-offset:3px}
+.v2-content-guide__source a{color:#1565c0}
+/* Long apartment names previously pushed the rent-check page beyond mobile width. */
+body[data-tool-id="rent-check"] .apt-card{min-width:0}
+body[data-tool-id="rent-check"] .apt-name{overflow-wrap:anywhere}
+body[data-tool-id="rent-check"] .field{min-width:0}
+body[data-tool-id="rent-check"] .field :is(input,select){min-width:0;max-width:100%}
+@media(max-width:520px){body[data-tool-id="rent-check"] .apt-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+`}
 export function renderUserJourneys(){
  const guides=copies();put('tools/tool-guides.css',css());
  const tools=JSON.parse(read('data/tools.json')).filter(x=>x.status==='available'&&x.url);
@@ -78,7 +98,7 @@ export function renderUserJourneys(){
   s=s.replace(/<!-- rc-static:tool-style -->[\s\S]*?<!-- \/rc-static:tool-style -->/g,'');
   const faq=(g.faq||[]).map(([q,a])=>`<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('');
   const links=(g.related||[]).map(([href,label],i)=>{assert(fs.existsSync(href+'index.html'),`Missing related page: ${href}`);return `<a class="v2-content-guide__link${i?' alt':''}"${i?'':' data-primary-guide="true"'} href="${prefix}${esc(href)}">${esc(label)} →</a>`}).join('');
-  const html=`<section class="v2-content-guide" data-journey-version="20260925" aria-labelledby="v2-content-guide-title"><p class="v2-content-guide__eyebrow">入力の前後に確認</p><h2 id="v2-content-guide-title">${esc(g.title)}</h2><p class="v2-content-guide__lead">${esc(g.lead)}</p><ol>${g.steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol><div class="v2-content-guide__box v2-content-guide__example rc-tool-interpretation" id="rc-guide-interpretation"><strong>결과는 이렇게 읽으세요</strong><br>${esc(interpretations[id])}</div><div class="v2-content-guide__box v2-content-guide__example"><strong>비교 예시</strong><br>${esc(g.example)}</div><div class="v2-content-guide__box v2-content-guide__caution"><strong>이 결과로 확정할 수 없는 것</strong><br>${esc(g.caution)}</div>${faq?`<div class="v2-content-guide__faq"><h3>자주 묻는 질문</h3>${faq}</div>`:''}<p class="v2-content-guide__source">${esc(g.source)}</p><h3 id="rc-guide-next" style="margin:18px 0 8px;font-size:16px;color:#0d1f3c">확인한 뒤, 다음 단계</h3><nav class="v2-content-guide__links" aria-label="관련 Rent Check 페이지">${links}</nav><p class="rc-tool-help"><a href="${prefix}about/">자료·계산 안내 원칙</a> · <a href="${prefix}contact/">계산·표시 오류 제보</a></p><noscript><p class="rc-tool-help">계산 버튼은 JavaScript가 켜진 브라우저에서 작동합니다. 사용 설명과 관련 글은 이 상태에서도 읽을 수 있습니다.</p></noscript></section>`.replace('入力の前後に確認','입력 전 확인 · 결과 해석');
+  const html=`<section class="v2-content-guide" data-journey-version="20260925" aria-labelledby="v2-content-guide-title"><p class="v2-content-guide__eyebrow">입력 전 확인 · 결과 해석</p><h2 id="v2-content-guide-title">${esc(g.title)}</h2><p class="v2-content-guide__lead">${esc(g.lead)}</p><ol>${g.steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol><div class="v2-content-guide__box v2-content-guide__example rc-tool-interpretation" id="rc-guide-interpretation"><strong>결과는 이렇게 읽으세요</strong><br>${esc(interpretations[id])}</div><div class="v2-content-guide__box v2-content-guide__example"><strong>비교 예시</strong><br>${esc(g.example)}</div><div class="v2-content-guide__box v2-content-guide__caution"><strong>이 결과로 확정할 수 없는 것</strong><br>${esc(g.caution)}</div>${faq?`<div class="v2-content-guide__faq"><h3>자주 묻는 질문</h3>${faq}</div>`:''}<p class="v2-content-guide__source">${esc(g.source)}</p><h3 id="rc-guide-next" style="margin:18px 0 8px;font-size:16px;color:#0d1f3c">확인한 뒤, 다음 단계</h3><nav class="v2-content-guide__links" aria-label="관련 Rent Check 페이지">${links}</nav><p class="rc-tool-help"><a href="${prefix}about/">자료·계산 안내 원칙</a> · <a href="${prefix}contact/">계산·표시 오류 제보</a></p><noscript><p class="rc-tool-help">계산 버튼은 JavaScript가 켜진 브라우저에서 작동합니다. 사용 설명과 관련 글은 이 상태에서도 읽을 수 있습니다.</p></noscript></section>`;
   s=block(s,'tool-guide',html,rootBounds(s).end);
   s=block(s,'tool-nav','<nav class="rc-tool-reading-nav" aria-label="도구 사용 안내"><a href="#v2-content-guide-title">입력 전 확인</a><a href="#rc-guide-interpretation">결과 해석</a><a href="#rc-guide-next">다음 행동</a></nav>',rootBounds(s).openEnd);
   const cssHref=id==='redevelopment'?'../tools/tool-guides.css':'../tool-guides.css';
@@ -86,7 +106,6 @@ export function renderUserJourneys(){
   s=s.replace(/(src="[^"<>]*tool-common\.js)(?:\?[^"<>]*)?"/g,'$1?v=journeys-20260925"');
   put(p,s);
  }
- // Preserve the current five entry points and their design, but make the labels task-oriented.
  let home=read('index.html'),app=read('app.js');
  const specs=vm.runInNewContext(extract(app,/const specs=(\[[\s\S]*?\]),palette=/,'home services'),Object.create(null));
  const icons=vm.runInNewContext(extract(app,/const serviceIcons=(\[[\s\S]*?\]);/,'service icons'),Object.create(null));
@@ -124,7 +143,7 @@ ${old}
  core=swap(core,previous,revised,'home introduction generator');put('scripts/render-core-content.mjs',core);
  put('index.html',swap(read('index.html'),previous,revised,'home introduction'));
  let contact=read('contact/index.html');
- const support='<section class="panel" id="rc-error-report"><h2>오류 제보에 필요한 네 가지</h2><p>문제 페이지 주소, 사용 기기·브라우저, 누른 버튼과 입력 조건, 예상한 결과와 실제 결과를 적어주세요. 계산 조건은 개인을 식별할 수 없는 가정값으로 설명해도 됩니다.</p><p><a href="mailto:arttoy61@gmail.com?subject=Rent%20Check%20%EC%98%A4%EB%A5%98%20%EC%A0%9C%EB%B3%B4">오류 제보 이메일 작성 →</a></p><p>주민등록번호·계좌번호·전화번호·개인 주소는 보내지 마세요. 화면을 첨부할 때에도 가린 뒤 보내주세요. 이메일 작성 화면만 열리며 자동 전송되지 않습니다.</p></section>';
+ const support='<div class="content"><section id="rc-error-report"><h2>오류 제보에 필요한 네 가지</h2><p>문제 페이지 주소, 사용 기기·브라우저, 누른 버튼과 입력 조건, 예상한 결과와 실제 결과를 적어주세요. 계산 조건은 개인을 식별할 수 없는 가정값으로 설명해도 됩니다.</p><div class="contact-card"><a href="mailto:arttoy61@gmail.com?subject=Rent%20Check%20%EC%98%A4%EB%A5%98%20%EC%A0%9C%EB%B3%B4">오류 제보 이메일 작성 →</a></div><p>주민등록번호·계좌번호·전화번호·개인 주소는 보내지 마세요. 화면을 첨부할 때에도 가린 뒤 보내주세요. 이메일 작성 화면만 열리며 자동 전송되지 않습니다.</p></section></div>';
  contact=block(contact,'support',support,contact.indexOf('</main>'));put('contact/index.html',contact);
  renderUserJourneys();
  const out=process.env.JOURNEY_OUT||'/tmp/rentcheck-journeys';fs.mkdirSync(out,{recursive:true});fs.writeFileSync(out+'/changed-files.json',JSON.stringify([...changes],null,2));
