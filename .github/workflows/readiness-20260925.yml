@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
-      READINESS_OUT: ${{ runner.temp }}/rentcheck-readiness
+      READINESS_OUT: /tmp/rentcheck-readiness
     steps:
       - uses: actions/checkout@v4
         with:
@@ -78,6 +78,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: readiness-evidence-${{ github.run_id }}
-          path: ${{ runner.temp }}/rentcheck-readiness
+          path: /tmp/rentcheck-readiness
           retention-days: 7
           if-no-files-found: warn
