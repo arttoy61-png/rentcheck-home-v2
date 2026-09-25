@@ -1,0 +1,140 @@
+name: User journey evidence
+on:
+  push:
+    branches: [main, improve/tool-journeys-20260925]
+    paths:
+      - scripts/render-user-journeys.mjs
+      - scripts/check-user-journeys.py
+      - .github/workflows/user-journey-evidence.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: user-journeys-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    env:
+      JOURNEY_OUT: /tmp/rentcheck-journeys
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser dependencies
+        run: |
+          python -m pip install beautifulsoup4 playwright
+          python -m playwright install --with-deps chromium
+      - name: Syntax checks
+        run: |
+          node --check scripts/render-user-journeys.mjs
+          python -m py_compile scripts/check-user-journeys.py
+      - name: Original source and calculation examples
+        if: github.ref_name == 'improve/tool-journeys-20260925'
+        run: python scripts/check-user-journeys.py --phase before
+      - name: Apply presentation-only improvements on the isolated branch
+        if: github.ref_name == 'improve/tool-journeys-20260925'
+        run: |
+          node scripts/render-user-journeys.mjs --apply
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path('scripts/readiness_20260925.py')
+          s=p.read_text()
+          old="    assert 'src=\"app.js?v=readiness-20260925\"' in read('index.html')"
+          new="    assert re.search(r'src=\"app\\.js\\?v=(?:readiness|journeys)-20260925\"', read('index.html'))"
+          if old in s:
+              assert s.count(old)==1
+              p.write_text(s.replace(old,new))
+              out=Path('/tmp/rentcheck-journeys/changed-files.json')
+              files=json.loads(out.read_text());files.append(str(p));out.write_text(json.dumps(files))
+          else:
+              assert new in s
+          PY
+          node --check app.js
+          node --check tools/tool-common.js
+          node --check scripts/render-core-content.mjs
+      - name: Browser, source protection and no-JavaScript verification
+        if: github.ref_name == 'improve/tool-journeys-20260925'
+        run: python scripts/check-user-journeys.py --phase after
+      - name: Rebuild twice in a throwaway directory
+        if: github.ref_name == 'improve/tool-journeys-20260925'
+        run: |
+          python - <<'PY'
+          import shutil,subprocess,json
+          from pathlib import Path
+          from bs4 import BeautifulSoup
+          dst=Path('/tmp/rc-regeneration-check')
+          shutil.copytree(Path.cwd(),dst,ignore=shutil.ignore_patterns('.git','__pycache__'))
+          for _ in range(2):
+              subprocess.run(['node','scripts/render-core-content.mjs','--content-only'],cwd=dst,check=True)
+          tools=json.loads((dst/'data/tools.json').read_text())
+          for t in tools:
+              if t['status']!='available':continue
+              s=BeautifulSoup((dst/t['url'].lstrip('/')/'index.html').read_text(),'html.parser')
+              assert len(s.select('.v2-content-guide'))==1,t['id']
+              assert len(s.select('[data-primary-guide]'))==1,t['id']
+          s=BeautifulSoup((dst/'index.html').read_text(),'html.parser')
+          assert len(s.select('#services a'))==5
+          assert '시세·내 조건·비용' in s.get_text()
+          print('REGENERATION=PASS (two builds, 12 tool guides, five starting links, no duplicated guides)')
+          PY
+      - name: Commit tested changes only to the improvement branch
+        if: success() && github.ref_name == 'improve/tool-journeys-20260925'
+        run: |
+          git diff --check
+          python - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          paths=json.loads(Path('/tmp/rentcheck-journeys/changed-files.json').read_text())
+          allowed={'app.js','index.html','tools/tool-common.js','tools/tool-guides.css','scripts/render-core-content.mjs','scripts/readiness_20260925.py','contact/index.html'}
+          for t in json.loads(Path('data/tools.json').read_text()):
+              if t['status']=='available':allowed.add(t['url'].lstrip('/')+'index.html')
+          assert set(paths)<=allowed
+          if paths:subprocess.run(['git','add','--',*paths],check=True)
+          PY
+          if ! git diff --cached --quiet; then
+            git config user.name github-actions
+            git config user.email github-actions@users.noreply.github.com
+            git commit -m 'feat: verified static tool guides and contextual user journeys'
+            git push origin HEAD:improve/tool-journeys-20260925
+          fi
+      - name: Wait for deployed journey revision
+        if: github.ref_name == 'main'
+        run: |
+          python - <<'PY'
+          import time,urllib.request
+          for i in range(18):
+              try:
+                  req=urllib.request.Request('https://rent-check.kr/tools/rent-vs-monthly/?journey-check='+str(int(time.time())),headers={'Cache-Control':'no-cache'})
+                  with urllib.request.urlopen(req,timeout=15) as r:s=r.read().decode()
+                  if 'data-journey-version="20260925"' in s:break
+              except Exception as e:print(type(e).__name__,str(e)[:120])
+              time.sleep(10)
+          else:raise SystemExit('New public revision not observed')
+          print('PUBLIC_JOURNEY_REVISION=CONFIRMED')
+          PY
+      - name: Public URL and calculation checks after deployment
+        if: github.ref_name == 'main'
+        run: python scripts/check-user-journeys.py --phase live
+      - name: Preserve evidence and source revision
+        if: always()
+        run: |
+          mkdir -p /tmp/rentcheck-journeys
+          git rev-parse HEAD > /tmp/rentcheck-journeys/source-sha.txt
+          git diff > /tmp/rentcheck-journeys/uncommitted.patch
+          git archive --format=zip --output=/tmp/rentcheck-journeys/source-snapshot.zip HEAD
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: user-journey-evidence-${{ github.run_id }}
+          path: /tmp/rentcheck-journeys
+          retention-days: 14
