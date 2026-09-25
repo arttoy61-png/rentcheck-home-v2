@@ -1,6 +1,6 @@
 """Read-only browser and source checks for the user-journey patch."""
 from __future__ import annotations
-import argparse, functools, hashlib, http.server, json, os, shutil, subprocess, threading
+import argparse, functools, hashlib, http.server, json, os, threading
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 from bs4 import BeautifulSoup
@@ -77,6 +77,23 @@ def sample(page,route):
         return outputs(['mScore'])
     return None
 
+def close_housing_popup(page):
+    close=page.locator('.rc-new-alert__close')
+    if close.count() and close.is_visible():close.click();page.wait_for_timeout(100)
+
+def home_clicks(page,base):
+    found=[]
+    for n in range(5):
+        page.goto(base+'/',wait_until='domcontentloaded',timeout=30000);page.wait_for_timeout(500);close_housing_popup(page)
+        target=page.locator('#services a').nth(n)
+        expected=urlsplit(urljoin(base+'/',target.get_attribute('href')))
+        label=target.inner_text();target.click();page.wait_for_timeout(500)
+        actual=urlsplit(page.url)
+        assert (actual.path,actual.fragment)==(expected.path,expected.fragment),(expected,actual)
+        assert page.locator('h1').count(),page.url
+        found.append({'label':label,'path':actual.path,'fragment':actual.fragment})
+    return found
+
 def browser(phase,live=False):
     server=None
     if live:base='https://rent-check.kr'
@@ -91,27 +108,34 @@ def browser(phase,live=False):
         for route in ['/']+ROUTES+['/contact/']:
           for width in [390,1280]:
             context=b.new_context(viewport={'width':width,'height':900})
-            # Do not add test traffic to the owner's analytics or interact with ads.
-            context.route('**/*',lambda r:r.abort() if any(h in urlsplit(r.request.url).hostname for h in ['googletagmanager','google-analytics','doubleclick','googlesyndication','wcs.naver','wcs.pstatic']) else r.continue_())
+            context.route('**/*',lambda r:r.abort() if any(h in (urlsplit(r.request.url).hostname or '') for h in ['googletagmanager','google-analytics','doubleclick','googlesyndication','wcs.naver','wcs.pstatic']) else r.continue_())
             page=context.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
             row={'route':route,'width':width,'javascript':True}
             try:
               res=page.goto(base+route,wait_until='domcontentloaded',timeout=30000);page.wait_for_timeout(900)
+              if route=='/':close_housing_popup(page)
               row.update(status=res.status,overflow=page.evaluate('document.documentElement.scrollWidth>innerWidth+2'),guides=page.locator('.v2-content-guide').count(),errors=errors)
+              if row['overflow']:
+                  row['overflow_elements']=page.evaluate("Array.from(document.body.querySelectorAll('*')).map(e=>({tag:e.tagName,cls:e.className,id:e.id,right:e.getBoundingClientRect().right})).filter(e=>e.right>innerWidth+2).slice(0,12)")
               row['sample']=sample(page,route)
               if phase!='before' and route in ROUTES:
                 row['primary_href']=page.locator('[data-primary-guide]').get_attribute('href')
                 row['guide_visible']=page.locator('.v2-content-guide').is_visible()
                 nexts=page.locator('.v2-result-next.is-visible')
-                if row['sample'] and route!='/tools/youth-score/':
-                    row['result_context_link']=nexts.locator('a[href="#rc-guide-interpretation"]').count()
-                # Click the new reading link; it must not disturb the calculation state.
+                if row['sample'] and route!='/tools/youth-score/':row['result_context_link']=nexts.locator('a[href="#rc-guide-interpretation"]').count()
                 if route!='/tools/youth-score/':
                     page.locator('.rc-tool-reading-nav a[href="#rc-guide-interpretation"]').click();page.wait_for_timeout(150)
                     row['interpretation_anchor']=urlsplit(page.url).fragment
               if route=='/':row['service_links']=page.locator('#services a').evaluate_all('(els)=>els.map(x=>({text:x.innerText,href:x.getAttribute("href")}))')
-              if route in ['/','/tools/rent-vs-monthly/','/tools/brokerage-fee/','/contact/'] and width==390:
-                filename=f'{phase}-'+route.strip('/').replace('/','_')+'-390.png';page.screenshot(path=str(OUT/filename),full_page=True);row['screenshot']=filename
+              if route in ['/','/tools/rent-check/','/tools/rent-vs-monthly/','/tools/brokerage-fee/','/contact/']:
+                page.evaluate('window.scrollTo(0,0)');page.wait_for_timeout(100)
+                filename=f'{phase}-'+route.strip('/').replace('/','_')+'-'+str(width)+'.png';page.screenshot(path=str(OUT/filename),full_page=True);row['screenshot']=filename
+              if phase!='before' and route=='/':row['clicked_entries']=home_clicks(page,base)
+              if phase!='before' and route in ['/tools/rent-vs-monthly/','/tools/brokerage-fee/']:
+                expected=urljoin(page.url,row['primary_href'])
+                page.locator('[data-primary-guide]').click();page.wait_for_timeout(300)
+                assert urlsplit(page.url).path==urlsplit(expected).path
+                row['clicked_guide_h1']=page.locator('h1').first.inner_text()
             except Exception as e:row['error']=str(e)[:800]
             rows.append(row);context.close()
         if phase!='before':
@@ -124,6 +148,7 @@ def browser(phase,live=False):
               if route=='/':row['service_count']=page.locator('#services a').count()
               else:
                 row['guide_visible']=page.locator('.v2-content-guide').is_visible();row['primary_href']=page.locator('[data-primary-guide]').get_attribute('href')
+              if row['overflow']:row['overflow_elements']=page.evaluate("Array.from(document.body.querySelectorAll('*')).map(e=>({tag:e.tagName,cls:e.className,id:e.id,right:e.getBoundingClientRect().right})).filter(e=>e.right>innerWidth+2).slice(0,12)")
             except Exception as e:row['error']=str(e)[:500]
             rows.append(row);page.close()
           context.close()
@@ -138,13 +163,15 @@ def browser(phase,live=False):
         assert r.get('status')==200 and not r.get('error'),r
         old=next((v for v in previous if v['route']==r['route'] and v['width']==r['width']),{})
         assert not (set(r.get('errors',[]))-set(old.get('errors',[]))),r
-        assert not r.get('overflow') or old.get('overflow'),r
+        assert not r.get('overflow'),r
         if r['route'] in ROUTES:
           assert r['guides']==1 and r['guide_visible'],r
           if r.get('sample') and previous:assert r['sample']==old.get('sample'),r
           if 'result_context_link' in r:assert r['result_context_link']>=1,r
-        if r['route']=='/' and not r['javascript']:assert r['service_count']==5,r
-      print(f'JOURNEY_BROWSER_CHECK=PASS ({len(rows)} observations; original calculation examples preserved; static content works without JavaScript)')
+        if r['route']=='/':
+          if not r['javascript']:assert r['service_count']==5,r
+          else:assert len(r['clicked_entries'])==5,r
+      print(f'JOURNEY_BROWSER_CHECK=PASS ({len(rows)} observations; 5 home entries and related guides clicked; original calculation examples preserved; static content works without JavaScript)')
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--phase',choices=['before','after','live'],required=True);args=parser.parse_args()
