@@ -56,7 +56,12 @@ app=patch(app,"track=$('#insightTrack');track.replaceChildren();","track=$('#ins
 app=patch(app,'root.replaceChildren();const all=publishedPosts();',"const all=publishedPosts();if(!all.length&&root.dataset.prerendered==='true')return;root.replaceChildren();",'library fallback');
 loader=patch(loader,"const track=document.querySelector('#insightTrack');if(!track)return;","const track=document.querySelector('#insightTrack');if(!track)return;if(track.dataset.prerendered==='true'&&track.querySelector('.insight-home'))return;",'curated hydration');
 homeUI=patch(homeUI,"if(!homeTrack||homeTrack.querySelector('a[href=\"/blog/gangseo-home-price/\"]'))return;","if(!homeTrack||homeTrack.dataset.prerendered==='true'||homeTrack.querySelector('a[href=\"/blog/gangseo-home-price/\"]'))return;",'legacy feature replacement');
-for(const name of ['app.js','data/posts-loader.js','data/home-analysis-ui.js'])home=home.replace(new RegExp(`src="${name.replaceAll('.','\\.')}(?:\\?[^\"]*)?"`),`src="${name}?v=static-first-20260908"`);
+for(const name of ['app.js','data/posts-loader.js','data/home-analysis-ui.js'])home=home.replace(new RegExp(`src="${name.replaceAll('.','\\.')}(?:\\?[^\"]*)?"`),`src="${name}?v=${name==='app.js'?'readiness-20260925':'static-first-20260908'}"`);
+
+// Keep initial HTML consistent with the existing site-stats-loader labels.
+home=home.replace("<span>발행 분석 글</span><strong id=\"publishedCount\">","<span>네이버 발행 글</span><strong id=\"publishedCount\">");
+home=home.replace("<p class=\"kicker\">분석 글</p><h2>발행 글 찾아보기</h2>","<p class=\"kicker\">네이버 블로그</p><h2>네이버 발행 글</h2>");
+home=home.replace("<p>홈 자체 분석과 네이버 발행 글을 주제별로 찾습니다. 자체 분석은 위에서 먼저 확인할 수 있습니다.</p>","<p>Rent Check가 네이버 블로그에 발행한 글을 주제별로 모았습니다. 홈페이지 자체 분석은 위 ‘Rent Check 자체 분석’에서 확인하세요.</p>");
 outputs.set('index.html',home);outputs.set('app.js',app);outputs.set('data/posts-loader.js',loader);outputs.set('data/home-analysis-ui.js',homeUI);
 // Copy the existing guide verbatim into HTML. Its existing presence guard prevents duplication.
 const common=read('tools/tool-common.js');
