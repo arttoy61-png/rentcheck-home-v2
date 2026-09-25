@@ -1,7 +1,7 @@
 name: Readiness repair and browser evidence
 on:
   push:
-    branches: [fix/adsense-readiness-20260925]
+    branches: [main, fix/adsense-readiness-20260925]
     paths:
       - scripts/readiness_20260925.py
       - .github/workflows/readiness-20260925.yml
@@ -51,9 +51,45 @@ jobs:
       - name: Inventory all HTML without editing content
         if: always()
         run: python scripts/readiness_20260925.py --inventory
+      - name: Wait for repaired public assets
+        if: github.ref_name == 'main'
+        run: |
+          python - <<'PY'
+          import time, urllib.request
+          for attempt in range(12):
+              try:
+                  url='https://rent-check.kr/app.js?v=readiness-20260925&verify='+str(int(time.time()))
+                  req=urllib.request.Request(url,headers={'Cache-Control':'no-cache'})
+                  with urllib.request.urlopen(req,timeout=15) as r:
+                      source=r.read().decode('utf-8')
+                  if "function resolveToolLinks(){$$('[data-tool-link]').forEach(" in source:
+                      print('PUBLIC_REPAIRED_ASSET=CONFIRMED')
+                      break
+              except Exception as exc:
+                  print(type(exc).__name__,str(exc)[:160])
+              time.sleep(10)
+          else:
+              raise SystemExit('Public revision not observed; do not claim live verification')
+          PY
       - name: Observe public site without assuming branch deployment
         if: always()
         run: python scripts/readiness_20260925.py --browser live
+      - name: Assert deployed repairs on main
+        if: github.ref_name == 'main'
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          rows=json.loads((Path(os.environ['READINESS_OUT'])/'live.json').read_text())
+          assert len(rows)==16
+          for row in rows:
+              assert row.get('status')==200 and not row.get('error'),row
+              assert not row.get('errors') and not row.get('overflow'),row
+              if row['route']=='/':assert row['post_label']=='네이버 발행 글',row
+              if '/notices/lh-' in row['route']:assert row['editorial_link']==1,row
+              if row['route']=='/tools/youth-score/':assert row['calculated_score']=='5점',row
+          print('PUBLIC_BROWSER_VERIFIED=PASS (16 observations, 12 paths; no errors; four guide links; sample score preserved)')
+          PY
       - name: Commit only tested repairs to the isolated branch
         if: success() && github.ref_name == 'fix/adsense-readiness-20260925' && (github.event_name == 'push' || inputs.apply_repairs)
         run: |
@@ -73,6 +109,12 @@ jobs:
             git commit -m 'fix: repair home initialization and connect existing editorial guides'
             git push origin HEAD:fix/adsense-readiness-20260925
           fi
+      - name: Preserve source snapshot for page-by-page editorial audit
+        if: always()
+        run: |
+          mkdir -p /tmp/rentcheck-readiness
+          git rev-parse HEAD > /tmp/rentcheck-readiness/source-sha.txt
+          git archive --format=zip --output=/tmp/rentcheck-readiness/source-snapshot.zip HEAD
       - name: Upload evidence and original files
         if: always()
         uses: actions/upload-artifact@v4
