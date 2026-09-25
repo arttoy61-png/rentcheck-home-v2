@@ -5,6 +5,7 @@ on:
     paths:
       - scripts/editorial_20260925.py
       - scripts/editorial_browser_20260925.py
+      - scripts/jeonse_snapshot_20260925.py
       - .github/workflows/editorial-evidence-20260925.yml
   workflow_dispatch:
 permissions:
@@ -36,22 +37,123 @@ jobs:
       - name: Baseline article rendering
         if: github.ref_name == 'fix/editorial-evidence-20260925'
         run: python scripts/editorial_browser_20260925.py --stage before
-      - name: Apply the twelve guarded content changes
+      - name: Apply guarded content changes and restore historical article input
         if: github.ref_name == 'fix/editorial-evidence-20260925'
-        run: python scripts/editorial_20260925.py --apply
+        run: |
+          python scripts/editorial_20260925.py --apply
+          python scripts/jeonse_snapshot_20260925.py --apply
+          python - <<'PY'
+          import json,sys
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          from editorial_20260925 import PATHS,OUT,MARK
+          manifest=OUT/'changed-files.json'
+          paths=json.loads(manifest.read_text())
+          for name in PATHS:
+              p=Path(name);s=p.read_text(encoding='utf-8')
+              old='<p class="meta" '+MARK+'>'
+              new='<p class="notice" '+MARK+'>'
+              if old in s:
+                  assert s.count(old)==1
+                  backup=OUT/'originals'/name
+                  if not backup.exists():
+                      backup.parent.mkdir(parents=True,exist_ok=True);backup.write_text(s,encoding='utf-8')
+                  p.write_text(s.replace(old,new,1),encoding='utf-8')
+                  if name not in paths:paths.append(name)
+              else:assert new in s,name
+          manifest.write_text(json.dumps(paths,ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
       - name: Verify formulas, links, schemas and prior technical repairs
         run: |
           python scripts/editorial_20260925.py --verify
+          python scripts/jeonse_snapshot_20260925.py --verify
           python scripts/readiness_20260925.py --verify
       - name: Repaired articles, no-JavaScript content and navigation
         if: github.ref_name == 'fix/editorial-evidence-20260925'
         run: python scripts/editorial_browser_20260925.py --stage after
-      - name: Existing chart data coverage
+      - name: Observe rolling chart source coverage without collection
         if: always()
         run: python scripts/editorial_browser_20260925.py --coverage
       - name: Read-only full HTML inventory
         if: always()
         run: python scripts/readiness_20260925.py --inventory
+      - name: Wait for the published editorial revision
+        if: github.ref_name == 'main'
+        run: |
+          python - <<'PY'
+          import time,urllib.request
+          targets=[('https://rent-check.kr/blog/brokerage-fee-check/','data-editorial-review="20260925"'),('https://rent-check.kr/analysis/gangseo-jeonse-trend/','data-historical-snapshot="20260823"')]
+          for attempt in range(18):
+              try:
+                  found=0
+                  for url,marker in targets:
+                      req=urllib.request.Request(url+'?editorial_verify='+str(int(time.time())),headers={'Cache-Control':'no-cache'})
+                      with urllib.request.urlopen(req,timeout=15) as r:source=r.read().decode('utf-8')
+                      found+=marker in source
+                  if found==len(targets):
+                      print('PUBLIC_EDITORIAL_AND_CHART_REVISIONS_CONFIRMED');break
+              except Exception as exc:print(str(exc)[:150])
+              time.sleep(10)
+          else:raise SystemExit('Published revisions not observed')
+          PY
+      - name: Verify actual public pages after publication
+        if: github.ref_name == 'main'
+        run: |
+          python scripts/editorial_browser_20260925.py --stage live
+          python scripts/readiness_20260925.py --browser live
+      - name: Visible review notes, scrollable tables and first-HTML historical chart
+        env:
+          AUDIT_REF: ${{ github.ref_name }}
+        run: |
+          python - <<'PY'
+          import os,sys,json,functools,http.server,threading
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          sys.path.insert(0,'scripts')
+          from editorial_20260925 import PATHS,OUT,ROOT
+          from jeonse_snapshot_20260925 import DATA,MONTHS
+          live=os.environ['AUDIT_REF']=='main';server=None
+          if live:base='https://rent-check.kr'
+          else:
+              handler=functools.partial(http.server.SimpleHTTPRequestHandler,directory=str(ROOT))
+              server=http.server.ThreadingHTTPServer(('127.0.0.1',0),handler)
+              threading.Thread(target=server.serve_forever,daemon=True).start()
+              base=f'http://127.0.0.1:{server.server_port}'
+          records=[];data=json.loads(Path(DATA).read_text(encoding='utf-8'))
+          try:
+              with sync_playwright() as p:
+                  browser=p.chromium.launch()
+                  ctx=browser.new_context(java_script_enabled=False,viewport={'width':390,'height':900})
+                  for path in PATHS:
+                      page=ctx.new_page();route='/'+path.removesuffix('index.html')
+                      resp=page.goto(base+route,wait_until='domcontentloaded',timeout=25000)
+                      assert resp.status==200
+                      visible=page.locator('[data-editorial-review="20260925"]').is_visible()
+                      assert visible,route
+                      tables=page.locator('.table-wrap').evaluate_all('(els)=>els.map(e=>{const wide=e.scrollWidth>e.clientWidth+2;e.scrollLeft=80;return {wide,scrolled:e.scrollLeft>0};})')
+                      assert all(not x['wide'] or x['scrolled'] for x in tables),route
+                      records.append({'route':route,'review_visible_without_js':visible,'table_scroll':tables})
+                      page.screenshot(path=str(OUT/('verified-'+route.strip('/').replace('/','_')+'-390.png')),full_page=True)
+                      page.close()
+                  for width in [390,1280]:
+                      page=ctx.new_page();page.set_viewport_size({'width':width,'height':900})
+                      resp=page.goto(base+'/analysis/gangseo-jeonse-trend/',wait_until='domcontentloaded',timeout=25000)
+                      assert resp.status==200
+                      assert page.locator('[data-historical-snapshot="20260823"]').count()==1
+                      assert page.locator('.bar-item').count()==138
+                      assert not page.evaluate('document.documentElement.scrollWidth>innerWidth+2')
+                      for key,d in data['types'].items():
+                          for field,suffix in [('j','J'),('w','W')]:
+                              values=page.locator('#'+key+suffix+' .bar-value').all_text_contents()
+                              assert [int(x.replace(',','')) for x in values]==[x[field] for x in d['series']]
+                      records.append({'route':'/analysis/gangseo-jeonse-trend/','width':width,'javascript':False,'months':len(MONTHS),'bars':138,'counts_match_snapshot':True,'total_count':data['total_count']})
+                      page.screenshot(path=str(OUT/f'fixed-historical-chart-{width}.png'),full_page=True);page.close()
+                  ctx.close();browser.close()
+          finally:
+              if server:server.shutdown()
+              (OUT/'visibility-chart-verification.json').write_text(json.dumps({'live':live,'records':records},ensure_ascii=False,indent=2),encoding='utf-8')
+          print('VISIBLE_CONTENT_VERIFIED='+str(len(records)))
+          PY
       - name: Commit only the tested content files
         if: success() && github.ref_name == 'fix/editorial-evidence-20260925'
         run: |
@@ -61,8 +163,9 @@ jobs:
           from pathlib import Path
           sys.path.insert(0,'scripts')
           from editorial_20260925 import PATHS
+          from jeonse_snapshot_20260925 import PAGE,DATA
           paths=json.loads(Path('/tmp/rentcheck-editorial/changed-files.json').read_text())
-          assert set(paths)<=set(PATHS)|{'sitemap.xml'}
+          assert set(paths)<=set(PATHS)|{'sitemap.xml',PAGE,DATA}
           changed=subprocess.check_output(['git','diff','--name-only'],text=True).splitlines()
           assert set(changed)<=set(paths),changed
           if paths:subprocess.run(['git','add','--',*paths],check=True)
@@ -70,30 +173,9 @@ jobs:
           if ! git diff --cached --quiet; then
             git config user.name github-actions
             git config user.email github-actions@users.noreply.github.com
-            git commit -m 'content: add verified amounts, comparisons and scope distinctions to existing guides'
+            git commit -m 'content: publish verified article revisions and reproducible historical chart'
             git push origin HEAD:fix/editorial-evidence-20260925
           fi
-      - name: Wait for the published editorial revision
-        if: github.ref_name == 'main'
-        run: |
-          python - <<'PY'
-          import time,urllib.request
-          url='https://rent-check.kr/blog/brokerage-fee-check/'
-          for attempt in range(18):
-              try:
-                  req=urllib.request.Request(url+'?editorial_verify='+str(int(time.time())),headers={'Cache-Control':'no-cache'})
-                  with urllib.request.urlopen(req,timeout=15) as r:source=r.read().decode('utf-8')
-                  if 'data-editorial-review="20260925"' in source:
-                      print('PUBLIC_EDITORIAL_REVISION_CONFIRMED');break
-              except Exception as exc:print(str(exc)[:150])
-              time.sleep(10)
-          else:raise SystemExit('Published editorial revision not observed')
-          PY
-      - name: Verify actual public pages after publication
-        if: github.ref_name == 'main'
-        run: |
-          python scripts/editorial_browser_20260925.py --stage live
-          python scripts/readiness_20260925.py --browser live
       - name: Save source revision and evidence
         if: always()
         run: |
