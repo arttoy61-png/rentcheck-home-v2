@@ -1,0 +1,108 @@
+name: Editorial evidence and public verification
+on:
+  push:
+    branches: [main, fix/editorial-evidence-20260925]
+    paths:
+      - scripts/editorial_20260925.py
+      - scripts/editorial_browser_20260925.py
+      - .github/workflows/editorial-evidence-20260925.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: editorial-evidence-20260925-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  editorial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      EDITORIAL_OUT: /tmp/rentcheck-editorial
+      READINESS_OUT: /tmp/rentcheck-editorial
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install verification dependencies
+        run: |
+          python -m pip install beautifulsoup4 playwright
+          python -m playwright install --with-deps chromium
+      - name: Baseline article rendering
+        if: github.ref_name == 'fix/editorial-evidence-20260925'
+        run: python scripts/editorial_browser_20260925.py --stage before
+      - name: Apply the twelve guarded content changes
+        if: github.ref_name == 'fix/editorial-evidence-20260925'
+        run: python scripts/editorial_20260925.py --apply
+      - name: Verify formulas, links, schemas and prior technical repairs
+        run: |
+          python scripts/editorial_20260925.py --verify
+          python scripts/readiness_20260925.py --verify
+      - name: Repaired articles, no-JavaScript content and navigation
+        if: github.ref_name == 'fix/editorial-evidence-20260925'
+        run: python scripts/editorial_browser_20260925.py --stage after
+      - name: Existing chart data coverage
+        if: always()
+        run: python scripts/editorial_browser_20260925.py --coverage
+      - name: Read-only full HTML inventory
+        if: always()
+        run: python scripts/readiness_20260925.py --inventory
+      - name: Commit only the tested content files
+        if: success() && github.ref_name == 'fix/editorial-evidence-20260925'
+        run: |
+          git diff --check
+          python - <<'PY'
+          import json,sys,subprocess
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          from editorial_20260925 import PATHS
+          paths=json.loads(Path('/tmp/rentcheck-editorial/changed-files.json').read_text())
+          assert set(paths)<=set(PATHS)|{'sitemap.xml'}
+          changed=subprocess.check_output(['git','diff','--name-only'],text=True).splitlines()
+          assert set(changed)<=set(paths),changed
+          if paths:subprocess.run(['git','add','--',*paths],check=True)
+          PY
+          if ! git diff --cached --quiet; then
+            git config user.name github-actions
+            git config user.email github-actions@users.noreply.github.com
+            git commit -m 'content: add verified amounts, comparisons and scope distinctions to existing guides'
+            git push origin HEAD:fix/editorial-evidence-20260925
+          fi
+      - name: Wait for the published editorial revision
+        if: github.ref_name == 'main'
+        run: |
+          python - <<'PY'
+          import time,urllib.request
+          url='https://rent-check.kr/blog/brokerage-fee-check/'
+          for attempt in range(18):
+              try:
+                  req=urllib.request.Request(url+'?editorial_verify='+str(int(time.time())),headers={'Cache-Control':'no-cache'})
+                  with urllib.request.urlopen(req,timeout=15) as r:source=r.read().decode('utf-8')
+                  if 'data-editorial-review="20260925"' in source:
+                      print('PUBLIC_EDITORIAL_REVISION_CONFIRMED');break
+              except Exception as exc:print(str(exc)[:150])
+              time.sleep(10)
+          else:raise SystemExit('Published editorial revision not observed')
+          PY
+      - name: Verify actual public pages after publication
+        if: github.ref_name == 'main'
+        run: |
+          python scripts/editorial_browser_20260925.py --stage live
+          python scripts/readiness_20260925.py --browser live
+      - name: Save source revision and evidence
+        if: always()
+        run: |
+          mkdir -p /tmp/rentcheck-editorial
+          git rev-parse HEAD > /tmp/rentcheck-editorial/source-sha.txt
+          git archive --format=zip --output=/tmp/rentcheck-editorial/source-snapshot.zip HEAD
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: editorial-evidence-${{ github.run_id }}
+          path: /tmp/rentcheck-editorial
+          retention-days: 14
