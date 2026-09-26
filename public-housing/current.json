@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-26T12:03:55+00:00",
-  "source_generated_at": "2026-09-24T06:31:12",
+  "generated_at": "2026-09-26T23:15:03+00:00",
+  "source_generated_at": "2026-09-27T01:24:15",
   "recruitment_count": 23,
   "items": [
     {
@@ -44,7 +44,7 @@
       "region": "서울",
       "published_at": "2026-09-22",
       "deadline": "2026-09-30",
-      "open_state": "접수중",
+      "open_state": "마감임박",
       "event": "신규",
       "change": "동일",
       "status_text": "",
