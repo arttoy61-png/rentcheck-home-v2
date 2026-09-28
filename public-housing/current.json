@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-28T01:10:12+00:00",
-  "source_generated_at": "2026-09-28T06:22:07",
-  "recruitment_count": 24,
+  "generated_at": "2026-09-28T14:58:03+00:00",
+  "source_generated_at": "2026-09-28T22:53:50",
+  "recruitment_count": 23,
   "items": [
     {
       "id": "SH:seq:310673",
@@ -29,35 +29,6 @@
       "schedule_source": "official_detail_html",
       "route": "/public-housing/notices/sh-310673/",
       "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310673",
-      "official_link_label": "공식 모집공고 원문 →",
-      "indexable": false
-    },
-    {
-      "id": "SH:seq:310629",
-      "agency": "SH",
-      "agency_group": "SH",
-      "title": "[토지임대부 사회주택] 옥류서원 입주자 모집 공고문",
-      "housing_types": [
-        "기타임대"
-      ],
-      "audiences": [],
-      "region": "서울",
-      "published_at": "2026-09-22",
-      "deadline": "2026-09-30",
-      "open_state": "마감임박",
-      "event": "신규",
-      "change": "동일",
-      "status_text": "",
-      "is_gangseo": false,
-      "keywords": [],
-      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310629",
-      "source": "SH 공식 주택임대 게시판",
-      "content_signature": "e704dbc237f75ad1cc54022d3dd5126fb35bb999b1a30602375d1b364185cc7a",
-      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
-      "application_start": "2026-09-21",
-      "schedule_source": "official_detail_html",
-      "route": "/public-housing/notices/sh-310629/",
-      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310629",
       "official_link_label": "공식 모집공고 원문 →",
       "indexable": false
     },
