@@ -1,11 +1,27 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-28T23:58:04+09:00",
-  "data_until": "2026-09-23",
+  "generated_at": "2026-09-29T11:17:31+09:00",
+  "data_until": "2026-09-28",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
+    {
+      "dong": "방화동",
+      "name": "마곡중앙하이츠아파트",
+      "area_m2": 40,
+      "amount_eok": 5.7,
+      "date": "2026.09.24",
+      "complex_id": "6d74f926"
+    },
+    {
+      "dong": "마곡동",
+      "name": "벽산",
+      "area_m2": 59,
+      "amount_eok": 9.2,
+      "date": "2026.09.23",
+      "complex_id": "8cb90772"
+    },
     {
       "dong": "화곡동",
       "name": "세교예지안6차",
@@ -13,22 +29,6 @@
       "amount_eok": 1.63,
       "date": "2026.09.22",
       "complex_id": "527ae269"
-    },
-    {
-      "dong": "염창동",
-      "name": "현대2",
-      "area_m2": 59,
-      "amount_eok": 8.65,
-      "date": "2026.09.21",
-      "complex_id": "54584f3f"
-    },
-    {
-      "dong": "마곡동",
-      "name": "마곡힐스테이트",
-      "area_m2": 84,
-      "amount_eok": 17.4,
-      "date": "2026.09.21",
-      "complex_id": "819aa1b2"
     }
   ],
   "monthly_trend": [
@@ -50,11 +50,11 @@
     },
     {
       "month": "2026-08",
-      "count": 256
+      "count": 258
     },
     {
       "month": "2026-09",
-      "count": 136
+      "count": 150
     }
   ]
 }
