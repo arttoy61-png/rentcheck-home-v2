@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-29T13:45:12+00:00",
-  "source_generated_at": "2026-09-29T18:50:19",
-  "recruitment_count": 23,
+  "generated_at": "2026-09-30T00:00:12+00:00",
+  "source_generated_at": "2026-09-30T07:16:15",
+  "recruitment_count": 22,
   "items": [
     {
       "id": "LH:panId:2015122300020753",
@@ -689,35 +689,6 @@
       "schedule_source": "official_detail_html",
       "route": "/public-housing/notices/lh-2015122300019045/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019045&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=09&mi=1026",
-      "official_link_label": "공식 모집공고 원문 →",
-      "indexable": false
-    },
-    {
-      "id": "LH:panId:2015122300020765",
-      "agency": "LH",
-      "agency_group": "LH",
-      "title": "마산삼계2공임50년 예비입주자 모집공고문",
-      "housing_types": [
-        "기타임대"
-      ],
-      "audiences": [],
-      "region": "서울",
-      "published_at": "",
-      "deadline": "2026-10-13",
-      "open_state": "접수예정",
-      "event": "신규",
-      "change": "동일",
-      "status_text": "",
-      "is_gangseo": false,
-      "keywords": [],
-      "url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020765&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=08&mi=1026",
-      "source": "서울주거포털",
-      "content_signature": "b2c8743f0a90b1a5c308cad803adf681be0311d330973a7fc990c5aed0634b2c",
-      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
-      "application_start": "2026-10-12",
-      "schedule_source": "official_detail_html",
-      "route": "/public-housing/notices/lh-2015122300020765/",
-      "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020765&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=08&mi=1026",
       "official_link_label": "공식 모집공고 원문 →",
       "indexable": false
     },

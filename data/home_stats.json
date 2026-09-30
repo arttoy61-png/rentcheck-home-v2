@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-29T22:45:13+09:00",
-  "data_until": "2026-09-28",
+  "generated_at": "2026-09-30T09:00:12+09:00",
+  "data_until": "2026-09-29",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
@@ -15,20 +15,20 @@
       "complex_id": "6d74f926"
     },
     {
-      "dong": "마곡동",
-      "name": "벽산",
-      "area_m2": 59,
-      "amount_eok": 9.2,
+      "dong": "염창동",
+      "name": "염창3우성",
+      "area_m2": 84,
+      "amount_eok": 10.9,
       "date": "2026.09.23",
-      "complex_id": "8cb90772"
+      "complex_id": "7f891e77"
     },
     {
-      "dong": "화곡동",
-      "name": "세교예지안6차",
-      "area_m2": 26,
-      "amount_eok": 1.63,
-      "date": "2026.09.22",
-      "complex_id": "527ae269"
+      "dong": "등촌동",
+      "name": "주공5",
+      "area_m2": 38,
+      "amount_eok": 8.0,
+      "date": "2026.09.23",
+      "complex_id": "7765858a"
     }
   ],
   "monthly_trend": [
@@ -50,11 +50,11 @@
     },
     {
       "month": "2026-08",
-      "count": 258
+      "count": 259
     },
     {
       "month": "2026-09",
-      "count": 150
+      "count": 162
     }
   ]
 }
