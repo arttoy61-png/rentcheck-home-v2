@@ -85,7 +85,8 @@
     root.querySelector('.rc-new-alert__dismiss').addEventListener('click',()=>{storeDismiss(items);close(root)});
     document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!root.hidden)close(root)});
     document.body.append(root);
-    setTimeout(()=>{root.hidden=false;document.documentElement.classList.add('rc-new-alert-open')},550);
+    document.addEventListener('rentcheck:housing-open',()=>close(root));
+    setTimeout(()=>{if(document.body.classList.contains('notice-modal-open'))return;root.hidden=false;document.documentElement.classList.add('rc-new-alert-open')},550);
   }
   async function init(){
     if(location.pathname!=='/'&&location.pathname!=='/index.html')return;

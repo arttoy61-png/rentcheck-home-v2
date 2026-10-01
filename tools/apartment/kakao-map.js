@@ -56,7 +56,7 @@
   function detailHref() {
     try {
       if (typeof state !== 'undefined' && state?.id) {
-        return `../../analysis/apartment/?id=${encodeURIComponent(state.id)}`;
+        return `../../analysis/apartment/?id=${encodeURIComponent(state.id)}${typeof DET_CUR!=='undefined'&&DET_CUR?('&area='+encodeURIComponent(DET_CUR._band||'')):''}`;
       }
     } catch (_) {}
     return null;
@@ -68,7 +68,7 @@
       const period = Array.isArray(meta?.period) ? meta.period : [];
       if (period.length === 2) {
         const fmt = value => String(value || '').replaceAll('-', '.');
-        return `${fmt(period[0])}~${fmt(period[1])} · ${meta?.period_basis || '계약일 기준'}`;
+        return `${fmt(period[0])}~${fmt(period[1])} · ${meta?.period_basis || '계약일 기준'} · 자료 생성 ${S.generated_at||'미확인'}${typeof apartmentDataSource!=='undefined'&&apartmentDataSource.startsWith('/')?' · 최신 로드 실패, 보관 자료 표시':''}`;
       }
     } catch (_) {}
     return '최근 6개월 · 계약일 기준';

@@ -50,7 +50,7 @@
   function best(q){const text=norm(q);let winner=null,max=0;ITEMS.forEach(item=>{let score=0;item.keywords.forEach(k=>{if(text.includes(norm(k)))score+=5});if(text.includes(norm(item.q))||norm(item.q).includes(text))score+=10;if(score>max){max=score;winner=item}});return max?winner:null}
   function answer(q){
     const item=best(q);
-    if(!item){result.innerHTML=`<article class="rc-ask-card"><small>아직 등록되지 않은 질문</small><h3>${escapeHtml(q)}</h3><p>지금은 실제 유입에서 확인된 질문부터 답을 연결하고 있습니다. 아래 계산 도구나 분석 글에서 먼저 확인해보세요.</p><div class="rc-ask-actions"><a class="rc-ask-primary" href="#calculators">계산 도구 보기 →</a><a class="rc-ask-secondary" href="/analysis/">분석 글 보기</a></div></article>`;return}
+    if(!item){const found=typeof searchData==='function'?searchData(q).filter(x=>x.valid):[];result.innerHTML=`<article class="rc-ask-card"><small>${found.length?'관련 가이드·도구·글':'아직 등록되지 않은 질문'}</small><h3>${escapeHtml(q)}</h3><p>${found.length?'아래 자료에서 확인해보세요.':'아래 계산 도구나 분석 글에서 먼저 확인해보세요.'}</p><div class="rc-ask-actions">${found.map(x=>`<a class="rc-ask-secondary" href="${escapeHtml(x.url)}"${x.type==='post'?' target="_blank" rel="noopener noreferrer"':''}>${escapeHtml(x.title)} · ${escapeHtml(x.meta||'')}</a>`).join('')}<a class="rc-ask-primary" href="#calculators">계산 도구 보기 →</a><a class="rc-ask-secondary" href="/analysis/">분석 글 보기</a></div></article>`;return}
     result.innerHTML=`<article class="rc-ask-card"><small>한 줄 요약 · ${escapeHtml(item.cat)}</small><h3>${escapeHtml(item.q)}</h3><p>${escapeHtml(item.answer)}</p><div class="rc-ask-now"><b>지금 할 일</b>${escapeHtml(item.action)}</div><div class="rc-ask-actions"><a class="rc-ask-primary" href="${item.url}">${escapeHtml(item.tool)} →</a>${item.secondary?`<a class="rc-ask-secondary" href="${item.secondaryUrl}">${escapeHtml(item.secondary)}</a>`:''}</div></article>`;
   }
   function escapeHtml(v){return String(v||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
@@ -63,8 +63,7 @@
   if(homeForm&&homeInput){
     homeInput.placeholder='부동산 궁금한 걸 그대로 물어보세요';homeInput.setAttribute('aria-label','부동산 궁금한 걸 그대로 물어보세요');
     const label=homeForm.querySelector('label');if(label)label.textContent='부동산 궁금한 걸 그대로 물어보세요';
-    const suppress=e=>{if(homePanel)homePanel.hidden=true;e.stopImmediatePropagation()};
-    homeInput.addEventListener('focus',suppress,true);homeInput.addEventListener('input',suppress,true);
+    // Preserve the homepage autocomplete while keeping the established Q&A submit.
     homeForm.addEventListener('submit',e=>{e.preventDefault();e.stopImmediatePropagation();if(homePanel)homePanel.hidden=true;open(homeInput.value.trim())},true);
   }
 })();
