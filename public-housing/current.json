@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-01T00:16:13+00:00",
-  "source_generated_at": "2026-10-01T05:02:50",
+  "generated_at": "2026-10-01T01:33:02+00:00",
+  "source_generated_at": "2026-10-01T09:34:34",
   "recruitment_count": 23,
   "items": [
     {
@@ -19,8 +19,8 @@
       "published_at": "2026-09-30",
       "deadline": "2026-10-20",
       "open_state": "접수예정",
-      "event": "수정",
-      "change": "수정",
+      "event": "신규",
+      "change": "동일",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [
@@ -54,8 +54,8 @@
       "published_at": "2026-09-30",
       "deadline": "2026-10-20",
       "open_state": "접수예정",
-      "event": "수정",
-      "change": "수정",
+      "event": "신규",
+      "change": "동일",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [
@@ -86,8 +86,8 @@
       "published_at": "2026-09-17",
       "deadline": "",
       "open_state": "확인필요",
-      "event": "수정",
-      "change": "수정",
+      "event": "신규",
+      "change": "동일",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [
@@ -262,7 +262,7 @@
       "deadline": "",
       "open_state": "확인필요",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [
@@ -322,7 +322,7 @@
       "deadline": "2026-09-17",
       "open_state": "마감",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [],
@@ -716,7 +716,7 @@
       "deadline": "2026-10-19",
       "open_state": "접수예정",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [
