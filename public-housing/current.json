@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-30T13:20:55+00:00",
-  "source_generated_at": "2026-09-30T21:34:27",
-  "recruitment_count": 24,
+  "generated_at": "2026-10-01T00:16:13+00:00",
+  "source_generated_at": "2026-10-01T05:02:50",
+  "recruitment_count": 23,
   "items": [
     {
       "id": "SH:seq:310653",
       "agency": "SH",
       "agency_group": "SH",
-      "title": "NEW 2026년 하반기 신혼·신생아 매입임대주택Ⅱ 입주자 모집공고(2026.09.30.)",
+      "title": "2026년 하반기 신혼·신생아 매입임대주택Ⅱ 입주자 모집공고(2026.09.30.)",
       "housing_types": [
         "매입임대"
       ],
@@ -19,8 +19,8 @@
       "published_at": "2026-09-30",
       "deadline": "2026-10-20",
       "open_state": "접수예정",
-      "event": "신규",
-      "change": "신규",
+      "event": "수정",
+      "change": "수정",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [
@@ -29,7 +29,7 @@
       ],
       "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310653",
       "source": "SH 공식 주택임대 게시판",
-      "content_signature": "0f0cd303e9ec29607692ff9f0f7388b581aa7b6d271904be15ff02e08efce110",
+      "content_signature": "d0be3ef3715711074738e7f414f9eb458369b6d546a6e5e6075752c2a7a7620e",
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "application_start": "2026-10-19",
       "schedule_source": "official_detail_html",
@@ -42,7 +42,7 @@
       "id": "SH:seq:310650",
       "agency": "SH",
       "agency_group": "SH",
-      "title": "NEW 2026년 하반기 신혼·신생아 매입임대주택Ⅰ 입주자 모집공고(2026.09.30.)",
+      "title": "2026년 하반기 신혼·신생아 매입임대주택Ⅰ 입주자 모집공고(2026.09.30.)",
       "housing_types": [
         "매입임대"
       ],
@@ -54,8 +54,8 @@
       "published_at": "2026-09-30",
       "deadline": "2026-10-20",
       "open_state": "접수예정",
-      "event": "신규",
-      "change": "신규",
+      "event": "수정",
+      "change": "수정",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [
@@ -64,12 +64,43 @@
       ],
       "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310650",
       "source": "SH 공식 주택임대 게시판",
-      "content_signature": "e71ff793e72e30fa3cb8887d0d3f6af97536438be6ec48512916625d5924828b",
+      "content_signature": "9c237e6d976fb54ecf56c4aa920d4fd89f5a68a22147f017b3395cbaff7c037c",
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "application_start": "2026-10-19",
       "schedule_source": "official_detail_html",
       "route": "/public-housing/notices/sh-310650/",
       "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310650",
+      "official_link_label": "공식 모집공고 원문 →",
+      "indexable": false
+    },
+    {
+      "id": "SH:seq:310258",
+      "agency": "SH",
+      "agency_group": "SH",
+      "title": "희망2026년 2차 희망하우징(공공기숙사) 입주자 모집공고(2026. 9. 17.)",
+      "housing_types": [
+        "기숙사"
+      ],
+      "audiences": [],
+      "region": "서울",
+      "published_at": "2026-09-17",
+      "deadline": "",
+      "open_state": "확인필요",
+      "event": "수정",
+      "change": "수정",
+      "status_text": "",
+      "is_gangseo": false,
+      "keywords": [
+        "기숙사"
+      ],
+      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310258",
+      "source": "서울주거포털",
+      "content_signature": "071c27c8d740c1aeddf1aebe185185a09dba697b48281d456adf23fa20e547c4",
+      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
+      "application_start": "",
+      "schedule_source": "source_list",
+      "route": "/public-housing/notices/sh-310258/",
+      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310258",
       "official_link_label": "공식 모집공고 원문 →",
       "indexable": false
     },
@@ -218,7 +249,7 @@
       "indexable": false
     },
     {
-      "id": "SH:seq:310258",
+      "id": "SHYOUTH:16da04d0f88309079939",
       "agency": "SH",
       "agency_group": "SH",
       "title": "2026년 2차 희망하우징(공공기숙사) 입주자 모집공고(2026. 9. 17.)",
@@ -231,21 +262,21 @@
       "deadline": "",
       "open_state": "확인필요",
       "event": "신규",
-      "change": "동일",
+      "change": "신규",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [
         "기숙사"
       ],
-      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310258",
-      "source": "서울주거포털",
-      "content_signature": "00b25906a2e0de9068a3d52e079af90dc75fe6815c81b45717de85acc2bdaa47",
+      "url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
+      "source": "청년몽땅 SH 공고목록",
+      "content_signature": "ca97b01501044355158cdcdb76c2c11c16dff81bf0f51f90e00eef6308c9bcd6",
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "application_start": "",
       "schedule_source": "source_list",
-      "route": "/public-housing/notices/sh-310258/",
-      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310258",
-      "official_link_label": "공식 모집공고 원문 →",
+      "route": "/public-housing/notices/shyouth-16da04d0f88309079939/",
+      "official_url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
+      "official_link_label": "기관 공고목록에서 확인 →",
       "indexable": false
     },
     {
@@ -278,7 +309,7 @@
       "indexable": false
     },
     {
-      "id": "SH:seq:309467",
+      "id": "SHYOUTH:2722eda65475422215a2",
       "agency": "SH",
       "agency_group": "SH",
       "title": "제51차 장기전세주택 입주자 모집공고(2026.08.31.공고)",
@@ -291,13 +322,13 @@
       "deadline": "2026-09-17",
       "open_state": "마감",
       "event": "신규",
-      "change": "동일",
+      "change": "신규",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [],
-      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=309467",
-      "source": "서울주거포털",
-      "content_signature": "82937537e06da8eceffff6cadd477684eab74a0b013288c6cd094dacb7caa5aa",
+      "url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
+      "source": "청년몽땅 SH 공고목록",
+      "content_signature": "4ef8555402be3750b4569bb46749ad92e7ac3aff077ed68ab5e816aa595de09b",
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "schedule_type": "ranked",
       "application_windows": [
@@ -320,41 +351,10 @@
       "schedule_note": "후순위 접수 여부는 선순위 신청 결과에 따라 달라질 수 있으므로 해당일 SH 공지를 다시 확인합니다.",
       "application_start": "2026-09-14",
       "schedule_source": "verified_regression",
-      "route": "/public-housing/sh-longterm-jeonse-51/",
-      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=309467",
-      "official_link_label": "공식 모집공고 원문 →",
-      "indexable": true
-    },
-    {
-      "id": "SH:seq:310107",
-      "agency": "SH",
-      "agency_group": "SH",
-      "title": "도시(수정) 2026년 2차 장기미임대 매입임대주택 입주자모집공고(2026. 8. 28.)",
-      "housing_types": [
-        "매입임대"
-      ],
-      "audiences": [],
-      "region": "서울",
-      "published_at": "2026-08-28",
-      "deadline": "2026-09-30",
-      "open_state": "마감임박",
-      "event": "수정",
-      "change": "동일",
-      "status_text": "",
-      "is_gangseo": false,
-      "keywords": [
-        "매입임대"
-      ],
-      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310107",
-      "source": "서울주거포털",
-      "content_signature": "a92fbe472b14ba06c6af7c1b8bf01f94a0a231d63b2b4e3fc69bc294817a013c",
-      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
-      "application_start": "2026-09-28",
-      "schedule_source": "verified_regression",
-      "route": "/public-housing/sh-long-vacant-purchase-2026-2/",
-      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310107",
-      "official_link_label": "공식 모집공고 원문 →",
-      "indexable": true
+      "route": "/public-housing/notices/shyouth-2722eda65475422215a2/",
+      "official_url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
+      "official_link_label": "기관 공고목록에서 확인 →",
+      "indexable": false
     },
     {
       "id": "SHYOUTH:0202a0dafda3d1200646",
@@ -399,7 +399,7 @@
       "region": "서울",
       "published_at": "2026-08-28",
       "deadline": "2026-09-30",
-      "open_state": "마감임박",
+      "open_state": "마감",
       "event": "수정",
       "change": "동일",
       "status_text": "",
@@ -416,69 +416,6 @@
       "route": "/public-housing/notices/shyouth-ac0c542c9045e8e7d0ce/",
       "official_url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
       "official_link_label": "기관 공고목록에서 확인 →",
-      "indexable": false
-    },
-    {
-      "id": "SHYOUTH:834e79674e01df2485b3",
-      "agency": "SH",
-      "agency_group": "SH",
-      "title": "2026년 일반주택형 미리내집(공공한옥) 잔여세대 입주자 모집공고(2026. 8. 24.)",
-      "housing_types": [
-        "매입임대",
-        "장기전세"
-      ],
-      "audiences": [],
-      "region": "서울",
-      "published_at": "2026-08-24",
-      "deadline": "2026-09-04",
-      "open_state": "마감",
-      "event": "신규",
-      "change": "동일",
-      "status_text": "",
-      "is_gangseo": false,
-      "keywords": [
-        "미리내집"
-      ],
-      "url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
-      "source": "청년몽땅 SH 공고목록",
-      "content_signature": "e7054af25e353875719277d89c09f3ec4220fd2d1ac1a3c910c0a4e19afdae99",
-      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
-      "application_start": "2026-09-03",
-      "schedule_source": "verified_regression",
-      "route": "/public-housing/notices/shyouth-834e79674e01df2485b3/",
-      "official_url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
-      "official_link_label": "기관 공고목록에서 확인 →",
-      "indexable": false
-    },
-    {
-      "id": "SHYOUTH:fa01df725a9d3ceaf32c",
-      "agency": "SH",
-      "agency_group": "SH",
-      "title": "제8차 장기전세주택2(미리내집) 입주자 모집 공고(2026. 8. 21.)",
-      "housing_types": [
-        "장기전세"
-      ],
-      "audiences": [],
-      "region": "서울",
-      "published_at": "2026-08-21",
-      "deadline": "",
-      "open_state": "확인필요",
-      "event": "신규",
-      "change": "동일",
-      "status_text": "",
-      "is_gangseo": false,
-      "keywords": [
-        "미리내집"
-      ],
-      "url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
-      "source": "청년몽땅 SH 공고목록",
-      "content_signature": "8d4e7c9af27b75af52683fcf7703c66cd682f0b1e30ef9c9932fdd1245b078f4",
-      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
-      "application_start": "",
-      "schedule_source": "source_list",
-      "route": "/public-housing/notices/shyouth-fa01df725a9d3ceaf32c/",
-      "official_url": "https://housing.seoul.go.kr/site/main/sh/publicSale/view?cp=1&seq=7&supplyType=publicSale",
-      "official_link_label": "서울주거포털 공고 상세 →",
       "indexable": false
     },
     {
@@ -759,6 +696,41 @@
       "schedule_source": "official_detail_html",
       "route": "/public-housing/notices/lh-2015122300019045/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019045&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=09&mi=1026",
+      "official_link_label": "공식 모집공고 원문 →",
+      "indexable": false
+    },
+    {
+      "id": "LH:panId:2015122300020814",
+      "agency": "LH",
+      "agency_group": "LH",
+      "title": "[전북지역본부]2026년 3차 신혼·신생아 매입임대주택Ⅰ 예비입주자 모집공고",
+      "housing_types": [
+        "매입임대"
+      ],
+      "audiences": [
+        "신혼부부",
+        "신생아"
+      ],
+      "region": "서울",
+      "published_at": "",
+      "deadline": "2026-10-19",
+      "open_state": "접수예정",
+      "event": "신규",
+      "change": "신규",
+      "status_text": "",
+      "is_gangseo": false,
+      "keywords": [
+        "매입임대",
+        "신혼"
+      ],
+      "url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020814&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026",
+      "source": "서울주거포털",
+      "content_signature": "985fdbc11693c753e29fd74997291e7e5bc7e7831dec8b2a1c021f5c155fc3e4",
+      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
+      "application_start": "2026-10-16",
+      "schedule_source": "official_detail_html",
+      "route": "/public-housing/notices/lh-2015122300020814/",
+      "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020814&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026",
       "official_link_label": "공식 모집공고 원문 →",
       "indexable": false
     },
