@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-02T04:52:04+00:00",
-  "source_generated_at": "2026-10-02T09:49:12",
-  "source_recruitment_count": 23,
-  "recruitment_count": 23,
+  "generated_at": "2026-10-02T09:16:24+00:00",
+  "source_generated_at": "2026-10-02T18:11:23",
+  "source_recruitment_count": 26,
+  "recruitment_count": 26,
   "duplicate_count": 0,
-  "generated_count": 23,
+  "generated_count": 26,
   "redirect_count": 0,
   "duplicate_groups": [],
   "routes": {
@@ -14,12 +14,19 @@
     "SH:seq:310107": "/public-housing/sh-long-vacant-purchase-2026-2/",
     "SH:seq:310041": "/public-housing/notices/sh-310041/",
     "SH:seq:310673": "/public-housing/notices/sh-310673/",
+    "LH:panId:2015122300020843": "/public-housing/notices/lh-2015122300020843/",
     "SH:seq:310653": "/public-housing/notices/sh-310653/",
     "SH:seq:310650": "/public-housing/notices/sh-310650/",
     "SH:seq:310258": "/public-housing/notices/sh-310258/",
     "SHYOUTH:16da04d0f88309079939": "/public-housing/notices/shyouth-16da04d0f88309079939/",
+    "SH:seq:311005": "/public-housing/notices/sh-311005/",
     "SH:seq:310950": "/public-housing/notices/sh-310950/",
+    "LH:panId:2015122300020807": "/public-housing/notices/lh-2015122300020807/",
+    "LH:panId:2015122300020753": "/public-housing/notices/lh-2015122300020753/",
     "LH:panId:2015122300019657": "/public-housing/notices/lh-2015122300019657/",
+    "LH:panId:2015122300020759": "/public-housing/notices/lh-2015122300020759/",
+    "LH:panId:2015122300020749": "/public-housing/notices/lh-2015122300020749/",
+    "LH:panId:2015122300020750": "/public-housing/notices/lh-2015122300020750/",
     "SHYOUTH:2722eda65475422215a2": "/public-housing/notices/shyouth-2722eda65475422215a2/",
     "SHYOUTH:0202a0dafda3d1200646": "/public-housing/notices/shyouth-0202a0dafda3d1200646/",
     "SHYOUTH:ac0c542c9045e8e7d0ce": "/public-housing/notices/shyouth-ac0c542c9045e8e7d0ce/",
@@ -30,10 +37,6 @@
     "LH:panId:2015122300019968": "/public-housing/notices/lh-2015122300019968/",
     "LH:panId:2015122300019890": "/public-housing/notices/lh-2015122300019890/",
     "LH:panId:2015122300018941": "/public-housing/notices/lh-2015122300018941/",
-    "LH:panId:2015122300019045": "/public-housing/notices/lh-2015122300019045/",
-    "LH:panId:2015122300020753": "/public-housing/notices/lh-2015122300020753/",
-    "LH:panId:2015122300020759": "/public-housing/notices/lh-2015122300020759/",
-    "LH:panId:2015122300020750": "/public-housing/notices/lh-2015122300020750/",
-    "LH:panId:2015122300020749": "/public-housing/notices/lh-2015122300020749/"
+    "LH:panId:2015122300019045": "/public-housing/notices/lh-2015122300019045/"
   }
 }
