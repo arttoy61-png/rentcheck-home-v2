@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-02T00:21:43+00:00",
-  "source_generated_at": "2026-10-02T03:27:40",
-  "recruitment_count": 22,
+  "generated_at": "2026-10-02T01:48:50+00:00",
+  "source_generated_at": "2026-10-02T09:49:12",
+  "recruitment_count": 23,
   "items": [
     {
       "id": "SH:seq:310653",
@@ -696,6 +696,41 @@
       "schedule_source": "official_detail_html",
       "route": "/public-housing/notices/lh-2015122300019045/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019045&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=09&mi=1026",
+      "official_link_label": "공식 모집공고 원문 →",
+      "indexable": false
+    },
+    {
+      "id": "SH:seq:310950",
+      "agency": "SH",
+      "agency_group": "SH",
+      "title": "NEW [청년형] 특화형 매입임대주택(금천구) 입주자 모집 공고(운영기관 : 한지붕 협동조합)",
+      "housing_types": [
+        "매입임대"
+      ],
+      "audiences": [
+        "청년"
+      ],
+      "region": "서울",
+      "published_at": "",
+      "deadline": "",
+      "open_state": "확인필요",
+      "event": "신규",
+      "change": "신규",
+      "status_text": "",
+      "is_gangseo": false,
+      "keywords": [
+        "청년",
+        "매입임대",
+        "협동조합"
+      ],
+      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310950",
+      "source": "SH 공식 주택임대 게시판",
+      "content_signature": "ca3f30bdb94b7da1b17b0c4d62258e583704ee0c5619dfd0216d3eb7dd10a526",
+      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
+      "application_start": "",
+      "schedule_source": "source_list",
+      "route": "/public-housing/notices/sh-310950/",
+      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310950",
       "official_link_label": "공식 모집공고 원문 →",
       "indexable": false
     },
