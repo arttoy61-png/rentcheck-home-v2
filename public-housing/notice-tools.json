@@ -1,0 +1,12 @@
+{
+  "SHYOUTH:2722eda65475422215a2": {
+    "guide_url": "/public-housing/sh-longterm-jeonse-51/",
+    "tool_url": "/tools/longterm-jeonse-51/",
+    "label": "제51차 신청내역 참고",
+    "scope": "2026.08.31 공고 일반공급 전용",
+    "home_promotion": false,
+    "application_end_kst": "2026-09-17T17:00:00+09:00",
+    "document_announcement_kst": "2026-10-14T16:00:00+09:00",
+    "verification": "기존 제51차 공고 안내 기준. 새 회차 노출은 공식 조건과 일정 독립 검증 후 별도 설정 필요"
+  }
+}
