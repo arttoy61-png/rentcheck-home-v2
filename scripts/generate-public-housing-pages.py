@@ -654,6 +654,7 @@ def main() -> None:
             {
                 'generated_at': payload['generated_at'],
                 'source_generated_at': data.get('generated_at', ''),
+                'source_status': data.get('source_status', {}),
                 'recruitment_count': len(manifest),
                 'items': manifest,
             },
