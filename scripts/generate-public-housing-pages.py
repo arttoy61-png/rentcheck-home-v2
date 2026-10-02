@@ -445,6 +445,10 @@ def render_page(item: dict, route: str) -> str:
         f'<a class="alt" href="{esc(guide_url)}">이 공고의 신청 가이드 →</a>'
         if guide_url and Path(guide_url.lstrip('/') + 'index.html').is_file() else ''
     )
+    related = json.loads(Path('public-housing/notice-tools.json').read_text(encoding='utf-8')).get(str(item.get('id') or ''), {})
+    reference = ''
+    if related:
+        reference = f'<section class="section"><h2>{esc(related["label"])}</h2><p>제51차 순위별 접수 예정기간(9월 14~17일)은 종료되었습니다. 아래 도구는 {esc(related["scope"])} 신청정보 참고용입니다. 서류심사 대상자 발표는 10월 14일 16시 이후 예정이며 접수기간과 별도입니다. 실제 후순위 접수 여부와 후속 일정은 SH 최신 공지를 확인하세요.</p><div class="housing-links"><a href="{esc(related["guide_url"])}">제51차 일정·공급주택 참고</a><a class="alt" href="{esc(related["tool_url"])}">제51차 신청내역 참고 · 일반공급 순위</a></div></section>'
     canonical = f'https://rent-check.kr{route}'
     schema = ''
     if indexable:
@@ -519,6 +523,7 @@ def render_page(item: dict, route: str) -> str:
       <ol>{actions_html}</ol>
       <div class="cta"><strong>Rent Check는 일정과 확인 순서를 정리합니다.</strong> 최종 신청자격·공급주택·접수방법은 기관의 최신 공고와 정정 공지가 기준입니다.</div>
     </section>
+    {reference}
     <section class="section">
       <h2>자료 확인 기준</h2>
       <p><strong>{esc(source)}</strong>에서 수집한 공고 정보를 바탕으로 정리했습니다. {esc(schedule_source_label(item))}했습니다.</p>

@@ -11,7 +11,7 @@
 
   function weekBounds(){const today=dayStart(),day=today.getDay(),offset=day===0?-6:1-day,monday=new Date(today);monday.setDate(today.getDate()+offset);const sunday=new Date(monday);sunday.setDate(monday.getDate()+6);return [monday,sunday]}
   function summaryCounts(){
-    const items=recruitmentItems(),today=dayStart(),[weekStart,weekEnd]=weekBounds();
+    const items=recruitmentItems(),today=dayStart(),[weekStart,weekEnd]=weekBounds(),counts=window.RentCheckHousingList.counts(items);
     let open=0,upcoming=0,weekDeadline=0;
     items.forEach(item=>{
       const start=parseDate(item.application_start),deadline=parseDate(item.deadline);
@@ -21,7 +21,7 @@
       else if(!s&&(!d||d>=today)&&['접수중','마감임박'].includes(item.open_state))open++;
       if(d&&d>=weekStart&&d<=weekEnd)weekDeadline++;
     });
-    return [['전체',items.length],['접수중',open],['접수예정',upcoming],['이번 주 마감',weekDeadline]];
+    return [['보관 공고',items.length],['접수중',counts.open],['접수예정',counts.upcoming],['일정 확인 중',counts.unknown]];
   }
 
   function setText(node,value){if(node&&node.textContent!==value)node.textContent=value}
