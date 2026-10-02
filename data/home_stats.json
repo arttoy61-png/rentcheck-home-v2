@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-10-01T23:46:09+09:00",
-  "data_until": "2026-09-30",
+  "generated_at": "2026-10-02T09:21:44+09:00",
+  "data_until": "2026-10-01",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
@@ -33,10 +33,6 @@
   ],
   "monthly_trend": [
     {
-      "month": "2026-04",
-      "count": 603
-    },
-    {
       "month": "2026-05",
       "count": 570
     },
@@ -54,7 +50,11 @@
     },
     {
       "month": "2026-09",
-      "count": 171
+      "count": 172
+    },
+    {
+      "month": "2026-10",
+      "count": 0
     }
   ]
 }
