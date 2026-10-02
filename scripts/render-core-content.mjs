@@ -27,6 +27,15 @@ assert(posts.length>0,'Do not replace a valid library with an empty one');
 const cats=vm.runInNewContext(capture(app,/const articleCategories=(\[[^;]+\]);/,'article categories'));
 const library=cats.map(cat=>{const rows=posts.filter(p=>p.category===cat&&![1,2,3].includes(p.featured_rank)).sort((a,b)=>String(b.published_at||'').localeCompare(String(a.published_at||'')));return `<section class="article-category"><div class="article-category-head"><div class="article-category-title"><h3>${esc(cat)}</h3><span class="article-count">${rows.length}편</span></div></div><div class="article-list">${rows.slice(0,3).map(p=>`<a class="article-row" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer"><span class="article-row-copy"><strong>${esc(p.title)}</strong><small>${esc(p.published_at)}</small></span><span class="article-row-arrow">→</span></a>`).join('')}</div><div class="article-actions"><a class="article-all" href="/analysis/">홈페이지 분석글 보기 →</a></div></section>`}).join('');
 let home=read('index.html');
+home=home.replace(/(<strong id="publishedCount">)\d+(<\/strong>)/,(_,open,close)=>open+posts.length+close);
+const publicationStats=JSON.parse(read('data/site_stats.json'));
+publicationStats.published_posts=posts.length;
+put('data/site_stats.json',JSON.stringify(publicationStats));
+if(process.argv.includes('--posts-only')){
+ put('index.html',replaceRoot(home,'articleLibrary',library));
+ console.log('Published library and derived count synchronized: '+posts.length);
+ process.exit(0);
+}
 const homeDesc='국토교통부 실거래와 LH·SH 공식 공고를 그대로 나열하지 않고, 비교할 조건과 지금 할 일을 붙여 계산기·자체 분석·실전 가이드로 연결하는 Rent Check입니다.';
 home=home.replace(/<meta name="description" content="[^"]*">/,`<meta name="description" content="${homeDesc}">`);
 home=home.replace(/<meta property="og:description" content="[^"]*">/,`<meta property="og:description" content="${homeDesc}">`);
