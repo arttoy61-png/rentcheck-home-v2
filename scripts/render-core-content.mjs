@@ -42,7 +42,7 @@ home=home.replace(/<meta property="og:description" content="[^"]*">/,`<meta prop
 home=home.replace(/<meta name="twitter:description" content="[^"]*">/,`<meta name="twitter:description" content="${homeDesc}">`);
 home=home.replace(/"description": "대한민국 부동산 실거래 신고자료를 바탕으로 계산 도구와 분석을 제공하는 부동산 데이터 서비스입니다\."/,`"description": "국토교통부 실거래와 공식 공고를 비교·해석하고 계산 도구와 자체 분석을 제공하는 부동산 데이터 서비스입니다."`);
 home=home.replace(/"description": "국토교통부 실거래 신고자료와 부동산 계산 도구를 연결하는 Rent Check입니다\."/,`"description": "국토교통부 실거래와 LH·SH 공식 공고를 비교·해석하고 계산 도구와 자체 분석으로 연결하는 Rent Check입니다."`);
-home=home.replace(/<p class="hero-lead">[\s\S]*?<\/p>/,`<p class="hero-lead">집을 구하거나 계약을 바꾸기 전,<br>시세·내 조건·비용을 확인하고 다음 할 일을 정리하세요.</p>`);
+home=home.replace(/<p class="hero-lead">[\s\S]*?<\/p>/,`<p class="hero-lead">강서구 실거래는 단지·면적으로 비교하고,<br>LH·SH 공고는 접수일·마감시간을 보세요.</p>`);
 home=home.replace(/<div class="trust">[\s\S]*?<\/div>/,`<div class="trust"><span><i>✓</i> 국토부 신고자료 기반</span><span><i>✓</i> 공식 공고·직접 계산 연결</span></div>`);
 home=home.replace('<p>계약부터 투자 판단까지, 필요한 계산을 한곳에서 확인하세요.</p>','<p>입력값을 계산하는 데서 끝내지 않고, 결과가 뜻하는 범위와 확인할 항목을 함께 안내합니다.</p>');
 home=home.replace('<p>실거래와 제도를 읽는 판단 기준을 정리합니다.</p>','<p>공개자료를 다시 비교해, 무엇을 확인했고 어디까지 해석할 수 있는지 함께 적습니다.</p>');
@@ -96,7 +96,8 @@ if(!process.argv.includes('--content-only')){
  context.sourceS=s;context.sourceD=d;
  vm.runInContext('rcValidate(sourceS,sourceD);S=sourceS;D=sourceD;SM=S.complexes.find(x=>norm(x.nm)===norm(TARGET));APT=D[SM.id];band=APT.areas[0].m2;render();',context,{timeout:3000});
  // Keep only this complex and the actually selected nearby comparisons, six months of records.
- const payload=vm.runInContext(`(()=>{const ids=new Set([SM.id]);APT.areas.forEach(a=>nearbyFor(a).forEach(r=>ids.add(r.x.id)));const sd={};for(const id of ids){sd[id]={...D[id],areas:D[id].areas.map(a=>({...a,sale:rows6(a.sale,months6(S.meta.updated)),jeonse:rows6(a.jeonse,months6(S.meta.updated)),wolse:rows6(a.wolse,months6(S.meta.updated))}))}}return {summary:{meta:S.meta,generated_at:S.generated_at,complexes:S.complexes.filter(x=>ids.has(x.id))},detail:sd}})()`,context,{timeout:3000});
+ assert(vm.runInContext('rcPeriodBounds(S)!==null',context),'Analysis snapshot requires a verified exact period');
+ const payload=vm.runInContext(`(()=>{const ids=new Set([SM.id]);APT.areas.forEach(a=>nearbyFor(a).forEach(r=>ids.add(r.x.id)));const sd={};for(const id of ids){sd[id]={...D[id],areas:D[id].areas.map(a=>({...a,sale:rcRowsInPeriod(a.sale,S),jeonse:rcRowsInPeriod(a.jeonse,S),wolse:rcRowsInPeriod(a.wolse,S)}))}}return {summary:{meta:S.meta,generated_at:S.generated_at,complexes:S.complexes.filter(x=>ids.has(x.id))},detail:sd}})()`,context,{timeout:3000});
  payload.source_sha=sourceSHA;
  const view=nodes['#app'].innerHTML,recent=nodes['#rc-recent-records'].innerHTML;
  assert(view.includes('지금 핵심')&&recent.includes('<table'));
