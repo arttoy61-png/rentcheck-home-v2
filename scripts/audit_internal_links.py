@@ -11,7 +11,7 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE_HOSTS = {"rent-check.kr", "www.rent-check.kr"}
-SKIP_DIRS = {".git", "node_modules", "vendor"}
+SKIP_DIRS = {".git", "node_modules", "vendor", ".staging"}
 DYNAMIC_MARKERS = ("${", "{{", "}}")
 LEGACY_PATTERNS = {
     "old_home_github": "arttoy61-png.github.io/rent-check-home",
