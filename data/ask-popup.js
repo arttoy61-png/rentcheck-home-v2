@@ -43,6 +43,14 @@
   document.body.append(backdrop,sheet);
 
   const fab=document.createElement('button');fab.type='button';fab.className='rc-ask-fab';fab.innerHTML='<i></i><span>Rent Check에 물어보세요</span><small>→</small>';document.body.append(fab);
+  // Keep the existing mobile button, but yield while it would cover a content control.
+  let collisionFrame=0;
+  function updateFabCollision(){collisionFrame=0;if(innerWidth>720){fab.style.visibility='';fab.style.pointerEvents='';return}const box=fab.getBoundingClientRect();const overlap=[...document.querySelectorAll('main a,main button,main input,main select,main textarea')].some(node=>{const r=node.getBoundingClientRect();return r.width>0&&r.height>0&&r.bottom>box.top&&r.top<box.bottom&&r.right>box.left&&r.left<box.right});const hidden=overlap||document.documentElement.classList.contains('rc-ask-open');fab.style.visibility=hidden?'hidden':'';fab.style.pointerEvents=hidden?'none':''}
+  function checkFabCollision(){if(!collisionFrame)collisionFrame=requestAnimationFrame(updateFabCollision)}
+  addEventListener('scroll',checkFabCollision,{passive:true});addEventListener('resize',checkFabCollision);addEventListener('pageshow',checkFabCollision);addEventListener('load',checkFabCollision);
+  const main=document.querySelector('main');if(main){new MutationObserver(checkFabCollision).observe(main,{childList:true,subtree:true});if(typeof ResizeObserver!=='undefined')new ResizeObserver(checkFabCollision).observe(main)}
+  document.fonts?.ready.then(checkFabCollision);updateFabCollision();
+
   const modalInput=sheet.querySelector('.rc-ask-input'),result=sheet.querySelector('.rc-ask-result'),chips=sheet.querySelector('.rc-ask-chips');
   ['부모님 집 있어도 청년임대 되나요?','모아타운 분담금 얼마 나올까요?','관리처분인가 나면 언제 이사하나요?','보증금 1000·월세 60 중개수수료 얼마예요?'].forEach(q=>{const b=document.createElement('button');b.type='button';b.className='rc-ask-chip';b.textContent=q;b.addEventListener('click',()=>{modalInput.value=q;answer(q)});chips.append(b)});
 
@@ -54,8 +62,8 @@
     result.innerHTML=`<article class="rc-ask-card"><small>한 줄 요약 · ${escapeHtml(item.cat)}</small><h3>${escapeHtml(item.q)}</h3><p>${escapeHtml(item.answer)}</p><div class="rc-ask-now"><b>지금 할 일</b>${escapeHtml(item.action)}</div><div class="rc-ask-actions"><a class="rc-ask-primary" href="${item.url}">${escapeHtml(item.tool)} →</a>${item.secondary?`<a class="rc-ask-secondary" href="${item.secondaryUrl}">${escapeHtml(item.secondary)}</a>`:''}</div></article>`;
   }
   function escapeHtml(v){return String(v||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-  function open(q=''){document.documentElement.classList.add('rc-ask-open');if(q){modalInput.value=q;answer(q)}else result.innerHTML='';setTimeout(()=>modalInput.focus(),80)}
-  function close(){document.documentElement.classList.remove('rc-ask-open')}
+  function open(q=''){document.documentElement.classList.add('rc-ask-open');checkFabCollision();if(q){modalInput.value=q;answer(q)}else result.innerHTML='';setTimeout(()=>modalInput.focus(),80)}
+  function close(){document.documentElement.classList.remove('rc-ask-open');checkFabCollision()}
   backdrop.addEventListener('click',close);sheet.querySelector('.rc-ask-close').addEventListener('click',close);fab.addEventListener('click',()=>open());document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
   sheet.querySelector('.rc-ask-form').addEventListener('submit',e=>{e.preventDefault();const q=modalInput.value.trim();if(q)answer(q)});
 
