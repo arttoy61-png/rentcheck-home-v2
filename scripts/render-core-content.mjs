@@ -71,6 +71,10 @@ for(const name of ['app.js','data/posts-loader.js','data/home-analysis-ui.js'])h
 home=home.replace("<span>발행 분석 글</span><strong id=\"publishedCount\">","<span>네이버 발행 글</span><strong id=\"publishedCount\">");
 home=home.replace("<p class=\"kicker\">분석 글</p><h2>발행 글 찾아보기</h2>","<p class=\"kicker\">네이버 블로그</p><h2>네이버 발행 글</h2>");
 home=home.replace("<p>홈 자체 분석과 네이버 발행 글을 주제별로 찾습니다. 자체 분석은 위에서 먼저 확인할 수 있습니다.</p>","<p>Rent Check가 네이버 블로그에 발행한 글을 주제별로 모았습니다. 홈페이지 자체 분석은 위 ‘Rent Check 자체 분석’에서 확인하세요.</p>");
+// Initial HTML uses the existing home snapshot; runtime may enhance the same label.
+const homeSnapshot=JSON.parse(read('data/home_stats.json'));
+assert(/^\d{4}-\d{2}-\d{2}$/.test(homeSnapshot.data_until)&&Number.isFinite(Date.parse(homeSnapshot.generated_at)),'A dated home snapshot is required');
+home=home.replace(/<p class="hero-live" id="heroLive"[^>]*>[\s\S]*?<\/p>/,`<p class="hero-live" id="heroLive">국토부 신고자료 기반 · 최근 계약일 ${esc(homeSnapshot.data_until.replaceAll('-','.'))}</p>`);
 outputs.set('index.html',home);outputs.set('app.js',app);outputs.set('data/posts-loader.js',loader);outputs.set('data/home-analysis-ui.js',homeUI);
 // Copy the existing guide verbatim into HTML. Its existing presence guard prevents duplication.
 const common=read('tools/tool-common.js');
