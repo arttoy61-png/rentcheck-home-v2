@@ -12,6 +12,8 @@ on:
       - 'scripts/wait_public_collection.py'
       - 'scripts/test_wait_public_collection.py'
       - 'scripts/render-core-content.mjs'
+      - 'data/home-content-config.json'
+      - 'data/home-content.js'
       - 'scripts/build-internal-search.mjs'
       - 'blog/**/index.html'
       - 'analysis/**/index.html'
@@ -32,6 +34,8 @@ on:
       - 'scripts/wait_public_collection.py'
       - 'scripts/test_wait_public_collection.py'
       - 'scripts/render-core-content.mjs'
+      - 'data/home-content-config.json'
+      - 'data/home-content.js'
       - 'scripts/build-internal-search.mjs'
       - 'blog/**/index.html'
       - 'analysis/**/index.html'
@@ -68,6 +72,7 @@ jobs:
         run: |
           node --check scripts/build-internal-search.mjs
           node --check scripts/render-core-content.mjs
+          node --check data/home-content.js
           node --check scripts/analysis-snapshot-runtime.js
           python -m py_compile scripts/test_static_first.py scripts/generate-public-housing-pages.py scripts/public_housing_quality_gate.py scripts/update_sh51_status.py
   update:
@@ -206,7 +211,7 @@ jobs:
         run: |
           git config user.name 'github-actions'
           git config user.email 'github-actions@users.noreply.github.com'
-          git add data/internal-search.json data/home_stats.json data/site_stats.json app.js index.html data/posts-loader.js data/home-analysis-ui.js tools/jeonse-ratio/index.html tools/longterm-jeonse-51/index.html analysis/ujangsan-hillstate/index.html public-housing/sh-longterm-jeonse-51/index.html public-housing/routes.json public-housing/current.json public-housing/sitemap.xml public-housing/notices
+          git add data/home-content.json data/internal-search.json data/home_stats.json data/site_stats.json app.js index.html data/posts-loader.js data/home-analysis-ui.js tools/jeonse-ratio/index.html tools/longterm-jeonse-51/index.html analysis/ujangsan-hillstate/index.html public-housing/sh-longterm-jeonse-51/index.html public-housing/routes.json public-housing/current.json public-housing/sitemap.xml public-housing/notices
           git diff --cached --quiet || git commit -m 'build: refresh home stats and public housing notice articles'
           git pull --rebase --autostash
           git push

@@ -1,0 +1,77 @@
+{
+  "usage": "Editorial topic illustrations; no endorsement or claim that a photo depicts the analyzed property.",
+  "sources": [
+    {
+      "file": "assets/home/pexels-14452238.jpg",
+      "provider": "Pexels",
+      "photo_id": 14452238,
+      "original_image": "https://images.pexels.com/photos/14452238/pexels-photo-14452238.jpeg",
+      "download_url": "https://images.pexels.com/photos/14452238/pexels-photo-14452238.jpeg?auto=compress&cs=tinysrgb&w=900",
+      "license": "https://www.pexels.com/license/",
+      "license_checked": "2026-10-04",
+      "attribution_required": false,
+      "photo_page_status": 403,
+      "verification": "Official image CDN returned image bytes; inspected visually. Individual photo page was unavailable (403); photographer identity not independently verified."
+    },
+    {
+      "file": "assets/home/pexels-37323647.jpg",
+      "provider": "Pexels",
+      "photo_id": 37323647,
+      "original_image": "https://images.pexels.com/photos/37323647/pexels-photo-37323647.jpeg",
+      "download_url": "https://images.pexels.com/photos/37323647/pexels-photo-37323647.jpeg?auto=compress&cs=tinysrgb&w=900",
+      "license": "https://www.pexels.com/license/",
+      "license_checked": "2026-10-04",
+      "attribution_required": false,
+      "photo_page_status": 403,
+      "verification": "Official image CDN returned image bytes; inspected visually. Individual photo page was unavailable (403); photographer identity not independently verified."
+    },
+    {
+      "file": "assets/home/pexels-27976252.jpg",
+      "provider": "Pexels",
+      "photo_id": 27976252,
+      "original_image": "https://images.pexels.com/photos/27976252/pexels-photo-27976252.jpeg",
+      "download_url": "https://images.pexels.com/photos/27976252/pexels-photo-27976252.jpeg?auto=compress&cs=tinysrgb&w=900",
+      "license": "https://www.pexels.com/license/",
+      "license_checked": "2026-10-04",
+      "attribution_required": false,
+      "photo_page_status": 403,
+      "verification": "Official image CDN returned image bytes; inspected visually. Individual photo page was unavailable (403); photographer identity not independently verified."
+    },
+    {
+      "file": "assets/home/pexels-7578989.jpg",
+      "provider": "Pexels",
+      "photo_id": 7578989,
+      "original_image": "https://images.pexels.com/photos/7578989/pexels-photo-7578989.jpeg",
+      "download_url": "https://images.pexels.com/photos/7578989/pexels-photo-7578989.jpeg?auto=compress&cs=tinysrgb&w=900",
+      "license": "https://www.pexels.com/license/",
+      "license_checked": "2026-10-04",
+      "attribution_required": false,
+      "photo_page_status": 403,
+      "verification": "Official image CDN returned image bytes; inspected visually. Individual photo page was unavailable (403); photographer identity not independently verified."
+    },
+    {
+      "file": "assets/home/pexels-439391.jpg",
+      "provider": "Pexels",
+      "photo_id": 439391,
+      "original_image": "https://images.pexels.com/photos/439391/pexels-photo-439391.jpeg",
+      "download_url": "https://images.pexels.com/photos/439391/pexels-photo-439391.jpeg?auto=compress&cs=tinysrgb&w=900",
+      "license": "https://www.pexels.com/license/",
+      "license_checked": "2026-10-04",
+      "attribution_required": false,
+      "photo_page_status": 403,
+      "verification": "Official image CDN returned image bytes; inspected visually. Individual photo page was unavailable (403); photographer identity not independently verified."
+    },
+    {
+      "file": "assets/home/pexels-3184465.jpg",
+      "provider": "Pexels",
+      "photo_id": 3184465,
+      "original_image": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
+      "download_url": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=900",
+      "license": "https://www.pexels.com/license/",
+      "license_checked": "2026-10-04",
+      "attribution_required": false,
+      "photo_page_status": 403,
+      "verification": "Official image CDN returned image bytes; inspected visually. Individual photo page was unavailable (403); photographer identity not independently verified."
+    }
+  ]
+}
