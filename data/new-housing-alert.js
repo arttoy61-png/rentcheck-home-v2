@@ -25,6 +25,7 @@
   }
   function cleanTitle(title){return String(title||'').replace(/&nbsp;/gi,' ').replace(/^\s*(?:LH|SH)\s*/i,'').trim()}
   function isRecruitmentNotice(item){
+    if(!window.RentCheckHousingList.recruitment(item))return false;
     const title=cleanTitle(item?.title);
     if(!title)return false;
     if(/발표|결과|정정|변경|취소|당첨|선정결과|서류심사\s*대상자/i.test(title))return false;
@@ -35,6 +36,7 @@
     const m=String(value||'').match(/20\d{2}[-./](\d{1,2})[-./](\d{1,2})/);return m?`${+m[1]}/${+m[2]}`:'';
   }
   function applicationText(item){
+    if(window.RentCheckHousingList.isSH(item))return window.RentCheckHousingList.scheduleText(item);
     const start=shortDate(item?.application_start),end=shortDate(item?.deadline);
     if(start&&end)return start===end?`신청 ${start}`:`신청 ${start}~${end}`;
     if(start)return `신청 ${start}부터`;
@@ -96,7 +98,7 @@
         try{const sep=url.includes('?')?'&':'?';const res=await fetch(`${url}${sep}v=${Date.now()}`,{cache:'no-store'});if(!res.ok)continue;const json=await res.json();if(Array.isArray(json?.items)){data=json;break}}catch(_){}
       }
       if(!data)return;
-      const recruit=(data.items||[]).filter(isRecruitmentNotice).map(item=>({...item,_pub:isoDate(item.published_at)})).filter(item=>item._pub);
+      const recruit=(data.items||[]).filter(isRecruitmentNotice).map(window.RentCheckHousingList.normalize).map(item=>({...item,_pub:isoDate(item.published_at)})).filter(item=>item._pub);
       if(!recruit.length)return;
       const latest=[...new Set(recruit.map(x=>x._pub))].sort().pop();
       const age=dayDiffFromToday(latest);
