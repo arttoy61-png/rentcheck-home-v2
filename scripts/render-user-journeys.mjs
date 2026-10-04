@@ -112,7 +112,7 @@ export function renderUserJourneys(){
  const palette=[['#0d1f3c','#eef1f5'],['#1565c0','#eef5fc'],['#d4a73a','#fff8e7'],['#d4a73a','#fff8e7'],['#0d1f3c','#eef1f5']];
  const services=specs.map((x,i)=>{const t=x[3]&&tools.find(t=>t.id===x[3]);const url=x[2]||(t?.url.startsWith('/')?t.url:'/'+t?.url);assert(url&&!url.includes('undefined'));return `<a class="service-item" href="${esc(url)}" style="--tone:${palette[i][0]};--tint:${palette[i][1]}"><span class="service-icon">${icons[i]}</span><span class="service-copy"><strong>${esc(x[0])}</strong><small>${esc(x[1])}</small></span><span class="service-arrow">→</span></a>`}).join('');
  home=home.replace(/(<section\b[^>]*id="services"[^>]*>)[\s\S]*?<\/section>/,`$1${services}</section>`);
- home=home.replace(/src="app\.js\?[^"<>]*"/,'src="app.js?v=journeys-20260925"');
+ home=home.replace(/src="app\.js\?[^"<>]*"/,'src="app.js?v=owned-20261005"');
  put('index.html',home);
  return [...changes];
 }

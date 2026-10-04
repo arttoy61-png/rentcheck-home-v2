@@ -1,0 +1,108 @@
+{
+  "cards": [
+    {
+      "url": "/analysis/gangseo-august-2026/",
+      "category": "시세·실거래",
+      "image": "/assets/home/pexels-14452238.jpg",
+      "alt": "아파트 단지 항공 전경 자료 사진",
+      "date": "2026-09-01"
+    },
+    {
+      "url": "/analysis/ujangsan-hillstate/",
+      "category": "시세·실거래",
+      "image": "/assets/home/pexels-37323647.jpg",
+      "alt": "고층 주거 건물 자료 사진 · 분석 대상 단지 사진이 아닙니다",
+      "date": "2026-08-29"
+    },
+    {
+      "url": "/analysis/seoul-apartment-volume-price/",
+      "category": "시세·실거래",
+      "image": "/assets/home/pexels-27976252.jpg",
+      "alt": "강변 아파트 전경 자료 사진",
+      "date": "2026-08-25"
+    },
+    {
+      "url": "/analysis/youth-universal-jeonse/",
+      "category": "청년·공공주택",
+      "image": "/assets/home/pexels-7578989.jpg",
+      "alt": "주택 모형을 든 사람 · 주거 안내 자료 사진",
+      "date": "2026-08-23"
+    },
+    {
+      "url": "/analysis/gangseo-jeonse-trend/",
+      "category": "시세·실거래",
+      "image": "/assets/home/pexels-439391.jpg",
+      "alt": "아파트 외관 자료 사진 · 강서구 특정 단지 사진이 아닙니다",
+      "date": "2026-08-23"
+    },
+    {
+      "url": "/blog/lease-early-termination-brokerage-fee/",
+      "category": "계약·가이드",
+      "image": "/assets/home/pexels-3184465.jpg",
+      "alt": "악수하는 사람들 · 계약 협의 자료 사진",
+      "date": "2026-10-02"
+    }
+  ],
+  "categories": [
+    {
+      "category": "시세·실거래",
+      "archive": "/blog/all/?category=deal",
+      "articles": [
+        {
+          "url": "/blog/apartment-floor-price-comparison/"
+        },
+        {
+          "url": "/blog/apartment-direct-deal-reading/"
+        },
+        {
+          "url": "/blog/apartment-real-deal-reading/"
+        }
+      ]
+    },
+    {
+      "category": "청년·공공주택",
+      "archive": "/blog/all/?category=public",
+      "articles": [
+        {
+          "url": "/blog/youth-rental/"
+        },
+        {
+          "url": "/blog/public-housing-application-documents/"
+        },
+        {
+          "url": "/blog/public-housing-waitlist-move-in/"
+        }
+      ]
+    },
+    {
+      "category": "재개발·정비",
+      "archive": "/blog/all/?category=redevelopment",
+      "articles": [
+        {
+          "url": "/blog/redevelopment-contribution/"
+        },
+        {
+          "url": "/blog/redevelopment-rights/"
+        },
+        {
+          "url": "/blog/redevelopment-tenant/"
+        }
+      ]
+    },
+    {
+      "category": "계약·가이드",
+      "archive": "/blog/all/?category=contract",
+      "articles": [
+        {
+          "url": "/blog/landlord-loan-after-move-in-priority/"
+        },
+        {
+          "url": "/blog/landlord-actual-residence-renewal-refusal/"
+        },
+        {
+          "url": "/blog/jeonse-safety/"
+        }
+      ]
+    }
+  ]
+}

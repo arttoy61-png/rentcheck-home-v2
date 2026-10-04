@@ -4,6 +4,8 @@
  */
 import fs from 'node:fs';
 import vm from 'node:vm';
+import {createRequire} from 'node:module';
+const ownedView=createRequire(import.meta.url)('../data/home-content.js');
 import assert from 'node:assert/strict';
 const read=p=>fs.readFileSync(p,'utf8');
 const put=(p,s)=>{if(read(p)!==s)fs.writeFileSync(p,s)};
@@ -15,27 +17,48 @@ function block(s,name,value,anchor){const start=`<!-- rc-static:${name} -->`,end
 function replaceRoot(s,id,html){const re=new RegExp(`<div\\b[^>]*\\bid="${id}"[^>]*>`);const match=re.exec(s);assert(match,`Missing root ${id}`);let depth=1,end;const tags=/<\/?div\b[^>]*>/g;tags.lastIndex=match.index+match[0].length;for(let m;(m=tags.exec(s));){depth+=m[0].startsWith('</')?-1:1;if(!depth){end=m.index;break}}assert(end!==undefined);const opening=match[0].replace(/\sdata-prerendered="[^"]*"/g,'').replace(/>$/,' data-prerendered="true">');return s.slice(0,match.index)+opening+html+s.slice(end)}
 const outputs=new Map();
 let loader=read('data/posts-loader.js'), app=read('app.js'), homeUI=read('data/home-analysis-ui.js');
-const cards=vm.runInNewContext('('+capture(loader,/const homeInsights=([\s\S]*?);\s*const style=/,'curated cards')+')',Object.create(null),{timeout:1000});
-assert(cards.length>0&&cards.every(c=>c.url.startsWith('/')));
-const summaries={};
-for(const c of cards){const article=read(c.url.slice(1)+'index.html');summaries[c.url]=capture(article,/<meta\s+name="description"\s+content="([^"]*)"/,'article description').replace(/&quot;/g,'"').replace(/&amp;/g,'&')}
-const cardHTML=cards.map(c=>`<a class="insight insight-home" href="${esc(c.url)}"><div class="insight-art"><img src="${esc(c.image)}" alt="${esc(c.alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer"></div><div class="insight-body"><span class="insight-category">${esc(c.category)}</span><h3>${esc(c.title)}</h3><p class="rc-insight-summary">${esc(summaries[c.url])}</p><div class="insight-meta"><span>${esc(c.date)}</span><span class="insight-go">글 보기 →</span></div></div></a>`).join('');
+const owned=JSON.parse(read('data/home-content-config.json'));
+const registered=new Set();
+for(const [file,base] of [['blog/all/index.html','/blog/all/'],['analysis/index.html','/analysis/']]){
+ for(const m of read(file).matchAll(/href="([^"?#]+)"/g)){const url=new URL(m[1],'https://rent-check.kr'+base);if(url.origin!=='https://rent-check.kr'||!/^\/(blog|analysis)\/[^/]+\/$/.test(url.pathname)||['/blog/all/'].includes(url.pathname))continue;registered.add(url.pathname);}
+}
+function ownedArticle(url){
+ assert(registered.has(url),'Unpublished recommendation: '+url);
+ const html=read(url.slice(1)+'index.html');
+ assert(!/<meta[^>]+name="robots"[^>]+noindex/.test(html),'Unindexable article '+url);
+ const decode=s=>s.replace(/<[^>]*>/g,'').replace(/&amp;/g,'&').replace(/&quot;/g,'"').trim();
+ let date=html.match(/"datePublished"\s*:\s*"([^"T]+)[^"]*"/)?.[1]||'';
+ // Some existing published guides use the visible publication date without JSON-LD.
+ const visible=html.match(/<div class="meta">\s*(\d{4})\.\s*(\d{1,2})\.\s*(\d{1,2})\./);
+ if(!date&&visible)date=`${visible[1]}-${visible[2].padStart(2,'0')}-${visible[3].padStart(2,'0')}`;
+ return {url,title:decode(capture(html,/<h1\b[^>]*>([\s\S]*?)<\/h1>/,'H1 '+url)),date,summary:decode(capture(html,/<meta\s+name="description"\s+content="([^"]*)"/,'description '+url))};
+}
+owned.inventory=[...registered].sort().map(url=>ownedArticle(url));
+owned.cards=owned.cards.map(c=>{const article=ownedArticle(c.url);return {...c,...article,date:article.date||c.date};});
+owned.categories=owned.categories.map(c=>({...c,articles:c.articles.map(p=>ownedArticle(p.url))}));
+assert(owned.cards.length===6&&new Set(owned.cards.map(c=>c.url)).size===6);
+assert(owned.cards.every(c=>c.image.startsWith('/assets/home/')&&fs.existsSync(c.image.slice(1))),'Local card photos required');
+assert(owned.categories.every(c=>c.articles.length===3));
+const cards=owned.cards.slice(0,4);
+const cardHTML=ownedView.cardsHTML(cards);
 const feeds=['data/posts.json','data/posts_shared.json','data/posts_latest.json'];
 const byURL=new Map();for(const p of feeds){if(!fs.existsSync(p))continue;const rows=JSON.parse(read(p));assert(Array.isArray(rows),p);for(const row of rows)if(row?.url)byURL.set(row.url,{...(byURL.get(row.url)||{}),...row})}
 const posts=[...byURL.values()].filter(p=>p.status==='published'&&p.url);
 assert(posts.length>0,'Do not replace a valid library with an empty one');
-const cats=vm.runInNewContext(capture(app,/const articleCategories=(\[[^;]+\]);/,'article categories'));
-const library=cats.map(cat=>{const rows=posts.filter(p=>p.category===cat&&![1,2,3].includes(p.featured_rank)).sort((a,b)=>String(b.published_at||'').localeCompare(String(a.published_at||'')));return `<section class="article-category"><div class="article-category-head"><div class="article-category-title"><h3>${esc(cat)}</h3><span class="article-count">${rows.length}편</span></div></div><div class="article-list">${rows.slice(0,3).map(p=>`<a class="article-row" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer"><span class="article-row-copy"><strong>${esc(p.title)}</strong><small>${esc(p.published_at)}</small></span><span class="article-row-arrow">→</span></a>`).join('')}</div><div class="article-actions"><a class="article-all" href="/analysis/">홈페이지 분석글 보기 →</a></div></section>`}).join('');
+const library=ownedView.libraryHTML(owned.categories);
 let home=read('index.html');
-home=home.replace(/(<strong id="publishedCount">)\d+(<\/strong>)/,(_,open,close)=>open+posts.length+close);
+home=home.replace(/(<strong id="publishedCount">)\d+(<\/strong>)/,(_,open,close)=>open+owned.inventory.length+close);
 const publicationStats=JSON.parse(read('data/site_stats.json'));
-publicationStats.published_posts=posts.length;
+publicationStats.published_posts=posts.length; // Preserve Naver archive metadata.
+publicationStats.home_articles=owned.inventory.length;
+put('data/home-content.json',JSON.stringify(owned,null,2)+'\n');
 put('data/site_stats.json',JSON.stringify(publicationStats));
-if(process.argv.includes('--posts-only')){
- put('index.html',replaceRoot(home,'articleLibrary',library));
- console.log('Published library and derived count synchronized: '+posts.length);
- process.exit(0);
-}
+home=replaceRoot(home,'insightTrack',cardHTML);home=replaceRoot(home,'articleLibrary',library);
+home=home.replace('<h2>Rent Check 자체 분석</h2>','<h2>Rent Check 자체 분석·가이드</h2>');
+home=home.replace(/<span>네이버 발행 글<\/span>/g,'<span>자체 분석·가이드</span>').replace('<p class="kicker">네이버 블로그</p><h2>네이버 발행 글</h2>','<p class="kicker">자체글</p><h2>자체 분석·가이드</h2>').replace('Rent Check가 네이버 블로그에 발행한 글을 주제별로 모았습니다. 홈페이지 자체 분석은 위 ‘Rent Check 자체 분석’에서 확인하세요.','Rent Check가 직접 작성한 분석과 실전 가이드를 주제별로 모았습니다.');
+const latest=owned.inventory.filter(p=>p.url.startsWith('/blog/')&&p.date).sort((a,b)=>b.date.localeCompare(a.date))[0];assert(latest);
+home=home.replace(/(id="rc-latest-search-guide"[\s\S]*?<a class="rc-guide-link" href=")[^"]+("[\s\S]*?<span class="rc-guide-title">)[\s\S]*?(<\/span>)/,(_,a,b,c)=>a+latest.url+b+esc(latest.title)+c);
+if(process.argv.includes('--posts-only')){put('index.html',home);console.log('Owned HOME library/count synchronized; Naver archive preserved: '+posts.length);process.exit(0);}
 const homeDesc='국토교통부 실거래와 LH·SH 공식 공고를 그대로 나열하지 않고, 비교할 조건과 지금 할 일을 붙여 계산기·자체 분석·실전 가이드로 연결하는 Rent Check입니다.';
 home=home.replace(/<meta name="description" content="[^"]*">/,`<meta name="description" content="${homeDesc}">`);
 home=home.replace(/<meta property="og:description" content="[^"]*">/,`<meta property="og:description" content="${homeDesc}">`);
@@ -62,19 +85,17 @@ assert(home.includes(guideStripHTML)&&!home.includes('id="rentcheck-value"')&&!h
 assert(!home.includes('전국에서 쓰는 계산 도구'),'Unsupported trust claim still present');
 // Existing runtime renderers enhance the same roots. Never clear valid static cards on a failed fetch.
 app=patch(app,"track=$('#insightTrack');track.replaceChildren();","track=$('#insightTrack');if(track?.dataset.prerendered==='true')return;track.replaceChildren();",'legacy insights');
-app=patch(app,'root.replaceChildren();const all=publishedPosts();',"const all=publishedPosts();if(!all.length&&root.dataset.prerendered==='true')return;root.replaceChildren();",'library fallback');
-loader=patch(loader,"const track=document.querySelector('#insightTrack');if(!track)return;","const track=document.querySelector('#insightTrack');if(!track)return;if(track.dataset.prerendered==='true'&&track.querySelector('.insight-home'))return;",'curated hydration');
+// The owned library renderer uses the shared HOME source.
+// Curated hydration delegates to the shared HOME renderer.
 homeUI=patch(homeUI,"if(!homeTrack||homeTrack.querySelector('a[href=\"/blog/gangseo-home-price/\"]'))return;","if(!homeTrack||homeTrack.dataset.prerendered==='true'||homeTrack.querySelector('a[href=\"/blog/gangseo-home-price/\"]'))return;",'legacy feature replacement');
-for(const name of ['app.js','data/posts-loader.js','data/home-analysis-ui.js'])home=home.replace(new RegExp(`src="${name.replaceAll('.','\\.')}(?:\\?[^\"]*)?"`),`src="${name}?v=${name==='app.js'?'readiness-20260925':'static-first-20260908'}"`);
+for(const name of ['app.js','data/posts-loader.js','data/home-analysis-ui.js'])home=home.replace(new RegExp(`src="${name.replaceAll('.','\\.')}(?:\\?[^\"]*)?"`),`src="${name}?v=owned-20261005"`);
 
-// Keep initial HTML consistent with the existing site-stats-loader labels.
-home=home.replace("<span>발행 분석 글</span><strong id=\"publishedCount\">","<span>네이버 발행 글</span><strong id=\"publishedCount\">");
-home=home.replace("<p class=\"kicker\">분석 글</p><h2>발행 글 찾아보기</h2>","<p class=\"kicker\">네이버 블로그</p><h2>네이버 발행 글</h2>");
-home=home.replace("<p>홈 자체 분석과 네이버 발행 글을 주제별로 찾습니다. 자체 분석은 위에서 먼저 확인할 수 있습니다.</p>","<p>Rent Check가 네이버 블로그에 발행한 글을 주제별로 모았습니다. 홈페이지 자체 분석은 위 ‘Rent Check 자체 분석’에서 확인하세요.</p>");
 // Initial HTML uses the existing home snapshot; runtime may enhance the same label.
 const homeSnapshot=JSON.parse(read('data/home_stats.json'));
 assert(/^\d{4}-\d{2}-\d{2}$/.test(homeSnapshot.data_until)&&Number.isFinite(Date.parse(homeSnapshot.generated_at)),'A dated home snapshot is required');
 home=home.replace(/<p class="hero-live" id="heroLive"[^>]*>[\s\S]*?<\/p>/,`<p class="hero-live" id="heroLive">국토부 신고자료 기반 · 최근 계약일 ${esc(homeSnapshot.data_until.replaceAll('-','.'))}</p>`);
+home=home.replace(/src="data\/site-stats-loader.js(?:\?[^"]*)?"/,'src="data/site-stats-loader.js?v=owned-20261005"');
+if(!home.includes('src="data/home-content.js'))home=home.replace('<script src="app.js','<script src="data/home-content.js?v=owned-20261005"></script><script src="app.js');
 outputs.set('index.html',home);outputs.set('app.js',app);outputs.set('data/posts-loader.js',loader);outputs.set('data/home-analysis-ui.js',homeUI);
 // Copy the existing guide verbatim into HTML. Its existing presence guard prevents duplication.
 const common=read('tools/tool-common.js');
