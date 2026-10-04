@@ -1,0 +1,158 @@
+{
+  "single": {
+    "id": "SH:seq:310950",
+    "title": "청년형 입주자 모집 공고",
+    "agency": "SH",
+    "schedule_source": "verified_official_pdf",
+    "schedule_type": "single",
+    "notice_kind": "recruitment",
+    "published_at": "2026-10-02",
+    "application_start": "2026-10-02",
+    "deadline": "2026-10-03",
+    "deadline_precision": "date",
+    "schedule_evidence": {
+      "url": "https://www.i-sh.co.kr/",
+      "page": 1
+    },
+    "open_state": "마감"
+  },
+  "rolling": {
+    "id": "SH:seq:311005",
+    "title": "에어스페이스 신림 입주자 모집 공고",
+    "agency": "SH",
+    "schedule_source": "verified_official_pdf",
+    "schedule_type": "rolling",
+    "notice_kind": "recruitment",
+    "published_at": "2026-10-02",
+    "application_start": "2026-02-27",
+    "deadline": "2026-11-02",
+    "deadline_precision": "date",
+    "schedule_evidence": {
+      "url": "https://www.i-sh.co.kr/",
+      "page": 1
+    },
+    "open_state": "마감",
+    "schedule_note": "매주 금요일 확인 · 조기 마감 가능"
+  },
+  "unknown": {
+    "id": "SH:seq:999999",
+    "title": "청년형 입주자 모집 공고",
+    "agency": "SH",
+    "schedule_source": "verified_official_pdf",
+    "schedule_type": "unknown",
+    "notice_kind": "recruitment",
+    "published_at": "2026-10-02",
+    "application_start": "2026-10-02",
+    "deadline": "2026-10-03",
+    "deadline_precision": "date",
+    "schedule_evidence": {
+      "url": "https://www.i-sh.co.kr/",
+      "page": 1
+    },
+    "open_state": "마감",
+    "application_windows": [
+      {
+        "start": "2026-10-02",
+        "end": "2026-11-02"
+      }
+    ]
+  },
+  "result": {
+    "id": "SH:seq:311015",
+    "title": "청년형 입주자 모집 공고",
+    "agency": "SH",
+    "schedule_source": "verified_official_pdf",
+    "schedule_type": "not_applicable",
+    "notice_kind": "result",
+    "published_at": "2026-10-02",
+    "application_start": "2026-10-02",
+    "deadline": "2026-03-31",
+    "deadline_precision": "date",
+    "schedule_evidence": {
+      "url": "https://www.i-sh.co.kr/",
+      "page": 1
+    },
+    "open_state": "마감"
+  },
+  "windowed": {
+    "id": "SH:seq:310673",
+    "title": "청년형 입주자 모집 공고",
+    "agency": "SH",
+    "schedule_source": "official_detail_html",
+    "schedule_type": "windows",
+    "notice_kind": "recruitment",
+    "published_at": "2026-10-02",
+    "application_start": "2026-10-02",
+    "deadline": "2026-10-08",
+    "deadline_precision": "date",
+    "schedule_evidence": {
+      "url": "https://www.i-sh.co.kr/",
+      "page": 1
+    },
+    "open_state": "마감",
+    "application_windows": [
+      {
+        "label": "우선·1순위 인터넷",
+        "start": "2026-10-06",
+        "end": "2026-10-07",
+        "conditional": false,
+        "restricted": false
+      },
+      {
+        "label": "후순위 인터넷",
+        "start": "2026-10-08",
+        "end": "2026-10-08",
+        "conditional": true,
+        "restricted": false,
+        "condition": "선순위 결과에 따라 미실시"
+      },
+      {
+        "label": "우편",
+        "start": "2026-10-02",
+        "end": "2026-10-06",
+        "conditional": false,
+        "restricted": true
+      }
+    ]
+  },
+  "gaps": {
+    "id": "SH:seq:310041",
+    "title": "청년형 입주자 모집 공고",
+    "agency": "SH",
+    "schedule_source": "official_detail_html",
+    "schedule_type": "windows",
+    "notice_kind": "recruitment",
+    "published_at": "2026-10-02",
+    "application_start": "2026-10-02",
+    "deadline": "2026-10-08",
+    "deadline_precision": "date",
+    "schedule_evidence": {
+      "url": "https://www.i-sh.co.kr/",
+      "page": 1
+    },
+    "open_state": "마감",
+    "application_windows": [
+      {
+        "label": "인터넷",
+        "start": "2026-09-29",
+        "end": "2026-10-02",
+        "conditional": false,
+        "restricted": false
+      },
+      {
+        "label": "방문",
+        "start": "2026-09-30",
+        "end": "2026-10-02",
+        "conditional": false,
+        "restricted": true
+      },
+      {
+        "label": "후순위",
+        "start": "2026-10-08",
+        "end": "2026-10-08",
+        "conditional": true,
+        "restricted": false
+      }
+    ]
+  }
+}
