@@ -1,43 +1,41 @@
 {
-  "generated_at": "2026-10-06T02:30:02+00:00",
-  "source_generated_at": "2026-10-06T07:06:09",
+  "generated_at": "2026-10-06T13:56:00+00:00",
+  "source_generated_at": "2026-10-06T15:20:31",
   "source_status": {
     "LH": {
-      "count": 15,
+      "count": 8,
       "errors": [
-        "LH OpenAPI: 06/1:<urlopen error timed out>; 13/1:<urlopen error timed out>; 39/1:<urlopen error timed out>"
+        "LH OpenAPI: 06/1:HTTP Error 403: Forbidden; 13/1:HTTP Error 403: Forbidden; 39/1:HTTP Error 403: Forbidden"
       ],
       "official_count": 8,
       "api_count": 0,
       "html_count": 8,
-      "mirror_count": 9,
-      "mirror_latest_published_at": "2026-08-21",
-      "mirror_stale": true,
+      "mirror_count": 0,
+      "mirror_latest_published_at": "",
+      "mirror_stale": false,
       "official_latest_published_at": "2026-10-01",
-      "warnings": [
-        "서울주거포털 LH 목록 최신 게시일 2026-08-21: 21일 이상 지연 가능"
-      ],
+      "warnings": [],
       "status": "부분수집",
       "diagnostic_errors": [
-        "LH OpenAPI: 06/1:<urlopen error timed out>; 13/1:<urlopen error timed out>; 39/1:<urlopen error timed out>"
+        "LH OpenAPI: 06/1:HTTP Error 403: Forbidden; 13/1:HTTP Error 403: Forbidden; 39/1:HTTP Error 403: Forbidden"
       ],
-      "fresh_count": 15,
-      "carried_count": 0,
-      "failure_streak": 17
+      "fresh_count": 8,
+      "carried_count": 7,
+      "failure_streak": 18
     },
     "SH": {
       "count": 18,
       "errors": []
     },
     "SEOUL": {
-      "count": 8,
+      "count": 7,
       "errors": [],
-      "excluded_noise": 20
+      "excluded_noise": 19
     },
     "TOTAL": {
-      "count": 39,
+      "count": 31,
       "duplicates_removed": 5,
-      "excluded_non_housing": 3,
+      "excluded_non_housing": 2,
       "excluded_outside_seoul": 0,
       "published_count": 33
     }
@@ -902,7 +900,7 @@
       "deadline": "2026-07-28",
       "open_state": "마감",
       "event": "신규",
-      "change": "동일",
+      "change": "수집오류-이전값유지",
       "status_text": "접수마감",
       "is_gangseo": false,
       "keywords": [
@@ -933,7 +931,7 @@
       "deadline": "2026-05-28",
       "open_state": "마감",
       "event": "신규",
-      "change": "동일",
+      "change": "수집오류-이전값유지",
       "status_text": "접수마감",
       "is_gangseo": false,
       "keywords": [
@@ -964,7 +962,7 @@
       "deadline": "2026-05-28",
       "open_state": "마감",
       "event": "신규",
-      "change": "동일",
+      "change": "수집오류-이전값유지",
       "status_text": "접수마감",
       "is_gangseo": false,
       "keywords": [
@@ -995,7 +993,7 @@
       "deadline": "2026-05-21",
       "open_state": "마감",
       "event": "신규",
-      "change": "동일",
+      "change": "수집오류-이전값유지",
       "status_text": "접수마감",
       "is_gangseo": false,
       "keywords": [
@@ -1026,7 +1024,7 @@
       "deadline": "2026-04-24",
       "open_state": "마감",
       "event": "신규",
-      "change": "동일",
+      "change": "수집오류-이전값유지",
       "status_text": "접수마감",
       "is_gangseo": true,
       "keywords": [
@@ -1057,7 +1055,7 @@
       "deadline": "2025-09-16",
       "open_state": "마감",
       "event": "수정",
-      "change": "동일",
+      "change": "수집오류-이전값유지",
       "status_text": "접수마감",
       "is_gangseo": false,
       "keywords": [],
@@ -1086,7 +1084,7 @@
       "deadline": "2025-11-28",
       "open_state": "마감",
       "event": "신규",
-      "change": "동일",
+      "change": "수집오류-이전값유지",
       "status_text": "접수마감",
       "is_gangseo": false,
       "keywords": [],
