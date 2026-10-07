@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-06T13:56:00+00:00",
-  "source_generated_at": "2026-10-06T15:20:31",
+  "generated_at": "2026-10-07T00:14:46+00:00",
+  "source_generated_at": "2026-10-07T07:41:38",
   "source_status": {
     "LH": {
       "count": 8,
@@ -21,23 +21,23 @@
       ],
       "fresh_count": 8,
       "carried_count": 7,
-      "failure_streak": 18
+      "failure_streak": 20
     },
     "SH": {
-      "count": 18,
+      "count": 17,
       "errors": []
     },
     "SEOUL": {
       "count": 7,
       "errors": [],
-      "excluded_noise": 19
+      "excluded_noise": 20
     },
     "TOTAL": {
-      "count": 31,
+      "count": 30,
       "duplicates_removed": 5,
       "excluded_non_housing": 2,
       "excluded_outside_seoul": 0,
-      "published_count": 33
+      "published_count": 32
     }
   },
   "recruitment_count": 26,
