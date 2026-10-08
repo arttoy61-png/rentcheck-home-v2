@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-08T00:35:55+00:00",
-  "source_generated_at": "2026-10-08T05:41:08",
+  "generated_at": "2026-10-08T02:15:25+00:00",
+  "source_generated_at": "2026-10-08T10:02:16",
   "source_status": {
     "LH": {
       "count": 8,
       "errors": [
-        "LH OpenAPI: 06/1:<urlopen error timed out>; 13/1:<urlopen error timed out>; 39/1:<urlopen error timed out>"
+        "LH OpenAPI: 06/1:HTTP Error 403: Forbidden; 13/1:HTTP Error 403: Forbidden; 39/1:HTTP Error 403: Forbidden"
       ],
       "official_count": 8,
       "api_count": 0,
@@ -17,11 +17,11 @@
       "warnings": [],
       "status": "부분수집",
       "diagnostic_errors": [
-        "LH OpenAPI: 06/1:<urlopen error timed out>; 13/1:<urlopen error timed out>; 39/1:<urlopen error timed out>"
+        "LH OpenAPI: 06/1:HTTP Error 403: Forbidden; 13/1:HTTP Error 403: Forbidden; 39/1:HTTP Error 403: Forbidden"
       ],
       "fresh_count": 8,
       "carried_count": 7,
-      "failure_streak": 23
+      "failure_streak": 24
     },
     "SH": {
       "count": 20,
@@ -40,7 +40,7 @@
       "published_count": 34
     }
   },
-  "recruitment_count": 27,
+  "recruitment_count": 26,
   "items": [
     {
       "id": "SH:seq:310976",
@@ -55,8 +55,8 @@
       "published_at": "2026-10-07",
       "deadline": "",
       "open_state": "일정 확인",
-      "event": "수정",
-      "change": "수정",
+      "event": "신규",
+      "change": "동일",
       "status_text": "일정 확인 중",
       "is_gangseo": false,
       "keywords": [],
@@ -121,58 +121,6 @@
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311005/",
       "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311005",
-      "official_link_label": "공식 모집공고 원문 →",
-      "indexable": false
-    },
-    {
-      "id": "SH:seq:310950",
-      "agency": "SH",
-      "agency_group": "SH",
-      "title": "[청년형] 특화형 매입임대주택(금천구) 입주자 모집 공고(운영기관 : 한지붕 협동조합)",
-      "housing_types": [
-        "매입임대"
-      ],
-      "audiences": [
-        "청년"
-      ],
-      "region": "서울",
-      "published_at": "2026-10-02",
-      "deadline": "2026-10-03",
-      "open_state": "마감",
-      "event": "신규",
-      "change": "동일",
-      "status_text": "",
-      "is_gangseo": false,
-      "keywords": [
-        "청년",
-        "매입임대",
-        "협동조합"
-      ],
-      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310950",
-      "source": "SH 공식 주택임대 게시판",
-      "content_signature": "9cbe296bb12e81922f8a23747c82aef3227b1be7802b0c222284b515a48b5706",
-      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
-      "published_source": "official_list_registration",
-      "notice_kind": "recruitment",
-      "application_start": "2026-10-02",
-      "schedule_type": "single",
-      "deadline_precision": "date",
-      "schedule_source": "verified_official_pdf",
-      "schedule_note": "서류접수가 최초 입주신청 단계입니다. 이메일 접수는 10월 2~3일이며 정확한 마감시각은 공고문에 없어 운영기관 확인이 필요합니다.",
-      "application_windows": [],
-      "schedule_evidence": {
-        "url": "https://www.i-sh.co.kr/main/skin/doc.html?fn=20261001020003333_1d2fff79f8bb451cb2dd377283f02e3d&rs=/main/upload/bbs/GS0401/2026/10/html/",
-        "kind": "official_pdf",
-        "verified_at": "2026-10-03T09:15:00+09:00",
-        "excerpt": "서류접수 26.10.02 ~26.10.03",
-        "page": [
-          1,
-          4
-        ]
-      },
-      "sh_schedule_version": 1,
-      "route": "/public-housing/notices/sh-310950/",
-      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310950",
       "official_link_label": "공식 모집공고 원문 →",
       "indexable": false
     },
