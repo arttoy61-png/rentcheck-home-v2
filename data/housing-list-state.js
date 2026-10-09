@@ -11,8 +11,21 @@
   function windowPeriod(w){const short=v=>`${+v.slice(5,7)}/${+v.slice(8,10)}`;if(w.precision==='minute'){const stamp=v=>{const p=Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Seoul',month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date(v)).map(x=>[x.type,x.value]));return`${+p.month}/${+p.day} ${p.hour}:${p.minute}`};return`${stamp(w.start_at)}~${stamp(w.end_at)} (한국시간)${w.daily_hours?' · 매일 '+w.daily_hours:''}`}return`${short(w.start)}${w.start===w.end?'':'~'+short(w.end)} · 시간 미확인${w.end_rule==='received_by'?' · 마감일까지 도착 기준':''}`}
   function nonRecruitment(item){return ['result','move_in'].includes(item.notice_kind)||item.schedule_type==='not_applicable'||/결과/.test(item.event||'')||/발표|당첨|선정결과|서류심사\s*대상자|입주안내문|재계약\s*안내|최종\s*청약접수\s*결과/.test(item.title||'')}
   function withheld(item,type='unknown'){return {...item,application_start:'',deadline:'',application_windows:[],schedule_type:type,open_state:type==='not_applicable'?'해당 없음':'일정 확인',status_text:type==='not_applicable'?'신규 접수 대상 아님':'일정 확인 중'}}
+  function evidencedDeadlineAt(item){
+    const e=item.schedule_evidence;
+    if(!e||item.schedule_source!=='official_detail_html'||e.kind!=='official_notice_body'||e.url!==(item.official_url||item.url))return'';
+    try{const u=new URL(e.url);if(u.protocol!=='https:'||!['www.i-sh.co.kr','i-sh.co.kr'].includes(u.hostname))return''}catch(_){return''}
+    const day=String.raw`(20\d{2})\s*[.\-/]\s*(\d{1,2})\s*[.\-/]\s*(\d{1,2})\s*\.?\s*(?:\([월화수목금토일]\))?\s*`;
+    const m=String(e.excerpt||'').match(new RegExp(String.raw`^\s*(?:접수|신청)기간\s*[:：]\s*`+day+String.raw`[~～∼]\s*`+day+String.raw`(\d{1,2})(?::([0-5]\d)|시(?:\s*([0-5]?\d)분)?)\s*까지\s*\.?\s*$`));
+    if(!m)return'';
+    const pad=v=>String(v).padStart(2,'0'),start=`${m[1]}-${pad(m[2])}-${pad(m[3])}`,end=`${m[4]}-${pad(m[5])}-${pad(m[6])}`,hour=+m[7],minute=+(m[8]||m[9]||0);
+    if(!parse(start)||!parse(end)||start!==item.application_start||end!==item.deadline||hour>23||minute>59)return'';
+    return`${end}T${pad(hour)}:${pad(minute)}:00+09:00`;
+  }
+  const deadlineClock=x=>x.deadline_at?x.deadline_at.slice(11,16):'';
   function normalize(item){
     if(!isSH(item))return item;
+    item={...item};delete item.deadline_at;
     if(nonRecruitment(item))return withheld(item,'not_applicable');
     const source=String(item.schedule_source||''),type=String(item.schedule_type||'');
     if(!trusted.has(source)||['unknown','not_applicable'].includes(type))return withheld(item);
@@ -25,7 +38,9 @@
     if(guardedNotice(item)||['windows','ranked','conditional','multiple','multi_window'].includes(type))return withheld(item);
     const start=parse(item.application_start),end=parse(item.deadline);
     if(!start||!end||start>end)return withheld(item);
-    return {...item,application_start:start,deadline:end,application_windows:[],schedule_type:'single'};
+    const result={...item,application_start:start,deadline:end,application_windows:[],schedule_type:'single'},at=evidencedDeadlineAt(result);
+    if(at){result.deadline_at=at;result.deadline_precision='minute'}else if(result.deadline_precision==='minute')result.deadline_precision='date';
+    return result;
   }
   const recruitment=item=>!isSH(item)||!nonRecruitment(item);
   function windows(item){const x=normalize(item);return isSH(x)&&x.schedule_type==='windows'?x.application_windows:[]}
@@ -35,6 +50,7 @@
     if(isSH(x)){
       if(x.schedule_type==='rolling')return'rolling';
       if(['unknown','not_applicable'].includes(x.schedule_type))return'unknown';
+      if(x.schedule_type==='single'&&day===today(now)&&x.deadline_at&&+now>=instant(x.deadline_at))return'closed';
       const ws=windows(x);
       if(ws.length){const phases=ws.map(w=>phase(w,day,now));if(phases.every(s=>s==='ended'))return'closed';if(phases.includes('open'))return'open';if(phases.includes('scoped'))return'scoped';if(ws.some((w,i)=>!w.conditional&&phases[i]==='upcoming'))return'upcoming';return'unknown'}
     }
@@ -46,6 +62,7 @@
     if(x.schedule_type==='not_applicable')return'신규 접수 대상 아님';
     if(s==='rolling')return'상시모집 · 모집 여부 확인';
     if(windows(x).length){if(s==='closed')return'확인된 일정 종료';if(windows(x).some(w=>phase(w,day,now)==='conditional'))return'조건부 일정 · 시행 여부 확인';return'대상별 접수일정 확인'}
+    if(s==='open'&&x.deadline_at&&x.application_start===day)return'접수기간 · 시작시각 확인';
     if(s==='open'&&x.deadline_precision==='date')return x.deadline===day?'오늘 접수마감일 · 시간 확인':'접수기간 · 시간 확인';
     return labels[s];
   }
@@ -56,7 +73,7 @@
     const ws=windows(x);
     if(ws.length)return ws.map(w=>`${w.label||'접수'} ${windowPeriod(w)}${w.conditional?' (조건부 · 시행 여부 확인)':''}${w.restricted?' (대상 제한)':''}`).join(' · ')+(x.schedule_note?' · '+x.schedule_note:'');
     if(x.schedule_type==='unknown')return'신청 일정 확인 중';
-    const s=short(x.application_start),e=short(x.deadline);return`${s}${s===e?'':'~'+e} 신청${x.deadline_precision==='date'?' · 마감시간 미확인':''}`;
+    const s=short(x.application_start),e=short(x.deadline);return`${s}${s===e?'':'~'+e} 신청${x.deadline_at?' · '+deadlineClock(x)+' 마감 (한국시간) · 시작시각 미확인':x.deadline_precision==='date'?' · 마감시간 미확인':''}`;
   }
   function activeOn(item,day){const x=normalize(item);if(!isSH(x)||!parse(day))return false;const ws=windows(x);if(ws.length)return ws.some(w=>!w.conditional&&!w.restricted&&w.start<=day&&day<=w.end);return x.schedule_type==='single'&&x.application_start<=day&&day<=x.deadline}
   function deadlineDays(item){const x=normalize(item);if(!isSH(x))return[];const ws=windows(x);if(ws.length)return [...new Set(ws.filter(w=>!w.conditional&&!w.restricted).map(w=>w.end))];return x.schedule_type==='single'?[x.deadline]:[]}

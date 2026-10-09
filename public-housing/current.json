@@ -72,7 +72,7 @@
       "notice_kind": "recruitment",
       "application_start": "2026-10-08",
       "schedule_type": "single",
-      "deadline_precision": "date",
+      "deadline_precision": "minute",
       "schedule_source": "official_detail_html",
       "schedule_note": "공식 상세본문 신청기간 기준입니다. 정확한 접수시각과 대상은 공고문을 확인하세요.",
       "application_windows": [],
@@ -86,7 +86,8 @@
       "route": "/public-housing/notices/sh-311087/",
       "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311087",
       "official_link_label": "공식 모집공고 원문 →",
-      "indexable": false
+      "indexable": false,
+      "deadline_at": "2026-10-22T15:00:00+09:00"
     },
     {
       "id": "LH:panId:2015122300020843",

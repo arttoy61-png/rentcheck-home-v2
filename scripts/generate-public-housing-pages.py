@@ -5,7 +5,7 @@ import json
 import re
 from datetime import date, datetime
 from pathlib import Path
-from sh_application_contract import is_sh, non_recruitment, normalize_sh, sh_state, sh_rows
+from sh_application_contract import is_sh, non_recruitment, normalize_sh, sh_state, sh_rows, deadline_clock
 
 SOURCE = Path('.cache-home-stats/public_housing_notices.json')
 OUT_ROOT = Path('public-housing/notices')
@@ -316,6 +316,8 @@ def lead_text(item: dict) -> str:
             return '상시모집 공고이며 정해진 최종 접수마감일은 없습니다. 조기 마감될 수 있으므로 운영기관에 현재 모집 여부와 접수방법을 확인하세요.'
         if item['schedule_type'] == 'windows':
             return '대상·접수방법별 신청기간이 다릅니다. 조건부 일정은 시행 여부를 확인해야 하며 서로 떨어진 접수창 사이를 신청 가능 기간으로 보면 안 됩니다.'
+        if item['schedule_type'] == 'single' and item.get('deadline_at'):
+            return f'공식 공고에서 확인한 접수 마감은 {fmt_date(item.get("deadline"))} {deadline_clock(item)} (한국시간)입니다. 시작시각과 실제 접수방법은 공식 공고를 확인하세요.'
         if item['schedule_type'] == 'single' and item.get('deadline_precision') == 'date':
             return '공식 공고에서 접수 날짜는 확인했지만 마감시각은 확인되지 않았습니다. 아래 날짜와 운영기관의 실제 접수시간을 함께 확인하세요.'
     s = state(item)
@@ -453,6 +455,8 @@ def render_page(item: dict, route: str) -> str:
     published = fmt_date(item.get('published_at'))
     start = fmt_date(item.get('application_start'))
     deadline = fmt_date(item.get('deadline'))
+    if is_sh(item) and item.get('schedule_type') == 'single' and item.get('deadline_at'):
+        deadline += f' {deadline_clock(item)} (한국시간)'
     if is_sh(item) and item.get('schedule_type') == 'rolling':
         start, deadline = '상시모집', '정해진 최종 마감일 없음'
     elif is_sh(item) and item.get('schedule_type') == 'windows':

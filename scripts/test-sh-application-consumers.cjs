@@ -5,6 +5,27 @@ const plain=x=>JSON.parse(JSON.stringify(x));
 const fixtures=JSON.parse(fs.readFileSync(path.join(__dirname,'fixtures/sh-application-cases.json'),'utf8'));
 const {single,rolling,unknown,result,windowed,gaps}=fixtures;
 let tests=0;function test(name,fn){fn();tests++;console.log('PASS',name)}
+test('deadline-only evidence preserves unpublished start time and closes exactly',()=>{
+ const raw=fixtures.deadline_only,x=api.normalize(raw);
+ assert.equal(x.deadline_at,'2026-10-22T15:00:00+09:00');assert.equal(x.deadline_precision,'minute');assert(!('start_at' in x));assert.equal(x.application_windows.length,0);
+ assert.equal(api.displayLabel(x,'2026-10-08',new Date('2026-10-08T00:00:00+09:00')),'접수기간 · 시작시각 확인');
+ assert.match(api.scheduleText(x),/15:00 마감 \(한국시간\) · 시작시각 미확인/);
+ for(const [clock,expected] of [['14:59:59','open'],['15:00:00','closed'],['15:00:01','closed']])assert.equal(api.state(x,'2026-10-22',new Date('2026-10-22T'+clock+'+09:00')),expected);
+ assert.equal(api.state(x,'2026-10-21',new Date('2026-10-22T16:00:00+09:00')),'open');
+});
+test('deadline parsing is bounded to matching official single-period evidence',()=>{
+ const raw=fixtures.deadline_only;
+ for(const clock of ['15시','15:30','15시 30분']){const x=plain(raw);x.schedule_evidence.excerpt=x.schedule_evidence.excerpt.replace('15시',clock);assert.equal(api.normalize(x).deadline_at.slice(11,16),clock==='15시'?'15:00':'15:30')}
+ for(const excerpt of [
+ '접수기간 : 2026.10.08.(목) ~2026.10.22.(목)',
+ '접수기간 : 2026.10.08.(목) ~2026.10.22.(목) 24시까지',
+ '접수기간 : 2026.10.08.(목) ~2026.10.22.(목) 15시60분까지',
+ '접수기간 : 2026.10.08.(목) ~2026.10.23.(금) 15시까지',
+ '접수기간 : 2026.10.08.(목) ~2026.10.22.(목) 15시까지 / 2차 2026.10.23~2026.10.24',
+ '공고일 : 2026.10.08.(목) ~2026.10.22.(목) 15시까지']){const x=plain(raw);x.schedule_evidence.excerpt=excerpt;assert(!api.normalize(x).deadline_at,excerpt)}
+ for(const change of [{schedule_source:'source_list'},{schedule_type:'unknown'},{schedule_type:'multiple'},{application_windows:windowed.application_windows},{url:'https://www.i-sh.co.kr/different-notice'}])assert(!api.normalize({...raw,...change}).deadline_at);
+ const x=api.normalize({...raw,deadline_at:'2026-10-22T23:59:00+09:00',schedule_evidence:{}});assert(!x.deadline_at);assert.equal(x.deadline_precision,'date');
+});
 test('single verified PDF dates and evidence survive',()=>{const x=api.normalize(single);assert.equal(x.deadline,'2026-10-03');assert.deepEqual(plain(x.schedule_evidence),single.schedule_evidence);assert.match(api.scheduleText(x),/10\/2~10\/3/);assert.match(api.scheduleText(x),/마감시간 미확인/)});
 test('rolling clears stale scalar and windows',()=>{const x=api.normalize(rolling);assert.equal(x.application_start,'');assert.equal(x.deadline,'');assert.equal(api.state(x,'2026-10-03'),'rolling');assert(api.matches(x,'active','2026-10-03'));assert.equal(api.counts([x],'2026-10-03').open,0);assert.match(api.displayLabel(x),/상시모집/);assert(!api.scheduleText(x).includes('11/2'));assert.match(api.scheduleText(x),/조기 마감/);assert.equal(api.deadlineDays(x).length,0)});
 test('unknown never recovers old closed status or dates',()=>{const x=api.normalize(unknown);assert.equal(x.open_state,'일정 확인');assert.equal(api.state(x,'2026-10-03'),'unknown');assert.equal(x.application_windows.length,0);assert.equal(api.deadlineDays(x).length,0)});
@@ -26,6 +47,7 @@ test('normalization is idempotent',()=>{for(const item of Object.values(fixtures
 function baseContext(){return {window:{RentCheckHousingList:api},document:{readyState:'loading',addEventListener(){},querySelector(){return null},dispatchEvent(){}},setTimeout(){},Intl,Date,Set,Map,URLSearchParams,location:{search:'',pathname:'/'},CustomEvent:function(){},localStorage:{getItem(){return null},setItem(){}},console}}
 let popup=fs.readFileSync(path.join(root,'data/public-housing-popup.js'),'utf8');popup=popup.replace('  if(document.readyState',`  window.__test={loadFeed,isApplicationOpenOn,isDeadlineOn,selectedDateLabel,metaText,nearestDeadline,setFeed:x=>{feed=x},setDate:x=>{activeDate=x}};\n  if(document.readyState`);
 const ctx=baseContext();ctx.fetch=async()=>{throw Error('test fetch not set')};vm.runInNewContext(popup,ctx);const p=ctx.window.__test;
+test('popup deadline label and metadata agree on explicit endpoint',()=>{p.setDate('2026-10-22');assert.equal(p.selectedDateLabel(fixtures.deadline_only),'접수마감일 · 15:00 (한국시간)');assert.match(p.metaText(fixtures.deadline_only),/15:00/)});
 test('popup calendar scoped across gaps and conditional dates',()=>{assert(!p.isApplicationOpenOn(gaps,'2026-10-04'));assert(!p.isDeadlineOn(gaps,'2026-10-08'));assert(p.isApplicationOpenOn(single,'2026-10-03'));p.setDate('2026-10-03');assert.equal(p.selectedDateLabel(single),'접수마감일 · 시간 확인');assert.match(p.metaText(rolling),/상시모집/)});
 let index=fs.readFileSync(path.join(root,'public-housing/index.html'),'utf8').replace(/\r\n/g,'\n').split('<script>\n(()=>{')[1].split('</script>')[0];index='(()=>{'+index.slice(0,index.indexOf('  if(requestedId)'))+'window.__test={loadItems,scheduleText,status};})();';const ix=baseContext();ix.fetch=async()=>({ok:true,json:async()=>({items:[]})});vm.runInNewContext(index,ix);
 let alert=fs.readFileSync(path.join(root,'data/new-housing-alert.js'),'utf8').replace(/\r\n/g,'\n').split('\n})();')[0]+'\nwindow.__test={applicationText,isRecruitmentNotice};})();';const al=baseContext();vm.runInNewContext(alert,al);
