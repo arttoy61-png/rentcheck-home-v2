@@ -1,0 +1,72 @@
+name: HOME three-fix isolated validation
+on:
+  push:
+    branches:
+      - content/static-first-home-three-fixes-20261010
+    paths:
+      - '.github/workflows/validate-home-three-fixes.yml'
+      - 'scripts/validate_home_three_fixes.py'
+      - 'scripts/generate-public-housing-pages.py'
+      - 'scripts/sh_application_contract.py'
+      - 'scripts/test_sh_application_contract.py'
+      - 'scripts/test_housing_display_regressions.py'
+      - 'scripts/test-sh-application-consumers.cjs'
+      - 'data/housing-list-state.js'
+      - 'data/public-housing-popup.js'
+      - 'public-housing/index.html'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Pin latest public-housing source only
+        run: |
+          mkdir -p .cache-home-stats
+          curl -fL --retry 3 --retry-delay 2 -H 'Cache-Control: no-cache' \
+            -o .cache-home-stats/public_housing_notices.json \
+            https://raw.githubusercontent.com/arttoy61-png/rent-check/main/public_housing_notices.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=json.loads(Path('.cache-home-stats/public_housing_notices.json').read_text())
+          print('SOURCE_GENERATED_AT='+str(p.get('generated_at')))
+          print('SOURCE_ITEMS='+str(len(p.get('items') or [])))
+          print('SOURCE_STATUS='+json.dumps(p.get('source_status') or {},ensure_ascii=False))
+          PY
+      - name: Focused contract checks
+        run: |
+          python -m unittest discover -s scripts -p 'test_sh_application_contract.py' -v
+          python -m unittest discover -s scripts -p 'test_housing_display_regressions.py' -v
+          node scripts/test-housing-list-state.cjs
+          node scripts/test-sh-application-consumers.cjs
+          python -m py_compile scripts/generate-public-housing-pages.py scripts/sh_application_contract.py scripts/validate_home_three_fixes.py
+          node --check data/housing-list-state.js
+          node --check data/public-housing-popup.js
+      - name: Regenerate latest public-housing outputs
+        run: |
+          python scripts/generate-public-housing-pages.py
+          python scripts/public_housing_quality_gate.py
+      - name: PC and mobile-width browser validation
+        run: python scripts/validate_home_three_fixes.py
+      - name: Diff sanity
+        run: git diff --check
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: home-three-fix-validation-${{ github.run_id }}
+          path: test-artifacts/home-three-fixes/
+          retention-days: 7
+          if-no-files-found: warn

@@ -39,10 +39,6 @@ artifacts=ROOT/'test-artifacts/static-first'
 artifacts.mkdir(parents=True,exist_ok=True)
 metrics=[]
 checks=0
-# Isolated validation-branch checks for HOME three-fix patch.
-subprocess.run(['python','-m','unittest','discover','-s','scripts','-p','test_sh_application_contract.py','-v'],check=True)
-subprocess.run(['python','-m','unittest','discover','-s','scripts','-p','test_housing_display_regressions.py','-v'],check=True)
-subprocess.run(['node','scripts/test-sh-application-consumers.cjs'],check=True)
 REVIEW_PAGES=[
     ('/blog/','부동산 실전 가이드','.guide-card',10),
     ('/tools/youth-score/','청년임대 계산기','h1',1),
@@ -162,49 +158,6 @@ try:
 
                     print(f'PASS width={width} js={js} network={mode}: core + AdSense pages, no overflow',flush=True)
                     ctx.close()
-        # Targeted real-browser checks for deadline time, alias de-dupe/redirect and source status.
-        source_status=housing_current.get('source_status') or {}
-        lh_status=source_status.get('LH') or {}
-        for width in [390,1280]:
-            ctx=browser.new_context(viewport={'width':width,'height':900})
-            page=ctx.new_page()
-            errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
-            page.goto(base+'/',wait_until='networkidle')
-            trigger=page.locator('[data-public-housing-open]').first
-            assert trigger.count()==1
-            trigger.click()
-            page.wait_for_selector('#publicHousingModal:not([hidden])')
-            footer=page.locator('#publicHousingModal footer').inner_text()
-            assert '수집 상태 미제공' not in footer,footer
-            assert '수집 상태:' in footer,footer
-            if lh_status.get('status')=='부분수집': assert 'LH 부분수집' in footer,footer
-            joined=' '.join(map(str,(lh_status.get('errors') or [])+(lh_status.get('diagnostic_errors') or [])))
-            if '403' in joined: assert 'API 403 오류' in footer,footer
-            if joined and (lh_status.get('html_count') or 0)>0: assert '공식 HTML 대체 수집' in footer,footer
-            page.locator('[data-filter="신혼·신생아"]').click()
-            titles=page.locator('#publicHousingNoticeList .notice-title').all_inner_texts()
-            ii=[t for t in titles if '신혼·신생아 매입임대주택Ⅱ' in t]
-            assert len(ii)==1,(width,titles)
-            page.locator('[data-filter="청년"]').click()
-            rows=page.locator('#publicHousingNoticeList .notice-row')
-            matched=[rows.nth(i).inner_text() for i in range(rows.count()) if '청년창업가' in rows.nth(i).inner_text()]
-            assert matched and any('15:00' in x for x in matched),(width,matched)
-            assert not errors,errors
-            assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+2')
-            page.screenshot(path=str(artifacts/f'three-fixes-popup-{width}.png'),full_page=True)
-            page.locator('#publicHousingModal .notice-close').click()
-            assert page.locator('#publicHousingModal').get_attribute('hidden') is not None
-            page.goto(base+'/public-housing/notices/sh-311087/',wait_until='networkidle')
-            text=page.locator('body').inner_text()
-            assert '2026년 10월 22일 15:00 (한국시간)' in text
-            assert '마감시간 미확인' not in text and '마감시각은 확인되지 않았습니다' not in text
-            page.screenshot(path=str(artifacts/f'three-fixes-sh311087-{width}.png'),full_page=True)
-            page.goto(base+'/public-housing/notices/shyouth-23a63706ef0b942659cb/',wait_until='networkidle')
-            page.wait_for_timeout(200)
-            assert page.url.endswith('/public-housing/notices/sh-310653/'),page.url
-            ctx.close()
-        (artifacts/'three-fixes-validation.json').write_text(json.dumps({'widths':[390,1280],'checks':['popup opens','source status','SHII dedupe','SH311087 15:00','legacy alias redirect'],'status':'PASS'},ensure_ascii=False,indent=2),encoding='utf-8')
-        print('THREE_FIX_BROWSER=PASS widths=390,1280 popup/source-status/dedupe/deadline/redirect')
         browser.close()
 finally:
     (artifacts/'layout.json').write_text(json.dumps(metrics,ensure_ascii=False,indent=2),encoding='utf-8')
