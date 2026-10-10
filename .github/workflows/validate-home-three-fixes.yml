@@ -15,7 +15,7 @@ on:
       - 'data/public-housing-popup.js'
       - 'public-housing/index.html'
 permissions:
-  contents: read
+  contents: write
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -63,6 +63,37 @@ jobs:
         run: python scripts/validate_home_three_fixes.py
       - name: Diff sanity
         run: git diff --check
+      - name: Attach validated generated outputs to PR branch
+        env:
+          TARGET_BRANCH: fix/sh311087-deadline-20261009
+          EXPECTED_HEAD: 9be25b2f0e23164eaebb9569180361a173c77199
+        run: |
+          mkdir -p /tmp/validated-generated
+          cp --parents \
+            public-housing/current.json \
+            public-housing/routes.json \
+            public-housing/notices/sh-311087/index.html \
+            public-housing/notices/sh-310653/index.html \
+            public-housing/notices/shyouth-23a63706ef0b942659cb/index.html \
+            /tmp/validated-generated/
+          git fetch origin "$TARGET_BRANCH"
+          ACTUAL_HEAD="$(git rev-parse FETCH_HEAD)"
+          test "$ACTUAL_HEAD" = "$EXPECTED_HEAD"
+          git switch --detach "$EXPECTED_HEAD"
+          cp -a /tmp/validated-generated/public-housing/. public-housing/
+          git add -- \
+            public-housing/current.json \
+            public-housing/routes.json \
+            public-housing/notices/sh-311087/index.html \
+            public-housing/notices/sh-310653/index.html \
+            public-housing/notices/shyouth-23a63706ef0b942659cb/index.html
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git config user.name github-actions
+            git config user.email github-actions@users.noreply.github.com
+            git commit -m 'build: regenerate public housing outputs for HOME fixes'
+            git push origin HEAD:"$TARGET_BRANCH"
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
