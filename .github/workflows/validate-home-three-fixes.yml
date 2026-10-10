@@ -67,6 +67,12 @@ jobs:
         if: always()
         with:
           name: home-three-fix-validation-${{ github.run_id }}
-          path: test-artifacts/home-three-fixes/
+          path: |
+            test-artifacts/home-three-fixes/
+            public-housing/current.json
+            public-housing/routes.json
+            public-housing/notices/sh-311087/index.html
+            public-housing/notices/sh-310653/index.html
+            public-housing/notices/shyouth-23a63706ef0b942659cb/index.html
           retention-days: 7
           if-no-files-found: warn
