@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-10T01:54:29+00:00",
-  "source_generated_at": "2026-10-10T09:52:13",
+  "generated_at": "2026-10-10T13:17:50+00:00",
+  "source_generated_at": "2026-10-10T18:50:52",
   "source_status": {
     "LH": {
       "count": 8,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 8,
       "carried_count": 7,
-      "failure_streak": 30
+      "failure_streak": 31
     },
     "SH": {
       "count": 18,
@@ -80,7 +80,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311087",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.08.(목) ~2026.10.22.(목) 15시까지",
-        "verified_at": "2026-10-10T09:51:57"
+        "verified_at": "2026-10-10T18:50:39"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-10-22T15:00:00+09:00",
