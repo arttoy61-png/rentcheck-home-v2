@@ -42,6 +42,30 @@
     if(at){result.deadline_at=at;result.deadline_precision='minute'}else if(result.deadline_precision==='minute')result.deadline_precision='date';
     return result;
   }
+  function shDetailIdentity(item){
+    const m=String(item.id||'').match(/^SH:seq:(\d+)$/);
+    try{const u=new URL(item.official_url||item.url||'');return Boolean(m&&u.protocol==='https:'&&['www.i-sh.co.kr','i-sh.co.kr'].includes(u.hostname)&&u.pathname.endsWith('/view.do')&&u.searchParams.getAll('seq').length===1&&u.searchParams.get('seq')===m[1])}catch(_){return false}
+  }
+  function shAliasKey(item){
+    if(!(shDetailIdentity(item)||String(item.id||'').startsWith('SHYOUTH:'))||!isSH(item))return'';
+    const title=String(item.title||'').replace(/&nbsp;/g,' ').trim().replace(/^매입(?=20\d{2}년)/,''),m=title.match(/\((20\d{2})\.(\d{2})\.(\d{2})\.?\)$/);
+    if(!m)return'';
+    const published=parse(`${m[1]}-${m[2]}-${m[3]}`),explicit=parse(item.published_at),start=parse(item.application_start),end=parse(item.deadline);
+    if(!published||(explicit&&explicit!==published)||!start||!end||start>end||item.schedule_type!=='single')return'';
+    return JSON.stringify([title.replace(/\s+/g,''),published,start,end]);
+  }
+  function dedupeShAliases(items){
+    const identities=new Map(),groups=new Map(),out=[];
+    for(const item of items){const key=shAliasKey(item);if(key&&shDetailIdentity(item)){if(!identities.has(key))identities.set(key,new Set());identities.get(key).add(item.id)}}
+    for(const item of items){
+      const key=shAliasKey(item);
+      if(!key||identities.get(key)?.size!==1){out.push(item);continue}
+      if(!groups.has(key)){groups.set(key,out.length);out.push(item);continue}
+      const pos=groups.get(key),previous=out[pos],preferred=shDetailIdentity(item)?item:previous,other=preferred===item?previous:item;
+      out[pos]=!parse(preferred.published_at)&&parse(other.published_at)?{...preferred,published_at:other.published_at}:preferred;
+    }
+    return out;
+  }
   const recruitment=item=>!isSH(item)||!nonRecruitment(item);
   function windows(item){const x=normalize(item);return isSH(x)&&x.schedule_type==='windows'?x.application_windows:[]}
   function phase(w,day,now){if(day===today(now)&&w.precision==='minute'){if(+now<instant(w.start_at))return'upcoming';if(+now>=instant(w.end_at))return'ended'}else{if(day<w.start)return'upcoming';if(day>w.end)return'ended'}return w.conditional?'conditional':w.restricted?'scoped':'open'}
@@ -79,5 +103,5 @@
   function deadlineDays(item){const x=normalize(item);if(!isSH(x))return[];const ws=windows(x);if(ws.length)return [...new Set(ws.filter(w=>!w.conditional&&!w.restricted).map(w=>w.end))];return x.schedule_type==='single'?[x.deadline]:[]}
   function matches(item,filter,day){const s=state(item,day);return filter==='all'||(filter==='active'?['open','upcoming','rolling','scoped'].includes(s):s===filter)}
   function counts(items,day){return Object.fromEntries(Object.keys(labels).map(k=>[k,items.filter(i=>matches(i,k,day)).length]))}
-  window.RentCheckHousingList=Object.freeze({labels,today,state,matches,counts,pageSize:6,isSH,normalize,recruitment,windows,displayLabel,scheduleText,activeOn,deadlineDays});
+  window.RentCheckHousingList=Object.freeze({labels,today,state,matches,counts,pageSize:6,isSH,normalize,recruitment,windows,displayLabel,scheduleText,activeOn,deadlineDays,dedupeShAliases});
 })();

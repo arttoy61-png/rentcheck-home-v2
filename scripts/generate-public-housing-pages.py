@@ -5,6 +5,7 @@ import json
 import re
 from datetime import date, datetime
 from pathlib import Path
+from urllib.parse import urlsplit, parse_qs
 from sh_application_contract import is_sh, non_recruitment, normalize_sh, sh_state, sh_rows, deadline_clock
 
 SOURCE = Path('.cache-home-stats/public_housing_notices.json')
@@ -189,20 +190,62 @@ def prefer_item(current: dict, candidate: dict) -> dict:
     return candidate if score(candidate) > score(current) else current
 
 
+def sh_detail_identity(item: dict) -> bool:
+    match = re.fullmatch(r'SH:seq:(\d+)', str(item.get('id') or ''))
+    try:
+        url = urlsplit(str(item.get('official_url') or item.get('url') or ''))
+        return bool(match and url.scheme == 'https' and url.hostname in {'www.i-sh.co.kr', 'i-sh.co.kr'}
+                    and url.path.endswith('/view.do') and parse_qs(url.query).get('seq') == [match[1]])
+    except ValueError:
+        return False
+
+
+def sh_alias_key(item: dict) -> tuple | None:
+    if not (sh_detail_identity(item) or str(item.get('id') or '').startswith('SHYOUTH:')) or not is_sh(item):
+        return None
+    title = re.sub(r'^매입(?=20\d{2}년)', '', clean_title(item.get('title')))
+    stamp = re.search(r'\((20\d{2})\.(\d{2})\.(\d{2})\.?\)$', title)
+    if not stamp:
+        return None
+    published = parse_date('-'.join(stamp.groups()))
+    explicit = parse_date(item.get('published_at'))
+    start, end = parse_date(item.get('application_start')), parse_date(item.get('deadline'))
+    if not published or (explicit and explicit != published) or not start or not end or start > end or item.get('schedule_type') != 'single':
+        return None
+    return (re.sub(r'\s+', '', title), published.isoformat(), start.isoformat(), end.isoformat())
+
+
 def dedupe_recruitments(items: list[dict]) -> tuple[list[dict], dict[str, list[str]]]:
     groups: dict[str, dict] = {}
     members: dict[str, list[str]] = {}
     order: list[str] = []
+    # Cross-channel aliases need an exact title/date/schedule match and one
+    # verified SH detail identity. Never collapse two different SH sequence IDs.
+    identities: dict[tuple, set[str]] = {}
+    for item in items:
+        key = sh_alias_key(item)
+        if key and sh_detail_identity(item):
+            identities.setdefault(key, set()).add(str(item['id']))
 
     for item in items:
-        key = duplicate_key(item)
+        key = ('sh-id', str(item.get('id') or '') or id(item)) if is_sh(item) else duplicate_key(item)
+        alias_key = sh_alias_key(item)
+        if alias_key and len(identities.get(alias_key, set())) == 1:
+            key = ('sh-alias', alias_key)
+        elif alias_key and len(identities.get(alias_key, set())) > 1:
+            key = ('ambiguous-sh', str(item.get('id') or ''))
         item_id = str(item.get('id') or '')
         if key not in groups:
             groups[key] = item
             members[key] = [item_id] if item_id else []
             order.append(key)
             continue
-        groups[key] = prefer_item(groups[key], item)
+        previous = groups[key]
+        preferred = prefer_item(previous, item)
+        other = previous if preferred is item else item
+        if isinstance(key, tuple) and not parse_date(preferred.get('published_at')) and parse_date(other.get('published_at')):
+            preferred = {**preferred, 'published_at': other['published_at']}
+        groups[key] = preferred
         if item_id and item_id not in members[key]:
             members[key].append(item_id)
 
