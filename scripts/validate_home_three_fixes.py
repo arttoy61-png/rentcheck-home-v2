@@ -61,7 +61,11 @@ try:
             response = page.goto(base + '/', wait_until='networkidle')
             assert response and response.status == 200
 
-            opener = page.locator('[data-public-housing-open]').first
+            if width <= 600:
+                menu = page.locator('#menuToggle')
+                assert menu.count() == 1
+                menu.click()
+            opener = page.locator('[data-public-housing-open]:visible').first
             assert opener.count() == 1
             opener.click()
             page.wait_for_selector('#publicHousingModal:not([hidden])')
