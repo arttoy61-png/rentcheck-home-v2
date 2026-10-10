@@ -72,9 +72,48 @@ def withheld(item, kind='unknown'):
             'status_text': '신규 접수 대상 아님' if kind == 'not_applicable' else '일정 확인 중'}
 
 
+def evidenced_deadline_at(item):
+    """Read one complete official application range; never invent a start hour.
+
+    Full matching is intentional: extra windows, conditions, and unrelated
+    dates need scoped review rather than a scalar deadline.
+    """
+    evidence = item.get('schedule_evidence') or {}
+    if not isinstance(evidence, dict) or item.get('schedule_source') != 'official_detail_html' or evidence.get('kind') != 'official_notice_body':
+        return ''
+    if evidence.get('url') != (item.get('official_url') or item.get('url')):
+        return ''
+    try:
+        url = urlsplit(evidence.get('url') or '')
+        if url.scheme != 'https' or url.hostname not in {'www.i-sh.co.kr', 'i-sh.co.kr'}:
+            return ''
+    except ValueError:
+        return ''
+    day = r'(20\d{2})\s*[.\-/]\s*(\d{1,2})\s*[.\-/]\s*(\d{1,2})\s*\.?\s*(?:\([월화수목금토일]\))?\s*'
+    match = re.fullmatch(r'\s*(?:접수|신청)기간\s*[:：]\s*' + day + r'[~～∼]\s*' + day + r'(\d{1,2})(?::([0-5]\d)|시(?:\s*([0-5]?\d)분)?)\s*까지\s*\.?\s*', str(evidence.get('excerpt') or ''))
+    if not match:
+        return ''
+    try:
+        y, m, d, ey, em, ed, hour, minute, korean_minute = match.groups()
+        start = date(int(y), int(m), int(d)).isoformat()
+        end = date(int(ey), int(em), int(ed)).isoformat()
+        if start != item.get('application_start') or end != item.get('deadline'):
+            return ''
+        return datetime(int(ey), int(em), int(ed), int(hour), int(minute or korean_minute or 0), tzinfo=ZoneInfo('Asia/Seoul')).isoformat()
+    except (ValueError, TypeError):
+        return ''
+
+
+def deadline_clock(item):
+    value = item.get('deadline_at')
+    return datetime.fromisoformat(value).astimezone(ZoneInfo('Asia/Seoul')).strftime('%H:%M') if value else ''
+
+
 def normalize_sh(item):
     if not is_sh(item):
         return item
+    item = dict(item)
+    item.pop('deadline_at', None)
     if non_recruitment(item):
         return withheld(item, 'not_applicable')
     kind = item.get('schedule_type') or ''
@@ -92,7 +131,13 @@ def normalize_sh(item):
     start, end = valid_day(item.get('application_start')), valid_day(item.get('deadline'))
     if not start or not end or start > end:
         return withheld(item)
-    return {**item, 'application_start': start, 'deadline': end, 'application_windows': [], 'schedule_type': 'single'}
+    result = {**item, 'application_start': start, 'deadline': end, 'application_windows': [], 'schedule_type': 'single'}
+    deadline_at = evidenced_deadline_at(result)
+    if deadline_at:
+        result.update(deadline_at=deadline_at, deadline_precision='minute')
+    elif result.get('deadline_precision') == 'minute':
+        result['deadline_precision'] = 'date'
+    return result
 
 
 def sh_state(item, day=None, now=None):
@@ -118,10 +163,14 @@ def sh_state(item, day=None, now=None):
         if any(w['conditional'] and w['start'] <= day <= w['end'] and not ended(w) for w in windows):
             return '조건부 일정 · 시행 여부 확인'
         return '대상별 접수일정 확인'
+    if day == current_day and x.get('deadline_at') and now >= datetime.fromisoformat(x['deadline_at']):
+        return '접수 마감'
     if x['deadline'] < day:
         return '접수 마감'
     if x['application_start'] > day:
         return '접수 예정'
+    if x.get('deadline_at') and x['application_start'] == day:
+        return '접수기간 · 시작시각 확인'
     if x.get('deadline_precision') == 'date':
         return '오늘 접수마감일 · 시간 확인' if x['deadline'] == day else '접수기간 · 시간 확인'
     return '접수 중'
@@ -140,4 +189,4 @@ def sh_rows(item):
     windows = x.get('application_windows') or []
     if windows:
         return [(str(w.get('label') or '접수'), window_period(w) + (' · 조건부: ' + str(w.get('condition') or '시행 여부 확인') if w['conditional'] else '') + (' · 대상 제한' if w['restricted'] else '')) for w in windows]
-    return [('신청', short(x['application_start']) + ('' if x['application_start'] == x['deadline'] else '~' + short(x['deadline'])) + (' · 마감시간 미확인' if x.get('deadline_precision') == 'date' else ''))]
+    return [('신청', short(x['application_start']) + ('' if x['application_start'] == x['deadline'] else '~' + short(x['deadline'])) + (' · ' + deadline_clock(x) + ' 마감 (한국시간) · 시작시각 미확인' if x.get('deadline_at') else ' · 마감시간 미확인' if x.get('deadline_precision') == 'date' else ''))]

@@ -154,5 +154,24 @@
         "restricted": false
       }
     ]
+  },
+  "deadline_only": {
+    "id": "SH:seq:311087",
+    "title": "NEW 강동구 청년창업가,예술인주택(수요자맞춤형) 잔여세대 모집 공고",
+    "agency": "SH",
+    "schedule_source": "official_detail_html",
+    "schedule_type": "single",
+    "notice_kind": "recruitment",
+    "application_start": "2026-10-08",
+    "deadline": "2026-10-22",
+    "deadline_precision": "date",
+    "schedule_evidence": {
+      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311087",
+      "kind": "official_notice_body",
+      "excerpt": "접수기간 : 2026.10.08.(목) ~2026.10.22.(목) 15시까지",
+      "verified_at": "2026-10-08T20:31:11"
+    },
+    "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311087",
+    "application_windows": []
   }
 }

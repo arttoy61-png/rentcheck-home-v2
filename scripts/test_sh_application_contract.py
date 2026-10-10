@@ -14,6 +14,47 @@ spec.loader.exec_module(generator)
 
 
 class SHContractTests(unittest.TestCase):
+    def test_deadline_only_evidence_and_exact_endpoint(self):
+        raw = FIXTURES['deadline_only']
+        x = normalize_sh(raw)
+        self.assertEqual(x['deadline_at'], '2026-10-22T15:00:00+09:00')
+        self.assertEqual(x['deadline_precision'], 'minute')
+        self.assertNotIn('start_at', x)
+        self.assertEqual(sh_state(x, '2026-10-08', now=datetime.fromisoformat('2026-10-08T00:00:00+09:00')), '접수기간 · 시작시각 확인')
+        self.assertEqual(x['application_windows'], [])
+        self.assertIn('15:00 마감 (한국시간) · 시작시각 미확인', sh_rows(x)[0][1])
+        for clock, expected in [('14:59:59', '접수 중'), ('15:00:00', '접수 마감'), ('15:00:01', '접수 마감')]:
+            self.assertEqual(sh_state(x, now=datetime.fromisoformat('2026-10-22T' + clock + '+09:00')), expected)
+        self.assertEqual(sh_state(x, '2026-10-21', now=datetime.fromisoformat('2026-10-22T16:00:00+09:00')), '접수 중')
+        html = generator.render_page(raw, '/public-housing/notices/sh-311087/')
+        self.assertIn('15:00 (한국시간)', html)
+        self.assertNotIn('마감시각은 확인되지 않았습니다', html)
+        self.assertNotIn('마감시간 미확인', html)
+        self.assertEqual(generator.manifest_item(raw, '/public-housing/notices/sh-311087/')['deadline_at'], x['deadline_at'])
+
+    def test_deadline_evidence_formats_and_no_inference(self):
+        raw = FIXTURES['deadline_only']
+        for clock in ['15시', '15:30', '15시 30분']:
+            x = copy.deepcopy(raw)
+            x['schedule_evidence']['excerpt'] = raw['schedule_evidence']['excerpt'].replace('15시', clock)
+            self.assertEqual(normalize_sh(x)['deadline_at'][11:16], '15:00' if clock == '15시' else '15:30')
+        for excerpt in [
+            '접수기간 : 2026.10.08.(목) ~2026.10.22.(목)',
+            '접수기간 : 2026.10.08.(목) ~2026.10.22.(목) 24시까지',
+            '접수기간 : 2026.10.08.(목) ~2026.10.22.(목) 15시60분까지',
+            '접수기간 : 2026.10.08.(목) ~2026.10.23.(금) 15시까지',
+            '접수기간 : 2026.10.08.(목) ~2026.10.22.(목) 15시까지 / 2차 2026.10.23~2026.10.24',
+            '공고일 : 2026.10.08.(목) ~2026.10.22.(목) 15시까지',
+        ]:
+            x = copy.deepcopy(raw)
+            x['schedule_evidence']['excerpt'] = excerpt
+            self.assertNotIn('deadline_at', normalize_sh(x), excerpt)
+        for change in [{'schedule_source': 'source_list'}, {'schedule_type': 'unknown'}, {'schedule_type': 'multiple'}, {'application_windows': FIXTURES['windowed']['application_windows']}, {'url': 'https://www.i-sh.co.kr/different-notice'}]:
+            self.assertNotIn('deadline_at', normalize_sh({**raw, **change}))
+        bad = {**raw, 'deadline_at': '2026-10-22T23:59:00+09:00', 'schedule_evidence': {}}
+        self.assertNotIn('deadline_at', normalize_sh(bad))
+        self.assertEqual(normalize_sh(bad)['deadline_precision'], 'date')
+
     def test_verified_single(self):
         x = normalize_sh(FIXTURES['single'])
         self.assertEqual((x['application_start'],x['deadline']), ('2026-10-02','2026-10-03'))
