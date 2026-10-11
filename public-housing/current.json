@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-11T02:19:18+00:00",
-  "source_generated_at": "2026-10-11T06:45:12",
+  "generated_at": "2026-10-11T13:46:34+00:00",
+  "source_generated_at": "2026-10-11T21:49:48",
   "source_status": {
     "LH": {
       "count": 8,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 8,
       "carried_count": 7,
-      "failure_streak": 33
+      "failure_streak": 35
     },
     "SH": {
       "count": 18,
@@ -30,17 +30,17 @@
     "SEOUL": {
       "count": 7,
       "errors": [],
-      "excluded_noise": 18
+      "excluded_noise": 17
     },
     "TOTAL": {
       "count": 31,
       "duplicates_removed": 5,
-      "excluded_non_housing": 3,
+      "excluded_non_housing": 2,
       "excluded_outside_seoul": 0,
-      "published_count": 32
+      "published_count": 33
     }
   },
-  "recruitment_count": 23,
+  "recruitment_count": 24,
   "items": [
     {
       "id": "SH:seq:311087",
@@ -80,12 +80,49 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311087",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.08.(목) ~2026.10.22.(목) 15시까지",
-        "verified_at": "2026-10-11T06:44:55"
+        "verified_at": "2026-10-11T21:49:30"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-10-22T15:00:00+09:00",
       "route": "/public-housing/notices/sh-311087/",
       "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311087",
+      "official_link_label": "공식 모집공고 원문 →",
+      "indexable": false
+    },
+    {
+      "id": "SH:seq:310976",
+      "agency": "SH",
+      "agency_group": "SH",
+      "title": "[토지임대부 사회주택] 옥류서원 입주자 모집 공고문",
+      "housing_types": [
+        "기타임대"
+      ],
+      "audiences": [],
+      "region": "서울",
+      "published_at": "2026-10-07",
+      "deadline": "",
+      "open_state": "일정 확인",
+      "event": "신규",
+      "change": "신규",
+      "status_text": "일정 확인 중",
+      "is_gangseo": false,
+      "keywords": [],
+      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310976",
+      "source": "SH 공식 주택임대 게시판",
+      "content_signature": "dd69fb26480e8bbd7d316c1aff015fa0cfbe3cfba282bdc51e0cb5dba1f4361e",
+      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
+      "published_source": "official_list_registration",
+      "notice_kind": "recruitment",
+      "application_start": "",
+      "schedule_type": "unknown",
+      "deadline_precision": "unknown",
+      "schedule_source": "unknown",
+      "schedule_note": "신청기간은 공식 공고문 확인이 필요합니다.",
+      "application_windows": [],
+      "schedule_evidence": {},
+      "sh_schedule_version": 1,
+      "route": "/public-housing/notices/sh-310976/",
+      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310976",
       "official_link_label": "공식 모집공고 원문 →",
       "indexable": false
     },
