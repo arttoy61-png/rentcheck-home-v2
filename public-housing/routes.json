@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-12T16:30:18+00:00",
-  "source_generated_at": "2026-10-12T19:49:03",
-  "source_recruitment_count": 25,
+  "generated_at": "2026-10-13T03:05:36+00:00",
+  "source_generated_at": "2026-10-13T11:38:18",
+  "source_recruitment_count": 26,
   "recruitment_count": 24,
-  "duplicate_count": 1,
+  "duplicate_count": 2,
   "generated_count": 24,
-  "redirect_count": 1,
+  "redirect_count": 2,
   "duplicate_groups": [
     {
       "canonical_id": "SH:seq:310653",
@@ -14,6 +14,14 @@
         "SH:seq:310653"
       ],
       "route": "/public-housing/notices/sh-310653/"
+    },
+    {
+      "canonical_id": "SH:seq:310650",
+      "ids": [
+        "SHYOUTH:e14f796069d603741e53",
+        "SH:seq:310650"
+      ],
+      "route": "/public-housing/notices/sh-310650/"
     }
   ],
   "routes": {
@@ -21,15 +29,17 @@
     "SH:seq:309403": "/public-housing/sh-long-vacant-purchase-2026-2/",
     "SH:seq:309467": "/public-housing/sh-longterm-jeonse-51/",
     "SH:seq:310107": "/public-housing/sh-long-vacant-purchase-2026-2/",
+    "SHYOUTH:23a63706ef0b942659cb": "/public-housing/notices/sh-310653/",
+    "SH:seq:310653": "/public-housing/notices/sh-310653/",
+    "SHYOUTH:e14f796069d603741e53": "/public-housing/notices/sh-310650/",
+    "SH:seq:310650": "/public-housing/notices/sh-310650/",
     "SH:seq:311087": "/public-housing/notices/sh-311087/",
     "SH:seq:311349": "/public-housing/notices/sh-311349/",
     "LH:panId:2015122300020843": "/public-housing/notices/lh-2015122300020843/",
-    "SHYOUTH:23a63706ef0b942659cb": "/public-housing/notices/sh-310653/",
-    "SH:seq:310653": "/public-housing/notices/sh-310653/",
-    "SH:seq:310650": "/public-housing/notices/sh-310650/",
+    "SH:seq:311375": "/public-housing/notices/sh-311375/",
+    "SH:seq:311428": "/public-housing/notices/sh-311428/",
     "SHYOUTH:16da04d0f88309079939": "/public-housing/notices/shyouth-16da04d0f88309079939/",
     "SHYOUTH:db00fb65694bea420e6b": "/public-housing/notices/shyouth-db00fb65694bea420e6b/",
-    "SH:seq:310258": "/public-housing/notices/sh-310258/",
     "LH:panId:2015122300020807": "/public-housing/notices/lh-2015122300020807/",
     "LH:panId:2015122300020753": "/public-housing/notices/lh-2015122300020753/",
     "LH:panId:2015122300019657": "/public-housing/notices/lh-2015122300019657/",
@@ -38,7 +48,6 @@
     "LH:panId:2015122300020749": "/public-housing/notices/lh-2015122300020749/",
     "LH:panId:2015122300020750": "/public-housing/notices/lh-2015122300020750/",
     "SHYOUTH:2722eda65475422215a2": "/public-housing/notices/shyouth-2722eda65475422215a2/",
-    "SHYOUTH:ac0c542c9045e8e7d0ce": "/public-housing/notices/shyouth-ac0c542c9045e8e7d0ce/",
     "LH:panId:2015122300020605": "/public-housing/notices/lh-2015122300020605/",
     "LH:panId:2015122300020326": "/public-housing/notices/lh-2015122300020326/",
     "LH:panId:2015122300019941": "/public-housing/notices/lh-2015122300019941/",
