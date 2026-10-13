@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-13T03:10:18+00:00",
-  "source_generated_at": "2026-10-13T11:38:18",
+  "generated_at": "2026-10-13T14:48:32+00:00",
+  "source_generated_at": "2026-10-13T19:36:31",
   "source_status": {
     "LH": {
       "count": 8,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 8,
       "carried_count": 7,
-      "failure_streak": 40
+      "failure_streak": 41
     },
     "SH": {
       "count": 18,
@@ -30,14 +30,14 @@
     "SEOUL": {
       "count": 7,
       "errors": [],
-      "excluded_noise": 19
+      "excluded_noise": 16
     },
     "TOTAL": {
-      "count": 30,
-      "duplicates_removed": 5,
-      "excluded_non_housing": 2,
+      "count": 31,
+      "duplicates_removed": 4,
+      "excluded_non_housing": 1,
       "excluded_outside_seoul": 0,
-      "published_count": 33
+      "published_count": 35
     }
   },
   "recruitment_count": 24,
@@ -93,7 +93,7 @@
       "deadline": "",
       "open_state": "일정 확인",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "일정 확인 중",
       "is_gangseo": false,
       "keywords": [],
@@ -152,7 +152,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311349",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026. 10. 26.(월) ~ 2026.11. 06.(금) 18시까지",
-        "verified_at": "2026-10-13T11:38:05"
+        "verified_at": "2026-10-13T19:36:21"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-06T18:00:00+09:00",
@@ -199,7 +199,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311087",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.08.(목) ~2026.10.22.(목) 15시까지",
-        "verified_at": "2026-10-13T11:38:07"
+        "verified_at": "2026-10-13T19:36:23"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-10-22T15:00:00+09:00",
