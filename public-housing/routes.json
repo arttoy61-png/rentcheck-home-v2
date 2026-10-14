@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-14T01:23:02+00:00",
-  "source_generated_at": "2026-10-14T09:19:57",
-  "source_recruitment_count": 26,
-  "recruitment_count": 24,
+  "generated_at": "2026-10-14T12:39:22+00:00",
+  "source_generated_at": "2026-10-14T20:52:08",
+  "source_recruitment_count": 25,
+  "recruitment_count": 23,
   "duplicate_count": 2,
-  "generated_count": 24,
+  "generated_count": 23,
   "redirect_count": 2,
   "duplicate_groups": [
     {
@@ -35,9 +35,8 @@
     "SHYOUTH:e14f796069d603741e53": "/public-housing/notices/sh-310650/",
     "SH:seq:310650": "/public-housing/notices/sh-310650/",
     "SH:seq:311087": "/public-housing/notices/sh-311087/",
+    "SH:seq:311549": "/public-housing/notices/sh-311549/",
     "SH:seq:311349": "/public-housing/notices/sh-311349/",
-    "SH:seq:311375": "/public-housing/notices/sh-311375/",
-    "SH:seq:311428": "/public-housing/notices/sh-311428/",
     "SHYOUTH:16da04d0f88309079939": "/public-housing/notices/shyouth-16da04d0f88309079939/",
     "SHYOUTH:db00fb65694bea420e6b": "/public-housing/notices/shyouth-db00fb65694bea420e6b/",
     "LH:panId:2015122300020807": "/public-housing/notices/lh-2015122300020807/",
