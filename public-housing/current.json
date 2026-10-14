@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-13T14:48:32+00:00",
-  "source_generated_at": "2026-10-13T19:36:31",
+  "generated_at": "2026-10-14T00:02:17+00:00",
+  "source_generated_at": "2026-10-14T04:18:33",
   "source_status": {
     "LH": {
       "count": 8,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 8,
       "carried_count": 7,
-      "failure_streak": 41
+      "failure_streak": 42
     },
     "SH": {
       "count": 18,
@@ -30,7 +30,7 @@
     "SEOUL": {
       "count": 7,
       "errors": [],
-      "excluded_noise": 16
+      "excluded_noise": 18
     },
     "TOTAL": {
       "count": 31,
@@ -46,7 +46,7 @@
       "id": "SH:seq:311375",
       "agency": "SH",
       "agency_group": "SH",
-      "title": "NEW [토지지원 사회주택]유니버설디자인하우스_장안 입주자 모집 공고",
+      "title": "[토지지원 사회주택]유니버설디자인하우스_장안 입주자 모집 공고",
       "housing_types": [
         "기타임대"
       ],
@@ -55,14 +55,14 @@
       "published_at": "2026-10-13",
       "deadline": "",
       "open_state": "일정 확인",
-      "event": "신규",
-      "change": "동일",
+      "event": "수정",
+      "change": "수정",
       "status_text": "일정 확인 중",
       "is_gangseo": false,
       "keywords": [],
       "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311375",
       "source": "SH 공식 주택임대 게시판",
-      "content_signature": "d9531111de844b3fda0fca7a5d79545dd583c6e90d33f91a78fb1cbab17ccbc5",
+      "content_signature": "f4a962d4d21fc2dee7dd5e293225cce5c8ef0e7eb81728e3b5eb5daa15534b5e",
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "published_source": "official_list_registration",
       "notice_kind": "recruitment",
@@ -83,7 +83,7 @@
       "id": "SH:seq:311428",
       "agency": "SH",
       "agency_group": "SH",
-      "title": "NEW [토지임대부 사회주택] 옥류서원 입주자 모집 공고문",
+      "title": "[토지임대부 사회주택] 옥류서원 입주자 모집 공고문",
       "housing_types": [
         "기타임대"
       ],
@@ -92,14 +92,14 @@
       "published_at": "2026-10-13",
       "deadline": "",
       "open_state": "일정 확인",
-      "event": "신규",
-      "change": "동일",
+      "event": "수정",
+      "change": "수정",
       "status_text": "일정 확인 중",
       "is_gangseo": false,
       "keywords": [],
       "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311428",
       "source": "SH 공식 주택임대 게시판",
-      "content_signature": "2352170006787418648732cdd4d34f19a44ab8830252ee1d6969b6d226d0bd8a",
+      "content_signature": "cc2c18b699fbe32d45c118792042bdc45688a5473315378322e777df233bd7c7",
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "published_source": "official_list_registration",
       "notice_kind": "recruitment",
@@ -152,7 +152,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311349",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026. 10. 26.(월) ~ 2026.11. 06.(금) 18시까지",
-        "verified_at": "2026-10-13T19:36:21"
+        "verified_at": "2026-10-14T04:18:24"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-06T18:00:00+09:00",
@@ -199,7 +199,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311087",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.08.(목) ~2026.10.22.(목) 15시까지",
-        "verified_at": "2026-10-13T19:36:23"
+        "verified_at": "2026-10-14T04:18:26"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-10-22T15:00:00+09:00",
@@ -222,7 +222,7 @@
       "region": "서울특별시",
       "published_at": "2026-10-01",
       "deadline": "2026-10-16",
-      "open_state": "접수예정",
+      "open_state": "마감임박",
       "event": "신규",
       "change": "동일",
       "status_text": "공고중",
