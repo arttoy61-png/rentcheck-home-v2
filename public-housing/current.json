@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-15T00:50:11+00:00",
-  "source_generated_at": "2026-10-15T06:44:04",
+  "generated_at": "2026-10-15T09:07:23+00:00",
+  "source_generated_at": "2026-10-15T13:38:15",
   "source_status": {
     "LH": {
       "count": 8,
       "errors": [
-        "LH OpenAPI: 06/1:<urlopen error timed out>; 13/1:<urlopen error timed out>; 39/1:<urlopen error timed out>"
+        "LH OpenAPI: 06/1:HTTP Error 403: Forbidden; 13/1:HTTP Error 403: Forbidden; 39/1:HTTP Error 403: Forbidden"
       ],
       "official_count": 8,
       "api_count": 0,
@@ -17,25 +17,25 @@
       "warnings": [],
       "status": "부분수집",
       "diagnostic_errors": [
-        "LH OpenAPI: 06/1:<urlopen error timed out>; 13/1:<urlopen error timed out>; 39/1:<urlopen error timed out>"
+        "LH OpenAPI: 06/1:HTTP Error 403: Forbidden; 13/1:HTTP Error 403: Forbidden; 39/1:HTTP Error 403: Forbidden"
       ],
       "fresh_count": 8,
       "carried_count": 7,
-      "failure_streak": 47
+      "failure_streak": 48
     },
     "SH": {
-      "count": 16,
+      "count": 17,
       "errors": []
     },
     "SEOUL": {
       "count": 7,
       "errors": [],
-      "excluded_noise": 15
+      "excluded_noise": 16
     },
     "TOTAL": {
-      "count": 30,
+      "count": 31,
       "duplicates_removed": 4,
-      "excluded_non_housing": 3,
+      "excluded_non_housing": 4,
       "excluded_outside_seoul": 0,
       "published_count": 31
     }
@@ -76,7 +76,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311549",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.21.(수) ~ 10.28.(수)",
-        "verified_at": "2026-10-15T06:43:51"
+        "verified_at": "2026-10-15T13:38:00"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311549/",
@@ -767,7 +767,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311349",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026. 10. 26.(월) ~ 2026.11. 06.(금) 18시까지",
-        "verified_at": "2026-10-15T06:43:56"
+        "verified_at": "2026-10-15T13:38:06"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-06T18:00:00+09:00",
@@ -813,7 +813,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311087",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.08.(목) ~2026.10.22.(목) 15시까지",
-        "verified_at": "2026-10-15T06:44:00"
+        "verified_at": "2026-10-15T13:38:10"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-10-22T15:00:00+09:00",
