@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-15T09:07:23+00:00",
-  "source_generated_at": "2026-10-15T13:38:15",
+  "generated_at": "2026-10-15T23:26:59+00:00",
+  "source_generated_at": "2026-10-16T06:23:58",
   "source_status": {
     "LH": {
       "count": 8,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 8,
       "carried_count": 7,
-      "failure_streak": 48
+      "failure_streak": 51
     },
     "SH": {
       "count": 17,
@@ -76,7 +76,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311549",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.21.(수) ~ 10.28.(수)",
-        "verified_at": "2026-10-15T13:38:00"
+        "verified_at": "2026-10-16T06:23:41"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311549/",
@@ -132,7 +132,7 @@
       "region": "서울",
       "published_at": "2026-09-30",
       "deadline": "2026-10-15",
-      "open_state": "마감임박",
+      "open_state": "마감",
       "event": "신규",
       "change": "동일",
       "status_text": "",
@@ -174,7 +174,7 @@
       "region": "서울",
       "published_at": "2026-09-30",
       "deadline": "2026-10-15",
-      "open_state": "마감임박",
+      "open_state": "마감",
       "event": "신규",
       "change": "동일",
       "status_text": "",
@@ -767,7 +767,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311349",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026. 10. 26.(월) ~ 2026.11. 06.(금) 18시까지",
-        "verified_at": "2026-10-15T13:38:06"
+        "verified_at": "2026-10-16T06:23:49"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-06T18:00:00+09:00",
@@ -813,7 +813,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311087",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.08.(목) ~2026.10.22.(목) 15시까지",
-        "verified_at": "2026-10-15T13:38:10"
+        "verified_at": "2026-10-16T06:23:53"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-10-22T15:00:00+09:00",
