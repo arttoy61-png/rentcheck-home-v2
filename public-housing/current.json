@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-16T03:28:59+00:00",
-  "source_generated_at": "2026-10-16T06:23:58",
+  "generated_at": "2026-10-16T12:06:27+00:00",
+  "source_generated_at": "2026-10-16T20:26:02",
   "source_status": {
     "LH": {
       "count": 8,
       "errors": [
-        "LH OpenAPI: 06/1:HTTP Error 403: Forbidden; 13/1:HTTP Error 403: Forbidden; 39/1:HTTP Error 403: Forbidden"
+        "LH OpenAPI: 06/1:<urlopen error timed out>; 13/1:<urlopen error timed out>; 39/1:<urlopen error timed out>"
       ],
       "official_count": 8,
       "api_count": 0,
@@ -17,31 +17,114 @@
       "warnings": [],
       "status": "부분수집",
       "diagnostic_errors": [
-        "LH OpenAPI: 06/1:HTTP Error 403: Forbidden; 13/1:HTTP Error 403: Forbidden; 39/1:HTTP Error 403: Forbidden"
+        "LH OpenAPI: 06/1:<urlopen error timed out>; 13/1:<urlopen error timed out>; 39/1:<urlopen error timed out>"
       ],
       "fresh_count": 8,
       "carried_count": 7,
-      "failure_streak": 51
+      "failure_streak": 53
     },
     "SH": {
-      "count": 17,
+      "count": 21,
       "errors": []
     },
     "SEOUL": {
       "count": 7,
       "errors": [],
-      "excluded_noise": 16
+      "excluded_noise": 17
     },
     "TOTAL": {
-      "count": 31,
+      "count": 35,
       "duplicates_removed": 4,
-      "excluded_non_housing": 4,
+      "excluded_non_housing": 2,
       "excluded_outside_seoul": 0,
-      "published_count": 31
+      "published_count": 37
     }
   },
-  "recruitment_count": 22,
+  "recruitment_count": 24,
   "items": [
+    {
+      "id": "SH:seq:311521",
+      "agency": "SH",
+      "agency_group": "SH",
+      "title": "NEW 서초구 청년예술인주택 서리풀 청년아트타운(수요자맞춤형) 잔여세대 모집 공고",
+      "housing_types": [
+        "기타임대"
+      ],
+      "audiences": [
+        "청년"
+      ],
+      "region": "서울",
+      "published_at": "2026-10-16",
+      "deadline": "2026-10-30",
+      "open_state": "접수예정",
+      "event": "신규",
+      "change": "신규",
+      "status_text": "",
+      "is_gangseo": false,
+      "keywords": [
+        "청년"
+      ],
+      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311521",
+      "source": "SH 공식 주택임대 게시판",
+      "content_signature": "716ee699d96ee67cda39084ccd77aef5ac14b872d208e4fec73170e727b26fc3",
+      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
+      "published_source": "official_list_registration",
+      "notice_kind": "recruitment",
+      "application_start": "2026-10-26",
+      "schedule_type": "single",
+      "deadline_precision": "date",
+      "schedule_source": "official_detail_html",
+      "schedule_note": "공식 상세본문 신청기간 기준입니다. 정확한 접수시각과 대상은 공고문을 확인하세요.",
+      "application_windows": [],
+      "schedule_evidence": {
+        "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311521",
+        "kind": "official_notice_body",
+        "excerpt": "접수기간 : 2026.10.26.(월) ~ 2026.10.30.(금)",
+        "verified_at": "2026-10-16T20:25:44"
+      },
+      "sh_schedule_version": 1,
+      "route": "/public-housing/notices/sh-311521/",
+      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311521",
+      "official_link_label": "공식 모집공고 원문 →",
+      "indexable": false
+    },
+    {
+      "id": "SH:seq:311656",
+      "agency": "SH",
+      "agency_group": "SH",
+      "title": "NEW 고덕강일지구 3단지 토지임대부 분양주택 입주자모집공고",
+      "housing_types": [
+        "기타임대"
+      ],
+      "audiences": [],
+      "region": "서울",
+      "published_at": "2026-10-16",
+      "deadline": "",
+      "open_state": "일정 확인",
+      "event": "신규",
+      "change": "신규",
+      "status_text": "일정 확인 중",
+      "is_gangseo": false,
+      "keywords": [],
+      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311656",
+      "source": "SH 공식 주택임대 게시판",
+      "content_signature": "e3d83729119057da98088acf8c6ddffe163cb36fca68b0a76104802c6431f803",
+      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
+      "published_source": "official_list_registration",
+      "notice_kind": "recruitment",
+      "application_start": "",
+      "schedule_type": "unknown",
+      "deadline_precision": "unknown",
+      "schedule_source": "unknown",
+      "schedule_note": "신청기간은 공식 공고문 확인이 필요합니다.",
+      "application_windows": [],
+      "schedule_evidence": {},
+      "sh_schedule_version": 1,
+      "route": "/public-housing/notices/sh-311656/",
+      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311656",
+      "official_link_label": "공식 모집공고 원문 →",
+      "indexable": false
+    },
     {
       "id": "SH:seq:311549",
       "agency": "SH",
@@ -76,7 +159,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311549",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.21.(수) ~ 10.28.(수)",
-        "verified_at": "2026-10-16T06:23:41"
+        "verified_at": "2026-10-16T20:25:49"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311549/",
@@ -99,16 +182,16 @@
       "published_at": "2026-10-01",
       "deadline": "2026-10-16",
       "open_state": "마감임박",
-      "event": "신규",
-      "change": "동일",
-      "status_text": "접수중",
+      "event": "수정",
+      "change": "수정",
+      "status_text": "접수마감",
       "is_gangseo": false,
       "keywords": [
         "든든전세"
       ],
       "url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020843&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026",
       "source": "LH청약플러스 실제 공고표",
-      "content_signature": "608b5bf78faf9b6603291bee9bc0c472b33cd6fd1be77188ae25956e64b5bf5c",
+      "content_signature": "1b994ed3f3bbca6736a85cc8d3197ba4957b3d3f77d0ac466194d89755c5c40b",
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "application_start": "2026-10-14",
       "schedule_source": "official_detail_html",
@@ -767,7 +850,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311349",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026. 10. 26.(월) ~ 2026.11. 06.(금) 18시까지",
-        "verified_at": "2026-10-16T06:23:49"
+        "verified_at": "2026-10-16T20:25:51"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-06T18:00:00+09:00",
@@ -813,7 +896,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311087",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.08.(목) ~2026.10.22.(목) 15시까지",
-        "verified_at": "2026-10-16T06:23:53"
+        "verified_at": "2026-10-16T20:25:56"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-10-22T15:00:00+09:00",
