@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-16T12:06:27+00:00",
-  "source_generated_at": "2026-10-16T20:26:02",
+  "generated_at": "2026-10-16T23:08:45+00:00",
+  "source_generated_at": "2026-10-17T06:10:37",
   "source_status": {
     "LH": {
       "count": 8,
@@ -21,10 +21,10 @@
       ],
       "fresh_count": 8,
       "carried_count": 7,
-      "failure_streak": 53
+      "failure_streak": 55
     },
     "SH": {
-      "count": 21,
+      "count": 20,
       "errors": []
     },
     "SEOUL": {
@@ -33,20 +33,20 @@
       "excluded_noise": 17
     },
     "TOTAL": {
-      "count": 35,
-      "duplicates_removed": 4,
+      "count": 32,
+      "duplicates_removed": 6,
       "excluded_non_housing": 2,
       "excluded_outside_seoul": 0,
-      "published_count": 37
+      "published_count": 34
     }
   },
-  "recruitment_count": 24,
+  "recruitment_count": 23,
   "items": [
     {
       "id": "SH:seq:311521",
       "agency": "SH",
       "agency_group": "SH",
-      "title": "NEW 서초구 청년예술인주택 서리풀 청년아트타운(수요자맞춤형) 잔여세대 모집 공고",
+      "title": "서초구 청년예술인주택 서리풀 청년아트타운(수요자맞춤형) 잔여세대 모집 공고",
       "housing_types": [
         "기타임대"
       ],
@@ -58,7 +58,7 @@
       "deadline": "2026-10-30",
       "open_state": "접수예정",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [
@@ -66,7 +66,7 @@
       ],
       "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311521",
       "source": "SH 공식 주택임대 게시판",
-      "content_signature": "716ee699d96ee67cda39084ccd77aef5ac14b872d208e4fec73170e727b26fc3",
+      "content_signature": "f5be470b672938ed017ead7dc3c849429b61d5d28337bcf1210c1e4afb2729aa",
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "published_source": "official_list_registration",
       "notice_kind": "recruitment",
@@ -80,7 +80,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311521",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.26.(월) ~ 2026.10.30.(금)",
-        "verified_at": "2026-10-16T20:25:44"
+        "verified_at": "2026-10-17T06:10:25"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311521/",
@@ -92,7 +92,7 @@
       "id": "SH:seq:311656",
       "agency": "SH",
       "agency_group": "SH",
-      "title": "NEW 고덕강일지구 3단지 토지임대부 분양주택 입주자모집공고",
+      "title": "고덕강일지구 3단지 토지임대부 분양주택 입주자모집공고",
       "housing_types": [
         "기타임대"
       ],
@@ -102,13 +102,13 @@
       "deadline": "",
       "open_state": "일정 확인",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "일정 확인 중",
       "is_gangseo": false,
       "keywords": [],
       "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311656",
       "source": "SH 공식 주택임대 게시판",
-      "content_signature": "e3d83729119057da98088acf8c6ddffe163cb36fca68b0a76104802c6431f803",
+      "content_signature": "da8aeac52dde0ec4acd26b10f1e85b949e573cc7eb39c94a6bda9ca135db2c6d",
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "published_source": "official_list_registration",
       "notice_kind": "recruitment",
@@ -159,7 +159,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311549",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.21.(수) ~ 10.28.(수)",
-        "verified_at": "2026-10-16T20:25:49"
+        "verified_at": "2026-10-17T06:10:29"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311549/",
@@ -181,9 +181,9 @@
       "region": "서울특별시",
       "published_at": "2026-10-01",
       "deadline": "2026-10-16",
-      "open_state": "마감임박",
-      "event": "수정",
-      "change": "수정",
+      "open_state": "마감",
+      "event": "신규",
+      "change": "동일",
       "status_text": "접수마감",
       "is_gangseo": false,
       "keywords": [
@@ -201,10 +201,10 @@
       "indexable": false
     },
     {
-      "id": "SH:seq:310653",
+      "id": "SHYOUTH:23a63706ef0b942659cb",
       "agency": "SH",
       "agency_group": "SH",
-      "title": "매입2026년 하반기 신혼·신생아 매입임대주택Ⅱ 입주자 모집공고(2026.09.30.)",
+      "title": "2026년 하반기 신혼·신생아 매입임대주택Ⅱ 입주자 모집공고(2026.09.30.)",
       "housing_types": [
         "매입임대"
       ],
@@ -224,9 +224,9 @@
         "매입임대",
         "신혼"
       ],
-      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310653",
-      "source": "서울주거포털",
-      "content_signature": "2fdb68d6d89e7847c7fa3538bc64c60c63f26ffbbe7083ec938818201243da8a",
+      "url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
+      "source": "청년몽땅 SH 공고목록",
+      "content_signature": "784d01879b30763276303449939fbf5f374be6b4285a57cf32da6d22b1e88972",
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "notice_kind": "recruitment",
       "application_start": "2026-10-13",
@@ -237,16 +237,16 @@
       "application_windows": [],
       "schedule_evidence": {},
       "sh_schedule_version": 1,
-      "route": "/public-housing/notices/sh-310653/",
-      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310653",
-      "official_link_label": "공식 모집공고 원문 →",
+      "route": "/public-housing/notices/shyouth-23a63706ef0b942659cb/",
+      "official_url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
+      "official_link_label": "기관 공고목록에서 확인 →",
       "indexable": false
     },
     {
-      "id": "SH:seq:310650",
+      "id": "SHYOUTH:e14f796069d603741e53",
       "agency": "SH",
       "agency_group": "SH",
-      "title": "매입2026년 하반기 신혼·신생아 매입임대주택Ⅰ 입주자 모집공고(2026.09.30.)",
+      "title": "2026년 하반기 신혼·신생아 매입임대주택Ⅰ 입주자 모집공고(2026.09.30.)",
       "housing_types": [
         "매입임대"
       ],
@@ -266,9 +266,9 @@
         "매입임대",
         "신혼"
       ],
-      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310650",
-      "source": "서울주거포털",
-      "content_signature": "dd9ead29c64ee6725529905755ab7058b8ec9a7393a6d3a0335c38b39c30bc8f",
+      "url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
+      "source": "청년몽땅 SH 공고목록",
+      "content_signature": "a446939ad2de87844c4ac1cdd392f01326af5963bfe175f9fa29894037fc4793",
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "notice_kind": "recruitment",
       "application_start": "2026-10-13",
@@ -279,9 +279,9 @@
       "application_windows": [],
       "schedule_evidence": {},
       "sh_schedule_version": 1,
-      "route": "/public-housing/notices/sh-310650/",
-      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=310650",
-      "official_link_label": "공식 모집공고 원문 →",
+      "route": "/public-housing/notices/shyouth-e14f796069d603741e53/",
+      "official_url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
+      "official_link_label": "기관 공고목록에서 확인 →",
       "indexable": false
     },
     {
@@ -531,42 +531,6 @@
       "schedule_evidence": {},
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/shyouth-16da04d0f88309079939/",
-      "official_url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
-      "official_link_label": "기관 공고목록에서 확인 →",
-      "indexable": false
-    },
-    {
-      "id": "SHYOUTH:db00fb65694bea420e6b",
-      "agency": "SH",
-      "agency_group": "SH",
-      "title": "2026년 재개발임대주택 일반모집 공고(2026. 9. 9.)",
-      "housing_types": [
-        "공공임대"
-      ],
-      "audiences": [],
-      "region": "서울",
-      "published_at": "2026-09-09",
-      "deadline": "",
-      "open_state": "일정 확인",
-      "event": "신규",
-      "change": "동일",
-      "status_text": "일정 확인 중",
-      "is_gangseo": false,
-      "keywords": [],
-      "url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
-      "source": "청년몽땅 SH 공고목록",
-      "content_signature": "643d6acb777b185c3a3dcc270407fece8b1d4211f69201cd996b09f1bf3a0300",
-      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
-      "notice_kind": "recruitment",
-      "application_start": "",
-      "schedule_type": "unknown",
-      "deadline_precision": "unknown",
-      "schedule_source": "unknown",
-      "schedule_note": "신청기간은 공식 공고문 확인이 필요합니다.",
-      "application_windows": [],
-      "schedule_evidence": {},
-      "sh_schedule_version": 1,
-      "route": "/public-housing/notices/shyouth-db00fb65694bea420e6b/",
       "official_url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
       "official_link_label": "기관 공고목록에서 확인 →",
       "indexable": false
@@ -837,7 +801,7 @@
       "keywords": [],
       "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311349",
       "source": "서울주거포털",
-      "content_signature": "62703c5159d0cf1445027b73324724fd5422e740aef0df80a533d7b6f88c0d15",
+      "content_signature": "b5946bb45bc6dfe17c50ebf810141322c0a0af24be5c75944868dd90a9fd2a93",
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "notice_kind": "recruitment",
       "application_start": "2026-10-26",
@@ -850,7 +814,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311349",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026. 10. 26.(월) ~ 2026.11. 06.(금) 18시까지",
-        "verified_at": "2026-10-16T20:25:51"
+        "verified_at": "2026-10-17T06:10:32"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-06T18:00:00+09:00",
@@ -896,7 +860,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311087",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.08.(목) ~2026.10.22.(목) 15시까지",
-        "verified_at": "2026-10-16T20:25:56"
+        "verified_at": "2026-10-17T06:10:37"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-10-22T15:00:00+09:00",

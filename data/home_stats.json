@@ -1,11 +1,19 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-10-16T21:06:28+09:00",
-  "data_until": "2026-10-15",
+  "generated_at": "2026-10-17T08:08:46+09:00",
+  "data_until": "2026-10-16",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
+    {
+      "dong": "가양동",
+      "name": "강나루2현대",
+      "area_m2": 59,
+      "amount_eok": 12.3,
+      "date": "2026.10.13",
+      "complex_id": "3fd57985"
+    },
     {
       "dong": "화곡동",
       "name": "우장산숲아이파크",
@@ -21,14 +29,6 @@
       "amount_eok": 9.0,
       "date": "2026.10.10",
       "complex_id": "bb607fa3"
-    },
-    {
-      "dong": "등촌동",
-      "name": "등촌7,8단지주공아파트",
-      "area_m2": 42,
-      "amount_eok": 8.2,
-      "date": "2026.10.10",
-      "complex_id": "33e67348"
     }
   ],
   "monthly_trend": [
@@ -50,11 +50,11 @@
     },
     {
       "month": "2026-09",
-      "count": 237
+      "count": 240
     },
     {
       "month": "2026-10",
-      "count": 40
+      "count": 47
     }
   ]
 }
