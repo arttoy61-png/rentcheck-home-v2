@@ -1,0 +1,42 @@
+name: Map migration isolated review
+on:
+  push:
+    branches: ['migrate/redevelopment-home-20261019']
+    paths: ['.github/workflows/map-migration-review.yml']
+permissions:
+  contents: read
+jobs:
+  source-export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: 780ac78c3f45c1e449a641ec5823978991c05132
+          path: home-source
+          persist-credentials: false
+          set-safe-directory: false
+      - uses: actions/checkout@v5
+        with:
+          repository: arttoy61-png/rentcheck-preview
+          ref: c1200eb6c8e0799ae0a664bf74569539d3c5d557
+          path: map-source
+          persist-credentials: false
+          set-safe-directory: false
+      - name: Export tracked public source only (no credentials or external data collection)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/map-source-bundle"
+          git -C home-source status --porcelain
+          git -C map-source status --porcelain
+          git -C home-source archive --format=tar HEAD > "$RUNNER_TEMP/map-source-bundle/home.tar"
+          git -C map-source archive --format=tar HEAD > "$RUNNER_TEMP/map-source-bundle/preview.tar"
+          printf 'HOME %s\nMAP %s\n' "$(git -C home-source rev-parse HEAD)" "$(git -C map-source rev-parse HEAD)" > "$RUNNER_TEMP/map-source-bundle/revisions.txt"
+          sha256sum "$RUNNER_TEMP/map-source-bundle/"*.tar
+      - uses: actions/upload-artifact@v4
+        with:
+          name: map-migration-source-bundle
+          path: ${{ runner.temp }}/map-source-bundle/
+          retention-days: 3
+          if-no-files-found: error
