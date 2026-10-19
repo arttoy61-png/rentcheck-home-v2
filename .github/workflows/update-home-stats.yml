@@ -205,10 +205,19 @@ jobs:
           elif new not in text:
               raise SystemExit('home_stats fetch URL not found in app.js')
           PY
-      - name: Import redevelopment feed directly from existing public source
+      - name: Copy final redevelopment files published by private engine
         id: redevelopment
         continue-on-error: true
-        run: python scripts/redevelopment/import_isolated_feed.py --map-dir redevelopment/data
+        run: |
+          set -euo pipefail
+          stage=$(mktemp -d)
+          trap 'rm -rf "$stage"' EXIT
+          sha=$(git ls-remote https://github.com/arttoy61-png/rent-check.git refs/heads/redevelopment-map-state | cut -f1)
+          [[ "$sha" =~ ^[a-f0-9]{40}$ ]]
+          for name in redevelopment-nearby-seoul.json redevelopment-nearby-status.json; do
+            curl --fail --silent --show-error --retry 3 "https://raw.githubusercontent.com/arttoy61-png/rent-check/$sha/feed/$name" -o "$stage/$name"
+          done
+          cp "$stage/"*.json redevelopment/data/
       - name: Report preserved redevelopment data on upstream failure
         if: steps.redevelopment.outcome == 'failure'
         run: echo "::warning::Redevelopment upstream/import is not current. Previous good map retained; see redevelopment/data/redevelopment-nearby-status.json."
