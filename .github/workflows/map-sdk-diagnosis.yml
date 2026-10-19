@@ -1,0 +1,61 @@
+name: HOME map SDK response diagnosis
+on:
+  push:
+    branches: ['migrate/redevelopment-home-20261019']
+    paths: ['.github/workflows/map-sdk-diagnosis.yml']
+permissions:
+  contents: read
+jobs:
+  read-only-sdk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Install browser
+        run: pip install playwright && python -m playwright install --with-deps chromium
+      - name: Observe one HOME map load, no credentials or domain configuration changes
+        run: |
+          mkdir -p evidence
+          python - <<'PY'
+          import json,re
+          from pathlib import Path
+          from urllib.parse import urlsplit
+          from playwright.sync_api import sync_playwright
+          report={'requests':[],'request_failures':[],'new_geocoding_requests':0,'analytics':'blocked'}
+          def sanitized(value):
+              value=re.sub(r'https?://[^\s"<>]+',lambda m:m[0].split('?')[0],str(value))
+              return re.sub(r'\b[a-fA-F0-9]{32,64}\b','[redacted-key-or-hash]',value)[:1500]
+          with sync_playwright() as p:
+              b=p.chromium.launch();c=b.new_context()
+              def route(r):
+                  u=r.request.url
+                  if any(x in u for x in ['rentcheck-preview','google-analytics.com','googletagmanager.com','analytics.google.com','wcs.pstatic.net','/v2/local/','apis.data.go.kr']):
+                      if '/v2/local/' in u:report['new_geocoding_requests']+=1
+                      r.abort();return
+                  r.continue_()
+              c.route('**/*',route);page=c.new_page()
+              def response(r):
+                  if urlsplit(r.url).netloc!='dapi.kakao.com':return
+                  row={'path':urlsplit(r.url).path,'status':r.status}
+                  if r.status>=400:
+                      try:row['error_body']=sanitized(r.text())
+                      except Exception:row['error_body']='body unavailable'
+                  report['requests'].append(row)
+              page.on('response',response)
+              page.on('requestfailed',lambda r:report['request_failures'].append({'path':urlsplit(r.url).path,'error':sanitized(r.failure)}) if urlsplit(r.url).netloc=='dapi.kakao.com' else None)
+              page.goto('https://rent-check.kr/redevelopment/',wait_until='domcontentloaded',timeout=60000);page.wait_for_timeout(10000)
+              report['kakao_connected']=page.evaluate('Boolean(window.RentKakaoSession?.isActive?.())')
+              report['status_text']=page.locator('#kakaoConnectionStatus').inner_text()
+              report['list_count']=page.locator('.site-card').count()
+              page.screenshot(path='evidence/home-sdk.png',full_page=True)
+              c.close();b.close()
+          Path('evidence/result.json').write_text(json.dumps(report,ensure_ascii=False,indent=2));print(json.dumps(report,ensure_ascii=False))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: home-map-sdk-diagnosis
+          path: evidence/
+          retention-days: 3
