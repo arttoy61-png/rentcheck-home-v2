@@ -13,3 +13,25 @@
 @media(max-width:680px){.guide-quicknav>div,.guide-filter-bar{display:grid;grid-template-columns:1fr 1fr}.guide-quicknav a,.guide-filter-bar button{width:100%}.guide-more a,.guide-more button{width:100%}}
 
 .guide-more button{font:inherit;font-weight:800;background:#fff;cursor:pointer}.guide-more button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+
+/* Mobile reading scale: presentation only; desktop and calculations stay unchanged. */
+@media(max-width:680px){
+  .guide-card p{font-size:15px;line-height:1.75}
+  .article .summary-card small,.article .source-note{font-size:14px;line-height:1.75;color:#596273}
+  .article .method-box{font-size:14px;line-height:1.75}
+  .guide-index .analysis-copy p{font-size:15px!important;line-height:1.75}
+}
+
+@media(max-width:680px){
+  .article :is(.table-wrap table,.table-scroll table,.rank-table){font-size:14px;line-height:1.65}
+  .article :is(.flow span,.data-status,.summary-card span,.summary-card em,.compare-card small,.compare-card span,.hbar small,.note-box,.chart-note,.bar-label,.bar-value,.bar-month,.error-box){font-size:14px;line-height:1.75}
+  .article :is(.chart-card>p,.chart-head p){font-size:14px!important;line-height:1.75}
+  .article .hbar-label :is(b,span){font-size:14px;white-space:normal}
+  .article .hbar-label{flex-wrap:wrap;gap:4px 12px}
+  .article .bars{width:max-content;min-width:100%;padding-top:40px;padding-bottom:36px}
+  .article .bars .bar-item{width:56px;min-width:56px}
+  .article .bars .bar-value{top:-28px}
+  .article .evidence-figure figcaption,.article .reference-note{font-size:14px!important;line-height:1.75}
+  .article .notice{font-size:14px!important;line-height:1.75}
+  .guide-index :is(.analysis-meta small,.analysis-copy small,.analysis-meta b){font-size:14px;line-height:1.65}
+}

@@ -10,3 +10,57 @@ body[data-tool-id="apartment"]>.wrap{width:min(calc(100% - 32px),760px)}body[dat
 @media(max-width:520px){body[data-tool-id="redevelopment"] .tabs button{padding-inline:5px;font-size:13px}body[data-tool-id="rent-check"] .stat-grid{grid-template-columns:1fr}body[data-tool-id="rent-check"] .stat{padding:12px}body[data-tool-id="apartment"] .ac .grid{grid-template-columns:repeat(2,1fr)}body.v2-tool-page .v2-tool-notes{font-size:11px}}
 /* Youth-score result: current calculated score stays separate from the old 2021 SH benchmark. */
 body[data-tool-id="youth-score"] .mjudge{font-size:0!important;line-height:1.55!important}body[data-tool-id="youth-score"] .mjudge::after{content:"과거 자료 비교 · 2021 SH 기준";font-size:15px;font-weight:800;color:#fff}body[data-tool-id="youth-score"] .mdesc{font-size:0!important;line-height:1.65!important}body[data-tool-id="youth-score"] .mdesc::after{content:"현재 회차의 당첨 가능성을 뜻하지 않습니다. 2021년 SH 청년매입임대 공개 커트라인과 단순 비교한 참고 표시입니다.";font-size:12.5px;color:rgba(255,255,255,.92)}
+/* Mobile reading scale: presentation only; desktop and calculations stay unchanged. */
+@media(max-width:680px){
+  body.v2-tool-page :is(.field label,.label,.sub-label,.seg button,.step-label){font-size:14px;line-height:1.65}
+  body.v2-tool-page :is(.note,.basis p,.notice,.basis-box,.method-note,.source-note,.hint,.field .hint,.field .unit,.stat span,.stat .label,.stat .small){font-size:14px;line-height:1.75}
+  body.v2-tool-page :is(.calculate,.calc-btn,.btn-primary){font-size:16px;min-height:48px}
+  body.v2-tool-page .seg button{min-height:44px}
+  body[data-tool-id="neighborhood-price"] :is(.answer-sub,.trend,.mini .k,.sum .k,.meta,.date,.status,.result-head p,.section-title p,.quick p){font-size:14px;line-height:1.65}
+  body[data-tool-id="neighborhood-price"] :is(.mini .v,.sum .v){font-size:16px;line-height:1.5}
+  body[data-tool-id="neighborhood-price"] .deal{font-size:14px;line-height:1.65;grid-template-columns:84px minmax(0,1fr)}
+  body[data-tool-id="neighborhood-price"] .nm{font-size:16px;white-space:normal;overflow-wrap:anywhere}
+  body[data-tool-id="neighborhood-price"] .amt{grid-column:2;font-size:18px;white-space:normal;overflow-wrap:anywhere}
+  body[data-tool-id="neighborhood-price"] .badge{font-size:13px}
+  body[data-tool-id="neighborhood-price"] :is(.sort-row button,.reset-btn,.search-btn){font-size:14px;min-height:44px}
+  body[data-tool-id="rent-check"] :is(.apt-card .apt-name,.nearby-place b){font-size:16px;line-height:1.5;white-space:normal;overflow-wrap:anywhere}
+  body[data-tool-id="rent-check"] :is(.apt-card .apt-info,.nearby-summary,.nearby-address-status,.nearby-note,.nearby-table small,.nearby-distance,.nearby-area){font-size:14px;line-height:1.65;white-space:normal}
+  body[data-tool-id="rent-check"] .nearby-address-block label{font-size:14px}
+  body[data-tool-id="rent-check"] :is(.nearby-table,.deals-table){font-size:14px;line-height:1.65}
+  body[data-tool-id="rent-check"] :is(.nearby-table th,.deals-table th){font-size:13px;white-space:normal}
+  body[data-tool-id="rent-check"] .nearby-price{font-size:16px;line-height:1.55;overflow-wrap:anywhere}
+  body[data-tool-id="rent-check"] .nearby-table :is(th,td):nth-child(1){width:38%}
+  body[data-tool-id="rent-check"] .nearby-table :is(th,td):nth-child(2){width:14%}
+  body[data-tool-id="rent-check"] .nearby-table :is(th,td):nth-child(3){width:16%}
+  body[data-tool-id="rent-check"] .nearby-table :is(th,td):nth-child(4){width:32%}
+  body[data-tool-id="youth-score"] :is(.rank label .rt,.chk .ct,.step-t){font-size:16px;line-height:1.55}
+  body[data-tool-id="youth-score"] :is(.rank label .rd,.chk .cd,.rank-warn,.help-box,.help-btn,.info3,.sub-note,.m-warn,.m-note,.rescred,.payq label){font-size:14px;line-height:1.75}
+  body[data-tool-id="youth-score"] .sticky{padding-bottom:calc(12px + env(safe-area-inset-bottom))}
+  body[data-tool-id="youth-score"]{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
+  body[data-tool-id="youth-score"] .sticky button{min-height:44px;font-size:16px}
+  body[data-tool-id="apartment"] :is(.ac .meta,.ac .last .d,.ac .g .k,.rcline,.dc .st,.det .meta,.note,.kv){font-size:14px;line-height:1.65}
+  body[data-tool-id="apartment"] :is(.ac .nm,.dc .nm,.ac .g .v){font-size:16px;line-height:1.5}
+  body[data-tool-id="apartment"] :is(.rcamt,.ac .last b){font-size:18px}
+  body[data-tool-id="apartment"] table.deals{font-size:14px;line-height:1.65}
+  body[data-tool-id="apartment"] table.deals th{font-size:13px;white-space:normal}
+  body[data-tool-id="apartment"] table.deals td.dt{font-size:14px;white-space:normal;overflow-wrap:anywhere}
+  body[data-tool-id="apartment"] :is(.sortbtn,.bands button,.tabs button){font-size:14px;min-height:44px}
+  body[data-tool-id="apartment"] .detpad{padding-bottom:calc(78px + env(safe-area-inset-bottom))}
+}
+
+@media(max-width:680px){
+  body.v2-tool-page :is(.input span,.input-wrap span,.main small,.result-main small,.result-main p,.check,.review,.priority-note,.final-check,.reason p,.summary p,.question>label,.office-check p,.housing-check p,.office-facility small,.mixed-area small,.taxdesc,.optional,.warning,.detail .row){font-size:14px;line-height:1.75}
+  body[data-tool-id="tenant-message"] :is(.lead,.role-tabs small,.situations button,.resulthead span,.tip,.quick strong,.quick p,.source,.search-note){font-size:14px;line-height:1.75}
+  body[data-tool-id="tenant-message"] .situations button{min-height:44px}
+  body[data-tool-id="calculator-notice"] .card p{font-size:15px;line-height:1.8}
+  body[data-tool-id="rent-yield"] :is(.advanced-toggle,.taxedit button){font-size:14px;min-height:44px}
+  body.apartment-detail-page :is(.hero-updated,.hero-detail-meta,.answer .k,.card .k,.card .s,.mix .it span,.insight,.trend,.cmp .sub,.cmp .amt small,.cmp .go,.warn,.note,.source-notes){font-size:14px;line-height:1.75}
+  body.apartment-detail-page :is(.cmp .nm,.cmp .amt){font-size:16px;line-height:1.55;white-space:normal}
+  body.apartment-detail-page .cmp{flex-wrap:wrap}
+}
+@media(max-width:680px){
+  body.v2-tool-page :is([style*="font-size:11px"],[style*="font-size:11.5px"],[style*="font-size:12px"],[style*="font-size:13px"]){font-size:14px!important;line-height:1.75!important}
+  body[data-tool-id="apartment"] .card [style*="color:#98a4b1"]{color:#596273!important}
+  body.v2-tool-page .v2-content-guide :is(.v2-content-guide__lead,li,.v2-content-guide__box,.v2-content-guide__faq summary,.v2-content-guide__faq p){font-size:15px;line-height:1.8}
+  body.v2-tool-page .v2-content-guide :is(.v2-content-guide__source,.v2-content-guide__eyebrow){font-size:13px;line-height:1.7}
+}

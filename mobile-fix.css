@@ -218,3 +218,16 @@
   .product-ui{z-index:4!important}
   .product-link{z-index:5;pointer-events:auto!important;-webkit-tap-highlight-color:rgba(21,101,192,.16)}
 }
+
+/* Mobile reading scale: presentation only; desktop and calculations stay unchanged. */
+@media (max-width: 768px){
+  .service-item,.service-item:nth-child(5){height:auto;min-height:88px}
+  .service-copy strong{font-size:16px;line-height:1.5}
+  .service-copy small,.service-item:nth-child(5) .service-copy small::after{font-size:14px;line-height:1.65}
+}
+@media (max-width: 520px){
+  .calculator-card{height:auto;min-height:232px}
+  .calculator-card p{font-size:15px;line-height:1.65;-webkit-line-clamp:unset;display:block}
+  .article-row-copy strong{font-size:16px;line-height:1.55}
+  .article-row-copy small,.search-quick-copy small{font-size:14px;line-height:1.65}
+}

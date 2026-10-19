@@ -63,3 +63,12 @@ body{margin:0;background:#fff;color:#172033;line-height:1.65}
   .housing-detail article>.section:nth-of-type(2) .tbl td:nth-child(1)::before{content:"순위"}.housing-detail article>.section:nth-of-type(2) .tbl td:nth-child(2)::before{content:"접수일"}.housing-detail article>.section:nth-of-type(2) .tbl td:nth-child(3)::before{content:"시간"}.housing-detail article>.section:nth-of-type(2) .tbl td:nth-child(4)::before{content:"다음 확인"}
   .housing-detail article>.section:nth-of-type(3) .tbl td:nth-child(1)::before{content:"자치구"}.housing-detail article>.section:nth-of-type(3) .tbl td:nth-child(2)::before{content:"공급 단지·지구"}.housing-detail article>.section:nth-of-type(3) .tbl td:nth-child(3)::before{content:"전용면적"}
 }
+
+/* Mobile reading scale: presentation only; desktop and calculations stay unchanged. */
+@media(max-width:680px){
+  .housing-card span{font-size:15px;line-height:1.75}
+  .housing-tags span,.housing-stat span,.housing-detail .card span,.housing-detail .note,.housing-detail .small{font-size:14px;line-height:1.75;color:#596273}
+  .housing-detail .notice{font-size:14px!important;line-height:1.75}
+  .housing-detail article>.section:nth-of-type(2) .tbl td::before,.housing-detail article>.section:nth-of-type(3) .tbl td::before{font-size:13px}
+  .housing-links a{min-height:44px;font-size:14px;line-height:1.65;padding-top:8px;padding-bottom:8px}
+}

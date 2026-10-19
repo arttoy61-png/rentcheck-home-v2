@@ -112,3 +112,31 @@ body.redevelopment-route .project-link-row a{flex:0 1 auto;display:inline-flex;a
 body.redevelopment-route .selected-project-actions{gap:6px 10px}
 body.redevelopment-route .selected-project-actions .action{flex:0 1 auto;display:inline-flex;align-items:center;justify-content:center;min-width:0;min-height:36px;margin:0;padding:6px 8px;text-align:left}
 body.redevelopment-route .source-unavailable{padding:8px 0;color:#52657b;background:none;border:0;font-weight:400}
+
+
+/* Reserve a separate mobile footer band: the fixed map button never covers
+   the scrollport. No DOM moves, map events, or desktop layout changes. */
+@media(max-width:700px){
+ body.redevelopment-route #mapPage .workspace.has-detail .detailpane:has(#detailBody [data-project-map]){
+  display:flex!important;flex-direction:column!important;box-sizing:border-box;
+  padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))!important;background:#fff
+ }
+ body.redevelopment-route #mapPage .workspace.has-detail .detailpane #detailBody{
+  flex:1 1 0!important;min-height:0!important;overflow-y:auto!important
+ }
+ body.redevelopment-route #mapPage .workspace.has-detail .detailpane #detailBody:has([data-project-map]){
+  padding-bottom:24px!important;scroll-padding-bottom:24px
+ }
+ body.redevelopment-route #mapPage .workspace.has-detail .detailpane #detailBody [data-project-map]{
+  height:52px!important;min-height:52px!important;max-height:52px!important;
+  margin:0!important;padding:10px 14px!important;line-height:1.5!important;
+  box-shadow:none!important;white-space:nowrap!important;font-size:16px!important
+ }
+ body.redevelopment-route .redevelopment-shell{height:auto;min-height:48px;flex-basis:auto;padding:6px 12px}
+ body.redevelopment-route .redevelopment-home-link{font-size:14px;min-height:44px;display:inline-flex;align-items:center}
+ body.redevelopment-route .redevelopment-shell-actions button{font-size:14px;min-height:44px;padding:8px}
+ body.redevelopment-route .redevelopment-detail-region select{font-size:16px;min-height:44px}
+ body.redevelopment-route .redevelopment-detail-region button{font-size:14px;min-height:44px}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .project-link-row a,
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .selected-project-actions .action{font-size:14px;min-height:44px;line-height:1.65}
+}

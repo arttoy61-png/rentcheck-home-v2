@@ -19,3 +19,31 @@
 .nearby-more summary{padding:8px 0;cursor:pointer;font-size:12px;font-weight:700;color:#14568a;line-height:1.6}
 .nearby-sources{line-height:1.7;font-size:12px;margin-top:14px}
 .nearby-sources a{color:#14568a;text-decoration:underline}
+
+
+/* Mobile-only summary; desktop retains the original coverage paragraph. */
+.nearby-coverage-mobile{display:none}
+@media(max-width:700px){
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-filters label{font-size:14px;line-height:1.65;color:#475569}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-filters select{font-size:16px;min-height:46px;padding:8px 10px;line-height:1.5}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-count{font-size:15px;line-height:1.65}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-count span{font-size:14px;color:#475569}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-complex{padding:14px;margin:14px 0}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-complex h4{font-size:16px;line-height:1.65}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-complex h4 small{font-size:14px;line-height:1.65;color:#52677d}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-complex>p{font-size:14px;line-height:1.65;color:#475569;margin:6px 0 10px}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-sale{display:grid;grid-template-columns:minmax(0,1fr);gap:5px;padding:12px 0;line-height:1.65}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-sale time,
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-sale span{font-size:14px;line-height:1.65;color:#475569}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-sale strong{font-size:17px;line-height:1.65;margin-left:0;color:#132b4c}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-more summary,
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-sources summary,
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-coverage-mobile summary{font-size:14px;line-height:1.65;min-height:44px;padding:10px 0;cursor:pointer}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-sources,
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-sources p{font-size:14px;line-height:1.7;color:#475569}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-transactions .coverage,
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-update{font-size:14px;line-height:1.7;color:#475569;margin-left:0;margin-right:0}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-coverage-desktop{display:none}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-coverage-mobile{display:block;padding:12px 14px;background:#fff7e7;border-left:3px solid #bf841b;color:#554121;font-size:14px;line-height:1.7}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .nearby-coverage-mobile p{font-size:14px;line-height:1.7;margin:0;color:inherit}
+}

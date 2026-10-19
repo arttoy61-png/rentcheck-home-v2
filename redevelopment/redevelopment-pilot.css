@@ -75,3 +75,27 @@
 #mapPage .workspace[data-topic=redevelopment] .design-filterbar .redevelopment-home{grid-column:2;grid-row:1}
 #mapPage .workspace[data-topic=redevelopment] .design-filterbar select{min-width:0!important;max-width:100%!important;width:100%;text-overflow:ellipsis}
 @media(max-width:700px){#mapPage:has(.workspace[data-topic=redevelopment].has-detail)>.design-filterbar{display:none!important}#mapPage:has(.workspace[data-topic=redevelopment]) .design-filterbar .filter-chip-scroll{padding-right:60px!important;box-sizing:border-box}#mapPage:has(.workspace[data-topic=redevelopment]) .filter-chip-scroll #designDistrict{grid-column:1!important;width:100%!important}.redevelopment-home{grid-column:2;grid-row:1}}
+
+
+/* Redevelopment mobile reading sizes; do not alter desktop typography. */
+@media(max-width:700px){
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .project-address,
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .selected-project-address{font-size:14px!important;line-height:1.65;color:#475569}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .selected-boundary-state,
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .project-stage-banner small,
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .project-stage-banner a{font-size:14px;line-height:1.65}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .project-stage-banner .stage-date,
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .project-stage-banner .stage-meaning{font-size:15px;line-height:1.65}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .progress-label,
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .pilot-track b{font-size:14px;line-height:1.65}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .purchase-question p,
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .purchase-question details,
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .stage-verification,
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .progress-source,
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .question-sources,
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .coverage{font-size:14px!important;line-height:1.7}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .purchase-question h4{font-size:16px;line-height:1.65}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .purchase-question summary,
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .stage-verification summary,
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .progress-source summary{min-height:44px;padding:10px 0}
+}
