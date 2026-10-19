@@ -101,7 +101,7 @@ jobs:
           tools = json.loads(Path('data/tools.json').read_text(encoding='utf-8'))
           count = sum(1 for tool in tools if tool.get('status') == 'available' and isinstance(tool.get('url'), str) and tool['url'].strip() and tool.get('id') not in hidden)
           home_path = Path('index.html')
-          home = home_path.read_text(encoding='utf-8')) if False else home_path.read_text(encoding='utf-8')
+          home = home_path.read_text(encoding='utf-8')
           home, changed = re.subn(r'(<strong id="availableToolCount">)\d+(</strong>)', rf'\g<1>{count}\g<2>', home, count=1)
           if changed != 1: raise SystemExit('availableToolCount marker not found in index.html')
           home_path.write_text(home, encoding='utf-8')
