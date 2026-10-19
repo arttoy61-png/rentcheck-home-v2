@@ -1,0 +1,21 @@
+/* Scoped to the redevelopment card; local snapshot review only. */
+.nearby-transactions{min-width:0;max-width:100%;overflow-wrap:anywhere}
+.nearby-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}
+.nearby-filters label:last-child{grid-column:1 / -1}
+.nearby-filters label{display:flex;min-width:0;flex-direction:column;gap:5px;font-size:12px;font-weight:700;color:#41546b}
+.nearby-filters select{box-sizing:border-box;min-width:0;width:100%;min-height:38px;padding:6px;border:1px solid #bac9d8;border-radius:7px;background:#fff;color:#132b4c;font:inherit;font-size:13px}
+.nearby-filters select:focus-visible,.nearby-more summary:focus-visible{outline:3px solid #0b77c5;outline-offset:2px}
+.nearby-count{display:grid;gap:5px;margin:12px 0;font-size:13px;line-height:1.6}
+.nearby-count span{color:#52677d;font-size:12px}
+.nearby-coverage-note{padding:11px 12px;background:#fff7e7;border-left:3px solid #bf841b;color:#554121;font-size:12px;line-height:1.7}
+.nearby-complex{min-width:0;border-top:1px solid #dce5ed;padding-top:12px;margin-top:14px}
+.nearby-complex h4{line-height:1.65;margin:0 0 5px}
+.nearby-complex h4 small{display:inline-block;color:#52677d;font-weight:500}
+.nearby-complex>p{font-size:12px;line-height:1.7}
+.nearby-sale{display:grid;gap:4px;min-width:0;padding:10px 0;border-bottom:1px solid #edf1f5;line-height:1.6}
+.nearby-sale time,.nearby-sale span{font-size:12px;color:#52677d}
+.nearby-sale strong{font-size:14px;color:#132b4c;overflow-wrap:anywhere}
+.nearby-more{margin:8px 0}
+.nearby-more summary{padding:8px 0;cursor:pointer;font-size:12px;font-weight:700;color:#14568a;line-height:1.6}
+.nearby-sources{line-height:1.7;font-size:12px;margin-top:14px}
+.nearby-sources a{color:#14568a;text-decoration:underline}

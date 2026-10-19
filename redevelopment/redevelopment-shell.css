@@ -1,0 +1,114 @@
+/* Only the redevelopment route. Keep host navigation/data modules unchanged. */
+body.redevelopment-route #mapPage #designDistrict,body.redevelopment-route #mapPage #detailDistrict{appearance:none!important;-webkit-appearance:none!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2324476d' d='M0 0h12L6 8z'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 12px center!important;background-size:10px 7px!important;padding-right:32px!important}
+.redevelopment-shell[hidden]{display:none!important}
+body.redevelopment-route>header{display:none!important}
+body.redevelopment-route .redevelopment-shell{display:flex;align-items:center;gap:10px;flex:0 0 42px;height:42px;padding:0 14px;background:#132b4c;color:#fff;box-sizing:border-box;z-index:80}
+body.redevelopment-route .redevelopment-shell h1{font-size:16px;margin:0;line-height:1.3;flex:1;white-space:nowrap}
+body.redevelopment-route .redevelopment-home-link{color:#d6e7ff;text-decoration:none;font-size:12px;white-space:nowrap}
+body.redevelopment-route .redevelopment-shell-actions{display:flex;gap:5px}
+body.redevelopment-route .redevelopment-shell-actions button{padding:5px 8px;min-height:30px;color:#fff;background:#ffffff14;border:1px solid #ffffff26;border-radius:7px;font-size:12px;white-space:nowrap}
+body.redevelopment-route #mapPage>.tabs{display:none!important}
+body.redevelopment-route #mapPage:not([hidden]){display:flex;flex-direction:column;flex:1;min-height:0;margin:0!important;padding:0!important;overflow:hidden}
+body.redevelopment-route :is(#detailBody,#results) .pilot-track li::before,body.redevelopment-route :is(#detailBody,#results) .pilot-track li::after{content:none!important;display:none!important}
+body.redevelopment-route :is(#detailBody,#results) .pilot-track li{display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;border-radius:0;padding:8px 3px;position:relative;min-height:0}
+body.redevelopment-route :is(#detailBody,#results) .progress-node{display:block;flex:0 0 10px;width:10px;height:10px;border-radius:50%;background:#d5dde8;box-shadow:0 0 0 3px #f4f7fb}
+body.redevelopment-route :is(#detailBody,#results) .pilot-track li[aria-current=step]{background:none;color:#175ccc;border:0;font-weight:750}
+body.redevelopment-route :is(#detailBody,#results) .pilot-track li[aria-current=step] .progress-node{background:#175ccc;box-shadow:0 0 0 3px #d9e8ff}
+body.redevelopment-route :is(#detailBody,#results) .progress-label{font-size:12px;line-height:1.5;text-align:center}
+body.redevelopment-route :is(#detailBody,#results) .pilot-track b{font-size:10px;margin-top:2px}
+body.redevelopment-route :is(#detailBody,#results) .project-stage-banner{padding:17px 16px;margin:14px 0 8px}
+body.redevelopment-route :is(#detailBody,#results) .project-stage-banner .stage-meaning{font-size:13px;margin:10px 0 0;line-height:1.65}
+body.redevelopment-route :is(#detailBody,#results) .project-stage-banner small{margin-top:8px;font-size:11px}
+body.redevelopment-route .stage-verification,body.redevelopment-route .progress-source,body.redevelopment-route .question-sources{font-size:12px;color:#52657b;margin:8px 0}
+body.redevelopment-route .stage-verification summary,body.redevelopment-route .progress-source summary,body.redevelopment-route .question-sources summary{cursor:pointer;padding:6px 0}
+body.redevelopment-route .stage-verification a,body.redevelopment-route .progress-source a,body.redevelopment-route .question-sources a{font-size:12px}
+body.redevelopment-route :is(#detailBody,#results) .purchase-question{padding:12px;margin:8px 0}
+body.redevelopment-route .question-heading{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;justify-content:space-between}
+body.redevelopment-route :is(#detailBody,#results) .question-heading h4{font-size:14px;margin:0}
+body.redevelopment-route .question-heading .check-needed{font-size:10px;border-radius:5px;background:#e8eff8;padding:2px 5px}
+body.redevelopment-route :is(#detailBody,#results) .purchase-question p{font-size:12px;line-height:1.65;margin:6px 0}
+body.redevelopment-route .purchase-question details{font-size:11px;color:#51657d}
+body.redevelopment-route .purchase-question summary{cursor:pointer;padding:4px 0}
+@media(min-width:701px){body.redevelopment-route #redevelopmentView{display:none}}
+@media(max-width:700px){
+ body.redevelopment-route{padding-bottom:0!important;height:100dvh;max-height:100dvh;overflow:hidden}
+ body.redevelopment-route #mapPage #designFilters{height:auto!important;min-height:0!important;flex:0 0 auto!important;padding:7px 10px!important;position:relative!important;inset:auto!important;z-index:20}
+ body.redevelopment-route #mapPage #designFilters .filter-chip-scroll{display:grid!important;grid-template-columns:minmax(0,1fr) 94px!important;grid-auto-rows:38px!important;gap:6px!important;padding-right:44px!important;box-sizing:border-box}
+ body.redevelopment-route #mapPage #designFilters .filter-chip-scroll>select:not(#designDistrict){display:none!important}
+ body.redevelopment-route #mapPage #designFilters #designDistrict{display:block!important;width:100%!important;min-height:38px!important;height:38px!important;font-size:14px!important;grid-column:1!important;grid-row:1!important;padding:5px 24px 5px 9px!important}
+ body.redevelopment-route #mapPage #designFilters .redevelopment-home{min-width:0!important;width:94px!important;height:38px!important;min-height:38px!important;padding:5px 6px!important;font-size:12px!important;grid-column:2;grid-row:1}
+ body.redevelopment-route #mapPage #designFilters>button{top:7px!important;right:10px!important;width:38px!important;height:38px!important;min-height:38px!important;flex-basis:38px!important}
+ body.redevelopment-route #mapPage .workspace{flex:1!important;min-height:0!important;margin-top:0!important}
+ body.redevelopment-route #mapPage .listpane>.sheet-handle,body.redevelopment-route #mapPage .listtop,body.redevelopment-route #mapPage #sheetHint{display:none!important}
+ body.redevelopment-route #mapPage .workspace:not(.mapexpanded):not(.has-detail) .listpane{display:none!important}
+ body.redevelopment-route #mapPage .workspace.mapexpanded .listpane{inset:0!important;height:100%!important;max-height:100%!important;display:flex!important;flex-direction:column;overflow:hidden!important}
+ body.redevelopment-route #mapPage .workspace.mapexpanded #subnav{height:40px!important;min-height:40px!important;margin:0!important;flex-shrink:0}
+ body.redevelopment-route #mapPage #subnav button{flex-direction:row!important;min-height:40px!important;height:40px!important;font-size:12px!important;padding:5px 2px!important;gap:0!important}
+ body.redevelopment-route #mapPage #subnav button::before{content:none!important;display:none!important}
+ body.redevelopment-route #mapPage .listhead{min-height:32px;height:auto;padding:5px 12px;gap:6px;flex-shrink:0;font-size:12px}
+ body.redevelopment-route #mapPage #resultTitle{font-size:12px;min-width:0}
+ body.redevelopment-route #mapPage #count{font-size:11px;min-width:0;line-height:1.4}
+ body.redevelopment-route #mapPage #context{max-height:40%;min-height:0;overflow:auto;flex-shrink:1}
+ body.redevelopment-route #mapPage .workspace.mapexpanded #results{flex:1!important;min-height:0!important;max-height:none!important;overflow:auto!important;overscroll-behavior:contain;padding:10px 12px 20px!important;-webkit-overflow-scrolling:touch}
+ body.redevelopment-route #mapPage .detailpane{height:100%!important;max-height:100%!important;inset:0!important;overflow:hidden}
+ body.redevelopment-route #mapPage :is(#detailBody,#results){min-height:0;overflow:auto;overscroll-behavior:contain;padding:16px!important;-webkit-overflow-scrolling:touch}
+ body.redevelopment-route #mapPage .detailtop{flex-shrink:0}
+}
+
+body.redevelopment-route #mapPage #designFilters #designDistrict{padding-right:32px!important}
+
+/* Desktop redevelopment controls: two full-width filter rows, no split title. */
+@media(min-width:701px){
+ body.redevelopment-route{--ui-panel:400px}
+ body.redevelopment-route #mapPage .listtop{height:52px!important;min-height:52px!important;padding:12px 18px!important}
+ body.redevelopment-route #mapPage .listtop h1{font-size:20px}
+ body.redevelopment-route #mapPage #designFilters{padding:8px 16px!important;min-height:0!important;height:auto!important}
+ body.redevelopment-route #mapPage #designFilters .filter-chip-scroll{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:8px!important;padding:0!important;overflow:visible!important}
+ body.redevelopment-route #mapPage #designFilters select{width:100%!important;max-width:none!important;min-width:0!important;min-height:40px!important;height:40px!important;font-size:13px!important}
+ body.redevelopment-route #mapPage #designFilters .redevelopment-home{min-width:0;width:100%;min-height:40px;height:40px}
+ body.redevelopment-route #mapPage #designFilters>button{display:none!important}
+ body.redevelopment-route #mapPage #results{padding:10px 16px 20px!important}
+ body.redevelopment-route #mapPage .site-card{padding:12px 14px;margin-bottom:10px}
+ body.redevelopment-route #mapPage .site-copy h3{font-size:17px;line-height:1.45;margin:5px 0 6px}
+ body.redevelopment-route #mapPage :is(#detailBody,#results){font-size:14px;line-height:1.65;padding:16px}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) h2{font-size:21px}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) h3{font-size:16px;margin-top:18px}
+ body.redevelopment-route #mapPage :is(#detailBody,#results) .project-stage-banner strong{font-size:27px}
+}
+@media(min-width:701px) and (max-width:1000px){body.redevelopment-route{--ui-panel:340px}}
+body.redevelopment-route .closed-badge{color:#74532b;background:#fff2dc}
+body.redevelopment-route .closed-project{border-color:#dfd2bd}
+body.redevelopment-route .project-brand{font-size:13px;color:#425d7c}
+body.redevelopment-route .site-pin[aria-label^="[종료]"] span::before{content:'종료 · ';color:#ffe1a3}
+
+body.redevelopment-route .project-link-row{display:flex;flex-wrap:wrap;margin-bottom:8px}body.redevelopment-route .project-link-row a{font-size:12px;min-height:36px;padding:6px 10px}body.redevelopment-route .boundary-state{border:1px solid #d8e3ef;background:#f4f8fd;border-radius:8px;padding:9px 11px;margin-bottom:14px;font-size:12px;line-height:1.6;overflow-wrap:anywhere}body.redevelopment-route .boundary-state p{margin:0}body.redevelopment-route .boundary-state[data-boundary-state=failed]{background:#fff5e8;border-color:#e4c89f}
+
+body.redevelopment-route .selected-project-scope{padding:12px;border:1px solid #9cbce8;border-radius:10px;background:#f2f7ff;margin:0 0 12px;overflow-wrap:anywhere}body.redevelopment-route .selected-project-scope h2{font-size:18px;line-height:1.5;margin:6px 0}body.redevelopment-route .selected-project-scope small,body.redevelopment-route .selected-project-scope p{font-size:12px;margin:5px 0}
+
+body.redevelopment-route .selected-project-scope{padding:0 0 10px;border:0;border-bottom:1px solid #dce5ef;border-radius:0;background:none;margin:0 0 8px}
+body.redevelopment-route .selected-project-scope h2{font-size:18px;line-height:1.45;margin:5px 0 8px}
+body.redevelopment-route .selected-project-scope .project-stage-banner{margin:0 0 6px;padding:12px 14px;border-radius:10px}
+body.redevelopment-route .selected-project-scope .project-stage-banner>strong{font-size:26px;margin:4px 0;line-height:1.3}
+body.redevelopment-route .selected-project-scope .project-stage-banner .stage-date{font-size:12px;margin:5px 0}
+body.redevelopment-route .selected-project-scope .project-stage-banner small{font-size:11px;margin-top:4px;color:#c5d4e8}
+body.redevelopment-route .selected-project-scope .stage-verification{font-size:12px;margin:0 0 6px}
+body.redevelopment-route .selected-project-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:5px 0}
+body.redevelopment-route .selected-project-actions .action{border:0;background:none;padding:3px 0;min-height:28px;font-size:12px;box-shadow:none}
+body.redevelopment-route .selected-project-address{font-size:12px;line-height:1.5;color:#52657b}
+body.redevelopment-route .selected-boundary-state{font-size:11px;line-height:1.5;color:#66778a;margin-top:4px}
+body.redevelopment-route .selected-boundary-state[data-boundary-state=failed],body.redevelopment-route .selected-boundary-state[data-boundary-state=none]{padding:5px 8px;border-left:3px solid #c19d57;background:#fff7e9;color:#735b2f}
+
+body.redevelopment-route .nearby-count{font-size:12px;font-weight:600;line-height:1.6}body.redevelopment-route .nearby-complex{padding:10px;border:1px solid #dae3ee;border-radius:8px;margin:10px 0;min-width:0;overflow-wrap:anywhere}body.redevelopment-route .nearby-complex h4{font-size:14px;margin:0 0 4px;line-height:1.5}body.redevelopment-route .nearby-complex h4 small{font-size:11px;font-weight:400;margin-left:4px}body.redevelopment-route .nearby-complex>p{font-size:11px;color:#61748a;margin:4px 0}body.redevelopment-route .nearby-sale{display:flex;flex-wrap:wrap;gap:3px 10px;align-items:center;border-top:1px solid #e2e8f0;padding:8px 0;font-size:12px}body.redevelopment-route .nearby-sale span{flex-basis:100%;font-size:11px;color:#61748a}body.redevelopment-route .nearby-sale strong{margin-left:auto}body.redevelopment-route .nearby-sources{font-size:12px;overflow-wrap:anywhere}
+
+/* Shared selected-list and detail layouts: labels and links must remain fully visible. */
+body.redevelopment-route :is(#detailBody,#results) .pilot-track{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px;align-items:start;margin:12px 0;padding:0}
+body.redevelopment-route :is(#detailBody,#results) .pilot-track li{min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere;color:#52657b}
+body.redevelopment-route :is(#detailBody,#results) .progress-label{display:block;max-width:100%;position:relative;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere}
+body.redevelopment-route :is(#detailBody,#results) .action{box-sizing:border-box;max-width:100%;white-space:normal;overflow-wrap:anywhere;text-indent:0;line-height:1.6}
+body.redevelopment-route :is(#detailBody,#results) .project-information>a.action{display:block;background:#132b4c;color:#fff;border-color:#132b4c;padding:10px 12px;text-align:left}
+body.redevelopment-route :is(#detailBody,#results) .project-information>a.action.secondary{background:#f2f7ff;color:#1049a4;border-color:#b9cfe9}
+body.redevelopment-route .project-link-row{gap:8px;min-width:0}
+body.redevelopment-route .project-link-row a{flex:0 1 auto;display:inline-flex;align-items:center;justify-content:center;min-width:0;min-height:40px;margin:0;padding:8px 12px}
+body.redevelopment-route .selected-project-actions{gap:6px 10px}
+body.redevelopment-route .selected-project-actions .action{flex:0 1 auto;display:inline-flex;align-items:center;justify-content:center;min-width:0;min-height:36px;margin:0;padding:6px 8px;text-align:left}
+body.redevelopment-route .source-unavailable{padding:8px 0;color:#52657b;background:none;border:0;font-weight:400}

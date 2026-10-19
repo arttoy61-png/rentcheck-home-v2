@@ -1,0 +1,4 @@
+/* HOME map only: no styles escape this document. */
+.topnav>a{display:inline-flex;align-items:center;padding:8px 12px;color:inherit;text-decoration:none;font-size:13px;font-weight:700;white-space:nowrap}
+.menu-links>a{display:block;padding:12px;color:inherit;text-decoration:none}footer>a{color:inherit}.tabs{min-height:40px}
+@media(max-width:700px){header .topnav>a{display:none}footer{flex-wrap:wrap}.topnav button{min-width:44px}}

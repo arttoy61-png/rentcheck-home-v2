@@ -1,0 +1,340 @@
+/* UI review 2026-10-09. Presentation only. */
+:root{--ui-navy:#102b49;--ui-blue:#1263eb;--ui-ink:#172b44;--ui-muted:#617087;--ui-line:#e3e9f1;--ui-panel:400px;--ui-header:60px;--ui-tabs:48px}
+body{font-family:Pretendard,'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:var(--ui-ink);font-size:16px}
+body>header{background:#fff!important;color:var(--ui-navy);height:var(--ui-header)!important;min-height:var(--ui-header)!important;flex-basis:var(--ui-header)!important;padding:0 24px;border-bottom:1px solid var(--ui-line);gap:26px;box-shadow:none}
+header .brand{color:var(--ui-navy)!important;font-size:25px;font-weight:800;letter-spacing:-.8px;white-space:nowrap}
+header .topnav{gap:4px}header .topnav button{font-size:15px;font-weight:600;color:var(--ui-muted);padding:0 16px;min-height:48px}header .topnav button[aria-current=page]{color:var(--ui-navy);border-color:var(--ui-blue);background:transparent}
+.header-search{max-width:320px;margin-left:auto}.header-search input{background:#f5f7fa;border:1px solid var(--ui-line);border-radius:10px;min-height:40px;font-size:15px}
+.desktop-map-settings{background:#f6f8fb;color:var(--ui-muted);border:1px solid var(--ui-line);border-radius:8px}.mobile-header-actions button{color:var(--ui-navy)!important}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,.sheet-handle:focus-visible{outline:3px solid #438cff;outline-offset:2px}
+#mapPage .tabs{height:var(--ui-tabs);min-height:var(--ui-tabs);flex-basis:var(--ui-tabs);background:#fff;border-bottom:1px solid var(--ui-line)}
+#mapPage .tabs button{color:#617087;font-weight:600;font-size:16px;background:#fff;border-radius:0;border-bottom:3px solid transparent;padding:10px 18px}#mapPage .tabs button[aria-selected=true]{color:var(--ui-blue);border-bottom-color:var(--ui-blue);background:#f7faff}
+#mapPage .listpane{background:#fff;border-right:1px solid var(--ui-line)}#mapPage .listtop h1{font-size:23px;line-height:1.35;font-weight:750;letter-spacing:-.65px}
+#mapPage .subnav{gap:0;border-bottom:1px solid var(--ui-line);margin:0 16px}#mapPage .subnav button{font-size:14px;min-height:44px;padding:8px 7px;color:var(--ui-muted);white-space:nowrap;flex:1}#mapPage .subnav button[aria-current=page]{color:var(--ui-blue);border-color:var(--ui-blue)}
+#mapPage .design-filterbar{padding:8px 16px;gap:8px;border-bottom:0;box-shadow:none}#mapPage .design-filterbar select{border-radius:9px;border:1px solid var(--ui-line);background-color:#f8fafc;font-size:14px;min-height:42px;padding-left:10px}#mapPage .design-filterbar>button{border-radius:9px;min-height:42px;background:#f8fafc;border-color:var(--ui-line);font-size:23px}
+#mapPage .advanced-filters:not([open]){display:none}#mapPage .advanced-filters[open]{margin:4px 16px 8px;padding:12px;background:#f7f9fc;border:1px solid var(--ui-line);border-radius:10px;max-height:34vh;overflow:auto}
+#mapPage .listhead{padding:12px 16px 8px;min-height:42px;gap:8px;flex-wrap:wrap;align-items:center}#mapPage .listhead strong{font-size:14px}#mapPage #count{font-size:13px;line-height:1.5;color:var(--ui-muted);margin-left:auto}#mapPage #coverage{display:none}
+.ui-info-button{width:30px;height:30px;min-width:30px;min-height:30px;padding:4px;background:#f5f8fc;color:#58708b;border:1px solid var(--ui-line);border-radius:50%;font-size:17px;line-height:1}
+#mapPage #results{padding:0 16px 24px;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#c8d3df transparent}#mapPage .calendar-entry{display:none}#mapPage .result-section-title{font-size:14px;line-height:1.5;margin:12px 0 10px;color:#435b76}
+#mapPage .result,#mapPage .site-card{width:100%;border:1px solid var(--ui-line);border-radius:12px;box-shadow:none;padding:17px 18px;margin:0 0 12px;background:#fff;transition:border-color .15s,background-color .15s}#mapPage .result:hover,#mapPage .site-card:hover{background:#f8fbff;border-color:#9abef6}#mapPage .result.active,#mapPage .site-card.active{background:#f5f9ff;border-color:var(--ui-blue);box-shadow:inset 3px 0 var(--ui-blue)}
+#mapPage .result h3,#mapPage .site-copy h3{font-size:19px;line-height:1.5;font-weight:700;letter-spacing:-.4px;margin:9px 0 8px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;word-break:keep-all;overflow-wrap:anywhere}
+#mapPage .result p,#mapPage .site-copy p{font-size:14px;line-height:1.6;margin:6px 0;color:#50657d}#mapPage .badge{font-size:12px;line-height:1.5;padding:3px 8px;border-radius:5px}#mapPage .resultfooter{font-size:13px;line-height:1.6;color:#5c7087}
+#mapPage .housing-unmapped{border-top:1px solid var(--ui-line);margin-top:18px;padding-top:8px}#mapPage .housing-unmapped>.coverage{font-size:13px!important;line-height:1.6}
+#mapPage .mapnote,#mapPage .kakao-map-status{font-size:12px;line-height:1.5;color:#53677f;background:rgba(255,255,255,.96);border-radius:6px;pointer-events:auto}
+#mapPage .site-pin{background:#175ccc;border:3px solid #fff;box-shadow:0 2px 6px #102b4933}#mapPage .site-pin.active{background:#0846b4;box-shadow:0 0 0 5px #227aff2e,0 3px 10px #15344b40}#mapPage .map-callout{border-radius:12px;border:1px solid #aac7f1;box-shadow:0 4px 18px #112a4825;min-width:180px}#mapPage .map-callout strong{font-size:16px;line-height:1.45}#mapPage .map-callout small{font-size:12px;line-height:1.5}#mapPage .callout-detail{min-height:40px;font-size:14px;color:var(--ui-blue)}
+#mapPage .detailtop{background:#fff;border-bottom:1px solid var(--ui-line);gap:8px;z-index:2;flex-shrink:0}#mapPage #detailBody{padding:20px;overscroll-behavior:contain;font-size:16px;line-height:1.7}#mapPage #detailBody h2{font-size:23px;line-height:1.45;letter-spacing:-.6px;word-break:keep-all;overflow-wrap:anywhere}#mapPage #detailBody h3{font-size:18px;line-height:1.5;margin-top:26px}#mapPage #detailBody .coverage,#mapPage #detailBody .warning{font-size:13px;line-height:1.65}#mapPage #detailBody dt{font-size:13px;color:#6c7c91}#mapPage #detailBody dd{font-size:16px;color:#152e48}#mapPage #detailBody table{font-size:14px}
+.action{min-height:44px;border-radius:9px;font-size:15px;line-height:1.4}.action.secondary{background:#fff;color:var(--ui-navy);border:1px solid #cbd6e4}.subtle{min-height:40px;font-size:14px;border-radius:8px}
+.calendar-dialog{border:1px solid #dce5f1;border-radius:16px;box-shadow:0 16px 60px #142e4940}.calendar-dialog-head{background:white;position:sticky;top:0;z-index:2;border-bottom:1px solid var(--ui-line);padding:18px}.calendar-dialog-head strong{font-size:21px}.calendar-dialog-head p{font-size:13px}.calendar-dialog-head button{min-height:44px;min-width:48px;font-size:14px}.calendar-dialog-body{overscroll-behavior:contain}
+.ui-list-size,.ui-detail-size{min-height:40px;min-width:52px;font-size:13px;border:1px solid var(--ui-line);background:white;color:var(--ui-navy);border-radius:8px;padding:6px 9px}.ui-list-size{display:none}
+.ui-coverage-dialog{width:min(440px,calc(100vw - 32px));border:1px solid var(--ui-line);border-radius:16px;padding:24px;color:var(--ui-ink)}.ui-coverage-dialog::backdrop{background:#102b4966}.ui-coverage-dialog h2{font-size:21px;margin:0 0 14px}.ui-coverage-dialog p{font-size:15px;line-height:1.8;white-space:pre-line}.ui-coverage-dialog button{float:right}
+@media(min-width:701px){
+ #mapPage .tabs{display:flex;justify-content:flex-start;padding-left:var(--ui-panel);gap:4px}#mapPage .tabs button{flex:0 1 114px;min-width:84px}
+ #mapPage .workspace[data-topic],#mapPage .workspace[data-topic]:not(.has-detail),#mapPage .workspace[data-topic].has-detail{grid-template-columns:var(--ui-panel) minmax(0,1fr)}#mapPage .listtop{min-height:56px;height:56px;padding:12px 18px}
+ #mapPage .mapsection{position:relative}#mapPage .maphead{position:absolute;left:16px;top:16px;height:34px;width:auto;max-width:32%;z-index:12;border:1px solid #dce5f0;border-radius:18px;padding:6px 13px;background:#fffffff2;font-size:13px}#mapPage .maphead span{display:none}
+ #mapPage .bounds{top:16px;left:50%;transform:translateX(-50%);min-height:42px;font-size:14px;border:1px solid var(--ui-line);border-radius:24px;box-shadow:0 2px 12px #102b4917;padding:8px 16px}
+ #mapPage .workspace.has-detail .detailpane{inset:0 auto 0 0;width:var(--ui-panel);height:100%;max-height:none;border:0;border-right:1px solid var(--ui-line);border-radius:0;box-shadow:none;z-index:40}#mapPage .workspace.has-detail.detail-expanded .detailpane{height:100%;width:var(--ui-panel)}#mapPage .workspace.has-detail .listpane{visibility:hidden}#mapPage .workspace.has-detail .detailpane .detailtop{padding:12px 16px}#mapPage #collapseDetail{display:none}#mapPage .workspace.has-detail .zoom,#mapPage .workspace.has-detail.detail-expanded .zoom{right:14px}#mapPage .workspace.has-detail #myLocation{right:14px;left:auto;bottom:70px;top:auto}.ui-detail-size{display:none}
+}
+@media(min-width:701px) and (max-width:1199px){:root{--ui-panel:360px}body>header{gap:14px;padding:0 18px}.header-search{max-width:230px}header .topnav button{padding:0 10px}#mapPage .tabs{padding-left:var(--ui-panel)}#mapPage .tabs button{min-width:76px;font-size:15px;padding:9px 10px}.desktop-map-settings{display:none}}
+@media(min-width:701px) and (max-width:1000px){:root{--ui-panel:320px}header .brand{font-size:22px}header .topnav button{font-size:13px;padding:0 8px}.header-search{max-width:180px}#mapPage .tabs{padding-left:16px}#mapPage .tabs button{flex-basis:106px}#mapPage .maphead{display:none}}
+@media(max-width:700px){
+ :root{--ui-header:52px;--ui-tabs:44px}body>header{padding:0 16px;gap:8px}header .brand{font-size:24px}
+ header .topnav{background:white;height:calc(64px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--ui-line);box-shadow:none}header .topnav button{font-size:13px;line-height:18px;min-height:54px;padding:3px 0;color:#718096}header .topnav button[aria-current=page]{color:var(--ui-blue);background:#fff}header .topnav svg{width:23px;height:23px}
+ #mapPage .tabs{padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0}#mapPage .tabs button{font-size:15px;padding:8px 0;min-width:0;letter-spacing:-.4px}
+ #mapPage>.design-filterbar{height:52px;min-height:52px;flex-basis:52px;padding:6px 10px;border-bottom:1px solid var(--ui-line)}#mapPage .design-filterbar select{font-size:16px!important;min-height:40px}
+ #mapPage .workspace .listpane{border-radius:18px 18px 0 0;height:84px;max-height:100%;border:1px solid #e1e7ef;box-shadow:0 -2px 12px #102b490a}#mapPage .workspace.mapexpanded .listpane{height:58%;max-height:calc(100% - 16px)}#mapPage .workspace.mapexpanded[data-ui-list-level=high] .listpane{height:calc(100% - 16px);max-height:calc(100% - 16px)}
+ #mapPage .listtop{height:40px;min-height:40px;padding:2px 14px;gap:5px}#mapPage .listtop h1{font-size:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}#mapPage #mobileToggle{font-size:13px;min-height:40px;min-width:64px}#mapPage .workspace.mapexpanded .ui-list-size{display:block}
+ #mapPage .subnav,#mapPage .workspace.mapexpanded .subnav{min-height:44px;margin:0 10px}#mapPage .workspace.mapexpanded .subnav button{font-size:14px;min-height:44px;padding:7px 4px}#mapPage .listhead{padding:7px 14px;min-height:40px}#mapPage #results,#mapPage .workspace.mapexpanded #results{padding:0 12px 20px}
+ #mapPage .result,#mapPage .site-card{padding:14px 15px;border-radius:12px}#mapPage .result h3,#mapPage .site-copy h3{font-size:18px;line-height:1.5}
+ #mapPage .workspace.has-detail .detailpane{height:60%;border-radius:18px 18px 0 0;max-height:calc(100% - 16px)}#mapPage .workspace.has-detail[data-ui-detail-level=high]:not(.sheet-collapsed) .detailpane{height:calc(100% - 16px)}#mapPage .workspace.has-detail.sheet-collapsed .detailpane{height:132px}
+ #mapPage .detailtop{min-height:54px;padding:7px 12px}#mapPage #detailBody{padding:16px 18px}#mapPage #detailBody h2{font-size:22px;line-height:1.45}#mapPage #detailKind{font-size:12px;margin-left:auto}#mapPage #collapseDetail{font-size:13px;min-height:40px}
+ #mapPage .sheet-handle{touch-action:none;cursor:ns-resize;width:42px;height:4px;margin:7px auto 2px}#mapPage .bounds{font-size:14px;width:214px;top:12px}#mapPage .mapnote,#mapPage .kakao-map-status{font-size:11px}
+ .calendar-dialog{width:calc(100vw - 16px);max-height:calc(100dvh - 32px);border-radius:14px}.calendar-dialog-head{padding:12px 14px}.calendar-dialog-head strong{font-size:19px}#toolsPage .muted,#articlesPage label{font-size:15px}
+}
+@media(min-width:701px) and (max-height:520px){
+ :root{--ui-header:44px;--ui-tabs:40px;--ui-panel:310px}body>header{height:44px!important;min-height:44px!important;flex-basis:44px!important}header .brand{font-size:21px}header .topnav button{min-height:40px}.header-search input{min-height:34px}
+ #mapPage .tabs{height:40px;min-height:40px;flex-basis:40px;padding-left:12px}#mapPage .tabs button{padding:6px 12px;font-size:14px}#mapPage .listtop{height:40px;min-height:40px;padding:5px 14px}#mapPage .listtop h1{font-size:19px}
+ #mapPage .design-filterbar{padding:4px 12px;height:42px;min-height:42px}#mapPage .design-filterbar select,#mapPage .design-filterbar>button{min-height:34px;height:34px;font-size:12px}#mapPage .subnav{min-height:36px;margin:0 8px}#mapPage .subnav button{min-height:36px;font-size:12px;padding:5px 2px}
+ #mapPage .listhead{min-height:32px;padding:4px 12px}#mapPage #count{font-size:12px}.ui-info-button{height:25px;min-height:25px;width:25px;min-width:25px}#mapPage .maphead{display:none}#mapPage .zoom{gap:3px;top:10px}#mapPage .zoom #resetMap{display:none}#mapPage .zoom button{width:38px;height:38px;min-height:38px}#mapPage .workspace.has-detail #myLocation,#mapPage #myLocation{top:auto;bottom:44px;right:14px;left:auto}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+/* Short landscape screens: keep count and source-info trigger on one row. */
+@media(min-width:701px) and (max-height:520px){#mapPage .listhead{flex-wrap:nowrap;gap:5px}#mapPage .listhead strong{font-size:12px;white-space:nowrap}#mapPage #count{font-size:11px;white-space:nowrap}}
+
+
+/* Follow-up visual review: map remains primary while collapsed sheet shows real results */
+@media(min-width:701px){#mapPage .design-filterbar .filter-chip-scroll{scrollbar-width:thin}}
+@media(max-width:700px){
+ #mapPage .workspace .listpane{height:124px}
+ #mapPage .mobile-sheet-hint{display:flex;flex-direction:column;gap:2px;margin:0 16px 8px;font-size:13px;line-height:1.5;overflow:hidden}
+ #mapPage .mobile-sheet-hint strong{font-weight:700;color:#183859;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ #mapPage .mobile-sheet-hint span{color:#65758a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ #mapPage .workspace.mapexpanded .mobile-sheet-hint{display:none}
+}
+/* Short landscape: compress source indicator rather than stealing the result list. */
+@media(min-width:701px) and (max-height:520px){
+ #mapPage #homeCalendarStatus{padding:2px 8px 4px}
+ #mapPage #homeCalendarStatus .home-calendar-link{display:flex;align-items:center;gap:5px;padding:4px 6px;min-height:34px}
+ #mapPage #homeCalendarStatus .home-calendar-link p{margin:0!important;min-width:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:10px!important}
+ #mapPage #homeCalendarStatus .home-calendar-link>div{display:flex;flex-wrap:nowrap;gap:3px}
+ #mapPage #homeCalendarStatus .home-calendar-link button{min-height:26px;padding:2px 5px;font-size:11px}
+ #mapPage #homeCalendarStatus .home-calendar-link a,#mapPage #homeCalendarStatus .home-calendar-link small{display:none}
+}
+
+
+/* Mobile step-by-step flow: map/list -> selected detail page */
+@media(max-width:700px){
+ /* One decision per row: region + Filter. Detailed topic filters open from the Filter action. */
+ #mapPage:has(.workspace[data-topic=housing]) #designFilters select:not(#designDistrict),
+ #mapPage:has(.workspace[data-topic=redevelopment]) #designFilters select:not(#designDistrict),
+ #mapPage:has(.workspace[data-topic=sale]) #designFilters select:not(#designDistrict),
+ #mapPage:has(.workspace[data-topic=auction]) #designFilters select:not(#designDistrict){display:none}
+ #mapPage #designFilters>button{flex:0 0 62px;width:62px;font-size:14px;font-weight:700}
+
+ /* Map mode is intentionally sparse. The small strip only previews what is available. */
+ #mapPage .workspace:not(.mapexpanded):not(.has-detail) .listpane{height:96px!important}
+ #mapPage .workspace:not(.mapexpanded):not(.has-detail) .mobile-sheet-hint{margin:0 16px 6px;font-size:12px;line-height:17px}
+
+ /* Housing opens as a list page; redevelopment changes to a list page only after List is tapped. */
+ #mapPage .workspace.mapexpanded[data-topic=housing] .mapsection,
+ #mapPage .workspace.mapexpanded[data-topic=redevelopment] .mapsection,
+ #mapPage .workspace.mapexpanded[data-topic=sale] .mapsection,
+ #mapPage .workspace.mapexpanded[data-topic=auction] .mapsection{display:none!important}
+ #mapPage .workspace.mapexpanded[data-topic=housing] .listpane,
+ #mapPage .workspace.mapexpanded[data-topic=redevelopment] .listpane,
+ #mapPage .workspace.mapexpanded[data-topic=sale] .listpane,
+ #mapPage .workspace.mapexpanded[data-topic=auction] .listpane{
+   position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-height:none!important;
+   border:0!important;border-radius:0!important;box-shadow:none!important;padding-bottom:0!important
+ }
+ #mapPage .workspace.mapexpanded[data-topic=housing] .listtop,
+ #mapPage .workspace.mapexpanded[data-topic=redevelopment] .listtop,
+ #mapPage .workspace.mapexpanded[data-topic=sale] .listtop,
+ #mapPage .workspace.mapexpanded[data-topic=auction] .listtop{padding:4px 16px;min-height:46px;height:46px}
+ #mapPage .workspace.mapexpanded[data-topic=housing] #results,
+ #mapPage .workspace.mapexpanded[data-topic=redevelopment] #results,
+ #mapPage .workspace.mapexpanded[data-topic=sale] #results,
+ #mapPage .workspace.mapexpanded[data-topic=auction] #results{padding-bottom:24px}
+
+ /* Source freshness still loads automatically; keep it out of the primary mobile reading path. */
+ #mapPage .workspace[data-topic=housing] #homeCalendarStatus{display:none!important}
+
+ /* A selected item becomes its own reading screen rather than another sheet over the map. */
+ #mapPage:has(.workspace.has-detail) .tabs,
+ #mapPage:has(.workspace.has-detail) > .design-filterbar{display:none!important}
+ body:has(#mapPage .workspace.has-detail) header .topnav{display:none!important}
+ #mapPage:has(.workspace.has-detail) .workspace{flex:1!important}
+ #mapPage .workspace.has-detail .mapsection{display:none!important}
+ #mapPage .workspace.has-detail .detailpane{
+   position:fixed!important;inset:52px 0 0 0!important;width:100%!important;height:auto!important;max-height:none!important;
+   border:0!important;border-radius:0!important;box-shadow:none!important;background:#fff!important;z-index:90!important
+ }
+ #mapPage .workspace.has-detail .detailtop{min-height:54px;padding:7px 14px;border-bottom:1px solid var(--ui-line)}
+ #mapPage .workspace.has-detail #collapseDetail{display:none!important}
+ #mapPage .workspace.has-detail #detailBody{padding:16px 18px 32px!important}
+ #mapPage .workspace.has-detail #closeDetail{font-weight:700;background:#fff;border-color:transparent;padding-left:0}
+}
+
+
+/* Map/list count honesty and thumb-reachable map action */
+@media(max-width:700px){
+ #mapPage .mobile-sheet-hint{gap:1px}
+ #mapPage .mobile-sheet-hint strong{font-size:13px;color:#183859}
+ #mapPage .mobile-sheet-hint span{font-size:11px;color:#6b7b8e}
+ #mapPage .workspace.has-detail #detailBody:has([data-project-map]){padding-bottom:94px!important}
+ #mapPage .workspace.has-detail #detailBody [data-project-map]{
+   position:fixed!important;left:16px!important;right:16px!important;bottom:calc(14px + env(safe-area-inset-bottom,0px))!important;
+   width:auto!important;z-index:110!important;min-height:50px!important;border-radius:12px!important;
+   background:var(--ui-blue)!important;color:#fff!important;border-color:var(--ui-blue)!important;
+   box-shadow:0 6px 20px #102b4938!important;font-size:16px!important;font-weight:750!important
+ }
+ #mapPage .workspace.has-detail .map-unavailable{margin:12px 0 0;padding:11px 12px;border-radius:10px;background:#f5f7fa}
+}
+
+
+/* Official-map/data alignment */
+#mapPage .map-badge{margin-left:5px;background:#e9f3ff;color:#155fc7;border:1px solid #cfe1fb}
+.project-overview dl{display:grid;grid-template-columns:minmax(105px,.8fr) 1.2fr;gap:7px 12px;margin:10px 0 4px}.project-overview dt{color:#66778a}.project-overview dd{margin:0;font-weight:650}
+.project-bids{margin-top:18px}.bid-row{padding:11px 0;border-bottom:1px solid var(--ui-line)}.bid-row strong,.bid-row small{display:block}.bid-row small{margin:4px 0 7px;color:#687b90;font-size:12px}
+.history-item .action{display:inline-flex;min-height:30px;padding:3px 7px;font-size:11px;margin-top:4px}
+@media(max-width:700px){#mapPage .map-badge{font-size:10px}.project-overview dl{grid-template-columns:110px minmax(0,1fr);font-size:13px}.bid-row{padding:10px 0}}
+
+
+/* Readability pass based on map-first reference: clearer hierarchy, not a literal copy. */
+:root{--ui-panel:430px;--ui-header:64px;--ui-tabs:52px;--ui-navy:#0c3c78;--ui-blue:#146ff5;--ui-ink:#102a4a;--ui-muted:#68798e;--ui-line:#dfe6ef}
+body>header{background:var(--ui-navy)!important;color:#fff!important;border-bottom:0!important;box-shadow:none!important}
+header .brand{color:#fff!important;font-size:26px!important;font-weight:800!important;letter-spacing:-.7px}
+header .topnav button{color:#dce9fb!important}
+header .topnav button[aria-current=page]{color:#fff!important;border-color:#66a3ff!important}
+header .topnav svg{color:currentColor}
+.header-search{max-width:340px!important}
+.header-search input{background:#fff!important;border:0!important;border-radius:22px!important;min-height:40px!important;color:#18334f!important;padding:8px 15px!important}
+.desktop-map-settings{color:#fff!important;background:#ffffff14!important;border-color:#ffffff40!important}
+#mapPage .tabs{background:#fff!important;border-bottom:1px solid var(--ui-line)!important}
+#mapPage .tabs button{font-size:16px!important;font-weight:650!important;color:#64748b!important}
+#mapPage .tabs button[aria-selected=true]{color:var(--ui-blue)!important;background:#fff!important;border-bottom-color:var(--ui-blue)!important}
+#mapPage .listpane{background:#fff!important}
+#mapPage .listtop h1{font-size:27px!important;font-weight:800!important;color:#102b49!important}
+#mapPage .design-filterbar{background:#fff!important;border-bottom:1px solid #eef2f6!important}
+#mapPage .design-filterbar .filter-chip-scroll{gap:9px!important}
+#mapPage .design-filterbar select{background:#fff!important;border:1px solid #d9e1ea!important;border-radius:10px!important;box-shadow:0 1px 2px #102b4906!important;font-weight:650!important;color:#18334f!important}
+#mapPage #designProjectLayer{display:none!important}
+#mapPage .subnav{background:#fff!important;border-top:1px solid #eef2f6!important;border-bottom:1px solid #e7edf4!important;margin:0!important;padding:0 8px!important}
+#mapPage .subnav button{position:relative!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:2px!important;min-height:72px!important;font-size:13px!important;font-weight:650!important;color:#6d7c91!important}
+#mapPage .subnav button::before{font-size:20px!important;line-height:1!important;color:#7d8ca0}
+#mapPage .subnav button[data-sub=sites]::before{content:'●'}
+#mapPage .subnav button[data-sub=changes]::before{content:'◷'}
+#mapPage .subnav button[data-sub=calculator]::before{content:'▦'}
+#mapPage .subnav button[data-sub=related]::before{content:'▤'}
+#mapPage .subnav button[aria-current=page]{color:var(--ui-blue)!important}
+#mapPage .subnav button[aria-current=page]::before{color:var(--ui-blue)!important}
+#mapPage .site-card{border:1px solid #dfe6ef!important;border-radius:12px!important;padding:15px!important;margin:0 0 12px!important}
+#mapPage .site-card:hover{border-color:#8eb9f6!important;background:#f8fbff!important}
+#mapPage .site-select{align-items:center!important;gap:14px!important}
+#mapPage .site-thumb{flex:0 0 78px!important;height:82px!important;border-radius:9px!important;background:#f0f4f8!important;border:1px solid #e4ebf3!important;color:#7b8ba0!important}
+#mapPage .site-thumb.mapped{background:#edf6ff!important;border-color:#cfe1fb!important;color:#196ce3!important}
+#mapPage .site-thumb b{font-size:27px!important;color:inherit!important}
+#mapPage .site-thumb small{font-size:10px!important;font-weight:700!important}
+#mapPage .site-copy h3{font-size:19px!important;line-height:1.4!important;margin:5px 0 7px!important}
+#mapPage .site-copy p{font-size:12px!important;margin-top:7px!important}
+#mapPage .site-detail-link{min-height:36px!important;border-radius:8px!important;background:#fff!important;color:var(--ui-blue)!important;border-color:#cfe0f5!important;font-size:13px!important}
+.kakao-site-point .site-pin.labelled{width:auto!important;min-width:48px!important;height:34px!important;padding:0 11px!important;border-radius:10px!important;background:#0b54b5!important;border:3px solid #fff!important;font-size:13px!important;line-height:28px!important;white-space:nowrap!important;box-shadow:0 3px 10px #123b6638!important}
+.kakao-site-point .site-pin.labelled.active{background:#073f8d!important;min-width:54px!important;height:38px!important;box-shadow:0 0 0 4px #1d73e626,0 4px 13px #0f37614a!important}
+.kakao-site-point .cluster-pin{background:#fff!important;color:#0b54b5!important;border:2px solid #0b54b5!important}
+#mapPage .map-callout{min-width:260px!important;padding:14px 16px!important;border-radius:14px!important;border:1px solid #d4e2f5!important;box-shadow:0 10px 32px #13395a28!important}
+#mapPage .map-callout strong{font-size:18px!important;font-weight:800!important}
+#mapPage .callout-detail{background:var(--ui-blue)!important;color:#fff!important;border:0!important;border-radius:9px!important;margin-top:4px!important}
+
+/* Desktop: dense, legible list + generous map. */
+@media(min-width:701px){
+ #mapPage .tabs{padding-left:var(--ui-panel)!important;height:52px!important}
+ #mapPage .workspace[data-topic],#mapPage .workspace[data-topic]:not(.has-detail),#mapPage .workspace[data-topic].has-detail{grid-template-columns:var(--ui-panel) minmax(0,1fr)!important}
+ #mapPage .listtop{height:76px!important;min-height:76px!important;padding:22px 20px 8px!important}
+ #mapPage .design-filterbar{padding:10px 18px!important}
+ #mapPage .design-filterbar select{min-height:46px!important;font-size:15px!important;max-width:150px!important}
+ #mapPage .design-filterbar>button{min-height:46px!important}
+ #mapPage #results{padding:14px 18px 24px!important}
+ #mapPage .maphead{top:18px!important;left:20px!important;background:#fff!important;border-radius:18px!important}
+ #mapPage .bounds{top:18px!important;min-height:46px!important;background:#fff!important;font-weight:700!important}
+}
+
+/* Mobile: title/filter/map/sheet hierarchy follows the supplied reference. */
+@media(max-width:700px){
+ :root{--ui-header:56px;--ui-tabs:48px}
+ body>header{height:56px!important;min-height:56px!important;flex:0 0 56px!important;padding:0 18px!important}
+ header .brand{font-size:25px!important}
+ .mobile-header-actions button{color:#fff!important}
+ #mapPage .tabs{height:48px!important;min-height:48px!important;flex-basis:48px!important}
+ #mapPage .tabs button{font-size:15px!important;padding:10px 0!important}
+ #mapPage>.design-filterbar{height:66px!important;min-height:66px!important;flex-basis:66px!important;padding:8px 12px!important;box-shadow:0 2px 7px #102b4909!important}
+ #mapPage .design-filterbar .filter-chip-scroll{display:grid!important;grid-template-columns:1fr 1.18fr 1.18fr!important;gap:8px!important;overflow:visible!important;flex:1!important}
+ #mapPage .design-filterbar select{display:none!important;max-width:none!important;width:100%!important;height:48px!important;min-height:48px!important;font-size:15px!important;padding:6px 25px 6px 10px!important;border-radius:11px!important}
+ #mapPage .design-filterbar #designDistrict{display:block!important}
+ #mapPage:has(.workspace[data-topic=redevelopment]) #designProjectType,
+ #mapPage:has(.workspace[data-topic=redevelopment]) #designProjectStage,
+ #mapPage:has(.workspace[data-topic=housing]) #designNoticeCategory,
+ #mapPage:has(.workspace[data-topic=housing]) #designNoticeStatus,
+ #mapPage:has(.workspace[data-topic=sale]) #designSaleType,
+ #mapPage:has(.workspace[data-topic=sale]) #designSaleStatus{display:block!important}
+ #mapPage .design-filterbar>button{flex:0 0 52px!important;width:52px!important;height:48px!important;min-height:48px!important;border-radius:11px!important;font-size:0!important;background:#fff!important}
+ #mapPage .design-filterbar>button::before{content:'☷';font-size:23px!important;color:#183b66}
+ #mapPage .workspace:not(.mapexpanded):not(.has-detail) .listpane{height:124px!important;border-radius:18px 18px 0 0!important;box-shadow:0 -4px 18px #102b4917!important}
+ #mapPage .sheet-handle{display:block!important;width:34px!important;height:4px!important;min-height:4px!important;border:0!important;border-radius:4px!important;background:#bdc8d6!important;margin:8px auto 3px!important}
+ #mapPage .listtop{height:49px!important;min-height:49px!important;padding:4px 16px!important}
+ #mapPage .listtop h1{font-size:21px!important;font-weight:800!important;color:#102b49!important}
+ #mapPage #mobileToggle{font-size:13px!important;font-weight:600!important;color:#65768a!important;min-width:76px!important}
+ #mapPage .mobile-sheet-hint{display:flex!important;flex-direction:column!important;gap:2px!important;margin:0 16px 10px!important}
+ #mapPage .mobile-sheet-hint strong{font-size:13px!important;color:#173653!important}
+ #mapPage .mobile-sheet-hint span{font-size:12px!important;color:#8190a2!important}
+ #mapPage .kakao-connected .kakao-map-status{display:none!important}
+ #mapPage .bounds{top:20px!important;min-height:45px!important;border-radius:24px!important;font-weight:700!important;background:#fff!important;box-shadow:0 4px 16px #183c6021!important}
+ #mapPage .zoom button{width:46px!important;height:46px!important;border-radius:12px!important}
+ .kakao-site-point .site-pin.labelled{height:32px!important;min-width:45px!important;padding:0 9px!important;font-size:12px!important;border-radius:9px!important}
+ .kakao-site-point .site-pin.labelled.active{height:36px!important}
+ #mapPage .workspace.mapexpanded .listpane{border-radius:0!important}
+ #mapPage .workspace.mapexpanded .subnav{display:flex!important;min-height:62px!important}
+ #mapPage .workspace.mapexpanded .subnav button{min-height:62px!important;font-size:12px!important}
+ #mapPage .workspace.mapexpanded #results{padding:12px 14px 28px!important}
+ #mapPage .workspace.mapexpanded .site-card{padding:13px!important}
+ #mapPage .workspace.mapexpanded .site-thumb{flex-basis:68px!important;height:72px!important}
+}
+
+
+/* Mobile bottom navigation stays white and high-contrast under the navy header. */
+@media(max-width:700px){
+ header .topnav{background:#fff!important;border-top:1px solid #dfe6ef!important;box-shadow:0 -2px 10px #102b490c!important}
+ header .topnav button{color:#6b7c92!important}
+ header .topnav button[aria-current=page]{color:var(--ui-blue)!important;background:#fff!important;border-color:transparent!important}
+}
+
+/* Map navigation and visible-area results, including a clear undo action. */
+#mapPage #searchBounds[hidden]{display:none!important}
+#mapPage .map-search-result{display:flex;flex-direction:column;align-items:flex-start;gap:5px;margin:9px 14px 12px;padding:12px 14px;border:1px solid #cce1fc;border-radius:12px;background:#f1f7ff;color:#163960}
+#mapPage .map-search-result strong{font-size:15px;line-height:1.4}
+#mapPage .map-search-result span{font-size:12px;color:#60778f}
+#mapPage .map-search-result button{min-height:34px;padding:5px 12px;border:1px solid #b9d4fb;background:#fff;color:#125dc3;border-radius:8px;font-size:13px;font-weight:700}
+@media(max-width:700px){#mapPage .map-search-result{margin:8px 12px 10px;padding:10px 12px}#mapPage .map-search-result strong{font-size:14px}#mapPage #searchBounds{font-weight:700!important}}
+
+
+/* Public housing PC legibility and borough coverage */
+@media(min-width:701px){
+ #mapPage .workspace[data-topic=housing] .design-filterbar{display:block!important;height:auto!important;min-height:0!important;max-height:none!important;padding:10px 16px 12px!important;overflow:visible!important}
+ #mapPage .workspace[data-topic=housing] .design-filterbar .filter-chip-scroll{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;grid-template-rows:42px 42px!important;gap:8px!important;overflow:visible!important;width:100%!important}
+ #mapPage .workspace[data-topic=housing] .design-filterbar select{display:block!important;flex:none!important;width:100%!important;min-width:0!important;max-width:none!important;height:42px!important;min-height:42px!important;margin:0!important;padding:6px 30px 6px 12px!important;font-size:14px!important;line-height:1.3!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+ #mapPage .workspace[data-topic=housing] #designDistrict{grid-column:1 / -1!important;grid-row:1!important}
+ #mapPage .workspace[data-topic=housing] #designNoticeCategory{grid-column:1!important;grid-row:2!important}
+ #mapPage .workspace[data-topic=housing] #designNoticeStatus{grid-column:2!important;grid-row:2!important}
+ #mapPage .workspace[data-topic=housing] .design-filterbar>button{display:none!important}
+ #mapPage .workspace[data-topic=housing] #context .advanced-filters{display:none!important}
+ #mapPage .workspace[data-topic=housing] #coverage{max-height:40px!important;margin:4px 17px 9px!important;font-size:11px!important;line-height:1.5!important;overflow:hidden!important}
+ #mapPage .workspace[data-topic=housing] .subnav{min-height:54px!important}
+ #mapPage .workspace[data-topic=housing] .subnav button{min-height:54px!important;font-size:13px!important}
+}
+#mapPage .housing-borough-sites{border:1px solid #cddff3;background:#f5f9ff;border-radius:12px;margin:10px 0 16px;padding:12px}
+#mapPage .housing-borough-sites-header{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:9px}
+#mapPage .housing-borough-sites-header strong{font-size:14px;color:#14385f;line-height:1.4}
+#mapPage .housing-borough-sites-header small{font-size:11px;color:#235fa0;white-space:nowrap;font-weight:750}
+#mapPage .housing-site-summary{display:block;width:100%;padding:11px 12px;text-align:left;background:white;border:1px solid #dbe5f1;border-radius:9px;margin:6px 0;color:#183b60}
+#mapPage .housing-site-summary:hover,#mapPage .housing-site-summary:focus-visible{background:#fff;border-color:#5d9bec}
+#mapPage .housing-site-summary strong{display:block;font-size:14px;line-height:1.5}
+#mapPage .housing-site-summary span{display:block;font-size:11px;color:#65788f;line-height:1.55;margin:3px 0 5px}
+#mapPage .housing-site-summary small{display:block;font-size:11px;color:#2768aa;font-weight:650}
+#mapPage .housing-borough-sites>p{font-size:11px;line-height:1.5;color:#73839a;margin:10px 0 0}
+#mapPage .housing-region-confirmed .result-section-title{font-size:13px;font-weight:750;margin:14px 0 9px}
+#mapPage .housing-region-empty{font-size:12px;line-height:1.65;color:#65798d;margin:12px 1px 18px}
+#mapPage .housing-region-unknown{border:1px solid #e0e6ee;border-radius:10px;background:#f9fafc;margin:10px 0 20px;padding:10px 12px}
+#mapPage .housing-region-unknown summary{font-size:12px;font-weight:750;color:#4f6681;cursor:pointer;list-style-position:inside;line-height:1.6}
+#mapPage .housing-region-unknown>p{font-size:11px;line-height:1.6;color:#7d8a99;margin:9px 0}
+#mapPage .housing-region-unknown .result{margin-top:10px}
+#mapPage .housing-selected-date{font-size:12px;color:#486986;padding:9px 0 4px}
+#mapPage .housing-selected-date button{font-size:12px;color:#125eb2;background:white;border:1px solid #c9dced;border-radius:7px;padding:4px 8px}
+#mapPage .housing-calendar-results h3{font-size:14px;font-weight:750;color:#1c4268;margin:16px 0 12px}
+#mapPage .mapcanvas.housing-no-pins::after{content:"현재 조건에서 표시할 접수중·예정 공고의 검증 좌표가 없습니다.\A확인된 주소는 목록에서 보세요.";position:absolute;z-index:7;top:78px;left:22px;max-width:310px;padding:15px 17px;border:1px solid #d8e4f0;border-radius:12px;background:#fffefd;box-shadow:0 4px 14px #173c601f;color:#24476d;font-size:13px;line-height:1.6;white-space:pre-line;pointer-events:none}
+@media(max-width:700px){#mapPage .housing-borough-sites-header{display:block}#mapPage .housing-borough-sites-header small{display:block;margin-top:5px}#mapPage .mapcanvas.housing-no-pins::after{top:65px;left:12px;right:12px;max-width:none;font-size:12px;padding:10px 12px}}
+
+
+/* Keep the calendar reachable without squeezing the brand or header actions. */
+.header-calendar{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:9px 12px;border:1px solid #b8cde7;border-radius:9px;background:#eff6ff;color:#0a4e9b;text-decoration:none;font-weight:800;white-space:nowrap}
+.header-calendar-icon,.header-calendar-short{display:none}
+@media(max-width:700px){
+ body>header,body:has(#mapPage:not([hidden]))>header{padding:0 12px!important;gap:8px}
+ header .brand{flex:0 0 auto;font-size:23px!important;min-width:max-content}
+ header .header-calendar{flex:0 0 auto;margin-left:auto;min-width:44px;min-height:44px;height:44px;padding:0 9px;font-size:13px;line-height:1.2}
+ .header-calendar-full{display:none}
+ .header-calendar-icon{display:block;width:20px;height:20px;flex:none}
+ .header-calendar-short{display:inline}
+ .mobile-header-actions{flex:0 0 auto;gap:0}
+ .mobile-header-actions button{flex:0 0 44px;width:44px;min-width:44px}
+
+ /* Region and More share the first row. Topic filters have the entire second
+    row so a narrow third of the viewport can never clip the district name. */
+ #mapPage>.design-filterbar{display:block!important;height:auto!important;min-height:66px!important;flex:0 0 auto!important;position:relative!important;padding:8px 12px!important}
+ #mapPage .design-filterbar .filter-chip-scroll{display:grid!important;width:100%;min-width:0!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-rows:none!important;grid-auto-rows:48px;gap:8px!important;overflow:visible!important}
+ #mapPage .design-filterbar .filter-chip-scroll select{min-width:0!important;max-width:none!important;width:100%!important;padding:6px 24px 6px 10px!important;font-size:14px!important}
+ #mapPage .design-filterbar .filter-chip-scroll #designDistrict{grid-column:1 / -1!important;grid-row:1!important;width:calc(100% - 60px)!important;font-size:16px!important}
+ #mapPage .design-filterbar>button{position:absolute;top:8px;right:12px;width:52px!important;height:48px!important}
+}
+@media(max-width:374px){
+ header .brand{font-size:21px!important}
+ header .header-calendar{width:44px;padding:0}
+ .header-calendar-short{display:none}
+}
