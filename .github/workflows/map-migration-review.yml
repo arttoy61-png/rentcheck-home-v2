@@ -61,12 +61,20 @@ jobs:
           for file in redevelopment/*.js; do node --check "$file"; done
           python -m unittest discover -s scripts/redevelopment -p 'test_*.py'
           python -m unittest discover -s scripts -p 'test_wait_public_collection.py'
+          python scripts/audit_internal_links.py
       - name: PC and emulated mobile touch with preview and data APIs blocked
         run: |
           python -m http.server 8765 --bind 127.0.0.1 > /tmp/home-map-http.log 2>&1 &
           SERVER_PID=$!
           trap 'kill "$SERVER_PID" || true' EXIT
           python scripts/redevelopment/check_home_map.py
+          python scripts/redevelopment/check_existing_home.py --base http://127.0.0.1:8765
+      - name: One authorized live transport check after migration deployment
+        if: github.event_name == 'push' && github.ref_name == 'main' && contains(github.event.head_commit.message, '[map-home-live]')
+        run: |
+          python scripts/redevelopment/check_live_map.py
+          python scripts/redevelopment/check_home_map.py --base https://rent-check.kr --out test-artifacts/home-map/live-blocked-preview
+          python scripts/redevelopment/check_existing_home.py --base https://rent-check.kr --out test-artifacts/home-map/live-existing
       - uses: actions/upload-artifact@v4
         if: always()
         with:
