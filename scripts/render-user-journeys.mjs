@@ -56,7 +56,7 @@ const interpretations={
  redevelopment:'예상 분담금은 권리가액과 조합원 분양가를 넣은 시나리오입니다. 감정평가액을 모르면 매매가로 자동 대체하지 말고 여러 가정값을 구분해 비교하세요. 확정 청구액이 아닙니다.',
  'youth-score':'선택한 순위 안에서의 참고 가점입니다. 자격 충족·서류 인정·당첨 여부는 다른 판단입니다. 신혼부부·행복주택 등 지원하지 않는 유형의 자격을 이 결과로 판정하지 마세요.',
  'longterm-jeonse-51':'선택한 단지·면적에 해당하는 제51차 일반공급 참고 결과입니다. 다른 회차로 적용하지 말고 실제 접수 진행 여부와 동순위 기준을 해당 공고에서 확인하세요.',
- 'rent-check':'현재 도구 화면에 안내된 화곡동 자료 범위 안에서 비교합니다. 표본이 적거나 조건이 다른 경우 결과를 시세 확정으로 쓰지 마세요. 강서구 다른 동은 동네시세에서 비교할 수 있습니다.',
+ 'rent-check':'서울 강서구의 입력 주소 주변 500m에서 입력 조건과 가까운 실거래를 비교합니다. 최근 12개월 거래가 3건 미만이면 24개월로 넓히고 최대 5건을 보여줍니다. 표본이 적거나 조건이 다른 경우 결과를 시세 확정으로 쓰지 마세요.',
  'jeonse-ratio':'예를 들어 80%는 전세보증금이 입력한 매매가의 80%라는 뜻입니다. 돌려받을 확률 80%나 안전점수가 아닙니다.',
  'rent-conversion':'보증금 조정액은 현재 보증금 전체가 아니라 바꾸는 차액입니다. 월세 조정액과 조정 후 월세를 구분하세요. 적용 전환율과 법정 상한 참고값도 서로 다른 값입니다.',
  'brokerage-fee':'최대 중개보수는 계산 조건에 따른 상한 참고값입니다. 실제 약정액·부가가치세 포함 여부·적용 지역을 확인한 뒤 지급 금액과 비교하세요.',
@@ -87,7 +87,9 @@ body[data-tool-id="rent-check"] .field :is(input,select){min-width:0;max-width:1
 @media(max-width:520px){body[data-tool-id="rent-check"] .apt-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 `}
 export function renderUserJourneys(){
- const guides=copies();put('tools/tool-guides.css',css());
+ const guides=copies();
+ // Preserve maintained styles, including published mobile refinements; bootstrap only if absent.
+ if(!fs.existsSync('tools/tool-guides.css'))put('tools/tool-guides.css',css());
  const tools=JSON.parse(read('data/tools.json')).filter(x=>x.status==='available'&&x.url);
  for(const tool of tools){
   const p=tool.url.replace(/^\//,'')+'index.html';let s=read(p);

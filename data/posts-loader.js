@@ -128,9 +128,9 @@
     return{key:'rent',href:'/blog/all/?category=rent'};
   }
 
-  function normalizePath(href){
+  function normalizePath(href,base=location.origin){
     try{
-      const url=new URL(href,location.origin);
+      const url=new URL(href,base);
       return url.origin===location.origin?url.pathname:'';
     }catch(_){return''}
   }
@@ -210,14 +210,14 @@
     return [...doc.querySelectorAll('.guide-grid .guide-card')].slice(0,8).map(card=>{
       const category=(card.querySelector('small')?.textContent||'부동산 가이드').split(/\s+·\s+/)[0].trim();
       return{
-        path:normalizePath(card.getAttribute('href')),
+        path:normalizePath(card.getAttribute('href'),new URL('/blog/',location.origin)),
         title:(card.querySelector('h2')?.textContent||'제목 없는 글').trim(),
         summary:(card.querySelector('p')?.textContent||'').trim(),
         category,
         date:'',
         updated:false
       };
-    }).filter(item=>item.path);
+    }).filter(item=>/^\/blog\/[^/]+\/$/.test(item.path)&&item.path!=='/blog/all/');
   }
 
   async function sitemapEntries(){

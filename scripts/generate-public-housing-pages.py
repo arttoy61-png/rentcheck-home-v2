@@ -44,7 +44,7 @@ OFFICIAL_FALLBACKS: dict[str, tuple[str, str]] = {
 }
 
 RESULT_MARKERS = re.compile(
-    r'발표|최종\s*청약접수\s*결과|계약결과|당첨|선정결과|서류심사\s*대상자|재계약\s*안내|입주안내문',
+    r'발표|(?:최종\s*)?청약\s*접수\s*결과|청약\s*경쟁률|접수\s*결과|접수\s*마감\s*안내|계약결과|당첨|선정결과|서류심사\s*대상자|재계약\s*안내|입주안내문',
     re.I,
 )
 RECRUIT_MARKERS = re.compile(
@@ -603,7 +603,7 @@ def render_page(item: dict, route: str) -> str:
       <h2>자료 확인 기준</h2>
       <p><strong>{esc(source)}</strong>에서 수집한 공고 정보를 바탕으로 정리했습니다. {esc(schedule_source_label(item))}했습니다.</p>
       <p>마지막 자동 확인일은 <strong>{esc(checked)}</strong>입니다. 신청 직전에는 공식 원문에서 접수시간, 제출서류 발급기준, 중복신청 제한, 공급주택 목록을 다시 확인하세요.</p>
-      <div class="housing-links">{editorial_button}{official_button}<a class="alt" href="/blog/public-housing-application-documents/">신청 후 서류 순서</a>{youth_link}<a class="alt" href="/public-housing/">다른 LH·SH 공고</a></div>
+      <div class="housing-links">{editorial_button}{official_button}<a class="alt" href="/blog/public-housing-application-documents/" title="SH 장기미임대 특정 공고의 사례입니다. 현재 공고의 일정은 공식 원문을 확인하세요.">SH 장기미임대 신청·서류 분리 사례</a>{youth_link}<a class="alt" href="/public-housing/">다른 LH·SH 공고</a></div>
       <p class="note">Rent Check 공고 안내 · 공고 ID {esc(item.get('id'))}. 공식 기관의 최신 공고와 후속 정정 공지가 최종 기준입니다.</p>
     </section>
   </article>
@@ -662,6 +662,41 @@ def write_public_housing_sitemap(items: list[dict]) -> None:
     SITEMAP_PATH.write_text('\n'.join(body) + '\n', encoding='utf-8')
 
 
+def archive_inactive_notice_html(content: str, *, today: date | None = None) -> str:
+    """Remove live application instructions from generated notices no longer in the feed."""
+    if 'Rent Check 공고 안내 · 공고 ID ' not in content or 'class="housing-hero"' not in content:
+        return content
+    kicker = re.search(r'<p class="kicker">([^<]*)</p>', content)
+    if not kicker or not any(label in kicker.group(1) for label in (
+        '접수 중', '접수 예정', '오늘 접수 시작', '오늘 접수일', '오늘 접수마감',
+    )):
+        return content
+    deadline = re.search(r'<span>신청 마감</span><strong>(20\d{2})년 (\d{1,2})월 (\d{1,2})일', content)
+    end = parse_date('-'.join(deadline.groups())) if deadline else None
+    ended = bool(end and end < (today or date.today()))
+    label = '접수 마감 · 보관 공고' if ended else '보관 공고 · 현재 모집 여부 확인'
+    lead = (
+        '이 페이지에 기록된 접수기간은 종료되었습니다. 아래 일정은 과거 공고 기록이며 현재 신청 가능 여부를 뜻하지 않습니다.'
+        if ended else
+        '현재 모집공고 원장에서 제외된 보관용 안내입니다. 아래 일정은 마지막 자동 확인일 기준이며 현재 접수 상태를 뜻하지 않습니다.'
+    ) + ' 이미 신청했다면 기관의 후속 공지를 확인하고, 새 신청은 최신 모집공고에서 확인하세요.'
+    content = re.sub(r'<p class="kicker">[^<]*</p>', f'<p class="kicker">{label}</p>', content, count=1)
+    content = re.sub(r'<p class="lead">.*?</p>', f'<p class="lead">{lead}</p>', content, count=1, flags=re.S)
+    actions = '<ol><li>이미 신청했다면 접수번호와 제출 내역을 보관합니다.</li><li>대상자 발표·서류제출·소명 등 후속 공지는 기관 원문에서 확인합니다.</li><li>새 신청은 <a href="/public-housing/">현재 모집공고 목록</a>에서 별도로 확인합니다.</li></ol>'
+    return re.sub(r'(<h2>지금 할 일</h2>\s*)<ol>.*?</ol>', lambda m: m.group(1) + actions, content, count=1, flags=re.S)
+
+
+def refresh_inactive_notice_pages(active_routes: set[str]) -> None:
+    for page in OUT_ROOT.glob('*/index.html'):
+        route = '/' + page.parent.as_posix().strip('/') + '/'
+        if route in active_routes:
+            continue
+        original = page.read_text(encoding='utf-8')
+        updated = archive_inactive_notice_html(original)
+        if updated != original:
+            page.write_text(updated, encoding='utf-8')
+
+
 def main() -> None:
     if not SOURCE.exists():
         raise SystemExit(f'missing source feed: {SOURCE}')
@@ -709,6 +744,8 @@ def main() -> None:
             alias_folder.mkdir(parents=True, exist_ok=True)
             (alias_folder / 'index.html').write_text(render_redirect(route), encoding='utf-8')
             redirects += 1
+
+    refresh_inactive_notice_pages(set(routes.values()))
 
     manifest.sort(
         key=lambda item: (
