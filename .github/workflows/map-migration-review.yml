@@ -1,83 +1,76 @@
-name: Map migration isolated review
+name: HOME redevelopment regression
 on:
   push:
-    branches: ['migrate/redevelopment-home-20261019']
+    branches: ['main', 'migrate/redevelopment-home-20261019']
     paths:
+      - 'redevelopment/**'
+      - 'scripts/redevelopment/**'
       - '.github/workflows/map-migration-review.yml'
-      - 'scripts/prepare_home_map_migration.py'
-      - 'scripts/redevelopment/check_home_map.py'
+      - '.github/workflows/update-home-stats.yml'
+  pull_request:
+    paths:
+      - 'redevelopment/**'
+      - 'scripts/redevelopment/**'
+      - '.github/workflows/map-migration-review.yml'
+      - '.github/workflows/update-home-stats.yml'
 permissions:
-  contents: write
+  contents: read
 env:
   PYTHONDONTWRITEBYTECODE: '1'
 concurrency:
-  group: map-migration-review
-  cancel-in-progress: false
+  group: home-map-regression-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
-  prepare-and-test:
+  regression:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: migrate/redevelopment-home-20261019
-          set-safe-directory: false
-      - name: Record branch checkout
-        run: git status --porcelain && git rev-parse HEAD
-      - uses: actions/checkout@v5
-        if: hashFiles('redevelopment/index.html') == ''
-        with:
-          repository: arttoy61-png/rentcheck-preview
-          ref: c1200eb6c8e0799ae0a664bf74569539d3c5d557
-          path: .migration-source
           persist-credentials: false
           set-safe-directory: false
+      - name: Preserve tracked source for reproducible review
+        run: |
+          mkdir -p test-artifacts/home-map
+          git archive --format=tar.gz HEAD > test-artifacts/home-map/home-map-source.tar.gz
+          git rev-parse HEAD > test-artifacts/home-map/revision.txt
       - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Extract the map only
-        if: hashFiles('redevelopment/index.html') == ''
-        run: python scripts/prepare_home_map_migration.py --home . --source .migration-source
-      - name: Validate JavaScript and importer (no data APIs)
+      - name: Install test dependencies
+        run: |
+          pip install playwright PyYAML
+          python -m playwright install --with-deps chromium
+      - name: Validate all embedded Python scripts in HOME update workflow
+        run: |
+          python - <<'PY'
+          import ast,re,yaml
+          from pathlib import Path
+          w=yaml.safe_load(Path('.github/workflows/update-home-stats.yml').read_text())
+          checked=0
+          for job in w['jobs'].values():
+              for step in job.get('steps',[]):
+                  for code in re.findall(r"python - <<'PY'\n(.*?)\nPY(?:\n|$)",step.get('run',''),re.S):
+                      ast.parse(code);checked+=1
+          assert checked>=3
+          print('Validated Python blocks:',checked)
+          PY
+      - name: Validate map and importer without data collection
         run: |
           set -euo pipefail
           for file in redevelopment/*.js; do node --check "$file"; done
           python -m unittest discover -s scripts/redevelopment -p 'test_*.py'
-      - name: Read current existing map feed without collecting or geocoding
-        continue-on-error: true
-        run: python scripts/redevelopment/import_isolated_feed.py --map-dir redevelopment/data
-      - name: Install browser test runtime
+          python -m unittest discover -s scripts -p 'test_wait_public_collection.py'
+      - name: PC and emulated mobile touch with preview and data APIs blocked
         run: |
-          pip install playwright
-          python -m playwright install --with-deps chromium
-      - name: PC and emulated mobile touch, preview and paid-data requests blocked
-        run: |
-          python -m http.server 8765 --bind 127.0.0.1 > /tmp/map-http.log 2>&1 &
+          python -m http.server 8765 --bind 127.0.0.1 > /tmp/home-map-http.log 2>&1 &
           SERVER_PID=$!
           trap 'kill "$SERVER_PID" || true' EXIT
           python scripts/redevelopment/check_home_map.py
-      - name: Commit only non-workflow migration outputs with contents-scoped token
-        run: |
-          set -euo pipefail
-          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/migrate/redevelopment-home-20261019 | cut -f1)"
-          git add -- redevelopment scripts/redevelopment/*.py docs/redevelopment-home-migration.json index.html sitemap-base-20260930.xml
-          python - <<'PY'
-          import subprocess
-          files=subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines()
-          allowed={'index.html','sitemap-base-20260930.xml','docs/redevelopment-home-migration.json'}
-          assert files and all(f in allowed or f.startswith(('redevelopment/','scripts/redevelopment/')) for f in files)
-          assert not any('__pycache__' in f or f.startswith('.github/') for f in files)
-          print('Scoped migration staged files:',len(files))
-          PY
-          git -c user.name='Rent Check migration' -c user.email='rentcheck-migration@users.noreply.github.com' commit -m 'feat: internalize redevelopment map and HOME feed importer code'
-          git push origin HEAD:refs/heads/migrate/redevelopment-home-20261019
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: home-map-browser-evidence
           path: test-artifacts/home-map/
           retention-days: 3
-          if-no-files-found: warn
+          if-no-files-found: error
