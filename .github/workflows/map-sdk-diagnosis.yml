@@ -8,54 +8,35 @@ permissions:
 jobs:
   read-only-sdk:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 3
     steps:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
-      - name: Install browser
-        run: pip install playwright && python -m playwright install --with-deps chromium
-      - name: Observe one HOME map load, no credentials or domain configuration changes
+      - name: Read HTTP error only; no geocoding, key rotation or domain changes
         run: |
           mkdir -p evidence
           python - <<'PY'
-          import json,re
+          import json,re,urllib.request,urllib.error
           from pathlib import Path
-          from urllib.parse import urlsplit
-          from playwright.sync_api import sync_playwright
-          report={'requests':[],'request_failures':[],'new_geocoding_requests':0,'analytics':'blocked'}
-          def sanitized(value):
-              value=re.sub(r'https?://[^\s"<>]+',lambda m:m[0].split('?')[0],str(value))
-              return re.sub(r'\b[a-fA-F0-9]{32,64}\b','[redacted-key-or-hash]',value)[:1500]
-          with sync_playwright() as p:
-              b=p.chromium.launch();c=b.new_context()
-              def route(r):
-                  u=r.request.url
-                  if any(x in u for x in ['rentcheck-preview','google-analytics.com','googletagmanager.com','analytics.google.com','wcs.pstatic.net','/v2/local/','apis.data.go.kr']):
-                      if '/v2/local/' in u:report['new_geocoding_requests']+=1
-                      r.abort();return
-                  r.continue_()
-              c.route('**/*',route);page=c.new_page()
-              def response(r):
-                  if urlsplit(r.url).netloc!='dapi.kakao.com':return
-                  row={'path':urlsplit(r.url).path,'status':r.status}
-                  if r.status>=400:
-                      try:row['error_body']=sanitized(r.text())
-                      except Exception:row['error_body']='body unavailable'
-                  report['requests'].append(row)
-              page.on('response',response)
-              page.on('requestfailed',lambda r:report['request_failures'].append({'path':urlsplit(r.url).path,'error':sanitized(r.failure)}) if urlsplit(r.url).netloc=='dapi.kakao.com' else None)
-              page.goto('https://rent-check.kr/redevelopment/',wait_until='domcontentloaded',timeout=60000);page.wait_for_timeout(10000)
-              report['kakao_connected']=page.evaluate('Boolean(window.RentKakaoSession?.isActive?.())')
-              report['status_text']=page.locator('#kakaoConnectionStatus').inner_text()
-              report['list_count']=page.locator('.site-card').count()
-              page.screenshot(path='evidence/home-sdk.png',full_page=True)
-              c.close();b.close()
+          report={'purpose':'read-only HTTP error diagnosis','browser_ORB_protection':'unchanged','new_geocoding_requests':0,'analytics':'not_loaded'}
+          config=urllib.request.urlopen('https://rent-check.kr/redevelopment/config.public.js',timeout=20).read().decode()
+          key=re.search(r'kakaoJavaScriptKey\s*:\s*"([a-f0-9]{32})"',config).group(1)
+          url='https://dapi.kakao.com/v2/maps/sdk.js?appkey='+key+'&autoload=false&libraries=services'
+          req=urllib.request.Request(url,headers={'Referer':'https://rent-check.kr/','User-Agent':'RentCheck-Migration-Diagnostic/1'})
+          try:
+              with urllib.request.urlopen(req,timeout=20) as r:
+                  report.update(status=r.status,content_type=r.headers.get('Content-Type'),body_kind='javascript' if 'javascript' in r.headers.get('Content-Type','') else 'other')
+          except urllib.error.HTTPError as e:
+              body=e.read(4096).decode('utf8','replace').replace(key,'[redacted]')
+              report.update(status=e.code,content_type=e.headers.get('Content-Type'),error_body=re.sub(r'\b[a-fA-F0-9]{32,64}\b','[redacted]',body))
+          except Exception as e:report['transport_error']=type(e).__name__
+          report['existing_public_key_used']=True
           Path('evidence/result.json').write_text(json.dumps(report,ensure_ascii=False,indent=2));print(json.dumps(report,ensure_ascii=False))
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: home-map-sdk-diagnosis
+          name: home-map-sdk-http-diagnosis
           path: evidence/
           retention-days: 3
