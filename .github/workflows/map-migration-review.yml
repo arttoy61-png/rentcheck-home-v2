@@ -2,41 +2,80 @@ name: Map migration isolated review
 on:
   push:
     branches: ['migrate/redevelopment-home-20261019']
-    paths: ['.github/workflows/map-migration-review.yml']
+    paths:
+      - '.github/workflows/map-migration-review.yml'
+      - 'scripts/prepare_home_map_migration.py'
+      - 'scripts/redevelopment/check_home_map.py'
 permissions:
-  contents: read
+  contents: write
+concurrency:
+  group: map-migration-review
+  cancel-in-progress: false
 jobs:
-  source-export:
+  prepare-and-test:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: 780ac78c3f45c1e449a641ec5823978991c05132
-          path: home-source
-          persist-credentials: false
+          ref: migrate/redevelopment-home-20261019
           set-safe-directory: false
+      - name: Record branch checkout
+        run: git status --porcelain && git rev-parse HEAD
       - uses: actions/checkout@v5
+        if: hashFiles('redevelopment/index.html') == ''
         with:
           repository: arttoy61-png/rentcheck-preview
           ref: c1200eb6c8e0799ae0a664bf74569539d3c5d557
-          path: map-source
+          path: .migration-source
           persist-credentials: false
           set-safe-directory: false
-      - name: Export tracked public source only (no credentials or external data collection)
-        shell: bash
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Extract the map only
+        if: hashFiles('redevelopment/index.html') == ''
+        run: python scripts/prepare_home_map_migration.py --home . --source .migration-source
+      - name: Validate JavaScript and importer (no data APIs)
         run: |
           set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/map-source-bundle"
-          git -C home-source status --porcelain
-          git -C map-source status --porcelain
-          git -C home-source archive --format=tar HEAD > "$RUNNER_TEMP/map-source-bundle/home.tar"
-          git -C map-source archive --format=tar HEAD > "$RUNNER_TEMP/map-source-bundle/preview.tar"
-          printf 'HOME %s\nMAP %s\n' "$(git -C home-source rev-parse HEAD)" "$(git -C map-source rev-parse HEAD)" > "$RUNNER_TEMP/map-source-bundle/revisions.txt"
-          sha256sum "$RUNNER_TEMP/map-source-bundle/"*.tar
+          for file in redevelopment/*.js; do node --check "$file"; done
+          python -m unittest discover -s scripts/redevelopment -p 'test_*.py'
+      - name: Read current existing map feed without collecting or geocoding
+        continue-on-error: true
+        run: python scripts/redevelopment/import_isolated_feed.py --map-dir redevelopment/data
+      - name: Install browser test runtime
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: PC and emulated mobile touch, preview and paid-data requests blocked
+        run: |
+          python -m http.server 8765 --bind 127.0.0.1 > /tmp/map-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" || true' EXIT
+          python scripts/redevelopment/check_home_map.py
+      - name: Commit only the approved migration outputs to the review branch
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/migrate/redevelopment-home-20261019 | cut -f1)"
+          git add -- redevelopment scripts/redevelopment docs/redevelopment-home-migration.json index.html sitemap-base-20260930.xml .github/workflows/update-home-stats.yml
+          python - <<'PY'
+          import subprocess
+          files=subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines()
+          allowed={'index.html','sitemap-base-20260930.xml','.github/workflows/update-home-stats.yml','docs/redevelopment-home-migration.json'}
+          assert files and all(f in allowed or f.startswith(('redevelopment/','scripts/redevelopment/')) for f in files)
+          assert not any('__pycache__' in f for f in files)
+          print('Scoped migration staged files:',len(files))
+          PY
+          git -c user.name='Rent Check migration' -c user.email='rentcheck-migration@users.noreply.github.com' commit -m 'feat: internalize redevelopment map and direct HOME feed importer'
+          git push origin HEAD:refs/heads/migrate/redevelopment-home-20261019
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: map-migration-source-bundle
-          path: ${{ runner.temp }}/map-source-bundle/
+          name: home-map-browser-evidence
+          path: test-artifacts/home-map/
           retention-days: 3
-          if-no-files-found: error
+          if-no-files-found: warn
