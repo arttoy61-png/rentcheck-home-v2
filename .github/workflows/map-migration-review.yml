@@ -8,6 +8,8 @@ on:
       - 'scripts/redevelopment/check_home_map.py'
 permissions:
   contents: write
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
 concurrency:
   group: map-migration-review
   cancel-in-progress: false
@@ -61,7 +63,7 @@ jobs:
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/migrate/redevelopment-home-20261019 | cut -f1)"
-          git add -- redevelopment scripts/redevelopment docs/redevelopment-home-migration.json index.html sitemap-base-20260930.xml .github/workflows/update-home-stats.yml
+          git add -- redevelopment scripts/redevelopment/*.py docs/redevelopment-home-migration.json index.html sitemap-base-20260930.xml .github/workflows/update-home-stats.yml
           python - <<'PY'
           import subprocess
           files=subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines()
