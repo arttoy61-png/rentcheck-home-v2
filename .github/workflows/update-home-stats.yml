@@ -101,7 +101,7 @@ jobs:
           tools = json.loads(Path('data/tools.json').read_text(encoding='utf-8'))
           count = sum(1 for tool in tools if tool.get('status') == 'available' and isinstance(tool.get('url'), str) and tool['url'].strip() and tool.get('id') not in hidden)
           home_path = Path('index.html')
-          home = home_path.read_text(encoding='utf-8')
+          home = home_path.read_text(encoding='utf-8')) if False else home_path.read_text(encoding='utf-8')
           home, changed = re.subn(r'(<strong id="availableToolCount">)\d+(</strong>)', rf'\g<1>{count}\g<2>', home, count=1)
           if changed != 1: raise SystemExit('availableToolCount marker not found in index.html')
           home_path.write_text(home, encoding='utf-8')
@@ -205,6 +205,13 @@ jobs:
           elif new not in text:
               raise SystemExit('home_stats fetch URL not found in app.js')
           PY
+      - name: Import redevelopment feed directly from existing public source
+        id: redevelopment
+        continue-on-error: true
+        run: python scripts/redevelopment/import_isolated_feed.py --map-dir redevelopment/data
+      - name: Report preserved redevelopment data on upstream failure
+        if: steps.redevelopment.outcome == 'failure'
+        run: echo "::warning::Redevelopment upstream/import is not current. Previous good map retained; see redevelopment/data/redevelopment-nearby-status.json."
       - name: Build internal search index from existing pages
         run: node scripts/build-internal-search.mjs
       - name: Commit generated homepage data and static content
@@ -212,6 +219,7 @@ jobs:
           git config user.name 'github-actions'
           git config user.email 'github-actions@users.noreply.github.com'
           git add data/home-content.json data/internal-search.json data/home_stats.json data/site_stats.json app.js index.html data/posts-loader.js data/home-analysis-ui.js tools/jeonse-ratio/index.html tools/longterm-jeonse-51/index.html analysis/ujangsan-hillstate/index.html public-housing/sh-longterm-jeonse-51/index.html public-housing/routes.json public-housing/current.json public-housing/sitemap.xml public-housing/notices
+          git add -- redevelopment/data/redevelopment-nearby-seoul.json redevelopment/data/redevelopment-nearby-status.json
           git diff --cached --quiet || git commit -m 'build: refresh home stats and public housing notice articles'
           git pull --rebase --autostash
           git push
