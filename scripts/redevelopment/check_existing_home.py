@@ -37,7 +37,11 @@ try:
      for kind in ['sale','jeonse','wolse']:
       act(page.locator(f'.det .tabs button[onclick="setTab(\'{kind}\')"]'))
       page.wait_for_selector('.deals');check(page.locator('.det .tabs button.on').get_attribute('onclick')==f"setTab('{kind}')",selector+'-'+kind)
-    home();act(page.locator('#rc-latest-search-guide a'));page.wait_for_selector('main h1');check(len(page.locator('main').inner_text())>300,'latest-guide-click')
+    home()
+    guides=page.locator('#articleLibrary .article-row')
+    dates=guides.evaluate_all('(xs)=>xs.map((x,i)=>({i,date:x.querySelector("small")?.textContent||""}))')
+    newest=max(dates,key=lambda x:x['date']);act(guides.nth(newest['i']))
+    page.wait_for_selector('main h1');check(len(page.locator('main').inner_text())>300,'latest-visible-guide-click')
     page.goto(base+'/public-housing/',wait_until='networkidle');page.wait_for_selector('.housing-card');link=page.locator('.housing-card[href^="/"]').first;href=link.get_attribute('href');act(link);page.wait_for_load_state('networkidle')
     check(urlsplit(page.url).path==href,'housing-detail-click')
     page.goto(base+'/tools/jeonse-ratio/',wait_until='networkidle');page.locator('#sale').fill('30000');page.locator('#jeonse').fill('24000');act(page.locator('#calculate'))
