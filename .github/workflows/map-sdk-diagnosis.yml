@@ -40,3 +40,5 @@ jobs:
           name: home-map-sdk-http-diagnosis
           path: evidence/
           retention-days: 3
+
+# rerun-after-domain-registration
