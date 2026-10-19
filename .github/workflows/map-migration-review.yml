@@ -59,20 +59,20 @@ jobs:
           SERVER_PID=$!
           trap 'kill "$SERVER_PID" || true' EXIT
           python scripts/redevelopment/check_home_map.py
-      - name: Commit only the approved migration outputs to the review branch
+      - name: Commit only non-workflow migration outputs with contents-scoped token
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/migrate/redevelopment-home-20261019 | cut -f1)"
-          git add -- redevelopment scripts/redevelopment/*.py docs/redevelopment-home-migration.json index.html sitemap-base-20260930.xml .github/workflows/update-home-stats.yml
+          git add -- redevelopment scripts/redevelopment/*.py docs/redevelopment-home-migration.json index.html sitemap-base-20260930.xml
           python - <<'PY'
           import subprocess
           files=subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines()
-          allowed={'index.html','sitemap-base-20260930.xml','.github/workflows/update-home-stats.yml','docs/redevelopment-home-migration.json'}
+          allowed={'index.html','sitemap-base-20260930.xml','docs/redevelopment-home-migration.json'}
           assert files and all(f in allowed or f.startswith(('redevelopment/','scripts/redevelopment/')) for f in files)
-          assert not any('__pycache__' in f for f in files)
+          assert not any('__pycache__' in f or f.startswith('.github/') for f in files)
           print('Scoped migration staged files:',len(files))
           PY
-          git -c user.name='Rent Check migration' -c user.email='rentcheck-migration@users.noreply.github.com' commit -m 'feat: internalize redevelopment map and direct HOME feed importer'
+          git -c user.name='Rent Check migration' -c user.email='rentcheck-migration@users.noreply.github.com' commit -m 'feat: internalize redevelopment map and HOME feed importer code'
           git push origin HEAD:refs/heads/migrate/redevelopment-home-20261019
       - uses: actions/upload-artifact@v4
         if: always()
