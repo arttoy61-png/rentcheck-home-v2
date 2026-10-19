@@ -1,0 +1,77 @@
+@media(max-width:700px){#mapPage .workspace[data-topic=redevelopment].detail-map-visible .zoom{top:auto!important;bottom:190px!important;display:flex!important;flex-direction:row!important;gap:4px!important}}
+@media(max-width:700px){#mapPage .workspace[data-topic=redevelopment].detail-map-visible #searchBounds{top:auto!important;bottom:130px!important}}
+/* Scoped to redevelopment. Other topic panels keep their existing layout. */
+.workspace[data-topic=redevelopment] .redevelopment-card *{box-sizing:border-box;min-width:0}
+.workspace[data-topic=redevelopment] :is(#detailBody,#results) .project-card-heading{display:block!important;position:static!important;height:auto!important;padding:0!important;background:none!important;color:inherit!important;border:0!important}
+.workspace[data-topic=redevelopment] :is(#detailBody,#results) .project-card-heading .badge{display:inline-block;width:auto}
+.workspace[data-topic=redevelopment] :is(#detailBody,#results) .pilot-track{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px;padding:0}
+.workspace[data-topic=redevelopment] :is(#detailBody,#results) .pilot-track li{width:auto!important;max-width:100%;white-space:normal;line-height:1.5}
+.workspace[data-topic=redevelopment] .project-card-heading h2{font-size:23px;line-height:1.4;margin:10px 0}
+.workspace[data-topic=redevelopment] .project-stage-banner{background:#132b4c;color:#fff;border-radius:16px;padding:20px 18px;margin:18px 0}
+.workspace[data-topic=redevelopment] .project-stage-banner .pilot-label{color:#bacee8}
+.workspace[data-topic=redevelopment] .project-stage-banner>strong{display:block;font-size:32px;line-height:1.3;margin:8px 0;font-weight:800;overflow-wrap:anywhere}
+.workspace[data-topic=redevelopment] .project-stage-banner .stage-date{color:#dbeafe;font-size:15px;font-weight:600}
+.workspace[data-topic=redevelopment] .project-stage-banner .stage-meaning{font-size:14px;line-height:1.7}
+.workspace[data-topic=redevelopment] .project-stage-banner small{display:block;font-size:11px;line-height:1.65;color:#c5d4e8;margin-top:8px}
+.workspace[data-topic=redevelopment] .project-stage-banner a{display:block;color:#c1ddff;font-size:11px;margin-top:8px}
+.workspace[data-topic=redevelopment] .project-progress,.workspace[data-topic=redevelopment] .purchase-questions,.workspace[data-topic=redevelopment] .project-transactions,.workspace[data-topic=redevelopment] .project-information{border-top:1px solid #dce5f1;padding-top:18px;margin-top:22px}
+.workspace[data-topic=redevelopment] :is(#detailBody,#results) .project-progress h3,.workspace[data-topic=redevelopment] :is(#detailBody,#results) .purchase-questions h3,.workspace[data-topic=redevelopment] :is(#detailBody,#results) .project-transactions h3,.workspace[data-topic=redevelopment] :is(#detailBody,#results) .project-information>h3{font-size:19px;margin-top:0}
+.workspace[data-topic=redevelopment] .purchase-question{padding:16px;background:#f5f8fc;border:1px solid #dbe5f1;border-radius:12px;margin:10px 0}
+.workspace[data-topic=redevelopment] .purchase-question h4{font-size:15px;margin:0 0 8px}
+.workspace[data-topic=redevelopment] .purchase-question p,.workspace[data-topic=redevelopment] .trade-empty p{font-size:13px;line-height:1.75;margin:8px 0 0}
+.workspace[data-topic=redevelopment] .check-needed,.workspace[data-topic=redevelopment] .connection-state{color:#3f5979;font-size:12px;font-weight:700}
+.workspace[data-topic=redevelopment] .trade-empty{border:1px dashed #c4d1e0;border-radius:10px;padding:14px;margin:10px 0;background:#fafcfe}
+.workspace[data-topic=redevelopment] .trade-empty strong{font-size:14px}
+.workspace[data-topic=redevelopment] .original-operations{border-top:1px solid #dce5f1;padding-top:14px;margin-top:18px;font-size:13px;color:#52657b}
+.workspace[data-topic=redevelopment] .original-operations h3{font-size:15px}
+.workspace[data-topic=redevelopment] .original-operations small{display:block;margin-top:6px}
+.workspace[data-topic=redevelopment] .callout-stage{color:#175ccc;font-weight:700;margin:5px 0}
+#mapPage .workspace[data-topic=redevelopment] .detailpane,#mapPage .workspace[data-topic=redevelopment] :is(#detailBody,#results){min-width:0;max-width:100%;box-sizing:border-box}
+#mapPage .workspace[data-topic=redevelopment] :is(#detailBody,#results){overflow-x:hidden;overflow-wrap:anywhere}
+#mapPage .workspace[data-topic=redevelopment] :is(#detailBody,#results) dl{grid-template-columns:minmax(85px,32%) minmax(0,1fr)}
+#mapPage .workspace[data-topic=redevelopment] :is(#detailBody,#results) dd{min-width:0;margin-left:0;overflow-wrap:anywhere}
+#mapPage .workspace[data-topic=redevelopment] .map-callout{white-space:normal;width:260px;max-width:calc(100vw - 32px);box-sizing:border-box;overflow-wrap:anywhere}
+#mapPage .workspace[data-topic=redevelopment] .map-callout strong,#mapPage .workspace[data-topic=redevelopment] .map-callout small{display:block;white-space:normal;max-width:100%;overflow-wrap:anywhere;word-break:keep-all}
+#mapPage .workspace[data-topic=redevelopment] .map-callout .callout-detail{display:block;width:100%;box-sizing:border-box;white-space:normal}
+.redevelopment-pilot *{box-sizing:border-box;min-width:0}
+:is(#detailBody,#results) .pilot-current{background:#eff5ff;border:1px solid #b9d2fa;border-left:5px solid #175ccc;border-radius:12px;padding:16px}
+.pilot-label{font-size:12px;font-weight:700;color:#47658b}
+.pilot-current>strong{display:block;color:#1049a4;font-size:28px;line-height:1.35;margin:6px 0}
+.pilot-current>p{margin:4px 0 10px;font-size:14px}
+.pilot-track{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:12px 0;padding:0}
+.pilot-track li{font-size:12px;text-align:center;background:#fff;border:1px solid #dae4f1;border-radius:6px;padding:8px 2px}
+.pilot-track li[aria-current=step]{background:#175ccc;color:#fff;border:2px solid #123f87;font-weight:700}
+.pilot-track b{display:block;font-size:11px}
+.pilot-current>small{display:block;font-size:11px;line-height:1.5;color:#4f6380}
+.pilot-section,.pilot-all{border-top:1px solid #dce5f1;padding-top:16px;margin-top:20px}
+:is(#detailBody,#results) .pilot-section h3{margin-top:0}
+.pilot-note{font-size:13px;color:#5b6c80;line-height:1.7}
+.pilot-all>summary{font-weight:750;font-size:17px;cursor:pointer;padding:8px 0}
+.pilot-all>summary small{display:block;font-size:12px;font-weight:400;color:#5e7189}
+.pilot-step{margin:8px 0;border:1px solid #dce5f1;border-radius:9px;background:white}
+.pilot-step>summary{display:flex;align-items:center;gap:8px;padding:12px;cursor:pointer;font-size:14px;font-weight:650;list-style:none}
+.pilot-step>summary::-webkit-details-marker{display:none}
+.pilot-step>summary>span:nth-child(2){flex:1}
+.pilot-step small{display:block;font-weight:400;font-size:11px;color:#617087;line-height:1.5}
+.step-number{flex:0 0 24px;color:#617087;text-align:center}
+.pilot-step.current{border:2px solid #175ccc;background:#f3f7ff}
+.pilot-step.current>summary,.pilot-step.current .step-number{color:#1049a4}
+.pilot-step[open]>summary>b{transform:rotate(45deg)}
+.step-content{padding:0 12px 12px;font-size:13px}
+.step-content article{border-top:1px solid #e3e9f1;padding:9px 0}
+.step-content time{font-weight:700}
+.step-content article p{margin:3px 0}
+.pilot-sources a{display:block;margin:8px 0;font-size:13px}
+.redevelopment-home{white-space:nowrap;font-size:13px!important;min-width:98px;flex-shrink:0;color:#1049a4!important;background:#eff5ff;border:1px solid #b9d2fa;border-radius:8px}
+.workspace[data-topic=redevelopment] .detailtop{flex-wrap:wrap}
+.redevelopment-detail-region{display:flex;flex:0 0 100%;gap:8px;align-items:center}
+.redevelopment-detail-region[hidden]{display:none}
+.redevelopment-detail-region select{min-width:0;flex:1;min-height:40px;border:1px solid #d9e1ea;border-radius:8px;background:#fff;padding:6px 10px}
+.redevelopment-detail-region button{min-height:40px;border:1px solid #b9d2fa;border-radius:8px;background:#eff5ff;padding:6px 10px}
+#mapPage:has(.workspace[data-topic=redevelopment]) .design-filterbar .filter-chip-scroll{min-width:0}
+#mapPage .workspace[data-topic=redevelopment] .design-filterbar{height:auto!important;min-height:0!important;flex-shrink:0}
+#mapPage .workspace[data-topic=redevelopment] .design-filterbar .filter-chip-scroll{display:grid!important;grid-template-columns:minmax(0,1fr) 98px;overflow:visible!important;width:100%}
+#mapPage .workspace[data-topic=redevelopment] .design-filterbar #designDistrict{grid-column:1;grid-row:1}
+#mapPage .workspace[data-topic=redevelopment] .design-filterbar .redevelopment-home{grid-column:2;grid-row:1}
+#mapPage .workspace[data-topic=redevelopment] .design-filterbar select{min-width:0!important;max-width:100%!important;width:100%;text-overflow:ellipsis}
+@media(max-width:700px){#mapPage:has(.workspace[data-topic=redevelopment].has-detail)>.design-filterbar{display:none!important}#mapPage:has(.workspace[data-topic=redevelopment]) .design-filterbar .filter-chip-scroll{padding-right:60px!important;box-sizing:border-box}#mapPage:has(.workspace[data-topic=redevelopment]) .filter-chip-scroll #designDistrict{grid-column:1!important;width:100%!important}.redevelopment-home{grid-column:2;grid-row:1}}

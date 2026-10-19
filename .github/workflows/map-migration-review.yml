@@ -1,0 +1,84 @@
+name: HOME redevelopment regression
+on:
+  push:
+    branches: ['main', 'migrate/redevelopment-home-20261019']
+    paths:
+      - 'redevelopment/**'
+      - 'scripts/redevelopment/**'
+      - '.github/workflows/map-migration-review.yml'
+      - '.github/workflows/update-home-stats.yml'
+  pull_request:
+    paths:
+      - 'redevelopment/**'
+      - 'scripts/redevelopment/**'
+      - '.github/workflows/map-migration-review.yml'
+      - '.github/workflows/update-home-stats.yml'
+permissions:
+  contents: read
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+concurrency:
+  group: home-map-regression-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+          set-safe-directory: false
+      - name: Preserve tracked source for reproducible review
+        run: |
+          mkdir -p test-artifacts/home-map
+          git archive --format=tar.gz HEAD > test-artifacts/home-map/home-map-source.tar.gz
+          git rev-parse HEAD > test-artifacts/home-map/revision.txt
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Install test dependencies
+        run: |
+          pip install playwright PyYAML
+          python -m playwright install --with-deps chromium
+      - name: Validate all embedded Python scripts in HOME update workflow
+        run: |
+          python - <<'PY'
+          import ast,re,yaml
+          from pathlib import Path
+          w=yaml.safe_load(Path('.github/workflows/update-home-stats.yml').read_text())
+          checked=0
+          for job in w['jobs'].values():
+              for step in job.get('steps',[]):
+                  for code in re.findall(r"python - <<'PY'\n(.*?)\nPY(?:\n|$)",step.get('run',''),re.S):
+                      ast.parse(code);checked+=1
+          assert checked>=3
+          print('Validated Python blocks:',checked)
+          PY
+      - name: Validate map and importer without data collection
+        run: |
+          set -euo pipefail
+          for file in redevelopment/*.js; do node --check "$file"; done
+          python -m unittest discover -s scripts/redevelopment -p 'test_*.py'
+          python -m unittest discover -s scripts -p 'test_wait_public_collection.py'
+          python scripts/audit_internal_links.py
+      - name: PC and emulated mobile touch with preview and data APIs blocked
+        run: |
+          python -m http.server 8765 --bind 127.0.0.1 > /tmp/home-map-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" || true' EXIT
+          python scripts/redevelopment/check_home_map.py
+          python scripts/redevelopment/check_existing_home.py --base http://127.0.0.1:8765
+      - name: One authorized live transport check after migration deployment
+        if: github.event_name == 'push' && github.ref_name == 'main' && contains(github.event.head_commit.message, '[map-home-live]')
+        run: |
+          python scripts/redevelopment/check_live_map.py
+          python scripts/redevelopment/check_home_map.py --base https://rent-check.kr --out test-artifacts/home-map/live-blocked-preview
+          python scripts/redevelopment/check_existing_home.py --base https://rent-check.kr --out test-artifacts/home-map/live-existing
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: home-map-browser-evidence
+          path: test-artifacts/home-map/
+          retention-days: 3
+          if-no-files-found: error
