@@ -1,5 +1,5 @@
-"""HOME map regression. Preview, Kakao and MOLIT traffic are blocked.
-The Google tag is a stub: queue assertions do not claim GA receipt.
+"""HOME map regression. External preview, Kakao and MOLIT are blocked.
+Google uses a local stub: queue checks do not claim transmission or GA receipt.
 """
 import argparse,json,os
 from pathlib import Path
@@ -7,8 +7,7 @@ from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 P=argparse.ArgumentParser();P.add_argument('--base',default='http://127.0.0.1:8765');P.add_argument('--out',default='test-artifacts/home-map');args=P.parse_args()
 out=Path(args.out);out.mkdir(parents=True,exist_ok=True)
-base=args.base.rstrip('/');origin=urlsplit(base).netloc
-reports=[]
+base=args.base.rstrip('/');origin=urlsplit(base).netloc;reports=[]
 with sync_playwright() as pw:
     executable=os.environ.get('CHROMIUM_EXECUTABLE')
     browser=pw.chromium.launch(headless=True,**({'executable_path':executable} if executable else {}))
@@ -18,14 +17,14 @@ with sync_playwright() as pw:
         errors=[];failed=[];preview=[];blocked=[];google_scripts=[];checks=[]
         def route(r):
             u=r.request.url;host=urlsplit(u).netloc
-            if 'rentcheck-preview' in u:
-                preview.append(u);r.abort();return
+            if 'rentcheck-preview' in u:preview.append(u);r.abort();return
             if 'googletagmanager.com/gtag/js' in u:
-                google_scripts.append(u);r.fulfill(status=200,content_type='text/javascript',body='/* Test-only queue validation: no analytics traffic. */');return
+                google_scripts.append(u);r.fulfill(status=200,content_type='text/javascript',body='/* Local stub, no Google traffic. */');return
             if host==origin:r.continue_();return
             blocked.append(u.split('?')[0]);r.abort()
         context.route('**/*',route)
-        page=context.new_page();page.on('pageerror',lambda e:errors.append(str(e)))
+        page=context.new_page();page.set_default_timeout(12000)
+        page.on('pageerror',lambda e:errors.append(str(e)))
         page.on('response',lambda r:failed.append({'url':r.url,'status':r.status}) if urlsplit(r.url).netloc==origin and r.status>=400 else None)
         def check(value,label):
             assert value,label
@@ -33,27 +32,31 @@ with sync_playwright() as pw:
         def act(locator):
             if mobile:locator.tap(timeout=12000)
             else:locator.click(timeout=12000)
+        def search(value):
+            act(page.locator('#redevelopmentShell [data-open-search]'))
+            page.locator('#mobileSearchQuery').fill(value)
+            act(page.locator('[data-search-results]'))
         try:
             page.goto(base+'/redevelopment/?utm_source=naver&utm_medium=referral',referer='https://blog.naver.com/spitoon61',wait_until='networkidle',timeout=60000)
-            page.wait_for_selector('.site-card',timeout=30000)
-            check(page.locator('.site-card').count()>0,'initial-list-rendered')
+            page.wait_for_selector('.site-card',state='attached',timeout=30000)
+            check(page.locator('.site-card').count()>0,'initial-list-data-rendered')
             check(page.locator('#map .district').count()==25,'25-district-svg-map')
-            check('rent-check.kr/redevelopment/'==page.locator('link[rel=canonical]').get_attribute('href').split('://')[1],'home-canonical')
+            check(page.locator('link[rel=canonical]').get_attribute('href')=='https://rent-check.kr/redevelopment/','home-canonical')
             check(page.locator('main').count()==1,'map-only-no-preview-products')
             page.screenshot(path=str(out/(name+'-start.png')),full_page=True)
+            if mobile:act(page.locator('#redevelopmentView'))
+            page.wait_for_selector('.site-card',timeout=12000)
+            check(page.locator('.site-card').first.is_visible(),'list-toggle-and-visible-cards')
             page.locator('#designDistrict').select_option(label='강서구')
-            page.wait_for_timeout(150)
+            page.wait_for_timeout(200)
             check('강서구' in page.locator('#resultTitle').inner_text(),'district-filter')
-            if mobile:
-                act(page.locator('[data-open-search]'))
-                page.locator('#mobileSearchQuery').fill('방화6')
-                act(page.locator('[data-search-results]'))
-            else:page.locator('#globalMapSearch').fill('방화6')
+            search('방화6')
             page.wait_for_selector('.site-card',timeout=12000)
             check('방화' in page.locator('.site-card').first.inner_text(),'site-search')
+            page.screenshot(path=str(out/(name+'-list.png')),full_page=True)
             act(page.locator('.site-detail-link').first)
             page.wait_for_selector('#detailTitle',timeout=20000)
-            page.wait_for_timeout(600)
+            page.wait_for_timeout(800)
             check('방화' in page.locator('#detailTitle').inner_text(),'site-detail-open')
             check(page.locator('.nearby-transactions').count()>0,'saved-nearby-data-rendered')
             direct=page.url
@@ -63,14 +66,13 @@ with sync_playwright() as pw:
             act(page.locator('#closeDetail'))
             page.wait_for_timeout(300)
             check(not page.locator('#detail').is_visible(),'return-to-list')
-            if mobile:
-                act(page.locator('[data-open-menu]'))
-                check(page.locator('#mobileMenu').is_visible(),'mobile-menu-open')
-                act(page.locator('[data-menu-close]'))
-                act(page.locator('[data-open-search]'));page.locator('#mobileSearchQuery').fill('');act(page.locator('[data-search-results]'))
-            else:page.locator('#globalMapSearch').fill('')
+            act(page.locator('#redevelopmentShell [data-open-menu]'))
+            check(page.locator('#mobileMenu').is_visible(),'menu-open')
+            act(page.locator('[data-menu-close]'))
+            search('')
             page.locator('#designDistrict').select_option(label='서울 전체')
             page.wait_for_timeout(200)
+            if mobile and page.locator('.site-card').first.is_visible():act(page.locator('#redevelopmentView'))
             old_box=page.locator('#map').get_attribute('viewBox');act(page.locator('#zoomIn'))
             check(old_box!=page.locator('#map').get_attribute('viewBox'),'map-zoom')
             act(page.locator('#zoomOut'))
@@ -85,8 +87,7 @@ with sync_playwright() as pw:
             check(not errors,'no-browser-javascript-errors')
             check(page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),'no-page-horizontal-overflow')
             page2=context.new_page();page2.goto(direct,wait_until='networkidle');page2.wait_for_selector('#detailTitle',timeout=20000)
-            check('방화' in page2.locator('#detailTitle').inner_text(),'fresh-direct-detail-load')
-            page2.close()
+            check('방화' in page2.locator('#detailTitle').inner_text(),'fresh-direct-detail-load');page2.close()
             reports.append({'device':name,'state':'passed','checks':checks,'blocked_external_domains':sorted(set(urlsplit(u).netloc for u in blocked)),'analytics':'stub-only, no Google transmission','mobile':'emulated touch, not physical device' if mobile else None})
         except Exception as e:
             page.screenshot(path=str(out/(name+'-failure.png')),full_page=True)
