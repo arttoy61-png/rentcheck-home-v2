@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-20T00:02:57+00:00",
-  "source_generated_at": "2026-10-20T05:36:59",
+  "generated_at": "2026-10-20T01:15:36+00:00",
+  "source_generated_at": "2026-10-20T09:20:57",
   "source_status": {
     "LH": {
       "count": 7,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 7,
       "carried_count": 7,
-      "failure_streak": 69
+      "failure_streak": 70
     },
     "SH": {
       "count": 21,
@@ -55,8 +55,8 @@
       "published_at": "2026-10-19",
       "deadline": "",
       "open_state": "일정 확인",
-      "event": "수정",
-      "change": "수정",
+      "event": "신규",
+      "change": "동일",
       "status_text": "일정 확인 중",
       "is_gangseo": false,
       "keywords": [
@@ -119,7 +119,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311521",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.26.(월) ~ 2026.10.30.(금)",
-        "verified_at": "2026-10-20T05:36:47"
+        "verified_at": "2026-10-20T09:20:47"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311521/",
@@ -774,7 +774,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311349",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026. 10. 26.(월) ~ 2026.11. 06.(금) 18시까지",
-        "verified_at": "2026-10-20T05:36:54"
+        "verified_at": "2026-10-20T09:20:53"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-06T18:00:00+09:00",
@@ -816,7 +816,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311549",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.21.(수) ~ 10.28.(수)",
-        "verified_at": "2026-10-20T05:36:52"
+        "verified_at": "2026-10-20T09:20:51"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311549/",
@@ -897,7 +897,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311087",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.08.(목) ~2026.10.22.(목) 15시까지",
-        "verified_at": "2026-10-20T05:36:59"
+        "verified_at": "2026-10-20T09:20:57"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-10-22T15:00:00+09:00",
