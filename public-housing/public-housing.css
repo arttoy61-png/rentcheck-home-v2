@@ -34,7 +34,19 @@ body{margin:0;background:#fff;color:#172033;line-height:1.65}
 .housing-detail article,.housing-hero,.housing-detail .section,.housing-detail .grid,.housing-detail .card{width:100%;min-width:0;max-width:100%;overflow-wrap:anywhere}
 .housing-detail img,.housing-detail video,.housing-detail iframe{display:block;max-width:100%;height:auto}
 .housing-detail table{width:100%!important;max-width:100%;min-width:0!important;border-collapse:collapse;table-layout:fixed}
-.housing-detail th,.housing-detail td{min-width:0!important;max-width:100%;overflow-wrap:anywhere;word-break:break-word;white-space:normal}
+.housing-detail th,.housing-detail td{min-width:0!important;max-width:100%;padding:12px!important;text-align:left!important;vertical-align:middle;overflow-wrap:anywhere;word-break:keep-all;white-space:normal;line-height:1.65;font-variant-numeric:tabular-nums}
+/* Generated SH/LH schedules share this stylesheet, including archived notices. */
+.housing-detail table:not(.tbl) tbody th{background:#f4f7fb;color:#0d1f3c}
+@media(min-width:681px){
+.housing-detail table:not(.tbl) th:first-child{width:30%;text-align:center!important}
+.housing-detail .housing-schedule-table :is(th,td):nth-child(-n+3){text-align:center!important}
+.housing-detail .housing-schedule-table th:nth-child(1){width:15%}
+.housing-detail .housing-schedule-table th:nth-child(2){width:20%}
+.housing-detail .housing-schedule-table th:nth-child(3){width:22%}
+.housing-detail .housing-supply-table :is(th,td):first-child{width:16%;text-align:center!important}
+.housing-detail .housing-supply-table :is(th,td):last-child{width:25%;text-align:right!important}
+.housing-detail .housing-supply-table td{vertical-align:top}
+}
 .housing-detail p,.housing-detail li,.housing-detail strong,.housing-detail a{max-width:100%;overflow-wrap:anywhere}
 .housing-back{display:inline-block;max-width:100%;margin-bottom:18px;color:#596273;text-decoration:none;font-size:13px;font-weight:700}
 .housing-hero,.housing-detail .section,.housing-detail .card{border:1px solid #dfe5ec;background:#fff}
@@ -56,12 +68,12 @@ body{margin:0;background:#fff;color:#172033;line-height:1.65}
   .housing-detail table tbody,.housing-detail table tr,.housing-detail table th,.housing-detail table td{display:block;width:100%;max-width:100%}
   .housing-detail table tr{margin:0 0 10px;border:1px solid #dfe5ec;background:#fff}
   .housing-detail table tr:last-child{margin-bottom:0}
-  .housing-detail table th,.housing-detail table td{border:0!important;padding:8px 10px!important;text-align:left!important}
+  .housing-detail table tr>:is(th,td){width:100%!important;border:0!important;padding:10px 12px!important;text-align:left!important}
   .housing-detail table th[scope="row"]{background:#f4f7fb;color:#0d1f3c;font-weight:800}
-  .housing-detail table td{border-top:1px solid #dfe5ec!important}
-  .housing-detail article>.section:nth-of-type(2) .tbl td::before,.housing-detail article>.section:nth-of-type(3) .tbl td::before{display:block;margin-bottom:2px;color:#667085;font-size:11px;font-weight:800}
-  .housing-detail article>.section:nth-of-type(2) .tbl td:nth-child(1)::before{content:"순위"}.housing-detail article>.section:nth-of-type(2) .tbl td:nth-child(2)::before{content:"접수일"}.housing-detail article>.section:nth-of-type(2) .tbl td:nth-child(3)::before{content:"시간"}.housing-detail article>.section:nth-of-type(2) .tbl td:nth-child(4)::before{content:"다음 확인"}
-  .housing-detail article>.section:nth-of-type(3) .tbl td:nth-child(1)::before{content:"자치구"}.housing-detail article>.section:nth-of-type(3) .tbl td:nth-child(2)::before{content:"공급 단지·지구"}.housing-detail article>.section:nth-of-type(3) .tbl td:nth-child(3)::before{content:"전용면적"}
+  .housing-detail table tr>td{border-top:1px solid #dfe5ec!important}
+  .housing-detail :is(.housing-schedule-table,.housing-supply-table) td::before{display:block;margin-bottom:2px;color:#667085;font-size:13px;font-weight:800}
+  .housing-detail .housing-schedule-table td:nth-child(1)::before{content:"순위"}.housing-detail .housing-schedule-table td:nth-child(2)::before{content:"접수일"}.housing-detail .housing-schedule-table td:nth-child(3)::before{content:"시간"}.housing-detail .housing-schedule-table td:nth-child(4)::before{content:"다음 확인"}
+  .housing-detail .housing-supply-table td:nth-child(1)::before{content:"자치구"}.housing-detail .housing-supply-table td:nth-child(2)::before{content:"공급 단지·지구"}.housing-detail .housing-supply-table td:nth-child(3)::before{content:"전용면적"}
 }
 
 /* Mobile reading scale: presentation only; desktop and calculations stay unchanged. */
@@ -69,6 +81,5 @@ body{margin:0;background:#fff;color:#172033;line-height:1.65}
   .housing-card span{font-size:15px;line-height:1.75}
   .housing-tags span,.housing-stat span,.housing-detail .card span,.housing-detail .note,.housing-detail .small{font-size:14px;line-height:1.75;color:#596273}
   .housing-detail .notice{font-size:14px!important;line-height:1.75}
-  .housing-detail article>.section:nth-of-type(2) .tbl td::before,.housing-detail article>.section:nth-of-type(3) .tbl td::before{font-size:13px}
   .housing-links a{min-height:44px;font-size:14px;line-height:1.65;padding-top:8px;padding-bottom:8px}
 }
