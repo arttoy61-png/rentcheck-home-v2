@@ -1,6 +1,6 @@
 /* Local Seoul snapshot: source coverage and coordinate coverage are separate. */
 (()=>{'use strict';
-let snapshot=null,failed=false,updateStatus=null;
+let snapshot=null,failed=false,updateStatus=null,projectCenters=null;
 const settings=new Map(),defaults={radius:1000,property:'all',deal:'all'};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const valid=p=>Array.isArray(p)&&p.length===2&&p.every(Number.isFinite)&&p[0]>=37.4&&p[0]<=37.75&&p[1]>=126.7&&p[1]<=127.25;
@@ -9,9 +9,11 @@ const number=n=>Number(n||0).toLocaleString('ko-KR');
 function distance(a,b){if(!valid(a)||!valid(b))return null;const rad=n=>n*Math.PI/180,x=rad(a[0]),y=rad(b[0]),h=Math.sin((y-x)/2)**2+Math.cos(x)*Math.cos(y)*Math.sin(rad(b[1]-a[1])/2)**2;return 6371008.8*2*Math.asin(Math.sqrt(Math.min(1,h)));}
 function matches(p){return !!p&&typeof p.district==='string';}
 function options(id){return settings.get(id)||{...defaults};}
-function query(p,data,selection=defaults){
+function query(p,data,selection=defaults,centers=projectCenters){
   if(data?.version!==2||!data.meta?.collection_complete||data.meta.successful_partitions!==data.meta.expected_partitions||![150,300,450].includes(data.meta.expected_partitions)||data.meta.complete_districts!==25||!Array.isArray(data.rows))return{status:'invalid-data'};
-  const id=projectId(p),center=data.projects?.[id],point=p?.map_point;
+  const id=projectId(p),saved=data.projects?.[id],extra=centers?.[id],point=p?.map_point;
+  const verifiedExtra=extra?.verified===true&&extra.basis==='verified_official_boundary_centroid'&&typeof extra.source==='string'&&/^https:\/\/(urban\.seoul\.go\.kr|cleanup\.seoul\.go\.kr)\//.test(extra.source)&&valid(extra.point);
+  const center=saved||(verifiedExtra?extra:null);
   const samePoint=point&&center&&distance(center.point,[point.lat,point.lng]);
   if(!center?.verified||!center.source||!valid(center.point)||samePoint===null||samePoint===false||!Number.isFinite(samePoint)||samePoint>1)return{status:'unverified-point'};
   const radius=Number(selection.radius),property=selection.property,deal=selection.deal;
@@ -28,7 +30,7 @@ function query(p,data,selection=defaults){
   for(const c of complexes)c.transactions.sort((a,b)=>b.date.localeCompare(a.date)||a.id.localeCompare(b.id));
   return{status:'ready',radius,totals,complexes,recordCount:rows.length,displayCount:complexes.reduce((n,c)=>n+Math.min(3,c.transactions.length),0),center};
 }
-async function ensureLoaded(read,signal){if(snapshot)return;const results=await Promise.allSettled([read('data/redevelopment-nearby-seoul.json',signal),read('data/redevelopment-nearby-status.json',signal)]);try{if(results[0].status==='rejected')throw results[0].reason;const data=results[0].value;if(data?.version!==2||!data.meta?.collection_complete||!Array.isArray(data.rows))throw Error('invalid snapshot');snapshot=data;updateStatus=results[1].status==='fulfilled'?results[1].value:null;failed=false;}catch(e){if(e.name==='AbortError')throw e;failed=true;}}
+async function ensureLoaded(read,signal){if(snapshot)return;const results=await Promise.allSettled([read('data/redevelopment-nearby-seoul.json',signal),read('data/redevelopment-nearby-status.json',signal),read('data/redevelopment-project-centers.json',signal)]);try{if(results[0].status==='rejected')throw results[0].reason;const data=results[0].value;if(data?.version!==2||!data.meta?.collection_complete||!Array.isArray(data.rows))throw Error('invalid snapshot');snapshot=data;projectCenters=results[2].status==='fulfilled'?results[2].value:null;updateStatus=results[1].status==='fulfilled'?results[1].value:null;failed=false;}catch(e){if(e.name==='AbortError')throw e;failed=true;}}
 function updateBanner(meta,status,now=Date.now()){
   const sourceTime=Date.parse(meta.source_checked_at),attempt=Date.parse(status?.attempted_at),old=Number.isFinite(sourceTime)&&now-sourceTime>48*3600000;
   if(status?.state==='failed'&&(!Number.isFinite(attempt)||attempt>=sourceTime))return '<p class="nearby-update warning" role="status">최근 갱신에 실패해 마지막 정상자료를 표시합니다. 아래 자료 확인일을 확인해 주세요.</p>';
@@ -56,4 +58,5 @@ function render(p){
 if(typeof document!=='undefined')document.addEventListener('change',event=>{const control=event.target.closest?.('[data-nearby-filter]');if(!control)return;const section=control.closest('[data-nearby-project]'),id=section?.dataset.nearbyProject,p=window.PROJECTS?.find(p=>projectId(p)===id);if(!p)return;const name=control.dataset.nearbyFilter,next={...options(id),[name]:name==='radius'?Number(control.value):control.value};settings.set(id,next);section.outerHTML=render(p);document.querySelector(`[data-nearby-project="${CSS.escape(id)}"] [data-nearby-filter="${name}"]`)?.focus();});
 window.RentRedevelopmentNearby={matches,query,distance,ensureLoaded,render,amount,updateBanner};
 })();
+
 
