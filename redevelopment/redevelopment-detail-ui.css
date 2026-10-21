@@ -26,3 +26,11 @@ body.redevelopment-route #mapPage .workspace.rd-selected .mapsection{grid-column
 body.redevelopment-route #mapPage .workspace.rd-selected .detailpane:not([hidden]){grid-column:1!important;grid-row:1!important;left:0!important;right:auto!important;width:100%!important;max-width:420px!important;z-index:35}
 }
 @media(max-width:700px){#mapPage .redevelopment-detail-ui h2{font-size:21px}#mapPage .redevelopment-detail-ui .rd-metrics dd{font-size:14px}}
+/* Outrank the HOME shell's generic definition-list and legacy stage rules. */
+body.redevelopment-route #mapPage :is(#detailBody,#results) .redevelopment-detail-ui .rd-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:12px 0;margin:12px 0}
+body.redevelopment-route #mapPage :is(#detailBody,#results) .redevelopment-detail-ui .rd-metrics dt{font-size:12px;padding:0}
+body.redevelopment-route #mapPage :is(#detailBody,#results) .redevelopment-detail-ui .rd-metrics dd{font-size:15px;margin:5px 0 0;padding:0}
+body.redevelopment-route #mapPage :is(#detailBody,#results) .redevelopment-detail-ui .project-stage-banner{background:#edf5ff;color:#18334e;border-radius:8px;padding:11px 13px;margin:12px 0}
+body.redevelopment-route #mapPage :is(#detailBody,#results) .redevelopment-detail-ui .project-stage-banner>strong{display:block;font-size:20px;line-height:1.35;margin:4px 0}
+body.redevelopment-route #mapPage :is(#detailBody,#results) .redevelopment-detail-ui .project-stage-banner .pilot-label,body.redevelopment-route #mapPage :is(#detailBody,#results) .redevelopment-detail-ui .project-stage-banner .stage-date,body.redevelopment-route #mapPage :is(#detailBody,#results) .redevelopment-detail-ui .project-stage-banner small{font-size:12px;line-height:1.5;color:#4b6078;margin:4px 0}
+@media(max-width:700px){body.redevelopment-route #mapPage :is(#detailBody,#results) .redevelopment-detail-ui .rd-metrics{grid-template-columns:repeat(auto-fit,minmax(90px,1fr))}}
