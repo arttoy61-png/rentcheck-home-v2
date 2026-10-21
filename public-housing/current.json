@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-20T23:32:31+00:00",
-  "source_generated_at": "2026-10-21T04:16:40",
+  "generated_at": "2026-10-21T00:54:14+00:00",
+  "source_generated_at": "2026-10-21T08:54:28",
   "source_status": {
     "LH": {
       "count": 7,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 7,
       "carried_count": 7,
-      "failure_streak": 73
+      "failure_streak": 74
     },
     "SH": {
       "count": 20,
@@ -689,7 +689,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311349",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026. 10. 26.(월) ~ 2026.11. 06.(금) 18시까지",
-        "verified_at": "2026-10-21T04:16:36"
+        "verified_at": "2026-10-21T08:54:23"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-06T18:00:00+09:00",
@@ -731,7 +731,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311549",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.21.(수) ~ 10.28.(수)",
-        "verified_at": "2026-10-21T04:16:34"
+        "verified_at": "2026-10-21T08:54:20"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311549/",
@@ -776,7 +776,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311521",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.26.(월) ~ 2026.10.30.(금)",
-        "verified_at": "2026-10-21T04:16:31"
+        "verified_at": "2026-10-21T08:54:18"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311521/",
@@ -857,7 +857,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311087",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.08.(목) ~2026.10.22.(목) 15시까지",
-        "verified_at": "2026-10-21T04:16:40"
+        "verified_at": "2026-10-21T08:54:28"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-10-22T15:00:00+09:00",
