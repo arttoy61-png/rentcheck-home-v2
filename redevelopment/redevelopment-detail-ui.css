@@ -1,0 +1,28 @@
+/* HOME-only shared presentation; map engine and source data are unchanged. */
+#mapPage .redevelopment-detail-ui{min-width:0;text-align:left;color:#18334e}
+#mapPage .redevelopment-detail-ui *{box-sizing:border-box}
+#mapPage .redevelopment-detail-ui .project-card-heading{padding:0;background:none;border:0;text-align:left}
+#mapPage .redevelopment-detail-ui h2{font-size:24px;line-height:1.4;text-align:left;margin:10px 0}
+#mapPage .redevelopment-detail-ui .rd-top-actions{display:flex;justify-content:flex-start;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+#mapPage .redevelopment-detail-ui .rd-top-actions button{min-height:44px;font-size:13px;line-height:1.5;margin:0;padding:9px 12px}
+#mapPage .redevelopment-detail-ui .rd-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;border-block:1px solid #e2e8f1;padding:14px 0;margin:16px 0}
+#mapPage .redevelopment-detail-ui .rd-metrics dt{font-size:12px;color:#60738b}
+#mapPage .redevelopment-detail-ui .rd-metrics dd{margin:6px 0 0;font-size:16px;font-weight:700;overflow-wrap:anywhere}
+#mapPage .redevelopment-detail-ui .rd-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid #e2e8f1;margin-bottom:18px}
+#mapPage .redevelopment-detail-ui .rd-tabs button{min-height:44px;background:none;border:0;border-radius:0;border-bottom:3px solid transparent;padding:12px 2px;font-size:13px;color:#53667d;box-shadow:none}
+#mapPage .redevelopment-detail-ui .rd-tabs button[aria-selected=true]{border-bottom-color:#175acc;color:#175acc;font-weight:750}
+#mapPage .redevelopment-detail-ui [role=tabpanel][hidden]{display:none!important}
+#mapPage .redevelopment-detail-ui .rd-next{padding:12px 14px;background:#edf5ff;border-radius:8px;font-size:13px}
+#mapPage .redevelopment-detail-ui .rd-next small{display:block;font-size:12px;margin-top:6px}
+#mapPage .redevelopment-detail-ui .rd-fold{border:0;border-bottom:1px solid #e2e8f1;background:none;border-radius:0;margin:0;padding:0}
+#mapPage .redevelopment-detail-ui .rd-fold>summary{padding:15px 3px;font-weight:650;min-height:48px;cursor:pointer}
+#mapPage .redevelopment-detail-ui button:focus-visible,#mapPage .redevelopment-detail-ui summary:focus-visible{outline:2px solid #175acc;outline-offset:3px}
+#mapPage .redevelopment-detail-ui .nearby-compact-warning{padding:9px 11px;border-left:3px solid #bf841b;background:#fff7e7;color:#554121;font-size:12px;line-height:1.6}
+#mapPage .redevelopment-detail-ui .nearby-sources>summary{min-height:44px;padding:10px 0;cursor:pointer}
+@media(min-width:701px){
+body.redevelopment-route #mapPage .workspace.rd-selected{grid-template-columns:minmax(380px,420px) minmax(0,1fr)!important}
+body.redevelopment-route #mapPage .workspace.rd-selected .listpane{grid-column:1!important;grid-row:1!important}
+body.redevelopment-route #mapPage .workspace.rd-selected .mapsection{grid-column:2!important;grid-row:1!important}
+body.redevelopment-route #mapPage .workspace.rd-selected .detailpane:not([hidden]){grid-column:1!important;grid-row:1!important;left:0!important;right:auto!important;width:100%!important;max-width:420px!important;z-index:35}
+}
+@media(max-width:700px){#mapPage .redevelopment-detail-ui h2{font-size:21px}#mapPage .redevelopment-detail-ui .rd-metrics dd{font-size:14px}}
