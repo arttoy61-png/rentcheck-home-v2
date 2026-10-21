@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap><loc>https://rent-check.kr/sitemap-base-20260930.xml</loc><lastmod>2026-10-19</lastmod></sitemap>
+  <sitemap><loc>https://rent-check.kr/sitemap-base-20260930.xml</loc><lastmod>2026-10-21</lastmod></sitemap>
   <sitemap><loc>https://rent-check.kr/sitemap-daily-20260930.xml</loc><lastmod>2026-09-30</lastmod></sitemap>
   <sitemap><loc>https://rent-check.kr/sitemap-daily-20261002.xml</loc><lastmod>2026-10-02</lastmod></sitemap>
   <sitemap><loc>https://rent-check.kr/sitemap-daily-20261003.xml</loc><lastmod>2026-10-03</lastmod></sitemap>
@@ -9,4 +9,5 @@
   <sitemap><loc>https://rent-check.kr/sitemap-daily-20261011.xml</loc><lastmod>2026-10-11</lastmod></sitemap>
   <sitemap><loc>https://rent-check.kr/sitemap-daily-20261016.xml</loc><lastmod>2026-10-16</lastmod></sitemap>
 </sitemapindex>
+
 
