@@ -6,7 +6,11 @@ function render(p,html,ctx){
  const t=document.createElement('template');t.innerHTML=html;
  const root=t.content;
  const take=selector=>{const n=root.querySelector(selector);if(!n)return '';const h=n.outerHTML;n.remove();return h;};
- const heading=take('.project-card-heading')||take('.project-heading')||ctx.card.header(p);
+ let heading=take('.project-card-heading')||take('.project-heading')||ctx.card.header(p);
+ // The selected list and open detail coexist in DOM; only the detail owns detailTitle.
+ const headingTemplate=document.createElement('template');headingTemplate.innerHTML=heading;
+ const title=headingTemplate.content.querySelector('#detailTitle');if(title)title.id=ctx.titleId||'detailTitle';
+ heading=headingTemplate.innerHTML;
  const stage=take('.project-stage-banner')||take('.pilot-current')||ctx.current(p);
  const stageHelp=take('.stage-verification');
  const progress=take('.project-progress')||ctx.card.progress(p);
