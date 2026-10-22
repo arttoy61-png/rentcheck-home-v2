@@ -53192,7 +53192,71 @@
     "geometry_verified": false,
     "geometry_path": null,
     "geometry_source": null,
-    "geometry_names": []
+    "geometry_names": [],
+    "overview": {
+      "members": 36,
+      "owners": 48,
+      "gross_floor_area_m2": 8476,
+      "floor_area_ratio_percent": 250,
+      "floors_above_ground": 15,
+      "floors_below_ground": 2
+    },
+    "overview_sources": {
+      "members": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900001506M48&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:44:19.513019+00:00",
+        "source_date": null,
+        "raw_label": "조합원 수",
+        "raw_value": "36명",
+        "section": "정비사업개요",
+        "value_basis": "reported"
+      },
+      "owners": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900001506M48&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:44:19.513019+00:00",
+        "source_date": null,
+        "raw_label": "토지등 소유자 수",
+        "raw_value": "48명 *재건축의 경우 조합원인 토지등소유자수 포함",
+        "section": "정비사업개요",
+        "value_basis": "reported"
+      },
+      "gross_floor_area_m2": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900001506M48&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:44:19.513019+00:00",
+        "source_date": null,
+        "raw_label": "연면적(㎡)",
+        "raw_value": "8,476",
+        "section": "건축계획",
+        "value_basis": "plan"
+      },
+      "floor_area_ratio_percent": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900001506M48&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:44:19.513019+00:00",
+        "source_date": null,
+        "raw_label": "용적률(%)",
+        "raw_value": "250",
+        "section": "건축계획",
+        "value_basis": "plan"
+      },
+      "floors_above_ground": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900001506M48&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:44:19.513019+00:00",
+        "source_date": null,
+        "raw_label": "층수",
+        "raw_value": "지상:15/지하:2",
+        "section": "건축계획",
+        "value_basis": "plan"
+      },
+      "floors_below_ground": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900001506M48&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:44:19.513019+00:00",
+        "source_date": null,
+        "raw_label": "층수",
+        "raw_value": "지상:15/지하:2",
+        "section": "건축계획",
+        "value_basis": "plan"
+      }
+    }
   },
   {
     "id": "cleanup-duksoo",
@@ -75058,7 +75122,91 @@
     "geometry_verified": false,
     "geometry_path": null,
     "geometry_source": null,
-    "geometry_names": []
+    "geometry_names": [],
+    "overview": {
+      "area_m2": 6508,
+      "members": 119,
+      "owners": 130,
+      "gross_floor_area_m2": 30130,
+      "building_coverage_ratio_percent": 33,
+      "floor_area_ratio_percent": 270,
+      "floors_above_ground": 20,
+      "floors_below_ground": 3
+    },
+    "overview_sources": {
+      "area_m2": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=530900001159x85&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:47:17.336185+00:00",
+        "source_date": null,
+        "raw_label": "정비구역 면적(㎡)",
+        "raw_value": "6,508",
+        "section": "정비사업개요",
+        "value_basis": "reported"
+      },
+      "members": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=530900001159x85&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:47:17.336185+00:00",
+        "source_date": null,
+        "raw_label": "조합원 수",
+        "raw_value": "119명",
+        "section": "정비사업개요",
+        "value_basis": "reported"
+      },
+      "owners": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=530900001159x85&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:47:17.336185+00:00",
+        "source_date": null,
+        "raw_label": "토지등 소유자 수",
+        "raw_value": "130명 *재건축의 경우 조합원인 토지등소유자수 포함",
+        "section": "정비사업개요",
+        "value_basis": "reported"
+      },
+      "gross_floor_area_m2": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=530900001159x85&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:47:17.336185+00:00",
+        "source_date": null,
+        "raw_label": "연면적(㎡)",
+        "raw_value": "30,130",
+        "section": "건축계획",
+        "value_basis": "plan"
+      },
+      "building_coverage_ratio_percent": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=530900001159x85&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:47:17.336185+00:00",
+        "source_date": null,
+        "raw_label": "건폐율(%)",
+        "raw_value": "33",
+        "section": "건축계획",
+        "value_basis": "plan"
+      },
+      "floor_area_ratio_percent": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=530900001159x85&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:47:17.336185+00:00",
+        "source_date": null,
+        "raw_label": "용적률(%)",
+        "raw_value": "270",
+        "section": "건축계획",
+        "value_basis": "plan"
+      },
+      "floors_above_ground": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=530900001159x85&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:47:17.336185+00:00",
+        "source_date": null,
+        "raw_label": "층수",
+        "raw_value": "지상:20/지하:3",
+        "section": "건축계획",
+        "value_basis": "plan"
+      },
+      "floors_below_ground": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=530900001159x85&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:47:17.336185+00:00",
+        "source_date": null,
+        "raw_label": "층수",
+        "raw_value": "지상:20/지하:3",
+        "section": "건축계획",
+        "value_basis": "plan"
+      }
+    }
   },
   {
     "id": "cleanup-gocheok111",
@@ -87248,7 +87396,31 @@
     "geometry_verified": false,
     "geometry_path": null,
     "geometry_source": null,
-    "geometry_names": []
+    "geometry_names": [],
+    "overview": {
+      "area_m2": 116134.4,
+      "owners": 3453
+    },
+    "overview_sources": {
+      "area_m2": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=350900001410n14&stepSeCode=101&div=sumry",
+        "checked_at": "2026-10-22T07:49:41.649802+00:00",
+        "source_date": null,
+        "raw_label": "정비구역 면적(㎡)",
+        "raw_value": "116,134.4",
+        "section": "정비사업개요",
+        "value_basis": "reported"
+      },
+      "owners": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=350900001410n14&stepSeCode=101&div=sumry",
+        "checked_at": "2026-10-22T07:49:41.649802+00:00",
+        "source_date": null,
+        "raw_label": "토지등 소유자 수",
+        "raw_value": "3,453명 *재건축의 경우 조합원인 토지등소유자수 포함",
+        "section": "정비사업개요",
+        "value_basis": "reported"
+      }
+    }
   },
   {
     "id": "cleanup-hansindsapt",
@@ -107621,7 +107793,81 @@
     "geometry_verified": false,
     "geometry_path": null,
     "geometry_source": null,
-    "geometry_names": []
+    "geometry_names": [],
+    "overview": {
+      "area_m2": 4795,
+      "building_area_m2": 1324,
+      "gross_floor_area_m2": 20426,
+      "building_coverage_ratio_percent": 28,
+      "floor_area_ratio_percent": 270,
+      "floors_above_ground": 23,
+      "floors_below_ground": 3
+    },
+    "overview_sources": {
+      "area_m2": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=440900001121p56&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:54:45.649835+00:00",
+        "source_date": null,
+        "raw_label": "정비구역 면적(㎡)",
+        "raw_value": "4,795",
+        "section": "정비사업개요",
+        "value_basis": "reported"
+      },
+      "building_area_m2": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=440900001121p56&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:54:45.649835+00:00",
+        "source_date": null,
+        "raw_label": "건축면적(㎡)",
+        "raw_value": "1,324",
+        "section": "건축계획",
+        "value_basis": "plan"
+      },
+      "gross_floor_area_m2": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=440900001121p56&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:54:45.649835+00:00",
+        "source_date": null,
+        "raw_label": "연면적(㎡)",
+        "raw_value": "20,426",
+        "section": "건축계획",
+        "value_basis": "plan"
+      },
+      "building_coverage_ratio_percent": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=440900001121p56&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:54:45.649835+00:00",
+        "source_date": null,
+        "raw_label": "건폐율(%)",
+        "raw_value": "28",
+        "section": "건축계획",
+        "value_basis": "plan"
+      },
+      "floor_area_ratio_percent": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=440900001121p56&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:54:45.649835+00:00",
+        "source_date": null,
+        "raw_label": "용적률(%)",
+        "raw_value": "270",
+        "section": "건축계획",
+        "value_basis": "plan"
+      },
+      "floors_above_ground": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=440900001121p56&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:54:45.649835+00:00",
+        "source_date": null,
+        "raw_label": "층수",
+        "raw_value": "지상:23/지하:3",
+        "section": "건축계획",
+        "value_basis": "plan"
+      },
+      "floors_below_ground": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=440900001121p56&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:54:45.649835+00:00",
+        "source_date": null,
+        "raw_label": "층수",
+        "raw_value": "지상:23/지하:3",
+        "section": "건축계획",
+        "value_basis": "plan"
+      }
+    }
   },
   {
     "id": "cleanup-musoemak",
@@ -117820,7 +118066,101 @@
     "geometry_source": "https://urban.seoul.go.kr/view/map/mapPopup.html?recordCode=11000AGZ201711300458",
     "geometry_names": [
       "반포현대아파트 주택재건축정비사업"
-    ]
+    ],
+    "overview": {
+      "area_m2": 3621.5,
+      "members": 80,
+      "owners": 80,
+      "building_area_m2": 1051,
+      "gross_floor_area_m2": 16085,
+      "building_coverage_ratio_percent": 29,
+      "floor_area_ratio_percent": 298,
+      "floors_above_ground": 20,
+      "floors_below_ground": 2
+    },
+    "overview_sources": {
+      "area_m2": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=650900000607a49&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:57:19.162570+00:00",
+        "source_date": null,
+        "raw_label": "정비구역 면적(㎡)",
+        "raw_value": "3,621.5",
+        "section": "정비사업개요",
+        "value_basis": "reported"
+      },
+      "members": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=650900000607a49&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:57:19.162570+00:00",
+        "source_date": null,
+        "raw_label": "조합원 수",
+        "raw_value": "80명",
+        "section": "정비사업개요",
+        "value_basis": "reported"
+      },
+      "owners": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=650900000607a49&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:57:19.162570+00:00",
+        "source_date": null,
+        "raw_label": "토지등 소유자 수",
+        "raw_value": "80명 *재건축의 경우 조합원인 토지등소유자수 포함",
+        "section": "정비사업개요",
+        "value_basis": "reported"
+      },
+      "building_area_m2": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=650900000607a49&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:57:19.162570+00:00",
+        "source_date": null,
+        "raw_label": "건축면적(㎡)",
+        "raw_value": "1,051",
+        "section": "건축계획",
+        "value_basis": "plan"
+      },
+      "gross_floor_area_m2": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=650900000607a49&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:57:19.162570+00:00",
+        "source_date": null,
+        "raw_label": "연면적(㎡)",
+        "raw_value": "16,085",
+        "section": "건축계획",
+        "value_basis": "plan"
+      },
+      "building_coverage_ratio_percent": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=650900000607a49&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:57:19.162570+00:00",
+        "source_date": null,
+        "raw_label": "건폐율(%)",
+        "raw_value": "29",
+        "section": "건축계획",
+        "value_basis": "plan"
+      },
+      "floor_area_ratio_percent": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=650900000607a49&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:57:19.162570+00:00",
+        "source_date": null,
+        "raw_label": "용적률(%)",
+        "raw_value": "298",
+        "section": "건축계획",
+        "value_basis": "plan"
+      },
+      "floors_above_ground": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=650900000607a49&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:57:19.162570+00:00",
+        "source_date": null,
+        "raw_label": "층수",
+        "raw_value": "지상:20/지하:2",
+        "section": "건축계획",
+        "value_basis": "plan"
+      },
+      "floors_below_ground": {
+        "source_url": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=650900000607a49&stepSeCode=102&div=sumry",
+        "checked_at": "2026-10-22T07:57:19.162570+00:00",
+        "source_date": null,
+        "raw_label": "층수",
+        "raw_value": "지상:20/지하:2",
+        "section": "건축계획",
+        "value_basis": "plan"
+      }
+    }
   },
   {
     "id": "cleanup-samho4",

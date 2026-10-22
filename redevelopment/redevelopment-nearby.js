@@ -1,7 +1,7 @@
 /* Local Seoul snapshot: source coverage and coordinate coverage are separate. */
 (()=>{'use strict';
 let snapshot=null,failed=false,updateStatus=null,projectCenters=null;
-const settings=new Map(),defaults={radius:1000,property:'all',deal:'all'};
+const settings=new Map(),defaults={radius:500,property:'all',deal:'all'};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const valid=p=>Array.isArray(p)&&p.length===2&&p.every(Number.isFinite)&&p[0]>=37.4&&p[0]<=37.75&&p[1]>=126.7&&p[1]<=127.25;
 const projectId=p=>p?.registry?.id||p?.id;
@@ -43,7 +43,7 @@ function amount(won10k){const value=Number(won10k);return value>=10000?number(Ma
 function transaction(r){const price=r.type.endsWith('_매매')?'매매 '+amount(r.deal_amount):r.monthly_rent===0?'전세 '+amount(r.deposit):'보증금 '+amount(r.deposit)+' / 월 '+amount(r.monthly_rent);return `<div class="nearby-sale"><time>계약 ${esc(r.date)}</time><strong>${esc(price)}</strong><span>${esc(r.type.split('_')[0])} · 전용 ${number(r.area_m2)}㎡ · ${number(r.floor)}층</span></div>`;}
 function select(name,label,values,current){return `<label>${label}<select data-nearby-filter="${name}">${values.map(([value,text])=>`<option value="${esc(value)}" ${String(current)===String(value)?'selected':''}>${esc(text)}</option>`).join('')}</select></label>`;}
 function render(p){
-  const id=projectId(p),head=`<section class="project-transactions nearby-transactions" data-nearby-project="${esc(id)}"><h3>사업 표시점 주변 실거래</h3>`;
+  const id=projectId(p),representative=window.RentRedevelopmentCenters.reference(p)?.basis===window.RentRedevelopmentCenters.REPRESENTATIVE,head=`<section class="project-transactions nearby-transactions" data-nearby-project="${esc(id)}"><h3>${representative?'대표 위치 기준 약'+number(options(id).radius)+'m 주변 실거래':'사업 표시점 주변 실거래'}</h3>`;
   if(!snapshot)return head+'<p role="status">'+(failed?'주변 거래 자료를 불러오지 못했습니다. 거래 0건을 뜻하지 않습니다.':'주변 거래 자료를 불러오는 중입니다.')+'</p></section>';
   const m=snapshot.meta,chosen=options(id),r=query(p,snapshot,chosen);
   const freshness=updateBanner(m,updateStatus)+`<p class="coverage">계약일 ${esc(m.period.join(' ~ '))} · 원천 최신 계약 ${esc(m.latest_contract_date)}<br>자료 확인 ${esc(checkedDate(m.source_checked_at))} (한국시간)</p>`;
@@ -60,6 +60,7 @@ function render(p){
 if(typeof document!=='undefined')document.addEventListener('change',event=>{const control=event.target.closest?.('[data-nearby-filter]');if(!control)return;const section=control.closest('[data-nearby-project]'),id=section?.dataset.nearbyProject,p=window.PROJECTS?.find(p=>projectId(p)===id);if(!p)return;const name=control.dataset.nearbyFilter,next={...options(id),[name]:name==='radius'?Number(control.value):control.value};settings.set(id,next);section.outerHTML=render(p);document.querySelector(`[data-nearby-project="${CSS.escape(id)}"] [data-nearby-filter="${name}"]`)?.focus();});
 window.RentRedevelopmentNearby={matches,query,distance,ensureLoaded,render,amount,updateBanner};
 })();
+
 
 
 

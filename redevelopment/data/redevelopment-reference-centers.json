@@ -541,6 +541,2000 @@
         "cache_addition_commit": "46b78cb833235f3e09987ff931cdd73dcbb6c7f4"
       },
       "limitation": "공식 구역주소와 정확히 일치하는 승인 저장좌표의 참고 위치입니다. 원좌표 조회일은 미보존이며 신규 지오코딩 검증, 법정 경계, 출입구 위치, 필지 포함 여부를 검증한 것이 아닙니다."
+    },
+    {
+      "project_id": "cleanup-gaepo6_7",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.4890754208529,
+        127.071511865076
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=1&pageSize=100",
+      "official_address": "서울특별시 강남구 개포동 185",
+      "reviewed_at": "2026-10-22T12:55:07.496730+00:00",
+      "identity": {
+        "project_id": "cleanup-gaepo6_7",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=gaepo6_7",
+        "catalog_address": "서울특별시 강남구 개포동 185",
+        "catalog_title": "개포주공6,7단지아파트 재건축정비사업조합",
+        "district": "강남구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.4890754208529,
+          127.071511865076
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:05:47.129192+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 강남구 개포동 185",
+        "map_row_id": "source-80368",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-apgujeong5",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5303153460239,
+        127.038801247058
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=1&pageSize=100",
+      "official_address": "서울특별시 강남구 압구정동 490",
+      "reviewed_at": "2026-10-22T12:55:09.651392+00:00",
+      "identity": {
+        "project_id": "cleanup-apgujeong5",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=apgujeong5",
+        "catalog_address": "서울특별시 강남구 압구정동 490",
+        "catalog_title": "압구정아파트지구 특별계획구역5 재건축정비사업조합",
+        "district": "강남구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5303153460239,
+          127.038801247058
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:08:45.172876+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 강남구 압구정동 490",
+        "map_row_id": "source-80577",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-samikgreen2",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5532947928121,
+        127.148458988794
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=1&pageSize=100",
+      "official_address": "서울특별시 강동구 명일동 15",
+      "reviewed_at": "2026-10-22T12:55:10.976453+00:00",
+      "identity": {
+        "project_id": "cleanup-samikgreen2",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=samikgreen2",
+        "catalog_address": "서울특별시 강동구 명일동 15",
+        "catalog_title": "삼익그린2차 주택재건축정비사업 조합",
+        "district": "강동구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5532947928121,
+          127.148458988794
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:51:08.479501+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 강동구 명일동 15",
+        "map_row_id": "source-94102",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-goduknine",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5479073564229,
+        127.151658365827
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=1&pageSize=100",
+      "official_address": "서울특별시 강동구 명일동 257",
+      "reviewed_at": "2026-10-22T12:55:11.310476+00:00",
+      "identity": {
+        "project_id": "cleanup-goduknine",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=goduknine",
+        "catalog_address": "서울특별시 강동구 명일동 257",
+        "catalog_title": "고덕주공9단지아파트 재건축정비사업",
+        "district": "강동구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5479073564229,
+          127.151658365827
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:13:11.930796+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 강동구 명일동 257",
+        "map_row_id": "source-93944",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-gangdong2",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5535270917359,
+        127.139500544208
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=1&pageSize=100",
+      "official_address": "서울특별시 강동구 암사동 413",
+      "reviewed_at": "2026-10-22T12:55:12.211543+00:00",
+      "identity": {
+        "project_id": "cleanup-gangdong2",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=gangdong2",
+        "catalog_address": "서울특별시 강동구 암사동 413",
+        "catalog_title": "강동2단지아파트 재건축정비사업조합",
+        "district": "강동구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5535270917359,
+          127.139500544208
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:14:39.802475+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 강동구 암사동 413",
+        "map_row_id": "source-93991",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-j8x94HV2",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.547779,
+        126.832899
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=2&pageSize=100",
+      "official_address": "서울특별시 강서구 내발산동 714-4",
+      "reviewed_at": "2026-10-22T12:55:15.385547+00:00",
+      "identity": {
+        "project_id": "cleanup-j8x94HV2",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=j8x94HV2",
+        "catalog_address": "서울특별시 강서구 내발산동 714-4",
+        "catalog_title": "칠성연립 주택재건축정비사업 조합",
+        "district": "강서구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.547779,
+          126.832899
+        ],
+        "source": "approved_saved_address_cache",
+        "checked_at": null,
+        "basis": "approved_saved_address_cache",
+        "address": "서울특별시 강서구 내발산동 714-4",
+        "cache_sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "exact_cache_key": "내발산동 714-4"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-Y2lf3ybg",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.553862,
+        126.859863
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=2&pageSize=100",
+      "official_address": "서울특별시 강서구 등촌동 651",
+      "reviewed_at": "2026-10-22T12:55:16.046100+00:00",
+      "identity": {
+        "project_id": "cleanup-Y2lf3ybg",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=Y2lf3ybg",
+        "catalog_address": "서울특별시 강서구 등촌동 651",
+        "catalog_title": "태원연립주택재건축정비사업조합",
+        "district": "강서구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.553862,
+          126.859863
+        ],
+        "source": "approved_saved_address_cache",
+        "checked_at": null,
+        "basis": "approved_saved_address_cache",
+        "address": "서울특별시 강서구 등촌동 651",
+        "cache_sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "exact_cache_key": "등촌동 651"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-banghwadonghanmi",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.573827,
+        126.815134
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=2&pageSize=100",
+      "official_address": "서울특별시 강서구 방화동 286-1",
+      "reviewed_at": "2026-10-22T12:55:16.584139+00:00",
+      "identity": {
+        "project_id": "cleanup-banghwadonghanmi",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=banghwadonghanmi",
+        "catalog_address": "서울특별시 강서구 방화동 286-1",
+        "catalog_title": "방화동 286-1 한미아파트 가로주택정비사업조합",
+        "district": "강서구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.573827,
+          126.815134
+        ],
+        "source": "approved_saved_address_cache",
+        "checked_at": null,
+        "basis": "approved_saved_address_cache",
+        "address": "서울특별시 강서구 방화동 286-1",
+        "cache_sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "exact_cache_key": "방화동 286-1"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-seoulvilla",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.568827,
+        126.808963
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=2&pageSize=100",
+      "official_address": "서울특별시 강서구 방화동 584-1",
+      "reviewed_at": "2026-10-22T12:55:16.658144+00:00",
+      "identity": {
+        "project_id": "cleanup-seoulvilla",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=seoulvilla",
+        "catalog_address": "서울특별시 강서구 방화동 584-1",
+        "catalog_title": "서울빌라 가로주택정비사업조합",
+        "district": "강서구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.568827,
+          126.808963
+        ],
+        "source": "approved_saved_address_cache",
+        "checked_at": null,
+        "basis": "approved_saved_address_cache",
+        "address": "서울특별시 강서구 방화동 584-1",
+        "cache_sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "exact_cache_key": "방화동 584-1"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-yc2761",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.549919,
+        126.86923
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=2&pageSize=100",
+      "official_address": "서울특별시 강서구 염창동 276-1",
+      "reviewed_at": "2026-10-22T12:55:17.600213+00:00",
+      "identity": {
+        "project_id": "cleanup-yc2761",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=yc2761",
+        "catalog_address": "서울특별시 강서구 염창동 276-1",
+        "catalog_title": "우성주택 소규모재건축정비사업조합",
+        "district": "강서구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.549919,
+          126.86923
+        ],
+        "source": "approved_saved_address_cache",
+        "checked_at": null,
+        "basis": "approved_saved_address_cache",
+        "address": "서울특별시 강서구 염창동 276-1",
+        "cache_sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "exact_cache_key": "염창동 276-1"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-hwagok2-4",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.533178,
+        126.840303
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=2&pageSize=100",
+      "official_address": "서울특별시 강서구 화곡동 354-79",
+      "reviewed_at": "2026-10-22T12:55:17.871234+00:00",
+      "identity": {
+        "project_id": "cleanup-hwagok2-4",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=hwagok2-4",
+        "catalog_address": "서울특별시 강서구 화곡동 354-79",
+        "catalog_title": "화곡1동 354 일대 모아타운 A2-4구역 가로주택정비사업조합",
+        "district": "강서구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.533178,
+          126.840303
+        ],
+        "source": "approved_saved_address_cache",
+        "checked_at": null,
+        "basis": "approved_saved_address_cache",
+        "address": "서울특별시 강서구 화곡동 354-79",
+        "cache_sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "exact_cache_key": "화곡동 354-79"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-boseongyeonrib",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.536412,
+        126.841609
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=2&pageSize=100",
+      "official_address": "서울특별시 강서구 화곡동 359-124",
+      "reviewed_at": "2026-10-22T12:55:17.987242+00:00",
+      "identity": {
+        "project_id": "cleanup-boseongyeonrib",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=boseongyeonrib",
+        "catalog_address": "서울특별시 강서구 화곡동 359-124",
+        "catalog_title": "보성연립 소규모재건축사업조합",
+        "district": "강서구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.536412,
+          126.841609
+        ],
+        "source": "approved_saved_address_cache",
+        "checked_at": null,
+        "basis": "approved_saved_address_cache",
+        "address": "서울특별시 강서구 화곡동 359-124",
+        "cache_sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "exact_cache_key": "화곡동 359-124"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-hwagok_a1",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.54961,
+        126.852857
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=2&pageSize=100",
+      "official_address": "서울특별시 강서구 화곡동 956-37",
+      "reviewed_at": "2026-10-22T12:55:18.206258+00:00",
+      "identity": {
+        "project_id": "cleanup-hwagok_a1",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=hwagok_a1",
+        "catalog_address": "서울특별시 강서구 화곡동 956-37",
+        "catalog_title": "화곡6동 957-1 일대 모아타운 A1구역 가로주택정비사업조합",
+        "district": "강서구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.54961,
+          126.852857
+        ],
+        "source": "approved_saved_address_cache",
+        "checked_at": null,
+        "basis": "approved_saved_address_cache",
+        "address": "서울특별시 강서구 화곡동 956-37",
+        "cache_sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "exact_cache_key": "화곡동 956-37"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-XQq5uTwf",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.542569,
+        126.833278
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=2&pageSize=100",
+      "official_address": "서울특별시 강서구 화곡동 1040-24",
+      "reviewed_at": "2026-10-22T12:55:18.280263+00:00",
+      "identity": {
+        "project_id": "cleanup-XQq5uTwf",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=XQq5uTwf",
+        "catalog_address": "서울특별시 강서구 화곡동 1040-24",
+        "catalog_title": "유풍연립주택재건축정비사업조합설립추진위원회",
+        "district": "강서구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.542569,
+          126.833278
+        ],
+        "source": "approved_saved_address_cache",
+        "checked_at": null,
+        "basis": "approved_saved_address_cache",
+        "address": "서울특별시 강서구 화곡동 1040-24",
+        "cache_sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "exact_cache_key": "화곡동 1040-24"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-biwonhyundai",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.551301,
+        126.85581
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=2&pageSize=100",
+      "official_address": "서울특별시 강서구 화곡동 1130-7",
+      "reviewed_at": "2026-10-22T12:55:18.398272+00:00",
+      "identity": {
+        "project_id": "cleanup-biwonhyundai",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=biwonhyundai",
+        "catalog_address": "서울특별시 강서구 화곡동 1130-7",
+        "catalog_title": "화곡동 1130-7번지 일대 가로주택정비사업조합",
+        "district": "강서구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.551301,
+          126.85581
+        ],
+        "source": "approved_saved_address_cache",
+        "checked_at": null,
+        "basis": "approved_saved_address_cache",
+        "address": "서울특별시 강서구 화곡동 1130-7",
+        "cache_sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "exact_cache_key": "화곡동 1130-7"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-kukdong-reborn",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5431587122415,
+        127.104188607133
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=3&pageSize=100",
+      "official_address": "서울특별시 광진구 광장동 218-1",
+      "reviewed_at": "2026-10-22T12:55:20.320577+00:00",
+      "identity": {
+        "project_id": "cleanup-kukdong-reborn",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=kukdong-reborn",
+        "catalog_address": "서울특별시 광진구 광장동 218-1",
+        "catalog_title": "광장극동아파트 재건축사업 (신속통합기획)",
+        "district": "광진구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5431587122415,
+          127.104188607133
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:55:41.912762+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 광진구 광장동 218-1",
+        "map_row_id": "source-10324",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-sgboramapt",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.6661826658174,
+        127.064948745871
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=4&pageSize=100",
+      "official_address": "서울특별시 노원구 상계동 639",
+      "reviewed_at": "2026-10-22T12:55:24.853976+00:00",
+      "identity": {
+        "project_id": "cleanup-sgboramapt",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=sgboramapt",
+        "catalog_address": "서울특별시 노원구 상계동 639",
+        "catalog_title": "상계보람아파트 재건축정비사업",
+        "district": "노원구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.6661826658174,
+          127.064948745871
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:57:29.102135+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 노원구 상계동 639",
+        "map_row_id": "source-28960",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-sanggye6apt",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.6537976139077,
+        127.064748595375
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=4&pageSize=100",
+      "official_address": "서울특별시 노원구 상계동 720",
+      "reviewed_at": "2026-10-22T12:55:25.071993+00:00",
+      "identity": {
+        "project_id": "cleanup-sanggye6apt",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=sanggye6apt",
+        "catalog_address": "서울특별시 노원구 상계동 720",
+        "catalog_title": "상계주공6단지아파트 재건축정비사업",
+        "district": "노원구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.6537976139077,
+          127.064748595375
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:46:07.841573+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 노원구 상계동 720",
+        "map_row_id": "source-28988",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-mms0612",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.6244655609391,
+        127.065322271669
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=4&pageSize=100",
+      "official_address": "서울특별시 노원구 월계동 13",
+      "reviewed_at": "2026-10-22T12:55:25.412018+00:00",
+      "identity": {
+        "project_id": "cleanup-mms0612",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=mms0612",
+        "catalog_address": "서울특별시 노원구 월계동 13",
+        "catalog_title": "월계시영고층아파트 재건축사업",
+        "district": "노원구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.6244655609391,
+          127.065322271669
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:43:15.808567+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 노원구 월계동 13",
+        "map_row_id": "source-28955",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-jggreen",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.6443713328952,
+        127.063281683752
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=4&pageSize=100",
+      "official_address": "서울특별시 노원구 중계동 502-1",
+      "reviewed_at": "2026-10-22T12:55:25.867050+00:00",
+      "identity": {
+        "project_id": "cleanup-jggreen",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=jggreen",
+        "catalog_address": "서울특별시 노원구 중계동 502-1",
+        "catalog_title": "중계그린아파트 재건축사업",
+        "district": "노원구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.6443713328952,
+          127.063281683752
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:47:34.284655+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 노원구 중계동 502-1",
+        "map_row_id": "source-28982",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-hgjangmi",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.6337021175518,
+        127.067865375948
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=4&pageSize=100",
+      "official_address": "서울특별시 노원구 하계동 273",
+      "reviewed_at": "2026-10-22T12:55:26.021116+00:00",
+      "identity": {
+        "project_id": "cleanup-hgjangmi",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=hgjangmi",
+        "catalog_address": "서울특별시 노원구 하계동 273",
+        "catalog_title": "하계장미아파트 재건축사업",
+        "district": "노원구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.6337021175518,
+          127.067865375948
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:00:38.049568+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 노원구 하계동 273",
+        "map_row_id": "source-28972",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-Changdong18",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.6464611137803,
+        127.051742474665
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=4&pageSize=100",
+      "official_address": "서울특별시 도봉구 창동 30",
+      "reviewed_at": "2026-10-22T12:55:26.759170+00:00",
+      "identity": {
+        "project_id": "cleanup-Changdong18",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=Changdong18",
+        "catalog_address": "서울특별시 도봉구 창동 30",
+        "catalog_title": "창동주공18단지아파트 재건축사업",
+        "district": "도봉구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.6464611137803,
+          127.051742474665
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:53:07.113250+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 도봉구 창동 30",
+        "map_row_id": "source-24627",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-sanga1apt",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.6540244978375,
+        127.042266004364
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=4&pageSize=100",
+      "official_address": "서울특별시 도봉구 창동 299",
+      "reviewed_at": "2026-10-22T12:55:26.878181+00:00",
+      "identity": {
+        "project_id": "cleanup-sanga1apt",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=sanga1apt",
+        "catalog_address": "서울특별시 도봉구 창동 299",
+        "catalog_title": "창동상아1차아파트 재건축사업",
+        "district": "도봉구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.6540244978375,
+          127.042266004364
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:02:00.977183+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 도봉구 창동 299",
+        "map_row_id": "source-24596",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-changdong04",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.645841010278,
+        127.048016739909
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=4&pageSize=100",
+      "official_address": "서울특별시 도봉구 창동 373",
+      "reviewed_at": "2026-10-22T12:55:26.990187+00:00",
+      "identity": {
+        "project_id": "cleanup-changdong04",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=changdong04",
+        "catalog_address": "서울특별시 도봉구 창동 373",
+        "catalog_title": "창동주공4단지아파트 재건축사업",
+        "district": "도봉구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.645841010278,
+          127.048016739909
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:47:30.812243+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 도봉구 창동 373",
+        "map_row_id": "source-24670",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-musoemak",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5486242462155,
+        126.935532150053
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=6&pageSize=100",
+      "official_address": "서울특별시 마포구 신수동 91-90",
+      "reviewed_at": "2026-10-22T12:55:33.734731+00:00",
+      "identity": {
+        "project_id": "cleanup-musoemak",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=musoemak",
+        "catalog_address": "서울특별시 마포구 신수동 91-90",
+        "catalog_title": "신수동무쇠막 지역주택조합",
+        "district": "마포구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5486242462155,
+          126.935532150053
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:12:34.510227+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 마포구 신수동 91-90",
+        "map_row_id": "source-40198",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-sinbanpo15",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5040054802052,
+        126.993477660033
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=6&pageSize=100",
+      "official_address": "서울특별시 서초구 반포동 12",
+      "reviewed_at": "2026-10-22T12:55:37.636229+00:00",
+      "identity": {
+        "project_id": "cleanup-sinbanpo15",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=sinbanpo15",
+        "catalog_address": "서울특별시 서초구 반포동 12",
+        "catalog_title": "신반포15차아파트 주택재건축정비사업조합",
+        "district": "서초구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5040054802052,
+          126.993477660033
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:01:16.804574+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 서초구 반포동 12",
+        "map_row_id": "source-75154",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-sinbanpo2",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5106988312973,
+        127.002864177186
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=7&pageSize=100",
+      "official_address": "서울특별시 서초구 잠원동 73",
+      "reviewed_at": "2026-10-22T12:55:40.659416+00:00",
+      "identity": {
+        "project_id": "cleanup-sinbanpo2",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=sinbanpo2",
+        "catalog_address": "서울특별시 서초구 잠원동 73",
+        "catalog_title": "신반포2차아파트 재건축정비사업조합",
+        "district": "서초구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5106988312973,
+          127.002864177186
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:49:36.795243+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 서초구 잠원동 73",
+        "map_row_id": "source-75135",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-grss1rm",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.4955429569204,
+        127.128117809357
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=8&pageSize=100",
+      "official_address": "서울특별시 송파구 가락동 140",
+      "reviewed_at": "2026-10-22T12:55:45.813148+00:00",
+      "identity": {
+        "project_id": "cleanup-grss1rm",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=grss1rm",
+        "catalog_address": "서울특별시 송파구 가락동 140",
+        "catalog_title": "가락쌍용1차아파트 리모델링주택조합",
+        "district": "송파구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.4955429569204,
+          127.128117809357
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:11:42.198972+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 송파구 가락동 140",
+        "map_row_id": "source-88645",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-siyoung-apt",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.4906081165342,
+        127.135334331832
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=8&pageSize=100",
+      "official_address": "서울특별시 송파구 문정동 145",
+      "reviewed_at": "2026-10-22T12:55:47.231894+00:00",
+      "identity": {
+        "project_id": "cleanup-siyoung-apt",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=siyoung-apt",
+        "catalog_address": "서울특별시 송파구 문정동 145",
+        "catalog_title": "문정시영아파트 리모델링 주택조합",
+        "district": "송파구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.4906081165342,
+          127.135334331832
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:08:48.556959+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 송파구 문정동 145",
+        "map_row_id": "source-88614",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-OlympicFamilyTown",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.4885199252165,
+        127.114377260406
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=8&pageSize=100",
+      "official_address": "서울특별시 송파구 문정동 150",
+      "reviewed_at": "2026-10-22T12:55:47.345903+00:00",
+      "identity": {
+        "project_id": "cleanup-OlympicFamilyTown",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=OlympicFamilyTown",
+        "catalog_address": "서울특별시 송파구 문정동 150",
+        "catalog_title": "올림픽훼밀리타운 재건축정비사업 조합설립추진위원회",
+        "district": "송파구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.4885199252165,
+          127.114377260406
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:02:49.928881+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 송파구 문정동 150",
+        "map_row_id": "source-88671",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-olympicapt",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5175616546675,
+        127.136371627591
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=8&pageSize=100",
+      "official_address": "서울특별시 송파구 방이동 89",
+      "reviewed_at": "2026-10-22T12:55:47.467912+00:00",
+      "identity": {
+        "project_id": "cleanup-olympicapt",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=olympicapt",
+        "catalog_address": "서울특별시 송파구 방이동 89",
+        "catalog_title": "올림픽선수기자촌아파트 재건축정비사업 조합설립추진위원회",
+        "district": "송파구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5175616546675,
+          127.136371627591
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:59:41.496936+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 송파구 방이동 89",
+        "map_row_id": "source-88580",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-jmapt1",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5188734238342,
+        127.099138385414
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=8&pageSize=100",
+      "official_address": "서울특별시 송파구 신천동 7",
+      "reviewed_at": "2026-10-22T12:55:48.115959+00:00",
+      "identity": {
+        "project_id": "cleanup-jmapt1",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=jmapt1",
+        "catalog_address": "서울특별시 송파구 신천동 7",
+        "catalog_title": "장미1,2,3차아파트 주택재건축정비사업 조합",
+        "district": "송파구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5188734238342,
+          127.099138385414
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:16:06.793230+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 송파구 신천동 7",
+        "map_row_id": "source-88632",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-jamsil5apt",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5153386005299,
+        127.092942484451
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=9&pageSize=100",
+      "official_address": "서울특별시 송파구 잠실동 27",
+      "reviewed_at": "2026-10-22T12:55:48.853013+00:00",
+      "identity": {
+        "project_id": "cleanup-jamsil5apt",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=jamsil5apt",
+        "catalog_address": "서울특별시 송파구 잠실동 27",
+        "catalog_title": "잠실5단지아파트 주택재건축정비사업조합",
+        "district": "송파구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5153386005299,
+          127.092942484451
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:05:50.556788+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 송파구 잠실동 27",
+        "map_row_id": "source-88683",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-mokdong1",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5397361445755,
+        126.877997816707
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=9&pageSize=100",
+      "official_address": "서울특별시 양천구 목동 901",
+      "reviewed_at": "2026-10-22T12:55:49.377054+00:00",
+      "identity": {
+        "project_id": "cleanup-mokdong1",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=mokdong1",
+        "catalog_address": "서울특별시 양천구 목동 901",
+        "catalog_title": "목동1단지 아파트 재건축 정비사업",
+        "district": "양천구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5397361445755,
+          126.877997816707
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:03:47.368880+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 양천구 목동 901",
+        "map_row_id": "source-44138",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-mokdong2",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5377151062189,
+        126.877469886754
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=9&pageSize=100",
+      "official_address": "서울특별시 양천구 목동 902",
+      "reviewed_at": "2026-10-22T12:55:49.491060+00:00",
+      "identity": {
+        "project_id": "cleanup-mokdong2",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=mokdong2",
+        "catalog_address": "서울특별시 양천구 목동 902",
+        "catalog_title": "목동2단지아파트 재건축정비사업",
+        "district": "양천구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5377151062189,
+          126.877469886754
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:05:18.723418+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 양천구 목동 902",
+        "map_row_id": "source-44012",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-mokdong3",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5343472404057,
+        126.872767017856
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=9&pageSize=100",
+      "official_address": "서울특별시 양천구 목동 903",
+      "reviewed_at": "2026-10-22T12:55:49.608069+00:00",
+      "identity": {
+        "project_id": "cleanup-mokdong3",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=mokdong3",
+        "catalog_address": "서울특별시 양천구 목동 903",
+        "catalog_title": "목동3단지아파트 재건축정비사업",
+        "district": "양천구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5343472404057,
+          126.872767017856
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:08:17.483265+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 양천구 목동 903",
+        "map_row_id": "source-44134",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-mokdong4",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5318579000166,
+        126.872882121545
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=9&pageSize=100",
+      "official_address": "서울특별시 양천구 목동 904",
+      "reviewed_at": "2026-10-22T12:55:49.727428+00:00",
+      "identity": {
+        "project_id": "cleanup-mokdong4",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=mokdong4",
+        "catalog_address": "서울특별시 양천구 목동 904",
+        "catalog_title": "목동4단지아파트 재건축정비사업",
+        "district": "양천구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5318579000166,
+          126.872882121545
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:57:43.320232+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 양천구 목동 904",
+        "map_row_id": "source-44130",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-mokdong5",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5341158028542,
+        126.882083784433
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=9&pageSize=100",
+      "official_address": "서울특별시 양천구 목동 912",
+      "reviewed_at": "2026-10-22T12:55:49.952443+00:00",
+      "identity": {
+        "project_id": "cleanup-mokdong5",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=mokdong5",
+        "catalog_address": "서울특별시 양천구 목동 912",
+        "catalog_title": "목동5단지아파트 재건축정비사업",
+        "district": "양천구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5341158028542,
+          126.882083784433
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:09:43.449208+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 양천구 목동 912",
+        "map_row_id": "source-44132",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-mokdong7",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5288232909409,
+        126.867840519363
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=9&pageSize=100",
+      "official_address": "서울특별시 양천구 목동 925",
+      "reviewed_at": "2026-10-22T12:55:50.078958+00:00",
+      "identity": {
+        "project_id": "cleanup-mokdong7",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=mokdong7",
+        "catalog_address": "서울특별시 양천구 목동 925",
+        "catalog_title": "목동7단지아파트 재건축정비사업조합",
+        "district": "양천구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5288232909409,
+          126.867840519363
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:43:29.369413+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 양천구 목동 925",
+        "map_row_id": "source-44153",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-siyoungapt",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.517094837206,
+        126.832775211306
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=9&pageSize=100",
+      "official_address": "서울특별시 양천구 신월동 987-1",
+      "reviewed_at": "2026-10-22T12:55:50.867519+00:00",
+      "identity": {
+        "project_id": "cleanup-siyoungapt",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=siyoungapt",
+        "catalog_address": "서울특별시 양천구 신월동 987-1",
+        "catalog_title": "신월시영아파트 재건축정비사업",
+        "district": "양천구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.517094837206,
+          126.832775211306
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:50:37.255376+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 양천구 신월동 987-1",
+        "map_row_id": "source-44120",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-mokdong10",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5174039317093,
+        126.858682558236
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=9&pageSize=100",
+      "official_address": "서울특별시 양천구 신정동 311",
+      "reviewed_at": "2026-10-22T12:55:51.024531+00:00",
+      "identity": {
+        "project_id": "cleanup-mokdong10",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=mokdong10",
+        "catalog_address": "서울특별시 양천구 신정동 311",
+        "catalog_title": "목동10단지아파트 재건축정비사업",
+        "district": "양천구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5174039317093,
+          126.858682558236
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:47:48.398267+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 양천구 신정동 311",
+        "map_row_id": "source-44156",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-mokdong9",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5185536699852,
+        126.86262739995
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=9&pageSize=100",
+      "official_address": "서울특별시 양천구 신정동 312",
+      "reviewed_at": "2026-10-22T12:55:51.144542+00:00",
+      "identity": {
+        "project_id": "cleanup-mokdong9",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=mokdong9",
+        "catalog_address": "서울특별시 양천구 신정동 312",
+        "catalog_title": "목동9단지아파트 재건축정비사업",
+        "district": "양천구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5185536699852,
+          126.86262739995
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:56:15.382136+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 양천구 신정동 312",
+        "map_row_id": "source-44143",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-mokdong8",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5212495962395,
+        126.867550260726
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=9&pageSize=100",
+      "official_address": "서울특별시 양천구 신정동 314",
+      "reviewed_at": "2026-10-22T12:55:51.258548+00:00",
+      "identity": {
+        "project_id": "cleanup-mokdong8",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=mokdong8",
+        "catalog_address": "서울특별시 양천구 신정동 314",
+        "catalog_title": "목동8단지아파트 재건축정비사업조합",
+        "district": "양천구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5212495962395,
+          126.867550260726
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:11:09.736586+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 양천구 신정동 314",
+        "map_row_id": "source-44142",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-mokdong11",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5120560613111,
+        126.858409872488
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=9&pageSize=100",
+      "official_address": "서울특별시 양천구 신정동 325",
+      "reviewed_at": "2026-10-22T12:55:51.371555+00:00",
+      "identity": {
+        "project_id": "cleanup-mokdong11",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=mokdong11",
+        "catalog_address": "서울특별시 양천구 신정동 325",
+        "catalog_title": "목동11단지아파트 재건축정비사업",
+        "district": "양천구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5120560613111,
+          126.858409872488
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:42:03.167898+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 양천구 신정동 325",
+        "map_row_id": "source-44111",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-mokdong12",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5134171573663,
+        126.860793578136
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=9&pageSize=100",
+      "official_address": "서울특별시 양천구 신정동 326",
+      "reviewed_at": "2026-10-22T12:55:51.485565+00:00",
+      "identity": {
+        "project_id": "cleanup-mokdong12",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=mokdong12",
+        "catalog_address": "서울특별시 양천구 신정동 326",
+        "catalog_title": "목동12단지아파트 재건축정비사업",
+        "district": "양천구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5134171573663,
+          126.860793578136
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:44:54.891971+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 양천구 신정동 326",
+        "map_row_id": "source-44129",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-mokdong14",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5162441449964,
+        126.870784781154
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=9&pageSize=100",
+      "official_address": "서울특별시 양천구 신정동 329",
+      "reviewed_at": "2026-10-22T12:55:51.715581+00:00",
+      "identity": {
+        "project_id": "cleanup-mokdong14",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=mokdong14",
+        "catalog_address": "서울특별시 양천구 신정동 329",
+        "catalog_title": "목동14단지아파트 재건축정비사업",
+        "district": "양천구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5162441449964,
+          126.870784781154
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:46:21.991867+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 양천구 신정동 329",
+        "map_row_id": "source-44099",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-Rd564j6j",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5206696957946,
+        126.938204366921
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=10&pageSize=100",
+      "official_address": "서울특별시 영등포구 여의도동 50",
+      "reviewed_at": "2026-10-22T12:55:55.814402+00:00",
+      "identity": {
+        "project_id": "cleanup-Rd564j6j",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=Rd564j6j",
+        "catalog_address": "서울특별시 영등포구 여의도동 50",
+        "catalog_title": "75. 여의도 시범아파트주택재건축정비사업 조합설립추진위원회",
+        "district": "영등포구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5206696957946,
+          126.938204366921
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:53:38.666716+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 영등포구 여의도동 50",
+        "map_row_id": "source-64064",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-sindonga85",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5180979697285,
+        126.987501145071
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=10&pageSize=100",
+      "official_address": "서울특별시 용산구 서빙고동 241-21",
+      "reviewed_at": "2026-10-22T12:55:56.515453+00:00",
+      "identity": {
+        "project_id": "cleanup-sindonga85",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=sindonga85",
+        "catalog_address": "서울특별시 용산구 서빙고동 241-21",
+        "catalog_title": "신동아아파트재건축정비사업조합",
+        "district": "용산구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5180979697285,
+          126.987501145071
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:10:28.117026+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 용산구 서빙고동 241-21",
+        "map_row_id": "source-4946",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-gangchon1001",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5192338183281,
+        126.977468237095
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=11&pageSize=100",
+      "official_address": "서울특별시 용산구 이촌동 402",
+      "reviewed_at": "2026-10-22T12:55:56.676460+00:00",
+      "identity": {
+        "project_id": "cleanup-gangchon1001",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=gangchon1001",
+        "catalog_address": "서울특별시 용산구 이촌동 402",
+        "catalog_title": "강촌아파트 리모델링주택조합",
+        "district": "용산구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5192338183281,
+          126.977468237095
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:04:34.544903+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 용산구 이촌동 402",
+        "map_row_id": "source-4943",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-BulgwangMiseong",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.6148205101596,
+        126.928054602465
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=11&pageSize=100",
+      "official_address": "서울특별시 은평구 불광동 248",
+      "reviewed_at": "2026-10-22T12:55:57.858756+00:00",
+      "identity": {
+        "project_id": "cleanup-BulgwangMiseong",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=BulgwangMiseong",
+        "catalog_address": "서울특별시 은평구 불광동 248",
+        "catalog_title": "불광미성아파트 주택재건축정비사업",
+        "district": "은평구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.6148205101596,
+          126.928054602465
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:51:50.811814+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 은평구 불광동 248",
+        "map_row_id": "source-33014",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-namtaremodel",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5486807945222,
+        127.008880363269
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=11&pageSize=100",
+      "official_address": "서울특별시 중구 신당동 844",
+      "reviewed_at": "2026-10-22T12:55:59.108848+00:00",
+      "identity": {
+        "project_id": "cleanup-namtaremodel",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=namtaremodel",
+        "catalog_address": "서울특별시 중구 신당동 844",
+        "catalog_title": "남산타운아파트 리모델링사업",
+        "district": "중구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5486807945222,
+          127.008880363269
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T00:41:17.307138+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 중구 신당동 844",
+        "map_row_id": "source-2590",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "moa-urban-8786",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.547588,
+        126.860164
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://urban.seoul.go.kr/view/html/PMNU1100000001?seq=8786",
+      "official_address": "강서구 등촌동 520-3",
+      "reviewed_at": "2026-10-22T12:56:04.232605+00:00",
+      "identity": {
+        "project_id": "moa-urban-8786",
+        "catalog_source": "https://urban.seoul.go.kr/view/html/PMNU1100000001?seq=8786",
+        "catalog_address": "강서구 등촌동 520-3",
+        "catalog_title": "등촌동 520-3 일대",
+        "district": "강서구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.547588,
+          126.860164
+        ],
+        "source": "approved_saved_address_cache",
+        "checked_at": null,
+        "basis": "approved_saved_address_cache",
+        "address": "서울특별시 강서구 등촌동 520-3",
+        "cache_sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "exact_cache_key": "등촌동 520-3"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "b88edbd1e673b92ec652a7f3cc67dd99a5639de1318d8b78c34969cf05fb371c",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "moa-urban-8785",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.545623,
+        126.857909
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://urban.seoul.go.kr/view/html/PMNU1100000001?seq=8785",
+      "official_address": "강서구 등촌동 515-44",
+      "reviewed_at": "2026-10-22T12:56:04.297609+00:00",
+      "identity": {
+        "project_id": "moa-urban-8785",
+        "catalog_source": "https://urban.seoul.go.kr/view/html/PMNU1100000001?seq=8785",
+        "catalog_address": "강서구 등촌동 515-44",
+        "catalog_title": "등촌동 515-44 일대",
+        "district": "강서구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.545623,
+          126.857909
+        ],
+        "source": "approved_saved_address_cache",
+        "checked_at": null,
+        "basis": "approved_saved_address_cache",
+        "address": "서울특별시 강서구 등촌동 515-44",
+        "cache_sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "exact_cache_key": "등촌동 515-44"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "b88edbd1e673b92ec652a7f3cc67dd99a5639de1318d8b78c34969cf05fb371c",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "moa-urban-8789",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.538362,
+        126.834993
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://urban.seoul.go.kr/view/html/PMNU1100000001?seq=8789",
+      "official_address": "강서구 화곡동 1087",
+      "reviewed_at": "2026-10-22T12:56:04.370887+00:00",
+      "identity": {
+        "project_id": "moa-urban-8789",
+        "catalog_source": "https://urban.seoul.go.kr/view/html/PMNU1100000001?seq=8789",
+        "catalog_address": "강서구 화곡동 1087",
+        "catalog_title": "화곡1동 1087번지 일대",
+        "district": "강서구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.538362,
+          126.834993
+        ],
+        "source": "approved_saved_address_cache",
+        "checked_at": null,
+        "basis": "approved_saved_address_cache",
+        "address": "서울특별시 강서구 화곡동 1087",
+        "cache_sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "exact_cache_key": "화곡동 1087"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "b88edbd1e673b92ec652a7f3cc67dd99a5639de1318d8b78c34969cf05fb371c",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "moa-urban-8790",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.551301,
+        126.85581
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://urban.seoul.go.kr/view/html/PMNU1100000001?seq=8790",
+      "official_address": "강서구 화곡동 1130-7",
+      "reviewed_at": "2026-10-22T12:56:04.435887+00:00",
+      "identity": {
+        "project_id": "moa-urban-8790",
+        "catalog_source": "https://urban.seoul.go.kr/view/html/PMNU1100000001?seq=8790",
+        "catalog_address": "강서구 화곡동 1130-7",
+        "catalog_title": "화곡동 1130-7 일대",
+        "district": "강서구"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.551301,
+          126.85581
+        ],
+        "source": "approved_saved_address_cache",
+        "checked_at": null,
+        "basis": "approved_saved_address_cache",
+        "address": "서울특별시 강서구 화곡동 1130-7",
+        "cache_sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "exact_cache_key": "화곡동 1130-7"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "b88edbd1e673b92ec652a7f3cc67dd99a5639de1318d8b78c34969cf05fb371c",
+      "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
     }
   ]
 }
