@@ -2535,6 +2535,186 @@
       "confidence": "exact_district_legal_dong_lot_match",
       "catalog_sha256": "b88edbd1e673b92ec652a7f3cc67dd99a5639de1318d8b78c34969cf05fb371c",
       "limitation": "공식 대표주소와 정확히 일치하는 기존 저장 좌표의 참고 위치입니다. 법정 경계·필지 포함·건물 출입구를 뜻하지 않으며 새 지오코딩을 수행하지 않았습니다."
+    },
+    {
+      "project_id": "cleanup-geoyeo21",
+      "basis": "official_overview_address_saved_coordinate",
+      "point": [
+        37.4959950468936,
+        127.14746026978
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=710100002008h58&stepSeCode=102&div=sumry",
+      "official_address": "서울특별시 송파구 거여동 697",
+      "reviewed_at": "2026-10-22T14:44:22.528311+00:00",
+      "identity": {
+        "project_id": "cleanup-geoyeo21",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=geoyeo21",
+        "catalog_address": "서울특별시 송파구 거여동 181",
+        "catalog_title": "거여2재정비촉진구역 1지구 주택재개발정비사업조합",
+        "district": "송파구"
+      },
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "source_evidence": {
+        "main_sha256": "9a4eb39d0de74e49cd723d238de888f26b7c3dd90b5698d1923546a9835289ac",
+        "overview_sha256": "29ee58c69cf7aa7afc0cbadb6bf81a576e21b38ef99aa69925b94d483a1f8271",
+        "observed_cafe_id": "710100002008h58",
+        "observed_business_id": "11710-100002008",
+        "overview_source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=710100002008h58&stepSeCode=102&div=sumry",
+        "source_checked_at": "2026-10-22T06:49:50.748344+00:00",
+        "identity_method": "preserved_official_main_slug_title_and_overview_cafe_link"
+      },
+      "limitation": "공식 사업개요에 적힌 정비구역 위치의 기존 주소좌표입니다. 등록 목록 주소와의 차이를 보존하며 법정 경계·필지 포함 여부·지번 변경을 확정하지 않습니다. 새 지오코딩을 수행하지 않았습니다.",
+      "raw_label": "정비구역 위치",
+      "raw_value": "서울시 송파구 거여동 697번지일대 일대",
+      "catalog_address_differs": true,
+      "address_discrepancy": "등록 목록은 거여동 181, 공식 사업개요의 정비구역 위치는 거여동 697입니다. 여기서는 개요에 명시된 697의 저장 주소좌표를 기준으로 삼으며 지번 변경·동일 필지임을 뜻하지 않습니다.",
+      "confidence": "explicit_overview_site_address_exact_saved_match",
+      "coordinate_provenance": {
+        "point": [
+          37.4959950468936,
+          127.14746026978
+        ],
+        "address": "서울특별시 송파구 거여동 697",
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:07:19.210000+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8",
+        "map_row_id": "source-88670"
+      }
+    },
+    {
+      "project_id": "cleanup-sg1apt",
+      "basis": "official_area_reference_point",
+      "point": [
+        37.67416080984141,
+        127.08305146780374
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://urban.seoul.go.kr/view/map/mapPopup.html?recordCode=11000AGZ201908080255",
+      "official_address": "서울특별시 노원구 상계동 자력6구역 8블럭 9롯트",
+      "reviewed_at": "2026-10-22T14:44:22.528311+00:00",
+      "identity": {
+        "project_id": "cleanup-sg1apt",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=sg1apt",
+        "catalog_address": "서울특별시 노원구 상계동 자력6구역 8블럭 9롯트",
+        "catalog_title": "상계1재정비촉진구역 주택재개발정비사업 조합",
+        "district": "노원구"
+      },
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "source_evidence": {
+        "main_sha256": "7642f71ec8ae5894c4900448b84487a6f1db4049336eb3a6f1e27456f4752d71",
+        "overview_sha256": "d1b824598370cec6e4fe2f5643b604b9834256e7ae107a58929e162a7293d02d",
+        "observed_cafe_id": "350100002014N57",
+        "observed_business_id": "11350-100002014",
+        "overview_source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=350100002014N57&stepSeCode=102&div=sumry",
+        "source_checked_at": "2026-10-22T06:27:42.438154+00:00",
+        "identity_method": "preserved_official_main_slug_title_and_overview_cafe_link"
+      },
+      "limitation": "공식 지도 연결코드와 상계1구역·자력6구역 8블록 9롯트가 일치하는 저장 구역자료의 내부 참고점입니다. GIS 면적 86,975.961㎡와 사업개요 86,432.5㎡의 차이가 남아 있어 법정 사업경계로 표시하지 않습니다.",
+      "source_record_code": "11000AGZ201908080255",
+      "source_area_name": "상계1구역-자력6구역 8블록 9롯트 일대",
+      "source_snapshot_sha256": "b5cc20c9c4c226fa8756d08683ab8e82cb20466012dae16429cc06d6161b4e1c",
+      "coordinate_checked_at": "2026-10-22T05:59:34.717130+00:00",
+      "point_method": "area_weighted_centroid_of_largest_ring_local_equirectangular",
+      "point_inside_saved_source": true,
+      "source_scope_area": {
+        "gis_m2": 86975.96092669,
+        "overview_m2": 86432.5,
+        "difference_m2": 543.4609266899934
+      },
+      "source_component_index": 0,
+      "confidence": "official_map_code_and_named_area_address_match"
+    },
+    {
+      "project_id": "cleanup-DrWK0XGO",
+      "basis": "official_area_reference_point",
+      "point": [
+        37.664071010533014,
+        127.06232924999779
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://urban.seoul.go.kr/view/map/mapPopup.html?recordCode=11000AGZ201404160166",
+      "official_address": "서울특별시 노원구 상계동 677",
+      "reviewed_at": "2026-10-22T14:44:22.528311+00:00",
+      "identity": {
+        "project_id": "cleanup-DrWK0XGO",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=DrWK0XGO",
+        "catalog_address": "서울특별시 노원구 상계동 677",
+        "catalog_title": "상계주공8단지 주택재건축정비사업 조합",
+        "district": "노원구"
+      },
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "source_evidence": {
+        "main_sha256": "7811c46f7b842c9ac83ee63494b5d4f27aac16ed9291447e28e79f433ac6e138",
+        "overview_sha256": "a1471e3c1f196585c2dd65e20c8ffd4ba1ed46aa8843823751a4e47778c9fdad",
+        "observed_cafe_id": "350100002006m96",
+        "observed_business_id": "11350-100002006",
+        "overview_source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=350100002006m96&stepSeCode=102&div=sumry",
+        "source_checked_at": "2026-10-22T06:53:08.575158+00:00",
+        "identity_method": "preserved_official_main_slug_title_and_overview_cafe_link"
+      },
+      "limitation": "공식 지도 연결코드, 구역명에 적힌 대표지번 상계동 677, 사업개요와 GIS의 약 41,763㎡ 면적이 일치하는 구역자료의 가장 큰 도형 내부 참고점입니다. 부필지는 개요 688/GIS 680으로 달라 미확정이며 677필지의 정확한 주소좌표나 법정 사업경계가 아닙니다.",
+      "source_record_code": "11000AGZ201404160166",
+      "source_area_name": "노원구 상계동 677, 680번지 일대",
+      "source_snapshot_sha256": "b5cc20c9c4c226fa8756d08683ab8e82cb20466012dae16429cc06d6161b4e1c",
+      "coordinate_checked_at": "2026-10-22T05:59:34.717130+00:00",
+      "point_method": "area_weighted_centroid_of_largest_ring_local_equirectangular",
+      "point_inside_saved_source": true,
+      "source_scope_area": {
+        "gis_m2": 41763.03499495,
+        "overview_m2": 41763,
+        "difference_m2": 0.034994950001419056
+      },
+      "source_component_index": 0,
+      "confidence": "official_map_code_and_named_area_address_match"
+    },
+    {
+      "project_id": "cleanup-gG49z9y6",
+      "basis": "official_plan_reference_centroid",
+      "point": [
+        37.56119510555001,
+        126.96401585517302
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/DS/11410UQ161PS202311280001/ST/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EC%A0%9C2023-478%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+      "official_address": "서울특별시 서대문구 충정로3가 250-7 일대 (2023-478 고시); 충정로3가 250-70 일대 (공식 사업개요)",
+      "reviewed_at": "2026-10-22T14:44:22.528311+00:00",
+      "identity": {
+        "project_id": "cleanup-gG49z9y6",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=gG49z9y6",
+        "catalog_address": "서울특별시 서대문구 충정로3가 250",
+        "catalog_title": "마포로5구역제2지구 도시정비형재개발사업조합",
+        "district": "서대문구"
+      },
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "source_evidence": {
+        "main_sha256": "1789fd0da22ba37d3db201392ba0e490e85ab248b8372413e0115cc4ccf8353d",
+        "overview_sha256": "13088d2dfdad71fb9cfa72e017320d65b0a6a1f203d24cd6c71931f7a2dcdce1",
+        "observed_cafe_id": "410900000075S79",
+        "observed_business_id": "11410-900000075",
+        "overview_source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=410900000075S79&stepSeCode=102&div=sumry",
+        "source_checked_at": "2026-10-22T06:35:38.978271+00:00",
+        "identity_method": "preserved_official_main_slug_title_and_overview_cafe_link"
+      },
+      "limitation": "마포로5구역 2지구의 공식 지구단위계획 자료 내부 참고점입니다. GIS 면적 5,612.698㎡와 고시·사업개요 5,596.2㎡의 차이 16.498㎡ 및 고시 250-7/개요 250-70의 주소 차이는 미해결입니다. 법정 사업경계나 특정 필지 위치가 아닙니다. 원자료 조회시각은 미보존입니다.",
+      "plan_id": "11410UQ161PS202311280001",
+      "record_code": "11410UTZ202308210001",
+      "notice_date": "2023-11-02",
+      "notice_number": "서울특별시고시 제2023-478호",
+      "published_gis_area_m2": 5612.69814077,
+      "gazette_project_area_m2": 5596.2,
+      "source_snapshot_sha256": "d22743092ee557938c55ebcbe0d6bf4b7c9d98c694c63fd737069551f04ca66d",
+      "notice_sha256": "4a22940eedab0da383902552604b761caa6b6e4fd428005bb7fa2e363113b9cb",
+      "coordinate_checked_at": null
     }
   ]
 }
