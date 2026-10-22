@@ -1,11 +1,19 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-10-22T21:47:13+09:00",
-  "data_until": "2026-10-21",
+  "generated_at": "2026-10-23T08:47:14+09:00",
+  "data_until": "2026-10-22",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
+    {
+      "dong": "화곡동",
+      "name": "AndPra레지던스",
+      "area_m2": 15,
+      "amount_eok": 1.1,
+      "date": "2026.10.22",
+      "complex_id": "fddb4f94"
+    },
     {
       "dong": "마곡동",
       "name": "마곡13단지힐스테이트마스터",
@@ -21,14 +29,6 @@
       "amount_eok": 6.1,
       "date": "2026.10.19",
       "complex_id": "97fb4b67"
-    },
-    {
-      "dong": "가양동",
-      "name": "강변",
-      "area_m2": 34,
-      "amount_eok": 8.2,
-      "date": "2026.10.17",
-      "complex_id": "de11b19d"
     }
   ],
   "monthly_trend": [
@@ -50,7 +50,7 @@
     },
     {
       "month": "2026-09",
-      "count": 250
+      "count": 251
     },
     {
       "month": "2026-10",
