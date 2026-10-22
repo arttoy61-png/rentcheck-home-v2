@@ -1,0 +1,546 @@
+{
+  "version": 1,
+  "scope": "home-reference-only",
+  "records": [
+    {
+      "project_id": "cleanup-moa1-1",
+      "basis": "official_project_address_saved_reference",
+      "point": [
+        37.547002,
+        126.857575
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900001372z61&stepSeCode=102&div=sumry",
+      "official_address": "서울특별시 강서구 등촌동 515-8",
+      "raw_label": "정비구역 위치",
+      "raw_value": "강서구 등촌동 515-8 일대",
+      "reviewed_at": "2026-10-22T07:39:46.430470+00:00",
+      "identity": {
+        "project_id": "cleanup-moa1-1",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=moa1-1",
+        "catalog_address": "서울특별시 강서구 등촌동 515-8",
+        "catalog_title": "등촌2동 모아타운 제1-1구역 가로주택정비사업조합",
+        "district": "강서구",
+        "cafe_id": "500900001372z61",
+        "overview_sha256": "df60b2a5b18f1795c979f81e5532a25b5299fa5385bde0afae0f4b162935c5a6",
+        "identity_checked_at": "2026-10-22T06:51:29.233699+00:00"
+      },
+      "coordinate_provenance": {
+        "basis": "approved_saved_address_cache",
+        "sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "exact_cache_key": "등촌동 515-8",
+        "source": "기존 강서 주소 대조 좌표 캐시 (원좌표 확인일 미보존)",
+        "coordinate_checked_at": null,
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "cache_addition_commit": "46b78cb833235f3e09987ff931cdd73dcbb6c7f4"
+      },
+      "limitation": "공식 구역주소와 정확히 일치하는 승인 저장좌표의 참고 위치입니다. 원좌표 조회일은 미보존이며 신규 지오코딩 검증, 법정 경계, 출입구 위치, 필지 포함 여부를 검증한 것이 아닙니다."
+    },
+    {
+      "project_id": "cleanup-moa1-3",
+      "basis": "official_project_address_saved_reference",
+      "point": [
+        37.545623,
+        126.857909
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900001301P17&stepSeCode=102&div=sumry",
+      "official_address": "서울특별시 강서구 등촌동 515-44",
+      "raw_label": "정비구역 위치",
+      "raw_value": "강서구 등촌동 515-44 일대",
+      "reviewed_at": "2026-10-22T07:39:46.430470+00:00",
+      "identity": {
+        "project_id": "cleanup-moa1-3",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=moa1-3",
+        "catalog_address": "서울특별시 강서구 등촌동 515-44",
+        "catalog_title": "등촌2동 모아타운 제1-3구역 가로주택정비사업조합",
+        "district": "강서구",
+        "cafe_id": "500900001301P17",
+        "overview_sha256": "a349dbb6c83c2fa5932d7b479333bd0b664796f32ab14ab8ca9d3c496cac5347",
+        "identity_checked_at": "2026-10-22T07:01:12.279413+00:00"
+      },
+      "coordinate_provenance": {
+        "basis": "approved_saved_address_cache",
+        "sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "exact_cache_key": "등촌동 515-44",
+        "source": "기존 강서 주소 대조 좌표 캐시 (원좌표 확인일 미보존)",
+        "coordinate_checked_at": null,
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "cache_addition_commit": "46b78cb833235f3e09987ff931cdd73dcbb6c7f4"
+      },
+      "limitation": "공식 구역주소와 정확히 일치하는 승인 저장좌표의 참고 위치입니다. 원좌표 조회일은 미보존이며 신규 지오코딩 검증, 법정 경계, 출입구 위치, 필지 포함 여부를 검증한 것이 아닙니다."
+    },
+    {
+      "project_id": "cleanup-moa2-1",
+      "basis": "official_project_address_saved_reference",
+      "point": [
+        37.547588,
+        126.860164
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900001586c10&stepSeCode=102&div=sumry",
+      "official_address": "서울특별시 강서구 등촌동 520-3",
+      "raw_label": "정비구역 위치",
+      "raw_value": "강서구 등촌동 520-3 일대",
+      "reviewed_at": "2026-10-22T07:39:46.430470+00:00",
+      "identity": {
+        "project_id": "cleanup-moa2-1",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=moa2-1",
+        "catalog_address": "서울특별시 강서구 등촌동 520-3",
+        "catalog_title": "등촌2동 모아타운 제2-1구역 가로주택정비사업조합",
+        "district": "강서구",
+        "cafe_id": "500900001586c10",
+        "overview_sha256": "1b0f655392e84f18a53bcd94e00dffcf33a87273d1df1a59400598414a09267f",
+        "identity_checked_at": "2026-10-22T07:05:37.331263+00:00"
+      },
+      "coordinate_provenance": {
+        "basis": "approved_saved_address_cache",
+        "sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "exact_cache_key": "등촌동 520-3",
+        "source": "기존 강서 주소 대조 좌표 캐시 (원좌표 확인일 미보존)",
+        "coordinate_checked_at": null,
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "cache_addition_commit": "46b78cb833235f3e09987ff931cdd73dcbb6c7f4"
+      },
+      "limitation": "공식 구역주소와 정확히 일치하는 승인 저장좌표의 참고 위치입니다. 원좌표 조회일은 미보존이며 신규 지오코딩 검증, 법정 경계, 출입구 위치, 필지 포함 여부를 검증한 것이 아닙니다."
+    },
+    {
+      "project_id": "cleanup-deungchondong649",
+      "basis": "official_project_address_saved_reference",
+      "point": [
+        37.552907,
+        126.862265
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900001480R14&stepSeCode=102&div=sumry",
+      "official_address": "서울특별시 강서구 등촌동 649",
+      "raw_label": "정비구역 위치",
+      "raw_value": "강서구 등촌동 649-0 일대",
+      "reviewed_at": "2026-10-22T07:39:46.430470+00:00",
+      "identity": {
+        "project_id": "cleanup-deungchondong649",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=deungchondong649",
+        "catalog_address": "서울특별시 강서구 등촌동 649",
+        "catalog_title": "등촌649 소규모재개발정비사업조합",
+        "district": "강서구",
+        "cafe_id": "500900001480R14",
+        "overview_sha256": "7b9cb5b2d42f0a6285916e42bcfee92ea099bd4eea38383e808353133e66613e",
+        "identity_checked_at": "2026-10-22T07:07:36.786062+00:00"
+      },
+      "coordinate_provenance": {
+        "basis": "approved_saved_address_cache",
+        "sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "exact_cache_key": "등촌동 649",
+        "source": "기존 강서 주소 대조 좌표 캐시 (원좌표 확인일 미보존)",
+        "coordinate_checked_at": null,
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "cache_addition_commit": "46b78cb833235f3e09987ff931cdd73dcbb6c7f4"
+      },
+      "limitation": "공식 구역주소와 정확히 일치하는 승인 저장좌표의 참고 위치입니다. 원좌표 조회일은 미보존이며 신규 지오코딩 검증, 법정 경계, 출입구 위치, 필지 포함 여부를 검증한 것이 아닙니다."
+    },
+    {
+      "project_id": "cleanup-dongsunggaro",
+      "basis": "official_project_address_saved_reference",
+      "point": [
+        37.555393,
+        126.855836
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900001549x50&stepSeCode=102&div=sumry",
+      "official_address": "서울특별시 강서구 등촌동 654-43",
+      "raw_label": "정비구역 위치",
+      "raw_value": "강서구 등촌동 654-43 일대",
+      "reviewed_at": "2026-10-22T07:39:46.430470+00:00",
+      "identity": {
+        "project_id": "cleanup-dongsunggaro",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=dongsunggaro",
+        "catalog_address": "서울특별시 강서구 등촌동 654-43",
+        "catalog_title": "동성가로주택정비사업조합",
+        "district": "강서구",
+        "cafe_id": "500900001549x50",
+        "overview_sha256": "291b99e92860b30047fdd5df16d50efddc5d060002bd5a472a28fad29cc86374",
+        "identity_checked_at": "2026-10-22T07:09:34.209518+00:00"
+      },
+      "coordinate_provenance": {
+        "basis": "approved_saved_address_cache",
+        "sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "exact_cache_key": "등촌동 654-43",
+        "source": "기존 강서 주소 대조 좌표 캐시 (원좌표 확인일 미보존)",
+        "coordinate_checked_at": null,
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "cache_addition_commit": "46b78cb833235f3e09987ff931cdd73dcbb6c7f4"
+      },
+      "limitation": "공식 구역주소와 정확히 일치하는 승인 저장좌표의 참고 위치입니다. 원좌표 조회일은 미보존이며 신규 지오코딩 검증, 법정 경계, 출입구 위치, 필지 포함 여부를 검증한 것이 아닙니다."
+    },
+    {
+      "project_id": "cleanup-shinan",
+      "basis": "official_project_address_saved_reference",
+      "point": [
+        37.571084,
+        126.823588
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500100002001b01&stepSeCode=102&div=sumry",
+      "official_address": "서울특별시 강서구 마곡동 327-53",
+      "raw_label": "정비구역 위치",
+      "raw_value": "서울특별시 강서구 마곡동 327-53번지 일대",
+      "reviewed_at": "2026-10-22T07:39:46.430470+00:00",
+      "identity": {
+        "project_id": "cleanup-shinan",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=shinan",
+        "catalog_address": "서울특별시 강서구 마곡동 327-53",
+        "catalog_title": "신안빌라주택재건축정비사업",
+        "district": "강서구",
+        "cafe_id": "500100002001b01",
+        "overview_sha256": "fd1004eeeae0c1ee74e1bf94afad12bee1e9b240f9ab34f2177e923d4de917fb",
+        "identity_checked_at": "2026-10-22T06:33:30.430406+00:00"
+      },
+      "coordinate_provenance": {
+        "basis": "approved_saved_address_cache",
+        "sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "exact_cache_key": "마곡동 327-53",
+        "source": "기존 강서 주소 대조 좌표 캐시 (원좌표 확인일 미보존)",
+        "coordinate_checked_at": null,
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "cache_addition_commit": "46b78cb833235f3e09987ff931cdd73dcbb6c7f4"
+      },
+      "limitation": "공식 구역주소와 정확히 일치하는 승인 저장좌표의 참고 위치입니다. 원좌표 조회일은 미보존이며 신규 지오코딩 검증, 법정 경계, 출입구 위치, 필지 포함 여부를 검증한 것이 아닙니다."
+    },
+    {
+      "project_id": "cleanup-magoksinan",
+      "basis": "official_project_address_saved_reference",
+      "point": [
+        37.571084,
+        126.823588
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900001074A26&stepSeCode=100&div=sumry",
+      "official_address": "서울특별시 강서구 마곡동 327-53",
+      "raw_label": "정비구역 위치",
+      "raw_value": "강서구 마곡동 327-53 일대",
+      "reviewed_at": "2026-10-22T07:39:46.430470+00:00",
+      "identity": {
+        "project_id": "cleanup-magoksinan",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=magoksinan",
+        "catalog_address": "서울특별시 강서구 마곡동 327-53",
+        "catalog_title": "신안빌라주택재건축정비사업조합설립추진위원회",
+        "district": "강서구",
+        "cafe_id": "500900001074A26",
+        "overview_sha256": "bc43891eb57685417cfebbb5ed806a487a129c20f5aa5a4c6d9c92371a860d9c",
+        "identity_checked_at": "2026-10-22T06:36:30.218333+00:00"
+      },
+      "coordinate_provenance": {
+        "basis": "approved_saved_address_cache",
+        "sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "exact_cache_key": "마곡동 327-53",
+        "source": "기존 강서 주소 대조 좌표 캐시 (원좌표 확인일 미보존)",
+        "coordinate_checked_at": null,
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "cache_addition_commit": "46b78cb833235f3e09987ff931cdd73dcbb6c7f4"
+      },
+      "limitation": "공식 구역주소와 정확히 일치하는 승인 저장좌표의 참고 위치입니다. 원좌표 조회일은 미보존이며 신규 지오코딩 검증, 법정 경계, 출입구 위치, 필지 포함 여부를 검증한 것이 아닙니다."
+    },
+    {
+      "project_id": "cleanup-seoul-villa",
+      "basis": "official_project_address_saved_reference",
+      "point": [
+        37.568827,
+        126.808963
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900001021U15&stepSeCode=102&div=sumry",
+      "official_address": "서울특별시 강서구 방화동 584-1",
+      "raw_label": "정비구역 위치",
+      "raw_value": "강서구 방화동 584-1 일대",
+      "reviewed_at": "2026-10-22T07:39:46.430470+00:00",
+      "identity": {
+        "project_id": "cleanup-seoul-villa",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=seoul-villa",
+        "catalog_address": "서울특별시 강서구 방화동 584-1",
+        "catalog_title": "서울빌라 가로주택정비사업조합",
+        "district": "강서구",
+        "cafe_id": "500900001021U15",
+        "overview_sha256": "5b06566abe69db836e5d388a80f426593f301e85eeba1f95159a980b7c8cb213",
+        "identity_checked_at": "2026-10-22T06:49:15.438837+00:00"
+      },
+      "coordinate_provenance": {
+        "basis": "approved_saved_address_cache",
+        "sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "exact_cache_key": "방화동 584-1",
+        "source": "기존 강서 주소 대조 좌표 캐시 (원좌표 확인일 미보존)",
+        "coordinate_checked_at": null,
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "cache_addition_commit": "46b78cb833235f3e09987ff931cdd73dcbb6c7f4"
+      },
+      "limitation": "공식 구역주소와 정확히 일치하는 승인 저장좌표의 참고 위치입니다. 원좌표 조회일은 미보존이며 신규 지오코딩 검증, 법정 경계, 출입구 위치, 필지 포함 여부를 검증한 것이 아닙니다."
+    },
+    {
+      "project_id": "cleanup-bangwha2",
+      "basis": "official_project_address_saved_reference",
+      "point": [
+        37.567244,
+        126.809422
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900001004b67&stepSeCode=102&div=sumry",
+      "official_address": "서울특별시 강서구 방화동 589-13",
+      "raw_label": "정비구역 위치",
+      "raw_value": "강서구 방화동 589-13 일대",
+      "reviewed_at": "2026-10-22T07:39:46.430470+00:00",
+      "identity": {
+        "project_id": "cleanup-bangwha2",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=bangwha2",
+        "catalog_address": "서울특별시 강서구 방화동 589-13",
+        "catalog_title": "방화2재정비촉진구역 재개발정비사업",
+        "district": "강서구",
+        "cafe_id": "500900001004b67",
+        "overview_sha256": "69115207b3edb5b77106d3c012d50dbd5af25d70cf5840adb6707ba035f60bd0",
+        "identity_checked_at": "2026-10-22T07:12:41.087541+00:00"
+      },
+      "coordinate_provenance": {
+        "basis": "approved_saved_address_cache",
+        "sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "exact_cache_key": "방화동 589-13",
+        "source": "기존 강서 주소 대조 좌표 캐시 (원좌표 확인일 미보존)",
+        "coordinate_checked_at": null,
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "cache_addition_commit": "46b78cb833235f3e09987ff931cdd73dcbb6c7f4"
+      },
+      "limitation": "공식 구역주소와 정확히 일치하는 승인 저장좌표의 참고 위치입니다. 원좌표 조회일은 미보존이며 신규 지오코딩 검증, 법정 경계, 출입구 위치, 필지 포함 여부를 검증한 것이 아닙니다."
+    },
+    {
+      "project_id": "cleanup-yangjibilla",
+      "basis": "official_project_address_saved_reference",
+      "point": [
+        37.550489,
+        126.875889
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900000925f52&stepSeCode=102&div=sumry",
+      "official_address": "서울특별시 강서구 염창동 253-1",
+      "raw_label": "정비구역 위치",
+      "raw_value": "강서구 염창동 253-1 일대",
+      "reviewed_at": "2026-10-22T07:39:46.430470+00:00",
+      "identity": {
+        "project_id": "cleanup-yangjibilla",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=yangjibilla",
+        "catalog_address": "서울특별시 강서구 염창동 253-1",
+        "catalog_title": "양지빌라 가로주택정비사업조합",
+        "district": "강서구",
+        "cafe_id": "500900000925f52",
+        "overview_sha256": "dbe468d621da00e85d390c820c46df0b1e2658db7f4d2b78104f22ddabf248c7",
+        "identity_checked_at": "2026-10-22T07:14:57.075905+00:00"
+      },
+      "coordinate_provenance": {
+        "basis": "approved_saved_address_cache",
+        "sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "exact_cache_key": "염창동 253-1",
+        "source": "기존 강서 주소 대조 좌표 캐시 (원좌표 확인일 미보존)",
+        "coordinate_checked_at": null,
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "cache_addition_commit": "46b78cb833235f3e09987ff931cdd73dcbb6c7f4"
+      },
+      "limitation": "공식 구역주소와 정확히 일치하는 승인 저장좌표의 참고 위치입니다. 원좌표 조회일은 미보존이며 신규 지오코딩 검증, 법정 경계, 출입구 위치, 필지 포함 여부를 검증한 것이 아닙니다."
+    },
+    {
+      "project_id": "cleanup-yeomchangmuhak",
+      "basis": "official_project_address_saved_reference",
+      "point": [
+        37.551395,
+        126.876557
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900000914w79&stepSeCode=102&div=sumry",
+      "official_address": "서울특별시 강서구 염창동 255",
+      "raw_label": "정비구역 위치",
+      "raw_value": "강서구 염창동 255-0 일대",
+      "reviewed_at": "2026-10-22T07:39:46.430470+00:00",
+      "identity": {
+        "project_id": "cleanup-yeomchangmuhak",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=yeomchangmuhak",
+        "catalog_address": "서울특별시 강서구 염창동 255",
+        "catalog_title": "염창무학아파트 리모델링주택조합",
+        "district": "강서구",
+        "cafe_id": "500900000914w79",
+        "overview_sha256": "906eaea2b841ec85e0b69fc618c550500b102c1934a206da4f7fb2a6bc0aff61",
+        "identity_checked_at": "2026-10-22T06:28:48.878562+00:00"
+      },
+      "coordinate_provenance": {
+        "basis": "approved_saved_address_cache",
+        "sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "exact_cache_key": "염창동 255",
+        "source": "기존 강서 주소 대조 좌표 캐시 (원좌표 확인일 미보존)",
+        "coordinate_checked_at": null,
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "cache_addition_commit": "46b78cb833235f3e09987ff931cdd73dcbb6c7f4"
+      },
+      "limitation": "공식 구역주소와 정확히 일치하는 승인 저장좌표의 참고 위치입니다. 원좌표 조회일은 미보존이며 신규 지오코딩 검증, 법정 경계, 출입구 위치, 필지 포함 여부를 검증한 것이 아닙니다."
+    },
+    {
+      "project_id": "cleanup-Deungchon",
+      "basis": "official_project_address_saved_reference",
+      "point": [
+        37.550429,
+        126.869935
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900001543h77&stepSeCode=101&div=sumry",
+      "official_address": "서울특별시 강서구 염창동 272-21",
+      "raw_label": "정비구역 위치",
+      "raw_value": "강서구 염창동 272-21 일대",
+      "reviewed_at": "2026-10-22T07:39:46.430470+00:00",
+      "identity": {
+        "project_id": "cleanup-Deungchon",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=Deungchon",
+        "catalog_address": "서울특별시 강서구 염창동 272-21",
+        "catalog_title": "등촌역세권 장기전세주택 도시정비형 재개발사업",
+        "district": "강서구",
+        "cafe_id": "500900001543h77",
+        "overview_sha256": "850d03ab3c33a4591231b4e437ed2bf933d6f1003392d64fef135705179669a8",
+        "identity_checked_at": "2026-10-22T06:55:30.442334+00:00"
+      },
+      "coordinate_provenance": {
+        "basis": "approved_saved_address_cache",
+        "sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "exact_cache_key": "염창동 272-21",
+        "source": "기존 강서 주소 대조 좌표 캐시 (원좌표 확인일 미보존)",
+        "coordinate_checked_at": null,
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "cache_addition_commit": "46b78cb833235f3e09987ff931cdd73dcbb6c7f4"
+      },
+      "limitation": "공식 구역주소와 정확히 일치하는 승인 저장좌표의 참고 위치입니다. 원좌표 조회일은 미보존이며 신규 지오코딩 검증, 법정 경계, 출입구 위치, 필지 포함 여부를 검증한 것이 아닙니다."
+    },
+    {
+      "project_id": "cleanup-daegeun01",
+      "basis": "official_project_address_saved_reference",
+      "point": [
+        37.548356,
+        126.845299
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900001526N51&stepSeCode=102&div=sumry",
+      "official_address": "서울특별시 강서구 화곡동 73-105",
+      "raw_label": "정비구역 위치",
+      "raw_value": "강서구 화곡동 73-105 일대",
+      "reviewed_at": "2026-10-22T07:39:46.430470+00:00",
+      "identity": {
+        "project_id": "cleanup-daegeun01",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=daegeun01",
+        "catalog_address": "서울특별시 강서구 화곡동 73-105",
+        "catalog_title": "대근연립가로주택정비사업조합",
+        "district": "강서구",
+        "cafe_id": "500900001526N51",
+        "overview_sha256": "6e830ab506b6d67deef0e171116a8a6678df1fbc7d5cc1804333cc413c97437f",
+        "identity_checked_at": "2026-10-22T07:17:16.072542+00:00"
+      },
+      "coordinate_provenance": {
+        "basis": "approved_saved_address_cache",
+        "sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "exact_cache_key": "화곡동 73-105",
+        "source": "기존 강서 주소 대조 좌표 캐시 (원좌표 확인일 미보존)",
+        "coordinate_checked_at": null,
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "cache_addition_commit": "46b78cb833235f3e09987ff931cdd73dcbb6c7f4"
+      },
+      "limitation": "공식 구역주소와 정확히 일치하는 승인 저장좌표의 참고 위치입니다. 원좌표 조회일은 미보존이며 신규 지오코딩 검증, 법정 경계, 출입구 위치, 필지 포함 여부를 검증한 것이 아닙니다."
+    },
+    {
+      "project_id": "cleanup-Hwagok1",
+      "basis": "official_project_address_saved_reference",
+      "point": [
+        37.531744,
+        126.840787
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900000852t61&stepSeCode=102&div=sumry",
+      "official_address": "서울특별시 강서구 화곡동 424-63",
+      "raw_label": "정비구역 위치",
+      "raw_value": "강서구 화곡동 424-63 일대",
+      "reviewed_at": "2026-10-22T07:39:46.430470+00:00",
+      "identity": {
+        "project_id": "cleanup-Hwagok1",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=Hwagok1",
+        "catalog_address": "서울특별시 강서구 화곡동 424-63",
+        "catalog_title": "(가칭)화곡1지역주택조합",
+        "district": "강서구",
+        "cafe_id": "500900000852t61",
+        "overview_sha256": "e02a84cf682cf7eecf727839dfa364be2221c3931cd60de3502a8b2ceb7b64e8",
+        "identity_checked_at": "2026-10-22T06:52:48.386424+00:00"
+      },
+      "coordinate_provenance": {
+        "basis": "approved_saved_address_cache",
+        "sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "exact_cache_key": "화곡동 424-63",
+        "source": "기존 강서 주소 대조 좌표 캐시 (원좌표 확인일 미보존)",
+        "coordinate_checked_at": null,
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "cache_addition_commit": "46b78cb833235f3e09987ff931cdd73dcbb6c7f4"
+      },
+      "limitation": "공식 구역주소와 정확히 일치하는 승인 저장좌표의 참고 위치입니다. 원좌표 조회일은 미보존이며 신규 지오코딩 검증, 법정 경계, 출입구 위치, 필지 포함 여부를 검증한 것이 아닙니다."
+    },
+    {
+      "project_id": "cleanup-hwagok6dong",
+      "basis": "official_project_address_saved_reference",
+      "point": [
+        37.55172,
+        126.85334
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=500900000851W38&stepSeCode=102&div=sumry",
+      "official_address": "서울특별시 강서구 화곡동 1133-7",
+      "raw_label": "정비구역 위치",
+      "raw_value": "강서구 화곡동 1133-7 일대",
+      "reviewed_at": "2026-10-22T07:39:46.430470+00:00",
+      "identity": {
+        "project_id": "cleanup-hwagok6dong",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=hwagok6dong",
+        "catalog_address": "서울특별시 강서구 화곡동 1133-7",
+        "catalog_title": "(가칭)화곡6동지역주택조합",
+        "district": "강서구",
+        "cafe_id": "500900000851W38",
+        "overview_sha256": "c291fa18e740b0797990c130a3dd67a38440d6f23a9c138ad579c1d9aee7ff51",
+        "identity_checked_at": "2026-10-22T06:57:10.470111+00:00"
+      },
+      "coordinate_provenance": {
+        "basis": "approved_saved_address_cache",
+        "sha256": "f5bb8f5bc70441383640deac57c635cc3e5a3195bab50fdac6f9c0da35d1a0a1",
+        "exact_cache_key": "화곡동 1133-7",
+        "source": "기존 강서 주소 대조 좌표 캐시 (원좌표 확인일 미보존)",
+        "coordinate_checked_at": null,
+        "cache_recorded_at": "2026-10-19T16:27:01Z",
+        "cache_addition_commit": "46b78cb833235f3e09987ff931cdd73dcbb6c7f4"
+      },
+      "limitation": "공식 구역주소와 정확히 일치하는 승인 저장좌표의 참고 위치입니다. 원좌표 조회일은 미보존이며 신규 지오코딩 검증, 법정 경계, 출입구 위치, 필지 포함 여부를 검증한 것이 아닙니다."
+    }
+  ]
+}
