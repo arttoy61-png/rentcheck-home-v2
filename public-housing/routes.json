@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-23T00:55:42+00:00",
-  "source_generated_at": "2026-10-23T06:35:43",
-  "source_recruitment_count": 23,
-  "recruitment_count": 22,
+  "generated_at": "2026-10-23T06:32:22+00:00",
+  "source_generated_at": "2026-10-23T13:48:29",
+  "source_recruitment_count": 25,
+  "recruitment_count": 24,
   "duplicate_count": 1,
-  "generated_count": 22,
+  "generated_count": 24,
   "redirect_count": 1,
   "duplicate_groups": [
     {
@@ -21,9 +21,11 @@
     "SH:seq:309403": "/public-housing/sh-long-vacant-purchase-2026-2/",
     "SH:seq:309467": "/public-housing/sh-longterm-jeonse-51/",
     "SH:seq:310107": "/public-housing/sh-long-vacant-purchase-2026-2/",
+    "SH:seq:311908": "/public-housing/notices/sh-311908/",
     "SH:seq:311549": "/public-housing/notices/sh-311549/",
     "SH:seq:311349": "/public-housing/notices/sh-311349/",
     "SH:seq:311521": "/public-housing/notices/sh-311521/",
+    "SHYOUTH:257d52b6a5dc29e173ad": "/public-housing/notices/shyouth-257d52b6a5dc29e173ad/",
     "SHYOUTH:1bc36f4d0dee04087287": "/public-housing/notices/shyouth-1bc36f4d0dee04087287/",
     "SHYOUTH:16da04d0f88309079939": "/public-housing/notices/shyouth-16da04d0f88309079939/",
     "SH:seq:311656": "/public-housing/notices/sh-311656/",
