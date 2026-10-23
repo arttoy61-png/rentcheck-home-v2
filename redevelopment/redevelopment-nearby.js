@@ -1,6 +1,6 @@
 /* Local Seoul snapshot: source coverage and coordinate coverage are separate. */
 (()=>{'use strict';
-let snapshot=null,failed=false,updateStatus=null,projectCenters=null;
+let snapshot=null,failed=false,updateStatus=null,projectCenters=null,statusLoaded=false,centersLoaded=false;
 const settings=new Map(),defaults={radius:500,property:'all',deal:'all'};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const valid=p=>Array.isArray(p)&&p.length===2&&p.every(Number.isFinite)&&p[0]>=37.4&&p[0]<=37.75&&p[1]>=126.7&&p[1]<=127.25;
@@ -9,8 +9,9 @@ const number=n=>Number(n||0).toLocaleString('ko-KR');
 function distance(a,b){if(!valid(a)||!valid(b))return null;const rad=n=>n*Math.PI/180,x=rad(a[0]),y=rad(b[0]),h=Math.sin((y-x)/2)**2+Math.cos(x)*Math.cos(y)*Math.sin(rad(b[1]-a[1])/2)**2;return 6371008.8*2*Math.asin(Math.sqrt(Math.min(1,h)));}
 function matches(p){return !!p&&typeof p.district==='string';}
 function options(id){return settings.get(id)||{...defaults};}
+function validSnapshot(data){return data?.version===2&&data.meta?.collection_complete===true&&data.meta.successful_partitions===data.meta.expected_partitions&&[150,300,450].includes(data.meta.expected_partitions)&&data.meta.complete_districts===25&&Array.isArray(data.rows)&&Array.isArray(data.services)&&data.services.length>0&&data.services.every(s=>typeof s==='string')&&Array.isArray(data.meta.period)&&data.meta.period.length===2&&data.meta.period.every(d=>typeof d==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(d))&&data.meta.period[0]<=data.meta.period[1];}
 function query(p,data,selection=defaults,centers=projectCenters){
-  if(data?.version!==2||!data.meta?.collection_complete||data.meta.successful_partitions!==data.meta.expected_partitions||![150,300,450].includes(data.meta.expected_partitions)||data.meta.complete_districts!==25||!Array.isArray(data.rows))return{status:'invalid-data'};
+  if(!validSnapshot(data))return{status:'invalid-data'};
   const id=projectId(p),saved=data.projects?.[id],extra=centers?.[id],point=p?.map_point;
   const center=window.RentRedevelopmentCenters.resolveCenter(p,saved,extra);
   const samePoint=point&&center&&distance(center.point,[point.lat,point.lng]);
@@ -29,8 +30,26 @@ function query(p,data,selection=defaults,centers=projectCenters){
   for(const c of complexes)c.transactions.sort((a,b)=>b.date.localeCompare(a.date)||a.id.localeCompare(b.id));
   return{status:'ready',radius,totals,complexes,recordCount:rows.length,displayCount:complexes.reduce((n,c)=>n+Math.min(3,c.transactions.length),0),center};
 }
-async function ensureLoaded(read,signal){await window.RentRedevelopmentCenters.ensureLoaded(read,signal);if(snapshot)return;const results=await Promise.allSettled([read('data/redevelopment-nearby-seoul.json',signal),read('data/redevelopment-nearby-status.json',signal),read('data/redevelopment-project-centers.json',signal)]);try{if(results[0].status==='rejected')throw results[0].reason;const data=results[0].value;if(data?.version!==2||!data.meta?.collection_complete||!Array.isArray(data.rows))throw Error('invalid snapshot');snapshot=data;projectCenters=results[2].status==='fulfilled'?results[2].value:null;updateStatus=results[1].status==='fulfilled'?results[1].value:null;failed=false;}catch(e){if(e.name==='AbortError')throw e;failed=true;}}
+function validStatus(s){return s?.version===1&&['ready','failed'].includes(s.state)&&typeof s.attempted_at==='string'&&Number.isFinite(Date.parse(s.attempted_at))&&typeof s.last_good_source_at==='string'&&Number.isFinite(Date.parse(s.last_good_source_at));}
+async function ensureLoaded(read,signal){
+  await window.RentRedevelopmentCenters.ensureLoaded(read,signal);
+  const jobs=[];
+  if(!snapshot)jobs.push(['snapshot','data/redevelopment-nearby-seoul.json']);
+  if(!statusLoaded)jobs.push(['status','data/redevelopment-nearby-status.json']);
+  if(!centersLoaded)jobs.push(['centers','data/redevelopment-project-centers.json']);
+  const results=await Promise.allSettled(jobs.map(([,url])=>Promise.resolve().then(()=>read(url,signal))));
+  for(let i=0;i<results.length;i++){
+    const result=results[i],kind=jobs[i][0];
+    if(result.status==='rejected'){if(result.reason?.name==='AbortError')throw result.reason;if(kind==='snapshot')failed=true;continue;}
+    const value=result.value;
+    if(kind==='snapshot'){if(validSnapshot(value)){snapshot=value;failed=false;}else failed=true;}
+    else if(kind==='status'){if(validStatus(value)){updateStatus=value;statusLoaded=true;}}
+    else if(value&&typeof value==='object'&&!Array.isArray(value)){projectCenters=value;centersLoaded=true;}
+  }
+}
+
 function updateBanner(meta,status,now=Date.now()){
+  status=validStatus(status)?status:null;
   const sourceTime=Date.parse(meta.source_checked_at),attempt=Date.parse(status?.attempted_at),old=Number.isFinite(sourceTime)&&now-sourceTime>48*3600000;
   if(status?.state==='failed'&&(!Number.isFinite(attempt)||attempt>=sourceTime))return '<p class="nearby-update warning" role="status">최근 갱신에 실패해 마지막 정상자료를 표시합니다. 아래 자료 확인일을 확인해 주세요.</p>';
   if(old)return '<p class="nearby-update warning" role="status">자료 확인 후 48시간이 지났습니다. 마지막 정상자료이며 최신 전체 자료로 표시하지 않습니다.</p>';

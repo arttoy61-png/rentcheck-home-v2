@@ -13,7 +13,15 @@ function setCamera(c){if(!map||!validCamera(c))return false;if(!cameraUpdateDept
 function emitCamera(){if(cameraUpdateDepth||pendingLayout||lastTab!==opts.tab)return;const c=camera();if(c)callbacks.onMove?.(c,lastTab);}
 function resize(){if(!map)return;pendingLayout=true;if(layoutFrame)cancelAnimationFrame(layoutFrame);layoutFrame=requestAnimationFrame(applyVisibleLayout);}
 function svgBounds(box){const[x,y,w,h]=box,s=570/(37.701080-37.429011),cos=Math.cos(37.56*Math.PI/180),lng=p=>126.9741215+(p-450)/(cos*s),lat=p=>37.701080-(p-35)/s;return new kakao.maps.LatLngBounds(new kakao.maps.LatLng(lat(y+h),lng(x)),new kakao.maps.LatLng(lat(y),lng(x+w)));}
-function pointFor(item){return opts.tab==='redevelopment'?(item?.map_point&&window.RentRedevelopmentCenters?.valid([item.map_point.lat,item.map_point.lng])&&[window.RentRedevelopmentCenters.BOUNDARY,window.RentRedevelopmentCenters.PLAN,window.RentRedevelopmentCenters.ADDRESS].includes(item.map_point.basis)?item.map_point:null):valid(item)?item:null;}
+function pointFor(item){
+ if(opts.tab!=='redevelopment')return valid(item)?item:null;
+ const p=item?.map_point,c=window.RentRedevelopmentCenters;
+ if(!p||!c?.valid([p.lat,p.lng]))return null;
+ if(p.basis===c.BOUNDARY)return p;
+ // A reference is drawable only when it still matches its authenticated record.
+ const r=c.isReference(p)?c.reference(item):null;
+ return r&&r.basis===p.basis&&r.source===p.source&&r.point[0]===p.lat&&r.point[1]===p.lng?p:null;
+}
 function addPoint(item,p){const selected=item.id===opts.selected,div=document.createElement('div');div.className='kakao-site-point';const title=item.official_name||item.title||item.nm||item.site||item.name||'',note=opts.tab==='redevelopment'?window.RentRedevelopmentCenters.label(p)+(p.basis===window.RentRedevelopmentCenters.ADDRESS?' · 원좌표 조회일 미보존':''):opts.tab==='housing'?'공개 주소 대조 좌표 · 현장 측량 아님':'기존 주소 캐시 좌표 · 물리적 건물 정확성 미보증';const short=opts.tab==='redevelopment'?shortProjectLabel(item):item.kind==='dong'?item.name:'●';
 div.innerHTML=`<button type="button" class="site-pin ${opts.tab==='redevelopment'?'labelled ':''}${selected?'active':''}" aria-label="${esc(title)} 선택 · ${esc(note)}" title="${esc(note)}"><span>${esc(short)}${opts.tab==='redevelopment'&&window.RentRedevelopmentCenters.isReference(p)?(p.basis===window.RentRedevelopmentCenters.PLAN?' · 계획참고':' · 주소참고'):''}</span></button>${selected?`<div class="map-callout"><strong>${esc(title)}</strong>${opts.tab==='redevelopment'?`<small class="callout-stage">${esc(window.RentRedevelopmentStatus?.summary(item)||item.status||'사업 단계 미확인')}</small>`:''}<small>${note}</small><button type="button" class="callout-detail">상세 보기 ›</button></div>`:''}`;
 div.querySelector('.site-pin').addEventListener('click',()=>callbacks.onPick?.(item.id,false,item.kind));div.querySelector('.callout-detail')?.addEventListener('click',()=>callbacks.onPick?.(item.id,true,item.kind));overlays.push(new kakao.maps.CustomOverlay({map,position:new kakao.maps.LatLng(Number(p.lat),Number(p.lng)),content:div,xAnchor:.5,yAnchor:1,zIndex:selected?20:10}));}
