@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-10-23T21:25:28+09:00",
-  "data_until": "2026-10-22",
+  "generated_at": "2026-10-24T08:41:02+09:00",
+  "data_until": "2026-10-23",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
@@ -15,20 +15,20 @@
       "complex_id": "fddb4f94"
     },
     {
-      "dong": "마곡동",
-      "name": "마곡13단지힐스테이트마스터",
+      "dong": "염창동",
+      "name": "염창동예성그린캐슬",
       "area_m2": 84,
-      "amount_eok": 18.0,
-      "date": "2026.10.19",
-      "complex_id": "6576ba12"
+      "amount_eok": 7.5,
+      "date": "2026.10.21",
+      "complex_id": "4981e58e"
     },
     {
       "dong": "화곡동",
-      "name": "유림노르웨이숲(919-1)",
-      "area_m2": 76,
-      "amount_eok": 6.1,
-      "date": "2026.10.19",
-      "complex_id": "97fb4b67"
+      "name": "강서힐스테이트",
+      "area_m2": 84,
+      "amount_eok": 16.5,
+      "date": "2026.10.20",
+      "complex_id": "f2189fe7"
     }
   ],
   "monthly_trend": [
@@ -50,11 +50,11 @@
     },
     {
       "month": "2026-09",
-      "count": 251
+      "count": 253
     },
     {
       "month": "2026-10",
-      "count": 87
+      "count": 98
     }
   ]
 }

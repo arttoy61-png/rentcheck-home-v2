@@ -1,21 +1,12 @@
 {
-  "generated_at": "2026-10-23T12:25:27+00:00",
-  "source_generated_at": "2026-10-23T20:38:29",
-  "source_recruitment_count": 26,
-  "recruitment_count": 25,
-  "duplicate_count": 1,
-  "generated_count": 25,
-  "redirect_count": 1,
-  "duplicate_groups": [
-    {
-      "canonical_id": "SH:seq:310650",
-      "ids": [
-        "SHYOUTH:e14f796069d603741e53",
-        "SH:seq:310650"
-      ],
-      "route": "/public-housing/notices/sh-310650/"
-    }
-  ],
+  "generated_at": "2026-10-23T23:41:02+00:00",
+  "source_generated_at": "2026-10-24T06:25:51",
+  "source_recruitment_count": 24,
+  "recruitment_count": 24,
+  "duplicate_count": 0,
+  "generated_count": 24,
+  "redirect_count": 0,
+  "duplicate_groups": [],
   "routes": {
     "SH:seq:309337": "/public-housing/sh-happy-housing-2026-2/",
     "SH:seq:309403": "/public-housing/sh-long-vacant-purchase-2026-2/",
@@ -25,18 +16,16 @@
     "SH:seq:311549": "/public-housing/notices/sh-311549/",
     "SH:seq:311349": "/public-housing/notices/sh-311349/",
     "SH:seq:311521": "/public-housing/notices/sh-311521/",
-    "SHYOUTH:257d52b6a5dc29e173ad": "/public-housing/notices/shyouth-257d52b6a5dc29e173ad/",
     "SH:seq:312066": "/public-housing/notices/sh-312066/",
     "SHYOUTH:1bc36f4d0dee04087287": "/public-housing/notices/shyouth-1bc36f4d0dee04087287/",
     "SHYOUTH:16da04d0f88309079939": "/public-housing/notices/shyouth-16da04d0f88309079939/",
-    "SH:seq:311656": "/public-housing/notices/sh-311656/",
+    "SH:seq:312005": "/public-housing/notices/sh-312005/",
     "LH:panId:2015122300020807": "/public-housing/notices/lh-2015122300020807/",
     "LH:panId:2015122300020753": "/public-housing/notices/lh-2015122300020753/",
     "LH:panId:2015122300019657": "/public-housing/notices/lh-2015122300019657/",
     "LH:panId:2015122300020843": "/public-housing/notices/lh-2015122300020843/",
     "SHYOUTH:23a63706ef0b942659cb": "/public-housing/notices/shyouth-23a63706ef0b942659cb/",
-    "SHYOUTH:e14f796069d603741e53": "/public-housing/notices/sh-310650/",
-    "SH:seq:310650": "/public-housing/notices/sh-310650/",
+    "SHYOUTH:e14f796069d603741e53": "/public-housing/notices/shyouth-e14f796069d603741e53/",
     "LH:panId:2015122300020759": "/public-housing/notices/lh-2015122300020759/",
     "LH:panId:2015122300020749": "/public-housing/notices/lh-2015122300020749/",
     "LH:panId:2015122300020750": "/public-housing/notices/lh-2015122300020750/",
