@@ -3844,5 +3844,112 @@
     "validity_note": "2024-08-19 고시 기준 경계입니다. 현재 사업 진행단계와 구분하며 표시 중심점·지도 핀·주변거래 조회는 추가하지 않습니다.",
     "note": "공식 원형상을 그대로 보존한 참고 경계이며 지적측량·개별 필지 확정이 아닙니다. BZ속성9527㎡는공식9970.26과불일치;실제기하9970.880725는0.620725㎡차이.",
     "collected_at": "2026-10-24T06:07:14.251552+00:00"
+  },
+  "cleanup-JGog1o6Q": {
+    "path": "geometries/cleanup-JGog1o6Q.geojson",
+    "crs": "EPSG:4326",
+    "source": "https://urban.seoul.go.kr/view/html/PMNU4030100001?noticeCode=11000NTC202004280008",
+    "source_label": "공식 고시·확정측량 변경후 조서 및 도면 외곽 대조",
+    "source_record_code": "11740AGZ202004280001",
+    "source_dataset": "official_upis_layer64",
+    "collected_at": "2026-10-24T05:45:10.531033+00:00",
+    "identity_reviewed_at": "2026-10-24T06:56:07.673166+00:00",
+    "verified": true,
+    "verification": "공식 고시 ID·길동43 주소·개별 정비구역·변경후 조서면적·도면 외곽 대조",
+    "names": [
+      "길동신동아3차아파트 주택재건축정비사업조합"
+    ],
+    "feature_count": 1,
+    "boundary_only": true,
+    "notice_date": "2020-04-01",
+    "notice_url": "https://urban.seoul.go.kr/view/html/PMNU4030100001?noticeCode=11000NTC202004280008",
+    "validity_note": "2020-04-01 고시 기준 과거 경계입니다. 현재 조합청산 상태와 구분합니다. 표시 중심점·지도 핀·주변거래 조회를 추가하지 않습니다.",
+    "note": "공식 원형상을 보존한 참고경계이며 지적측량·개별 필지 확정용이 아닙니다. 고시의 확정측량 후 정비구역면적 12264.5㎡와 공개GIS 원형상면적 12264.5839001㎡를 구분합니다."
+  },
+  "cleanup-hyundai": {
+    "path": "geometries/cleanup-hyundai.geojson",
+    "crs": "EPSG:4326",
+    "source": "https://urban.seoul.go.kr/view/html/PMNU4030100001?noticeCode=11710NTC202307110001",
+    "source_label": "공식 고시 직접계보·대표주소·구역조서 대조 (도면 시각대조 미실시)",
+    "source_record_code": "11710AGZ202105100001",
+    "source_dataset": "official_upis_layer64",
+    "collected_at": "2026-10-24T05:45:10.531033+00:00",
+    "identity_reviewed_at": "2026-10-24T07:01:10.343095+00:00",
+    "verified": true,
+    "verification": "원천 2021-88과 최신 2023-88 직접계보·문정동3 주소·개별 구역면적 변경없음 대조; 도면 시각대조 미실시",
+    "names": [
+      "가락1차현대아파트 재건축정비사업 조합"
+    ],
+    "feature_count": 1,
+    "boundary_only": true,
+    "notice_date": "2023-06-29",
+    "notice_url": "https://urban.seoul.go.kr/view/html/PMNU4030100001?noticeCode=11710NTC202307110001",
+    "validity_note": "2023-06-29 고시 기준 경계입니다. 표시 중심점·지도 핀·주변거래 조회를 추가하지 않습니다. 공식 고시 계보·주소·사업범위를 직접 대조했으며 도면 시각대조는 미실시입니다.",
+    "note": "고시 정비구역면적 33953.7㎡ 변경없음과 공개GIS 원형상면적33953.7126499㎡를 구분합니다. 원형상을 보존한 참고 경계이며 지적측량·개별 필지 확정이 아닙니다."
+  },
+  "cleanup-jeongreung": {
+    "path": "geometries/cleanup-jeongreung.geojson",
+    "crs": "EPSG:4326",
+    "source": "https://urban.seoul.go.kr/view/html/PMNU4030100001?noticeCode=11290NTC202604290003",
+    "source_label": "공식 변경고시·사업시행구역 변경후 도면 대조",
+    "source_record_code": null,
+    "source_present_sn": "11290UQ120PS202604130001",
+    "source_object_id": 121017,
+    "source_dataset": "official_upis_BZ_layer102",
+    "identity_reviewed_at": "2026-10-24T07:04:28.377032+00:00",
+    "verified": true,
+    "verification": "사업명·정릉동218-1 주소·개별사업시행구역·변경후면적 속성·확대된 도면 외곽 대조",
+    "names": [
+      "정릉동 218-1번지 일대"
+    ],
+    "feature_count": 1,
+    "boundary_only": true,
+    "notice_date": "2026-04-09",
+    "notice_url": "https://urban.seoul.go.kr/view/html/PMNU4030100001?noticeCode=11290NTC202604290003",
+    "validity_note": "2026-04-09 사업시행구역 변경고시 기준 경계입니다. 표시 중심점·지도 핀·주변거래 조회를 추가하지 않습니다.",
+    "note": "고시 사업시행구역 6985.90→7717.82㎡ 확대와 공개GIS 속성7717.82㎡를 대조했습니다. 원형상 계산면적7717.933704335㎡와 고시 면적은 구분하며 차이 원인은 미확인입니다. 변경후 북서·서측 확대 외곽을 실제도면과 대조했으며 원좌표를 보정하지 않았습니다. 지적측량·개별 필지 확정용이 아닙니다.",
+    "collected_at": "2026-10-24T06:07:14.251552+00:00"
+  },
+  "cleanup-grh5apt": {
+    "path": "geometries/cleanup-grh5apt.geojson",
+    "crs": "EPSG:4326",
+    "source": "https://urban.seoul.go.kr/view/html/PMNU4030100001?noticeCode=11710NTC202510210003",
+    "source_label": "공식 고시 직접연결·대표주소·사업범위 대조 (도면 시각대조 미실시)",
+    "source_record_code": "11000AGZ202411110001",
+    "source_dataset": "official_upis_layer64",
+    "collected_at": "2026-10-24T05:45:10.531033+00:00",
+    "identity_reviewed_at": "2026-10-24T07:04:35.189373+00:00",
+    "verified": true,
+    "verification": "공식 원천고시ID·사업명·대표주소·개별사업범위 직접 대조; 도면 시각대조 미실시",
+    "names": [
+      "가락현대5차아파트 소규모재건축정비사업조합"
+    ],
+    "feature_count": 1,
+    "boundary_only": true,
+    "notice_date": "2024-10-17",
+    "notice_url": "https://urban.seoul.go.kr/view/html/PMNU4030100001?noticeCode=11710NTC202510210003",
+    "validity_note": "2024-10-17 고시 기준 경계입니다. 표시 중심점·지도 핀·주변거래 조회를 추가하지 않습니다. 공식 고시 ID·주소·사업범위를 직접 대조했으며 도면 시각대조는 미실시입니다.",
+    "note": "고시 전체사업구역 8214.0㎡와 공개GIS 원형상 계산면적 8214.03445㎡는 구분합니다. 공식 원형상 좌표를 보존한 참고경계이며 지적측량·개별 필지 확정용이 아닙니다."
+  },
+  "cleanup-siyoungapt": {
+    "path": "geometries/cleanup-siyoungapt.geojson",
+    "crs": "EPSG:4326",
+    "source": "https://urban.seoul.go.kr/view/html/PMNU4030100001?noticeCode=11470NTC202509160005",
+    "source_label": "공식 고시 직접연결·대표주소·사업범위 대조·실제 구역도 대조",
+    "source_record_code": "11470AGZ202410080001",
+    "source_dataset": "official_upis_layer64",
+    "collected_at": "2026-10-24T05:45:10.531033+00:00",
+    "identity_reviewed_at": "2026-10-24T07:04:35.190928+00:00",
+    "verified": true,
+    "verification": "공식 원천고시ID·사업명·대표주소·개별사업범위 직접 대조; 도면 외곽 특징 대조",
+    "names": [
+      "신월시영아파트 재건축정비사업"
+    ],
+    "feature_count": 1,
+    "boundary_only": true,
+    "notice_date": "2025-08-07",
+    "notice_url": "https://urban.seoul.go.kr/view/html/PMNU4030100001?noticeCode=11470NTC202509160005",
+    "validity_note": "2025-08-07 고시 기준 경계입니다. 기존 참고주소 핀은 경계 중심점이 아니며 주변거래는 기존 참고주소 기준 거리입니다. 이 경계 안의 거래를 뜻하지 않습니다.",
+    "note": "고시 전체사업구역 153213.6㎡와 공개GIS 원형상 계산면적 153212.386214㎡는 구분합니다. 공식 원형상 좌표를 보존한 참고경계이며 지적측량·개별 필지 확정용이 아닙니다."
   }
 }
