@@ -3614,5 +3614,74 @@
     "source_BZ_layer": 104,
     "source_BZ_objectid": 119989,
     "source_present_sn": "11000UQ120PS202505319988"
+  },
+  "cleanup-hwagok_a1": {
+    "path": "geometries/cleanup-hwagok_a1.geojson",
+    "crs": "EPSG:4326",
+    "source": "https://urban.seoul.go.kr/view/html/PMNU4030100001?noticeCode=11500NTC202606160001",
+    "source_label": "서울도시공간포털 원형상·공식 고시 도면 대조",
+    "source_record_code": null,
+    "source_present_sn": "11500UQ120PS202607020001",
+    "source_dataset": "official_upis_BZ_layer102",
+    "source_object_id": 121154,
+    "identity_reviewed_at": "2026-10-24T06:31:07.302309+00:00",
+    "verified": true,
+    "verification": "공식 사업명·대표주소·개별사업 범위·고시 도면 외곽과 원형상 대조",
+    "names": [
+      "화곡6동 957-1 일대 모아타운 A1구역 가로주택정비사업"
+    ],
+    "feature_count": 1,
+    "boundary_only": true,
+    "notice_date": "2026-05-27",
+    "notice_url": "https://urban.seoul.go.kr/view/html/PMNU4030100001?noticeCode=11500NTC202606160001",
+    "validity_note": "2026-05-27 고시 기준 경계입니다. 기존 참고주소 핀은 경계 중심점이 아니며 주변거래는 기존 참고주소 기준 거리이며 이 경계 안의 거래를 뜻하지 않습니다.",
+    "note": "공식 원형상을 그대로 보존한 참고 경계이며 지적측량·개별 필지 확정이 아닙니다. 면적표 기반시설포함25894.7 대비 기하25875.2876은19.4124㎡(0.075%) 작음. 임의 정점수정하지 않고 원형상 해시 유지.",
+    "collected_at": "2026-10-24T06:07:14.251552+00:00"
+  },
+  "cleanup-moa2-1": {
+    "path": "geometries/cleanup-moa2-1.geojson",
+    "crs": "EPSG:4326",
+    "source": "https://urban.seoul.go.kr/view/html/PMNU4030100001?noticeCode=11500NTC202608240012",
+    "source_label": "서울도시공간포털 원형상·공식 고시 도면 대조",
+    "source_record_code": null,
+    "source_present_sn": "11000UQ120PS202503310016",
+    "source_dataset": "official_upis_BZ_layer102",
+    "source_object_id": 119810,
+    "identity_reviewed_at": "2026-10-24T06:31:07.302772+00:00",
+    "verified": true,
+    "verification": "공식 사업명·대표주소·개별사업 범위·고시 도면 외곽과 원형상 대조",
+    "names": [
+      "등촌2동 모아타운 제2-1구역 가로주택정비사업"
+    ],
+    "feature_count": 1,
+    "boundary_only": true,
+    "notice_date": "2026-08-19",
+    "notice_url": "https://urban.seoul.go.kr/view/html/PMNU4030100001?noticeCode=11500NTC202608240012",
+    "validity_note": "2026-08-19 고시 기준 경계입니다. 기존 참고주소 핀은 경계 중심점이 아니며 주변거래는 기존 참고주소 기준 거리이며 이 경계 안의 거래를 뜻하지 않습니다.",
+    "note": "공식 원형상을 그대로 보존한 참고 경계이며 지적측량·개별 필지 확정이 아닙니다. BZ DGM_AR9324.0은 고시 순면적9324.7과0.7㎡차이. 기하10345.768313은 기반시설포함10345.7과0.068313㎡차이. 원자료 값은 고치지 않고 범위구분 기록.",
+    "collected_at": "2026-10-24T06:07:19.959065+00:00"
+  },
+  "cleanup-deungchondong649": {
+    "path": "geometries/cleanup-deungchondong649.geojson",
+    "crs": "EPSG:4326",
+    "source": "https://urban.seoul.go.kr/view/html/PMNU4030100001?noticeCode=11500NTC202505260002",
+    "source_label": "서울도시공간포털 원형상·공식 고시 도면 대조",
+    "source_record_code": null,
+    "source_present_sn": "11000UQ120PS202503310033",
+    "source_dataset": "official_upis_BZ_layer105",
+    "source_object_id": 118222,
+    "identity_reviewed_at": "2026-10-24T06:31:07.303168+00:00",
+    "verified": true,
+    "verification": "공식 사업명·대표주소·개별사업 범위·고시 도면 외곽과 원형상 대조",
+    "names": [
+      "등촌동 649 일원 소규모재개발사업"
+    ],
+    "feature_count": 1,
+    "boundary_only": true,
+    "notice_date": "2025-05-28",
+    "notice_url": "https://urban.seoul.go.kr/view/html/PMNU4030100001?noticeCode=11500NTC202505260002",
+    "validity_note": "2025-05-28 고시 기준 경계입니다. 기존 참고주소 핀은 경계 중심점이 아니며 주변거래는 기존 참고주소 기준 거리이며 이 경계 안의 거래를 뜻하지 않습니다.",
+    "note": "공식 원형상을 그대로 보존한 참고 경계이며 지적측량·개별 필지 확정이 아닙니다. BZ DGM_AR2024.0은 공식1608.0과 불일치해 권위있는 사업면적으로 사용 불가. 실제 SHAPE.AREA1607.973477은 공식1608.0과0.026523㎡차이. DGM_AR불일치 원인이 연도값오입력인지 추정하지 않음.",
+    "collected_at": "2026-10-24T06:07:23.017576+00:00"
   }
 }
