@@ -3463,5 +3463,45 @@
     "notice_url": "https://urban.seoul.go.kr/view/html/PMNU4030100001?noticeCode=11305NTC202610150002",
     "validity_note": "2026-10-16 고시 기준 경계입니다. 현재 사업 진행단계와 구분하며 표시 중심점·주변거래 조회를 추가하지 않습니다.",
     "note": "구역범위 고시 기준. 도시공간포털2026-10-16/공식PDF날짜 일치(제3자10/13와구분). 기준기하2025자료이나2026정비구역 변경없음 직접확인; 좌표/거래중심점 생성없음."
+  },
+  "cleanup-rhdejr18": {
+    "path": "geometries/cleanup-rhdejr18.geojson",
+    "crs": "EPSG:4326",
+    "source": "https://urban.seoul.go.kr/view/map/mapPopup.html?recordCode=11440AGZ202406030001",
+    "source_label": "서울도시공간포털 원형상·공식 고시 도면 대조",
+    "source_record_code": "11440AGZ202406030001",
+    "collected_at": "2026-10-24T05:45:10.531033+00:00",
+    "identity_reviewed_at": "2026-10-24T06:08:49.488057+00:00",
+    "verified": true,
+    "verification": "공식 고시 사업명·주소·구역 면적·도면 외곽 및 현재 원천형상 교차 대조",
+    "names": [
+      "공덕7구역 주택정비형 재개발사업"
+    ],
+    "feature_count": 1,
+    "boundary_only": true,
+    "notice_date": "2024-05-30",
+    "notice_url": "https://www.eum.go.kr/web/gs/gv/gvGosiDet.jsp?seq=589313",
+    "validity_note": "2024-05-30 고시 기준 경계입니다. 현재 사업 진행단계와 구분하며 표시 중심점·주변거래 조회를 추가하지 않습니다.",
+    "note": "공식 EUM 제목목록 및 자치구공개검색 확인범위. 이후경계변경없음 전수보증 아님. 전체urban최신대조 별도worker 진행 공식 urban 제목검색에서도 같은 고시만 확인; 모든 기관 완전목록 아님."
+  },
+  "cleanup-gongdeok": {
+    "path": "geometries/cleanup-gongdeok.geojson",
+    "crs": "EPSG:4326",
+    "source": "https://urban.seoul.go.kr/view/map/mapPopup.html?recordCode=11440AGZ202410140002",
+    "source_label": "서울도시공간포털 원형상·공식 고시 도면 대조",
+    "source_record_code": "11440AGZ202410140002",
+    "collected_at": "2026-10-24T05:45:10.531033+00:00",
+    "identity_reviewed_at": "2026-10-24T06:08:49.488509+00:00",
+    "verified": true,
+    "verification": "공식 고시 사업명·주소·구역 면적·도면 외곽 및 현재 원천형상 교차 대조",
+    "names": [
+      "공덕8구역 주택정비형 재개발사업"
+    ],
+    "feature_count": 1,
+    "boundary_only": true,
+    "notice_date": "2024-12-05",
+    "notice_url": "https://www.eum.go.kr/web/gs/gv/gvGosiDet.jsp?seq=607586",
+    "validity_note": "2024-12-05 고시 기준 경계입니다. 현재 사업 진행단계와 구분하며 표시 중심점·주변거래 조회를 추가하지 않습니다.",
+    "note": "공식 EUM 제목목록 및 자치구공개검색 확인범위. 이후경계변경없음 전수보증 아님. 전체urban최신대조 별도worker 진행 공식 urban 제목검색에서도 같은 고시만 확인; 모든 기관 완전목록 아님."
   }
 }
