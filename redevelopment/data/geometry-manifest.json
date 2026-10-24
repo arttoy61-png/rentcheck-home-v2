@@ -3482,7 +3482,7 @@
     "notice_date": "2024-05-30",
     "notice_url": "https://www.eum.go.kr/web/gs/gv/gvGosiDet.jsp?seq=589313",
     "validity_note": "2024-05-30 고시 기준 경계입니다. 현재 사업 진행단계와 구분하며 표시 중심점·주변거래 조회를 추가하지 않습니다.",
-    "note": "공식 EUM 제목목록 및 자치구공개검색 확인범위. 이후경계변경없음 전수보증 아님. 전체urban최신대조 별도worker 진행 공식 urban 제목검색에서도 같은 고시만 확인; 모든 기관 완전목록 아님."
+    "note": "공식 EUM 제목목록 및 자치구공개검색 확인범위. 이후경계변경없음 전수보증 아님. 공식 urban 제목검색에서도 같은 고시만 확인; 모든 기관 완전목록 아님."
   },
   "cleanup-gongdeok": {
     "path": "geometries/cleanup-gongdeok.geojson",
@@ -3502,7 +3502,7 @@
     "notice_date": "2024-12-05",
     "notice_url": "https://www.eum.go.kr/web/gs/gv/gvGosiDet.jsp?seq=607586",
     "validity_note": "2024-12-05 고시 기준 경계입니다. 현재 사업 진행단계와 구분하며 표시 중심점·주변거래 조회를 추가하지 않습니다.",
-    "note": "공식 EUM 제목목록 및 자치구공개검색 확인범위. 이후경계변경없음 전수보증 아님. 전체urban최신대조 별도worker 진행 공식 urban 제목검색에서도 같은 고시만 확인; 모든 기관 완전목록 아님."
+    "note": "공식 EUM 제목목록 및 자치구공개검색 확인범위. 이후경계변경없음 전수보증 아님. 공식 urban 제목검색에서도 같은 고시만 확인; 모든 기관 완전목록 아님."
   },
   "cleanup-eungam700": {
     "path": "geometries/cleanup-eungam700.geojson",
