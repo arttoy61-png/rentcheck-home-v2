@@ -109,7 +109,7 @@ function reference(p){const r=references.get(id(p)),c=p?.registry||p;if(!r||c.id
 function mapPoint(p,points,manifest){
  const key=id(p),has=own(points?.points,key)||own(points?.points,p?.id),pt=own(points?.points,key)?points.points[key]:points?.points?.[p?.id],meta=manifest?.[key];
  // A malformed/conflicting legacy entry must not be replaced by a reference record.
- if(has||(meta?.verified===true&&!(meta.boundary_only===true&&['cleanup-hwagok_a1','cleanup-moa2-1','cleanup-deungchondong649','cleanup-siyoungapt','cleanup-yc2761','cleanup-DrWK0XGO','cleanup-sanga1apt','cleanup-mokdong12','cleanup-sinbanpo2','cleanup-gaepo6_7','cleanup-dongsunggaro'].includes(key)&&official(meta.source)))){if(!valid(pt)||meta?.verified!==true||!official(meta.source))return null;return{lat:pt[0],lng:pt[1],basis:BOUNDARY,source:meta.source,geometry_verified:true};}
+ if(has||(meta?.verified===true&&!(meta.boundary_only===true&&['cleanup-hwagok_a1','cleanup-moa2-1','cleanup-deungchondong649','cleanup-siyoungapt','cleanup-yc2761','cleanup-DrWK0XGO','cleanup-sanga1apt','cleanup-mokdong12','cleanup-sinbanpo2','cleanup-gaepo6_7','cleanup-dongsunggaro','cleanup-kukdong-reborn'].includes(key)&&official(meta.source)))){if(!valid(pt)||meta?.verified!==true||!official(meta.source))return null;return{lat:pt[0],lng:pt[1],basis:BOUNDARY,source:meta.source,geometry_verified:true};}
  const r=reference(p);return r?{lat:r.point[0],lng:r.point[1],basis:r.basis,source:r.source,geometry_verified:false,coordinate_verified:false,project_id:r.project_id}:null;
 }
 function resolveCenter(p,saved,extra){
