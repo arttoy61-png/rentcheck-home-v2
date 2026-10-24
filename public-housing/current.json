@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-24T01:03:05+00:00",
-  "source_generated_at": "2026-10-24T06:25:51",
+  "generated_at": "2026-10-24T11:51:15+00:00",
+  "source_generated_at": "2026-10-24T19:59:40",
   "source_status": {
     "LH": {
       "count": 6,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 6,
       "carried_count": 8,
-      "failure_streak": 86
+      "failure_streak": 88
     },
     "SH": {
       "count": 18,
@@ -76,7 +76,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311908",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.23.(금) ~11.09.(월)",
-        "verified_at": "2026-10-24T06:25:34"
+        "verified_at": "2026-10-24T19:59:22"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311908/",
@@ -768,7 +768,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311349",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026. 10. 26.(월) ~ 2026.11. 06.(금) 18시까지",
-        "verified_at": "2026-10-24T06:25:48"
+        "verified_at": "2026-10-24T19:59:38"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-06T18:00:00+09:00",
@@ -810,7 +810,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311549",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.21.(수) ~ 10.28.(수)",
-        "verified_at": "2026-10-24T06:25:45"
+        "verified_at": "2026-10-24T19:59:35"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311549/",
@@ -855,7 +855,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311521",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.26.(월) ~ 2026.10.30.(금)",
-        "verified_at": "2026-10-24T06:25:43"
+        "verified_at": "2026-10-24T19:59:32"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311521/",
