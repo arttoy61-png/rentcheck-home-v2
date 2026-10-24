@@ -5142,7 +5142,7 @@
     "boundary_only": true,
     "identity_reviewed_at": "2026-10-24T08:11:38.467267+00:00",
     "official_address": "서울특별시 동작구 노량진동 84-24",
-    "validity_note": "2026-01-22 변경후 고시도면과 대조한 현행 공식 GIS 참고경계입니다. 측량 확정경계가 아니며 표시 중심점·주변거래는 미연결입니다."
+    "validity_note": "2026-01-22 변경후 고시도면과 대조한 현행 공식 GIS 참고경계입니다. 측량 확정경계가 아니며 표시 중심점·주변거래는 미연결입니다. 기존 개요 면적 9,256㎡는 갱신 전 자료일 수 있으며, 현재 연결한 2026-01-22 경계 고시 면적 10,726㎡와 다릅니다. 개요 수치를 최신 경계 면적이나 개인 권리면적으로 해석하지 마세요."
   },
   "cleanup-AEoJ5Hpm": {
     "path": "geometries/cleanup-AEoJ5Hpm.geojson",
@@ -5171,7 +5171,7 @@
     "boundary_only": true,
     "identity_reviewed_at": "2026-10-24T08:11:38.467356+00:00",
     "official_address": "서울특별시 중구 신당동 432-1008",
-    "validity_note": "2026-04-16 변경후 고시도면과 대조한 현행 공식 GIS 참고경계입니다. 측량 확정경계가 아니며 표시 중심점·주변거래는 미연결입니다."
+    "validity_note": "2026-04-16 변경후 고시도면과 대조한 현행 공식 GIS 참고경계입니다. 측량 확정경계가 아니며 표시 중심점·주변거래는 미연결입니다. 기존 개요 면적 18,651㎡는 갱신 전 자료일 수 있으며, 현재 연결한 2026-04-16 경계 고시 면적 20,073㎡와 다릅니다. 개요 수치를 최신 경계 면적이나 개인 권리면적으로 해석하지 마세요."
   },
   "cleanup-ob2n757B": {
     "path": "geometries/cleanup-ob2n757B.geojson",
@@ -5199,5 +5199,39 @@
     "latest_reviewed_notice_date": "2026-09-10",
     "validity_note": "2021-12-16 고시의 동쪽 돌출부 제거 후 개별 구역도와 원형상을 대조하고, 2026-09-10 후속 고시의 한남5구역 변경없음을 확인한 참고경계입니다. 최신 측량좌표를 뜻하지 않습니다. 표시 중심점·주변거래 미연결입니다.",
     "note": "원형상 좌표를 보존한 참고경계이며 지적측량·필지확정 경계가 아닙니다. 동빙고동60,source2021-696 개별한남5구역186781→183707㎡. 실제sourcePDF23기정·변경도대조에서동쪽끝긴돌출제거후남동끝형상/북측굽은경계/학교서쪽연속굴곡이원천과대응. raw183707.483435455㎡. 2024-627한남4·5조서5구역183707유지,2026-55사업시행인가실제PDF2도동빙고60/183707명시(건축대지141186과구분). 더최신2026-518조서183707및5구역변경없음확인. 단순면적유사아닌고시직결+주소+변경후실제도면+후속변경없음복합근거. 최신측량좌표아닌원형상참고경계."
+  },
+  "cleanup-F3966NJ2": {
+    "path": "geometries/cleanup-F3966NJ2.geojson",
+    "crs": "EPSG:4326",
+    "source": "https://urban.seoul.go.kr/view/html/PMNU4030100001?noticeCode=11170NTC202009160003",
+    "source_label": "서울도시공간포털 공식 개별사업 고시기준 경계",
+    "source_record_code": "11170AGZ202009160002",
+    "source_notice_code": "11170NTC202009160003",
+    "source_present_sn": "11170UQ181PS202009170002",
+    "source_layer": 64,
+    "source_object_id": 85013,
+    "duplicate_source_object_ids": [
+      86429
+    ],
+    "notice_date": "2020-08-20",
+    "later_scope_unchanged_notices": [
+      "11170NTC202409090004",
+      "11170NTC202504010003"
+    ],
+    "collected_at": "2026-10-24T08:11:30.903660+00:00",
+    "identity_reviewed_at": "2026-10-24T08:21:35.537450+00:00",
+    "verified": true,
+    "verification": "현행64 NTFC 직접연결 원형상, 2020-146 제4구역 변경도 실제대조, 2024-429·2025-22 제4구역 변경없음 조서 및 한강로3가 63-70/98 주소계보 대조.",
+    "names": [
+      "국제빌딩주변 제4구역 도시환경정비사업조합"
+    ],
+    "feature_count": 1,
+    "geometry_sha256": "2fe104e04a9313c30406838b006f3919a84bcaecd29a259da40f8c207b42b522",
+    "note": "고시기준공식GIS 참고경계. 원형상무수정. 측량확정경계아님.",
+    "boundary_only": true,
+    "source_dataset": "official_upis_current_layer64",
+    "notice_url": "https://urban.seoul.go.kr/view/html/PMNU4030100001?noticeCode=11170NTC202009160003",
+    "validity_note": "2020-08-20 고시의 제4구역 개별경계입니다. 2024-09-05·2025-03-05 후속 고시에서 제4구역 면적·범위 변경없음을 대조했습니다. 고시 면적 52,984.6㎡와 GIS 기하계산 면적은 다르며, 측량 확정경계가 아닌 공식 GIS 참고경계입니다. 표시 중심점·주변거래는 미연결입니다.",
+    "map_record_url": "https://urban.seoul.go.kr/view/map/mapPopup.html?recordCode=11170AGZ202009160002"
   }
 }
