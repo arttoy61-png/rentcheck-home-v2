@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-25T12:20:57+00:00",
-  "source_generated_at": "2026-10-25T20:26:32",
+  "generated_at": "2026-10-25T22:56:41+00:00",
+  "source_generated_at": "2026-10-26T05:51:48",
   "source_status": {
     "LH": {
       "count": 6,
@@ -21,10 +21,10 @@
       ],
       "fresh_count": 6,
       "carried_count": 8,
-      "failure_streak": 93
+      "failure_streak": 95
     },
     "SH": {
-      "count": 18,
+      "count": 17,
       "errors": []
     },
     "SEOUL": {
@@ -33,15 +33,52 @@
       "excluded_noise": 15
     },
     "TOTAL": {
-      "count": 30,
+      "count": 29,
       "duplicates_removed": 5,
       "excluded_non_housing": 2,
       "excluded_outside_seoul": 0,
-      "published_count": 32
+      "published_count": 31
     }
   },
-  "recruitment_count": 24,
+  "recruitment_count": 25,
   "items": [
+    {
+      "id": "SH:seq:311987",
+      "agency": "SH",
+      "agency_group": "SH",
+      "title": "NEW [토지지원 사회주택]유니버설디자인하우스_장안 입주자 모집 공고",
+      "housing_types": [
+        "기타임대"
+      ],
+      "audiences": [],
+      "region": "서울",
+      "published_at": "2026-10-26",
+      "deadline": "",
+      "open_state": "일정 확인",
+      "event": "신규",
+      "change": "동일",
+      "status_text": "일정 확인 중",
+      "is_gangseo": false,
+      "keywords": [],
+      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311987",
+      "source": "SH 공식 주택임대 게시판",
+      "content_signature": "a6f03cd0a9e0ab5e1344eb6ffec74872d46ebe7812449041fc497fc542869e64",
+      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
+      "published_source": "official_list_registration",
+      "notice_kind": "recruitment",
+      "application_start": "",
+      "schedule_type": "unknown",
+      "deadline_precision": "unknown",
+      "schedule_source": "unknown",
+      "schedule_note": "신청기간은 공식 공고문 확인이 필요합니다.",
+      "application_windows": [],
+      "schedule_evidence": {},
+      "sh_schedule_version": 1,
+      "route": "/public-housing/notices/sh-311987/",
+      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311987",
+      "official_link_label": "공식 모집공고 원문 →",
+      "indexable": false
+    },
     {
       "id": "SH:seq:311908",
       "agency": "SH",
@@ -76,7 +113,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311908",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.23.(금) ~11.09.(월)",
-        "verified_at": "2026-10-25T20:26:17"
+        "verified_at": "2026-10-26T05:51:35"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311908/",
@@ -747,7 +784,7 @@
       "region": "서울",
       "published_at": "",
       "deadline": "2026-11-06",
-      "open_state": "접수예정",
+      "open_state": "접수중",
       "event": "신규",
       "change": "동일",
       "status_text": "",
@@ -768,7 +805,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311349",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026. 10. 26.(월) ~ 2026.11. 06.(금) 18시까지",
-        "verified_at": "2026-10-25T20:26:30"
+        "verified_at": "2026-10-26T05:51:45"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-06T18:00:00+09:00",
@@ -810,7 +847,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311549",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.21.(수) ~ 10.28.(수)",
-        "verified_at": "2026-10-25T20:26:28"
+        "verified_at": "2026-10-26T05:51:43"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311549/",
@@ -832,7 +869,7 @@
       "region": "서울",
       "published_at": "",
       "deadline": "2026-10-30",
-      "open_state": "접수예정",
+      "open_state": "접수중",
       "event": "신규",
       "change": "동일",
       "status_text": "",
@@ -855,7 +892,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311521",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.26.(월) ~ 2026.10.30.(금)",
-        "verified_at": "2026-10-25T20:26:26"
+        "verified_at": "2026-10-26T05:51:41"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311521/",
