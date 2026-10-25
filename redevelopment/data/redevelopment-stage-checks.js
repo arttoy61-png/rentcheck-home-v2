@@ -1,6 +1,5 @@
 /* Project-specific current-stage checks; not an all-project history refresh. Raw roster values stay intact. */
 window.RentRedevelopmentStageChecks={
- 'cleanup-samikpark':{stage:'관리처분인가',date:'2026-03-11',raw_date:'26.03.11',date_kind:'official_home_stage_date',checked_at:'2026-10-25',cafe_id:'740900000751g23',business_id:'11740-900000751',source:'https://cleanup.seoul.go.kr/assc/scrin-bbs/execute.do?cafeId=740900000751g23',history_source:'https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751',note:'2026-10-25 공식 홈의 관리처분인가 단계와 표시 날짜를 재확인했습니다. 지도 점선은 별도로 2020-02-13 고시 기준 참고외곽이며 현재 확정 경계가 아닙니다. 전체 후속 고시를 확인했다는 뜻은 아닙니다.'},
  'cleanup-biwonhyundai':{
   stage:'조합설립인가',date:'2024-05-08',raw_date:'24.05.08',date_kind:'official_home_stage_date',checked_at:'2026-10-25',
   cafe_id:'500900001201W11',business_id:'11500-900001201',
@@ -15,6 +14,6 @@ window.RentRedevelopmentStageChecks={
   history_source:'https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=320100003001p51&bsnsPk=11320-100003001',
   note:'공식 홈의 현재 단계와 날짜를 확인했습니다. 전체 추진경과를 새로 수집한 것은 아닙니다.'
  },
- 'cleanup-yuwon2':{stage:'사업시행인가',date:'2025-03-13',raw_date:'25.03.13',date_kind:'official_home_stage_date',checked_at:'2026-10-25',cafe_id:'560900000623s87',business_id:'11560-900000623',source:'https://cleanup.seoul.go.kr/assc/scrin-bbs/execute.do?cafeId=560900000623s87',history_source:'https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=560900000623s87&bsnsPk=11560-900000623',note:'2026-10-25 공식 홈의 사업시행인가 단계와 표시 날짜를 재확인했습니다. 2026-06-04 고시는 정비계획의 경미한 변경이며 새 사업시행인가일로 바꾸지 않습니다. 전체 후속 고시를 확인했다는 뜻은 아닙니다.'},
+ 'cleanup-yuwon2':{stage:'사업시행인가',date:'2025-03-13',raw_date:'25.03.13',date_kind:'official_home_stage_date',checked_at:'2026-10-13',cafe_id:'560900000623s87',business_id:'11560-900000623',source:'https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=yuwon2',history_source:'https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=560900000623s87&bsnsPk=11560-900000623',note:'날짜는 공식 홈 표시 기준입니다. 전체 추진경과를 새로 수집한 것은 아닙니다.'},
  'cleanup-youwon2-apt':{checked_at:'2026-10-13',source:'https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=youwon2-apt',home_unavailable:true,note:'2026-10-09 목록에 기재된 단계입니다. 2026-10-13 공식 상세페이지를 열 수 없어 최신 상세 단계는 미확인입니다.'}
 };
