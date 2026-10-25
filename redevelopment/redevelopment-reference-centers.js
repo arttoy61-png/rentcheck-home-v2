@@ -33,6 +33,7 @@ const approvedDigests=Object.freeze({
   "cleanup-changdong04": "0953a1dbee49583f0eac88d0e17563b9f407cb98b1fd92a07f19ed1fc12d9ea8",
   "cleanup-musoemak": "15c4662f2467327873d9a3135b4f7b190d3cbe61bf43f09b29340a9d9446142e",
   "cleanup-sinbanpo15": "248eb29a29717049c7a858f69c959caa1eeb304dce402f4ca90f6ad2fd307fff",
+  "cleanup-sinbanpo4": "47b2b172c24cf73530f1c021b0d9d37c82f1a238f3e1a0c55e8bef1b096eea20",
   "cleanup-sinbanpo2": "e57c27f43149e8f7b852f480e11d890bea6d99018208b52ed20acf0ed947a44e",
   "cleanup-grss1rm": "95c12aac3da8bb8e1f313219b0064f66fb4b4a89a58744960fa97af8c7dfc3bc",
   "cleanup-siyoung-apt": "6951127885c6f987121320bc18471a3e266942f9f1a45c19739d008162bae64f",
@@ -104,7 +105,7 @@ async function setReferences(data){
  for(const input of data.records){try{const r=JSON.parse(JSON.stringify(input));if(counts.get(r.project_id)!==1||!validRecord(r)||!own(approvedDigests,r.project_id))continue;const bytes=new TextEncoder().encode(stable(r)),digest=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),x=>x.toString(16).padStart(2,'0')).join('');if(digest!==approvedDigests[r.project_id])continue;references.set(r.project_id,r);}catch{}}
  return references.size;
 }
-async function ensureLoaded(read,signal){if(!loadPromise)loadPromise=(async()=>{let timer;try{const data=await Promise.race([Promise.resolve().then(()=>read('data/redevelopment-reference-centers.json?v=20261023-reviewed38',signal)),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('reference timeout')),5000);})]);return await setReferences(data);}catch(e){references=new Map();loadPromise=null;if(e?.name==='AbortError')throw e;return 0;}finally{clearTimeout(timer);}})();return loadPromise;}
+async function ensureLoaded(read,signal){if(!loadPromise)loadPromise=(async()=>{let timer;try{const data=await Promise.race([Promise.resolve().then(()=>read('data/redevelopment-reference-centers.json?v=20261026-sinbanpo4-pin1',signal)),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('reference timeout')),5000);})]);return await setReferences(data);}catch(e){references=new Map();loadPromise=null;if(e?.name==='AbortError')throw e;return 0;}finally{clearTimeout(timer);}})();return loadPromise;}
 function reference(p){const r=references.get(id(p)),c=p?.registry||p;if(!r||c.id!==r.project_id||c.source!==r.identity.catalog_source||c.district!==r.identity.district||c.address!==r.identity.catalog_address||c.title!==r.identity.catalog_title)return null;return JSON.parse(JSON.stringify(r));}
 function mapPoint(p,points,manifest){
  const key=id(p),has=own(points?.points,key)||own(points?.points,p?.id),pt=own(points?.points,key)?points.points[key]:points?.points?.[p?.id],meta=manifest?.[key];

@@ -2715,6 +2715,44 @@
       "source_snapshot_sha256": "d22743092ee557938c55ebcbe0d6bf4b7c9d98c694c63fd737069551f04ca66d",
       "notice_sha256": "4a22940eedab0da383902552604b761caa6b6e4fd428005bb7fa2e363113b9cb",
       "coordinate_checked_at": null
+    },
+    {
+      "project_id": "cleanup-sinbanpo4",
+      "basis": "official_representative_address_saved_coordinate",
+      "point": [
+        37.5083533094199,
+        127.005979601371
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=7&pageSize=100",
+      "official_address": "서울특별시 서초구 잠원동 70",
+      "reviewed_at": "2026-10-25T17:28:39.278Z",
+      "identity": {
+        "project_id": "cleanup-sinbanpo4",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=sinbanpo4",
+        "catalog_address": "서울특별시 서초구 잠원동 70",
+        "catalog_title": "신반포4차아파트 재건축정비사업조합",
+        "district": "서초구",
+        "cafe_id": "650900000560N91"
+      },
+      "coordinate_provenance": {
+        "point": [
+          37.5083533094199,
+          127.005979601371
+        ],
+        "source": "https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord",
+        "checked_at": "2026-10-17T01:11:35.463630+00:00",
+        "basis": "exact_district_legal_dong_lot_address_match",
+        "address": "서울특별시 서초구 잠원동 70",
+        "address_key_hash_sha256": "6fe7dc4919b0ff998a23418ef11c6f9f34d3076fc222c1bf5e6419b3d0532f9f",
+        "source_map_sha256": "4f40f458b3f9dd6baf9f218c975c1d3e8381acfb392dfae483c49ce7dba76cd8"
+      },
+      "confidence": "exact_district_legal_dong_lot_match",
+      "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
+      "official_overview_source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=650900000560N91&div=sumry&stepSeCode=102",
+      "limitation": "공식 사업장 대표지번 잠원동 70에 정확히 일치하는 기존 검증 저장좌표를 연결한 참고 위치입니다. 사업구역 경계, 필지 포함, 건물 출입구, 실거래가 구역 내부에서 발생했는지는 검증하지 않았습니다. 인근 거래는 주소 좌표가 연결된 계약만 보여줍니다."
     }
   ]
 }
