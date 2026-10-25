@@ -9231,5 +9231,461 @@
     "validity_note": "강북2025-134의 번동429-114 사업면적 4,502.1㎡와 서울2026-566의 A-1 개별구역 면적·결정도를 대조했습니다. 후속고시는 측량성과에 따른 면적 변경이며 사업시행구역 선형 변경 없음을 명시합니다. GIS 면적은 고시보다 0.69605㎡ 크고 원인은 미확인입니다. 도면 외곽은 정성 대조했으며 좌표등록·지적측량 확정경계가 아닙니다.",
     "collected_at": "2026-10-24T16:33:06.444098+00:00",
     "boundary_only": true
+  },
+  "cleanup-sn6L45v9": {
+    "path": "geometries/cleanup-sn6L45v9.geojson",
+    "crs": "EPSG:4326",
+    "verified": false,
+    "display_status": "dated_reference_outline",
+    "reference_reviewed": true,
+    "boundary_only": true,
+    "cadastral_guarantee": false,
+    "notice_date": "2023-06-02",
+    "notice_number": "2023-64",
+    "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11305NTC202309200008/%EA%B0%95%EB%B6%81%EA%B5%AC_%EC%A0%9C2023-64%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "notice_url": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11305NTC202309200008/%EA%B0%95%EB%B6%81%EA%B5%AC_%EC%A0%9C2023-64%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "validity_note": "2023-06-02 고시의 개별구역 도면과 대조한 날짜한정 참고외곽입니다. GIS 면적에서 고시면적을 뺀 차이는 +530.75449660㎡이며 원인은 미확인입니다. 현재 법적 경계·확정측량·필지 포함 또는 모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 변경하지 않습니다.",
+    "area_residual_m2": 530.7544966,
+    "area_residual_status": "unresolved",
+    "official_area_m2": 102371.6,
+    "source_area_m2": 102902.3544966,
+    "global_latestness_proven": false,
+    "feature_count": 1,
+    "names": [
+      "미아9-2"
+    ],
+    "reference_scope": "individual_project_dated_outline",
+    "existing_pin_preserve": true,
+    "new_pin_permitted": false,
+    "source_original_file": "bulk-boundary-20261025/current-layer-identity-round5/cleanup-sn6L45v9/raw-features.json",
+    "source_original_sha256": "9cc58d03760f3c160d299629b65f5c45c550ee9766fd895ba1503dc35d77eb6d",
+    "review_file": "bulk-boundary-20261025/reference-eight-independent-audit/audit.json",
+    "actual_diagram_files": [
+      "bulk-boundary-20261025/current-layer-identity-round5/cleanup-sn6L45v9/page-7.png"
+    ],
+    "visual_review_source": "audit_reference_boundary_eight",
+    "visual_review_repeated_this_run": false,
+    "operational_approval": false,
+    "source_ntfc_codes": [
+      "11305NTC202309200008"
+    ]
+  },
+  "cleanup-newgaeyuldong": {
+    "path": "geometries/cleanup-newgaeyuldong.geojson",
+    "crs": "EPSG:4326",
+    "verified": false,
+    "display_status": "dated_reference_outline",
+    "reference_reviewed": true,
+    "boundary_only": true,
+    "cadastral_guarantee": false,
+    "notice_date": "2022-11-03",
+    "notice_number": "2022-126",
+    "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11620NTC202211150001/%EA%B4%80%EC%95%85%EA%B5%AC_2022-126%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "notice_url": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11620NTC202211150001/%EA%B4%80%EC%95%85%EA%B5%AC_2022-126%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "validity_note": "2022-11-03 고시의 개별구역 도면과 대조한 날짜한정 참고외곽입니다. GIS 면적에서 고시면적을 뺀 차이는 +52.21039899㎡이며 원인은 미확인입니다. 현재 법적 경계·확정측량·필지 포함 또는 모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 변경하지 않습니다.",
+    "area_residual_m2": 52.21039899,
+    "area_residual_status": "unresolved",
+    "official_area_m2": 14656,
+    "source_area_m2": 14708.21039899,
+    "global_latestness_proven": false,
+    "feature_count": 1,
+    "names": [
+      "뉴서울·개나리·열망"
+    ],
+    "reference_scope": "individual_project_dated_outline",
+    "existing_pin_preserve": true,
+    "new_pin_permitted": false,
+    "source_original_file": "bulk-boundary-20261025/current-layer-identity-round5/cleanup-newgaeyuldong/raw-features.json",
+    "source_original_sha256": "2090ac8d199a396cdb50d8cd60b2fca96df352e997504166e6d87d145815b270",
+    "review_file": "bulk-boundary-20261025/reference-eight-independent-audit/audit.json",
+    "actual_diagram_files": [
+      "bulk-boundary-20261025/current-layer-identity-round5/cleanup-newgaeyuldong-latest/page-12.png"
+    ],
+    "visual_review_source": "audit_reference_boundary_eight",
+    "visual_review_repeated_this_run": false,
+    "operational_approval": false,
+    "source_ntfc_codes": [
+      "11620NTC201911270002"
+    ]
+  },
+  "cleanup-sg1apt": {
+    "path": "geometries/cleanup-sg1apt.geojson",
+    "crs": "EPSG:4326",
+    "verified": false,
+    "display_status": "dated_reference_outline",
+    "reference_reviewed": true,
+    "boundary_only": true,
+    "cadastral_guarantee": false,
+    "notice_date": "2019-06-27",
+    "notice_number": "2019-204",
+    "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11000NTC201906271010/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%EA%B3%A0%EC%8B%9C%20%EC%A0%9C2019-204%ED%98%B8.pdf",
+    "notice_url": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11000NTC201906271010/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%EA%B3%A0%EC%8B%9C%20%EC%A0%9C2019-204%ED%98%B8.pdf",
+    "validity_note": "2019-06-27 고시의 개별구역 도면과 대조한 날짜한정 참고외곽입니다. GIS 면적에서 고시면적을 뺀 차이는 +543.46092669㎡이며 원인은 미확인입니다. 현재 법적 경계·확정측량·필지 포함 또는 모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 변경하지 않습니다.",
+    "area_residual_m2": 543.46092669,
+    "area_residual_status": "unresolved",
+    "official_area_m2": 86432.5,
+    "source_area_m2": 86975.96092669,
+    "global_latestness_proven": false,
+    "feature_count": 1,
+    "names": [
+      "상계1"
+    ],
+    "reference_scope": "individual_project_dated_outline",
+    "existing_pin_preserve": true,
+    "new_pin_permitted": false,
+    "source_original_file": "bulk-boundary-20261025/current-layer-identity-round5/cleanup-sg1apt/raw-features.json",
+    "source_original_sha256": "ab28ccb80e1723aa164896b905481e9e42310b71f766587bbb4901d47c545544",
+    "review_file": "bulk-boundary-20261025/reference-eight-independent-audit/audit.json",
+    "actual_diagram_files": [
+      "bulk-boundary-20261025/current-layer-identity-round5/cleanup-sg1apt/page-17.png"
+    ],
+    "visual_review_source": "audit_reference_boundary_eight",
+    "visual_review_repeated_this_run": false,
+    "operational_approval": false,
+    "source_ntfc_codes": [
+      "11000NTC201906271010"
+    ]
+  },
+  "cleanup-g8cbTb2J": {
+    "path": "geometries/cleanup-g8cbTb2J.geojson",
+    "crs": "EPSG:4326",
+    "verified": false,
+    "display_status": "dated_reference_outline",
+    "reference_reviewed": true,
+    "boundary_only": true,
+    "cadastral_guarantee": false,
+    "notice_date": "2020-03-26",
+    "notice_number": "2020-113",
+    "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11590NTC202004280001/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%282020-113%29%ED%9D%91%EC%84%9D7.pdf",
+    "notice_url": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11590NTC202004280001/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%282020-113%29%ED%9D%91%EC%84%9D7.pdf",
+    "validity_note": "2020-03-26 고시의 개별구역 도면과 대조한 날짜한정 참고외곽입니다. GIS 면적에서 고시면적을 뺀 차이는 +460.71106170㎡이며 원인은 미확인입니다. 현재 법적 경계·확정측량·필지 포함 또는 모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 변경하지 않습니다.",
+    "area_residual_m2": 460.7110617,
+    "area_residual_status": "unresolved",
+    "official_area_m2": 73846.7,
+    "source_area_m2": 74307.4110617,
+    "global_latestness_proven": false,
+    "feature_count": 1,
+    "names": [
+      "흑석7"
+    ],
+    "reference_scope": "individual_project_dated_outline",
+    "existing_pin_preserve": true,
+    "new_pin_permitted": false,
+    "source_original_file": "bulk-boundary-20261025/current-layer-identity-round5/cleanup-g8cbTb2J/raw-features.json",
+    "source_original_sha256": "ccdce3a54df20774cbf566219d9a01c21aef2282a6d177d2d14002b68f0c3765",
+    "review_file": "bulk-boundary-20261025/reference-eight-independent-audit/audit.json",
+    "actual_diagram_files": [
+      "bulk-boundary-20261025/current-layer-identity-round5/cleanup-g8cbTb2J/page-8.png"
+    ],
+    "visual_review_source": "audit_reference_boundary_eight",
+    "visual_review_repeated_this_run": false,
+    "operational_approval": false,
+    "source_ntfc_codes": [
+      "11590NTC202004280001"
+    ]
+  },
+  "cleanup-dongseon2": {
+    "path": "geometries/cleanup-dongseon2.geojson",
+    "crs": "EPSG:4326",
+    "verified": false,
+    "display_status": "dated_reference_outline",
+    "reference_reviewed": true,
+    "boundary_only": true,
+    "cadastral_guarantee": false,
+    "notice_date": "2021-03-18",
+    "notice_number": "2021-55",
+    "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11290NTC202103190001/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_2021-55%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "notice_url": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11290NTC202103190001/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_2021-55%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "validity_note": "2021-03-18 고시의 개별구역 도면과 대조한 날짜한정 참고외곽입니다. GIS 면적에서 고시면적을 뺀 차이는 +51.73198825㎡이며 원인은 미확인입니다. 현재 법적 경계·확정측량·필지 포함 또는 모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 변경하지 않습니다.",
+    "area_residual_m2": 51.73198825,
+    "area_residual_status": "unresolved",
+    "official_area_m2": 15608.2,
+    "source_area_m2": 15659.93198825,
+    "global_latestness_proven": false,
+    "feature_count": 1,
+    "names": [
+      "동선2"
+    ],
+    "reference_scope": "individual_project_dated_outline",
+    "existing_pin_preserve": true,
+    "new_pin_permitted": false,
+    "source_original_file": "bulk-boundary-20261025/current-layer-identity-round6/cleanup-dongseon2/raw-features.json",
+    "source_original_sha256": "94d9a19f12c1fd65a13507061f990b317a14ae0ac754bd4735d6bfbc084163cb",
+    "review_file": "bulk-boundary-20261025/reference-eight-independent-audit/audit.json",
+    "actual_diagram_files": [
+      "bulk-boundary-20261025/current-layer-identity-round6/cleanup-dongseon2/page-7.png"
+    ],
+    "visual_review_source": "audit_reference_boundary_eight",
+    "visual_review_repeated_this_run": false,
+    "operational_approval": false,
+    "source_ntfc_codes": [
+      "11290NTC202103190001"
+    ]
+  },
+  "cleanup-eungam2": {
+    "path": "geometries/cleanup-eungam2.geojson",
+    "crs": "EPSG:4326",
+    "verified": false,
+    "display_status": "dated_reference_outline",
+    "reference_reviewed": true,
+    "boundary_only": true,
+    "cadastral_guarantee": false,
+    "notice_date": "2020-07-30",
+    "notice_number": "2020-133",
+    "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11380NTC202008310004/%EC%9D%80%ED%8F%89%EA%B5%AC_2020-133%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "notice_url": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11380NTC202008310004/%EC%9D%80%ED%8F%89%EA%B5%AC_2020-133%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "validity_note": "2020-07-30 고시의 개별구역 도면과 대조한 날짜한정 참고외곽입니다. GIS 면적에서 고시면적을 뺀 차이는 +439.22622825㎡이며 원인은 미확인입니다. 현재 법적 경계·확정측량·필지 포함 또는 모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 변경하지 않습니다.",
+    "area_residual_m2": 439.22622825,
+    "area_residual_status": "unresolved",
+    "official_area_m2": 120434.8,
+    "source_area_m2": 120874.02622825,
+    "global_latestness_proven": false,
+    "feature_count": 1,
+    "names": [
+      "응암2"
+    ],
+    "reference_scope": "individual_project_dated_outline",
+    "existing_pin_preserve": true,
+    "new_pin_permitted": false,
+    "source_original_file": "bulk-boundary-20261025/current-layer-identity-round6/cleanup-eungam2/raw-features.json",
+    "source_original_sha256": "fb39329ccebc927c249889e06ad62d889f76df591690a86adef900ddb298b5f9",
+    "review_file": "bulk-boundary-20261025/reference-eight-independent-audit/audit.json",
+    "actual_diagram_files": [
+      "bulk-boundary-20261025/current-layer-identity-round6/cleanup-eungam2/page-16.png"
+    ],
+    "visual_review_source": "audit_reference_boundary_eight",
+    "visual_review_repeated_this_run": false,
+    "operational_approval": false,
+    "source_ntfc_codes": [
+      "11380NTC202008310004"
+    ]
+  },
+  "cleanup-zCk93282": {
+    "path": "geometries/cleanup-zCk93282.geojson",
+    "crs": "EPSG:4326",
+    "verified": false,
+    "display_status": "dated_reference_outline",
+    "reference_reviewed": true,
+    "boundary_only": true,
+    "cadastral_guarantee": false,
+    "notice_date": "2020-05-28",
+    "notice_number": "2020-77",
+    "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11380NTC202009170006/%EC%9D%80%ED%8F%89%EA%B5%AC_2020-77%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "notice_url": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11380NTC202009170006/%EC%9D%80%ED%8F%89%EA%B5%AC_2020-77%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "validity_note": "2020-05-28 고시의 개별구역 도면과 대조한 날짜한정 참고외곽입니다. GIS 면적에서 고시면적을 뺀 차이는 +176.65705988㎡이며 원인은 미확인입니다. 현재 법적 경계·확정측량·필지 포함 또는 모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 변경하지 않습니다.",
+    "area_residual_m2": 176.65705988,
+    "area_residual_status": "unresolved",
+    "official_area_m2": 36245.2,
+    "source_area_m2": 36421.85705988,
+    "global_latestness_proven": false,
+    "feature_count": 1,
+    "names": [
+      "응암11"
+    ],
+    "reference_scope": "individual_project_dated_outline",
+    "existing_pin_preserve": true,
+    "new_pin_permitted": false,
+    "source_original_file": "bulk-boundary-20261025/current-layer-identity-round7/cleanup-zCk93282/raw-features.json",
+    "source_original_sha256": "3476237ae6b6bbd19d909f4fb30510549f75f9eb5fb6ecadaf67b3f3f615e827",
+    "review_file": "bulk-boundary-20261025/reference-eight-independent-audit/audit.json",
+    "actual_diagram_files": [
+      "bulk-boundary-20261025/current-layer-identity-round7/cleanup-zCk93282/page-19.png"
+    ],
+    "visual_review_source": "audit_reference_boundary_eight",
+    "visual_review_repeated_this_run": false,
+    "operational_approval": false,
+    "source_ntfc_codes": [
+      "11380NTC202009170006"
+    ]
+  },
+  "cleanup-cheonhowoosung": {
+    "path": "geometries/cleanup-cheonhowoosung.geojson",
+    "crs": "EPSG:4326",
+    "verified": false,
+    "display_status": "dated_reference_outline",
+    "reference_reviewed": true,
+    "boundary_only": true,
+    "cadastral_guarantee": false,
+    "notice_date": "2026-07-29",
+    "notice_number": "2026-146",
+    "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11740NTC202608250003/%EA%B0%95%EB%8F%99%EA%B5%AC_%EC%A0%9C2026-146%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "notice_url": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11740NTC202608250003/%EA%B0%95%EB%8F%99%EA%B5%AC_%EC%A0%9C2026-146%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "validity_note": "2026-07-29 고시의 개별구역 도면과 대조한 날짜한정 참고외곽입니다. GIS 면적에서 고시면적을 뺀 차이는 -31.12797896㎡이며 원인은 미확인입니다. 현재 법적 경계·확정측량·필지 포함 또는 모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 변경하지 않습니다.",
+    "area_residual_m2": -31.12797896,
+    "area_residual_status": "unresolved",
+    "official_area_m2": 28323.5,
+    "source_area_m2": 28292.37202104,
+    "global_latestness_proven": false,
+    "feature_count": 1,
+    "names": [
+      "천호우성"
+    ],
+    "reference_scope": "individual_project_dated_outline",
+    "existing_pin_preserve": true,
+    "new_pin_permitted": false,
+    "source_original_file": "bulk-boundary-20261025/current-layer-identity/cleanup-cheonhowoosung/raw-features.json",
+    "source_original_sha256": "60dc8b979824a397dc25e263ab8fb38dca0a6ce991a949e0245157dd0f5a3ba8",
+    "review_file": "bulk-boundary-20261025/reference-eight-independent-audit/audit.json",
+    "actual_diagram_files": [
+      "bulk-boundary-20261025/current-layer-identity/cleanup-cheonhowoosung/page-16.png"
+    ],
+    "visual_review_source": "audit_reference_boundary_eight",
+    "visual_review_repeated_this_run": false,
+    "operational_approval": false,
+    "source_ntfc_codes": [
+      "11000NTC202003050038"
+    ]
+  },
+  "cleanup-jw7apt": {
+    "path": "geometries/cleanup-jw7apt.geojson",
+    "crs": "EPSG:4326",
+    "verified": false,
+    "display_status": "dated_reference_outline",
+    "reference_reviewed": true,
+    "boundary_only": true,
+    "cadastral_guarantee": false,
+    "notice_date": "2021-07-01",
+    "notice_number": "2021-306",
+    "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11290TTC202107120001/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_2021-306%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "notice_url": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11290TTC202107120001/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_2021-306%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "validity_note": "2021-07-01 고시의 개별구역 도면과 대조한 날짜한정 참고외곽입니다. GIS 면적에서 고시면적을 뺀 차이는 +163.01062888㎡이며 원인은 미확인입니다. 현재 법적 경계·확정측량·필지 포함 또는 모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 변경하지 않습니다.",
+    "area_residual_m2": 163.01062887998705,
+    "area_residual_status": "unresolved",
+    "official_area_m2": 87635.6,
+    "source_area_m2": 87798.61062888,
+    "global_latestness_proven": false,
+    "feature_count": 1,
+    "names": [
+      "장위7"
+    ],
+    "reference_scope": "individual_project_dated_outline",
+    "existing_pin_preserve": true,
+    "new_pin_permitted": false,
+    "source_original_file": "bulk-boundary-20261024/project-holds-night-20261025/current64-85602.json",
+    "source_original_sha256": "628719f0ed1bf420101b102cee9e78ec71912d06de7f395bd4204777b040dcb2",
+    "review_file": "bulk-boundary-20261024/project-holds-night-20261025/lead-independent-review.json",
+    "actual_diagram_files": [
+      "bulk-boundary-20261024/root-candidate-reconciliation-20261024/source-review/jangwi7-14/jangwi7-page14.png"
+    ],
+    "visual_review_source": "finish_boundary_night_20261025 (기존기록인계;이번편성에서새시각검토라주장않음)",
+    "visual_review_repeated_this_run": false,
+    "operational_approval": false,
+    "source_ntfc_codes": [
+      "11290NTC202107120001"
+    ]
+  },
+  "cleanup-NYXi5tpV": {
+    "path": "geometries/cleanup-NYXi5tpV.geojson",
+    "crs": "EPSG:4326",
+    "verified": false,
+    "display_status": "dated_reference_outline",
+    "reference_reviewed": true,
+    "boundary_only": true,
+    "cadastral_guarantee": false,
+    "notice_date": "2024-07-25",
+    "notice_number": "2024-362",
+    "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11000TTC202408140001/%EC%9E%A5%EC%9C%8414%EA%B5%AC%EC%97%AD%20%EA%B3%A0%EC%8B%9C%EB%AC%B8.pdf",
+    "notice_url": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11000TTC202408140001/%EC%9E%A5%EC%9C%8414%EA%B5%AC%EC%97%AD%20%EA%B3%A0%EC%8B%9C%EB%AC%B8.pdf",
+    "validity_note": "2024-07-25 고시의 개별구역 도면과 대조한 날짜한정 참고외곽입니다. GIS 면적에서 고시면적을 뺀 차이는 +183.83759981㎡이며 원인은 미확인입니다. 현재 법적 경계·확정측량·필지 포함 또는 모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 변경하지 않습니다.",
+    "area_residual_m2": 183.83759980500326,
+    "area_residual_status": "unresolved",
+    "official_area_m2": 145174.6,
+    "source_area_m2": 145358.437599805,
+    "global_latestness_proven": false,
+    "feature_count": 1,
+    "names": [
+      "장위14"
+    ],
+    "reference_scope": "individual_project_dated_outline",
+    "existing_pin_preserve": true,
+    "new_pin_permitted": false,
+    "source_original_file": "bulk-boundary-20261024/project-holds-night-20261025/current64-84453.json",
+    "source_original_sha256": "3292f6c346558f41818679060385858232b7014732079048a95ba134089acd57",
+    "review_file": "bulk-boundary-20261024/project-holds-night-20261025/lead-independent-review.json",
+    "actual_diagram_files": [
+      "bulk-boundary-20261024/root-candidate-reconciliation-20261024/source-review/jangwi7-14/jangwi14-page17.png"
+    ],
+    "visual_review_source": "finish_boundary_night_20261025 (기존기록인계;이번편성에서새시각검토라주장않음)",
+    "visual_review_repeated_this_run": false,
+    "operational_approval": false,
+    "source_ntfc_codes": [
+      "11000NTC202408140001"
+    ]
+  },
+  "cleanup-Gcn7LOan": {
+    "path": "geometries/cleanup-Gcn7LOan.geojson",
+    "crs": "EPSG:4326",
+    "verified": false,
+    "display_status": "dated_reference_outline",
+    "reference_reviewed": true,
+    "boundary_only": true,
+    "cadastral_guarantee": false,
+    "notice_date": "2026-05-28",
+    "notice_number": "2026-291",
+    "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11000NTC202606080005/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EC%A0%9C2026-291%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "notice_url": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11000NTC202606080005/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EC%A0%9C2026-291%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "validity_note": "2026-05-28 고시의 개별구역 도면과 대조한 날짜한정 참고외곽입니다. GIS 면적에서 고시면적을 뺀 차이는 -100.28867900㎡이며 원인은 미확인입니다. 현재 법적 경계·확정측량·필지 포함 또는 모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 변경하지 않습니다.",
+    "area_residual_m2": -100.2886789999975,
+    "area_residual_status": "unresolved",
+    "official_area_m2": 56024.5,
+    "source_area_m2": 55924.211321,
+    "global_latestness_proven": false,
+    "feature_count": 1,
+    "names": [
+      "신월곡1"
+    ],
+    "reference_scope": "individual_project_dated_outline",
+    "existing_pin_preserve": true,
+    "new_pin_permitted": false,
+    "source_original_file": "bulk-boundary-20261024/project-holds-night-20261025/current64-85558.json",
+    "source_original_sha256": "313d1b16afdb02818bfdda67de628aa3be5ff9f42cfe30187fd0f760e13cb670",
+    "review_file": "bulk-boundary-20261024/project-holds-night-20261025/lead-independent-review.json",
+    "actual_diagram_files": [
+      "bulk-boundary-20261024/project-holds-night-20261025/sinwolgok1-2026-291-p29.png"
+    ],
+    "visual_review_source": "finish_boundary_night_20261025 (기존기록인계;이번편성에서새시각검토라주장않음)",
+    "visual_review_repeated_this_run": false,
+    "operational_approval": false,
+    "source_ntfc_codes": [
+      "11000NTC202406280004"
+    ]
+  },
+  "cleanup-jeonnong13": {
+    "path": "geometries/cleanup-jeonnong13.geojson",
+    "crs": "EPSG:4326",
+    "verified": false,
+    "display_status": "dated_reference_outline",
+    "reference_reviewed": true,
+    "boundary_only": true,
+    "cadastral_guarantee": false,
+    "notice_date": "2024-08-22",
+    "notice_number": "2024-410",
+    "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11000TTC202307140001/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%20%EC%A0%9C2024-410%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "notice_url": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11000TTC202307140001/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%20%EC%A0%9C2024-410%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "validity_note": "2024-08-22 고시의 개별구역 도면과 대조한 날짜한정 참고외곽입니다. GIS 면적에서 고시면적을 뺀 차이는 +11.56012103㎡이며 원인은 미확인입니다. 현재 법적 경계·확정측량·필지 포함 또는 모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 변경하지 않습니다.",
+    "area_residual_m2": 11.560121030001028,
+    "area_residual_status": "unresolved",
+    "official_area_m2": 21381,
+    "source_area_m2": 21392.56012103,
+    "global_latestness_proven": false,
+    "feature_count": 1,
+    "names": [
+      "전농13"
+    ],
+    "reference_scope": "individual_project_dated_outline",
+    "existing_pin_preserve": true,
+    "new_pin_permitted": false,
+    "source_original_file": "bulk-boundary-20261024/project-holds-night-20261025/current64-84674.json",
+    "source_original_sha256": "4a06df4df6928b3dc798e412cdcd8b5aa302792792a4669213316ce277ac516f",
+    "review_file": "bulk-boundary-20261024/project-holds-night-20261025/lead-independent-review.json",
+    "actual_diagram_files": [
+      "bulk-boundary-20261024/project-holds-night-20261025/jeonnong13-p34.png"
+    ],
+    "visual_review_source": "finish_boundary_night_20261025 (기존기록인계;이번편성에서새시각검토라주장않음)",
+    "visual_review_repeated_this_run": false,
+    "operational_approval": false,
+    "source_ntfc_codes": [
+      "11000NTC202307140001"
+    ]
   }
 }
