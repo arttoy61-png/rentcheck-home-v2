@@ -2715,6 +2715,51 @@
       "source_snapshot_sha256": "d22743092ee557938c55ebcbe0d6bf4b7c9d98c694c63fd737069551f04ca66d",
       "notice_sha256": "4a22940eedab0da383902552604b761caa6b6e4fd428005bb7fa2e363113b9cb",
       "coordinate_checked_at": null
+    },
+    {
+      "project_id": "cleanup-yuwon2",
+      "basis": "official_area_reference_point",
+      "point": [
+        37.53308694316881,
+        126.898383737757
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://urban.seoul.go.kr/view/map/mapPopup.html?recordCode=11560AGZ201912230001",
+      "official_address": "서울특별시 영등포구 당산동5가 7-2",
+      "reviewed_at": "2026-10-25T14:45:12.888350+00:00",
+      "identity": {
+        "project_id": "cleanup-yuwon2",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=yuwon2",
+        "catalog_address": "서울특별시 영등포구 당산동5가 7-2",
+        "catalog_title": "유원제일2차아파트 재건축정비사업조합",
+        "district": "영등포구"
+      },
+      "catalog_sha256": "281994e4a724f9e3c58f7b279fc7cd721d52e2e3b0b48fa05b3712188f4dd09d",
+      "source_evidence": {
+        "main_sha256": "71fa7003183a0e34f5dd5cf9ae8094f7db4a78bfd29c5f35bd45b18d593babc9",
+        "overview_sha256": "a8b3d4847807d3b89a6cb661492984b27d22328892d942da6168305f23cf42a2",
+        "observed_cafe_id": "560900000623s87",
+        "observed_business_id": "11560-900000623",
+        "overview_source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=560900000623s87&stepSeCode=102&div=sumry",
+        "source_checked_at": "2026-10-25T14:45:12.888350+00:00",
+        "identity_method": "official_live_roster_slug_address_map_code_and_overview_project_name_match"
+      },
+      "limitation": "정보몽땅 공식 목록에서 유원제일2차에 연결한 지도 코드의 원형상 내부 참고점입니다. 2026-06-04 고시 도면과 외곽을 대조했지만 GIS 면적과 고시 면적의 차이 +213.6790435㎡는 미해결입니다. 측량점·대표주소 좌표·법정 확정 경계가 아닙니다.",
+      "source_record_code": "11560AGZ201912230001",
+      "source_area_name": "유원제일2차아파트 재건축정비구역 · 당산동5가 7-2 일원",
+      "source_snapshot_sha256": "9825b39c52ce8494ef93716bb71db31b9ecbd773c83edf58dfba50e658210b52",
+      "coordinate_checked_at": "2026-10-25T14:45:12.888350+00:00",
+      "point_method": "area_weighted_centroid_of_largest_ring_local_equirectangular",
+      "point_inside_saved_source": true,
+      "source_scope_area": {
+        "gis_m2": 28867.7790435,
+        "overview_m2": 28654.1,
+        "difference_m2": 213.6790435
+      },
+      "source_component_index": 0,
+      "confidence": "official_map_code_and_named_area_address_match"
     }
   ]
 }
