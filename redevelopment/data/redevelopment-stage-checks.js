@@ -1,5 +1,6 @@
 /* Project-specific current-stage checks; not an all-project history refresh. Raw roster values stay intact. */
 window.RentRedevelopmentStageChecks={
+ 'cleanup-samikpark':{stage:'관리처분인가',date:'2026-03-11',raw_date:'26.03.11',date_kind:'official_home_stage_date',checked_at:'2026-10-25',cafe_id:'740900000751g23',business_id:'11740-900000751',source:'https://cleanup.seoul.go.kr/assc/scrin-bbs/execute.do?cafeId=740900000751g23',history_source:'https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751',note:'2026-10-25 공식 홈의 관리처분인가 단계와 표시 날짜를 재확인했습니다. 지도 점선은 별도로 2020-02-13 고시 기준 참고외곽이며 현재 확정 경계가 아닙니다. 전체 후속 고시를 확인했다는 뜻은 아닙니다.'},
  'cleanup-biwonhyundai':{
   stage:'조합설립인가',date:'2024-05-08',raw_date:'24.05.08',date_kind:'official_home_stage_date',checked_at:'2026-10-25',
   cafe_id:'500900001201W11',business_id:'11500-900001201',

@@ -11783,5 +11783,52 @@
     "verification": "공식 목록의 사업명·주소·cafeUrl·지도 recordCode 일치. 원형상 단일 feature, 고시 14쪽 외곽의 오목부와 양측 꺾임을 시각 대조. 면적 잔차·측량·법적 최신성은 미검증.",
     "note": "원형상 좌표를 수정하거나 면적에 맞춰 보정하지 않았습니다. 신규 핀은 원형상 내부 참고점이며 법정 경계·측량점·정확한 대표주소가 아닙니다. 다른 현장의 핀과 실거래 자료는 변경하지 않았습니다.",
     "reference_point_added": true
+  },
+  "cleanup-samikpark": {
+    "path": "geometries/cleanup-samikpark.geojson",
+    "crs": "EPSG:4326",
+    "source": "https://www.eum.go.kr/web/gs/gv/gvGosiDet.jsp?seq=47684",
+    "source_label": "서울시 제2020-61호 개별 정비구역 고시 도면 대조 참고외곽",
+    "collected_at": "2026-10-25T14:50:53.002561+00:00",
+    "verified": false,
+    "display_status": "dated_reference_outline",
+    "reference_reviewed": true,
+    "reference_candidate_ready": true,
+    "reference_scope": "individual_project_dated_outline",
+    "boundary_only": true,
+    "cadastral_guarantee": false,
+    "notice_date": "2020-02-13",
+    "notice_number": "서울특별시 고시 제2020-61호",
+    "notice_area_m2": 55945,
+    "area_residual_m2": -1503.1022287,
+    "area_residual_status": "unresolved",
+    "validity_note": "2020-02-13 고시 19쪽 개별 정비구역 결정도와 두 부분의 외곽 형태를 대조한 과거 시점 참고자료입니다. GIS 원형상 면적은 고시 면적보다 1,503.1022287㎡ 작으며 원인은 미해결입니다. 이후 정비계획 변경·사업시행·관리처분 이력이 있으므로 현재 확정 경계로 사용할 수 없습니다. 측량 확정이 아닙니다.",
+    "names": [
+      "삼익파크아파트 재건축사업조합"
+    ],
+    "feature_count": 1,
+    "geometry_source": "https://urban.seoul.go.kr/proxy/proxy.jsp?http://98.33.2.225:6080/arcgis/rest/services/UPIS/20200526_WMS/MapServer/124/query?where=OBJECTID%3D86017&outFields=%2A&returnGeometry=true&outSR=4326&f=geojson",
+    "source_layer": 124,
+    "source_objectid": 86017,
+    "source_present_sn": "11000UQ181PS202003090001",
+    "source_record_code": "11000AGZ202003050004",
+    "source_notice_code": "11000NTC202003050040",
+    "geometry_notice_matches_reviewed_notice": false,
+    "geometry_raw_sha256": "440fa11eb072ea60d84976ec031fe14b2bfa5a85c6580a69d1e5c8b91607a9cc",
+    "notice_pdf_sha256": "5f07dfec5634a0dd7726bc8680fdc89935409a232aca02fe6808b49319dd32af",
+    "global_latestness": false,
+    "current_legal_ready": false,
+    "legal_status": "HOLD",
+    "identity_evidence": {
+      "official_cafe_slug": "samikpark",
+      "official_cafe_id": "740900000751g23",
+      "official_business_id": "11740-900000751",
+      "official_roster_map_code": "11000AGZ202003050004",
+      "address": "서울특별시 강동구 길동 54",
+      "checked_at": "2026-10-25"
+    },
+    "verification": "공식 목록의 사업명·주소·cafeUrl·지도 recordCode 일치. 원형상 단일 feature의 MultiPolygon 두 부분과 고시 19쪽 외곽을 시각 대조. 면적 잔차·측량·법적 최신성은 미검증.",
+    "note": "원형상 좌표를 수정하거나 면적에 맞춰 보정하지 않았습니다. 신규 핀은 원형상 내부 참고점이며 법정 경계·측량점·정확한 대표주소가 아닙니다. 다른 현장의 핀과 실거래 자료는 변경하지 않았습니다.",
+    "reference_point_added": true
   }
 }

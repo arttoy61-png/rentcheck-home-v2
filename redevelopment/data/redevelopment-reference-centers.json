@@ -2760,6 +2760,51 @@
       },
       "source_component_index": 0,
       "confidence": "official_map_code_and_named_area_address_match"
+    },
+    {
+      "project_id": "cleanup-samikpark",
+      "basis": "official_area_reference_point",
+      "point": [
+        37.544745060093526,
+        127.14717623066664
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://urban.seoul.go.kr/view/map/mapPopup.html?recordCode=11000AGZ202003050004",
+      "official_address": "서울특별시 강동구 길동 54",
+      "reviewed_at": "2026-10-25T14:50:53.002561+00:00",
+      "identity": {
+        "project_id": "cleanup-samikpark",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=samikpark",
+        "catalog_address": "서울특별시 강동구 길동 54",
+        "catalog_title": "삼익파크아파트 재건축사업조합",
+        "district": "강동구"
+      },
+      "catalog_sha256": "b9ce476f4c00afe17f712639bfc1ef39f0f1d1c5da67703faab08169247c63b5",
+      "source_evidence": {
+        "main_sha256": "69055c37a4c8edc8cbe8cf02cbb819ba673a5b4d5b6624efa9fae4394348488a",
+        "overview_sha256": "15193dbf5c99667760b0504582804190582309aae06749cfd5bb8c3bffe01618",
+        "observed_cafe_id": "740900000751g23",
+        "observed_business_id": "11740-900000751",
+        "overview_source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=740900000751g23&stepSeCode=102&div=sumry",
+        "source_checked_at": "2026-10-25T14:50:53.002561+00:00",
+        "identity_method": "official_live_roster_slug_address_map_code_and_overview_project_name_match"
+      },
+      "limitation": "정보몽땅 공식 목록에서 삼익파크에 연결한 원형상 중 큰 부분의 내부 참고점입니다. 2020-02-13 고시 외곽과 대조했으나 면적 차이 -1,503.1022287㎡는 미해결입니다. 현재 법정 경계·측량점·대표주소 좌표가 아닙니다.",
+      "source_record_code": "11000AGZ202003050004",
+      "source_area_name": "삼익파크아파트 재건축정비구역 · 길동 54 일원",
+      "source_snapshot_sha256": "440fa11eb072ea60d84976ec031fe14b2bfa5a85c6580a69d1e5c8b91607a9cc",
+      "coordinate_checked_at": "2026-10-25T14:50:53.002561+00:00",
+      "point_method": "area_weighted_centroid_of_largest_ring_local_equirectangular",
+      "point_inside_saved_source": true,
+      "source_scope_area": {
+        "gis_m2": 54441.8977713,
+        "overview_m2": 55945,
+        "difference_m2": -1503.1022287
+      },
+      "source_component_index": 0,
+      "confidence": "official_map_code_and_named_area_address_match"
     }
   ]
 }

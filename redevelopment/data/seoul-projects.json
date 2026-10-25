@@ -23899,419 +23899,419 @@
     "events": [
       {
         "date": "2018-07-25",
-        "date_kind": "official_stage_event",
         "stage": "정비구역지정",
         "title": "[주민공람공고 : 자치구] 삼익파크아파트 재건축사업 정비계획 수립 및 정비구역 지정(안) 공람공고",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2020-02-13",
-        "date_kind": "official_stage_event",
         "stage": "정비구역지정",
         "title": "[구역지정(변경)고시 : 서울시] 길동 삼익파크아파트 재건축정비사업 정비구역 지정-지구단위계획 결정 및 지형도면 고시 서울특별시고시 제202061호 고시번호 : 서울특별시고시 제202061호",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2020-08-25",
-        "date_kind": "official_stage_event",
         "stage": "조합설립추진위원회승인",
         "title": "[(변경)승인신청]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2020-08-27",
-        "date_kind": "official_stage_event",
         "stage": "조합설립추진위원회승인",
         "title": "[(변경)승인] 동의율 : 75.14",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2020-11-12",
-        "date_kind": "official_stage_event",
         "stage": "정비사업전문관리업자선정",
         "title": "[업체선정] 선정업체명 : 주식회사 세종코퍼레이션",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2020-11-26",
-        "date_kind": "official_stage_event",
         "stage": "정비사업전문관리업자선정",
         "title": "[계약(변경)]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2020-11-29",
-        "date_kind": "official_stage_event",
         "stage": "설계자선정",
         "title": "[업체선정] 선정업체명 : 나우동인건축사사무소",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
-      },
-      {
-        "date": "2020-11-29",
+        "is_future": false,
         "date_kind": "official_stage_event",
-        "stage": "조합설립인가",
-        "title": "[총회개최] 삼익파크아파트 재건축정비사업 조합설립을 위한 창립총회",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
-      },
-      {
-        "date": "2020-12-07",
-        "date_kind": "official_stage_event",
-        "stage": "조합설립인가",
-        "title": "[(변경)인가신청] 조합설립인가신청",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
-      },
-      {
-        "date": "2021-01-14",
-        "date_kind": "official_stage_event",
-        "stage": "조합설립인가",
-        "title": "[(변경)인가] 조합설립인가 동의율 : 92.1717",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
-      },
-      {
-        "date": "2021-01-15",
-        "date_kind": "official_stage_event",
-        "stage": "조합설립인가",
-        "title": "[법인등기] 조합 법인성립",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2021-02-08",
-        "date_kind": "official_stage_event",
         "stage": "설계자선정",
         "title": "[계약(변경)]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
+      },
+      {
+        "date": "2020-11-29",
+        "stage": "조합설립인가",
+        "title": "[총회개최] 삼익파크아파트 재건축정비사업 조합설립을 위한 창립총회",
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
+      },
+      {
+        "date": "2020-12-07",
+        "stage": "조합설립인가",
+        "title": "[(변경)인가신청] 조합설립인가신청",
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
+      },
+      {
+        "date": "2021-01-14",
+        "stage": "조합설립인가",
+        "title": "[(변경)인가] 조합설립인가 동의율 : 92.1717",
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
+      },
+      {
+        "date": "2021-01-15",
+        "stage": "조합설립인가",
+        "title": "[법인등기] 조합 법인성립",
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2021-09-06",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가신청]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2021-11-24",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가] 동의율 : 92.9233%",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2022-05-04",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가신청]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2022-08-01",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가] 동의율 : 93.0076%",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2022-10-18",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가신청]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
-      },
-      {
-        "date": "2022-12-03",
+        "is_future": false,
         "date_kind": "official_stage_event",
-        "stage": "시공자선정",
-        "title": "[업체선정] 선정업체명 : 주식회사 대우건설",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
-      },
-      {
-        "date": "2023-03-29",
-        "date_kind": "official_stage_event",
-        "stage": "시공자선정",
-        "title": "[계약(변경)]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2023-04-25",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가] 동의율 : 94.7767%",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2023-05-09",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가신청]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2023-05-10",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가] 동의율 : 95.198%",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
-      },
-      {
-        "date": "2023-05-31",
+        "is_future": false,
         "date_kind": "official_stage_event",
-        "stage": "사업시행인가",
-        "title": "[총회개최] 2023년 사업시행계획인가를 위한 총회 2023.5.31. 사업시행계획인가 총회 후 보완사항(일조 등의 확보를 위한 건축물의 높이 제한 완화)반영한 건축심의를 진행하여 사업시행계획에 반영하여 2024.6.26 총회 개최",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2023-07-12",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가신청]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2023-07-24",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가] 동의율 : 95.198%",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
-      },
-      {
-        "date": "2023-08-31",
+        "is_future": false,
         "date_kind": "official_stage_event",
-        "stage": "사업시행인가",
-        "title": "[(변경)인가신청]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2024-01-12",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가신청]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2024-01-18",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가] 동의율 : 95.198%",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2024-08-12",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가신청]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2024-08-22",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가] 동의율 : 95.5",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2024-11-11",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가신청]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2024-11-18",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가] 동의율 : 95.6",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2025-01-22",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가신청]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2025-03-11",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가] 동의율 : 95.8",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
-      },
-      {
-        "date": "2025-03-24",
+        "is_future": false,
         "date_kind": "official_stage_event",
-        "stage": "사업시행인가",
-        "title": "[(변경)인가] 삼익파크아파트 재건축정비사업 사업시행계획인가",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
-      },
-      {
-        "date": "2025-03-26",
-        "date_kind": "official_stage_event",
-        "stage": "사업시행인가",
-        "title": "[(변경)인가고시] 삼익파크아파트 재건축정비사업 사업시행계획인가 고시 동의율 : 82.03%",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2025-06-11",
-        "date_kind": "official_stage_event",
-        "stage": "관리처분인가",
-        "title": "[분양신청] 분양신청기간 : 2025-06-11-2025-07-25",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
-      },
-      {
-        "date": "2025-06-11",
-        "date_kind": "official_stage_event",
-        "stage": "관리처분인가",
-        "title": "[분양신청의 통지/공고]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
-      },
-      {
-        "date": "2025-06-11",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가신청]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2025-07-14",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가] 동의율 : 98.3",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2025-08-01",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가신청]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2025-10-20",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가] 동의율 : 98.9",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
-      },
-      {
-        "date": "2025-11-05",
+        "is_future": false,
         "date_kind": "official_stage_event",
-        "stage": "관리처분인가",
-        "title": "[총회개최]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
-      },
-      {
-        "date": "2025-11-18",
-        "date_kind": "official_stage_event",
-        "stage": "관리처분인가",
-        "title": "[(변경)인가신청]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2025-11-25",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가신청]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2026-01-07",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가] 동의율 : 98.3",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
-      },
-      {
-        "date": "2026-03-11",
+        "is_future": false,
         "date_kind": "official_stage_event",
-        "stage": "관리처분인가",
-        "title": "[(변경)인가]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
-      },
-      {
-        "date": "2026-03-18",
-        "date_kind": "official_stage_event",
-        "stage": "관리처분인가",
-        "title": "[(변경)인가고시]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2026-03-20",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가신청]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2026-04-28",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가] 동의율 : 98.1",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2026-06-15",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가신청]",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       },
       {
         "date": "2026-08-18",
-        "date_kind": "official_stage_event",
         "stage": "조합설립인가",
         "title": "[(변경)인가] 동의율 : 98.1",
-        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751",
-        "is_future": false
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
+      },
+      {
+        "date": "2023-05-31",
+        "stage": "사업시행인가",
+        "title": "[총회개최] 2023년 사업시행계획인가를 위한 총회 2023.5.31. 사업시행계획인가 총회 후 보완사항(일조 등의 확보를 위한 건축물의 높이 제한 완화)반영한 건축심의를 진행하여 사업시행계획에 반영하여 2024.6.26 총회 개최",
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
+      },
+      {
+        "date": "2023-08-31",
+        "stage": "사업시행인가",
+        "title": "[(변경)인가신청]",
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
+      },
+      {
+        "date": "2025-03-24",
+        "stage": "사업시행인가",
+        "title": "[(변경)인가] 삼익파크아파트 재건축정비사업 사업시행계획인가",
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
+      },
+      {
+        "date": "2025-03-26",
+        "stage": "사업시행인가",
+        "title": "[(변경)인가고시] 삼익파크아파트 재건축정비사업 사업시행계획인가 고시 동의율 : 82.03%",
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
+      },
+      {
+        "date": "2022-12-03",
+        "stage": "시공자선정",
+        "title": "[업체선정] 선정업체명 : 주식회사 대우건설",
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
+      },
+      {
+        "date": "2023-03-29",
+        "stage": "시공자선정",
+        "title": "[계약(변경)]",
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
+      },
+      {
+        "date": "2025-06-11",
+        "stage": "관리처분인가",
+        "title": "[분양신청의 통지/공고]",
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
+      },
+      {
+        "date": "2025-06-11",
+        "stage": "관리처분인가",
+        "title": "[분양신청] 분양신청기간 : 2025-06-11-2025-07-25",
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
+      },
+      {
+        "date": "2025-11-05",
+        "stage": "관리처분인가",
+        "title": "[총회개최]",
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
+      },
+      {
+        "date": "2025-11-18",
+        "stage": "관리처분인가",
+        "title": "[(변경)인가신청]",
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
+      },
+      {
+        "date": "2026-03-11",
+        "stage": "관리처분인가",
+        "title": "[(변경)인가]",
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
+      },
+      {
+        "date": "2026-03-18",
+        "stage": "관리처분인가",
+        "title": "[(변경)인가고시]",
+        "is_future": false,
+        "date_kind": "official_stage_event",
+        "source": "https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=740900000751g23&bsnsPk=11740-900000751"
       }
     ],
     "warning": "목록의 현재 진행단계와 실제 단계 발생일은 구분합니다. 원문 수정일은 미공개이며 수집일을 사업 변경일로 표시하지 않습니다.",
@@ -24437,7 +24437,10 @@
         "section": "건축계획",
         "value_basis": "plan"
       }
-    }
+    },
+    "history_verified": true,
+    "history_checked_at": "2026-10-25",
+    "history_scope": "공식 추진경과 페이지 공개 날짜 사건 전체. 실제 사업의 모든 후속 사건을 보장하지 않음."
   },
   {
     "id": "cleanup-GcA7n032",

@@ -3,6 +3,7 @@
 const BOUNDARY='verified_official_boundary_centroid',PLAN='official_plan_reference_centroid',ADDRESS='official_project_address_saved_reference',REPRESENTATIVE='official_representative_address_saved_coordinate',OVERVIEW='official_overview_address_saved_coordinate',AREA='official_area_reference_point';
 // Exact reviewed records only. SHA-256 is over stable JSON, including identity and source evidence.
 const approvedDigests=Object.freeze({
+  "cleanup-samikpark": "9bed30c8bc8f89bbbbe9804fdb3502fd6e86c8c23f5a298884e136860e24c745",
   "cleanup-yuwon2": "b27d3c1cbf4d35d23eccffa9d8482c763dc1019bb643ccdf0f9cadc642d17649",
   "cleanup-geoyeo21": "71ab75b081c0459b6292518d12c9d42482c6219d263d577d757d5fe5b901cfda",
   "cleanup-sg1apt": "887935f31a847e0bd35b8fec9cd968f4eb4ec65347b4578fc22f88c468e54e99",
@@ -105,7 +106,7 @@ async function setReferences(data){
  for(const input of data.records){try{const r=JSON.parse(JSON.stringify(input));if(counts.get(r.project_id)!==1||!validRecord(r)||!own(approvedDigests,r.project_id))continue;const bytes=new TextEncoder().encode(stable(r)),digest=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),x=>x.toString(16).padStart(2,'0')).join('');if(digest!==approvedDigests[r.project_id])continue;references.set(r.project_id,r);}catch{}}
  return references.size;
 }
-async function ensureLoaded(read,signal){if(!loadPromise)loadPromise=(async()=>{let timer;try{const data=await Promise.race([Promise.resolve().then(()=>read('data/redevelopment-reference-centers.json?v=20261025-yuwon2-pilot1',signal)),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('reference timeout')),5000);})]);return await setReferences(data);}catch(e){references=new Map();loadPromise=null;if(e?.name==='AbortError')throw e;return 0;}finally{clearTimeout(timer);}})();return loadPromise;}
+async function ensureLoaded(read,signal){if(!loadPromise)loadPromise=(async()=>{let timer;try{const data=await Promise.race([Promise.resolve().then(()=>read('data/redevelopment-reference-centers.json?v=20261025-samikpark-pilot1',signal)),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('reference timeout')),5000);})]);return await setReferences(data);}catch(e){references=new Map();loadPromise=null;if(e?.name==='AbortError')throw e;return 0;}finally{clearTimeout(timer);}})();return loadPromise;}
 function reference(p){const r=references.get(id(p)),c=p?.registry||p;if(!r||c.id!==r.project_id||c.source!==r.identity.catalog_source||c.district!==r.identity.district||c.address!==r.identity.catalog_address||c.title!==r.identity.catalog_title)return null;return JSON.parse(JSON.stringify(r));}
 function mapPoint(p,points,manifest){
  const key=id(p),has=own(points?.points,key)||own(points?.points,p?.id),pt=own(points?.points,key)?points.points[key]:points?.points?.[p?.id],meta=manifest?.[key];
