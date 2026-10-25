@@ -11450,5 +11450,223 @@
     "effective_classification": "QUALIFIED_DATED_REFERENCE_ONLY",
     "source_candidate_pack": "bulk-boundary-20261025/management-eleven-independent-audit",
     "source_geometry_file": "bulk-boundary-20261025/management-eleven-independent-audit/proposed/redevelopment/data/geometries/moa-urban-8819.geojson"
+  },
+  "cleanup-sw99103": {
+    "path": "geometries/cleanup-sw99103.geojson",
+    "crs": "EPSG:4326",
+    "verified": false,
+    "display_status": "dated_reference_outline",
+    "reference_reviewed": true,
+    "candidate_ready": true,
+    "boundary_only": true,
+    "cadastral_guarantee": false,
+    "notice_date": "2026-08-13",
+    "notice_number": "2026-77",
+    "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11470NTC202608250009/%EC%96%91%EC%B2%9C%EA%B5%AC_%EC%A0%9C2026-77%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "notice_url": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11470NTC202608250009/%EC%96%91%EC%B2%9C%EA%B5%AC_%EC%A0%9C2026-77%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "source_ntfc_codes": [
+      "11470NTC202608250009"
+    ],
+    "validity_note": "2026-08-13 고시의 개별구역 도면과 대조한 날짜 한정 참고외곽입니다. GIS−고시면적 차이 +185.61172100㎡의 원인은 미확인입니다. 현재 법적 경계·확정측량·필지 포함 여부·모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 바꾸지 않습니다.",
+    "area_residual_m2": 185.611721,
+    "area_residual_status": "unresolved",
+    "official_area_m2": 23770.3,
+    "source_area_m2": 23955.911721,
+    "global_latestness_proven": false,
+    "names": [
+      "신월1동 99-1"
+    ],
+    "reference_scope": "individual_project_dated_outline",
+    "existing_pin_preserve": true,
+    "new_pin_permitted": false,
+    "operational_approval": false,
+    "actual_PC_verified": false,
+    "review_file": "bulk-boundary-20261025/unlinked538-source-trace/resume-20261025/current-two-reference-pack/lead-independent-review.json",
+    "source_original_file": "bulk-boundary-20261025/unlinked538-source-trace/resume-20261025/current-two-reference-pack/신월1동 99-1-raw-current64.json",
+    "source_original_sha256": "93457a13eb02e8ffbe2629187e331ad0ba766b5ee80f2be2903a88ed31adfdd9",
+    "reference_candidate_ready": true,
+    "classification_only": true,
+    "classification_review_file": "bulk-boundary-20261025/next-three-reference-candidates/classification-addendum.json"
+  },
+  "cleanup-seogye33": {
+    "path": "geometries/cleanup-seogye33.geojson",
+    "crs": "EPSG:4326",
+    "verified": false,
+    "display_status": "dated_reference_outline",
+    "reference_reviewed": true,
+    "candidate_ready": true,
+    "boundary_only": true,
+    "cadastral_guarantee": false,
+    "notice_date": "2025-04-10",
+    "notice_number": "2025-188",
+    "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11170NTC202405300002/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EC%A0%9C2025-188%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "notice_url": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11170NTC202405300002/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EC%A0%9C2025-188%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "source_ntfc_codes": [
+      "11170NTC202405300002"
+    ],
+    "validity_note": "2025-04-10 고시의 개별구역 도면과 대조한 날짜 한정 참고외곽입니다. GIS−고시면적 차이 +496.48353246㎡의 원인은 미확인입니다. 현재 법적 경계·확정측량·필지 포함 여부·모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 바꾸지 않습니다. 정식 고시 PDF에 수록된 결정(안) 표제의 참고도면이며 고시가 측량 사용 불가를 명시합니다. 청파2와는 남북 인접한 별도구역이며 원형상 진단에서 공유선 주변 0.0008982483㎡의 겹침이 계산됩니다. 원인은 미확인이고, 이를 허용오차 통과나 법적 공유경계 확정으로 해석하지 않습니다.",
+    "area_residual_m2": 496.48353246,
+    "area_residual_status": "unresolved",
+    "official_area_m2": 112953,
+    "source_area_m2": 113449.48353246,
+    "global_latestness_proven": false,
+    "names": [
+      "서계"
+    ],
+    "reference_scope": "individual_project_dated_outline",
+    "existing_pin_preserve": true,
+    "new_pin_permitted": false,
+    "operational_approval": false,
+    "actual_PC_verified": false,
+    "review_file": "bulk-boundary-20261025/unlinked538-source-trace/resume-20261025/current-next-three-pack/independent-review.json",
+    "source_original_file": "bulk-boundary-20261025/unlinked538-source-trace/resume-20261025/current-next-three-pack/서계-raw-current64.json",
+    "source_original_sha256": "18c66f8a66fbe51b25aa96fff8caa6b7e1a84fae2b0327ee526c81948a4e88bd",
+    "reference_candidate_ready": true,
+    "classification_only": true,
+    "classification_review_file": "bulk-boundary-20261025/next-three-reference-candidates/classification-addendum.json"
+  },
+  "cleanup-bangwha2": {
+    "path": "geometries/cleanup-bangwha2.geojson",
+    "crs": "EPSG:4326",
+    "verified": false,
+    "display_status": "dated_reference_outline",
+    "reference_reviewed": true,
+    "reference_candidate_ready": true,
+    "candidate_ready": true,
+    "reference_scope": "individual_project_dated_outline",
+    "boundary_only": true,
+    "cadastral_guarantee": false,
+    "notice_date": "2024-03-21",
+    "notice_number": "2024-142",
+    "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11500NTC202404030006/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EC%A0%9C2024-142%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "notice_url": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11500NTC202404030006/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EC%A0%9C2024-142%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "source_ntfc_codes": [
+      "11500NTC202404030006"
+    ],
+    "source_record_codes": [
+      "11500AGZ202404030001"
+    ],
+    "area_residual_m2": 165.517376,
+    "area_residual_status": "unresolved",
+    "official_area_m2": 34900,
+    "source_area_m2": 35065.517376,
+    "global_latestness_proven": false,
+    "names": [
+      "방화2"
+    ],
+    "existing_pin_preserve": true,
+    "new_pin_permitted": false,
+    "source_original_file": "bulk-boundary-20261024/new55-notice-crosscheck/cleanup-bangwha2/original-features.json",
+    "source_original_sha256": "4369d05b1ebfe33e22c830410dbeff3256f1146c39b14990429a4e8b6a0fddbc",
+    "review_file": "/workspace/scratch/6651e1690b6d/bulk-boundary-20261025/gangseo-unshown-review/banghwa2-independent-review.json",
+    "operational_approval": false,
+    "feature_count": 1,
+    "source_object_ids": [
+      84718,
+      86237
+    ],
+    "unique_original_geometry_count": 1,
+    "duplicate_source_attributes": [
+      {
+        "OBJECTID": 84718,
+        "PRESENT_SN": "11500UQ181PS202405070001",
+        "LCLAS_CL": "UQ1200",
+        "MLSFC_CL": "UQ1220",
+        "SCLAS_CL": "UQ1221",
+        "ATRB_SE": "UQ1221",
+        "WTNNC_SN": "11500AGZ202404030001",
+        "NTFC_SN": "11500NTC202404030006",
+        "DGM_NM": "방화2재정비촉진구역",
+        "SIGNGU_SE": "11500",
+        "DRAWING_NO": " ",
+        "CREATE_DAT": 1715040000000,
+        "DGM_AR": 35065.51729728,
+        "DGM_LT": 910.06597885,
+        "SHAPE.AREA": 35065.517376,
+        "SHAPE.LEN": 910.065989770717
+      },
+      {
+        "OBJECTID": 86237,
+        "PRESENT_SN": "11500UQ181PS202405070001",
+        "LCLAS_CL": "UQ1200",
+        "MLSFC_CL": "UQ1220",
+        "SCLAS_CL": "UQ1221",
+        "ATRB_SE": "UQ1221",
+        "WTNNC_SN": "11500AGZ202404030001",
+        "NTFC_SN": "11500NTC202404030006",
+        "DGM_NM": "방화2재정비촉진구역",
+        "SIGNGU_SE": "11500",
+        "DRAWING_NO": " ",
+        "CREATE_DAT": 1715040000000,
+        "DGM_AR": 35065.51729728,
+        "DGM_LT": 910.06597885,
+        "SHAPE.AREA": 35065.517376,
+        "SHAPE.LEN": 910.065989770717
+      }
+    ],
+    "later_corroborating_notice": {
+      "notice_number": "2025-649",
+      "notice_date": "2025-11-27",
+      "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11000NTC202512150005/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EC%A0%9C2025-649%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+      "scope": "개별 방화2 위치·면적 및 도면 변경없음"
+    },
+    "validity_note": "2024-03-21 고시 연결 원형상을 보존한 날짜 한정 참고외곽입니다. 2025-11-27 제2025-649호의 개별 방화2 결정도와 위치·면적 변경없음을 추가 대조했습니다. GIS−고시면적 차이 +165.517376㎡의 원인은 미확인입니다. 방화3과는 인접 별도구역이며 공유선 주변 0.00001809㎡ 교차조각의 원인도 미확인입니다. 동일 좌표의 원천 객체 2개는 대표 외곽 1개만 표시하며 양쪽 원속성은 보존합니다. 현재 법적 경계·확정측량·필지 포함 여부·모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 바꾸지 않습니다."
+  },
+  "cleanup-shinan": {
+    "path": "geometries/cleanup-shinan.geojson",
+    "crs": "EPSG:4326",
+    "verified": false,
+    "display_status": "dated_reference_outline",
+    "reference_reviewed": true,
+    "reference_candidate_ready": true,
+    "candidate_ready": true,
+    "reference_scope": "individual_project_dated_outline",
+    "boundary_only": true,
+    "cadastral_guarantee": false,
+    "notice_date": "2024-01-11",
+    "notice_number": "2024-23",
+    "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11500NTC202403250001/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EC%A0%9C2024-23%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "notice_url": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11500NTC202403250001/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EC%A0%9C2024-23%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+    "source_ntfc_codes": [
+      "11500NTC202403250001"
+    ],
+    "source_record_codes": [
+      "11500AGZ202403250001"
+    ],
+    "area_residual_m2": 175.418809,
+    "area_residual_status": "unresolved",
+    "official_area_m2": 17451.0,
+    "source_area_m2": 17626.418809,
+    "global_latestness_proven": false,
+    "names": [
+      "신안빌라 재건축"
+    ],
+    "existing_pin_preserve": true,
+    "new_pin_permitted": false,
+    "source_original_file": "/workspace/scratch/6651e1690b6d/bulk-boundary-20261025/gangseo-unshown-review/shinan-original-features.json",
+    "source_original_sha256": "8152367bc88f01db6d75323e1ef22e1b7e1ce4e1255b94da7812fd010a949248",
+    "review_file": "/workspace/scratch/6651e1690b6d/bulk-boundary-20261025/gangseo-unshown-review/shinan-independent-review.json",
+    "operational_approval": false,
+    "feature_count": 1,
+    "source_object_ids": [
+      86813
+    ],
+    "validity_note": "2024-01-11 고시 연결 원형상을 보존한 날짜 한정 참고외곽입니다. 2025-10-10 제2025-83호 개별 정비구역 결정도(변경없음)와 2026-04-29 제2026-63호 인가의 동일주소·17,451㎡를 대조했습니다. GIS−고시면적 차이 +175.418809㎡의 원인은 미확인입니다. 2024 원조서의 증분합계와 결과면적 사이 0.6㎡ 산술차이도 해소되지 않았으며 GIS 차이의 설명으로 사용하지 않습니다. 같은 주소의 옛 추진위 목록에는 이 외곽을 중복 등록하지 않았고 목록을 병합·삭제하지 않았습니다. 현재 법적 경계·확정측량·필지 포함 여부·모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 바꾸지 않습니다. 2026 인가의 사업시행자는 한국토지신탁으로 기재되어 있으며 카탈로그의 조합 단계 표기를 현재 법적 시행자 판정으로 사용하지 않습니다.",
+    "related_catalog_id_not_added": "cleanup-magoksinan",
+    "later_corroborating_notices": [
+      {
+        "number": "2025-83",
+        "date": "2025-10-10",
+        "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11500NTC202510200004/%EA%B0%95%EC%84%9C%EA%B5%AC_%EC%A0%9C2025-83%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
+        "meaning": "개별 정비구역 위치·면적 및 결정도 변경없음"
+      },
+      {
+        "number": "2026-63",
+        "date": "2026-04-29",
+        "source": "https://www.eum.go.kr/web/gs/gv/gvGosiDet.jsp?seq=638311",
+        "meaning": "사업시행인가 동일주소·구역17451㎡ 재확인; 신규정밀좌표아님"
+      }
+    ],
+    "classification_review_file": "bulk-boundary-20261025/gangseo-unshown-review/shinan-independent-review.json"
   }
 }
