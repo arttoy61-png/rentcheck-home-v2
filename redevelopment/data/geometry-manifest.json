@@ -198,16 +198,22 @@
     "path": "geometries/cleanup-cheongdam.geojson",
     "crs": "EPSG:4326",
     "source": "https://urban.seoul.go.kr/view/map/mapPopup.html?recordCode=11000AGZ202301100001",
-    "source_label": "서울도시공간포털 공식 정비구역 경계",
+    "source_label": "서울도시공간포털 반환 원형상 · 자기교차로 표시 보류",
     "source_record_code": "11000AGZ202301100001",
     "collected_at": "2026-10-09T05:24:40.394156+00:00",
-    "verified": true,
-    "verification": "정보몽땅 공식 지도연결 고시ID 일치 + 구역명/사업명 대조",
+    "verified": false,
+    "verification": "공식 반환 원형상과 운영 파일의 동일성 및 자기교차 확인. 현재 법정·정밀측량 경계 검증이 아니며 표시 보류.",
     "names": [
       "청담삼익아파트 재건축사업"
     ],
     "feature_count": 1,
-    "note": "공식 서비스가 반환한 현재 정비구역 경계입니다. 개별 필지·동별 건물 윤곽은 아닙니다."
+    "note": "공식 반환 원형상에 자기교차가 확인되어 경계 표시를 보류합니다. 원본 좌표는 보존했고 자동수선하지 않았습니다. 현재 법정·정밀측량 경계로 사용하지 않습니다.",
+    "display_status": "invalid_geometry_hold",
+    "geometry_validation": "invalid_self_intersection_in_official_source",
+    "validity_note": "공식 원형상에 자기교차가 있어 경계 표시를 보류합니다. 기존 저장점이 틀렸다고 판정한 것은 아니지만, 독립 위치 검증 전 공개 핀과 주변거래 조회도 임시 보류합니다. 거래가 없다는 뜻은 아닙니다. 원본과 좌표는 보존하며 자동수선하지 않았습니다.",
+    "public_point_hold": true,
+    "public_point_hold_reason": "공식 원형상에 자기교차가 있어 경계 표시를 보류합니다. 기존 저장점이 틀렸다고 판정한 것은 아니지만, 독립 위치 검증 전 공개 핀과 주변거래 조회도 임시 보류합니다. 거래가 없다는 뜻은 아닙니다. 원본과 좌표는 보존하며 자동수선하지 않았습니다.",
+    "boundary_only": true
   },
   "cleanup-in814VyA": {
     "path": "geometries/cleanup-in814VyA.geojson",
@@ -661,18 +667,25 @@
   },
   "cleanup-sanggye6": {
     "path": "geometries/cleanup-sanggye6.geojson",
-    "crs": "EPSG:4326",
-    "source": "https://urban.seoul.go.kr/view/map/mapPopup.html?recordCode=11000AGZ200209234042",
-    "source_label": "서울도시공간포털 공식 정비구역 경계",
-    "source_record_code": "11000AGZ200209234042",
-    "collected_at": "2026-10-09T05:24:40.413179+00:00",
-    "verified": true,
-    "verification": "정보몽땅 공식 지도연결 고시ID 일치 + 구역명/사업명 대조",
-    "names": [
-      "상계6구역주택재개발사업"
+    "verified": false,
+    "display_status": "dated_reference_outline",
+    "reference_reviewed": true,
+    "boundary_only": true,
+    "cadastral_guarantee": false,
+    "notice_date": "2023-06-22",
+    "notice_number": "2023-259",
+    "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11000TTC202307120005/서울특별시_2023-259호_고시.pdf",
+    "area_residual_m2": 321.4130122800125,
+    "area_residual_status": "unresolved",
+    "official_area_m2": 65684.9,
+    "source_area_m2": 66006.31301228,
+    "source_object_id": 85765,
+    "source_ntfc_codes": [
+      "11000NTC202307120005"
     ],
-    "feature_count": 2,
-    "note": "공식 서비스가 반환한 현재 정비구역 경계입니다. 개별 필지·동별 건물 윤곽은 아닙니다."
+    "validity_note": "2023-06-22 서울2023-259호 상계6재정비촉진구역 변경도와 대조한 날짜한정 참고외곽입니다. 2002년 옛 상계제6주택재개발구역과 다른 자료입니다. GIS 원면적−고시면적 +321.41301228㎡와 인접 상계4 원형상 교차0.00722499㎡의 원인은 미확인입니다. 작은 차이를 허용오차로 판정하지 않습니다. 현재 법적·측량경계나 필지 포함, 후속고시 부재를 보증하지 않습니다. 기존 저장핀은 잘못 연결된2002자료의 중심점으로 현재 사업 위치를 증명하지 못해 공개 핀과 주변거래 조회를 보류합니다.",
+    "public_point_hold": true,
+    "public_point_hold_reason": "이전 저장점은 2002년 다른 상계제6구역 자료에 연결돼 현재 상계6 위치로 사용할 수 없습니다. 올바른 공식 참고외곽 밖 약336.819m에 있어 공개 핀과 이 점 기준 주변거래 조회를 보류합니다. 거래가 없다는 뜻은 아니며 원본은 내부 보존합니다."
   },
   "cleanup-R60TOrwV": {
     "path": "geometries/cleanup-R60TOrwV.geojson",
@@ -9244,7 +9257,7 @@
     "notice_number": "2023-64",
     "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11305NTC202309200008/%EA%B0%95%EB%B6%81%EA%B5%AC_%EC%A0%9C2023-64%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
     "notice_url": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11305NTC202309200008/%EA%B0%95%EB%B6%81%EA%B5%AC_%EC%A0%9C2023-64%ED%98%B8_%EA%B3%A0%EC%8B%9C.pdf",
-    "validity_note": "2023-06-02 고시의 개별구역 도면과 대조한 날짜한정 참고외곽입니다. GIS 면적에서 고시면적을 뺀 차이는 +530.75449660㎡이며 원인은 미확인입니다. 현재 법적 경계·확정측량·필지 포함 또는 모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 변경하지 않습니다.",
+    "validity_note": "2023-06-02 고시의 개별구역 도면과 대조한 날짜한정 참고외곽입니다. GIS 면적에서 고시면적을 뺀 차이는 +530.75449660㎡이며 원인은 미확인입니다. 현재 법적 경계·확정측량·필지 포함 또는 모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 변경하지 않습니다. 원형상은 미아130 개별구역과 EPSG5186 기준0.017958525㎡ 교차합니다. 교차 원인과 법적 관계는 미확인이고 크기가 작다는 이유로 허용오차 처리하지 않습니다.",
     "area_residual_m2": 530.7544966,
     "area_residual_status": "unresolved",
     "official_area_m2": 102371.6,
@@ -9358,7 +9371,7 @@
     "notice_number": "2020-113",
     "source": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11590NTC202004280001/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%282020-113%29%ED%9D%91%EC%84%9D7.pdf",
     "notice_url": "https://urban.seoul.go.kr/UpisArchive/DATA/PM/pdf/11590NTC202004280001/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%282020-113%29%ED%9D%91%EC%84%9D7.pdf",
-    "validity_note": "2020-03-26 고시의 개별구역 도면과 대조한 날짜한정 참고외곽입니다. GIS 면적에서 고시면적을 뺀 차이는 +460.71106170㎡이며 원인은 미확인입니다. 현재 법적 경계·확정측량·필지 포함 또는 모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 변경하지 않습니다.",
+    "validity_note": "2020-03-26 고시의 개별구역 도면과 대조한 날짜한정 참고외곽입니다. GIS 면적에서 고시면적을 뺀 차이는 +460.71106170㎡이며 원인은 미확인입니다. 현재 법적 경계·확정측량·필지 포함 또는 모든 후속고시 부재를 보증하지 않습니다. 기존 핀과 거래 거리 기준을 변경하지 않습니다. 흑석2 원형상과 접촉(touch) 관계가 관측됐습니다. 양의 중첩면적이나 법적 포함관계로 해석하지 않습니다.",
     "area_residual_m2": 460.7110617,
     "area_residual_status": "unresolved",
     "official_area_m2": 73846.7,
