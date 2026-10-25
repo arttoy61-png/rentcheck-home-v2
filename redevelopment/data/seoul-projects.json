@@ -54420,8 +54420,8 @@
   {
     "id": "cleanup-biwonhyundai",
     "official_cafe_slug": "biwonhyundai",
-    "official_cafe_id": null,
-    "official_business_id": null,
+    "official_cafe_id": "500900001201W11",
+    "official_business_id": "11500-900001201",
     "type": "redevelopment",
     "project_type": "가로주택정비",
     "district": "강서구",

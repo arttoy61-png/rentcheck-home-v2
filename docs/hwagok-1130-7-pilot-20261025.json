@@ -1,0 +1,55 @@
+{
+  "checked_date_kst": "2026-10-25",
+  "base_commit": "eabdb7cffd3a8d3cbf3be742e93f228bcd3acee0",
+  "instructions_read": [
+    "AGENTS.md",
+    "docs/home-content-guidelines.md"
+  ],
+  "scope": "cleanup-biwonhyundai only; preserve other sites, public housing, actual transactions, source coordinates, nine display holds",
+  "implementation": "one dated-reference manifest entry and unmodified official-service GeoJSON; verified official cafe/business IDs; one current-stage recheck; target-only visible qualification; exact official Gangseo hostname accepted by reference-source validator",
+  "notice": {
+    "url": "https://www.gangseo.seoul.kr/gs040301/view?mgtNo=58396",
+    "number": "강서구 2024-33",
+    "date": "2024-05-08",
+    "pages_actually_read": [
+      1,
+      2
+    ],
+    "pdf_sha256": "86246df21313c1512a015758667c08276514a3c4322c64c03f83ee96117301c8"
+  },
+  "identity": {
+    "project_id": "cleanup-biwonhyundai",
+    "cafe_id": "500900001201W11",
+    "business_id": "11500-900001201",
+    "urban_catalog_id": 8154,
+    "present_sn": "11000UQ120PS202411014070",
+    "object_id": 120257,
+    "layer": 102,
+    "notice_ids_in_geometry": null,
+    "method": "Official catalogue directly links cafeUrl=biwonhyundai; exact PRESENT_SN single feature; official notice name/address/8943 square metres and page-2 A-3 broad outline visually compared. No direct notice-ID join claimed."
+  },
+  "limitations": [
+    "GIS source SHAPE.AREA=9049.387088635; notice=8943; unexplained residual +106.387088635 square metres. No reshaping or snapping.",
+    "Cleanup overview 8994 square metres retained separately.",
+    "Visual broad-outline comparison only; not georeferencing, cadastral survey, current legal boundary, parcel inclusion, or proof of no later notices.",
+    "Management-area ID moa-urban-8790 is distinct. GIS containment observed, not legal inclusion proved.",
+    "Existing representative-address pin 37.551301,126.85581 is not boundary centroid.",
+    "Official homepage displays association approval; full subsequent-notice history not verified."
+  ],
+  "validation": {
+    "candidate_pc": "1440x1000 Chromium",
+    "candidate_mobile": "390x844 Chromium viewport; not physical-device test",
+    "candidate_search_list_pin_detail": true,
+    "candidate_overflow": false,
+    "candidate_page_errors": 0,
+    "geometry_valid": true,
+    "existing_manifest_entries_unchanged": true,
+    "other_catalogue_records_unchanged": true,
+    "public_housing_transaction_files_unchanged": true,
+    "nine_holds_unchanged": true,
+    "internal_links_broken": 0,
+    "internal_link_preexisting_warnings": 12,
+    "public_deployment": "verify after commit; candidate tests intercept only seven changed runtime/data files on public origin"
+  },
+  "direct_path": "/redevelopment/#map/redevelopment?site=cleanup-biwonhyundai"
+}

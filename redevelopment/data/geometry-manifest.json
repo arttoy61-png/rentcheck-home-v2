@@ -11681,5 +11681,60 @@
       }
     ],
     "classification_review_file": "bulk-boundary-20261025/gangseo-unshown-review/shinan-independent-review.json"
+  },
+  "cleanup-biwonhyundai": {
+    "path": "geometries/cleanup-biwonhyundai.geojson",
+    "crs": "EPSG:4326",
+    "verified": false,
+    "display_status": "dated_reference_outline",
+    "reference_reviewed": true,
+    "reference_candidate_ready": true,
+    "reference_scope": "individual_project_dated_outline",
+    "boundary_only": true,
+    "cadastral_guarantee": false,
+    "notice_date": "2024-05-08",
+    "notice_number": "2024-33",
+    "notice_authority": "서울특별시 강서구",
+    "source": "https://www.gangseo.seoul.kr/gs040301/view?mgtNo=58396",
+    "notice_url": "https://www.gangseo.seoul.kr/gs040301/view?mgtNo=58396",
+    "source_notice_code": null,
+    "source_record_codes": [],
+    "source_BZ_layer": 102,
+    "source_BZ_objectid": 120257,
+    "source_present_sn": "11000UQ120PS202411014070",
+    "geometry_service": "https://urban.seoul.go.kr/proxy/proxy.jsp?http://98.33.2.225:6080/arcgis/rest/services/UPIS/20200526_WMS/MapServer/102",
+    "catalog_source": "https://urban.seoul.go.kr/view/html/PMNU1100000001?seq=8154",
+    "official_area_m2": 8943,
+    "source_area_m2": 9049.387088635001,
+    "area_residual_m2": 106.387088635,
+    "area_residual_status": "unresolved",
+    "feature_count": 1,
+    "names": [
+      "화곡동 1130-7번지 일대 가로주택정비사업 A-3"
+    ],
+    "existing_pin_preserve": true,
+    "new_pin_permitted": false,
+    "source_geometry_modified": false,
+    "global_latestness_proven": false,
+    "current_legal_boundary_verified": false,
+    "current_legal_ready": false,
+    "current_legal_verdict": "HOLD",
+    "actual_source_pages_read": [
+      1,
+      2
+    ],
+    "source_original_sha256": "6599393a387ead22f9357c6ad00cc81e66dc53dcfd9eefb9f2b8664d540c6cff",
+    "notice_pdf_sha256": "86246df21313c1512a015758667c08276514a3c4322c64c03f83ee96117301c8",
+    "reviewed_at": "2026-10-25",
+    "identity_evidence": {
+      "catalog_id": 8154,
+      "cafeId": "500900001201W11",
+      "bsnsPk": "11500-900001201",
+      "catalogue_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=biwonhyundai",
+      "join_basis": "서울도시공간포털 8154의 tnBsnsInfoMapCleanup.cleanupBsnsUrl이 동일 cafeUrl을 직접 연결; PRESENT_SN exact 단일 feature; 고시 사업명·대표지번·면적 및 2쪽 A-3 큰 외곽 대조",
+      "catalog_sha256": "a2083f39dd246d6e542c568da42691748adcd07e399a0f7b352bbeeb448d5dde",
+      "detail_sha256": "b256ef4446b3463be70efc1207662023ee634ca4bc7d6fe2d8593e7526b951c6"
+    },
+    "validity_note": "2024-05-08 강서구고시 제2024-33호 1쪽 개별사업 조서(8,943㎡)와 2쪽 A-3 도면의 큰 외곽을 시각 대조한 날짜 한정 참고외곽입니다. GIS 원형상 면적은 9,049.387088635㎡로 고시보다 106.387088635㎡ 크며 원인은 미확인입니다. GIS의 고시 연결 ID(NTFC_SN·WTNNC_SN)는 공란이므로 고시ID 직접 일치로 검증한 자료가 아닙니다. 공식 카탈로그 8154→동일 조합 URL과 PRESENT_SN 단일일치로 사업 신원을 대조했습니다. 정보몽땅 개요의 8,994㎡는 다른 표기이며 임의 통일하지 않았습니다. 모아타운 전체(별도 등록 moa-urban-8790) 외곽이 아닙니다. 현재 법적 경계·측량 확정·필지 포함·후속 변경 없음은 보증하지 않습니다. 고시의 2025년 인가·2027년 준공 예정일을 실제 달성일로 해석하지 않습니다. 기존 대표주소 참고 핀과 거래 거리 기준은 유지합니다."
   }
 }

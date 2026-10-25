@@ -1,5 +1,12 @@
-/* Two current-stage home checks and one unavailable home; not an all-project history refresh. Raw roster values stay intact. */
+/* Project-specific current-stage checks; not an all-project history refresh. Raw roster values stay intact. */
 window.RentRedevelopmentStageChecks={
+ 'cleanup-biwonhyundai':{
+  stage:'조합설립인가',date:'2024-05-08',raw_date:'24.05.08',date_kind:'official_home_stage_date',checked_at:'2026-10-25',
+  cafe_id:'500900001201W11',business_id:'11500-900001201',
+  source:'https://cleanup.seoul.go.kr/assc/scrin-bbs/execute.do?cafeId=500900001201W11',
+  history_source:'https://cleanup.seoul.go.kr/cafe/mainIndx/cleanup-prtnelapse/vscr.do?cafeId=500900001201W11&bsnsPk=11500-900001201',
+  note:'2026-10-25 공식 홈의 현재단계와 표시 날짜를 재확인했습니다. 단계는 정보몽땅 표시 기준이며 심의 통과·감정평가 업무와 사업시행인가 완료는 다릅니다. 모든 후속 고시를 확인했다는 뜻은 아닙니다.'
+ },
  'cleanup-W0zS4n6n':{
   stage:'이전고시',date:'2014-05-29',raw_date:'14.05.29',date_kind:'official_home_stage_date',checked_at:'2026-10-13',
   cafe_id:'320100003001p51',business_id:'11320-100003001',
