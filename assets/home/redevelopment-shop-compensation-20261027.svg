@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560" role="img" aria-labelledby="svgTitle svgDesc"><title id="svgTitle">재개발 상가 영업손실 보상 안내</title><desc id="svgDesc">상가 세입자의 영업손실, 권리금, 보증금은 따로 확인해야 한다는 안내 이미지</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0D1F3C"/><stop offset="1" stop-color="#1E5584"/></linearGradient></defs>
+<rect width="900" height="560" fill="url(#bg)"/><circle cx="808" cy="92" r="184" fill="#FFFFFF" opacity=".045"/>
+<rect x="55" y="52" width="272" height="55" rx="27" fill="#D4A73A"/>
+<text x="78" y="91" fill="#0D1F3C" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-size="30" font-weight="800">재개발 · 상가 세입자</text>
+<text x="60" y="225" fill="#FFFFFF" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-size="77" font-weight="800">영업손실 보상</text>
+<text x="63" y="285" fill="#CEE3F5" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-size="43" font-weight="650">권리금·보증금은 별도</text>
+<rect x="60" y="330" width="493" height="72" rx="16" fill="#FFFFFF" opacity=".13"/>
+<text x="83" y="377" fill="#FFFFFF" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-size="32">기준일 · 영업상태 · 휴업기간</text>
+<path d="M626 238 L826 238 L811 284 L642 284 Z" fill="#D4A73A"/>
+<rect x="645" y="279" width="163" height="172" rx="8" fill="#EDF4FB"/>
+<path d="M645 280 H807" stroke="#0D1F3C" stroke-width="8"/>
+<rect x="668" y="319" width="117" height="67" rx="7" fill="#9ABFD9"/>
+<path d="M725 319 V386" stroke="#FFFFFF" stroke-width="7"/>
+<rect x="681" y="400" width="91" height="51" fill="#2C638E"/>
+<path d="M625 449 H832" stroke="#D4A73A" stroke-width="13" stroke-linecap="round"/>
+<text x="63" y="501" fill="#B4CEE4" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-size="28">Rent Check  |  보상 항목 구분</text></svg>
