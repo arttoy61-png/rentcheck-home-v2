@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560" role="img" aria-labelledby="svgTitle svgDesc"><title id="svgTitle">모아타운 일반분양 확정 물량 계산 주의</title><desc id="svgDesc">총세대수에서 조합원 인원만 빼면 일반분양 확정치가 되지 않는다는 주택 도식</desc>
+<rect width="900" height="560" fill="#ECF3F8"/>
+<rect x="41" y="37" width="818" height="486" rx="32" fill="#FFFFFF" stroke="#DBE7F0" stroke-width="3"/>
+<rect x="65" y="63" width="260" height="53" rx="26" fill="#0D1F3C"/>
+<text x="84" y="101" fill="#FFFFFF" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-size="29" font-weight="800">모아타운 · 화곡동</text>
+<text x="66" y="215" fill="#0D1F3C" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-size="70" font-weight="800">일반분양 몇 세대?</text>
+<text x="67" y="286" fill="#1565C0" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-size="43" font-weight="750">총세대수 − 조합원 수</text>
+<rect x="63" y="310" width="568" height="71" rx="14" fill="#FFF0CA"/>
+<text x="83" y="361" fill="#584419" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-size="41" font-weight="800">계산만으로 확정 불가</text>
+<g transform="translate(660 138)">
+  <rect x="0" y="112" width="90" height="202" rx="6" fill="#1769A4"/>
+  <rect x="98" y="22" width="89" height="292" rx="6" fill="#0D1F3C"/>
+  <rect x="-22" y="308" width="230" height="10" rx="5" fill="#D4A73A"/>
+  <g fill="#EAF4FF"><rect x="18" y="137" width="22" height="29"/><rect x="53" y="137" width="22" height="29"/><rect x="18" y="179" width="22" height="29"/><rect x="53" y="179" width="22" height="29"/><rect x="18" y="221" width="22" height="29"/><rect x="53" y="221" width="22" height="29"/>
+  <rect x="115" y="47" width="22" height="29"/><rect x="150" y="47" width="22" height="29"/><rect x="115" y="89" width="22" height="29"/><rect x="150" y="89" width="22" height="29"/><rect x="115" y="131" width="22" height="29"/><rect x="150" y="131" width="22" height="29"/><rect x="115" y="173" width="22" height="29"/><rect x="150" y="173" width="22" height="29"/><rect x="115" y="215" width="22" height="29"/><rect x="150" y="215" width="22" height="29"/></g>
+  <g fill="#D4A73A"><rect x="18" y="264" width="22" height="29"/><rect x="53" y="264" width="22" height="29"/><rect x="115" y="257" width="22" height="29"/></g>
+</g>
+<text x="68" y="458" fill="#65768A" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-size="28">인원과 실제 배정 주택 수는 다릅니다</text></svg>
