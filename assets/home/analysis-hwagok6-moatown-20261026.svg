@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560"><title>Rent Check 분석 카드</title><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0D1F3C"/><stop offset="1" stop-color="#244F76"/></linearGradient></defs>
+<rect width="900" height="560" fill="url(#g)"/>
+<path d="M0 470 235 320 450 385 670 240 900 325" stroke="#C9D6E5" stroke-width="18" opacity=".13" fill="none"/>
+<path d="M-10 345 210 230 450 285 720 140 920 205" stroke="#C9D6E5" stroke-width="14" opacity=".10" fill="none"/>
+<rect x="58" y="60" width="785" height="443" rx="30" fill="#FFFFFF" opacity=".09" stroke="#FFFFFF" stroke-opacity=".22"/>
+<text x="92" y="156" fill="#C9E6FE" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="56" font-weight="700">화곡6동 957-1 모아타운</text>
+<text x="92" y="295" fill="#FFFFFF" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="105" font-weight="800">조합설립인가</text>
+<rect x="92" y="348" width="667" height="12" rx="6" fill="#C1D8EC" opacity=".4"/>
+<rect x="92" y="348" width="260" height="12" rx="6" fill="#D4A73A"/>
+<circle cx="352" cy="354" r="23" fill="#D4A73A"/>
+<text x="95" y="437" fill="#F6DC9A" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="46">분담금·세대수는 아직 미확정</text>
+<text x="96" y="480" fill="#BBD2E8" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="26">2026.08.17 공개자료 확인 기준</text></svg>
