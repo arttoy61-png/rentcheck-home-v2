@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560" role="img" aria-labelledby="svgTitle svgDesc"><title id="svgTitle">재개발 관리처분계획 공람 안내</title><desc id="svgDesc">공람 30일 이상, 종전자산가격과 분담금, 의견제출 서류를 확인하는 이미지</desc>
+<rect width="900" height="560" fill="#EAF1F7"/>
+<rect x="40" y="39" width="820" height="482" rx="30" fill="#FFFFFF" stroke="#D8E4EF" stroke-width="3"/>
+<rect x="64" y="74" width="260" height="55" rx="27" fill="#0D1F3C"/>
+<text x="88" y="112" fill="#FFFFFF" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-size="29" font-weight="750">재개발 · 조합원</text>
+<text x="63" y="220" fill="#0D1F3C" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-size="70" font-weight="800">관리처분계획</text>
+<text x="65" y="305" fill="#1565C0" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-size="65" font-weight="800">공람 30일 이상</text>
+<rect x="66" y="349" width="466" height="64" rx="13" fill="#FFF5DC"/>
+<text x="82" y="393" fill="#544111" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-size="32" font-weight="700">권리가액 · 분담금 · 의견제출</text>
+<rect x="620" y="132" width="176" height="276" rx="16" fill="#D4E1EE" transform="rotate(7 708 270)"/>
+<rect x="590" y="111" width="192" height="286" rx="16" fill="#FFFFFF" stroke="#0D1F3C" stroke-width="7"/>
+<rect x="619" y="159" width="135" height="22" rx="6" fill="#1565C0"/>
+<path d="M622 236 l12 13 21 -25 M622 293 l12 13 21 -25" fill="none" stroke="#1565C0" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M678 242 H750 M678 301 H750" stroke="#8EAAC1" stroke-width="9" stroke-linecap="round"/>
+<text x="65" y="480" fill="#64768A" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-size="27">통지서의 실제 기한과 제출방법 확인</text></svg>
