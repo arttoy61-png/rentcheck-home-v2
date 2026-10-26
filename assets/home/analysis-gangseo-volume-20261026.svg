@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560"><title>Rent Check 분석 카드</title><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0D1F3C"/><stop offset="1" stop-color="#1766A7"/></linearGradient></defs>
+<rect width="900" height="560" fill="url(#g)"/>
+<circle cx="800" cy="70" r="190" fill="#ffffff" opacity=".055"/>
+<text x="72" y="106" fill="#C2E4FF" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="44" font-weight="700">강서구 실거래 공개 건수</text>
+<text x="72" y="260" fill="#FFFFFF" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="120" font-weight="800">603</text>
+<text x="320" y="254" fill="#D4A73A" font-family="sans-serif" font-size="105" font-weight="700">→</text>
+<text x="482" y="260" fill="#FFFFFF" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="120" font-weight="800">252</text>
+<text x="78" y="320" fill="#D4E8F7" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="44">2026년 4월</text>
+<text x="496" y="320" fill="#D4E8F7" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="44">2026년 8월</text>
+<rect x="78" y="364" width="322" height="21" rx="10" fill="#FFFFFF"/>
+<rect x="78" y="408" width="134" height="21" rx="10" fill="#D4A73A"/>
+<text x="76" y="508" fill="#CBD8E8" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="31">9월은 21일 기준 · 미완성 집계</text></svg>
