@@ -1,32 +1,32 @@
 {
   "cards": [
     {
-      "url": "/analysis/gangseo-august-2026/",
-      "category": "시세·실거래",
-      "image": "/assets/home/pexels-14452238.jpg",
-      "alt": "아파트 단지 항공 전경 자료 사진",
-      "date": "2026-09-01"
+      "url": "/blog/redevelopment-shop-business-compensation/",
+      "category": "재개발·정비",
+      "image": "/assets/home/redevelopment-shop-compensation-20261027.svg",
+      "alt": "재개발 상가의 영업손실 보상과 권리금·보증금 구분을 보여주는 안내 그래픽",
+      "date": "2026-10-26"
     },
     {
-      "url": "/analysis/ujangsan-hillstate/",
-      "category": "시세·실거래",
-      "image": "/assets/home/pexels-37323647.jpg",
-      "alt": "고층 주거 건물 자료 사진 · 분석 대상 단지 사진이 아닙니다",
-      "date": "2026-08-29"
+      "url": "/blog/redevelopment-management-plan-inspection/",
+      "category": "재개발·정비",
+      "image": "/assets/home/redevelopment-management-inspection-20261027.svg",
+      "alt": "관리처분계획 공람 30일 이상과 권리가액·분담금·의견제출 확인을 안내하는 그래픽",
+      "date": "2026-10-25"
     },
     {
-      "url": "/analysis/seoul-apartment-volume-price/",
-      "category": "시세·실거래",
-      "image": "/assets/home/pexels-27976252.jpg",
-      "alt": "강변 아파트 전경 자료 사진",
-      "date": "2026-08-25"
+      "url": "/blog/redevelopment-sale-application/",
+      "category": "재개발·정비",
+      "image": "/assets/home/redevelopment-sale-application-20261027.svg",
+      "alt": "재개발 조합원 분양신청의 30~60일 법정기간과 실제 마감일·접수증 확인 안내 그래픽",
+      "date": "2026-10-24"
     },
     {
-      "url": "/analysis/youth-universal-jeonse/",
-      "category": "청년·공공주택",
-      "image": "/assets/home/pexels-7578989.jpg",
-      "alt": "주택 모형을 든 사람 · 주거 안내 자료 사진",
-      "date": "2026-08-23"
+      "url": "/blog/moatown-general-sale-units/",
+      "category": "재개발·모아타운",
+      "image": "/assets/home/moatown-general-sale-units-20261027.svg",
+      "alt": "모아타운 일반분양 물량은 총세대수에서 조합원 수만 빼서 확정할 수 없다는 안내 그래픽",
+      "date": "2026-10-21"
     },
     {
       "url": "/analysis/gangseo-jeonse-trend/",
