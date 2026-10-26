@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560" role="img" aria-labelledby="svgTitle svgDesc"><title id="svgTitle">재개발 조합원 분양신청 기간과 접수증 안내</title><desc id="svgDesc">분양신청 30일부터 60일 법정기간과 실제 마감일, 접수증을 확인하는 이미지</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#13385C"/><stop offset="1" stop-color="#0D1F3C"/></linearGradient></defs>
+<rect width="900" height="560" fill="url(#bg)"/>
+<circle cx="860" cy="60" r="196" fill="#FFFFFF" opacity=".045"/>
+<rect x="56" y="56" width="222" height="53" rx="25" fill="#D4A73A"/>
+<text x="75" y="94" fill="#0D1F3C" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-weight="800" font-size="29">재개발 · 분양신청</text>
+<text x="60" y="226" fill="#FFFFFF" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-weight="800" font-size="78">조합원 분양신청</text>
+<text x="60" y="323" fill="#F3D486" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-weight="800" font-size="100">30~60일</text>
+<text x="64" y="392" fill="#D8E8F4" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-size="41" font-weight="700">마감일·접수증 확인</text>
+<rect x="617" y="325" width="216" height="163" rx="19" fill="#E7F0F9"/>
+<rect x="617" y="325" width="216" height="38" rx="16" fill="#2870A3"/>
+<path d="M657 303 v48 M790 303 v48" stroke="#C9E6F8" stroke-width="18" stroke-linecap="round"/>
+<text x="725" y="434" text-anchor="middle" fill="#0D1F3C" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-weight="800" font-size="50">접수증</text>
+<path d="M650 459 l18 17 28 -32" fill="none" stroke="#188D7F" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="65" y="500" fill="#BCD3E8" font-family="Noto Sans KR,Malgun Gothic,Apple SD Gothic Neo,sans-serif" font-size="29">연장 여부는 개별 공고에서 확인</text></svg>
