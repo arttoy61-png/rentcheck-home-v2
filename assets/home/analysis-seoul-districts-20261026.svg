@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560"><title>Rent Check 분석 카드</title><rect width="900" height="560" fill="#F0F5FB"/>
+<rect x="46" y="44" width="808" height="480" rx="32" fill="#FFFFFF"/>
+<text x="94" y="119" fill="#1565C0" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-weight="800" font-size="50">서울 25개 구 아파트</text>
+<rect x="88" y="165" width="340" height="285" rx="24" fill="#0D1F3C"/>
+<rect x="472" y="165" width="340" height="285" rx="24" fill="#1467A8"/>
+<text x="116" y="239" fill="#D9E9F6" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="36">거래량 1위</text>
+<text x="116" y="331" fill="#FFFFFF" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-weight="800" font-size="84">노원구</text>
+<text x="116" y="407" fill="#D4A73A" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-weight="800" font-size="53">689건</text>
+<text x="500" y="239" fill="#E1F0F8" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="36">중위가격 1위</text>
+<text x="500" y="331" fill="#FFFFFF" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-weight="800" font-size="84">강남구</text>
+<text x="500" y="407" fill="#FFE3A4" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-weight="800" font-size="53">27.5억</text>
+<text x="98" y="493" fill="#617083" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="30">2026년 7월 아파트 매매 신고 비교</text></svg>
