@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560"><title>Rent Check 분석 카드</title><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#E8F3FF"/><stop offset="1" stop-color="#BFDDF1"/></linearGradient></defs>
+<rect width="900" height="560" fill="url(#g)"/>
+<circle cx="775" cy="90" r="220" fill="#FFFFFF" opacity=".35"/>
+<rect x="56" y="54" width="788" height="450" rx="28" fill="#FFFFFF" opacity=".96"/>
+<rect x="56" y="54" width="20" height="450" rx="10" fill="#1565C0"/>
+<text x="105" y="152" fill="#1565C0" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-weight="800" font-size="60">우장산힐스테이트</text>
+<text x="105" y="280" fill="#0D1F3C" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-weight="800" font-size="112">84㎡</text>
+<text x="392" y="278" fill="#536479" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="41">주요 면적 분석</text>
+<rect x="105" y="334" width="197" height="82" rx="18" fill="#0D1F3C"/>
+<rect x="325" y="334" width="197" height="82" rx="18" fill="#1565C0"/>
+<rect x="545" y="334" width="197" height="82" rx="18" fill="#D4A73A"/>
+<text x="204" y="389" fill="#FFFFFF" text-anchor="middle" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-weight="800" font-size="49">매매</text>
+<text x="424" y="389" fill="#FFFFFF" text-anchor="middle" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-weight="800" font-size="49">전세</text>
+<text x="644" y="389" fill="#0D1F3C" text-anchor="middle" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-weight="800" font-size="49">월세</text>
+<text x="108" y="471" fill="#536479" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="29">국토부 최근 6개월 신고자료 분석</text></svg>
