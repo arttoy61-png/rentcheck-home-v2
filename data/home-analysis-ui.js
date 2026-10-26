@@ -39,8 +39,8 @@
     wrap.className='insight-all-wrap';
     const link=document.createElement('a');
     link.className='insight-all-link';
-    link.href='/analysis/';
-    link.textContent='홈페이지 분석글 전체보기 →';
+    link.href='/blog/all/';
+    link.textContent='전체 부동산 가이드 보기 →';
     wrap.append(link);
     track.insertAdjacentElement('afterend',wrap);
   }
