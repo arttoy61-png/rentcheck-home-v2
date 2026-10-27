@@ -68,7 +68,7 @@
       const period = Array.isArray(meta?.period) ? meta.period : [];
       if (period.length === 2) {
         const fmt = value => String(value || '').replaceAll('-', '.');
-        return `${fmt(period[0])}~${fmt(period[1])} · ${meta?.period_basis || '계약일 기준'} · 자료 생성 ${S.generated_at||'미확인'}${typeof apartmentDataSource!=='undefined'&&apartmentDataSource.startsWith('/')?' · 최신 로드 실패, 보관 자료 표시':''}`;
+        return `${fmt(period[0])}~${fmt(period[1])} · ${meta?.period_basis || '계약일 기준'} · ${S.collection?.status==='success'&&S.collection?.last_success_at?'수집 확인 '+S.collection.last_success_at:S.collection?.status==='partial'?'일부 수집만 성공':S.collection?.status==='failed'?'최근 수집 실패':'수집 성공 시각 미확인'} · 파일 생성 ${S.generated_at||'미확인'}${typeof apartmentDataSource!=='undefined'&&apartmentDataSource.startsWith('/')?' · 최신 로드 실패, 보관 자료 표시':''}`;
       }
     } catch (_) {}
     return '최근 6개월 · 계약일 기준';

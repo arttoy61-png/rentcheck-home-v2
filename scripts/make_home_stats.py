@@ -9,6 +9,7 @@ GitHub Actions workflow. This script only reads those copies and writes
 from __future__ import annotations
 
 import csv
+from collection_metadata import load_collection
 import heapq
 import json
 import re
@@ -183,6 +184,7 @@ def main() -> None:
 
     payload = {
         "schema_version": 2,
+        "collection": load_collection(CSV_PATH),
         "generated_at": datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
         "data_until": data_until.isoformat(),
         "source": "국토교통부 실거래가 공개시스템",
