@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-27T12:59:09+00:00",
-  "source_generated_at": "2026-10-27T17:59:48",
+  "generated_at": "2026-10-28T00:09:07+00:00",
+  "source_generated_at": "2026-10-28T07:14:59",
   "source_status": {
     "LH": {
       "count": 6,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 6,
       "carried_count": 8,
-      "failure_streak": 101
+      "failure_streak": 103
     },
     "SH": {
       "count": 17,
@@ -30,7 +30,7 @@
     "SEOUL": {
       "count": 7,
       "errors": [],
-      "excluded_noise": 16
+      "excluded_noise": 15
     },
     "TOTAL": {
       "count": 28,
@@ -80,7 +80,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311965",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.02.(월) ~ 11.12.(목) 18시까지",
-        "verified_at": "2026-10-27T17:59:32"
+        "verified_at": "2026-10-28T07:14:39"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311965/",
@@ -159,7 +159,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311908",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.23.(금) ~11.09.(월)",
-        "verified_at": "2026-10-27T17:59:40"
+        "verified_at": "2026-10-28T07:14:49"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311908/",
@@ -813,7 +813,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311349",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026. 10. 26.(월) ~ 2026.11. 06.(금) 18시까지",
-        "verified_at": "2026-10-27T17:59:48"
+        "verified_at": "2026-10-28T07:14:59"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-06T18:00:00+09:00",
@@ -855,7 +855,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311549",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.21.(수) ~ 10.28.(수)",
-        "verified_at": "2026-10-27T17:59:46"
+        "verified_at": "2026-10-28T07:14:56"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311549/",
@@ -900,7 +900,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311521",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.26.(월) ~ 2026.10.30.(금)",
-        "verified_at": "2026-10-27T17:59:44"
+        "verified_at": "2026-10-28T07:14:54"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311521/",
