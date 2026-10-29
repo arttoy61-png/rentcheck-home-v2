@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-29T00:31:48+00:00",
-  "source_generated_at": "2026-10-29T05:18:24",
+  "generated_at": "2026-10-29T01:56:26+00:00",
+  "source_generated_at": "2026-10-29T09:57:57",
   "source_status": {
     "LH": {
       "count": 6,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 6,
       "carried_count": 8,
-      "failure_streak": 106
+      "failure_streak": 107
     },
     "SH": {
       "count": 16,
@@ -55,8 +55,8 @@
       "published_at": "2026-10-28",
       "deadline": "2026-11-12",
       "open_state": "접수중",
-      "event": "수정",
-      "change": "수정",
+      "event": "신규",
+      "change": "동일",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [],
@@ -76,7 +76,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311962",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.28.(수) ~ 2026.11.12.(목) 18시까지",
-        "verified_at": "2026-10-29T05:18:05"
+        "verified_at": "2026-10-29T09:57:24"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-12T18:00:00+09:00",
@@ -98,8 +98,8 @@
       "published_at": "2026-10-28",
       "deadline": "",
       "open_state": "일정 확인",
-      "event": "수정",
-      "change": "수정",
+      "event": "신규",
+      "change": "동일",
       "status_text": "일정 확인 중",
       "is_gangseo": false,
       "keywords": [],
@@ -135,8 +135,8 @@
       "published_at": "2026-10-28",
       "deadline": "",
       "open_state": "일정 확인",
-      "event": "수정",
-      "change": "수정",
+      "event": "신규",
+      "change": "동일",
       "status_text": "일정 확인 중",
       "is_gangseo": false,
       "keywords": [
@@ -236,7 +236,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311965",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.02.(월) ~ 11.12.(목) 18시까지",
-        "verified_at": "2026-10-29T05:18:12"
+        "verified_at": "2026-10-29T09:57:35"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311965/",
@@ -332,7 +332,7 @@
       "deadline": "",
       "open_state": "일정 확인",
       "event": "수정",
-      "change": "신규",
+      "change": "동일",
       "status_text": "일정 확인 중",
       "is_gangseo": false,
       "keywords": [],
@@ -370,7 +370,7 @@
       "deadline": "",
       "open_state": "일정 확인",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "일정 확인 중",
       "is_gangseo": false,
       "keywords": [],
@@ -944,7 +944,7 @@
       "deadline": "",
       "open_state": "일정 확인",
       "event": "수정",
-      "change": "수정",
+      "change": "동일",
       "status_text": "일정 확인 중",
       "is_gangseo": false,
       "keywords": [],
@@ -1003,7 +1003,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311521",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.26.(월) ~ 2026.10.30.(금)",
-        "verified_at": "2026-10-29T05:18:24"
+        "verified_at": "2026-10-29T09:57:57"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311521/",
@@ -1024,8 +1024,8 @@
       "published_at": "",
       "deadline": "2026-11-09",
       "open_state": "접수중",
-      "event": "수정",
-      "change": "수정",
+      "event": "신규",
+      "change": "동일",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [],
@@ -1044,7 +1044,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311908",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.23.(금) ~11.09.(월)",
-        "verified_at": "2026-10-29T05:18:19"
+        "verified_at": "2026-10-29T09:57:49"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311908/",
