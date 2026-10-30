@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-30T02:08:02+00:00",
-  "source_generated_at": "2026-10-30T10:01:40",
+  "generated_at": "2026-10-30T13:51:30+00:00",
+  "source_generated_at": "2026-10-30T19:00:58",
   "source_status": {
     "LH": {
       "count": 6,
@@ -21,26 +21,26 @@
       ],
       "fresh_count": 6,
       "carried_count": 8,
-      "failure_streak": 110
+      "failure_streak": 111
     },
     "SH": {
-      "count": 17,
+      "count": 18,
       "errors": []
     },
     "SEOUL": {
       "count": 7,
       "errors": [],
-      "excluded_noise": 14
+      "excluded_noise": 16
     },
     "TOTAL": {
-      "count": 27,
+      "count": 29,
       "duplicates_removed": 5,
-      "excluded_non_housing": 1,
+      "excluded_non_housing": 2,
       "excluded_outside_seoul": 0,
       "published_count": 32
     }
   },
-  "recruitment_count": 28,
+  "recruitment_count": 26,
   "items": [
     {
       "id": "SH:seq:311962",
@@ -76,7 +76,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311962",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.28.(수) ~ 2026.11.12.(목) 18시까지",
-        "verified_at": "2026-10-30T10:01:08"
+        "verified_at": "2026-10-30T19:00:43"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-12T18:00:00+09:00",
@@ -195,126 +195,6 @@
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-312313/",
       "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=312313",
-      "official_link_label": "공식 모집공고 원문 →",
-      "indexable": false
-    },
-    {
-      "id": "SH:seq:311965",
-      "agency": "SH",
-      "agency_group": "SH",
-      "title": "강북구 신혼부부(수요자맞춤형)주택 1~4차 잔여세대 입주자 모집 공고",
-      "housing_types": [
-        "기타임대"
-      ],
-      "audiences": [
-        "신혼부부"
-      ],
-      "region": "서울",
-      "published_at": "2026-10-26",
-      "deadline": "2026-11-12",
-      "open_state": "접수예정",
-      "event": "신규",
-      "change": "동일",
-      "status_text": "",
-      "is_gangseo": false,
-      "keywords": [
-        "신혼"
-      ],
-      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311965",
-      "source": "SH 공식 주택임대 게시판",
-      "content_signature": "45cb4948828e4361736a9ebf3b1bb7e66c7aac5d14d7fb3ffde2659d0bbcec92",
-      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
-      "published_source": "official_list_registration",
-      "notice_kind": "recruitment",
-      "application_start": "2026-11-02",
-      "schedule_type": "single",
-      "deadline_precision": "date",
-      "schedule_source": "official_detail_html",
-      "schedule_note": "공식 상세본문 신청기간 기준입니다. 정확한 접수시각과 대상은 공고문을 확인하세요.",
-      "application_windows": [],
-      "schedule_evidence": {
-        "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311965",
-        "kind": "official_notice_body",
-        "excerpt": "접수기간 : 2026.11.02.(월) ~ 11.12.(목) 18시까지",
-        "verified_at": "2026-10-30T10:01:19"
-      },
-      "sh_schedule_version": 1,
-      "route": "/public-housing/notices/sh-311965/",
-      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311965",
-      "official_link_label": "공식 모집공고 원문 →",
-      "indexable": false
-    },
-    {
-      "id": "SH:seq:311987",
-      "agency": "SH",
-      "agency_group": "SH",
-      "title": "[토지지원 사회주택]유니버설디자인하우스_장안 입주자 모집 공고",
-      "housing_types": [
-        "기타임대"
-      ],
-      "audiences": [],
-      "region": "서울",
-      "published_at": "2026-10-26",
-      "deadline": "",
-      "open_state": "일정 확인",
-      "event": "신규",
-      "change": "동일",
-      "status_text": "일정 확인 중",
-      "is_gangseo": false,
-      "keywords": [],
-      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311987",
-      "source": "SH 공식 주택임대 게시판",
-      "content_signature": "416a68242b0b11d80ebf5383dd06855b72a18bc49fb714978a4f65c553efd7fc",
-      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
-      "published_source": "official_list_registration",
-      "notice_kind": "recruitment",
-      "application_start": "",
-      "schedule_type": "unknown",
-      "deadline_precision": "unknown",
-      "schedule_source": "unknown",
-      "schedule_note": "신청기간은 공식 공고문 확인이 필요합니다.",
-      "application_windows": [],
-      "schedule_evidence": {},
-      "sh_schedule_version": 1,
-      "route": "/public-housing/notices/sh-311987/",
-      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311987",
-      "official_link_label": "공식 모집공고 원문 →",
-      "indexable": false
-    },
-    {
-      "id": "SH:seq:312066",
-      "agency": "SH",
-      "agency_group": "SH",
-      "title": "2026년 재개발임대주택 입주자 모집(2026.9.9.공고) 심사서류 제출 안내",
-      "housing_types": [
-        "기타임대"
-      ],
-      "audiences": [],
-      "region": "서울",
-      "published_at": "2026-10-23",
-      "deadline": "",
-      "open_state": "일정 확인",
-      "event": "신규",
-      "change": "동일",
-      "status_text": "일정 확인 중",
-      "is_gangseo": false,
-      "keywords": [],
-      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=312066",
-      "source": "SH 공식 주택임대 게시판",
-      "content_signature": "6de5d5d1e4092fe06184c0dfe86df82a99648c12a00a04e571dff24baad618df",
-      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
-      "published_source": "official_list_registration",
-      "notice_kind": "recruitment",
-      "application_start": "",
-      "schedule_type": "unknown",
-      "deadline_precision": "unknown",
-      "schedule_source": "unknown",
-      "schedule_note": "신청기간은 공식 공고문 확인이 필요합니다.",
-      "application_windows": [],
-      "schedule_evidence": {},
-      "sh_schedule_version": 1,
-      "route": "/public-housing/notices/sh-312066/",
-      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=312066",
       "official_link_label": "공식 모집공고 원문 →",
       "indexable": false
     },
@@ -979,11 +859,11 @@
       ],
       "region": "서울",
       "published_at": "",
-      "deadline": "2026-10-30",
-      "open_state": "마감임박",
+      "deadline": "",
+      "open_state": "일정 확인",
       "event": "신규",
       "change": "동일",
-      "status_text": "",
+      "status_text": "일정 확인 중",
       "is_gangseo": false,
       "keywords": [
         "청년"
@@ -993,18 +873,13 @@
       "content_signature": "39ca2f6149549962368b6a33425a94f529a154dff517b86809b1b89db0a7c844",
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "notice_kind": "recruitment",
-      "application_start": "2026-10-26",
-      "schedule_type": "single",
-      "deadline_precision": "date",
-      "schedule_source": "official_detail_html",
-      "schedule_note": "공식 상세본문 신청기간 기준입니다. 정확한 접수시각과 대상은 공고문을 확인하세요.",
+      "application_start": "",
+      "schedule_type": "unknown",
+      "deadline_precision": "unknown",
+      "schedule_source": "unknown",
+      "schedule_note": "신청기간은 공식 공고문 확인이 필요합니다.",
       "application_windows": [],
-      "schedule_evidence": {
-        "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311521",
-        "kind": "official_notice_body",
-        "excerpt": "접수기간 : 2026.10.26.(월) ~ 2026.10.30.(금)",
-        "verified_at": "2026-10-30T10:01:40"
-      },
+      "schedule_evidence": {},
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311521/",
       "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311521",
@@ -1044,11 +919,56 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311908",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.23.(금) ~11.09.(월)",
-        "verified_at": "2026-10-30T10:01:33"
+        "verified_at": "2026-10-30T19:00:53"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311908/",
       "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311908",
+      "official_link_label": "공식 모집공고 원문 →",
+      "indexable": false
+    },
+    {
+      "id": "SH:seq:311965",
+      "agency": "SH",
+      "agency_group": "SH",
+      "title": "강북구 신혼부부(수요자맞춤형)주택 1~4차 잔여세대 입주자 모집 공고",
+      "housing_types": [
+        "기타임대"
+      ],
+      "audiences": [
+        "신혼부부"
+      ],
+      "region": "서울",
+      "published_at": "",
+      "deadline": "2026-11-12",
+      "open_state": "접수예정",
+      "event": "수정",
+      "change": "수정",
+      "status_text": "",
+      "is_gangseo": false,
+      "keywords": [
+        "신혼"
+      ],
+      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311965",
+      "source": "서울주거포털",
+      "content_signature": "a755b8c1babe985dddff05a3f005937499d0a3771dd4285f78c1a27046c62550",
+      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
+      "notice_kind": "recruitment",
+      "application_start": "2026-11-02",
+      "schedule_type": "single",
+      "deadline_precision": "date",
+      "schedule_source": "official_detail_html",
+      "schedule_note": "공식 상세본문 신청기간 기준입니다. 정확한 접수시각과 대상은 공고문을 확인하세요.",
+      "application_windows": [],
+      "schedule_evidence": {
+        "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311965",
+        "kind": "official_notice_body",
+        "excerpt": "접수기간 : 2026.11.02.(월) ~ 11.12.(목) 18시까지",
+        "verified_at": "2026-10-30T19:00:50"
+      },
+      "sh_schedule_version": 1,
+      "route": "/public-housing/notices/sh-311965/",
+      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311965",
       "official_link_label": "공식 모집공고 원문 →",
       "indexable": false
     }
