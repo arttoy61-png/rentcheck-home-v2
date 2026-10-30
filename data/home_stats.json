@@ -3,20 +3,28 @@
   "collection": {
     "schema_version": 1,
     "status": "success",
-    "attempted_at": "2026-10-29T00:00:50+00:00",
-    "last_success_at": "2026-10-29T00:00:50+00:00",
-    "snapshot_sha256": "9c5226a1b72ec968ba4557dec674a8768ddd48c5c3a8f14347a8bb440019944e",
+    "attempted_at": "2026-10-29T23:57:25+00:00",
+    "last_success_at": "2026-10-29T23:57:25+00:00",
+    "snapshot_sha256": "1de78057fb9901d50ab0ba507234e9e6a2664c91e9f3cadb39a2035a6f2b5519",
     "snapshot_changed": true,
     "expected_partitions": 144,
     "succeeded_partitions": 144,
     "cache_policy": "recent_two_months_live; older_months_may_use_cache"
   },
-  "generated_at": "2026-10-29T10:56:27+09:00",
-  "data_until": "2026-10-28",
+  "generated_at": "2026-10-30T09:30:43+09:00",
+  "data_until": "2026-10-29",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
+    {
+      "dong": "마곡동",
+      "name": "신안",
+      "area_m2": 59,
+      "amount_eok": 10.7,
+      "date": "2026.10.25",
+      "complex_id": "b993a4f4"
+    },
     {
       "dong": "염창동",
       "name": "월드메르디앙",
@@ -26,20 +34,12 @@
       "complex_id": "f33e97b4"
     },
     {
-      "dong": "화곡동",
-      "name": "AndPra레지던스",
-      "area_m2": 15,
-      "amount_eok": 1.1,
-      "date": "2026.10.22",
-      "complex_id": "fddb4f94"
-    },
-    {
-      "dong": "가양동",
-      "name": "가양6단지",
-      "area_m2": 50,
-      "amount_eok": 11.4,
-      "date": "2026.10.22",
-      "complex_id": "ece39e86"
+      "dong": "마곡동",
+      "name": "벽산",
+      "area_m2": 84,
+      "amount_eok": 10.15,
+      "date": "2026.10.24",
+      "complex_id": "8cb90772"
     }
   ],
   "monthly_trend": [
@@ -61,11 +61,11 @@
     },
     {
       "month": "2026-09",
-      "count": 257
+      "count": 258
     },
     {
       "month": "2026-10",
-      "count": 130
+      "count": 140
     }
   ]
 }
