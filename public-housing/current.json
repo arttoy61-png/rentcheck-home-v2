@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-30T13:51:30+00:00",
-  "source_generated_at": "2026-10-30T19:00:58",
+  "generated_at": "2026-10-31T01:47:49+00:00",
+  "source_generated_at": "2026-10-31T07:19:56",
   "source_status": {
     "LH": {
       "count": 6,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 6,
       "carried_count": 8,
-      "failure_streak": 111
+      "failure_streak": 113
     },
     "SH": {
       "count": 18,
@@ -76,7 +76,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311962",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.28.(수) ~ 2026.11.12.(목) 18시까지",
-        "verified_at": "2026-10-30T19:00:43"
+        "verified_at": "2026-10-31T07:19:41"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-12T18:00:00+09:00",
@@ -235,44 +235,6 @@
       "indexable": false
     },
     {
-      "id": "SHYOUTH:4117998bc143ca98ce07",
-      "agency": "SH",
-      "agency_group": "SH",
-      "title": "은평구 홀몸어르신 은빛주택(수요자맞춤형) 잔여세대 모집 공고",
-      "housing_types": [
-        "기타임대"
-      ],
-      "audiences": [
-        "고령자"
-      ],
-      "region": "서울",
-      "published_at": "2026-10-12",
-      "deadline": "",
-      "open_state": "일정 확인",
-      "event": "신규",
-      "change": "동일",
-      "status_text": "일정 확인 중",
-      "is_gangseo": false,
-      "keywords": [],
-      "url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
-      "source": "청년몽땅 SH 공고목록",
-      "content_signature": "7cd532ef31ec1a950f1256f3b6c2f38a205576d935e63a40524d5d5cd6325c68",
-      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
-      "notice_kind": "recruitment",
-      "application_start": "",
-      "schedule_type": "unknown",
-      "deadline_precision": "unknown",
-      "schedule_source": "unknown",
-      "schedule_note": "신청기간은 공식 공고문 확인이 필요합니다.",
-      "application_windows": [],
-      "schedule_evidence": {},
-      "sh_schedule_version": 1,
-      "route": "/public-housing/notices/shyouth-4117998bc143ca98ce07/",
-      "official_url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
-      "official_link_label": "기관 공고목록에서 확인 →",
-      "indexable": false
-    },
-    {
       "id": "LH:panId:2015122300020843",
       "agency": "LH",
       "agency_group": "LH",
@@ -385,6 +347,42 @@
       "schedule_evidence": {},
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/shyouth-e14f796069d603741e53/",
+      "official_url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
+      "official_link_label": "기관 공고목록에서 확인 →",
+      "indexable": false
+    },
+    {
+      "id": "SHYOUTH:1bc36f4d0dee04087287",
+      "agency": "SH",
+      "agency_group": "SH",
+      "title": "2026년 신정도시마을 잔여세대 입주자모집공고(26. 9. 23.)",
+      "housing_types": [
+        "기타임대"
+      ],
+      "audiences": [],
+      "region": "서울",
+      "published_at": "2026-09-23",
+      "deadline": "",
+      "open_state": "일정 확인",
+      "event": "신규",
+      "change": "동일",
+      "status_text": "일정 확인 중",
+      "is_gangseo": false,
+      "keywords": [],
+      "url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
+      "source": "청년몽땅 SH 공고목록",
+      "content_signature": "2b94b5bc41fabe7ff5572a92273edc372a2fd6289f4597f5d1945cae345f74ba",
+      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
+      "notice_kind": "recruitment",
+      "application_start": "",
+      "schedule_type": "unknown",
+      "deadline_precision": "unknown",
+      "schedule_source": "unknown",
+      "schedule_note": "신청기간은 공식 공고문 확인이 필요합니다.",
+      "application_windows": [],
+      "schedule_evidence": {},
+      "sh_schedule_version": 1,
+      "route": "/public-housing/notices/shyouth-1bc36f4d0dee04087287/",
       "official_url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
       "official_link_label": "기관 공고목록에서 확인 →",
       "indexable": false
@@ -847,42 +845,46 @@
       "indexable": false
     },
     {
-      "id": "SH:seq:311521",
+      "id": "SH:seq:311349",
       "agency": "SH",
       "agency_group": "SH",
-      "title": "서초구 청년예술인주택 서리풀 청년아트타운(수요자맞춤형) 잔여세대 모집 공고",
+      "title": "은평구 홀몸어르신 은빛주택(수요자맞춤형) 잔여세대 모집 공고",
       "housing_types": [
         "기타임대"
       ],
       "audiences": [
-        "청년"
+        "고령자"
       ],
       "region": "서울",
       "published_at": "",
-      "deadline": "",
-      "open_state": "일정 확인",
+      "deadline": "2026-11-06",
+      "open_state": "접수중",
       "event": "신규",
       "change": "동일",
-      "status_text": "일정 확인 중",
+      "status_text": "",
       "is_gangseo": false,
-      "keywords": [
-        "청년"
-      ],
-      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311521",
+      "keywords": [],
+      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311349",
       "source": "서울주거포털",
-      "content_signature": "39ca2f6149549962368b6a33425a94f529a154dff517b86809b1b89db0a7c844",
+      "content_signature": "b5946bb45bc6dfe17c50ebf810141322c0a0af24be5c75944868dd90a9fd2a93",
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "notice_kind": "recruitment",
-      "application_start": "",
-      "schedule_type": "unknown",
-      "deadline_precision": "unknown",
-      "schedule_source": "unknown",
-      "schedule_note": "신청기간은 공식 공고문 확인이 필요합니다.",
+      "application_start": "2026-10-26",
+      "schedule_type": "single",
+      "deadline_precision": "minute",
+      "schedule_source": "official_detail_html",
+      "schedule_note": "공식 상세본문 신청기간 기준입니다. 정확한 접수시각과 대상은 공고문을 확인하세요.",
       "application_windows": [],
-      "schedule_evidence": {},
+      "schedule_evidence": {
+        "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311349",
+        "kind": "official_notice_body",
+        "excerpt": "접수기간 : 2026. 10. 26.(월) ~ 2026.11. 06.(금) 18시까지",
+        "verified_at": "2026-10-31T07:19:56"
+      },
       "sh_schedule_version": 1,
-      "route": "/public-housing/notices/sh-311521/",
-      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311521",
+      "deadline_at": "2026-11-06T18:00:00+09:00",
+      "route": "/public-housing/notices/sh-311349/",
+      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311349",
       "official_link_label": "공식 모집공고 원문 →",
       "indexable": false
     },
@@ -919,7 +921,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311908",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.23.(금) ~11.09.(월)",
-        "verified_at": "2026-10-30T19:00:53"
+        "verified_at": "2026-10-31T07:19:51"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311908/",
@@ -942,8 +944,8 @@
       "published_at": "",
       "deadline": "2026-11-12",
       "open_state": "접수예정",
-      "event": "수정",
-      "change": "수정",
+      "event": "신규",
+      "change": "동일",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [
@@ -964,7 +966,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311965",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.02.(월) ~ 11.12.(목) 18시까지",
-        "verified_at": "2026-10-30T19:00:50"
+        "verified_at": "2026-10-31T07:19:48"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311965/",
