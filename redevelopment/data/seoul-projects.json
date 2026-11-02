@@ -152773,10 +152773,10 @@
     "agency": "서울특별시 정비사업 정보몽땅",
     "address": "서울특별시 양천구 신정동 922",
     "representative_lot": "신정동 922",
-    "summary": "재개발(주택정비형) · 정비계획 수립",
+    "summary": "정비계획 수립 · 정비계획·구역 지정(안) 주민공람 2026.10.15~11.16 · 설명회 11.4 10:00",
     "updated": null,
-    "record_updated_at": null,
-    "latest_event_date": null,
+    "record_updated_at": "2026-11-02T23:20:22.529155+00:00",
+    "latest_event_date": "2026-11-02",
     "collected_at": "2026-10-09T05:17:21.962151+00:00",
     "operation_status": "운영",
     "operation_stage": "추진주체구성전",
@@ -152800,18 +152800,57 @@
       [
         "대표지번",
         "신정동 922"
+      ],
+      [
+        "주민공람",
+        "2026.10.15~11.16 · 정비계획 결정 및 정비구역 지정(안)"
+      ],
+      [
+        "주민설명회",
+        "2026.11.4 10:00 · 해누리타운"
+      ],
+      [
+        "의견 제출",
+        "공람기간 내 양천구청 6층 도시계획과 서면 제출"
+      ],
+      [
+        "담당 문의",
+        "02-2620-3512"
+      ],
+      [
+        "공람안 구역면적",
+        "95,475.7㎡ (2026.10.15 공고안)"
+      ],
+      [
+        "공람안 계획세대수",
+        "2,177세대 (2026.10.15 공고안 · 확정 분양물량 아님)"
       ]
     ],
     "timeline": [],
-    "events": [],
-    "warning": "목록의 현재 진행단계와 실제 단계 발생일은 구분합니다. 원문 수정일은 미공개이며 수집일을 사업 변경일로 표시하지 않습니다.",
+    "events": [
+      {
+        "date": "2026-10-15",
+        "stage": "정비계획 수립",
+        "title": "정비계획 결정 및 정비구역 지정(안) 주민공람 공고",
+        "detail": "양천구 공고 제2026-1788호 · 공람 2026.10.15~11.16 · 공람기간 내 도시계획과 서면 의견 제출",
+        "source_url": "https://eminwon.yangcheon.go.kr/emwp/jsp/ofr/FileDown.jsp?user_file_nm=261013_%EC%8B%A0%EC%A0%954%EB%8F%99+922%EB%B2%88%EC%A7%80+%EC%9D%BC%EB%8C%80+%EC%A3%BC%ED%83%9D%EC%A0%95%EB%B9%84%ED%98%95+%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%82%AC%EC%97%85+%EC%A0%95%EB%B9%84%EA%B3%84%ED%9A%8D%28%EC%95%88%29+%EC%A3%BC%EB%AF%BC%EA%B3%B5%EB%9E%8C+%EA%B3%B5%EA%B3%A0%EB%AC%B8.pdf&sys_file_nm=261013_%EC%8B%A0%EC%A0%954%EB%8F%99+922%EB%B2%88%EC%A7%80+%EC%9D%BC%EB%8C%80+%EC%A3%BC%ED%83%9D%EC%A0%95%EB%B9%84%ED%98%95+%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%82%AC%EC%97%85+%EC%A0%95%EB%B9%84%EA%B3%84%ED%9A%8D%28%EC%95%88%29+%EC%A3%BC%EB%AF%BC%EA%B3%B5%EB%9E%8C+%EA%B3%B5%EA%B3%A0%EB%AC%B8_ofr_ofr_y4lBL14PNBg6gQCa_20261013160925505_1.pdf&file_path=%2Fntishome%2Ffile%2Fupload%2Fofr%2Fofr%2F20261013"
+      },
+      {
+        "date": "2026-11-02",
+        "stage": "정비계획 수립",
+        "title": "주민설명회 일정 안내",
+        "detail": "양천구 공식 보도: 2026.11.4 오전10시 해누리타운 설명회 예정",
+        "source_url": "https://www.yangcheon.go.kr/site/yangcheon/ex/bbs/View.do?cbIdx=290&bcIdx=315701"
+      }
+    ],
+    "warning": "2026.10.15 주민공람안과 2026.11.2 설명회 안내를 추가 확인했습니다. 정비구역 지정 완료가 아니며 계획은 변경될 수 있습니다. 전체 추진경과와 지도 좌표·법정 경계는 미확인입니다. 공식 도시계획 지도 링크는 공람공고 PDF이며 13쪽에서 구역도·계획도를 볼 수 있습니다.",
     "source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=sinjeong4-922",
     "sourceLabel": "정보몽땅 공식 사업장 보기",
     "list_source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=9&pageSize=100",
     "coordinates": null,
     "geometry": null,
     "official_map_record_code": null,
-    "official_map_url": null,
+    "official_map_url": "https://eminwon.yangcheon.go.kr/emwp/jsp/ofr/FileDown.jsp?user_file_nm=261013_%EC%8B%A0%EC%A0%954%EB%8F%99+922%EB%B2%88%EC%A7%80+%EC%9D%BC%EB%8C%80+%EC%A3%BC%ED%83%9D%EC%A0%95%EB%B9%84%ED%98%95+%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%82%AC%EC%97%85+%EC%A0%95%EB%B9%84%EA%B3%84%ED%9A%8D%28%EC%95%88%29+%EC%A3%BC%EB%AF%BC%EA%B3%B5%EB%9E%8C+%EA%B3%B5%EA%B3%A0%EB%AC%B8.pdf&sys_file_nm=261013_%EC%8B%A0%EC%A0%954%EB%8F%99+922%EB%B2%88%EC%A7%80+%EC%9D%BC%EB%8C%80+%EC%A3%BC%ED%83%9D%EC%A0%95%EB%B9%84%ED%98%95+%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%82%AC%EC%97%85+%EC%A0%95%EB%B9%84%EA%B3%84%ED%9A%8D%28%EC%95%88%29+%EC%A3%BC%EB%AF%BC%EA%B3%B5%EB%9E%8C+%EA%B3%B5%EA%B3%A0%EB%AC%B8_ofr_ofr_y4lBL14PNBg6gQCa_20261013160925505_1.pdf&file_path=%2Fntishome%2Ffile%2Fupload%2Fofr%2Fofr%2F20261013",
     "location": {
       "representative_address": "서울특별시 양천구 신정동 922",
       "address_source": "https://cleanup.seoul.go.kr/cleanup/bsnssttus/lscrMainIndx.do?cpage=9&pageSize=100",
@@ -152821,7 +152860,7 @@
       "list_verified": true,
       "details_verified": false,
       "coordinates_verified": false,
-      "dates_verified": false,
+      "dates_verified": true,
       "original_row_number": 1045,
       "workbook_row_number": 851,
       "geometry_verified": false
@@ -152829,7 +152868,20 @@
     "geometry_verified": false,
     "geometry_path": null,
     "geometry_source": null,
-    "geometry_names": []
+    "geometry_names": [],
+    "official_name": "신정4동 922번지 일대 주택정비형 재개발사업",
+    "supplement_sources": [
+      {
+        "url": "https://eminwon.yangcheon.go.kr/emwp/jsp/ofr/FileDown.jsp?user_file_nm=261013_%EC%8B%A0%EC%A0%954%EB%8F%99+922%EB%B2%88%EC%A7%80+%EC%9D%BC%EB%8C%80+%EC%A3%BC%ED%83%9D%EC%A0%95%EB%B9%84%ED%98%95+%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%82%AC%EC%97%85+%EC%A0%95%EB%B9%84%EA%B3%84%ED%9A%8D%28%EC%95%88%29+%EC%A3%BC%EB%AF%BC%EA%B3%B5%EB%9E%8C+%EA%B3%B5%EA%B3%A0%EB%AC%B8.pdf&sys_file_nm=261013_%EC%8B%A0%EC%A0%954%EB%8F%99+922%EB%B2%88%EC%A7%80+%EC%9D%BC%EB%8C%80+%EC%A3%BC%ED%83%9D%EC%A0%95%EB%B9%84%ED%98%95+%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%82%AC%EC%97%85+%EC%A0%95%EB%B9%84%EA%B3%84%ED%9A%8D%28%EC%95%88%29+%EC%A3%BC%EB%AF%BC%EA%B3%B5%EB%9E%8C+%EA%B3%B5%EA%B3%A0%EB%AC%B8_ofr_ofr_y4lBL14PNBg6gQCa_20261013160925505_1.pdf&file_path=%2Fntishome%2Ffile%2Fupload%2Fofr%2Fofr%2F20261013",
+        "published_at": "2026-10-15",
+        "label": "양천구 공고 제2026-1788호 · 주민공람안 및 13쪽 구역도"
+      },
+      {
+        "url": "https://www.yangcheon.go.kr/site/yangcheon/ex/bbs/View.do?cbIdx=290&bcIdx=315701",
+        "published_at": "2026-11-02",
+        "label": "양천구 주민설명회 공식 안내"
+      }
+    ]
   },
   {
     "id": "cleanup-rgw5lT43",
