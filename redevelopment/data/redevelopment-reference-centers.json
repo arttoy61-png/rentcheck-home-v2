@@ -2753,6 +2753,53 @@
       "catalog_sha256": "8b42552294bcb0a6ba9198d30f0820eae94f104bdeba28c15502f23aaa980759",
       "official_overview_source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=650900000560N91&div=sumry&stepSeCode=102",
       "limitation": "공식 사업장 대표지번 잠원동 70에 정확히 일치하는 기존 검증 저장좌표를 연결한 참고 위치입니다. 사업구역 경계, 필지 포함, 건물 출입구, 실거래가 구역 내부에서 발생했는지는 검증하지 않았습니다. 인근 거래는 주소 좌표가 연결된 계약만 보여줍니다."
+    },
+    {
+      "project_id": "cleanup-sinjeong4-922",
+      "basis": "official_area_reference_point",
+      "point": [
+        37.5261945093629,
+        126.85292761336555
+      ],
+      "verified": false,
+      "geometry_verified": false,
+      "coordinate_verified": false,
+      "source": "https://urban.seoul.go.kr/view/map/main.html?presentSn=11000UQ120PS202505310025",
+      "official_address": "서울특별시 양천구 신정동 922",
+      "reviewed_at": "2026-11-02T23:46:42.712107+00:00",
+      "identity": {
+        "project_id": "cleanup-sinjeong4-922",
+        "catalog_source": "https://cleanup.seoul.go.kr/cafe/mainIndx.do?cafeUrl=sinjeong4-922",
+        "catalog_address": "서울특별시 양천구 신정동 922",
+        "catalog_title": "신정4동 922번지 일대 주택정비형 재개발사업",
+        "district": "양천구"
+      },
+      "catalog_sha256": "50fd9214c4aebabbb523ef5aed5d7c9ee8b870569af3b7119f602ceb237d1264",
+      "source_evidence": {
+        "main_sha256": "de0f49d6de43f79bfb99fc0711f808ec4b113dd8850f2fc40b6185a87bb179d1",
+        "overview_sha256": "5985a94c76cd86a84b7910e04ec9adfc5bad860d397b486654f3a77cce164f50",
+        "observed_cafe_id": "470900001547g08",
+        "overview_source": "https://cleanup.seoul.go.kr/cafe/mastr-cleanup-bsnsSumry/execute.do?cafeId=470900001547g08&div=sumry&stepSeCode=103",
+        "source_checked_at": "2026-11-02T23:46:42.712107+00:00",
+        "identity_method": "official_project_search_presentSn_and_cleanup_slug_exact_match"
+      },
+      "limitation": "서울시 사업 GIS의 같은 현장 내부 참고점입니다. GIS 속성면적 84,186㎡·형상면적 85,217.666㎡와 2026.10.15 공람안 95,475.7㎡ 사이 차이가 있어 최신 공람경계로 표시하지 않습니다. 신정동 922 필지의 정확한 주소 좌표가 아니며, 법정 경계·필지 포함 여부 판단에 사용할 수 없습니다.",
+      "source_record_code": "11000UQ120PS202505310025",
+      "source_object_id": 119195,
+      "source_area_name": "신정4동 922 일대",
+      "source_snapshot_sha256": "bb061d72899b190b9c81bffa7f2249e333ce44594d2d95c175650f8e8e54754c",
+      "source_search_snapshot_sha256": "f2673b26bf488a31368ce44f51d1ed472ff42fa23c24cf6f52d44b7434ab7805",
+      "coordinate_checked_at": "2026-11-02T23:46:42.712107+00:00",
+      "point_method": "area_weighted_centroid_of_largest_ring_local_equirectangular",
+      "point_inside_saved_source": true,
+      "source_scope_area": {
+        "gis_m2": 85217.66616326,
+        "gis_attribute_m2": 84186,
+        "overview_m2": 95475.7,
+        "difference_m2": 10258.03383674
+      },
+      "source_component_index": 0,
+      "confidence": "official_map_code_and_named_area_address_match"
     }
   ]
 }
