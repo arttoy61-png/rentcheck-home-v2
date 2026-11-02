@@ -3,15 +3,15 @@
   "collection": {
     "schema_version": 1,
     "status": "success",
-    "attempted_at": "2026-11-01T13:16:20+00:00",
-    "last_success_at": "2026-11-01T13:16:20+00:00",
-    "snapshot_sha256": "e37b79f5fca9a10511201f41cc7fdda3e5450accefe7be9349d9acc1fcde336a",
-    "snapshot_changed": false,
+    "attempted_at": "2026-11-01T23:35:48+00:00",
+    "last_success_at": "2026-11-01T23:35:48+00:00",
+    "snapshot_sha256": "fc3f713b8ee5dc1a4af3c174d9d43a8bb277b8e83fad418fe50cbd40d5d6bae6",
+    "snapshot_changed": true,
     "expected_partitions": 144,
     "succeeded_partitions": 144,
     "cache_policy": "recent_two_months_live; older_months_may_use_cache"
   },
-  "generated_at": "2026-11-01T23:03:21+09:00",
+  "generated_at": "2026-11-02T09:03:31+09:00",
   "data_until": "2026-10-30",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
@@ -65,7 +65,7 @@
     },
     {
       "month": "2026-10",
-      "count": 148
+      "count": 159
     }
   ]
 }
