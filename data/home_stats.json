@@ -3,20 +3,36 @@
   "collection": {
     "schema_version": 1,
     "status": "success",
-    "attempted_at": "2026-11-02T15:42:53+00:00",
-    "last_success_at": "2026-11-02T15:42:53+00:00",
-    "snapshot_sha256": "fc3f713b8ee5dc1a4af3c174d9d43a8bb277b8e83fad418fe50cbd40d5d6bae6",
-    "snapshot_changed": false,
+    "attempted_at": "2026-11-03T02:18:38+00:00",
+    "last_success_at": "2026-11-03T02:18:38+00:00",
+    "snapshot_sha256": "e6fb4f0f6195830df92300f659cf2b2cfc1d3c3a8008b8a6475eb43d8fc63d7a",
+    "snapshot_changed": true,
     "expected_partitions": 144,
     "succeeded_partitions": 144,
     "cache_policy": "recent_two_months_live; older_months_may_use_cache"
   },
-  "generated_at": "2026-11-03T07:21:04+09:00",
-  "data_until": "2026-10-30",
+  "generated_at": "2026-11-03T11:43:03+09:00",
+  "data_until": "2026-11-02",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
+    {
+      "dong": "방화동",
+      "name": "방화4단지",
+      "area_m2": 100,
+      "amount_eok": 10.6,
+      "date": "2026.10.30",
+      "complex_id": "d0035e6d"
+    },
+    {
+      "dong": "화곡동",
+      "name": "강서힐스테이트",
+      "area_m2": 84,
+      "amount_eok": 16.43,
+      "date": "2026.10.30",
+      "complex_id": "f2189fe7"
+    },
     {
       "dong": "내발산동",
       "name": "롯데1차",
@@ -24,29 +40,9 @@
       "amount_eok": 9.05,
       "date": "2026.10.29",
       "complex_id": "285ba6f5"
-    },
-    {
-      "dong": "등촌동",
-      "name": "등촌1,2단지주공아파트",
-      "area_m2": 50,
-      "amount_eok": 9.85,
-      "date": "2026.10.27",
-      "complex_id": "250fbb3b"
-    },
-    {
-      "dong": "마곡동",
-      "name": "벽산",
-      "area_m2": 115,
-      "amount_eok": 11.1,
-      "date": "2026.10.27",
-      "complex_id": "8cb90772"
     }
   ],
   "monthly_trend": [
-    {
-      "month": "2026-05",
-      "count": 568
-    },
     {
       "month": "2026-06",
       "count": 370
@@ -65,7 +61,11 @@
     },
     {
       "month": "2026-10",
-      "count": 159
+      "count": 167
+    },
+    {
+      "month": "2026-11",
+      "count": 0
     }
   ]
 }
