@@ -25,13 +25,12 @@ class HomeDisplay(unittest.TestCase):
         self.addCleanup(page.close)
         payload=json.loads((HOME/'data/home_stats.json').read_text(encoding='utf-8'))
         payload['generated_at']='2099-01-01T00:00:00+00:00'
-        if collection is not None: payload['collection']=collection
+        payload['collection']=collection
         page.route('**/*',lambda route:route.continue_() if route.request.url.startswith(self.url) else route.abort())
         page.route('**/data/home_stats.json',lambda route:route.fulfill(json=payload))
         page.goto(self.url,wait_until='networkidle');page.wait_for_function("document.querySelector('#dealTicker .deal-ticker-list') !== null")
         close=page.locator('.rc-new-alert__close')
         if close.is_visible(): close.click()
-        self.assertTrue(page.locator('#heroStale').is_visible())
         return page
     def test_missing_metadata_visible_despite_new_generation(self):
         page=self.render();self.assertEqual(page.locator('#heroStale').inner_text(),'수집 성공 시각 미확인')
@@ -44,9 +43,31 @@ class HomeDisplay(unittest.TestCase):
         self.assertIn('일부 수집만 성공',page.locator('#heroStale').inner_text())
         self.assertLessEqual(page.evaluate('document.documentElement.scrollWidth'),390)
         (ROOT/'evidence').mkdir(parents=True,exist_ok=True);page.screenshot(path=str(ROOT/'evidence/home-partial-mobile.png'))
-    def test_success_displays_collection_not_generation(self):
-        page=self.render({'status':'success','last_success_at':'2026-10-27T06:00:00Z'})
-        text=page.locator('#heroStale').inner_text();self.assertIn('2026-10-27',text);self.assertNotIn('2099',text)
-        self.assertIn('최근 계약일',page.locator('#heroLive').inner_text())
+    def test_success_hidden_after_load_refresh_and_warning_recovery(self):
+        from datetime import datetime, timezone
+        for viewport in ({'width':1280,'height':900},{'width':390,'height':844}):
+            page=self.render({'status':'success','last_success_at':datetime.now(timezone.utc).isoformat()},viewport)
+            for _ in range(2):
+                self.assertFalse(page.locator('#heroStale').is_visible())
+                self.assertEqual(page.locator('#heroStale').text_content(),'')
+                self.assertIn('최근 계약일',page.locator('#heroLive').inner_text())
+                self.assertGreater(page.locator('#dealTicker .deal-ticker-row').count(),0)
+                self.assertTrue(page.locator('#dealTicker .deal-ticker-row').first.get_attribute('href').startswith('tools/apartment/'))
+                page.reload(wait_until='networkidle')
+            page.evaluate("document.querySelector('#heroStale').hidden=false; document.querySelector('#heroStale').textContent='최근 수집 실패'")
+            page.evaluate('loadHomeStats()')
+            self.assertFalse(page.locator('#heroStale').is_visible())
+            self.assertEqual(page.locator('#heroStale').text_content(),'')
+    def test_stale_success_keeps_warning_without_timestamp(self):
+        page=self.render({'status':'success','last_success_at':'2020-01-01T00:00:00Z'})
+        self.assertTrue(page.locator('#heroStale').is_visible())
+        self.assertEqual(page.locator('#heroStale').inner_text(),'최근 수집 확인 지연')
+    def test_initial_html_has_no_fallback_flash(self):
+        page=self.browser.new_page(java_script_enabled=False)
+        self.addCleanup(page.close)
+        page.route('**/*',lambda route:route.continue_() if route.request.url.startswith(self.url) else route.abort())
+        page.goto(self.url)
+        self.assertFalse(page.locator('#heroStale').is_visible())
+        self.assertEqual(page.locator('#heroStale').text_content(),'')
 
 if __name__=='__main__':unittest.main()
