@@ -3,20 +3,28 @@
   "collection": {
     "schema_version": 1,
     "status": "success",
-    "attempted_at": "2026-11-04T00:37:21+00:00",
-    "last_success_at": "2026-11-04T00:37:21+00:00",
-    "snapshot_sha256": "1b149013e130218299bac5b280ff341ba3eb3175a11019acba822f91a1bea76d",
+    "attempted_at": "2026-11-05T00:53:53+00:00",
+    "last_success_at": "2026-11-05T00:53:53+00:00",
+    "snapshot_sha256": "2a3fe7ebc99066b737165da60aa7974b0dff09109714a98ab9bc89c53d326c9a",
     "snapshot_changed": true,
     "expected_partitions": 144,
     "succeeded_partitions": 144,
     "cache_policy": "recent_two_months_live; older_months_may_use_cache"
   },
-  "generated_at": "2026-11-04T11:41:10+09:00",
-  "data_until": "2026-11-03",
+  "generated_at": "2026-11-05T10:11:05+09:00",
+  "data_until": "2026-11-04",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
+    {
+      "dong": "방화동",
+      "name": "한미(286-1)",
+      "area_m2": 47,
+      "amount_eok": 4.75,
+      "date": "2026.11.02",
+      "complex_id": "51958822"
+    },
     {
       "dong": "염창동",
       "name": "태영",
@@ -26,20 +34,12 @@
       "complex_id": "ff15e139"
     },
     {
-      "dong": "마곡동",
-      "name": "마곡13단지힐스테이트마스터",
-      "area_m2": 59,
-      "amount_eok": 16.8,
-      "date": "2026.10.31",
-      "complex_id": "6576ba12"
-    },
-    {
-      "dong": "방화동",
-      "name": "방화4단지",
-      "area_m2": 100,
-      "amount_eok": 10.6,
-      "date": "2026.10.30",
-      "complex_id": "d0035e6d"
+      "dong": "화곡동",
+      "name": "NS파크APT",
+      "area_m2": 29,
+      "amount_eok": 2.8,
+      "date": "2026.11.01",
+      "complex_id": "31e90757"
     }
   ],
   "monthly_trend": [
@@ -61,11 +61,11 @@
     },
     {
       "month": "2026-10",
-      "count": 183
+      "count": 192
     },
     {
       "month": "2026-11",
-      "count": 1
+      "count": 3
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-04T02:41:09+00:00",
-  "source_generated_at": "2026-11-04T08:22:50",
+  "generated_at": "2026-11-05T01:11:04+00:00",
+  "source_generated_at": "2026-11-05T06:21:36",
   "source_status": {
     "LH": {
       "count": 6,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 6,
       "carried_count": 8,
-      "failure_streak": 126
+      "failure_streak": 129
     },
     "SH": {
       "count": 21,
@@ -35,12 +35,12 @@
     "TOTAL": {
       "count": 33,
       "duplicates_removed": 5,
-      "excluded_non_housing": 2,
+      "excluded_non_housing": 3,
       "excluded_outside_seoul": 0,
-      "published_count": 34
+      "published_count": 33
     }
   },
-  "recruitment_count": 26,
+  "recruitment_count": 25,
   "items": [
     {
       "id": "SH:seq:312351",
@@ -76,49 +76,6 @@
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-312351/",
       "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=312351",
-      "official_link_label": "공식 모집공고 원문 →",
-      "indexable": false
-    },
-    {
-      "id": "SH:seq:312053",
-      "agency": "SH",
-      "agency_group": "SH",
-      "title": "[청년형] 특화형 매입임대주택(구로구) 입주자 모집 공고(운영기관 : 마을과집 협동조합)",
-      "housing_types": [
-        "매입임대"
-      ],
-      "audiences": [
-        "청년"
-      ],
-      "region": "서울",
-      "published_at": "2026-11-02",
-      "deadline": "",
-      "open_state": "일정 확인",
-      "event": "신규",
-      "change": "동일",
-      "status_text": "일정 확인 중",
-      "is_gangseo": false,
-      "keywords": [
-        "청년",
-        "매입임대",
-        "협동조합"
-      ],
-      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=312053",
-      "source": "SH 공식 주택임대 게시판",
-      "content_signature": "e4b6615baf09efc93c304f46b7fceb1f894456e25e21fce08d7849e70bdfeecc",
-      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
-      "published_source": "official_list_registration",
-      "notice_kind": "recruitment",
-      "application_start": "",
-      "schedule_type": "unknown",
-      "deadline_precision": "unknown",
-      "schedule_source": "unknown",
-      "schedule_note": "신청기간은 공식 공고문 확인이 필요합니다.",
-      "application_windows": [],
-      "schedule_evidence": {},
-      "sh_schedule_version": 1,
-      "route": "/public-housing/notices/sh-312053/",
-      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=312053",
       "official_link_label": "공식 모집공고 원문 →",
       "indexable": false
     },
@@ -803,7 +760,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311349",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026. 10. 26.(월) ~ 2026.11. 06.(금) 18시까지",
-        "verified_at": "2026-11-04T08:22:50"
+        "verified_at": "2026-11-05T06:21:36"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-06T18:00:00+09:00",
@@ -845,7 +802,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311908",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.23.(금) ~11.09.(월)",
-        "verified_at": "2026-11-04T08:22:46"
+        "verified_at": "2026-11-05T06:21:31"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311908/",
@@ -886,7 +843,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311962",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.28.(수) ~ 2026.11.12.(목) 18시까지",
-        "verified_at": "2026-11-04T08:22:40"
+        "verified_at": "2026-11-05T06:21:24"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-12T18:00:00+09:00",
@@ -932,7 +889,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311965",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.02.(월) ~ 11.12.(목) 18시까지",
-        "verified_at": "2026-11-04T08:22:44"
+        "verified_at": "2026-11-05T06:21:29"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311965/",
