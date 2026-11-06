@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-05T02:45:38+00:00",
-  "source_generated_at": "2026-11-05T06:21:36",
+  "generated_at": "2026-11-06T01:17:00+00:00",
+  "source_generated_at": "2026-11-06T08:39:40",
   "source_status": {
     "LH": {
       "count": 6,
@@ -21,64 +21,27 @@
       ],
       "fresh_count": 6,
       "carried_count": 8,
-      "failure_streak": 129
+      "failure_streak": 132
     },
     "SH": {
-      "count": 21,
+      "count": 22,
       "errors": []
     },
     "SEOUL": {
       "count": 6,
       "errors": [],
-      "excluded_noise": 14
+      "excluded_noise": 16
     },
     "TOTAL": {
-      "count": 33,
-      "duplicates_removed": 5,
-      "excluded_non_housing": 3,
+      "count": 34,
+      "duplicates_removed": 4,
+      "excluded_non_housing": 1,
       "excluded_outside_seoul": 0,
-      "published_count": 33
+      "published_count": 37
     }
   },
-  "recruitment_count": 25,
+  "recruitment_count": 24,
   "items": [
-    {
-      "id": "SH:seq:312351",
-      "agency": "SH",
-      "agency_group": "SH",
-      "title": "[토지지원 사회주택]유니버설디자인하우스_수락 입주자 모집 공고",
-      "housing_types": [
-        "기타임대"
-      ],
-      "audiences": [],
-      "region": "서울",
-      "published_at": "2026-11-02",
-      "deadline": "",
-      "open_state": "일정 확인",
-      "event": "신규",
-      "change": "동일",
-      "status_text": "일정 확인 중",
-      "is_gangseo": false,
-      "keywords": [],
-      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=312351",
-      "source": "SH 공식 주택임대 게시판",
-      "content_signature": "78238c0708ddf9a8d1237d548a7f5a1d77f4bf8864a72275c833a872b4652249",
-      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
-      "published_source": "official_list_registration",
-      "notice_kind": "recruitment",
-      "application_start": "",
-      "schedule_type": "unknown",
-      "deadline_precision": "unknown",
-      "schedule_source": "unknown",
-      "schedule_note": "신청기간은 공식 공고문 확인이 필요합니다.",
-      "application_windows": [],
-      "schedule_evidence": {},
-      "sh_schedule_version": 1,
-      "route": "/public-housing/notices/sh-312351/",
-      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=312351",
-      "official_link_label": "공식 모집공고 원문 →",
-      "indexable": false
-    },
     {
       "id": "SHYOUTH:1f4bd36cd85fe4c83b57",
       "agency": "SH",
@@ -446,6 +409,44 @@
       "indexable": false
     },
     {
+      "id": "SHYOUTH:16da04d0f88309079939",
+      "agency": "SH",
+      "agency_group": "SH",
+      "title": "2026년 2차 희망하우징(공공기숙사) 입주자 모집공고(2026. 9. 17.)",
+      "housing_types": [
+        "기숙사"
+      ],
+      "audiences": [],
+      "region": "서울",
+      "published_at": "2026-09-17",
+      "deadline": "",
+      "open_state": "일정 확인",
+      "event": "신규",
+      "change": "동일",
+      "status_text": "일정 확인 중",
+      "is_gangseo": false,
+      "keywords": [
+        "기숙사"
+      ],
+      "url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
+      "source": "청년몽땅 SH 공고목록",
+      "content_signature": "ca97b01501044355158cdcdb76c2c11c16dff81bf0f51f90e00eef6308c9bcd6",
+      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
+      "notice_kind": "recruitment",
+      "application_start": "",
+      "schedule_type": "unknown",
+      "deadline_precision": "unknown",
+      "schedule_source": "unknown",
+      "schedule_note": "신청기간은 공식 공고문 확인이 필요합니다.",
+      "application_windows": [],
+      "schedule_evidence": {},
+      "sh_schedule_version": 1,
+      "route": "/public-housing/notices/shyouth-16da04d0f88309079939/",
+      "official_url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
+      "official_link_label": "기관 공고목록에서 확인 →",
+      "indexable": false
+    },
+    {
       "id": "LH:panId:2015122300020605",
       "agency": "LH",
       "agency_group": "LH",
@@ -726,50 +727,6 @@
       "indexable": false
     },
     {
-      "id": "SH:seq:311349",
-      "agency": "SH",
-      "agency_group": "SH",
-      "title": "은평구 홀몸어르신 은빛주택(수요자맞춤형) 잔여세대 모집 공고",
-      "housing_types": [
-        "기타임대"
-      ],
-      "audiences": [
-        "고령자"
-      ],
-      "region": "서울",
-      "published_at": "",
-      "deadline": "2026-11-06",
-      "open_state": "마감임박",
-      "event": "신규",
-      "change": "동일",
-      "status_text": "",
-      "is_gangseo": false,
-      "keywords": [],
-      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311349",
-      "source": "서울주거포털",
-      "content_signature": "b5946bb45bc6dfe17c50ebf810141322c0a0af24be5c75944868dd90a9fd2a93",
-      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
-      "notice_kind": "recruitment",
-      "application_start": "2026-10-26",
-      "schedule_type": "single",
-      "deadline_precision": "minute",
-      "schedule_source": "official_detail_html",
-      "schedule_note": "공식 상세본문 신청기간 기준입니다. 정확한 접수시각과 대상은 공고문을 확인하세요.",
-      "application_windows": [],
-      "schedule_evidence": {
-        "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311349",
-        "kind": "official_notice_body",
-        "excerpt": "접수기간 : 2026. 10. 26.(월) ~ 2026.11. 06.(금) 18시까지",
-        "verified_at": "2026-11-05T06:21:36"
-      },
-      "sh_schedule_version": 1,
-      "deadline_at": "2026-11-06T18:00:00+09:00",
-      "route": "/public-housing/notices/sh-311349/",
-      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311349",
-      "official_link_label": "공식 모집공고 원문 →",
-      "indexable": false
-    },
-    {
       "id": "SH:seq:311908",
       "agency": "SH",
       "agency_group": "SH",
@@ -781,7 +738,7 @@
       "region": "서울",
       "published_at": "",
       "deadline": "2026-11-09",
-      "open_state": "접수중",
+      "open_state": "마감임박",
       "event": "신규",
       "change": "동일",
       "status_text": "",
@@ -802,7 +759,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311908",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.23.(금) ~11.09.(월)",
-        "verified_at": "2026-11-05T06:21:31"
+        "verified_at": "2026-11-06T08:39:36"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311908/",
@@ -843,7 +800,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311962",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.28.(수) ~ 2026.11.12.(목) 18시까지",
-        "verified_at": "2026-11-05T06:21:24"
+        "verified_at": "2026-11-06T08:39:29"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-12T18:00:00+09:00",
@@ -889,7 +846,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311965",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.02.(월) ~ 11.12.(목) 18시까지",
-        "verified_at": "2026-11-05T06:21:29"
+        "verified_at": "2026-11-06T08:39:33"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311965/",
