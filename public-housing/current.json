@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-08T00:05:21+00:00",
-  "source_generated_at": "2026-11-08T04:27:17",
+  "generated_at": "2026-11-08T01:47:21+00:00",
+  "source_generated_at": "2026-11-08T09:34:56",
   "source_status": {
     "LH": {
       "count": 6,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 6,
       "carried_count": 8,
-      "failure_streak": 137
+      "failure_streak": 138
     },
     "SH": {
       "count": 22,
@@ -759,7 +759,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311908",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.23.(금) ~11.09.(월)",
-        "verified_at": "2026-11-08T04:27:13"
+        "verified_at": "2026-11-08T09:34:52"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311908/",
@@ -800,7 +800,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311962",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.28.(수) ~ 2026.11.12.(목) 18시까지",
-        "verified_at": "2026-11-08T04:27:06"
+        "verified_at": "2026-11-08T09:34:47"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-12T18:00:00+09:00",
@@ -846,7 +846,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311965",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.02.(월) ~ 11.12.(목) 18시까지",
-        "verified_at": "2026-11-08T04:27:10"
+        "verified_at": "2026-11-08T09:34:51"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311965/",
