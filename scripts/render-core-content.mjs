@@ -3,6 +3,7 @@
  * Run from repository root. --content-only preserves the last analysis snapshot.
  */
 import fs from 'node:fs';
+import {renderHomeEditorial} from './render-home-editorial.mjs';
 import vm from 'node:vm';
 import {createRequire} from 'node:module';
 const ownedView=createRequire(import.meta.url)('../data/home-content.js');
@@ -58,7 +59,7 @@ home=home.replace('<h2>Rent Check 자체 분석</h2>','<h2>Rent Check 자체 분
 home=home.replace(/<span>네이버 발행 글<\/span>/g,'<span>자체 분석·가이드</span>').replace('<p class="kicker">네이버 블로그</p><h2>네이버 발행 글</h2>','<p class="kicker">자체글</p><h2>자체 분석·가이드</h2>').replace('Rent Check가 네이버 블로그에 발행한 글을 주제별로 모았습니다. 홈페이지 자체 분석은 위 ‘Rent Check 자체 분석’에서 확인하세요.','Rent Check가 직접 작성한 분석과 실전 가이드를 주제별로 모았습니다.');
 const latest=owned.inventory.filter(p=>p.url.startsWith('/blog/')&&p.date).sort((a,b)=>b.date.localeCompare(a.date))[0];assert(latest);
 home=home.replace(/(id="rc-latest-search-guide"[\s\S]*?<a class="rc-guide-link" href=")[^"]+("[\s\S]*?<span class="rc-guide-title">)[\s\S]*?(<\/span>)/,(_,a,b,c)=>a+latest.url+b+esc(latest.title)+c);
-if(process.argv.includes('--posts-only')){put('index.html',home);console.log('Owned HOME library/count synchronized; Naver archive preserved: '+posts.length);process.exit(0);}
+if(process.argv.includes('--posts-only')){put('index.html',home);renderHomeEditorial();console.log('Owned HOME library/count synchronized; Naver archive preserved: '+posts.length);process.exit(0);}
 const homeDesc='국토교통부 실거래와 LH·SH 공식 공고를 그대로 나열하지 않고, 비교할 조건과 지금 할 일을 붙여 계산기·자체 분석·실전 가이드로 연결하는 Rent Check입니다.';
 home=home.replace(/<meta name="description" content="[^"]*">/,`<meta name="description" content="${homeDesc}">`);
 home=home.replace(/<meta property="og:description" content="[^"]*">/,`<meta property="og:description" content="${homeDesc}">`);
@@ -143,3 +144,6 @@ console.log(`Static content ready: ${cards.length} owned-analysis cards, ${posts
 // Keep static tool explanations and the five service entry points after regular regeneration.
 const {renderUserJourneys}=await import('./render-user-journeys.mjs');
 renderUserJourneys();
+
+// Visible editorial columns share this existing regeneration path, including --posts-only.
+renderHomeEditorial();

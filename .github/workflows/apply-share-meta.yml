@@ -8,6 +8,8 @@ on:
       - '**/*.html'
       - 'assets/share/**'
       - '.github/workflows/apply-share-meta.yml'
+      - 'scripts/ensure-publisher-markup.py'
+      - 'scripts/test_publisher_markup.py'
 
 permissions:
   contents: write
@@ -188,6 +190,12 @@ jobs:
 
           print(f'updated={len(changed)}')
           if changed: print('\n'.join(changed))
+
+      - name: Preserve AdSense loader and article operator attribution
+        run: |
+          python -m unittest discover -s scripts -p test_publisher_markup.py -v
+          python scripts/ensure-publisher-markup.py
+          python scripts/ensure-publisher-markup.py --check
 
       - name: Commit share metadata
         run: |

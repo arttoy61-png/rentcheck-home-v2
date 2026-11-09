@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "articles": [
+    {
+      "url": "/blog/apartment-floor-price-comparison/",
+      "label": "같은 평형, 다른 층의 실거래"
+    },
+    {
+      "url": "/blog/apartment-direct-deal-reading/",
+      "label": "직거래를 시세에서 빼야 할까"
+    },
+    {
+      "url": "/blog/redevelopment-management-plan-inspection/",
+      "label": "관리처분계획 공람에서 확인할 것"
+    },
+    {
+      "url": "/blog/redevelopment-contribution/",
+      "label": "재개발 분담금과 총투입액"
+    }
+  ]
+}

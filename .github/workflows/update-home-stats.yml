@@ -248,6 +248,10 @@ jobs:
         run: echo "::warning::Redevelopment upstream/import is not current. Previous good map retained; see redevelopment/data/redevelopment-nearby-status.json."
       - name: Build internal search index from existing pages
         run: node scripts/build-internal-search.mjs
+      - name: Preserve publisher markup on regenerated pages
+        run: |
+          python scripts/ensure-publisher-markup.py
+          python scripts/ensure-publisher-markup.py --check
       - name: Commit generated homepage data and static content
         run: |
           git config user.name 'github-actions'
