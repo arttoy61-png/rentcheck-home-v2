@@ -88,7 +88,7 @@ app=patch(app,"track=$('#insightTrack');track.replaceChildren();","track=$('#ins
 // The owned library renderer uses the shared HOME source.
 // Curated hydration delegates to the shared HOME renderer.
 homeUI=patch(homeUI,"if(!homeTrack||homeTrack.querySelector('a[href=\"/blog/gangseo-home-price/\"]'))return;","if(!homeTrack||homeTrack.dataset.prerendered==='true'||homeTrack.querySelector('a[href=\"/blog/gangseo-home-price/\"]'))return;",'legacy feature replacement');
-for(const name of ['app.js','data/posts-loader.js','data/home-analysis-ui.js'])home=home.replace(new RegExp(`src="${name.replaceAll('.','\\.')}(?:\\?[^\"]*)?"`),`src="${name}?v=owned-20261005"`);
+for(const name of ['app.js','data/posts-loader.js','data/home-analysis-ui.js'])home=home.replace(new RegExp(`src="${name.replaceAll('.','\\.')}(?:\\?[^\"]*)?"`),`src="${name}?v=${name==='data/home-analysis-ui.js'?'20261109-soco':'owned-20261005'}"`);
 
 // Initial HTML uses the existing home snapshot; runtime may enhance the same label.
 const homeSnapshot=JSON.parse(read('data/home_stats.json'));
