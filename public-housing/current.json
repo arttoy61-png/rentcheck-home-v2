@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-09T06:17:07+00:00",
-  "source_generated_at": "2026-11-09T13:22:46",
+  "generated_at": "2026-11-09T17:10:54+00:00",
+  "source_generated_at": "2026-11-09T15:24:24",
   "source_status": {
     "LH": {
       "count": 6,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 6,
       "carried_count": 8,
-      "failure_streak": 142
+      "failure_streak": 143
     },
     "SH": {
       "count": 22,
@@ -68,7 +68,7 @@
       "deadline": "",
       "open_state": "대상별 일정 확인",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "대상별 일정 확인",
       "is_gangseo": false,
       "keywords": [
@@ -126,7 +126,7 @@
       "deadline": "",
       "open_state": "대상별 일정 확인",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "대상별 일정 확인",
       "is_gangseo": false,
       "keywords": [
@@ -184,7 +184,7 @@
       "deadline": "",
       "open_state": "대상별 일정 확인",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "대상별 일정 확인",
       "is_gangseo": false,
       "keywords": [
@@ -242,7 +242,7 @@
       "deadline": "",
       "open_state": "대상별 일정 확인",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "대상별 일정 확인",
       "is_gangseo": false,
       "keywords": [
@@ -300,7 +300,7 @@
       "deadline": "",
       "open_state": "대상별 일정 확인",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "대상별 일정 확인",
       "is_gangseo": false,
       "keywords": [
@@ -358,7 +358,7 @@
       "deadline": "",
       "open_state": "대상별 일정 확인",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "대상별 일정 확인",
       "is_gangseo": true,
       "keywords": [
@@ -1118,7 +1118,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311962",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.28.(수) ~ 2026.11.12.(목) 18시까지",
-        "verified_at": "2026-11-09T13:22:35"
+        "verified_at": "2026-11-09T15:24:12"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-12T18:00:00+09:00",
@@ -1164,7 +1164,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311965",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.02.(월) ~ 11.12.(목) 18시까지",
-        "verified_at": "2026-11-09T13:22:40"
+        "verified_at": "2026-11-09T15:24:17"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311965/",
