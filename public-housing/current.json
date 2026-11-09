@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-09T17:10:54+00:00",
-  "source_generated_at": "2026-11-09T15:24:24",
+  "generated_at": "2026-11-09T19:56:58+00:00",
+  "source_generated_at": "2026-11-10T04:48:48",
   "source_status": {
     "LH": {
       "count": 6,
@@ -21,16 +21,16 @@
       ],
       "fresh_count": 6,
       "carried_count": 8,
-      "failure_streak": 143
+      "failure_streak": 144
     },
     "SH": {
-      "count": 22,
+      "count": 21,
       "errors": []
     },
     "SEOUL": {
       "count": 12,
       "errors": [],
-      "excluded_noise": 15
+      "excluded_noise": 16
     },
     "SOCO": {
       "count": 6,
@@ -43,9 +43,9 @@
       "source_url": "https://soco.seoul.go.kr/youth/pgm/home/yohome/bbsListJson.json"
     },
     "TOTAL": {
-      "count": 40,
+      "count": 39,
       "duplicates_removed": 3,
-      "excluded_non_housing": 6,
+      "excluded_non_housing": 5,
       "excluded_outside_seoul": 0,
       "published_count": 39
     }
@@ -1118,7 +1118,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311962",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.10.28.(수) ~ 2026.11.12.(목) 18시까지",
-        "verified_at": "2026-11-09T15:24:12"
+        "verified_at": "2026-11-10T04:48:38"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-11-12T18:00:00+09:00",
@@ -1164,7 +1164,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=311965",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.02.(월) ~ 11.12.(목) 18시까지",
-        "verified_at": "2026-11-09T15:24:17"
+        "verified_at": "2026-11-10T04:48:42"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-311965/",
