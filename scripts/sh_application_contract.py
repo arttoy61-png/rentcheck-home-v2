@@ -19,6 +19,14 @@ def is_sh(item):
         return False
 
 
+def is_soco(item):
+    return bool(re.match(r'^SOCOS:', str(item.get('id') or '')))
+
+
+def has_schedule_contract(item):
+    return is_sh(item) or is_soco(item)
+
+
 def guarded_notice(item):
     if item.get('id') in GUARDED or re.search(r'신정도시마을.*잔여세대|2026년.*재개발임대주택.*일반모집', str(item.get('title') or '')):
         return True
@@ -110,7 +118,7 @@ def deadline_clock(item):
 
 
 def normalize_sh(item):
-    if not is_sh(item):
+    if not has_schedule_contract(item):
         return item
     item = dict(item)
     item.pop('deadline_at', None)
@@ -158,6 +166,16 @@ def sh_state(item, day=None, now=None):
         return '일정 확인 중'
     windows = x.get('application_windows') or []
     if windows:
+        if is_soco(x):
+            if all(ended(w) for w in windows):
+                return '접수 마감'
+            def started(w):
+                if day == current_day and w.get('precision') == 'minute':
+                    return now >= datetime.fromisoformat(w['start_at'].replace('Z', '+00:00'))
+                return day >= w['start']
+            if any(started(w) and not ended(w) and not w['conditional'] and not w['restricted'] for w in windows):
+                return '접수 중'
+            return '접수 예정'
         if all(ended(w) for w in windows):
             return '확인된 일정 종료'
         if any(w['conditional'] and w['start'] <= day <= w['end'] and not ended(w) for w in windows):

@@ -3,6 +3,8 @@
   function parse(value){const m=String(value||'').match(/^(20\d{2})-(\d{2})-(\d{2})$/);if(!m)return null;const d=new Date(Date.UTC(+m[1],+m[2]-1,+m[3]));return d.toISOString().slice(0,10)===m[0]?m[0]:null}
   function today(now=new Date()){return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(now)}
   function isSH(item){if(/^(?:SH:|SHYOUTH:)/i.test(String(item?.id||''))||[item?.agency_group,item?.agency].some(v=>String(v||'').toUpperCase()==='SH'))return true;try{const u=new URL(item?.official_url||item?.url||'');return u.protocol==='https:'&&['www.i-sh.co.kr','i-sh.co.kr'].includes(u.hostname)}catch(_){return false}}
+  const isSoco=item=>/^SOCOS:/.test(String(item?.id||''));
+  const hasScheduleContract=item=>isSH(item)||isSoco(item);
   const trusted=new Set(['verified_official_pdf','official_detail_html','verified_regression','verified_application_windows']);
   const guarded=new Set(['SH:seq:310673','SH:seq:310041']);
   function guardedNotice(item){if(guarded.has(item.id)||/신정도시마을.*잔여세대|2026년.*재개발임대주택.*일반모집/.test(item.title||''))return true;try{const u=new URL(item.official_url||item.url||'');return u.protocol==='https:'&&['www.i-sh.co.kr','i-sh.co.kr'].includes(u.hostname)&&guarded.has('SH:seq:'+u.searchParams.get('seq'))}catch(_){return false}}
@@ -24,7 +26,7 @@
   }
   const deadlineClock=x=>x.deadline_at?x.deadline_at.slice(11,16):'';
   function normalize(item){
-    if(!isSH(item))return item;
+    if(!hasScheduleContract(item))return item;
     item={...item};delete item.deadline_at;
     if(nonRecruitment(item))return withheld(item,'not_applicable');
     const source=String(item.schedule_source||''),type=String(item.schedule_type||'');
@@ -66,12 +68,12 @@
     }
     return out;
   }
-  const recruitment=item=>!isSH(item)||!nonRecruitment(item);
-  function windows(item){const x=normalize(item);return isSH(x)&&x.schedule_type==='windows'?x.application_windows:[]}
-  function phase(w,day,now){if(day===today(now)&&w.precision==='minute'){if(+now<instant(w.start_at))return'upcoming';if(+now>=instant(w.end_at))return'ended'}else{if(day<w.start)return'upcoming';if(day>w.end)return'ended'}return w.conditional?'conditional':w.restricted?'scoped':'open'}
+  const recruitment=item=>!hasScheduleContract(item)||!nonRecruitment(item);
+  function windows(item){const x=normalize(item);return hasScheduleContract(x)&&x.schedule_type==='windows'?x.application_windows:[]}
+  function phase(w,day,now){if(day===today(now)&&w.precision==='minute'){if(+now<instant(w.start_at))return'upcoming';if(+now>=instant(w.end_at))return'ended'}else{if(day<w.start)return'upcoming';if(day>calendarEnd(w))return'ended'}return w.conditional?'conditional':w.restricted?'scoped':'open'}
   function state(item,day=today(),now=new Date()){
     const x=normalize(item);
-    if(isSH(x)){
+    if(hasScheduleContract(x)){
       if(x.schedule_type==='rolling')return'rolling';
       if(['unknown','not_applicable'].includes(x.schedule_type))return'unknown';
       if(x.schedule_type==='single'&&day===today(now)&&x.deadline_at&&+now>=instant(x.deadline_at))return'closed';
@@ -81,10 +83,11 @@
     const start=parse(x.application_start),end=parse(x.deadline);if(end&&end<day)return'closed';if(!start||!end||start>end)return x.open_state==='마감'?'closed':'unknown';if(start>day)return'upcoming';return'open';
   }
   function displayLabel(item,day=today(),now=new Date()){
-    if(!isSH(item))return labels[state(item,day)];
+    if(!hasScheduleContract(item))return labels[state(item,day,now)];
     const x=normalize(item),s=state(x,day,now);
     if(x.schedule_type==='not_applicable')return'신규 접수 대상 아님';
     if(s==='rolling')return'상시모집 · 모집 여부 확인';
+    if(isSoco(x)&&windows(x).length)return labels[s];
     if(windows(x).length){if(s==='closed')return'확인된 일정 종료';if(windows(x).some(w=>phase(w,day,now)==='conditional'))return'조건부 일정 · 시행 여부 확인';return'대상별 접수일정 확인'}
     if(s==='open'&&x.deadline_at&&x.application_start===day)return'접수기간 · 시작시각 확인';
     if(s==='open'&&x.deadline_precision==='date')return x.deadline===day?'오늘 접수마감일 · 시간 확인':'접수기간 · 시간 확인';
@@ -99,9 +102,10 @@
     if(x.schedule_type==='unknown')return'신청 일정 확인 중';
     const s=short(x.application_start),e=short(x.deadline);return`${s}${s===e?'':'~'+e} 신청${x.deadline_at?' · '+deadlineClock(x)+' 마감 (한국시간) · 시작시각 미확인':x.deadline_precision==='date'?' · 마감시간 미확인':''}`;
   }
-  function activeOn(item,day){const x=normalize(item);if(!isSH(x)||!parse(day))return false;const ws=windows(x);if(ws.length)return ws.some(w=>!w.conditional&&!w.restricted&&w.start<=day&&day<=w.end);return x.schedule_type==='single'&&x.application_start<=day&&day<=x.deadline}
-  function deadlineDays(item){const x=normalize(item);if(!isSH(x))return[];const ws=windows(x);if(ws.length)return [...new Set(ws.filter(w=>!w.conditional&&!w.restricted).map(w=>w.end))];return x.schedule_type==='single'?[x.deadline]:[]}
+  function calendarEnd(w){return w.precision==='minute'&&/T00:00(?::00)?\+09:00$/.test(w.end_at)?new Date(instant(w.end_at)-1).toLocaleDateString('en-CA',{timeZone:'Asia/Seoul'}):w.end}
+  function activeOn(item,day){const x=normalize(item);if(!hasScheduleContract(x)||!parse(day))return false;const ws=windows(x);if(ws.length)return ws.some(w=>!w.conditional&&!w.restricted&&w.start<=day&&day<=calendarEnd(w));return x.schedule_type==='single'&&x.application_start<=day&&day<=x.deadline}
+  function deadlineDays(item){const x=normalize(item);if(!hasScheduleContract(x))return[];const ws=windows(x);if(ws.length)return [...new Set(ws.filter(w=>!w.conditional&&!w.restricted).map(calendarEnd))];return x.schedule_type==='single'?[x.deadline]:[]}
   function matches(item,filter,day){const s=state(item,day);return filter==='all'||(filter==='active'?['open','upcoming','rolling','scoped'].includes(s):s===filter)}
   function counts(items,day){return Object.fromEntries(Object.keys(labels).map(k=>[k,items.filter(i=>matches(i,k,day)).length]))}
-  window.RentCheckHousingList=Object.freeze({labels,today,state,matches,counts,pageSize:6,isSH,normalize,recruitment,windows,displayLabel,scheduleText,activeOn,deadlineDays,dedupeShAliases});
+  window.RentCheckHousingList=Object.freeze({labels,today,state,matches,counts,pageSize:6,isSH,isSoco,hasScheduleContract,normalize,recruitment,windows,displayLabel,scheduleText,activeOn,deadlineDays,dedupeShAliases});
 })();

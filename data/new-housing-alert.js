@@ -36,7 +36,7 @@
     const m=String(value||'').match(/20\d{2}[-./](\d{1,2})[-./](\d{1,2})/);return m?`${+m[1]}/${+m[2]}`:'';
   }
   function applicationText(item){
-    if(window.RentCheckHousingList.isSH(item))return window.RentCheckHousingList.scheduleText(item);
+    if(window.RentCheckHousingList.hasScheduleContract(item))return window.RentCheckHousingList.scheduleText(item);
     const start=shortDate(item?.application_start),end=shortDate(item?.deadline);
     if(start&&end)return start===end?`신청 ${start}`:`신청 ${start}~${end}`;
     if(start)return `신청 ${start}부터`;

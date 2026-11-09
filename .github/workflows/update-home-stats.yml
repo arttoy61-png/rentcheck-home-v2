@@ -19,6 +19,12 @@ on:
       - 'analysis/**/index.html'
       - 'scripts/analysis-snapshot-runtime.js'
       - 'scripts/test_static_first.py'
+      - 'scripts/sh_application_contract.py'
+      - 'scripts/test_soco_application_contract.py'
+      - 'scripts/fixtures/soco-november-2026.json'
+      - 'scripts/test-soco-application-consumers.cjs'
+      - 'data/housing-list-state.js'
+      - 'data/public-housing-popup.js'
       - 'scripts/generate-public-housing-pages.py'
       - 'scripts/public_housing_quality_gate.py'
       - 'scripts/update_sh51_status.py'
@@ -41,6 +47,12 @@ on:
       - 'analysis/**/index.html'
       - 'scripts/analysis-snapshot-runtime.js'
       - 'scripts/test_static_first.py'
+      - 'scripts/sh_application_contract.py'
+      - 'scripts/test_soco_application_contract.py'
+      - 'scripts/fixtures/soco-november-2026.json'
+      - 'scripts/test-soco-application-consumers.cjs'
+      - 'data/housing-list-state.js'
+      - 'data/public-housing-popup.js'
       - 'scripts/generate-public-housing-pages.py'
       - 'scripts/public_housing_quality_gate.py'
       - 'scripts/update_sh51_status.py'
@@ -68,6 +80,13 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m unittest discover -s scripts -p 'test_wait_public_collection.py' -v
+      - name: Test housing application contracts
+        run: |
+          python -m unittest discover -s scripts -p 'test_sh_application_contract.py' -v
+          python -m unittest discover -s scripts -p 'test_soco_application_contract.py' -v
+          node scripts/test-housing-list-state.cjs
+          node scripts/test-sh-application-consumers.cjs
+          node scripts/test-soco-application-consumers.cjs
       - name: Check static renderer syntax
         run: |
           node --check scripts/build-internal-search.mjs

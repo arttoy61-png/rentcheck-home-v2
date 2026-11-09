@@ -1,0 +1,20 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const sandbox={window:{},Intl,Date};vm.runInNewContext(fs.readFileSync('data/housing-list-state.js','utf8'),sandbox);const api=sandbox.window.RentCheckHousingList;
+const item={id:'SOCOS:boardId:6718',title:'[민간임대] 효창공원앞역 해링턴 플레이스 용산 리버뷰 모집공고',agency_group:'SEOUL',audiences:['청년'],housing_types:['공공지원민간임대'],notice_kind:'recruitment',schedule_type:'windows',schedule_source:'official_detail_html',application_windows:[{label:'청약신청',start:'2026-11-12',end:'2026-11-16',start_at:'2026-11-12T00:00:00+09:00',end_at:'2026-11-16T00:00:00+09:00',precision:'minute',conditional:false,restricted:false}],schedule_note:'원문 마감: 11/15 24:00'};
+assert.equal(api.isSH(item),false);assert(api.hasScheduleContract(item));assert(api.recruitment(item));
+for(const [at,state] of [['2026-11-11T23:59:59+09:00','upcoming'],['2026-11-12T00:00:00+09:00','open'],['2026-11-15T23:59:59+09:00','open'],['2026-11-16T00:00:00+09:00','closed']])assert.equal(api.state(item,api.today(new Date(at)),new Date(at)),state);
+assert.equal(JSON.stringify(api.deadlineDays(item)),JSON.stringify(['2026-11-15']));assert(api.activeOn(item,'2026-11-15'));assert(!api.activeOn(item,'2026-11-16'));
+assert.match(api.scheduleText(item),/11\/12 00:00~11\/16 00:00/);assert.match(api.scheduleText(item),/11\/15 24:00/);
+assert.equal(JSON.stringify(api.normalize(api.normalize(item))),JSON.stringify(api.normalize(item)));
+assert(!api.recruitment({...item,notice_kind:'result'}));assert.equal(api.state({...item,schedule_source:'source_list'}),'unknown');
+const nine={...item,application_windows:[{...item.application_windows[0],start:'2026-11-11',start_at:'2026-11-11T09:00:00+09:00',end:'2026-11-15',end_at:'2026-11-15T23:00:00+09:00'}]};
+for(const [at,state] of [['2026-11-11T08:59:59+09:00','upcoming'],['2026-11-11T09:00:00+09:00','open'],['2026-11-15T23:00:00+09:00','closed']])assert.equal(api.state(nine,api.today(new Date(at)),new Date(at)),state);
+console.log('SOCOS exact start/end, midnight calendar rollover, identity, result exclusion, quarantine and idempotence passed');
+const six=JSON.parse(fs.readFileSync('scripts/fixtures/soco-november-2026.json','utf8')).items;
+assert.equal(six.length,6);assert.equal(new Set(six.map(x=>x.id)).size,6);
+for(const x of six){assert(api.recruitment(x));assert(x.audiences.includes('청년'));assert.equal(api.windows(x).length,1);assert.match(api.scheduleText(x),/한국시간/);assert.notEqual(api.state(x,'2026-11-09',new Date('2026-11-09T22:00:00+09:00')),'unknown')}
+assert.equal(six.filter(x=>api.activeOn(x,'2026-11-09')).length,4);
+assert.equal(six.filter(x=>api.activeOn(x,'2026-11-15')).length,2);
+assert.equal(six.filter(x=>api.deadlineDays(x).includes('2026-11-15')).length,2);
+assert.equal(six.filter(x=>api.activeOn(x,'2026-11-16')).length,0);
+console.log('All six official November fixtures: 4 active Nov9, 2 active/deadline Nov15, 0 active Nov16');

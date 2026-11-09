@@ -6,7 +6,7 @@ import re
 from datetime import date, datetime
 from pathlib import Path
 from urllib.parse import urlsplit, parse_qs
-from sh_application_contract import is_sh, non_recruitment, normalize_sh, sh_state, sh_rows, deadline_clock
+from sh_application_contract import is_sh, is_soco, has_schedule_contract, non_recruitment, normalize_sh, sh_state, sh_rows, deadline_clock
 
 SOURCE = Path('.cache-home-stats/public_housing_notices.json')
 OUT_ROOT = Path('public-housing/notices')
@@ -81,7 +81,7 @@ def clean_title(value: object) -> str:
 
 
 def is_recruitment(item: dict) -> bool:
-    if is_sh(item) and non_recruitment(item):
+    if has_schedule_contract(item) and non_recruitment(item):
         return False
     title = clean_title(item.get('title'))
     if not title or RESULT_MARKERS.search(title):
@@ -110,6 +110,7 @@ def direct_official_url(item: dict) -> bool:
             ('i-sh.co.kr' in url and ('/view.do' in url or re.search(r'[?&]seq=\d+', url)))
             or ('apply.lh.or.kr' in url and 'selectWrtancInfo.do' in url)
             or ('housing.seoul.go.kr/site/main/board/notice/' in url)
+            or (urlsplit(url).hostname == 'soco.seoul.go.kr' and urlsplit(url).path == '/youth/bbs/BMSR00015/view.do' and re.fullmatch(r'\d+', parse_qs(urlsplit(url).query).get('boardId', [''])[0]))
         )
     )
 
@@ -228,7 +229,7 @@ def dedupe_recruitments(items: list[dict]) -> tuple[list[dict], dict[str, list[s
             identities.setdefault(key, set()).add(str(item['id']))
 
     for item in items:
-        key = ('sh-id', str(item.get('id') or '') or id(item)) if is_sh(item) else duplicate_key(item)
+        key = ('sh-id', str(item.get('id') or '') or id(item)) if has_schedule_contract(item) else duplicate_key(item)
         alias_key = sh_alias_key(item)
         if alias_key and len(identities.get(alias_key, set())) == 1:
             key = ('sh-alias', alias_key)
@@ -291,7 +292,7 @@ def canonical_route(item: dict, member_ids: list[str]) -> str:
 
 
 def state(item: dict) -> str:
-    if is_sh(item):
+    if has_schedule_contract(item):
         return sh_state(item)
     today = date.today()
     start = parse_date(item.get('application_start'))
@@ -327,7 +328,7 @@ def indexable_auto_page(item: dict) -> bool:
 
 
 def schedule_rows(item: dict) -> list[tuple[str, str]]:
-    if is_sh(item):
+    if has_schedule_contract(item):
         return sh_rows(item)
     windows = item.get('application_windows')
     if isinstance(windows, list) and windows:
@@ -353,12 +354,12 @@ def schedule_rows(item: dict) -> list[tuple[str, str]]:
 
 
 def lead_text(item: dict) -> str:
-    if is_sh(item):
+    if has_schedule_contract(item):
         item = normalize_sh(item)
         if item['schedule_type'] == 'rolling':
             return '상시모집 공고이며 정해진 최종 접수마감일은 없습니다. 조기 마감될 수 있으므로 운영기관에 현재 모집 여부와 접수방법을 확인하세요.'
         if item['schedule_type'] == 'windows':
-            return '대상·접수방법별 신청기간이 다릅니다. 조건부 일정은 시행 여부를 확인해야 하며 서로 떨어진 접수창 사이를 신청 가능 기간으로 보면 안 됩니다.'
+            return '공식 공고에서 확인한 신청기간과 시각은 아래 일정표를 확인하세요.' if is_soco(item) else '대상·접수방법별 신청기간이 다릅니다. 조건부 일정은 시행 여부를 확인해야 하며 서로 떨어진 접수창 사이를 신청 가능 기간으로 보면 안 됩니다.'
         if item['schedule_type'] == 'single' and item.get('deadline_at'):
             return f'공식 공고에서 확인한 접수 마감은 {fmt_date(item.get("deadline"))} {deadline_clock(item)} (한국시간)입니다. 시작시각과 실제 접수방법은 공식 공고를 확인하세요.'
         if item['schedule_type'] == 'single' and item.get('deadline_precision') == 'date':
@@ -380,7 +381,7 @@ def schedule_table(item: dict) -> str:
         f'<tr><th scope="row">{esc(label)}</th><td>{esc(period)}</td></tr>'
         for label, period in schedule_rows(item)
     )
-    note = '' if is_sh(item) and normalize_sh(item).get('schedule_type') == 'unknown' else esc(item.get('schedule_note'))
+    note = '' if has_schedule_contract(item) and normalize_sh(item).get('schedule_type') == 'unknown' else esc(item.get('schedule_note'))
     note_html = f'<p class="note">{note}</p>' if note else ''
     return (
         '<table style="width:100%;border-collapse:collapse">'
@@ -397,7 +398,7 @@ def tag_text(values: object) -> str:
 
 
 def schedule_source_label(item: dict) -> str:
-    if is_sh(item):
+    if has_schedule_contract(item):
         x = normalize_sh(item)
         if x.get('schedule_type') == 'unknown':
             return '접수일정 원문 확인 필요'
@@ -498,12 +499,12 @@ def render_page(item: dict, route: str) -> str:
     published = fmt_date(item.get('published_at'))
     start = fmt_date(item.get('application_start'))
     deadline = fmt_date(item.get('deadline'))
-    if is_sh(item) and item.get('schedule_type') == 'single' and item.get('deadline_at'):
+    if has_schedule_contract(item) and item.get('schedule_type') == 'single' and item.get('deadline_at'):
         deadline += f' {deadline_clock(item)} (한국시간)'
-    if is_sh(item) and item.get('schedule_type') == 'rolling':
+    if has_schedule_contract(item) and item.get('schedule_type') == 'rolling':
         start, deadline = '상시모집', '정해진 최종 마감일 없음'
-    elif is_sh(item) and item.get('schedule_type') == 'windows':
-        start = deadline = '대상별 아래 일정표 확인'
+    elif has_schedule_contract(item) and item.get('schedule_type') == 'windows':
+        start = deadline = '아래 접수일시 확인' if is_soco(item) else '대상별 아래 일정표 확인'
     status = state(item)
     source = str(item.get('source') or agency)
     indexable = indexable_auto_page(item)
