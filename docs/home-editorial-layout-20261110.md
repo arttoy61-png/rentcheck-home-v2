@@ -1,3 +1,21 @@
+# Card grid refinement (2026-11-10, second pass)
+
+Read `AGENTS.md`, `docs/home-content-guidelines.md` and the previous revision below at base commit `d0dc211` (`main`). Kept the publication flow, the four canonical article URLs, hero, search, `#services`, `#calculators` and its 12 tools, `#insights`, `#article-library`, publisher markup, canonical, and analytics.
+
+Changes to the existing four-card block only:
+
+- Section intro: heading kept as `💡 Rent Check 실무 분석 칼럼` with the verification subtitle `국토부 실거래와 정비사업 데이터로 검증한 핵심 가이드입니다.` and a `칼럼 전체 보기 →` link to `/blog/all/`.
+- Card copy: category badges `실거래 분석`·`거래유형`·`정비사업`·`분담금`; each card title is now the original article's H1 verbatim; summaries are two to three lines and stay inside what the article explains.
+- Layout: the section now uses the site container width (1280px) instead of a narrower inset column, so its left edge lines up with the hero and tool sections. Cards are `repeat(4)` at desktop, two columns below 1080px, one column below 560px, with pill badges, 14px radius, card shadow, hover lift and focus outline. Stylesheet query bumped to `?v=20261110-cards2`.
+- `scripts/render-home-editorial.mjs` and `data/home-editorial-config.json` carry the same copy, so a normal or `--posts-only` run of `scripts/render-core-content.mjs` regenerates this grid rather than the old layout.
+
+## Verification for this pass
+
+- Node.js is not installed in this execution sandbox, so `node scripts/test-home-editorial.mjs` could not be run here. `scripts/render-home-editorial.mjs` was mirrored line for line in Python, `index.html` was regenerated with that mirror, and the mirror of every assertion in `scripts/test-home-editorial.mjs` passed: checked-in home equals renderer output, idempotence, exact removal/restoration, four cards and read links, no full article bodies, cards above the hero, unique IDs, all fragment anchors and required anchors, one H1, preserved publisher and canonical markup, intact originals, escaped copy, invalid and duplicate path rejection.
+- `python scripts/audit_internal_links.py`: no broken links or guarded-home regressions; existing Naver-link warnings remain.
+- `python scripts/audit_seo_publication.py`: 194 HTML pages, 73 articles, 0 errors, 17 pre-existing source-link review warnings.
+- Production browser check of the published page is recorded separately after deployment; static checks are not a mobile browser pass.
+
 # Homepage summary-card revision (2026-11-10)
 
 Read `AGENTS.md` and `docs/home-content-guidelines.md` at base commit `ae49ccc6a1ba8a6aceaf18ae34ee6b248213852c`. Kept the existing publication workflow, four canonical article URLs, factual dates, tables, historical limitations, source links, analytics and AdSense markup, all tools, and HOME/Naver inventory definitions. No new articles or duplicate public pages were created.

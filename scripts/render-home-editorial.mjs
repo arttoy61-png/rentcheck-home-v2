@@ -21,11 +21,11 @@ export function applyHomeEditorial(html,config,read=p=>fs.readFileSync(p,'utf8')
   assert(source.includes(`rel="canonical" href="${origin+article.url}"`),'Original canonical must stay intact');
   assert(/<main\b/.test(source)&&/<h1\b/.test(source),'Missing original article');
   for(const field of ['category','title','summary'])assert(typeof article[field]==='string'&&article[field].trim(),'Missing card '+field);
-  return `<a class="home-editorial-card" id="home-column-${i+1}" href="${article.url}"><div><span class="home-editorial-category">${esc(article.category)}</span><h3>${esc(article.title)}</h3><p>${esc(article.summary)}</p></div><span class="home-editorial-read">전문 읽기 →</span></a>`;
+  return `<a class="home-editorial-card" id="home-column-${i+1}" href="${article.url}"><div><span class="home-editorial-category">${esc(article.category)}</span><h3>${esc(article.title)}</h3><p>${esc(article.summary)}</p></div><span class="home-editorial-read">전문 읽기 <b aria-hidden="true">→</b></span></a>`;
  }).join('\n');
- const content=`<section class="home-editorial" id="home-editorial" aria-labelledby="home-editorial-title"><header class="home-editorial-intro"><h2 id="home-editorial-title">💡 Rent Check 실무 분석 칼럼</h2><p>실거래 비교부터 재개발 서류와 비용까지, 알아두면 도움이 되는 내용을 정리했습니다.</p></header><div class="home-editorial-grid">${cards}</div></section>`;
+ const content=`<section class="home-editorial" id="home-editorial" aria-labelledby="home-editorial-title"><header class="home-editorial-intro"><div><h2 id="home-editorial-title">💡 Rent Check 실무 분석 칼럼</h2><p>국토부 실거래와 정비사업 데이터로 검증한 핵심 가이드입니다.</p></div><a class="home-editorial-all" href="/blog/all/">칼럼 전체 보기 →</a></header><div class="home-editorial-grid">${cards}</div></section>`;
  assert(html.includes('<main>')&&html.includes('</head>'),'Home anchors changed');
- return html.replace('<main>','<main>'+start+content+end).replace('</head>',styleStart+'<link rel="stylesheet" href="/assets/home/editorial-columns.css?v=20261110-cards">'+styleEnd+'</head>');
+ return html.replace('<main>','<main>'+start+content+end).replace('</head>',styleStart+'<link rel="stylesheet" href="/assets/home/editorial-columns.css?v=20261110-cards2">'+styleEnd+'</head>');
 }
 export function renderHomeEditorial(){
  const html=fs.readFileSync('index.html','utf8');
