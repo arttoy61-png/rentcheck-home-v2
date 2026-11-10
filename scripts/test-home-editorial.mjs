@@ -11,7 +11,26 @@ assert.equal(base,applyHomeEditorial(enabled,{...config,enabled:false}),'Exact b
 assert.equal((enabled.match(/class="home-editorial-card"/g)||[]).length,4);
 assert.equal((enabled.match(/class="home-editorial-read"/g)||[]).length,4);
 assert(!enabled.includes('class="home-column"'),'No full article bodies on homepage');
-assert(enabled.indexOf('id="home-column-4"')<enabled.indexOf('<section class="hero">'));
+// Hero first, quick tool chips next, then the insight cards, then the calculator grid.
+const heroAt=enabled.indexOf('<section class="hero">');
+const chipsAt=enabled.indexOf('<section class="container service-strip" id="services"');
+const cardsAt=enabled.indexOf('id="home-column-1"');
+const calcAt=enabled.indexOf('<section class="section calculators" id="calculators">');
+assert(heroAt>=0&&chipsAt>heroAt,'Hero renders before the quick tool chips');
+assert(cardsAt>chipsAt&&calcAt>cardsAt,'Editorial cards sit between the tool chips and the calculators');
+assert.equal((enabled.match(/id="home-editorial"/g)||[]).length,1,'One editorial section only');
+// One consolidated guide library holds the analysis cards, topic lists and latest posts.
+const libraryAt=enabled.indexOf('id="insights"');
+assert(libraryAt>calcAt,'Guide library follows the calculators');
+assert(enabled.includes('📚 실전 가이드 라이브러리'),'Consolidated library heading present');
+for(const marker of ['id="insightTrack"','id="articleLibrary"','id="latest-guides"','id="latestGuideGrid"']){
+ assert.equal((enabled.match(new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'g'))||[]).length,1,'Exactly one '+marker);
+ assert(enabled.indexOf(marker)>libraryAt,'Inside the guide library: '+marker);
+}
+assert.equal((enabled.match(/class="rc-guide-strip"/g)||[]).length,2,'Two quick links inside the library');
+assert(!enabled.includes('id="rc-latest-search-guide"'),'Duplicate newest-post strip removed');
+assert(!enabled.includes('class="section insights"')&&!enabled.includes('class="section article-library"'),'Duplicate lower sections removed');
+assert(enabled.includes('/assets/home/home-library.css'),'Library stylesheet linked');
 const ids=[...enabled.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
 assert.equal(ids.length,new Set(ids).size,'No duplicate IDs');
 for(const m of enabled.matchAll(/href="#([^"]+)"/g))assert(ids.includes(m[1]),'Missing anchor '+m[1]);

@@ -83,15 +83,21 @@ try:
                     assert (ROOT/href.lstrip('/')/'index.html').exists()
                     assert guide.inner_text().strip().startswith('추천 가이드')
                     bounds=guide.bounding_box()
-                    container=page.locator('#calculators > .container').bounding_box()
+                    library=page.locator('#insights > .container').bounding_box()
                     assert 44<=bounds['height']<=88, bounds
-                    assert abs(bounds['x']-container['x'])<=1, (bounds,container)
-                    assert abs(bounds['width']-container['width'])<=1, (bounds,container)
-                    heading=page.locator('#calculators .section-head').bounding_box()
-                    gap=heading['y']-bounds['y']-bounds['height']
-                    assert abs(gap-(28 if width<=768 else 40))<=1, gap
-                    assert page.locator('#rc-featured-guide').evaluate('(el)=>el.previousElementSibling.id')=='services'
-                    assert page.locator('#rc-featured-guide').evaluate('(el)=>el.nextElementSibling.id')=='calculators'
+                    assert bounds['x']>=library['x']-1, (bounds,library)
+                    assert bounds['x']+bounds['width']<=library['x']+library['width']+1, (bounds,library)
+                    pair=page.locator('.rc-guide-pair .rc-guide-strip').evaluate_all('(xs)=>xs.map(x=>{const r=x.getBoundingClientRect();return [Math.round(r.x),Math.round(r.y),Math.round(r.width)]})')
+                    assert len(pair)==2, pair
+                    if width>820:
+                        assert pair[0][1]==pair[1][1] and pair[0][2]!=pair[1][2], pair
+                    else:
+                        assert pair[1][1]>pair[0][1], pair
+                    assert page.locator('main > section').first.get_attribute('class')=='hero'
+                    assert page.locator('#insights #latest-guides').count()==1
+                    assert page.locator('#insights #articleLibrary .article-category').count()==4
+                    assert page.locator('#latest-guides .latest-guide-card, #latest-guides .latest-guide-fallback').count()>=1
+                    assert page.locator('.section.insights, .section.article-library').count()==0
                     for selector in ['.rc-guide-label','.rc-guide-title','.rc-guide-arrow']:
                         child=guide.locator(selector).bounding_box()
                         assert child['x']>=bounds['x'] and child['x']+child['width']<=bounds['x']+bounds['width']+1
@@ -100,7 +106,7 @@ try:
                     assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1')
                     if js and mode=='healthy':
                         question_controls=page.locator('a,button').evaluate_all('(xs)=>xs.filter(x=>/무엇이든|물어보세요/.test(x.textContent)).map(x=>({text:x.textContent.trim(),id:x.id,classes:x.className}))')
-                        record={'width':width,'guide_height':bounds['height'],'left':bounds['x'],'content_width':bounds['width'],'gap_to_calculators':gap,'question_controls':question_controls}
+                        record={'width':width,'guide_height':bounds['height'],'left':bounds['x'],'content_width':library['width'],'library_height':round(page.locator('#insights').bounding_box()['height']),'page_height':page.evaluate('document.documentElement.scrollHeight'),'question_controls':question_controls}
                         metrics.append(record)
                         print('LAYOUT '+json.dumps(record,ensure_ascii=False),flush=True)
                         page.screenshot(path=str(artifacts/f'home-{width}.png'),full_page=True)

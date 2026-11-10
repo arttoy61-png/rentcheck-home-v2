@@ -1,5 +1,5 @@
 /* Scoped editorial cards; the rest of the homepage keeps its existing layout. */
-.home-editorial{box-sizing:border-box;width:calc(100% - 48px);max-width:1280px;margin:0 auto;padding:30px 0 4px;color:var(--navy,#0d1f3c);word-break:keep-all;overflow-wrap:anywhere}
+.home-editorial{box-sizing:border-box;width:calc(100% - 48px);max-width:1280px;margin:0 auto;padding:34px 0 0;color:var(--navy,#0d1f3c);word-break:keep-all;overflow-wrap:anywhere}
 .home-editorial-intro{margin:0 0 16px;display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .home-editorial-intro h2{margin:0;font-size:21px;font-weight:700;line-height:1.4;letter-spacing:-.04em}
 .home-editorial-intro p{margin:6px 0 0;color:#596273;font-size:13px;line-height:1.6}
@@ -17,6 +17,6 @@
 .home-editorial-read b{font-weight:700;transition:transform .2s ease}
 .home-editorial-card:hover .home-editorial-read b{transform:translateX(2px)}
 @media(max-width:1080px){.home-editorial-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:768px){.home-editorial{width:calc(100% - 32px);padding:24px 0 2px}.home-editorial-intro{margin-bottom:14px;align-items:flex-start}.home-editorial-intro h2{font-size:19px}.home-editorial-intro p{font-size:12px}}
+@media(max-width:768px){.home-editorial{width:calc(100% - 32px);padding:28px 0 0}.home-editorial-intro{margin-bottom:14px;align-items:flex-start}.home-editorial-intro h2{font-size:19px}.home-editorial-intro p{font-size:12px}}
 @media(max-width:560px){.home-editorial-grid{grid-template-columns:minmax(0,1fr);gap:11px}.home-editorial-card{padding:15px 16px 13px}.home-editorial-card h3{font-size:14.5px}.home-editorial-all{display:none}}
 @media(max-width:360px){.home-editorial{width:calc(100% - 24px)}}

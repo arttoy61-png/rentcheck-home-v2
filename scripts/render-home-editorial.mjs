@@ -8,7 +8,7 @@ const origin='https://rent-check.kr';
 const start='<!-- rc-static:home-editorial -->', end='<!-- /rc-static:home-editorial -->';
 const styleStart='<!-- rc-static:home-editorial-style -->', styleEnd='<!-- /rc-static:home-editorial-style -->';
 const esc=s=>s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-function removeBlock(html,a,b){const i=html.indexOf(a);if(i<0)return html;const j=html.indexOf(b,i);assert(j>i,'Incomplete editorial marker');return html.slice(0,i)+html.slice(j+b.length);}
+function removeBlock(html,a,b){const i=html.indexOf(a);if(i<0)return html;const j=html.indexOf(b,i);assert(j>i,'Incomplete editorial marker');let k=j+b.length;if(html[k]==='\n')k++;return html.slice(0,i)+html.slice(k);}
 export function restoreHomeEditorial(html){return removeBlock(removeBlock(html,start,end),styleStart,styleEnd);}
 export function applyHomeEditorial(html,config,read=p=>fs.readFileSync(p,'utf8')){
  html=restoreHomeEditorial(html);
@@ -23,9 +23,12 @@ export function applyHomeEditorial(html,config,read=p=>fs.readFileSync(p,'utf8')
   for(const field of ['category','title','summary'])assert(typeof article[field]==='string'&&article[field].trim(),'Missing card '+field);
   return `<a class="home-editorial-card" id="home-column-${i+1}" href="${article.url}"><div><span class="home-editorial-category">${esc(article.category)}</span><h3>${esc(article.title)}</h3><p>${esc(article.summary)}</p></div><span class="home-editorial-read">전문 읽기 <b aria-hidden="true">→</b></span></a>`;
  }).join('\n');
- const content=`<section class="home-editorial" id="home-editorial" aria-labelledby="home-editorial-title"><header class="home-editorial-intro"><div><h2 id="home-editorial-title">💡 Rent Check 실무 분석 칼럼</h2><p>국토부 실거래와 정비사업 데이터로 검증한 핵심 가이드입니다.</p></div><a class="home-editorial-all" href="/blog/all/">칼럼 전체 보기 →</a></header><div class="home-editorial-grid">${cards}</div></section>`;
- assert(html.includes('<main>')&&html.includes('</head>'),'Home anchors changed');
- return html.replace('<main>','<main>'+start+content+end).replace('</head>',styleStart+'<link rel="stylesheet" href="/assets/home/editorial-columns.css?v=20261110-cards2">'+styleEnd+'</head>');
+ const content=`<section class="home-editorial" id="home-editorial" aria-labelledby="home-editorial-title"><header class="home-editorial-intro"><div><h2 id="home-editorial-title">💡 Rent Check 실무 데이터 인사이트</h2><p>국토부 실거래와 정비사업 데이터로 직접 확인한 핵심 가이드입니다.</p></div><a class="home-editorial-all" href="/blog/all/">칼럼 전체 보기 →</a></header><div class="home-editorial-grid">${cards}</div></section>`;
+ // The cards sit between the quick tool chips and the calculator grid, never above the hero.
+ const anchor='<section class="section calculators" id="calculators">';
+ assert(html.includes('<main>')&&html.includes('</head>')&&html.includes(anchor),'Home anchors changed');
+ assert(html.indexOf(anchor)>html.indexOf('<section class="container service-strip" id="services"'),'Editorial cards must follow the tool chips');
+ return html.replace(anchor,start+content+end+'\n'+anchor).replace('</head>',styleStart+'<link rel="stylesheet" href="/assets/home/editorial-columns.css?v=20261110-cards2">'+styleEnd+'</head>');
 }
 export function renderHomeEditorial(){
  const html=fs.readFileSync('index.html','utf8');

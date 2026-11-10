@@ -69,55 +69,13 @@
   if(searchInput)searchInput.placeholder='계산기·부동산 글 검색';
   if(searchLabel)searchLabel.textContent='계산기·부동산 글 검색';
 
-  const style=document.createElement('style');
-  style.id='latestGuidesStyle';
-  style.textContent=`
-  #latest-guides{padding:72px 0;background:#f7f8fa;border-top:1px solid #edf0f4;border-bottom:1px solid #edf0f4}
-  #latest-guides .latest-guides-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:24px}
-  #latest-guides .latest-guides-copy .kicker{margin:0 0 8px;color:var(--blue);font-size:13px;font-weight:800}
-  #latest-guides .latest-guides-copy h2{margin:0;color:var(--navy);font-size:32px;line-height:1.25;letter-spacing:-.04em}
-  #latest-guides .latest-guides-copy p{margin:10px 0 0;color:#667085;font-size:14px;line-height:1.7}
-  #latest-guides .latest-guides-all{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border:1px solid #cfd6df;border-radius:10px;background:#fff;color:var(--navy);font-size:13px;font-weight:800;text-decoration:none;white-space:nowrap}
-  #latest-guides .latest-guides-all:hover{border-color:var(--blue);color:var(--blue)}
-  #latest-guides .latest-guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-  #latest-guides .latest-guide-card{display:flex;min-width:0;flex-direction:column;padding:19px 20px 17px;border:1px solid #d8dee7;border-radius:15px;background:#fff;box-shadow:0 8px 24px rgba(13,31,60,.035)}
-  #latest-guides .latest-guide-card:hover{border-color:#aebed2;box-shadow:0 12px 28px rgba(13,31,60,.07);transform:translateY(-1px)}
-  #latest-guides .latest-guide-tags{display:flex;align-items:center;gap:7px;margin-bottom:12px;flex-wrap:wrap}
-  #latest-guides .latest-guide-status,#latest-guides .latest-guide-category{display:inline-flex;align-items:center;min-height:24px;padding:0 9px;border-radius:999px;font-size:11px;font-weight:800;line-height:1;text-decoration:none}
-  #latest-guides .latest-guide-status.is-new{background:#e9f3ff;color:#0f63b9}
-  #latest-guides .latest-guide-status.is-updated{background:#fff2d6;color:#8b5d00}
-  #latest-guides .latest-guide-category{background:#eef1f5;color:#405066}
-  #latest-guides .latest-guide-category:hover{background:#e4ebf5;color:#145da0}
-  #latest-guides .latest-guide-main{display:flex;min-height:0;flex:1;flex-direction:column;color:inherit;text-decoration:none}
-  #latest-guides .latest-guide-main h3{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin:0;color:var(--navy);font-size:18px;line-height:1.5;letter-spacing:-.025em}
-  #latest-guides .latest-guide-main p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin:10px 0 16px;color:#667085;font-size:13px;line-height:1.65}
-  #latest-guides .latest-guide-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:13px;border-top:1px solid #edf0f4;color:#7b8492;font-size:12px}
-  #latest-guides .latest-guide-go{color:var(--blue);font-weight:800;white-space:nowrap}
-  #latest-guides .latest-guide-fallback{grid-column:1/-1;display:flex;min-height:84px;align-items:center;justify-content:center;border:1px solid #d8dee7;border-radius:15px;background:#fff;color:var(--blue);font-size:14px;font-weight:800;text-decoration:none}
-  @media(max-width:820px){
-    #latest-guides{padding:54px 0}
-    #latest-guides .latest-guides-head{align-items:flex-start;flex-direction:column;margin-bottom:18px}
-    #latest-guides .latest-guides-copy h2{font-size:27px}
-    #latest-guides .latest-guide-grid{grid-template-columns:1fr}
-    #latest-guides .latest-guides-all{width:100%}
-  }
-  @media(max-width:520px){
-    #latest-guides{padding:42px 0}
-    #latest-guides .latest-guides-copy h2{font-size:24px}
-    #latest-guides .latest-guide-card{padding:16px}
-    #latest-guides .latest-guide-main h3{font-size:16px}
-  }`;
-  document.head.appendChild(style);
+  // Layout for this list lives in /assets/home/home-library.css so it renders before JS runs.
 
-  const section=document.createElement('section');
-  section.className='section latest-guides';
-  section.id='latest-guides';
-  section.setAttribute('aria-label','최신 발행·보강 글');
-  section.innerHTML=`<div class="container"><div class="latest-guides-head"><div class="latest-guides-copy"><p class="kicker">최신 글</p><h2>최신 발행·보강 글</h2><p>새로 게시했거나 내용을 보강한 HOME 글을 최근 날짜순으로 보여드립니다.</p></div><a class="latest-guides-all" href="/blog/">최신 글 전체보기 →</a></div><div class="latest-guide-grid" id="latestGuideGrid" aria-live="polite"></div></div>`;
-  insights.parentNode.insertBefore(section,insights);
+  // The consolidated homepage guide library renders these rows in place; never add a second list.
+  const section=document.querySelector('#latest-guides');
+  const grid=document.querySelector('#latestGuideGrid');
+  if(!section||!grid)return;
   document.querySelector('#rc-latest-search-guide')?.remove();
-
-  const grid=section.querySelector('#latestGuideGrid');
   const xmlParser=new DOMParser();
 
   function categoryInfo(label=''){
@@ -287,7 +245,7 @@
 (()=>{
   const style=document.createElement('style');
   style.id='curatedInsightStyle';
-  style.textContent=`#insightTrack{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:14px!important;overflow:visible!important;scroll-snap-type:none!important}#insightTrack .insight{display:flex!important;flex-direction:column;min-width:0!important;width:auto!important;height:100%;text-decoration:none;color:inherit;overflow:hidden}#insightTrack .insight-art{width:100%;aspect-ratio:16/10;height:auto!important;overflow:hidden;background:#eef1f5}#insightTrack .insight-art img{display:block;width:100%;height:100%;object-fit:cover}#insightTrack .insight-body{display:flex;flex:1;flex-direction:column;min-width:0}#insightTrack .insight-body h3{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;min-height:3em}#insightTrack .insight-meta{margin-top:auto}#insightTrack .insight-go{color:#1565c0;font-weight:800;white-space:nowrap}@media(max-width:900px){#insightTrack{grid-template-columns:repeat(2,minmax(0,1fr))!important}}@media(max-width:520px){#insightTrack{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}#insightTrack .insight-art{aspect-ratio:4/3}#insightTrack .insight-body{padding:11px 10px!important}#insightTrack .insight-category{font-size:10px!important}#insightTrack .insight-body h3{font-size:14px!important;line-height:1.42!important;min-height:2.84em;margin:6px 0 10px!important}#insightTrack .insight-meta{font-size:10px!important;gap:5px!important;align-items:flex-start!important;flex-direction:column!important}#insightTrack .insight-go{font-size:10px!important}}`;
+  style.textContent=`#insightTrack{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px!important;overflow:visible!important;scroll-snap-type:none!important}#insightTrack .insight{display:flex!important;flex-direction:row!important;align-items:flex-start;gap:11px;min-width:0!important;width:auto!important;height:100%;padding:12px;border:1px solid #e1e7ee;border-radius:12px;background:#fff;text-decoration:none;color:inherit;transition:border-color .2s ease,box-shadow .2s ease}#insightTrack .insight:hover{border-color:#b9c6d6;box-shadow:0 10px 24px rgba(13,31,60,.07)}#insightTrack .insight-art{flex:none;width:64px;height:64px;border-radius:9px;overflow:hidden;background:#eef1f5}#insightTrack .insight-art img{display:block;width:100%;height:100%;object-fit:cover}#insightTrack .insight-body{display:flex;flex:1;flex-direction:column;min-width:0;padding:0}#insightTrack .insight-category{font-size:10px;font-weight:800;color:#1565c0}#insightTrack .insight-body h3{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin:3px 0 0;font-size:13px;line-height:1.45;min-height:0;letter-spacing:-.02em}#insightTrack .rc-insight-summary{display:none}#insightTrack .insight-meta{margin-top:auto;padding-top:6px;display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:10px;color:#8a929e}#insightTrack .insight-go{color:#1565c0;font-weight:800;white-space:nowrap;font-size:10px}@media(max-width:1100px){#insightTrack{grid-template-columns:repeat(2,minmax(0,1fr))!important}}@media(max-width:560px){#insightTrack{grid-template-columns:minmax(0,1fr)!important;gap:8px!important}#insightTrack .insight{padding:11px}#insightTrack .insight-art{width:52px;height:52px}}`;
   document.head.appendChild(style);
   function renderCuratedInsights(){window.RentCheckHomeContent?.renderInsights();}
   renderInsights=renderCuratedInsights;

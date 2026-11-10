@@ -58,7 +58,7 @@ home=replaceRoot(home,'insightTrack',cardHTML);home=replaceRoot(home,'articleLib
 home=home.replace('<h2>Rent Check 자체 분석</h2>','<h2>Rent Check 자체 분석·가이드</h2>');
 home=home.replace(/<span>네이버 발행 글<\/span>/g,'<span>자체 분석·가이드</span>').replace('<p class="kicker">네이버 블로그</p><h2>네이버 발행 글</h2>','<p class="kicker">자체글</p><h2>자체 분석·가이드</h2>').replace('Rent Check가 네이버 블로그에 발행한 글을 주제별로 모았습니다. 홈페이지 자체 분석은 위 ‘Rent Check 자체 분석’에서 확인하세요.','Rent Check가 직접 작성한 분석과 실전 가이드를 주제별로 모았습니다.');
 const latest=owned.inventory.filter(p=>p.url.startsWith('/blog/')&&p.date).sort((a,b)=>b.date.localeCompare(a.date))[0];assert(latest);
-home=home.replace(/(id="rc-latest-search-guide"[\s\S]*?<a class="rc-guide-link" href=")[^"]+("[\s\S]*?<span class="rc-guide-title">)[\s\S]*?(<\/span>)/,(_,a,b,c)=>a+latest.url+b+esc(latest.title)+c);
+// The standalone '새로 나온 글' strip is folded into the guide library, which renders the newest post itself.
 if(process.argv.includes('--posts-only')){put('index.html',home);renderHomeEditorial();console.log('Owned HOME library/count synchronized; Naver archive preserved: '+posts.length);process.exit(0);}
 const homeDesc='강서구 실거래를 비교하고 보증금·월세·계약 비용과 재개발 분담금을 계산해 보세요. LH·SH 공고와 부동산 실전 가이드도 함께 확인할 수 있습니다.';
 home=home.replace(/<meta name="description" content="[^"]*">/,`<meta name="description" content="${homeDesc}">`);
@@ -75,9 +75,9 @@ home=home.replace('<p>주제별 최신 글을 바로 찾고, 더 필요한 글�
 home=home.replace('국토부 실거래 데이터와 실전형 해석을 연결하는<br>부동산 계산·분석 서비스입니다.','국토부 실거래와 공식 공고를 직접 비교하고,<br>계산 도구와 실전 가이드로 알기 쉽게 안내합니다.');
 // Replace the approved oversized introduction, rather than hiding it or adding another section.
 home=home.replace(/<!-- rc-static:value-proof -->[\s\S]*?<!-- \/rc-static:value-proof -->/g,'');
-const guideStripHTML='<aside class="container rc-guide-strip" id="rc-featured-guide" aria-label="추천 실전 가이드"><a class="rc-guide-link" href="/blog/public-housing-application-documents/"><span class="rc-guide-label">추천 가이드</span><span class="rc-guide-title">SH 신청 후 서류, 언제 내나요?</span><span class="rc-guide-arrow" aria-hidden="true">→</span></a></aside>';
-const guideStripCSS='.rc-guide-strip{margin-top:24px}.rc-guide-link{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:14px;min-height:56px;padding:12px 18px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--navy);text-decoration:none}.rc-guide-label{font-size:13px;font-weight:700;line-height:1.5;color:var(--blue);white-space:nowrap}.rc-guide-title{min-width:0;margin:0;font-size:15px;font-weight:700;line-height:1.5;word-break:keep-all;overflow-wrap:anywhere}.rc-guide-arrow{font-size:18px;line-height:1;color:var(--blue)}.rc-guide-link:hover{border-color:var(--blue)}.rc-guide-link:focus-visible{outline:3px solid var(--blue);outline-offset:3px}.rc-guide-strip+.calculators{padding-top:40px}@media(max-width:768px){.rc-guide-strip{margin-top:16px}.rc-guide-link{gap:10px;padding:12px 14px}.rc-guide-label{font-size:12px}.rc-guide-title{font-size:14px;line-height:1.5}.rc-guide-strip+.calculators{padding-top:28px}}';
-home=block(home,'guide-strip',guideStripHTML,'<section class="section calculators"');
+const guideStripHTML='<aside class="rc-guide-strip" id="rc-featured-guide" aria-label="추천 실전 가이드"><a class="rc-guide-link" href="/blog/public-housing-application-documents/"><span class="rc-guide-label">추천 가이드</span><span class="rc-guide-title">SH 신청 후 서류, 언제 내나요?</span><span class="rc-guide-arrow" aria-hidden="true">→</span></a></aside>';
+const guideStripCSS='';
+home=block(home,'guide-strip',guideStripHTML,'<section class="section rc-library"');
 home=replaceRoot(home,'insightTrack',cardHTML);home=replaceRoot(home,'articleLibrary',library);
 const curatedCSS=capture(loader,/style\.textContent=`(#insightTrack[\s\S]*?)`;/,'curated CSS');
 home=block(home,'home-style',`<style>${curatedCSS}.rc-insight-summary{font-size:13px;line-height:1.65;color:#596273;margin:0 0 12px}.article-actions a.article-all{text-decoration:none;display:inline-flex;align-items:center;min-height:40px}${guideStripCSS}</style>`,'</head>');
