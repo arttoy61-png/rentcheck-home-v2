@@ -60,19 +60,19 @@ home=home.replace(/<span>네이버 발행 글<\/span>/g,'<span>자체 분석·�
 const latest=owned.inventory.filter(p=>p.url.startsWith('/blog/')&&p.date).sort((a,b)=>b.date.localeCompare(a.date))[0];assert(latest);
 home=home.replace(/(id="rc-latest-search-guide"[\s\S]*?<a class="rc-guide-link" href=")[^"]+("[\s\S]*?<span class="rc-guide-title">)[\s\S]*?(<\/span>)/,(_,a,b,c)=>a+latest.url+b+esc(latest.title)+c);
 if(process.argv.includes('--posts-only')){put('index.html',home);renderHomeEditorial();console.log('Owned HOME library/count synchronized; Naver archive preserved: '+posts.length);process.exit(0);}
-const homeDesc='국토교통부 실거래와 LH·SH 공식 공고를 그대로 나열하지 않고, 비교할 조건과 지금 할 일을 붙여 계산기·자체 분석·실전 가이드로 연결하는 Rent Check입니다.';
+const homeDesc='강서구 실거래를 비교하고 보증금·월세·계약 비용과 재개발 분담금을 계산해 보세요. LH·SH 공고와 부동산 실전 가이드도 함께 확인할 수 있습니다.';
 home=home.replace(/<meta name="description" content="[^"]*">/,`<meta name="description" content="${homeDesc}">`);
 home=home.replace(/<meta property="og:description" content="[^"]*">/,`<meta property="og:description" content="${homeDesc}">`);
 home=home.replace(/<meta name="twitter:description" content="[^"]*">/,`<meta name="twitter:description" content="${homeDesc}">`);
 home=home.replace(/"description": "대한민국 부동산 실거래 신고자료를 바탕으로 계산 도구와 분석을 제공하는 부동산 데이터 서비스입니다\."/,`"description": "국토교통부 실거래와 공식 공고를 비교·해석하고 계산 도구와 자체 분석을 제공하는 부동산 데이터 서비스입니다."`);
 home=home.replace(/"description": "국토교통부 실거래 신고자료와 부동산 계산 도구를 연결하는 Rent Check입니다\."/,`"description": "국토교통부 실거래와 LH·SH 공식 공고를 비교·해석하고 계산 도구와 자체 분석으로 연결하는 Rent Check입니다."`);
 home=home.replace(/<p class="hero-lead">[\s\S]*?<\/p>/,`<p class="hero-lead">강서구 실거래는 단지·면적으로 비교하고,<br>LH·SH 공고는 접수일·마감시간을 보세요.</p>`);
-home=home.replace(/<div class="trust">[\s\S]*?<\/div>/,`<div class="trust"><span><i>✓</i> 국토부 신고자료 기반</span><span><i>✓</i> 공식 공고·직접 계산 연결</span></div>`);
-home=home.replace('<p>계약부터 투자 판단까지, 필요한 계산을 한곳에서 확인하세요.</p>','<p>입력값을 계산하는 데서 끝내지 않고, 결과가 뜻하는 범위와 확인할 항목을 함께 안내합니다.</p>');
+home=home.replace(/<div class="trust">[\s\S]*?<\/div>/,`<div class="trust"><span><i>✓</i> 국토부 신고자료 기반</span><span><i>✓</i> 공식 공고와 계산 도구</span></div>`);
+home=home.replace('<p>계약부터 투자 판단까지, 필요한 계산을 한곳에서 확인하세요.</p>','<p>보증금·월세부터 계약 비용과 재개발 분담금까지 계산해 보세요.</p>');
 home=home.replace('<p>실거래와 제도를 읽는 판단 기준을 정리합니다.</p>','<p>공개자료를 다시 비교해, 무엇을 확인했고 어디까지 해석할 수 있는지 함께 적습니다.</p>');
 home=home.replace('<h2>분석 글 모음</h2>','<h2>발행 글 찾아보기</h2>');
 home=home.replace('<p>주제별 최신 글을 바로 찾고, 더 필요한 글은 펼쳐서 확인하세요.</p>','<p>홈 자체 분석과 네이버 발행 글을 주제별로 찾습니다. 자체 분석은 위에서 먼저 확인할 수 있습니다.</p>');
-home=home.replace('국토부 실거래 데이터와 실전형 해석을 연결하는<br>부동산 계산·분석 서비스입니다.','국토부 실거래와 공식 공고를 직접 비교하고,<br>계산·분석·실전 가이드로 판단 순서를 보여줍니다.');
+home=home.replace('국토부 실거래 데이터와 실전형 해석을 연결하는<br>부동산 계산·분석 서비스입니다.','국토부 실거래와 공식 공고를 직접 비교하고,<br>계산 도구와 실전 가이드로 알기 쉽게 안내합니다.');
 // Replace the approved oversized introduction, rather than hiding it or adding another section.
 home=home.replace(/<!-- rc-static:value-proof -->[\s\S]*?<!-- \/rc-static:value-proof -->/g,'');
 const guideStripHTML='<aside class="container rc-guide-strip" id="rc-featured-guide" aria-label="추천 실전 가이드"><a class="rc-guide-link" href="/blog/public-housing-application-documents/"><span class="rc-guide-label">추천 가이드</span><span class="rc-guide-title">SH 신청 후 서류, 언제 내나요?</span><span class="rc-guide-arrow" aria-hidden="true">→</span></a></aside>';

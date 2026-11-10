@@ -3,19 +3,31 @@
   "articles": [
     {
       "url": "/blog/apartment-floor-price-comparison/",
-      "label": "같은 평형, 다른 층의 실거래"
+      "label": "같은 평형, 다른 층의 실거래",
+      "category": "실거래 분석",
+      "title": "같은 평형, 층이 다르면 같이 봐도 될까요?",
+      "summary": "강서구 두 단지의 과거 실거래로 층별 가격 차이를 비교합니다. 계약일과 집 상태도 함께 봐야 하는 이유를 살펴보세요."
     },
     {
       "url": "/blog/apartment-direct-deal-reading/",
-      "label": "직거래를 시세에서 빼야 할까"
+      "label": "직거래를 시세에서 빼야 할까",
+      "category": "실거래 읽기",
+      "title": "직거래, 시세에서 빼야 할까요?",
+      "summary": "직거래라는 이유만으로 제외하기 전에, 면적·계약일·층수가 비슷한 중개거래와 비교하는 방법을 알아봅니다."
     },
     {
       "url": "/blog/redevelopment-management-plan-inspection/",
-      "label": "관리처분계획 공람에서 확인할 것"
+      "label": "관리처분계획 공람에서 확인할 것",
+      "category": "재개발 절차",
+      "title": "관리처분계획 공람, 무엇을 봐야 할까요?",
+      "summary": "내 종전자산가격과 분양받을 주택, 분담금·납부시기를 확인하고 의견을 제출하는 절차를 정리했습니다."
     },
     {
       "url": "/blog/redevelopment-contribution/",
-      "label": "재개발 분담금과 총투입액"
+      "label": "재개발 분담금과 총투입액",
+      "category": "재개발 비용",
+      "title": "재개발 분담금, 내 돈은 얼마나 들까요?",
+      "summary": "권리가액과 비례율로 분담금을 계산하고, 매입가·부대비용과 납부일별로 필요한 돈까지 함께 살펴봅니다."
     }
   ]
 }

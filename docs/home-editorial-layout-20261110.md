@@ -1,4 +1,24 @@
-# Reversible editorial homepage
+# Homepage summary-card revision (2026-11-10)
+
+Read `AGENTS.md` and `docs/home-content-guidelines.md` at base commit `ae49ccc6a1ba8a6aceaf18ae34ee6b248213852c`. Kept the existing publication workflow, four canonical article URLs, factual dates, tables, historical limitations, source links, analytics and AdSense markup, all tools, and HOME/Naver inventory definitions. No new articles or duplicate public pages were created.
+
+The four full article embeds have been replaced with a static, responsive summary-card grid using the supplied design: category, natural-language title, brief summary, and a full-card link to the original. The original articles remain complete. Their copy and the home introduction have been edited to remove technical publication labels and repetitive answer/checklist labels while retaining the underlying explanations. This is a wording and layout change, not a fresh verification of the original legal or transaction data.
+
+`data/home-editorial-config.json` provides the four card descriptions. The existing `scripts/render-core-content.mjs` calls the card renderer for both normal and `--posts-only` runs. Setting `enabled` to `false` and running the existing renderer removes the editorial block and its scoped stylesheet. Re-enabling restores the four cards.
+
+## Verification for this revision
+
+- `node scripts/render-core-content.mjs --content-only`: passed.
+- `node scripts/render-core-content.mjs --posts-only`: passed.
+- `node scripts/test-home-editorial.mjs`: passed after both commands. Covers four cards and original canonical URLs, preserved original article bodies, natural visible copy, unique IDs and existing anchors, one H1, escaped fields, invalid/duplicate path rejection, idempotence, and exact removal/restoration.
+- `python scripts/audit_internal_links.py`: passed, no broken local links/assets or guarded-home regressions; existing Naver-link warnings remain.
+- Individual `audit_seo_publication.py --article` runs for all four originals: passed, no errors or warnings.
+- Full `python scripts/audit_seo_publication.py`: 194 HTML pages and 73 articles checked, 0 errors; 17 existing source-link review warnings outside the edited articles.
+- Browser checks and final production verification are recorded separately after publication. The local browser could not start because the execution sandbox did not permit its socket operation, and the cloud browser could not reach the local preview server. Do not treat static tests as a mobile browser pass.
+
+## Previous full-body layout history
+
+# Original reversible editorial homepage
 
 Read `AGENTS.md` and `docs/home-content-guidelines.md` at repository commit `5be60a184076740ef654322c55f0a80e7976fdcf` before implementation. Applied: retain existing article URLs and source HTML, preserve calculation tools, separate historical data and hypothetical examples, keep source links, and test local publication and link integrity. This layout does not constitute a fresh verification of every source claim or guarantee AdSense approval.
 
