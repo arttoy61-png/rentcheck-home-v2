@@ -3,16 +3,16 @@
   "collection": {
     "schema_version": 1,
     "status": "success",
-    "attempted_at": "2026-11-09T16:09:52+00:00",
-    "last_success_at": "2026-11-09T16:09:52+00:00",
-    "snapshot_sha256": "763a3f2da7b6b10972e0f0fd48b21d6ead56536b4462f369012cb0b257f5fcc8",
-    "snapshot_changed": false,
+    "attempted_at": "2026-11-10T02:45:17+00:00",
+    "last_success_at": "2026-11-10T02:45:17+00:00",
+    "snapshot_sha256": "8fc506601e81ee7cb9248c2391d032ec1fcf571b975e0888ba9dc761184cffd3",
+    "snapshot_changed": true,
     "expected_partitions": 144,
     "succeeded_partitions": 144,
     "cache_policy": "recent_two_months_live; older_months_may_use_cache"
   },
-  "generated_at": "2026-11-10T11:16:01+09:00",
-  "data_until": "2026-11-06",
+  "generated_at": "2026-11-10T12:04:07+09:00",
+  "data_until": "2026-11-09",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
@@ -26,20 +26,20 @@
       "complex_id": "cb3e0cfd"
     },
     {
+      "dong": "내발산동",
+      "name": "청솔샤르망1003동",
+      "area_m2": 84,
+      "amount_eok": 7.28,
+      "date": "2026.11.05",
+      "complex_id": "a7bb42e8"
+    },
+    {
       "dong": "가양동",
       "name": "가양도시개발9-2단지",
       "area_m2": 34,
       "amount_eok": 7.5,
       "date": "2026.11.05",
       "complex_id": "f4f1a929"
-    },
-    {
-      "dong": "염창동",
-      "name": "현대2",
-      "area_m2": 83,
-      "amount_eok": 9.7,
-      "date": "2026.11.03",
-      "complex_id": "54584f3f"
     }
   ],
   "monthly_trend": [
@@ -61,11 +61,11 @@
     },
     {
       "month": "2026-10",
-      "count": 201
+      "count": 213
     },
     {
       "month": "2026-11",
-      "count": 8
+      "count": 15
     }
   ]
 }
