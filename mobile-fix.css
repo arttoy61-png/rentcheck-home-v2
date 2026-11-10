@@ -16,8 +16,6 @@
 .service-arrow{display:none!important}
 .service-copy{min-width:0}
 .service-copy strong,.service-copy small{line-height:1.35}
-.service-item:nth-child(5) .service-copy small{font-size:0}
-.service-item:nth-child(5) .service-copy small::after{content:"예상 분담금 계산";font-size:14px}
 
 /* Featured cards use public-domain real photos instead of fallback vector art. */
 .insight-art{background-position:center;background-size:cover;background-repeat:no-repeat}
@@ -188,20 +186,14 @@
   }
   .service-item:nth-child(1){border-radius:13px 0 0 0!important}
   .service-item:nth-child(2){border-radius:0 13px 0 0!important}
-  .service-item:nth-child(5){
-    grid-column:1 / -1!important;
-    height:78px;
-    border-radius:0 0 13px 13px!important;
-    grid-template-columns:36px auto;
-    justify-content:center;
-  }
+  .service-item:nth-child(5){border-radius:0 0 0 13px!important}
+  .service-item:nth-child(6){border-radius:0 0 13px 0!important}
   .service-icon{width:36px;height:36px}
   .service-copy strong{font-size:14px;line-height:1.3}
   .service-copy small{font-size:12px;line-height:1.35;white-space:normal}
 }
 @media (max-width: 430px){
   .service-item{height:84px;padding:11px 10px;grid-template-columns:32px minmax(0,1fr);gap:8px}
-  .service-item:nth-child(5){height:74px;grid-template-columns:32px auto}
   .service-icon{width:32px;height:32px;border-radius:8px}
   .service-icon svg{width:17px;height:17px}
   .service-copy strong{font-size:13px}
@@ -221,9 +213,9 @@
 
 /* Mobile reading scale: presentation only; desktop and calculations stay unchanged. */
 @media (max-width: 768px){
-  .service-item,.service-item:nth-child(5){height:auto;min-height:88px}
+  .service-item{height:auto;min-height:88px}
   .service-copy strong{font-size:16px;line-height:1.5}
-  .service-copy small,.service-item:nth-child(5) .service-copy small::after{font-size:14px;line-height:1.65}
+  .service-copy small{font-size:14px;line-height:1.65}
 }
 @media (max-width: 520px){
   .calculator-card{height:auto;min-height:232px}
