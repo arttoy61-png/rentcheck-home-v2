@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-14T01:08:09+00:00",
-  "source_generated_at": "2026-11-14T04:41:18",
+  "generated_at": "2026-11-14T02:41:07+00:00",
+  "source_generated_at": "2026-11-14T10:28:19",
   "source_status": {
     "LH": {
       "count": 6,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 6,
       "carried_count": 8,
-      "failure_streak": 156
+      "failure_streak": 157
     },
     "SH": {
       "count": 21,
