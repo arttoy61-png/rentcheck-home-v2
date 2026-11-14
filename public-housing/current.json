@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-14T02:41:07+00:00",
-  "source_generated_at": "2026-11-14T10:28:19",
+  "generated_at": "2026-11-14T13:57:11+00:00",
+  "source_generated_at": "2026-11-14T19:24:59",
   "source_status": {
     "LH": {
       "count": 6,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 6,
       "carried_count": 8,
-      "failure_streak": 157
+      "failure_streak": 158
     },
     "SH": {
       "count": 21,
@@ -30,7 +30,7 @@
     "SEOUL": {
       "count": 20,
       "errors": [],
-      "excluded_noise": 17
+      "excluded_noise": 16
     },
     "SOCO": {
       "count": 14,
