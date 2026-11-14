@@ -3,20 +3,28 @@
   "collection": {
     "schema_version": 1,
     "status": "success",
-    "attempted_at": "2026-11-13T01:05:20+00:00",
-    "last_success_at": "2026-11-13T01:05:20+00:00",
-    "snapshot_sha256": "2fbde431f2da4b88ae1bb51280b6e7ff56696fab87307f1a3da941b9ed45df71",
+    "attempted_at": "2026-11-14T00:54:13+00:00",
+    "last_success_at": "2026-11-14T00:54:13+00:00",
+    "snapshot_sha256": "1177dd55f69b222c80aad00105893cd9f388e7d8a06765911283be926f600c96",
     "snapshot_changed": true,
     "expected_partitions": 144,
     "succeeded_partitions": 144,
     "cache_policy": "recent_two_months_live; older_months_may_use_cache"
   },
-  "generated_at": "2026-11-13T11:53:34+09:00",
-  "data_until": "2026-11-12",
+  "generated_at": "2026-11-14T10:08:10+09:00",
+  "data_until": "2026-11-13",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
+    {
+      "dong": "화곡동",
+      "name": "남광아파트",
+      "area_m2": 46,
+      "amount_eok": 3.15,
+      "date": "2026.11.11",
+      "complex_id": "c45ee28b"
+    },
     {
       "dong": "내발산동",
       "name": "마곡수명산파크7단지",
@@ -32,14 +40,6 @@
       "amount_eok": 12.3,
       "date": "2026.11.09",
       "complex_id": "0ef830a3"
-    },
-    {
-      "dong": "가양동",
-      "name": "대림경동아파트",
-      "area_m2": 131,
-      "amount_eok": 15.9,
-      "date": "2026.11.09",
-      "complex_id": "18872afc"
     }
   ],
   "monthly_trend": [
@@ -61,11 +61,11 @@
     },
     {
       "month": "2026-10",
-      "count": 236
+      "count": 237
     },
     {
       "month": "2026-11",
-      "count": 38
+      "count": 42
     }
   ]
 }

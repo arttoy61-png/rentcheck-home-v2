@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-13T02:53:33+00:00",
-  "source_generated_at": "2026-11-13T10:53:12",
+  "generated_at": "2026-11-14T01:08:09+00:00",
+  "source_generated_at": "2026-11-14T04:41:18",
   "source_status": {
     "LH": {
       "count": 6,
       "errors": [
-        "LH OpenAPI: 06/1:<urlopen error timed out>; 13/1:<urlopen error timed out>; 39/1:<urlopen error timed out>"
+        "LH OpenAPI: 06/1:HTTP Error 403: Forbidden; 13/1:HTTP Error 403: Forbidden; 39/1:HTTP Error 403: Forbidden"
       ],
       "official_count": 6,
       "api_count": 0,
@@ -17,20 +17,20 @@
       "warnings": [],
       "status": "부분수집",
       "diagnostic_errors": [
-        "LH OpenAPI: 06/1:<urlopen error timed out>; 13/1:<urlopen error timed out>; 39/1:<urlopen error timed out>"
+        "LH OpenAPI: 06/1:HTTP Error 403: Forbidden; 13/1:HTTP Error 403: Forbidden; 39/1:HTTP Error 403: Forbidden"
       ],
       "fresh_count": 6,
       "carried_count": 8,
-      "failure_streak": 154
+      "failure_streak": 156
     },
     "SH": {
-      "count": 19,
+      "count": 21,
       "errors": []
     },
     "SEOUL": {
       "count": 20,
       "errors": [],
-      "excluded_noise": 14
+      "excluded_noise": 17
     },
     "SOCO": {
       "count": 14,
@@ -43,11 +43,11 @@
       "source_url": "https://soco.seoul.go.kr/youth/pgm/home/yohome/bbsListJson.json"
     },
     "TOTAL": {
-      "count": 45,
+      "count": 47,
       "duplicates_removed": 3,
-      "excluded_non_housing": 3,
+      "excluded_non_housing": 4,
       "excluded_outside_seoul": 0,
-      "published_count": 47
+      "published_count": 48
     }
   },
   "recruitment_count": 38,
