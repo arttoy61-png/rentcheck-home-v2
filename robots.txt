@@ -40,3 +40,6 @@ Allow: /
 Sitemap: https://rent-check.kr/sitemap.xml
 Sitemap: https://rent-check.kr/analysis/sitemap.xml
 Sitemap: https://rent-check.kr/public-housing/sitemap.xml
+
+# Daum 웹마스터도구 인증 (2026-11-16)
+#DaumWebMasterTool:7bc34f4d797df708caa706fc2b87d478ec28e07c5177fe31e830d1c0f6c48d1a:CNSJIIGOISrSV2aL3hPlgQ==
