@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-16T02:23:24+00:00",
-  "source_generated_at": "2026-11-16T07:49:44",
+  "generated_at": "2026-11-16T16:45:58+00:00",
+  "source_generated_at": "2026-11-16T15:26:46",
   "source_status": {
     "LH": {
       "count": 6,
@@ -21,16 +21,16 @@
       ],
       "fresh_count": 6,
       "carried_count": 8,
-      "failure_streak": 163
+      "failure_streak": 164
     },
     "SH": {
       "count": 21,
       "errors": []
     },
     "SEOUL": {
-      "count": 20,
+      "count": 21,
       "errors": [],
-      "excluded_noise": 16
+      "excluded_noise": 14
     },
     "SOCO": {
       "count": 14,
@@ -43,15 +43,59 @@
       "source_url": "https://soco.seoul.go.kr/youth/pgm/home/yohome/bbsListJson.json"
     },
     "TOTAL": {
-      "count": 47,
+      "count": 48,
       "duplicates_removed": 3,
       "excluded_non_housing": 4,
       "excluded_outside_seoul": 0,
-      "published_count": 48
+      "published_count": 49
     }
   },
-  "recruitment_count": 38,
+  "recruitment_count": 39,
   "items": [
+    {
+      "id": "SH:seq:313268",
+      "agency": "SH",
+      "agency_group": "SH",
+      "title": "NEW 동작구 홀몸어르신(수요자맞춤형)주택 잔여세대 입주자 모집 공고",
+      "housing_types": [
+        "기타임대"
+      ],
+      "audiences": [
+        "고령자"
+      ],
+      "region": "서울",
+      "published_at": "2026-11-16",
+      "deadline": "2026-12-04",
+      "open_state": "접수예정",
+      "event": "신규",
+      "change": "신규",
+      "status_text": "",
+      "is_gangseo": false,
+      "keywords": [],
+      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313268",
+      "source": "SH 공식 주택임대 게시판",
+      "content_signature": "294c5801a040ea31debbbae89b50be66da03bd2eb4646eb9467740f91ba212bb",
+      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
+      "published_source": "official_list_registration",
+      "notice_kind": "recruitment",
+      "application_start": "2026-11-23",
+      "schedule_type": "single",
+      "deadline_precision": "date",
+      "schedule_source": "official_detail_html",
+      "schedule_note": "공식 상세본문 신청기간 기준입니다. 정확한 접수시각과 대상은 공고문을 확인하세요.",
+      "application_windows": [],
+      "schedule_evidence": {
+        "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313268",
+        "kind": "official_notice_body",
+        "excerpt": "접수 기간 : 2026.11.23.(월) ~ 12.04.(금) 18시까지",
+        "verified_at": "2026-11-16T15:26:25"
+      },
+      "sh_schedule_version": 1,
+      "route": "/public-housing/notices/sh-313268/",
+      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313268",
+      "official_link_label": "공식 모집공고 원문 →",
+      "indexable": false
+    },
     {
       "id": "SOCOS:boardId:6727",
       "agency": "서울시 청년안심주택",
