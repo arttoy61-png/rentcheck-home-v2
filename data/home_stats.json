@@ -3,20 +3,28 @@
   "collection": {
     "schema_version": 1,
     "status": "success",
-    "attempted_at": "2026-11-16T15:37:55+00:00",
-    "last_success_at": "2026-11-16T15:37:55+00:00",
-    "snapshot_sha256": "69790d183353f8babd95aa5b054a1df9fcf5600c49c03fd6dcf678ef87eba144",
-    "snapshot_changed": false,
+    "attempted_at": "2026-11-17T02:56:51+00:00",
+    "last_success_at": "2026-11-17T02:56:51+00:00",
+    "snapshot_sha256": "2799ade8cf585c9042f5a9838cdc810d48aad62f28001bb4b6a556fbe4019107",
+    "snapshot_changed": true,
     "expected_partitions": 144,
     "succeeded_partitions": 144,
     "cache_policy": "recent_two_months_live; older_months_may_use_cache"
   },
-  "generated_at": "2026-11-17T10:59:20+09:00",
-  "data_until": "2026-11-13",
+  "generated_at": "2026-11-17T12:18:50+09:00",
+  "data_until": "2026-11-16",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
+    {
+      "dong": "방화동",
+      "name": "방화5",
+      "area_m2": 50,
+      "amount_eok": 8.25,
+      "date": "2026.11.11",
+      "complex_id": "38d0233d"
+    },
     {
       "dong": "화곡동",
       "name": "남광아파트",
@@ -26,20 +34,12 @@
       "complex_id": "c45ee28b"
     },
     {
-      "dong": "내발산동",
-      "name": "마곡수명산파크7단지",
-      "area_m2": 84,
-      "amount_eok": 10.9,
+      "dong": "염창동",
+      "name": "삼성하나로",
+      "area_m2": 59,
+      "amount_eok": 8.85,
       "date": "2026.11.10",
-      "complex_id": "33ee09bf"
-    },
-    {
-      "dong": "등촌동",
-      "name": "한사랑2삼성",
-      "area_m2": 84,
-      "amount_eok": 12.3,
-      "date": "2026.11.09",
-      "complex_id": "0ef830a3"
+      "complex_id": "bb607fa3"
     }
   ],
   "monthly_trend": [
@@ -61,11 +61,11 @@
     },
     {
       "month": "2026-10",
-      "count": 237
+      "count": 245
     },
     {
       "month": "2026-11",
-      "count": 42
+      "count": 50
     }
   ]
 }
