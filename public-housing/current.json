@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-17T04:46:36+00:00",
-  "source_generated_at": "2026-11-17T12:53:41",
+  "generated_at": "2026-11-17T16:41:16+00:00",
+  "source_generated_at": "2026-11-18T00:59:48",
   "source_status": {
     "LH": {
-      "count": 6,
+      "count": 2,
       "errors": [
         "LH OpenAPI: 06/1:HTTP Error 403: Forbidden; 13/1:HTTP Error 403: Forbidden; 39/1:HTTP Error 403: Forbidden"
       ],
-      "official_count": 6,
+      "official_count": 2,
       "api_count": 0,
-      "html_count": 6,
+      "html_count": 2,
       "mirror_count": 0,
       "mirror_latest_published_at": "",
       "mirror_stale": false,
@@ -19,18 +19,18 @@
       "diagnostic_errors": [
         "LH OpenAPI: 06/1:HTTP Error 403: Forbidden; 13/1:HTTP Error 403: Forbidden; 39/1:HTTP Error 403: Forbidden"
       ],
-      "fresh_count": 6,
-      "carried_count": 8,
-      "failure_streak": 166
+      "fresh_count": 2,
+      "carried_count": 12,
+      "failure_streak": 167
     },
     "SH": {
-      "count": 20,
+      "count": 19,
       "errors": []
     },
     "SEOUL": {
       "count": 21,
       "errors": [],
-      "excluded_noise": 17
+      "excluded_noise": 16
     },
     "SOCO": {
       "count": 14,
@@ -43,9 +43,9 @@
       "source_url": "https://soco.seoul.go.kr/youth/pgm/home/yohome/bbsListJson.json"
     },
     "TOTAL": {
-      "count": 46,
+      "count": 41,
       "duplicates_removed": 3,
-      "excluded_non_housing": 4,
+      "excluded_non_housing": 3,
       "excluded_outside_seoul": 0,
       "published_count": 48
     }
@@ -88,7 +88,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313268",
         "kind": "official_notice_body",
         "excerpt": "접수 기간 : 2026.11.23.(월) ~ 12.04.(금) 18시까지",
-        "verified_at": "2026-11-17T12:53:18"
+        "verified_at": "2026-11-18T00:59:27"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-313268/",
