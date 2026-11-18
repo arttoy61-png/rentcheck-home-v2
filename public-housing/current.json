@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-17T18:15:09+00:00",
-  "source_generated_at": "2026-11-18T00:59:48",
+  "generated_at": "2026-11-18T02:40:25+00:00",
+  "source_generated_at": "2026-11-18T09:58:29",
   "source_status": {
     "LH": {
       "count": 2,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 2,
       "carried_count": 12,
-      "failure_streak": 167
+      "failure_streak": 168
     },
     "SH": {
       "count": 19,
@@ -30,7 +30,7 @@
     "SEOUL": {
       "count": 21,
       "errors": [],
-      "excluded_noise": 16
+      "excluded_noise": 15
     },
     "SOCO": {
       "count": 14,
@@ -88,7 +88,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313268",
         "kind": "official_notice_body",
         "excerpt": "접수 기간 : 2026.11.23.(월) ~ 12.04.(금) 18시까지",
-        "verified_at": "2026-11-18T00:59:27"
+        "verified_at": "2026-11-18T09:58:10"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-313268/",
