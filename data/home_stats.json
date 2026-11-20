@@ -3,16 +3,16 @@
   "collection": {
     "schema_version": 1,
     "status": "success",
-    "attempted_at": "2026-11-19T15:41:28+00:00",
-    "last_success_at": "2026-11-19T15:41:28+00:00",
-    "snapshot_sha256": "77f4c3f43089946237e2a8543de12a1b1b465356d3f97fd625bafe2f9065f68f",
-    "snapshot_changed": false,
+    "attempted_at": "2026-11-20T01:47:26+00:00",
+    "last_success_at": "2026-11-20T01:47:26+00:00",
+    "snapshot_sha256": "8949dcfb98ad8baf2ed4ff4ed8983cee4dde7b8e4003e56e2d7c0ee3f2b3022c",
+    "snapshot_changed": true,
     "expected_partitions": 144,
     "succeeded_partitions": 144,
     "cache_policy": "recent_two_months_live; older_months_may_use_cache"
   },
-  "generated_at": "2026-11-20T03:12:55+09:00",
-  "data_until": "2026-11-18",
+  "generated_at": "2026-11-20T10:57:28+09:00",
+  "data_until": "2026-11-19",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
@@ -26,20 +26,20 @@
       "complex_id": "932c18d0"
     },
     {
+      "dong": "등촌동",
+      "name": "천우네오젠101동",
+      "area_m2": 77,
+      "amount_eok": 6.0,
+      "date": "2026.11.16",
+      "complex_id": "42005902"
+    },
+    {
       "dong": "마곡동",
       "name": "마곡푸르지오",
       "area_m2": 59,
       "amount_eok": 13.0,
       "date": "2026.11.16",
       "complex_id": "2e011f71"
-    },
-    {
-      "dong": "내발산동",
-      "name": "신세계4차",
-      "area_m2": 74,
-      "amount_eok": 6.8,
-      "date": "2026.11.15",
-      "complex_id": "a39a25d2"
     }
   ],
   "monthly_trend": [
@@ -61,11 +61,11 @@
     },
     {
       "month": "2026-10",
-      "count": 257
+      "count": 259
     },
     {
       "month": "2026-11",
-      "count": 74
+      "count": 89
     }
   ]
 }
