@@ -31,6 +31,7 @@ body.rd-guide-page.detail-open:has(#mapPage:not([hidden])){height:100dvh;overflo
 .rd-block li{margin:4px 0}
 .rd-block li b{color:#102b49}
 .rd-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:6px}
+@media(max-width:760px){.rd-table-wrap::after{content:'표는 좌우로 넘겨서 볼 수 있습니다';display:block;padding:7px 2px 0;color:#7b8794;font-size:11px}}
 .rd-table{width:100%;min-width:540px;border-collapse:collapse;font-size:13px}
 .rd-table th,.rd-table td{padding:8px 8px;border-bottom:1px solid #edf1f5;text-align:left;vertical-align:top}
 .rd-table th{color:#5d6b7a;font-size:12px;font-weight:700;background:#f8fafc}
