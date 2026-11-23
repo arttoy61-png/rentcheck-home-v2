@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-23T01:15:23+00:00",
-  "source_generated_at": "2026-11-23T04:37:46",
+  "generated_at": "2026-11-23T03:05:55+00:00",
+  "source_generated_at": "2026-11-23T10:42:30",
   "source_status": {
     "LH": {
       "count": 3,
@@ -21,14 +21,14 @@
       ],
       "fresh_count": 3,
       "carried_count": 13,
-      "failure_streak": 182
+      "failure_streak": 183
     },
     "SH": {
       "count": 21,
       "errors": []
     },
     "SEOUL": {
-      "count": 33,
+      "count": 32,
       "errors": [],
       "excluded_noise": 14
     },
@@ -43,15 +43,95 @@
       "source_url": "https://soco.seoul.go.kr/youth/pgm/home/yohome/bbsListJson.json"
     },
     "TOTAL": {
-      "count": 57,
+      "count": 56,
       "duplicates_removed": 5,
       "excluded_non_housing": 1,
       "excluded_outside_seoul": 0,
-      "published_count": 64
+      "published_count": 63
     }
   },
-  "recruitment_count": 53,
+  "recruitment_count": 55,
   "items": [
+    {
+      "id": "SH:seq:313647",
+      "agency": "SH",
+      "agency_group": "SH",
+      "title": "NEW [토지임대부 사회주택] 옥류서원 입주자 모집 공고문",
+      "housing_types": [
+        "기타임대"
+      ],
+      "audiences": [],
+      "region": "서울",
+      "published_at": "2026-11-23",
+      "deadline": "",
+      "open_state": "일정 확인",
+      "event": "신규",
+      "change": "신규",
+      "status_text": "일정 확인 중",
+      "is_gangseo": false,
+      "keywords": [],
+      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313647",
+      "source": "SH 공식 주택임대 게시판",
+      "content_signature": "89d7ec684dba6fb4887e96b344bc92ff63f56211085bdf99c5b6522f36a6b05a",
+      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
+      "published_source": "official_list_registration",
+      "notice_kind": "recruitment",
+      "application_start": "",
+      "schedule_type": "unknown",
+      "deadline_precision": "unknown",
+      "schedule_source": "unknown",
+      "schedule_note": "신청기간은 공식 공고문 확인이 필요합니다.",
+      "application_windows": [],
+      "schedule_evidence": {},
+      "sh_schedule_version": 1,
+      "route": "/public-housing/notices/sh-313647/",
+      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313647",
+      "official_link_label": "공식 모집공고 원문 →",
+      "indexable": false
+    },
+    {
+      "id": "SH:seq:313481",
+      "agency": "SH",
+      "agency_group": "SH",
+      "title": "NEW [청년형] 특화형 매입임대주택(서초구) 입주자 모집 공고(운영기관 : 마을과집 협동조합)",
+      "housing_types": [
+        "매입임대"
+      ],
+      "audiences": [
+        "청년"
+      ],
+      "region": "서울",
+      "published_at": "2026-11-23",
+      "deadline": "",
+      "open_state": "일정 확인",
+      "event": "신규",
+      "change": "신규",
+      "status_text": "일정 확인 중",
+      "is_gangseo": false,
+      "keywords": [
+        "청년",
+        "매입임대",
+        "협동조합"
+      ],
+      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313481",
+      "source": "SH 공식 주택임대 게시판",
+      "content_signature": "7b4581125723244bdfb3c34cbc156ee619f022ec49584ee3e275ddf7e6a25f71",
+      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
+      "published_source": "official_list_registration",
+      "notice_kind": "recruitment",
+      "application_start": "",
+      "schedule_type": "unknown",
+      "deadline_precision": "unknown",
+      "schedule_source": "unknown",
+      "schedule_note": "신청기간은 공식 공고문 확인이 필요합니다.",
+      "application_windows": [],
+      "schedule_evidence": {},
+      "sh_schedule_version": 1,
+      "route": "/public-housing/notices/sh-313481/",
+      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313481",
+      "official_link_label": "공식 모집공고 원문 →",
+      "indexable": false
+    },
     {
       "id": "SH:seq:313509",
       "agency": "SH",
@@ -2324,7 +2404,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313268",
         "kind": "official_notice_body",
         "excerpt": "접수 기간 : 2026.11.23.(월) ~ 12.04.(금) 18시까지",
-        "verified_at": "2026-11-23T04:37:44"
+        "verified_at": "2026-11-23T10:42:28"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-313268/",
@@ -2367,7 +2447,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313227",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.24.(화) ~ 2026.12.07.(월)",
-        "verified_at": "2026-11-23T04:37:37"
+        "verified_at": "2026-11-23T10:42:22"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-313227/",
@@ -2412,7 +2492,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313225",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.24.(화) ~ 12.07.(월) 18시까지",
-        "verified_at": "2026-11-23T04:37:39"
+        "verified_at": "2026-11-23T10:42:23"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-313225/",
@@ -2495,7 +2575,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313424",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.25.(수) ~ 2026.12.04.(금) 18시까지",
-        "verified_at": "2026-11-23T04:37:42"
+        "verified_at": "2026-11-23T10:42:25"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-12-04T18:00:00+09:00",
