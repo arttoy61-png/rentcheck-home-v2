@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-23T18:58:51+00:00",
-  "source_generated_at": "2026-11-23T21:34:57",
+  "generated_at": "2026-11-24T05:04:00+00:00",
+  "source_generated_at": "2026-11-24T11:13:52",
   "source_status": {
     "LH": {
       "count": 4,
@@ -21,16 +21,16 @@
       ],
       "fresh_count": 4,
       "carried_count": 13,
-      "failure_streak": 184
+      "failure_streak": 185
     },
     "SH": {
-      "count": 18,
+      "count": 20,
       "errors": []
     },
     "SEOUL": {
       "count": 32,
       "errors": [],
-      "excluded_noise": 13
+      "excluded_noise": 12
     },
     "SOCO": {
       "count": 25,
@@ -43,51 +43,20 @@
       "source_url": "https://soco.seoul.go.kr/youth/pgm/home/yohome/bbsListJson.json"
     },
     "TOTAL": {
-      "count": 54,
+      "count": 56,
       "duplicates_removed": 6,
-      "excluded_non_housing": 1,
+      "excluded_non_housing": 2,
       "excluded_outside_seoul": 0,
-      "published_count": 60
+      "published_count": 61
     }
   },
   "recruitment_count": 53,
   "items": [
     {
-      "id": "LH:panId:2015122300021131",
-      "agency": "LH",
-      "agency_group": "LH",
-      "title": "[정정공고]서울삼전,강동천호,LH수서1,LH수서2 행복주택 예비입주자 모집공고",
-      "housing_types": [
-        "행복주택"
-      ],
-      "audiences": [],
-      "region": "서울특별시",
-      "published_at": "2026-11-23",
-      "deadline": "2026-12-01",
-      "open_state": "접수예정",
-      "event": "수정",
-      "change": "신규",
-      "status_text": "공고중",
-      "is_gangseo": false,
-      "keywords": [
-        "행복주택"
-      ],
-      "url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021131&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
-      "source": "LH청약플러스 실제 공고표",
-      "content_signature": "9fe3456e6346e349262328a84c1062b99f68a5b062e4ea0a87c6b144e1f2d901",
-      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
-      "application_start": "2026-11-30",
-      "schedule_source": "official_detail_html",
-      "route": "/public-housing/notices/lh-2015122300021131/",
-      "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021131&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
-      "official_link_label": "공식 모집공고 원문 →",
-      "indexable": false
-    },
-    {
       "id": "SH:seq:313647",
       "agency": "SH",
       "agency_group": "SH",
-      "title": "NEW [토지임대부 사회주택] 옥류서원 입주자 모집 공고문",
+      "title": "[토지임대부 사회주택] 옥류서원 입주자 모집 공고문",
       "housing_types": [
         "기타임대"
       ],
@@ -96,14 +65,14 @@
       "published_at": "2026-11-23",
       "deadline": "",
       "open_state": "일정 확인",
-      "event": "신규",
-      "change": "동일",
+      "event": "수정",
+      "change": "수정",
       "status_text": "일정 확인 중",
       "is_gangseo": false,
       "keywords": [],
       "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313647",
       "source": "SH 공식 주택임대 게시판",
-      "content_signature": "89d7ec684dba6fb4887e96b344bc92ff63f56211085bdf99c5b6522f36a6b05a",
+      "content_signature": "4ea1b680b4bdb87168483f3ff94d25d6e0f9cfe62c49c75f04fc7447a941ce85",
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "published_source": "official_list_registration",
       "notice_kind": "recruitment",
@@ -124,7 +93,7 @@
       "id": "SH:seq:313481",
       "agency": "SH",
       "agency_group": "SH",
-      "title": "NEW [청년형] 특화형 매입임대주택(서초구) 입주자 모집 공고(운영기관 : 마을과집 협동조합)",
+      "title": "[청년형] 특화형 매입임대주택(서초구) 입주자 모집 공고(운영기관 : 마을과집 협동조합)",
       "housing_types": [
         "매입임대"
       ],
@@ -135,8 +104,8 @@
       "published_at": "2026-11-23",
       "deadline": "",
       "open_state": "일정 확인",
-      "event": "신규",
-      "change": "동일",
+      "event": "수정",
+      "change": "수정",
       "status_text": "일정 확인 중",
       "is_gangseo": false,
       "keywords": [
@@ -146,7 +115,7 @@
       ],
       "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313481",
       "source": "SH 공식 주택임대 게시판",
-      "content_signature": "7b4581125723244bdfb3c34cbc156ee619f022ec49584ee3e275ddf7e6a25f71",
+      "content_signature": "93fb1eb15f5d4b0d20a66d12f9a0a609fe678038143fb27212dad709984574bd",
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "published_source": "official_list_registration",
       "notice_kind": "recruitment",
@@ -160,6 +129,37 @@
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-313481/",
       "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313481",
+      "official_link_label": "공식 모집공고 원문 →",
+      "indexable": false
+    },
+    {
+      "id": "LH:panId:2015122300021131",
+      "agency": "LH",
+      "agency_group": "LH",
+      "title": "[정정공고]서울삼전,강동천호,LH수서1,LH수서2 행복주택 예비입주자 모집공고",
+      "housing_types": [
+        "행복주택"
+      ],
+      "audiences": [],
+      "region": "서울특별시",
+      "published_at": "2026-11-23",
+      "deadline": "2026-12-01",
+      "open_state": "접수예정",
+      "event": "수정",
+      "change": "동일",
+      "status_text": "공고중",
+      "is_gangseo": false,
+      "keywords": [
+        "행복주택"
+      ],
+      "url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021131&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
+      "source": "LH청약플러스 실제 공고표",
+      "content_signature": "9fe3456e6346e349262328a84c1062b99f68a5b062e4ea0a87c6b144e1f2d901",
+      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
+      "application_start": "2026-11-30",
+      "schedule_source": "official_detail_html",
+      "route": "/public-housing/notices/lh-2015122300021131/",
+      "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021131&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
       "official_link_label": "공식 모집공고 원문 →",
       "indexable": false
     },
@@ -2330,7 +2330,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313268",
         "kind": "official_notice_body",
         "excerpt": "접수 기간 : 2026.11.23.(월) ~ 12.04.(금) 18시까지",
-        "verified_at": "2026-11-23T21:34:55"
+        "verified_at": "2026-11-24T11:13:50"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-313268/",
@@ -2352,7 +2352,7 @@
       "region": "서울",
       "published_at": "",
       "deadline": "2026-12-07",
-      "open_state": "접수예정",
+      "open_state": "접수중",
       "event": "신규",
       "change": "동일",
       "status_text": "",
@@ -2373,7 +2373,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313227",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.24.(화) ~ 2026.12.07.(월)",
-        "verified_at": "2026-11-23T21:34:48"
+        "verified_at": "2026-11-24T11:13:44"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-313227/",
@@ -2395,7 +2395,7 @@
       "region": "서울",
       "published_at": "",
       "deadline": "2026-12-07",
-      "open_state": "접수예정",
+      "open_state": "접수중",
       "event": "신규",
       "change": "동일",
       "status_text": "",
@@ -2418,7 +2418,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313225",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.24.(화) ~ 12.07.(월) 18시까지",
-        "verified_at": "2026-11-23T21:34:50"
+        "verified_at": "2026-11-24T11:13:46"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-313225/",
@@ -2501,7 +2501,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313424",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.25.(수) ~ 2026.12.04.(금) 18시까지",
-        "verified_at": "2026-11-23T21:34:52"
+        "verified_at": "2026-11-24T11:13:48"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-12-04T18:00:00+09:00",
