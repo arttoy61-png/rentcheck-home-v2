@@ -25,3 +25,17 @@ body[data-tool-id="rent-check"] .field :is(input,select){min-width:0;max-width:1
   .v2-content-guide__source,.v2-content-guide__eyebrow{font-size:13px;line-height:1.7}
   .v2-content-guide__link{min-height:44px}
 }
+
+/* 정적 가이드 표 (2026-11 추가) */
+.v2-content-guide .rc-guide-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0 4px}
+.v2-content-guide table.rc-guide-table{width:100%;min-width:480px;border-collapse:collapse;font-size:13px}
+.v2-content-guide table.rc-guide-table th,.v2-content-guide table.rc-guide-table td{padding:8px 9px;border-bottom:1px solid #edf1f5;text-align:left;vertical-align:top;line-height:1.6}
+.v2-content-guide table.rc-guide-table th{color:#5d6b7a;font-size:12px;font-weight:700;background:#f8fafc}
+.v2-content-guide table.rc-guide-table td{color:#1b2530;font-weight:600}
+.v2-content-guide table.rc-guide-table td.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.v2-content-guide table.rc-guide-table caption{caption-side:top;text-align:left;color:#5d6b7a;font-size:12px;padding:0 0 6px}
+.v2-content-guide .rc-guide-sub{margin:16px 0 0;color:#0d1f3c;font-size:14px;font-weight:800}
+@media(max-width:640px){
+  .v2-content-guide table.rc-guide-table{font-size:12px;min-width:440px}
+  .v2-content-guide table.rc-guide-table th,.v2-content-guide table.rc-guide-table td{padding:7px 7px}
+}

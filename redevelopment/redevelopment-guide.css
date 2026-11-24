@@ -1,0 +1,67 @@
+/* 재개발 지도 하단 정적 안내. 지도 앱 화면 높이는 그대로 두고 문서만 스크롤되게 합니다. */
+body.rd-guide-page{--rd-head:42px}
+@media (max-width:700px){body.rd-guide-page{--rd-head:56px}}
+
+body.rd-guide-page:has(#mapPage:not([hidden])){
+  height:auto;max-height:none;min-height:100dvh;overflow:visible;
+  display:flex;flex-direction:column;
+}
+body.rd-guide-page #mapPage:not([hidden]){
+  flex:0 0 auto;height:calc(100dvh - var(--rd-head));min-height:560px;margin:0;
+}
+body.rd-guide-page.detail-open:has(#mapPage:not([hidden])){height:100dvh;overflow:hidden}
+@media (max-width:700px){
+  body.rd-guide-page #mapPage:not([hidden]){height:calc(100dvh - var(--rd-head));min-height:520px}
+  body.rd-guide-page{padding-bottom:0}
+}
+
+.rd-guide{background:#f2f5f8;border-top:1px solid #dde3ea}
+.rd-guide-inner{width:min(100% - 32px,940px);margin:0 auto;padding:38px 0 46px}
+.rd-eyebrow{margin:0 0 8px;color:#8c6f2a;font-size:12px;font-weight:800;letter-spacing:.02em}
+.rd-guide h2{margin:0;color:#102b49;font-size:clamp(20px,2.4vw,26px);line-height:1.45;letter-spacing:-.035em}
+.rd-guide h3{margin:0 0 10px;color:#102b49;font-size:16px;letter-spacing:-.02em}
+.rd-lead{margin:12px 0 0;color:#3d4b5a;font-size:14px;line-height:1.85}
+.rd-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:18px 0 4px}
+.rd-stats div{padding:12px 14px;border:1px solid #dde3ea;border-radius:12px;background:#fff}
+.rd-stats b{display:block;color:#102b49;font-size:20px;letter-spacing:-.03em}
+.rd-stats span{display:block;margin-top:2px;color:#5d6b7a;font-size:12px}
+.rd-block{margin-top:16px;padding:20px 22px;border:1px solid #dde3ea;border-radius:16px;background:#fff;box-shadow:0 8px 22px rgba(16,43,73,.05)}
+.rd-block p{margin:8px 0;color:#40566e;font-size:13.5px;line-height:1.8}
+.rd-block ul,.rd-block ol{margin:8px 0 0;padding-left:19px;color:#40566e;font-size:13.5px;line-height:1.85}
+.rd-block li{margin:4px 0}
+.rd-block li b{color:#102b49}
+.rd-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:6px}
+@media(max-width:760px){.rd-table-wrap::after{content:'표는 좌우로 넘겨서 볼 수 있습니다';display:block;padding:7px 2px 0;color:#7b8794;font-size:11px}}
+.rd-table{width:100%;min-width:540px;border-collapse:collapse;font-size:13px}
+.rd-table th,.rd-table td{padding:8px 8px;border-bottom:1px solid #edf1f5;text-align:left;vertical-align:top}
+.rd-table th{color:#5d6b7a;font-size:12px;font-weight:700;background:#f8fafc}
+.rd-table td{color:#1b2530;font-weight:600}
+.rd-table td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.rd-table caption{caption-side:top;text-align:left;color:#5d6b7a;font-size:12px;padding:0 0 8px}
+.rd-note{margin:12px 0 0;padding:12px 14px;border-left:3px solid #c9a33c;border-radius:9px;background:#fffaf0;color:#5c4a25;font-size:12.5px;line-height:1.8}
+.rd-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin-top:12px}
+.rd-steps div{padding:12px 14px;border:1px solid #e6ebf0;border-radius:11px;background:#f8fafc}
+.rd-steps b{display:block;color:#102b49;font-size:13px}
+.rd-steps span{display:block;margin-top:4px;color:#5d6b7a;font-size:12px;line-height:1.65}
+.rd-faq{margin-top:10px;border-top:1px solid #e6ebf0}
+.rd-faq details{border-bottom:1px solid #edf1f5}
+.rd-faq summary{padding:12px 0;cursor:pointer;color:#1b2530;font-size:13.5px;font-weight:700}
+.rd-faq p{margin:0 0 12px;color:#4b5c6e;font-size:13px;line-height:1.8}
+.rd-source{margin:18px 0 0;color:#6b7887;font-size:11.5px;line-height:1.8}
+.rd-source a{color:#2c5f96}
+.rd-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.rd-links a{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border:1px solid #102b49;border-radius:9px;background:#102b49;color:#fff;font-size:12.5px;font-weight:700;text-decoration:none}
+.rd-links a.alt{background:#fff;color:#102b49}
+
+@media (max-width:760px){
+  .rd-guide-inner{width:calc(100% - 22px);padding:26px 0 34px}
+  .rd-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rd-block{padding:16px 16px;border-radius:14px}
+  .rd-guide h3{font-size:15px}
+  .rd-table{font-size:12px}
+  .rd-table th,.rd-table td{padding:7px 6px}
+  .rd-table td.num{font-size:11.5px}
+  .rd-block p,.rd-block ul,.rd-block ol{font-size:13px}
+}
+
+.results-static{margin:0;padding:14px 4px;color:#5d6b7a;font-size:12.5px;line-height:1.75}
