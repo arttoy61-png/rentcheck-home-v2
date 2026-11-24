@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-24T06:22:31+00:00",
-  "source_generated_at": "2026-11-24T11:13:52",
+  "generated_at": "2026-11-24T17:58:01+00:00",
+  "source_generated_at": "2026-11-24T22:42:23",
   "source_status": {
     "LH": {
       "count": 4,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 4,
       "carried_count": 13,
-      "failure_streak": 185
+      "failure_streak": 186
     },
     "SH": {
       "count": 20,
@@ -29,15 +29,17 @@
     },
     "SEOUL": {
       "count": 32,
-      "errors": [],
-      "excluded_noise": 12
+      "errors": [
+        "https://youth.seoul.go.kr/infoData/sprtInfo/list.do?key=2309130006 :: <urlopen error _ssl.c:1001: The handshake operation timed out>"
+      ],
+      "excluded_noise": 11
     },
     "SOCO": {
-      "count": 25,
+      "count": 26,
       "errors": [],
       "pages": 4,
       "status": "정상",
-      "latest_published_at": "2026-11-19",
+      "latest_published_at": "2026-11-24",
       "lookback_start": "2026-11-01",
       "unknown_schedule_count": 0,
       "source_url": "https://soco.seoul.go.kr/youth/pgm/home/yohome/bbsListJson.json"
@@ -50,8 +52,66 @@
       "published_count": 61
     }
   },
-  "recruitment_count": 53,
+  "recruitment_count": 54,
   "items": [
+    {
+      "id": "SOCOS:boardId:6833",
+      "agency": "서울시 청년안심주택",
+      "agency_group": "SEOUL",
+      "title": "[민간임대] 돌곶이역 화랑어반트리움 최초모집공고",
+      "housing_types": [
+        "안심주택"
+      ],
+      "audiences": [
+        "청년"
+      ],
+      "region": "서울 성북구",
+      "published_at": "2026-11-24",
+      "deadline": "",
+      "open_state": "대상별 일정 확인",
+      "event": "신규",
+      "change": "신규",
+      "status_text": "대상별 일정 확인",
+      "is_gangseo": false,
+      "keywords": [
+        "청년",
+        "안심주택"
+      ],
+      "url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6833&menuNo=400008",
+      "source": "서울시 청년안심주택",
+      "content_signature": "f6b8d6078a64617f9ed1846efdbe20ecad60722a36129fcef5331ccc8001d5f8",
+      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
+      "notice_kind": "recruitment",
+      "application_start": "",
+      "application_start_at": "2026-12-05T00:00:00+09:00",
+      "application_windows": [
+        {
+          "label": "청약신청",
+          "start": "2026-12-05",
+          "end": "2026-12-07",
+          "start_at": "2026-12-05T00:00:00+09:00",
+          "end_at": "2026-12-07T23:00:00+09:00",
+          "precision": "minute",
+          "conditional": false,
+          "restricted": false,
+          "condition": ""
+        }
+      ],
+      "schedule_type": "windows",
+      "deadline_precision": "minute",
+      "schedule_source": "official_detail_html",
+      "schedule_note": "공식 본문: 청약신청 : ‘26. 12. 05. (토) 00:00 ~ 12. 07. (월) 23:00",
+      "schedule_evidence": {
+        "url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6833&menuNo=400008",
+        "kind": "official_notice_body",
+        "excerpt": "청약신청 : ‘26. 12. 05. (토) 00:00 ~ 12. 07. (월) 23:00"
+      },
+      "source_id": "SOCO",
+      "route": "/public-housing/notices/socos-boardid-6833/",
+      "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6833&menuNo=400008",
+      "official_link_label": "공식 모집공고 원문 →",
+      "indexable": false
+    },
     {
       "id": "SH:seq:313647",
       "agency": "SH",
@@ -65,8 +125,8 @@
       "published_at": "2026-11-23",
       "deadline": "",
       "open_state": "일정 확인",
-      "event": "수정",
-      "change": "수정",
+      "event": "신규",
+      "change": "동일",
       "status_text": "일정 확인 중",
       "is_gangseo": false,
       "keywords": [],
@@ -104,8 +164,8 @@
       "published_at": "2026-11-23",
       "deadline": "",
       "open_state": "일정 확인",
-      "event": "수정",
-      "change": "수정",
+      "event": "신규",
+      "change": "동일",
       "status_text": "일정 확인 중",
       "is_gangseo": false,
       "keywords": [
@@ -2330,7 +2390,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313268",
         "kind": "official_notice_body",
         "excerpt": "접수 기간 : 2026.11.23.(월) ~ 12.04.(금) 18시까지",
-        "verified_at": "2026-11-24T11:13:50"
+        "verified_at": "2026-11-24T22:42:21"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-313268/",
@@ -2373,7 +2433,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313227",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.24.(화) ~ 2026.12.07.(월)",
-        "verified_at": "2026-11-24T11:13:44"
+        "verified_at": "2026-11-24T22:42:13"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-313227/",
@@ -2418,7 +2478,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313225",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.24.(화) ~ 12.07.(월) 18시까지",
-        "verified_at": "2026-11-24T11:13:46"
+        "verified_at": "2026-11-24T22:42:15"
       },
       "sh_schedule_version": 1,
       "route": "/public-housing/notices/sh-313225/",
@@ -2501,7 +2561,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313424",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.25.(수) ~ 2026.12.04.(금) 18시까지",
-        "verified_at": "2026-11-24T11:13:48"
+        "verified_at": "2026-11-24T22:42:18"
       },
       "sh_schedule_version": 1,
       "deadline_at": "2026-12-04T18:00:00+09:00",
