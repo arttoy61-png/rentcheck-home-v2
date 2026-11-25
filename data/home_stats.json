@@ -3,43 +3,43 @@
   "collection": {
     "schema_version": 1,
     "status": "success",
-    "attempted_at": "2026-11-24T17:37:53+00:00",
-    "last_success_at": "2026-11-24T17:37:53+00:00",
-    "snapshot_sha256": "199bcb0c0226905b05b34a46928245d4d597b9e1e309fbea02371d183d16aac5",
-    "snapshot_changed": false,
+    "attempted_at": "2026-11-25T03:32:57+00:00",
+    "last_success_at": "2026-11-25T03:32:57+00:00",
+    "snapshot_sha256": "2b29b98ee34c79258df1f66d19ad1b109aa4b2ffbba700d06c4fd23d14f02b6a",
+    "snapshot_changed": true,
     "expected_partitions": 144,
     "succeeded_partitions": 144,
     "cache_policy": "recent_two_months_live; older_months_may_use_cache"
   },
-  "generated_at": "2026-11-25T03:39:26+09:00",
-  "data_until": "2026-11-23",
+  "generated_at": "2026-11-25T12:52:51+09:00",
+  "data_until": "2026-11-24",
   "source": "국토교통부 실거래가 공개시스템",
   "scope": "서울특별시 강서구",
   "jeonse_ratio": null,
   "recent_deals": [
     {
-      "dong": "가양동",
-      "name": "강변",
-      "area_m2": 34,
-      "amount_eok": 8.4,
-      "date": "2026.11.20",
-      "complex_id": "de11b19d"
-    },
-    {
-      "dong": "내발산동",
-      "name": "우장산힐스테이트",
-      "area_m2": 84,
-      "amount_eok": 17.1,
-      "date": "2026.11.19",
-      "complex_id": "4c3251ac"
-    },
-    {
       "dong": "화곡동",
-      "name": "삼성다빈치(917-14)",
-      "area_m2": 14,
-      "amount_eok": 1.0,
-      "date": "2026.11.19",
-      "complex_id": "eaa093b9"
+      "name": "초록",
+      "area_m2": 59,
+      "amount_eok": 9.0,
+      "date": "2026.11.23",
+      "complex_id": "d31041e2"
+    },
+    {
+      "dong": "등촌동",
+      "name": "가양역두산위브",
+      "area_m2": 59,
+      "amount_eok": 10.9,
+      "date": "2026.11.22",
+      "complex_id": "a481c11a"
+    },
+    {
+      "dong": "등촌동",
+      "name": "등촌파밀리에더클래식101동",
+      "area_m2": 50,
+      "amount_eok": 7.05,
+      "date": "2026.11.21",
+      "complex_id": "fa76e7ef"
     }
   ],
   "monthly_trend": [
@@ -61,11 +61,11 @@
     },
     {
       "month": "2026-10",
-      "count": 268
+      "count": 271
     },
     {
       "month": "2026-11",
-      "count": 108
+      "count": 125
     }
   ]
 }
