@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-11-25T08:12:43+00:00",
-  "source_generated_at": "2026-11-25T08:55:30",
-  "source_recruitment_count": 54,
-  "recruitment_count": 54,
+  "generated_at": "2026-11-25T08:20:12+00:00",
+  "source_generated_at": "2026-11-25T17:15:24",
+  "source_recruitment_count": 55,
+  "recruitment_count": 55,
   "duplicate_count": 0,
-  "generated_count": 54,
+  "generated_count": 55,
   "redirect_count": 0,
   "duplicate_groups": [],
   "routes": {
@@ -21,6 +21,7 @@
     "SOCOS:boardId:6833": "/public-housing/notices/socos-boardid-6833/",
     "LH:panId:2015122300021131": "/public-housing/notices/lh-2015122300021131/",
     "LH:panId:2015122300021109": "/public-housing/notices/lh-2015122300021109/",
+    "SH:seq:313843": "/public-housing/notices/sh-313843/",
     "SH:seq:313647": "/public-housing/notices/sh-313647/",
     "SH:seq:313481": "/public-housing/notices/sh-313481/",
     "SHYOUTH:db49a71539fdb015a17d": "/public-housing/notices/shyouth-db49a71539fdb015a17d/",

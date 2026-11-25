@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-25T08:12:43+00:00",
-  "source_generated_at": "2026-11-25T08:55:30",
+  "generated_at": "2026-11-25T08:20:12+00:00",
+  "source_generated_at": "2026-11-25T17:15:24",
   "source_status": {
     "LH": {
       "count": 4,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 4,
       "carried_count": 13,
-      "failure_streak": 187
+      "failure_streak": 188
     },
     "SH": {
       "count": 20,
@@ -30,7 +30,7 @@
     "SEOUL": {
       "count": 32,
       "errors": [],
-      "excluded_noise": 15
+      "excluded_noise": 14
     },
     "SOCO": {
       "count": 26,
@@ -50,8 +50,48 @@
       "published_count": 61
     }
   },
-  "recruitment_count": 54,
+  "recruitment_count": 55,
   "items": [
+    {
+      "id": "SH:seq:313843",
+      "agency": "SH",
+      "agency_group": "SH",
+      "title": "NEW 2026년 제2차 보증금지원형 장기안심주택 입주자 모집공고",
+      "housing_types": [
+        "안심주택"
+      ],
+      "audiences": [],
+      "region": "서울",
+      "published_at": "2026-11-25",
+      "deadline": "",
+      "open_state": "일정 확인",
+      "event": "신규",
+      "change": "신규",
+      "status_text": "일정 확인 중",
+      "is_gangseo": false,
+      "keywords": [
+        "안심주택"
+      ],
+      "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313843",
+      "source": "SH 공식 주택임대 게시판",
+      "content_signature": "b84d0394216f1abe7e1b65df6b10ea7a7c51e676bbdfd4bfa593f409172e75ec",
+      "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
+      "published_source": "official_list_registration",
+      "notice_kind": "recruitment",
+      "application_start": "",
+      "schedule_type": "unknown",
+      "deadline_precision": "unknown",
+      "schedule_source": "unknown",
+      "schedule_note": "신청기간은 공식 공고문 확인이 필요합니다.",
+      "application_windows": [],
+      "schedule_evidence": {},
+      "sh_schedule_version": 1,
+      "naver_detail": null,
+      "route": "/public-housing/notices/sh-313843/",
+      "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313843",
+      "official_link_label": "공식 모집공고 원문 →",
+      "indexable": false
+    },
     {
       "id": "SOCOS:boardId:6833",
       "agency": "서울시 청년안심주택",
@@ -67,8 +107,8 @@
       "published_at": "2026-11-24",
       "deadline": "",
       "open_state": "대상별 일정 확인",
-      "event": "수정",
-      "change": "수정",
+      "event": "신규",
+      "change": "동일",
       "status_text": "대상별 일정 확인",
       "is_gangseo": false,
       "keywords": [
@@ -105,6 +145,7 @@
         "excerpt": "청약신청 : ‘26. 12. 05. (토) 00:00 ~ 12. 07. (월) 23:00"
       },
       "source_id": "SOCO",
+      "naver_detail": null,
       "route": "/public-housing/notices/socos-boardid-6833/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6833&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -142,6 +183,7 @@
       "application_windows": [],
       "schedule_evidence": {},
       "sh_schedule_version": 1,
+      "naver_detail": null,
       "route": "/public-housing/notices/sh-313647/",
       "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313647",
       "official_link_label": "공식 모집공고 원문 →",
@@ -185,6 +227,7 @@
       "application_windows": [],
       "schedule_evidence": {},
       "sh_schedule_version": 1,
+      "naver_detail": null,
       "route": "/public-housing/notices/sh-313481/",
       "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313481",
       "official_link_label": "공식 모집공고 원문 →",
@@ -216,6 +259,7 @@
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "application_start": "2026-11-30",
       "schedule_source": "official_detail_html",
+      "naver_detail": null,
       "route": "/public-housing/notices/lh-2015122300021131/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021131&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
       "official_link_label": "공식 모집공고 원문 →",
@@ -274,6 +318,10 @@
         "excerpt": "청약신청 : ‘26. 11. 23. (월) 09:00 ~ 11. 24. (화) 24:00"
       },
       "source_id": "SOCO",
+      "naver_detail": {
+        "post_id": "224489549131",
+        "kind": "terms"
+      },
       "route": "/public-housing/notices/socos-boardid-6796/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6796&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -332,6 +380,7 @@
         "excerpt": "청약신청 : ‘26. 11. 20.(금) 10:00 ~ 11. 23. (월) 10:00"
       },
       "source_id": "SOCO",
+      "naver_detail": null,
       "route": "/public-housing/notices/socos-boardid-6797/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6797&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -390,6 +439,10 @@
         "excerpt": "청약신청 : ‘26. 11. 25. (수) 00:00 ~ 23:00"
       },
       "source_id": "SOCO",
+      "naver_detail": {
+        "post_id": "224490697442",
+        "kind": "plan"
+      },
       "route": "/public-housing/notices/socos-boardid-6803/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6803&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -448,6 +501,10 @@
         "excerpt": "청약신청 : ‘26. 11. 23. (월) 10:00 ~ 17:00"
       },
       "source_id": "SOCO",
+      "naver_detail": {
+        "post_id": "224487677719",
+        "kind": "terms"
+      },
       "route": "/public-housing/notices/socos-boardid-6800/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6800&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -506,6 +563,10 @@
         "excerpt": "청약신청 : ‘26. 11. 23. (월) 10:00 ~ 23:00"
       },
       "source_id": "SOCO",
+      "naver_detail": {
+        "post_id": "224488225568",
+        "kind": "terms"
+      },
       "route": "/public-housing/notices/socos-boardid-6804/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6804&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -564,6 +625,10 @@
         "excerpt": "청약신청 : ‘26. 11. 23. (월) 09:00 ~ 11. 25. (수) 23:00"
       },
       "source_id": "SOCO",
+      "naver_detail": {
+        "post_id": "224490692426",
+        "kind": "plan"
+      },
       "route": "/public-housing/notices/socos-boardid-6798/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6798&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -622,6 +687,7 @@
         "excerpt": "청약신청 : ‘26. 11. 23. (월) 00:00 ~ 23:00"
       },
       "source_id": "SOCO",
+      "naver_detail": null,
       "route": "/public-housing/notices/socos-boardid-6805/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6805&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -680,6 +746,10 @@
         "excerpt": "청약신청 : ‘26. 11. 23. (월) 00:00 ~ 23:00"
       },
       "source_id": "SOCO",
+      "naver_detail": {
+        "post_id": "224487683336",
+        "kind": "terms"
+      },
       "route": "/public-housing/notices/socos-boardid-6802/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6802&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -738,6 +808,10 @@
         "excerpt": "청약신청 : ‘26. 11. 23. (월) 00:00 ~ 23:00"
       },
       "source_id": "SOCO",
+      "naver_detail": {
+        "post_id": "224487696443",
+        "kind": "terms"
+      },
       "route": "/public-housing/notices/socos-boardid-6806/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6806&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -796,6 +870,10 @@
         "excerpt": "청약신청 : ‘26. 11. 23. (월) 00:00 ~ 11. 24. (화) 23:00"
       },
       "source_id": "SOCO",
+      "naver_detail": {
+        "post_id": "224489191839",
+        "kind": "terms"
+      },
       "route": "/public-housing/notices/socos-boardid-6801/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6801&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -854,6 +932,10 @@
         "excerpt": "청약신청 : ‘26. 11. 23. (월) 10:00 ~ 16:00"
       },
       "source_id": "SOCO",
+      "naver_detail": {
+        "post_id": "224487672883",
+        "kind": "layout"
+      },
       "route": "/public-housing/notices/socos-boardid-6799/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6799&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -883,6 +965,7 @@
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "application_start": "2026-11-30",
       "schedule_source": "official_detail_html",
+      "naver_detail": null,
       "route": "/public-housing/notices/lh-2015122300021109/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021109&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=09&mi=1026",
       "official_link_label": "공식 모집공고 원문 →",
@@ -943,6 +1026,10 @@
         "excerpt": "청약신청 : ‘26. 11. 18. (수) ~ 11. 19. (목) 00:00 ~ 18:00"
       },
       "source_id": "SOCO",
+      "naver_detail": {
+        "post_id": "224475603174",
+        "kind": "terms"
+      },
       "route": "/public-housing/notices/socos-boardid-6727/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6727&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -1001,6 +1088,10 @@
         "excerpt": "청약신청 : ‘26. 11. 16. (월) 10:00 ~ 16:00"
       },
       "source_id": "SOCO",
+      "naver_detail": {
+        "post_id": "224478479393",
+        "kind": "terms"
+      },
       "route": "/public-housing/notices/socos-boardid-6726/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6726&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -1059,6 +1150,7 @@
         "excerpt": "청약신청 : ‘26. 11. 16. (월) 00:00 ~ 11. 17. (화) 23:00"
       },
       "source_id": "SOCO",
+      "naver_detail": null,
       "route": "/public-housing/notices/socos-boardid-6728/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6728&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -1117,6 +1209,10 @@
         "excerpt": "청약신청 : ‘26. 11. 16. (월) 10:00 ~ 16:00"
       },
       "source_id": "SOCO",
+      "naver_detail": {
+        "post_id": "224478478314",
+        "kind": "terms"
+      },
       "route": "/public-housing/notices/socos-boardid-6725/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6725&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -1175,6 +1271,10 @@
         "excerpt": "청약신청 : ‘26. 11. 16. (월) 00:00 ~ 23:00"
       },
       "source_id": "SOCO",
+      "naver_detail": {
+        "post_id": "224478482164",
+        "kind": "terms"
+      },
       "route": "/public-housing/notices/socos-boardid-6729/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6729&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -1233,6 +1333,10 @@
         "excerpt": "청약신청 : ‘26. 11. 16. (월) 09:00 ~ 11. 17. (화) 18:00"
       },
       "source_id": "SOCO",
+      "naver_detail": {
+        "post_id": "224475608275",
+        "kind": "plan"
+      },
       "route": "/public-housing/notices/socos-boardid-6731/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6731&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -1291,6 +1395,7 @@
         "excerpt": "청약신청 : ‘26. 11. 16. (월) 00:00 ~ 23:00"
       },
       "source_id": "SOCO",
+      "naver_detail": null,
       "route": "/public-housing/notices/socos-boardid-6730/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6730&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -1349,6 +1454,10 @@
         "excerpt": "청약신청 : ‘26. 11. 16. (월) 00:00 ~ 11. 18. (수) 23:00"
       },
       "source_id": "SOCO",
+      "naver_detail": {
+        "post_id": "224475524157",
+        "kind": "plan"
+      },
       "route": "/public-housing/notices/socos-boardid-6732/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6732&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -1407,6 +1516,7 @@
         "excerpt": "청약신청 : ‘26. 11. 06. (금) 09:00 ~ 11. 10. (화) 23:00"
       },
       "source_id": "SOCO",
+      "naver_detail": null,
       "route": "/public-housing/notices/socos-boardid-6724/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6724&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -1465,6 +1575,7 @@
         "excerpt": "청약신청 : ‘26. 11. 09. (월) 00:00 ~ 11. 10. (화) 23:00"
       },
       "source_id": "SOCO",
+      "naver_detail": null,
       "route": "/public-housing/notices/socos-boardid-6721/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6721&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -1523,6 +1634,7 @@
         "excerpt": "청약신청 : ‘26. 11. 09. (월) ~ 11. 10. (화) 00:00 ~ 23:00"
       },
       "source_id": "SOCO",
+      "naver_detail": null,
       "route": "/public-housing/notices/socos-boardid-6720/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6720&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -1581,6 +1693,7 @@
         "excerpt": "청약신청 : ‘26. 11. 09. (월) 00:00 ~ 11. 10. (화) 23:00"
       },
       "source_id": "SOCO",
+      "naver_detail": null,
       "route": "/public-housing/notices/socos-boardid-6722/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6722&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -1639,6 +1752,10 @@
         "excerpt": "청약신청 : ‘26. 11. 12. (목) 00:00 ~ 11. 15. (일) 24:00"
       },
       "source_id": "SOCO",
+      "naver_detail": {
+        "post_id": "224471055481",
+        "kind": "plan"
+      },
       "route": "/public-housing/notices/socos-boardid-6718/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6718&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -1698,6 +1815,10 @@
         "excerpt": "청약신청 : ‘26. 11. 11. (수) 09:00 ~ 11. 15. (일) 23:00"
       },
       "source_id": "SOCO",
+      "naver_detail": {
+        "post_id": "224471056747",
+        "kind": "terms"
+      },
       "route": "/public-housing/notices/socos-boardid-6719/",
       "official_url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6719&menuNo=400008",
       "official_link_label": "공식 모집공고 원문 →",
@@ -1736,6 +1857,7 @@
       "application_windows": [],
       "schedule_evidence": {},
       "sh_schedule_version": 1,
+      "naver_detail": null,
       "route": "/public-housing/notices/shyouth-db49a71539fdb015a17d/",
       "official_url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
       "official_link_label": "기관 공고목록에서 확인 →",
@@ -1772,6 +1894,7 @@
       "application_windows": [],
       "schedule_evidence": {},
       "sh_schedule_version": 1,
+      "naver_detail": null,
       "route": "/public-housing/notices/shyouth-1f4bd36cd85fe4c83b57/",
       "official_url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
       "official_link_label": "기관 공고목록에서 확인 →",
@@ -1805,6 +1928,7 @@
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "application_start": "2026-10-14",
       "schedule_source": "official_detail_html",
+      "naver_detail": null,
       "route": "/public-housing/notices/lh-2015122300020843/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020843&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026",
       "official_link_label": "공식 모집공고 원문 →",
@@ -1847,6 +1971,7 @@
       "application_windows": [],
       "schedule_evidence": {},
       "sh_schedule_version": 1,
+      "naver_detail": null,
       "route": "/public-housing/notices/shyouth-23a63706ef0b942659cb/",
       "official_url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
       "official_link_label": "기관 공고목록에서 확인 →",
@@ -1889,6 +2014,7 @@
       "application_windows": [],
       "schedule_evidence": {},
       "sh_schedule_version": 1,
+      "naver_detail": null,
       "route": "/public-housing/notices/shyouth-e14f796069d603741e53/",
       "official_url": "https://youth.seoul.go.kr/api/sh/list.do?key=2309250014#none",
       "official_link_label": "기관 공고목록에서 확인 →",
@@ -1922,6 +2048,7 @@
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "application_start": "2026-09-29",
       "schedule_source": "official_detail_html",
+      "naver_detail": null,
       "route": "/public-housing/notices/lh-2015122300020807/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020807&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=48&mi=1026",
       "official_link_label": "공식 모집공고 원문 →",
@@ -1955,6 +2082,7 @@
       "classification_note": "LH청약플러스 공식 모집공고 기준 보완 항목입니다.",
       "application_start": "2026-09-29",
       "schedule_source": "source_list",
+      "naver_detail": null,
       "editorial_ready": false,
       "route": "/public-housing/notices/lh-2015122300020753/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?aisTpCd=48&ccrCnntSysDsCd=03&mi=1026&panId=2015122300020753&uppAisTpCd=06",
@@ -1990,6 +2118,7 @@
       "classification_note": "LH청약플러스 공식 모집공고 기준 보완 항목입니다.",
       "application_start": "2026-09-28",
       "schedule_source": "source_list",
+      "naver_detail": null,
       "editorial_ready": false,
       "route": "/public-housing/notices/lh-2015122300020759/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?aisTpCd=26&ccrCnntSysDsCd=03&mi=1026&panId=2015122300020759&uppAisTpCd=13",
@@ -2028,6 +2157,7 @@
       "classification_note": "LH청약플러스 공식 모집공고 기준 보완 항목입니다.",
       "application_start": "2026-09-28",
       "schedule_source": "source_list",
+      "naver_detail": null,
       "editorial_ready": false,
       "route": "/public-housing/notices/lh-2015122300020749/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?aisTpCd=26&ccrCnntSysDsCd=03&mi=1026&panId=2015122300020749&uppAisTpCd=13",
@@ -2065,6 +2195,7 @@
       "classification_note": "LH청약플러스 공식 모집공고 기준 보완 항목입니다.",
       "application_start": "2026-09-28",
       "schedule_source": "source_list",
+      "naver_detail": null,
       "editorial_ready": false,
       "route": "/public-housing/notices/lh-2015122300020750/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?aisTpCd=26&ccrCnntSysDsCd=03&mi=1026&panId=2015122300020750&uppAisTpCd=13",
@@ -2097,6 +2228,7 @@
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "application_start": "2026-08-31",
       "schedule_source": "official_detail_html",
+      "naver_detail": null,
       "route": "/public-housing/notices/lh-2015122300020605/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020605&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
       "official_link_label": "공식 모집공고 원문 →",
@@ -2128,6 +2260,7 @@
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "application_start": "2026-07-27",
       "schedule_source": "official_detail_html",
+      "naver_detail": null,
       "route": "/public-housing/notices/lh-2015122300020326/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020326&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
       "official_link_label": "공식 모집공고 원문 →",
@@ -2159,6 +2292,7 @@
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "application_start": "2026-05-27",
       "schedule_source": "official_detail_html",
+      "naver_detail": null,
       "route": "/public-housing/notices/lh-2015122300019941/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019941&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
       "official_link_label": "공식 모집공고 원문 →",
@@ -2190,6 +2324,7 @@
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "application_start": "2026-05-27",
       "schedule_source": "official_detail_html",
+      "naver_detail": null,
       "route": "/public-housing/notices/lh-2015122300019968/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019968&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
       "official_link_label": "공식 모집공고 원문 →",
@@ -2221,6 +2356,7 @@
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "application_start": "2026-05-19",
       "schedule_source": "official_detail_html",
+      "naver_detail": null,
       "route": "/public-housing/notices/lh-2015122300019890/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019890&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
       "official_link_label": "공식 모집공고 원문 →",
@@ -2252,6 +2388,7 @@
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "application_start": "2026-04-23",
       "schedule_source": "official_detail_html",
+      "naver_detail": null,
       "route": "/public-housing/notices/lh-2015122300019657/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019657&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=08&mi=1026",
       "official_link_label": "공식 모집공고 원문 →",
@@ -2281,6 +2418,7 @@
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "application_start": "2025-09-16",
       "schedule_source": "official_detail_html",
+      "naver_detail": null,
       "route": "/public-housing/notices/lh-2015122300018941/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300018941&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
       "official_link_label": "공식 모집공고 원문 →",
@@ -2310,6 +2448,7 @@
       "classification_note": "주택유형·대상은 공고 제목/목록 문구 기반 탐색용 분류이며 공식 자격 판정이 아닙니다.",
       "application_start": "2025-11-24",
       "schedule_source": "official_detail_html",
+      "naver_detail": null,
       "route": "/public-housing/notices/lh-2015122300019045/",
       "official_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019045&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=09&mi=1026",
       "official_link_label": "공식 모집공고 원문 →",
@@ -2348,6 +2487,10 @@
       "application_windows": [],
       "schedule_evidence": {},
       "sh_schedule_version": 1,
+      "naver_detail": {
+        "post_id": "224472341052",
+        "kind": "guide"
+      },
       "route": "/public-housing/notices/sh-312339/",
       "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=312339",
       "official_link_label": "공식 모집공고 원문 →",
@@ -2388,9 +2531,10 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313268",
         "kind": "official_notice_body",
         "excerpt": "접수 기간 : 2026.11.23.(월) ~ 12.04.(금) 18시까지",
-        "verified_at": "2026-11-25T08:55:28"
+        "verified_at": "2026-11-25T17:15:14"
       },
       "sh_schedule_version": 1,
+      "naver_detail": null,
       "route": "/public-housing/notices/sh-313268/",
       "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313268",
       "official_link_label": "공식 모집공고 원문 →",
@@ -2431,9 +2575,10 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313227",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.24.(화) ~ 2026.12.07.(월)",
-        "verified_at": "2026-11-25T08:55:22"
+        "verified_at": "2026-11-25T17:15:07"
       },
       "sh_schedule_version": 1,
+      "naver_detail": null,
       "route": "/public-housing/notices/sh-313227/",
       "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313227",
       "official_link_label": "공식 모집공고 원문 →",
@@ -2476,9 +2621,13 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313225",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.24.(화) ~ 12.07.(월) 18시까지",
-        "verified_at": "2026-11-25T08:55:24"
+        "verified_at": "2026-11-25T17:15:10"
       },
       "sh_schedule_version": 1,
+      "naver_detail": {
+        "post_id": "224489178253",
+        "kind": "terms"
+      },
       "route": "/public-housing/notices/sh-313225/",
       "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313225",
       "official_link_label": "공식 모집공고 원문 →",
@@ -2515,6 +2664,7 @@
       "application_windows": [],
       "schedule_evidence": {},
       "sh_schedule_version": 1,
+      "naver_detail": null,
       "route": "/public-housing/notices/sh-313610/",
       "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313610",
       "official_link_label": "공식 모집공고 원문 →",
@@ -2559,9 +2709,10 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313424",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.25.(수) ~ 2026.12.04.(금) 18시까지",
-        "verified_at": "2026-11-25T08:55:26"
+        "verified_at": "2026-11-25T17:15:12"
       },
       "sh_schedule_version": 1,
+      "naver_detail": null,
       "deadline_at": "2026-12-04T18:00:00+09:00",
       "route": "/public-housing/notices/sh-313424/",
       "official_url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313424",
