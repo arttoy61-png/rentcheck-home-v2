@@ -32,6 +32,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #95
 <meta name="twitter:description" content="부동산 계산과 실거래 해석을 연결하는 Rent Check입니다.">
 <meta name="twitter:image" content="https://rent-check.kr/assets/share/rent-check-og-v2.png?v=20260829-2">
 <!-- /Rent Check share preview -->
+<link rel="stylesheet" href="/assets/brand-typography.css">
 </head><body><main>
 <header><h1>임대주택 공고와 일정</h1><p class="sub">LH·SH·서울 청년안심주택</p></header>
 <div id="dateFilter" hidden><span></span><button>모든 날짜 보기</button></div>
@@ -45,10 +46,6 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #95
 <p>접수 상태는 한국시간 기준이에요. 순위별 기간과 서류 제출일은 공고 상세에서 확인하세요.</p>
 <a href="/blog/public-housing-application-documents/">신청과 서류 제출 사례</a><a id="youth">청년임대 가점 계산</a></details>
 </main><script src="/data/housing-list-state.js"></script><script>
-for(const sheet of parent.document.querySelectorAll('style')){
- const faces=sheet.textContent.match(/@font-face\s*\{\s*font-family:Gmarket;[^}]+\}/g);
- if(faces?.length){const s=document.createElement('style');s.textContent=faces.join('\n');document.head.append(s);break;}
-}
 const MANIFEST='/public-housing/current.json',ROUTES='/public-housing/routes.json',FALLBACK_FEED='https://arttoy61-png.github.io/rent-check/public_housing_notices.json';
 let routeMap={},feedMeta=null;
   const parse=v=>{const m=String(v||'').match(/(20\d{2})[-./](\d{1,2})[-./](\d{1,2})/);return m?new Date(+m[1],+m[2]-1,+m[3]):null};

@@ -38,6 +38,7 @@ button,input{font:inherit;color:inherit;background:white;border:1px solid #b5c1c
 <meta name="twitter:description" content="부동산 계산과 실거래 해석을 연결하는 Rent Check입니다.">
 <meta name="twitter:image" content="https://rent-check.kr/assets/share/rent-check-og-v2.png?v=20260829-2">
 <!-- /Rent Check share preview -->
+<link rel="stylesheet" href="/assets/brand-typography.css">
 </head>
 <body><main><header><h1>내 월세·전세 비교</h1><p>서울 강서구에서 면적이 비슷한 주변 500m 실거래와 비교하세요.</p></header>
 <form id="contract" class="card input-card">
@@ -194,15 +195,6 @@ button,input{font:inherit;color:inherit;background:white;border:1px solid #b5c1c
 
 const form = $('#contract'), address = $('#address'), choices = $('#choices'), out = $('#out');
 let loadingData, parcels, selectedLabel = '', revision = 0, addressRevision = 0, roadRevision = 0;
-for (const sheet of parent.document.querySelectorAll('style')) {
-  const faces = sheet.textContent.match(/@font-face\s*\{\s*font-family:Gmarket;[^}]+\}/g);
-  if (faces?.length) {
-    const style = document.createElement('style');
-    style.textContent = faces.join('\n');
-    document.head.append(style);
-    break;
-  }
-}
 function errorMessage(text) {
   $('#error').textContent = text;
   $('#error').hidden = !text;

@@ -1,0 +1,26 @@
+@font-face {
+  font-family: Gmarket;
+  src: url("/assets/home/renewal/GmarketSansMedium.woff2") format("woff2");
+  font-weight: 100 599;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Gmarket;
+  src: url("/assets/home/renewal/GmarketSansBold.woff2") format("woff2");
+  font-weight: 600 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --rc-font: Gmarket, "Malgun Gothic", sans-serif;
+}
+
+/* Legacy screens set font shorthands on controls and individual text elements. */
+html body,
+html body :is(h1, h2, h3, h4, h5, h6, p, a, li, th, td, dt, dd, figcaption,
+             label, input, button, select, option, textarea, summary, strong, small, svg text) {
+  font-family: var(--rc-font) !important;
+}

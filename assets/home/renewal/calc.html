@@ -105,6 +105,7 @@ details{padding:0 15px}summary{cursor:pointer;padding:12px 0;font-weight:600}.v2
 <meta name="twitter:description" content="부동산 계산과 실거래 해석을 연결하는 Rent Check입니다.">
 <meta name="twitter:image" content="https://rent-check.kr/assets/share/rent-check-og-v2.png?v=20260829-2">
 <!-- /Rent Check share preview -->
+<link rel="stylesheet" href="/assets/brand-typography.css">
 </head><body><main><header><h1>재개발 분담금 계산기</h1><p>소유주는 추가 분담금을, 매수를 검토할 때는 총투입금과 필요한 현금을 확인하세요.</p></header>
 <div class="tabs">
     <button id="tabOwner" class="on" onclick="switchTab('owner')">소유주<span class="sub">분담금 계산</span></button>
@@ -339,10 +340,6 @@ function runBuyer(){
   document.getElementById('buyerResult').scrollIntoView({behavior:'smooth', block:'start'});
 }
 </script><script>
-for(const sheet of parent.document.querySelectorAll('style')){
-  const faces=sheet.textContent.match(/@font-face\s*\{\s*font-family:Gmarket;[^}]+\}/g);
-  if(faces?.length){const style=document.createElement('style');style.textContent=faces.join('\n');document.head.append(style);break;}
-}
 for(const panel of document.querySelectorAll('.body')){
   const fields=Array.from(panel.querySelectorAll('.field input')),button=panel.querySelector('.calc-btn'),result=panel.querySelector('.result');
   result.prepend(result.querySelector('.rcard.main'));

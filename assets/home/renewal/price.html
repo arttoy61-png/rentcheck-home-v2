@@ -33,6 +33,7 @@ summary{font-weight:600;min-height:44px;padding:10px 0;font-size:14px}details[op
 <meta name="twitter:description" content="부동산 계산과 실거래 해석을 연결하는 Rent Check입니다.">
 <meta name="twitter:image" content="https://rent-check.kr/assets/share/rent-check-og-v2.png?v=20260829-2">
 <!-- /Rent Check share preview -->
+<link rel="stylesheet" href="/assets/brand-typography.css">
 </head><body><main>
 <header><h1>강서구 집값</h1><p>동네와 집 종류를 골라 최근 3개월 실거래를 확인하세요.</p></header>
 <section class="panel" aria-label="조회 조건">
@@ -151,18 +152,7 @@ async function renderResults(){const seq=++renderSeq;updateStationOptions();upda
 function doQuickSearch(){++renderSeq;const q=$('#quickSearch').value.trim().toLowerCase();if(!q){renderResults();return}const f=rows.filter(r=>(state.dong==='all'||r.u===state.dong)&&(`${r.u||''} ${r.j||''} ${r.b||''}`).toLowerCase().includes(q)).sort((a,b)=>keyDate(b)-keyDate(a));$('#sortRow').classList.remove('show');$('#resultTitle').textContent=`${scopeLabel()} “${q}” 검색 결과`;$('#resultSub').textContent='보유 실거래 데이터 · 주택유형과 거래유형 전체';$('#summary').innerHTML=`<div class="sum"><div class="k">검색된 거래</div><div class="v">${f.length.toLocaleString()}건</div></div><div class="sum"><div class="k">검색 범위</div><div class="v">보유 데이터 전체</div></div>`;$('#resetSearch').style.display='inline-block';if(!f.length){$('#deals').className='empty';$('#deals').textContent='해당 지번·건물명 거래를 찾지 못했습니다.';return}$('#deals').className='';$('#deals').innerHTML=f.slice(0,30).map(r=>dealHtml(r,r.mode,true)).join('');document.querySelector('.result').scrollIntoView({behavior:'smooth',block:'start'})}
 function resetAll(){state={dong:'all',mode:'sale',house:'apt',station:'all',area:'all',sort:'recent'};$('#dong').value='all';setOn('#modeSeg','mode','sale');setOn('#houseSeg','house','apt');$('#quickSearch').value='';$('#resetSearch').style.display='none';renderOverview();renderResults()}
 async function init(){try{data=await loadPriceData();geo=data.geo||{};latestYM=String(data.updated||'');rows=normalizeRows(data);const dongs=(data.regions||[...new Set(rows.map(r=>r.u))]).filter(Boolean).sort((a,b)=>a.localeCompare(b,'ko'));$('#dong').innerHTML='<option value="all" selected>서울 강서구 전체</option>'+dongs.map(d=>`<option value="${esc(d)}">서울 강서구 ${esc(d)}</option>`).join('');$('#dong').onchange=e=>{state.dong=e.target.value;state.station='all';state.area='all';state.sort='recent';renderOverview();renderResults()};document.querySelectorAll('#modeSeg button').forEach(b=>b.onclick=()=>{state.mode=b.dataset.mode;state.station='all';state.area='all';state.sort='recent';setOn('#modeSeg','mode',state.mode);renderOverview();renderResults()});document.querySelectorAll('#houseSeg button').forEach(b=>b.onclick=()=>{state.house=b.dataset.house;state.area='all';setOn('#houseSeg','house',state.house);renderResults()});$('#station').onchange=e=>{state.station=e.target.value;state.sort=state.station==='all'?'recent':'distance';renderResults()};$('#area').onchange=e=>{state.area=e.target.value;renderResults()};document.querySelectorAll('#sortRow button').forEach(b=>b.onclick=()=>{state.sort=b.dataset.sort;renderResults()});$('#searchBtn').onclick=doQuickSearch;$('#quickSearch').onkeydown=e=>{if(e.key==='Enter')doQuickSearch()};$('#resetSearch').onclick=()=>{$('#quickSearch').value='';$('#resetSearch').style.display='none';renderResults()};$('#resetAll').onclick=resetAll;applyPriceLink();renderOverview();renderResults()}catch(e){$('#answerCards').innerHTML='<div class="empty">데이터를 불러오지 못했습니다.</div>';$('#deals').className='empty';$('#deals').textContent='데이터를 불러오지 못했습니다. 잠시 뒤 다시 열어주세요.';$('#status').textContent='데이터 연결 확인 필요'}}
-init();</script><script>for (const sheet of parent.document.styleSheets) {
-  try {
-    const fonts = [...sheet.cssRules].filter(rule => rule.type === CSSRule.FONT_FACE_RULE && rule.style.fontFamily === 'Gmarket');
-    if (fonts.length) {
-      const style = document.createElement('style');
-      style.textContent = fonts.map(rule => rule.cssText).join('\n');
-      document.head.append(style);
-      break;
-    }
-  } catch { /* External stylesheets do not expose their rules. */ }
-}
-const dealList = document.getElementById('deals');
+init();</script><script>const dealList = document.getElementById('deals');
 const more = document.getElementById('more');
 function updateMore() {
   const count = dealList.querySelectorAll('.deal').length;
