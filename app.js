@@ -19,12 +19,20 @@ function normalized(value){return String(value||'').trim().toLocaleLowerCase('ko
 function compactSearchText(value){return normalized(value).replace(/[\s·｜|,./()\-]+/g,'')}
 function matchesSearch(values,query){const plain=values.map(normalized).join(' '),compact=compactSearchText(values.join(' ')),q=normalized(query),compactQuery=compactSearchText(query);return plain.includes(q)||(compactQuery&&compact.includes(compactQuery))||q.split(/\s+/).every(token=>token&&compact.includes(compactSearchText(token)))}
 let internalSearch=[];
+function youthScoreResult(query){
+  const term=compactSearchText(query);
+  const subject='(?:(?:lh|sh)(?:청년)?(?:매입임대주택|매입임대|임대주택|청년주택|주택|임대)?|청년(?:매입임대주택|매입임대|안심주택|임대주택|주택|임대))';
+  const score='(?:당첨)?(?:가점|점수)(?:계산기?|조회|확인)?';
+  if(!new RegExp('^'+subject+'(?:'+score+'|계산기)$').test(term))return null;
+  return {type:'tool',title:'청년임대 가점 계산기',meta:'LH·SH 청년임대의 순위와 가점을 확인하세요.',url:'/tools/youth-score/',valid:true};
+}
 function searchData(query){
   if(state.categoryMode)return sortedPosts(publishedPosts().filter(p=>p.category===state.categoryMode)).map(p=>({type:'post',title:p.title,meta:[p.category,p.published_at].filter(Boolean).join(' · '),valid:true,url:p.url}));
   if(!normalized(query))return[];
-  const tools=state.tools.filter(t=>!hiddenHomeTools.has(t.id)).filter(t=>matchesSearch([t.title,t.description,t.category],query)).map(t=>({type:'tool',title:t.title,meta:t.description,icon:t.icon,valid:Boolean(isAvailable(t)),url:t.url,status:statusLabel(t)}));
+  const priority=youthScoreResult(query);
+  const tools=state.tools.filter(t=>!hiddenHomeTools.has(t.id) && !(priority && t.id==='youth-score')).filter(t=>matchesSearch([t.title,t.description,t.category],query)).map(t=>({type:'tool',title:t.title,meta:t.description,icon:t.icon,valid:Boolean(isAvailable(t)),url:t.url,status:statusLabel(t)}));
   const posts=sortedPosts(publishedPosts().filter(p=>matchesSearch([p.title,p.category],query))).map(p=>({type:'post',title:p.title,meta:[p.category,p.published_at].filter(Boolean).join(' · '),valid:true,url:p.url}));
-  const tokens=normalized(query).split(/\s+/).map(t=>t==='층수'?'층':t);const score=p=>tokens.reduce((n,t)=>n+(compactSearchText(p.title).includes(compactSearchText(t))?4:compactSearchText(p.description||'').includes(compactSearchText(t))?2:0),0);const internal=internalSearch.filter(p=>matchesSearch([p.title,p.category,p.keywords],tokens.join(' '))).sort((a,b)=>score(b)-score(a)).map(p=>({type:'guide',title:p.title,meta:p.category,valid:true,url:p.url}));return[...tools.slice(0,2),...internal.slice(0,3),...posts.slice(0,1),...tools.slice(2),...internal.slice(3),...posts.slice(1)].filter((p,i,a)=>a.findIndex(x=>x.url===p.url)===i).slice(0,6)
+  const tokens=normalized(query).split(/\s+/).map(t=>t==='층수'?'층':t);const score=p=>tokens.reduce((n,t)=>n+(compactSearchText(p.title).includes(compactSearchText(t))?4:compactSearchText(p.description||'').includes(compactSearchText(t))?2:0),0);const internal=internalSearch.filter(p=>matchesSearch([p.title,p.category,p.keywords],tokens.join(' '))).sort((a,b)=>score(b)-score(a)).map(p=>({type:'guide',title:p.title,meta:p.category,valid:true,url:p.url}));return[...(priority?[priority]:[]),...tools.slice(0,2),...internal.slice(0,3),...posts.slice(0,1),...tools.slice(2),...internal.slice(3),...posts.slice(1)].filter((p,i,a)=>a.findIndex(x=>x.url===p.url)===i).slice(0,6)
 }
 // Restore only this homepage history entry; never store search text in URLs/storage/telemetry.
 function rememberHomeSearch(extra={}){const input=$('#searchInput');if(!input)return;const selected=state.results[state.selectedIndex];history.replaceState({...history.state,rentcheckHomeSearch:{query:input.value,category:state.categoryMode,open:!$('#searchResults').hidden,selectedHref:selected?.url||null,...extra}},'')}
