@@ -1,0 +1,102 @@
+<!doctype html><html lang="ko"><head><meta name="robots" content="noindex,follow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><base href="/tools/jeonse-ratio/" target="_top"><title>전세가율 계산기</title><style>:root{--navy:#0d1f3c;--gold:#d4a73a;--blue:#1565c0;--ink:#111;--muted:#667085;--line:#d7dce3;--bg:#f5f7fa}*{box-sizing:border-box}body{background:var(--bg);color:var(--ink)}.page{width:min(calc(100% - 28px),760px);margin:auto;padding:18px 0 48px}.hero{padding:26px 28px;border-radius:18px;background:var(--navy);color:#fff}.eyebrow{margin:0 0 8px;color:var(--gold);font-size:12px}.hero h1{margin:0;font-size:28px}.hero p{margin:9px 0 0;color:#dbe1e8;font-size:14px;line-height:1.65}.card,.basis{margin-top:14px;padding:22px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 8px 26px rgba(13,31,60,.06)}.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field label{font-size:12px;color:#52606e}.input{position:relative}.input input{width:100%;height:48px;padding:0 52px 0 13px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:16px}.input span{position:absolute;right:13px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--muted)}.calculate{width:100%;height:50px;margin-top:16px;border:0;border-radius:11px;background:var(--navy);color:#fff;font-size:15px;font-weight:700}.result{display:none;margin-top:14px}.result.show{display:block}.main{padding:22px;border-radius:16px;background:var(--navy);color:#fff;text-align:center}.main small{display:block;color:#d7dde5;font-size:11px}.main strong{display:block;margin-top:6px;color:var(--gold);font-size:30px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px}.stat{padding:14px 8px;border:1px solid var(--line);border-radius:12px;background:#fff;text-align:center}.stat span{display:block;color:var(--muted);font-size:11px}.stat b{display:block;margin-top:5px;color:var(--navy);font-size:14px}.basis h3{margin:0 0 8px;font-size:14px}.basis p{margin:6px 0;color:var(--muted);font-size:11px;line-height:1.7}.warning{color:#765b14!important}@media(max-width:560px){.page{width:min(calc(100% - 20px),760px);padding-top:12px}.hero{padding:22px 18px}.hero h1{font-size:23px}.card,.basis{padding:17px}.form{grid-template-columns:1fr}.basis p{font-size:11px}}#ratioGuideLink,#ratioGuideLink:visited{color:#fff;text-decoration:underline;text-underline-offset:3px}#ratioGuideLink:focus-visible{outline:2px solid #fff;outline-offset:4px}</style><style>body{margin:0;background:#f5f6f8;color:#172e48;font:16px/1.55 Gmarket,"Malgun Gothic",sans-serif;word-break:keep-all;overflow-wrap:anywhere}
+.page{width:min(100%,680px);margin:auto;padding:20px clamp(12px,4vw,24px) 40px}
+.hero{padding:0;margin:0 0 14px;background:transparent;color:#172e48;border:0;box-shadow:none}
+.hero h1{margin:0;color:#172e48;font-size:clamp(24px,5vw,32px);line-height:1.3;letter-spacing:-.055em}
+.hero p{margin:5px 0;color:#526478;font-size:14px}.hero .eyebrow{display:none}
+.card,.sources,.result.show{background:white;border:1px solid #d6dfe8;border-radius:13px;box-shadow:none;padding:15px;margin:0 0 12px}
+.card h2,.sources h2{font-size:17px;color:#172e48;margin:0 0 8px}
+.seg{gap:5px}.seg button,button,select,input{font-family:inherit}.seg button{min-height:44px;font-size:14px;padding:4px 5px;border-radius:8px;line-height:1.35}.seg button.active,.calculate{background:#142e4a;color:white;border-color:#142e4a}
+.page .field{min-width:0}.page .field label,.stat span,.result-main small,.main small{font-size:14px}
+.page input,.page select{min-height:44px;font-size:16px;min-width:0;scroll-margin:14px}
+.page .note,.page .basis p,.page .main p,.page .result-main p,.page .taxdesc{font-size:14px;line-height:1.55}
+.page .calculate{min-height:46px;margin-top:12px}.main,.result-main{padding:14px;border-radius:9px;background:#173651;text-align:left}
+.main strong,.result-main strong{font-size:clamp(21px,5vw,28px);color:white}
+.stat{min-width:0;background:#edf1f5;border:0;border-radius:8px;padding:10px;text-align:left}.stat b{font-size:16px}
+.sources{padding:0 15px}.sources summary,.fold summary{cursor:pointer;padding:12px 0;font-weight:600;min-height:44px}
+.sources .basis,.sources .v2-content-guide{padding:0 0 12px;border:0;box-shadow:none;margin:0}.sources p,.sources li,.sources nav,.sources .v2-content-guide__box{font-size:14px;margin:8px 0}
+.sources a{color:#284d74}.sources nav a{display:block;padding:6px 0}
+.fold{border-top:1px solid #d7dfe7;margin-top:12px}.fold .form{margin:6px 0}
+.input-error{color:#90372a;font-size:14px;margin:8px 0}.input-error:empty{display:none}
+:focus-visible{outline:3px solid #996c1e;outline-offset:2px}
+@media(max-width:540px){.page .form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.page .stepper{min-width:0}
+  .page .stepper button{min-width:28px;padding:0}.seg.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .page .stepper input{width:100%;min-width:0}.fold .form:has(.stepper){grid-template-columns:1fr}
+  .page .grid,.page .result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.form:has(#priceField):not(:has(#priceField.hidden)) #priceField{grid-column:1/-1}
+.card>.fold:first-child{border-top:none;margin-top:0}
+</style></head><body data-tool="jeonse-ratio"><main class="page"><section class="hero"><p class="eyebrow">전세가율</p><h1>전세가율 계산기</h1><p>매매가에서 전세보증금이 차지하는 비율을 확인합니다.</p></section><section class="card"><div class="form"><div class="field"><label for="sale">매매가</label><div class="input"><input id="sale" inputmode="decimal" placeholder="예: 50000"><span>만원</span></div></div><div class="field"><label for="jeonse">전세보증금</label><div class="input"><input id="jeonse" inputmode="decimal" placeholder="예: 35000"><span>만원</span></div></div></div><button class="calculate" id="calculate" type="button">전세가율 계산하기</button></section><section class="result" id="result"><div class="main"><small>전세가율</small><strong id="ratio">-</strong><p id="guide"></p><div class="ratio-next"><small>다음 확인</small><strong id="ratioNextTitle">이 전세가율, 어떻게 봐야 하나요?</strong><a class="ratio-next-link" id="ratioGuideLink" href="../../blog/jeonse-ratio-reading/">전세가율 기준과 확인할 위험요소 보기 →</a></div></div><div class="grid"><div class="stat"><span>매매가</span><b id="saleValue">-</b></div><div class="stat"><span>전세보증금</span><b id="jeonseValue">-</b></div></div></section><details class="sources"><summary>계산 기준과 근거 보기</summary><section class="basis"><h3>참고 기준</h3><p>전세가율은 전세보증금 ÷ 매매가 × 100으로 계산합니다.</p><p class="warning">60·70·80% 구간은 일반적 참고 구간이며 보증보험 기준과는 다릅니다. 전세가율 하나만으로 보증금 안전 여부를 판단하지 마세요.</p></section><!-- rc-journey:tool-guide --><section class="v2-content-guide" data-journey-version="20260925" aria-labelledby="v2-content-guide-title"><p class="v2-content-guide__eyebrow">입력 전 확인 · 결과 해석</p><h2 id="v2-content-guide-title">전세가율은 위험 여부를 한 숫자로 확정하는 지표가 아닙니다</h2><p class="v2-content-guide__lead">전세가율은 매매가격과 전세보증금의 관계를 빠르게 확인하는 숫자입니다. 비율이 높을수록 매매가격과 보증금의 간격이 좁다는 뜻이지만, 이 숫자만으로 보증금 안전 여부를 판단할 수는 없습니다. 실제 계약 전에는 등기부, 선순위 권리, 주택유형과 보증보험 가능 여부를 함께 봐야 합니다.</p><ol><li>현재 확인 가능한 매매가격과 실제 전세보증금을 같은 주택 기준으로 넣습니다.</li><li>계산된 비율은 주변 비슷한 주택의 실거래와 함께 비교합니다.</li><li>비율이 높다면 등기부·근저당·선순위 보증금 등 권리관계를 더 꼼꼼히 확인합니다.</li></ol><div class="v2-content-guide__box v2-content-guide__example rc-tool-interpretation" id="rc-guide-interpretation"><strong>결과는 이렇게 읽으세요</strong><br>예를 들어 80%는 전세보증금이 입력한 매매가의 80%라는 뜻입니다. 돌려받을 확률 80%나 안전점수가 아닙니다.</div><div class="v2-content-guide__box v2-content-guide__example"><strong>비교 예시</strong><br>설명용 가정입니다. 매매가 3억원은 30000만원, 보증금 2억4천만원은 24000만원을 입력합니다. 24000 ÷ 30000 × 100 = 80.0%입니다. 같은 매매가에 보증금 15000만원을 넣으면 50.0%입니다. 실제 특정 주택의 평가가 아닌 계산 방법을 확인하는 예시입니다. 2026년 10월 15일 도구 실행으로 확인했습니다.</div><div class="v2-content-guide__box v2-content-guide__caution"><strong>이 결과로 확정할 수 없는 것</strong><br>빌라·다가구처럼 정확한 매매시세를 잡기 어려운 주택은 입력한 매매가격 자체가 달라질 수 있습니다. 한 번의 계산 결과보다 실제 거래와 권리관계 확인을 우선하세요.</div><div class="v2-content-guide__faq"><h3>자주 묻는 질문</h3><details><summary>입력 단위와 소수점은 어떻게 읽나요?</summary><p>두 칸 모두 만원 단위 숫자만 입력합니다. 3억원은 30000이며 3억처럼 단위를 붙이지 않습니다. 결과는 소수점 한 자리로 반올림하므로 20000 ÷ 30000 × 100은 66.7%입니다.</p></details><details><summary>결과가 예상과 다르거나 버튼이 작동하지 않으면요?</summary><p>빈칸이나 0에는 입력 안내가 표시됩니다. 양수 금액을 입력하고 다시 계산하세요. 100%를 넘으면 보증금이 입력한 매매가보다 크다는 뜻이므로 단위·입력 순서·매매가 기준 시점을 확인하세요. 버튼이 작동하지 않으면 JavaScript 허용 여부를 확인하고 새로고침한 뒤, 계속되면 아래 오류 제보 링크로 가정값과 실제 결과를 알려주세요.</p></details></div><p class="v2-content-guide__source">계산 기준 · 사용자가 입력한 매매가격과 전세보증금</p><h3 id="rc-guide-next" style="margin:18px 0 8px;font-size:16px;color:#0d1f3c">확인한 뒤, 다음 단계</h3><nav class="v2-content-guide__links" aria-label="관련 Rent Check 페이지"><a class="v2-content-guide__link" data-primary-guide="true" href="../../blog/jeonse-safety/">전세 계약 전 안전 확인 →</a><a class="v2-content-guide__link alt" href="../../tools/neighborhood-price/">주변 실거래 확인 →</a><a class="v2-content-guide__link alt" href="../../blog/jeonse-ratio-reading/">전세가율 읽는 법 →</a></nav><p class="rc-tool-help"><a href="../../about/">자료·계산 안내 원칙</a> · <a href="../../contact/">계산·표시 오류 제보</a></p><noscript><p class="rc-tool-help">계산 버튼은 JavaScript가 켜진 브라우저에서 작동합니다. 사용 설명과 관련 글은 이 상태에서도 읽을 수 있습니다.</p></noscript></section><!-- /rc-journey:tool-guide --></details></main><script >for (const style of parent.document.querySelectorAll('style')) {
+  const faces=style.textContent.match(/@font-face\s*\{\s*font-family:Gmarket;[^}]+\}/g);
+  if(faces?.length){const sheet=document.createElement('style');sheet.textContent=faces.join('\n');document.head.append(sheet);break;}
+}
+const calculateButton=document.querySelector('#calculate'), resultPanel=document.querySelector('#result');
+const errorMessage=document.createElement('p');
+errorMessage.className='input-error';errorMessage.setAttribute('role','alert');calculateButton.before(errorMessage);
+function showCalculatorError(text){errorMessage.textContent=text;resultPanel.classList.remove('show');}
+function clearResult(){errorMessage.textContent='';resultPanel.classList.remove('show');}
+document.addEventListener('input',clearResult);
+document.addEventListener('change',clearResult);
+document.addEventListener('click',e=>{
+  if(e.target.closest('button[data-value],button[data-target],#resetTax'))clearResult();
+});
+for (const field of document.querySelectorAll('.field')) {
+  const label=field.querySelector('label'),control=field.querySelector('input,select');
+  if(label&&control)label.htmlFor=control.id;
+}
+if(document.body.dataset.tool==='rent-yield'){
+  function fold(title,nodes){
+    const details=document.createElement('details'),summary=document.createElement('summary');
+    details.className='fold';summary.textContent=title;details.append(summary);
+    nodes[0].before(details);details.append(...nodes);return summary;
+  }
+  const loan=document.querySelector('#loanRatio'),interest=document.querySelector('#interestRate');
+  const loanFields=[loan.closest('.field'),interest.closest('.field')];
+  const container=loanFields[0].parentElement;
+  const loanSummary=fold('대출 조건',loanFields);
+  const loanFold=loanSummary.parentElement;
+  container.after(loanFold);
+  const note=loanFold.nextElementSibling;
+  if(note?.classList.contains('note'))loanFold.append(note);
+  function showLoan(){loanSummary.textContent='대출 조건 · 대출 '+loan.value+'% / 연 '+interest.value+'%';}
+  showLoan();loanFold.addEventListener('input',showLoan);loanFold.addEventListener('click',()=>queueMicrotask(showLoan));
+  const taxCard=document.querySelector('#housingOptions').closest('.card');
+  taxCard.querySelector('h2').remove();
+  const taxTitle=fold('취득 관련 세금',Array.from(taxCard.children));
+  const taxView=document.querySelector('#taxRateView');
+  const showTax=()=>{taxTitle.textContent='취득 관련 세금 · '+taxView.textContent;};
+  new MutationObserver(showTax).observe(taxView,{childList:true,subtree:true,characterData:true});showTax();
+  const detail=document.querySelector('.result .detail');
+  if(detail){detail.querySelector('h3')?.remove();fold('계산 내역 보기',[detail]);}
+}
+for(const h of document.querySelectorAll('.card h2'))h.textContent=h.textContent.replace(/^\d+\.\s*/,'');
+const inputs=Array.from(document.querySelectorAll('.card input'));
+for(const [i,input] of inputs.entries()){
+  input.enterKeyHint=i===inputs.length-1?'done':'next';
+  input.addEventListener('focus',()=>input.scrollIntoView({block:'nearest'}));
+  input.addEventListener('keydown',e=>{
+    if(e.key!=='Enter'||e.isComposing)return;
+    e.preventDefault();
+    const next=inputs.slice(i+1).find(el=>el.checkVisibility?el.checkVisibility():el.offsetHeight>0);
+    if(next)next.focus();else{input.blur();calculateButton.click();}
+  });
+}
+window.visualViewport?.addEventListener('resize',()=>{
+  if(document.activeElement?.matches('input'))document.activeElement.scrollIntoView({block:'nearest'});
+});
+calculateButton.addEventListener('click',e=>{
+  errorMessage.textContent='';
+  for(const input of inputs){
+    const raw=input.value.trim();
+    if(!raw||!input.offsetHeight)continue;
+    if(!/^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(raw)||!Number.isSafeInteger(Math.round(Number(raw.replaceAll(',',''))*10000))){
+      e.stopImmediatePropagation();showCalculatorError('입력값을 확인해 주세요. 0 이상의 숫자를 입력할 수 있어요.');input.focus();return;
+    }
+  }
+},true);
+for(const link of document.querySelectorAll('a[href]')){
+  if(link.origin!=='https://rent-check.kr')continue;
+  const match=link.pathname.match(/^\/tools\/([^/]+)\/?$/);
+  const service=match&&Array.from(parent.document.querySelectorAll('[data-service]')).find(a=>a.dataset.service===match[1]);
+  if(service&&new URL(service.href).origin===parent.location.origin)link.href=service.href;
+}
+</script><script >(()=>{const $=s=>document.querySelector(s),n=id=>Number(String($(id).value).replace(/[^0-9.]/g,''))||0,fmt=v=>v.toLocaleString('ko-KR')+'만원';$('#calculate').addEventListener('click',()=>{const sale=n('#sale'),jeonse=n('#jeonse');parent.gtag?.('event','jeonse_calc');if(!sale||!jeonse){showCalculatorError('매매가와 전세보증금을 입력해 주세요.');return}const ratio=jeonse/sale*100;$('#ratio').textContent=ratio.toFixed(1)+'%';$('#saleValue').textContent=fmt(sale);$('#jeonseValue').textContent=fmt(jeonse);$('#guide').textContent=ratio<60?'낮은 편의 참고 구간입니다. 매매가와 전세보증금의 차이가 비교적 큽니다. 전세가율만으로 안전 여부를 판단하지 말고 등기부·선순위 권리와 보증보험 가능 여부를 함께 확인하세요.':ratio<70?'일반적인 참고 구간입니다. 주변의 같은 주택유형·비슷한 면적 실거래와 비교하고, 등기부·선순위 권리와 보증보험 가능 여부를 함께 확인하세요.':ratio<80?'높은 편의 참고 구간입니다. 매매가와 전세보증금의 차이가 비교적 좁습니다. 전세가율만으로 안전 여부를 판단하지 말고 등기부·선순위 권리와 보증보험 가능 여부를 함께 확인하세요.':'매우 높은 편의 참고 구간입니다. 매매가와 전세보증금의 차이가 매우 좁습니다. 계약 전 등기부·선순위 권리와 보증보험 가능 여부를 함께 확인하세요.';$('#ratioNextTitle').textContent=ratio<60?'낮은 편이라고 나온 이유는?':ratio<70?'이 전세가율, 어떻게 봐야 하나요?':ratio<80?'높은 편이라고 나온 이유는?':'매우 높은 편이라고 나온 이유는?';$('#ratioGuideLink').textContent='전세가율 기준과 확인할 위험요소 보기 →';$('#result').classList.add('show');$('#result').scrollIntoView({behavior:'smooth',block:'nearest'})})})();</script></body></html>

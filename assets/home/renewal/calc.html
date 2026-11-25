@@ -1,0 +1,344 @@
+<!doctype html><html lang="ko"><head><meta name="robots" content="noindex,follow"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="/calc/" target="_top"><title>재개발 분담금 계산기</title>
+<style>
+  :root{
+    --navy:#0d1f3c; --blue:#1565c0; --gold:#d4a73a; --gold-soft:#f0c75e;
+    --ink:#1c2733; --muted:#5b6b7d; --line:#dfe6f0; --bg:#f4f6fa; --rowA:#eef4fb;
+    --green:#2ea06e; --red:#d64c4c;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--ink); font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif; font-size:17px; line-height:1.7; -webkit-text-size-adjust:100%;}
+  .wrap{max-width:560px; margin:0 auto; background:#fff; min-height:100vh;}
+
+  .hero{background:linear-gradient(150deg,var(--navy) 0%,#13306b 100%); color:#fff; padding:28px 22px 22px; text-align:center;}
+  .hero .badge{display:inline-block; border:1.5px solid var(--gold); color:var(--gold-soft); font-size:13px; font-weight:700; letter-spacing:.5px; padding:5px 14px; border-radius:20px; margin-bottom:13px;}
+  .hero h1{font-size:24px; font-weight:800; line-height:1.4;}
+  .hero h1 .g{color:var(--gold-soft);}
+  .hero p{font-size:14px; color:#b9c9e2; margin-top:7px;}
+
+  /* 탭 */
+  .tabs{display:flex; gap:8px; padding:16px 22px 0;}
+  .tabs button{flex:1; font-family:inherit; font-size:14.5px; font-weight:800; padding:12px 4px; border-radius:12px; border:1.5px solid var(--line); background:#fafbfd; color:var(--muted); cursor:pointer;}
+  .tabs button.on{background:var(--navy); border-color:var(--navy); color:#fff;}
+  .tabs button.on .sub{color:var(--gold-soft);}
+  .tabs button .sub{display:block; font-size:11.5px; font-weight:700; color:#9aa8bd; margin-top:1px;}
+
+  .body{padding:20px 22px 10px;}
+  .step-label{font-size:13px; font-weight:800; color:var(--blue); letter-spacing:.4px; margin:4px 0 10px;}
+
+  .field{margin-bottom:15px;}
+  .field label{display:block; font-size:14.5px; font-weight:700; color:var(--navy); margin-bottom:6px;}
+  .field label .hint{font-weight:400; color:var(--muted); font-size:12.5px;}
+  .field label .opt{font-weight:700; color:var(--green); font-size:12px;}
+  .inwrap{position:relative;}
+  .inwrap input{width:100%; font-size:19px; font-weight:700; color:var(--navy); padding:13px 64px 13px 14px; border:1.5px solid var(--line); border-radius:12px; outline:none; background:#fff; font-family:inherit;}
+  .inwrap input:focus{border-color:var(--blue); box-shadow:0 0 0 3px rgba(21,101,192,.12);}
+  .inwrap .unit{position:absolute; right:14px; top:50%; transform:translateY(-50%); font-size:14px; color:var(--muted); font-weight:700;}
+  .eok{font-size:12.5px; color:var(--blue); font-weight:700; margin-top:4px; min-height:18px;}
+
+  .calc-btn{width:100%; background:linear-gradient(135deg,var(--gold),#b98a22); color:#fff; font-size:18px; font-weight:800; border:none; border-radius:12px; padding:15px; cursor:pointer; margin:6px 0 4px; font-family:inherit;}
+  .calc-btn:active{transform:scale(.99);}
+
+  .result{display:none; padding:4px 0 6px;}
+  .rcard{border:1.5px solid var(--line); border-radius:14px; padding:15px 18px; margin:11px 0;}
+  .rcard .cap{font-size:13px; font-weight:800; color:var(--blue);}
+  .rcard .calcline{font-size:14px; color:var(--muted); margin-top:4px;}
+  .rcard .val{font-size:22px; font-weight:800; color:var(--navy); margin-top:2px;}
+  .rcard.main{border:2px solid var(--gold); background:#fffdf6;}
+  .rcard.main .cap{color:#9a6b16;}
+  .rcard.main .val{font-size:28px;}
+  .rcard.main .val .g{color:#b8860b;}
+  .subnote{font-size:13px; font-weight:700; margin-top:6px; display:none;}
+  .subnote.green{color:var(--green);}
+  .subnote.red{color:var(--red);}
+
+  .slider-box{border:1.5px solid var(--line); border-radius:14px; padding:18px; margin:16px 0;}
+  .slider-box .cap{font-size:14px; font-weight:800; color:var(--navy);}
+  .slider-box .ratio-now{font-size:14px; color:var(--muted); margin:4px 0 10px;}
+  .slider-box .ratio-now b{color:var(--blue); font-size:17px;}
+  input[type=range]{width:100%; accent-color:#1565c0; height:30px;}
+  .slider-scale{display:flex; justify-content:space-between; font-size:12px; color:var(--muted); margin-top:2px;}
+  .sens{font-size:13.5px; color:#9a6b16; font-weight:700; margin-top:10px; background:#fffdf6; border:1px dashed var(--gold); border-radius:8px; padding:8px 10px;}
+
+  .notice{border:1px dashed #c9b58a; background:#fffaf0; border-radius:12px; padding:13px 15px; font-size:13px; color:#6b5a32; margin:16px 0; line-height:1.65;}
+  .notice b{color:#9a6b16;}
+  .notice a{color:#1565c0; font-weight:700;}
+
+  .cta-area{padding:4px 22px 26px;}
+  .cta{display:block; text-align:center; text-decoration:none; font-weight:800; font-size:15.5px; border-radius:12px; padding:14px; margin:10px 0;}
+  .cta.primary{background:var(--navy); color:#fff;}
+  .cta.primary .g{color:var(--gold-soft);}
+  .cta.sub{border:1.5px solid var(--blue); color:var(--blue); background:#fff;}
+
+  .foot{background:var(--navy); color:#fff; text-align:center; padding:20px; margin-top:8px;}
+  .foot .logo{font-size:17px; font-weight:800;}
+  .foot .logo .g{color:var(--gold-soft);}
+  .foot .tagline{font-size:12.5px; color:#a9bdd6; margin-top:3px;}
+  .foot a{color:#a9bdd6; font-size:12.5px;}
+</style><style>
+body{margin:0;background:#f5f6f8;color:#152e48;font:16px/1.55 Gmarket,"Malgun Gothic",sans-serif;word-break:keep-all}
+main{max-width:680px;margin:auto;padding:20px clamp(12px,4vw,24px) 40px}header h1{margin:0;font-size:clamp(24px,5vw,32px);letter-spacing:-.055em}header p{font-size:14px;color:#526478;margin:4px 0 14px}
+.tabs{padding:0;margin-bottom:10px}.tabs button{min-height:48px;font:inherit;font-weight:700;border-radius:9px}.tabs button.on,.calc-btn{background:#142e4a;color:white}
+.tabs button:not(.on) .sub{color:#526478}.tabs button.on .sub{color:#e3ebf2}
+.body,details{padding:15px;border:1px solid #d6dfe8;border-radius:13px;background:white;margin-bottom:10px}
+.body>.step-label,.result>.step-label{display:none}.field{margin-bottom:10px}.field label .hint{font-size:13px;font-weight:400;color:#526478}
+.inwrap input{font:inherit;font-size:16px;min-height:44px}.eok:empty{display:none}.rcard{padding:11px;border-radius:9px}
+.result .rcard.main{border:0;background:#16344e;color:white}.result .rcard.main :is(.val,.g,.cap,.calcline){color:white}
+.result .rcard.main .green{color:#f6dc95}.result .rcard.main .val{font-size:clamp(21px,5vw,28px)}
+.calc-btn{border:0;border-radius:8px;margin:6px 0;font:inherit;font-weight:700;min-height:46px}.error{color:#973626;font-size:14px}.error:empty{display:none}
+details{padding:0 15px}summary{cursor:pointer;padding:12px 0;font-weight:600}.v2-content-guide{padding-bottom:12px;font-size:14px}.v2-content-guide a{color:#284e74}
+</style></head><body><main><header><h1>재개발 분담금 계산기</h1><p>소유주는 추가 분담금을, 매수를 검토할 때는 총투입금과 필요한 현금을 확인하세요.</p></header>
+<div class="tabs">
+    <button id="tabOwner" class="on" onclick="switchTab('owner')">소유주<span class="sub">분담금 계산</span></button>
+    <button id="tabBuyer" onclick="switchTab('buyer')">매수 검토<span class="sub">총투입금 계산</span></button>
+  </div>
+
+  <!-- ════ 탭 1: 소유주 분담금 ════ -->
+  <div class="body" id="panelOwner">
+    <p class="step-label">STEP 1 · 세 가지만 입력하세요</p>
+
+    <div class="field">
+      <label>감정평가액 <span class="hint">— 내 빌라·토지의 종전자산 평가액</span></label>
+      <div class="inwrap"><input type="text" id="appraisal" inputmode="numeric" placeholder="30,000"><span class="unit">만원</span></div>
+      <div class="eok" id="appraisalEok"></div>
+    </div>
+    <div class="field">
+      <label>비례율 <span class="hint">— 모르면 100 (방화3 실제 100.33%)</span></label>
+      <div class="inwrap"><input type="text" id="ratio" inputmode="decimal" placeholder="100"><span class="unit">%</span></div>
+      <div class="eok"></div>
+    </div>
+    <div class="field">
+      <label>조합원 분양가 <span class="hint">— 받을 새 아파트의 조합원 가격</span></label>
+      <div class="inwrap"><input type="text" id="memberPrice" inputmode="numeric" placeholder="90,000"><span class="unit">만원</span></div>
+      <div class="eok" id="memberPriceEok"></div>
+    </div>
+
+    <button class="calc-btn" onclick="runOwner()">분담금 계산하기</button>
+
+    <div class="result" id="ownerResult">
+      <p class="step-label" style="margin-top:14px">STEP 2 · 권리가액 — 내 몫으로 인정되는 금액</p>
+      <div class="rcard">
+        <div class="cap">권리가액 = 감정평가액 × 비례율</div>
+        <div class="calcline" id="rightsCalc"></div>
+        <div class="val" id="rightsVal"></div>
+      </div>
+      <p class="step-label" style="margin-top:14px">STEP 3 · 분담금 — 추가로 내야 하는 돈</p>
+      <div class="rcard main">
+        <div class="cap">분담금 = 조합원분양가 − 권리가액</div>
+        <div class="calcline" id="chargeCalc"></div>
+        <div class="val">분담금 <span class="g" id="chargeVal"></span></div>
+        <div class="subnote green" id="refundNote">권리가액이 분양가보다 큽니다 — 환급(청산금 수령) 대상일 수 있습니다.</div>
+      </div>
+
+      <div class="slider-box">
+        <div class="cap">비례율이 바뀌면 분담금은?</div>
+        <div class="ratio-now">비례율 <b id="sliderRatioLabel">100%</b> 가정 시 분담금 <b id="sliderCharge" style="color:#9a6b16"></b></div>
+        <input type="range" id="ratioSlider" min="90" max="120" step="0.5" value="100" oninput="onSlider()">
+        <div class="slider-scale"><span>90%</span><span>100%</span><span>110%</span><span>120%</span></div>
+        <div class="sens" id="sensLine"></div>
+      </div>
+
+      <div class="notice">※ 비례율은 <b>관리처분인가 시점에 확정</b>됩니다. 그 전 수치는 추정치이며, 본 계산은 이해를 돕기 위한 참고용입니다.</div>
+    </div>
+  </div>
+
+  <!-- ════ 탭 2: 매수 검토 총투입금 ════ -->
+  <div class="body" id="panelBuyer" style="display:none">
+    <p class="step-label">STEP 1 · 매물 조건을 입력하세요</p>
+
+    <div class="field">
+      <label>매매가 <span class="hint">— 부르는 가격 (권리가액+프리미엄)</span></label>
+      <div class="inwrap"><input type="text" id="buyPrice" inputmode="numeric" placeholder="62,000"><span class="unit">만원</span></div>
+      <div class="eok" id="buyPriceEok"></div>
+    </div>
+    <div class="field">
+      <label>권리가액 <span class="hint">— 중개사·조합 확인 (감정가 × 비례율)</span></label>
+      <div class="inwrap"><input type="text" id="buyRights" inputmode="numeric" placeholder="32,400"><span class="unit">만원</span></div>
+      <div class="eok" id="buyRightsEok"></div>
+    </div>
+    <div class="field">
+      <label>조합원 분양가 <span class="hint">— 받을 평형의 조합원 가격</span></label>
+      <div class="inwrap"><input type="text" id="buyMember" inputmode="numeric" placeholder="81,700"><span class="unit">만원</span></div>
+      <div class="eok" id="buyMemberEok"></div>
+    </div>
+    <div class="field">
+      <label>이주비대출 승계액 <span class="opt">선택</span> <span class="hint">— 승계 가능한 대출</span></label>
+      <div class="inwrap"><input type="text" id="buyLoan" inputmode="numeric" placeholder="20,200"><span class="unit">만원</span></div>
+      <div class="eok" id="buyLoanEok"></div>
+    </div>
+
+    <button class="calc-btn" onclick="runBuyer()">총투입금 계산하기</button>
+
+    <div class="result" id="buyerResult">
+      <p class="step-label" style="margin-top:14px">STEP 2 · 계산 과정</p>
+      <div class="rcard">
+        <div class="cap">프리미엄 = 매매가 − 권리가액</div>
+        <div class="calcline" id="premCalc"></div>
+        <div class="val" id="premVal"></div>
+        <div class="subnote red" id="premWarn">마이너스 프리미엄 — 매매가가 권리가액보다 낮습니다. 입력값 확인을 권장합니다.</div>
+      </div>
+      <div class="rcard">
+        <div class="cap">추가 분담금 = 조합원분양가 − 권리가액</div>
+        <div class="calcline" id="addChargeCalc"></div>
+        <div class="val" id="addChargeVal"></div>
+      </div>
+      <div class="rcard main">
+        <div class="cap">총투입금 = 매매가 + 추가 분담금</div>
+        <div class="calcline" id="totalCalc"></div>
+        <div class="val">총투입금 <span class="g" id="totalVal"></span></div>
+      </div>
+      <div class="rcard" id="cashCard" style="display:none">
+        <div class="cap">초기 필요현금 = 매매가 − 이주비대출 승계액</div>
+        <div class="calcline" id="cashCalc"></div>
+        <div class="val" id="cashVal"></div>
+      </div>
+
+      <div class="notice">
+        ※ 총투입금은 <b>취득세·중도금 이자 등 부대비용을 제외</b>한 금액입니다.<br>
+        매수 전 <b>권리산정기준일</b>과 <b>입주권 승계 가능 여부(현금청산 대상 여부)</b>를 반드시 확인하세요.
+        <!-- TODO: 아래 링크는 '현금청산 피하는 법' 글 URL로 교체 -->
+        → <a href="https://blog.naver.com/spitoon61" onclick="gaEvent('cta_click','guide')">현금청산 피하는 법 글 보기</a>
+      </div>
+    </div>
+  </div>
+
+  <details><summary>계산 기준과 결과 읽는 법</summary><section class="v2-content-guide" data-journey-version="20260925" aria-labelledby="v2-content-guide-title"><p class="v2-content-guide__eyebrow">입력 전 확인 · 결과 해석</p><h2 id="v2-content-guide-title">재개발 분담금은 권리가액을 먼저 계산해야 합니다</h2><p class="v2-content-guide__lead">분담금은 새 아파트 조합원 분양가에서 내 종전자산의 권리가액을 뺀 값입니다. 권리가액은 감정평가액에 비례율을 곱해 계산하므로, 감정평가액만 보고 “내 집값이 얼마 인정된다”라고 생각하면 실제 분담금과 차이가 생길 수 있습니다. 이 도구는 소유주와 매수 검토자의 계산을 나눠 보여줍니다.</p><ol><li>소유주는 감정평가액·비례율·조합원 분양가를 넣어 권리가액과 예상 분담금을 봅니다.</li><li>매수 검토자는 매매가와 예상 분담금을 합쳐 총투입금이 어느 정도인지 확인합니다.</li><li>비례율이 바뀌면 결과도 달라지므로 슬라이더로 민감도를 보고 한 숫자를 확정값처럼 쓰지 않습니다.</li></ol><div class="v2-content-guide__box v2-content-guide__example rc-tool-interpretation" id="rc-guide-interpretation"><strong>결과는 이렇게 읽으세요</strong><br>예상 분담금은 권리가액과 조합원 분양가를 넣은 시나리오입니다. 감정평가액을 모르면 매매가로 자동 대체하지 말고 여러 가정값을 구분해 비교하세요. 확정 청구액이 아닙니다.</div><div class="v2-content-guide__box v2-content-guide__example"><strong>비교 예시</strong><br>감정평가액 3억원, 비례율 100%, 조합원 분양가 9억원이라면 권리가액은 3억원이고 단순 예상 분담금은 6억원입니다. 비례율이 110%라면 권리가액은 3억3천만원으로 바뀌어 같은 분양가에서도 분담금이 달라집니다.</div><div class="v2-content-guide__box v2-content-guide__caution"><strong>이 결과로 확정할 수 없는 것</strong><br>실제 사업에서는 추가분담금, 금융비용, 옵션·발코니, 취득 관련 비용, 사업비 변경 등이 더해질 수 있습니다. 계산 결과는 사업시행계획·관리처분계획·조합 공지보다 우선하지 않습니다.</div><div class="v2-content-guide__faq"><h3>자주 묻는 질문</h3><details><summary>비례율 100%면 좋은 건가요?</summary><p>100%는 감정평가액이 권리가액으로 그대로 반영되는 단순 기준점입니다. 사업성 판단은 비례율 하나만이 아니라 분양수입·사업비·종전자산평가와 함께 봐야 합니다.</p></details><details><summary>분담금이 음수면 바로 환급받나요?</summary><p>계산상 권리가액이 조합원분양가보다 크다는 뜻입니다. 실제 청산금·환급 여부와 시점은 사업계획과 조합 기준을 확인해야 합니다.</p></details><details><summary>매수자는 무엇을 더 봐야 하나요?</summary><p>매매가와 예상 분담금뿐 아니라 취득세·대출이자·이주비 조건·추가 사업비 등 실제 현금흐름을 별도로 확인해야 합니다.</p></details></div><p class="v2-content-guide__source">계산 구조 · 권리가액 = 감정평가액 × 비례율 · 예상 분담금 = 조합원분양가 − 권리가액</p><h3 id="rc-guide-next" style="margin:18px 0 8px;font-size:16px;color:#0d1f3c">확인한 뒤, 다음 단계</h3><nav class="v2-content-guide__links" aria-label="관련 Rent Check 페이지"><a class="v2-content-guide__link" data-primary-guide="true" href="../blog/redevelopment-contribution/">재개발 분담금 읽는 법 →</a><a class="v2-content-guide__link alt" href="../blog/redevelopment-rights/">권리가액 계산 이해하기 →</a><a class="v2-content-guide__link alt" href="../analysis/hwagok6-957-a1/">화곡6동 모아타운 A1 진행상황 →</a></nav><p class="rc-tool-help"><a href="../about/">자료·계산 안내 원칙</a> · <a href="../contact/">계산·표시 오류 제보</a></p><noscript><p class="rc-tool-help">계산 버튼은 JavaScript가 켜진 브라우저에서 작동합니다. 사용 설명과 관련 글은 이 상태에서도 읽을 수 있습니다.</p></noscript></section></details></main>
+<script>let sliderUsed = false;
+
+function gaEvent(name, label){
+  if (typeof gtag === 'function') gtag('event', name, {event_label: label || ''});
+}
+
+function switchTab(t){
+  const owner = t === 'owner';
+  document.getElementById('tabOwner').className = owner ? 'on' : '';
+  document.getElementById('tabBuyer').className = owner ? '' : 'on';
+  document.getElementById('panelOwner').style.display = owner ? 'block' : 'none';
+  document.getElementById('panelBuyer').style.display = owner ? 'none' : 'block';
+  gaEvent('tab_switch', t);
+}
+
+function num(id){
+  const v = document.getElementById(id).value.replace(/[^0-9.]/g, '');
+  return v ? parseFloat(v) : NaN;
+}
+
+function toEokStr(man){
+  const neg = man < 0; man = Math.abs(Math.round(man));
+  const eok = Math.floor(man / 10000), rest = man % 10000;
+  let s = '';
+  if (eok > 0) s += eok.toLocaleString('ko-KR') + '억';
+  if (rest > 0) s += (eok > 0 ? ' ' : '') + rest.toLocaleString('ko-KR') + '만';
+  if (!s) s = '0';
+  return (neg ? '−' : '') + s + ' 원';
+}
+function eokShort(man){ return toEokStr(man).replace(' 원',''); }
+
+function liveEok(inputId, outId){
+  const el = document.getElementById(inputId);
+  el.addEventListener('input', function(){
+    const raw = el.value.replace(/[^0-9]/g, '');
+    el.value = raw ? parseInt(raw, 10).toLocaleString('ko-KR') : '';
+    if (outId) document.getElementById(outId).textContent = raw ? '= ' + toEokStr(parseInt(raw, 10)) : '';
+  });
+}
+liveEok('appraisal', 'appraisalEok');
+liveEok('memberPrice', 'memberPriceEok');
+liveEok('buyPrice', 'buyPriceEok');
+liveEok('buyRights', 'buyRightsEok');
+liveEok('buyMember', 'buyMemberEok');
+liveEok('buyLoan', 'buyLoanEok');
+
+/* ── 소유주 탭 ── */
+function calcCharge(appraisal, ratio, memberPrice){
+  const rights = appraisal * ratio / 100;
+  return {rights: rights, charge: memberPrice - rights};
+}
+
+function runOwner(){
+  const a = num('appraisal'), r = num('ratio'), m = num('memberPrice');
+  if (isNaN(a) || isNaN(r) || isNaN(m) || a <= 0 || r <= 0 || m <= 0){
+    alert('감정평가액·비례율·조합원분양가를 모두 입력해주세요.'); return;
+  }
+  const c = calcCharge(a, r, m);
+  document.getElementById('rightsCalc').textContent = eokShort(a) + ' × ' + r + '% =';
+  document.getElementById('rightsVal').textContent = toEokStr(c.rights);
+  document.getElementById('chargeCalc').textContent = eokShort(m) + ' − ' + eokShort(c.rights) + ' =';
+  document.getElementById('chargeVal').textContent = toEokStr(c.charge);
+  document.getElementById('refundNote').style.display = c.charge < 0 ? 'block' : 'none';
+
+  const slider = document.getElementById('ratioSlider');
+  slider.value = Math.min(120, Math.max(90, r));
+  onSlider(true);
+
+  document.getElementById('ownerResult').style.display = 'block';
+  gaEvent('calc_click', 'owner');  // 라벨은 탭 구분만 — 금액 등 개인 데이터 수집 금지
+  document.getElementById('ownerResult').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function onSlider(silent){
+  const a = num('appraisal'), m = num('memberPrice');
+  if (isNaN(a) || isNaN(m)) return;
+  const r = parseFloat(document.getElementById('ratioSlider').value);
+  const c = calcCharge(a, r, m);
+  document.getElementById('sliderRatioLabel').textContent = r + '%';
+  document.getElementById('sliderCharge').textContent = toEokStr(c.charge);
+  document.getElementById('sensLine').textContent =
+    '비례율 1%p가 바뀌면 분담금이 약 ' + toEokStr(a / 100) + ' 움직입니다.';
+  if (!silent && !sliderUsed){ sliderUsed = true; gaEvent('slider_use', ''); }
+}
+
+/* ── 매수 검토 탭 ── */
+function runBuyer(){
+  const p = num('buyPrice'), rg = num('buyRights'), mb = num('buyMember'), ln = num('buyLoan');
+  if (isNaN(p) || isNaN(rg) || isNaN(mb) || p <= 0 || rg <= 0 || mb <= 0){
+    alert('매매가·권리가액·조합원분양가를 입력해주세요. (이주비 승계액은 선택)'); return;
+  }
+  const prem = p - rg;
+  const addCharge = mb - rg;
+  const total = p + addCharge;
+
+  document.getElementById('premCalc').textContent = eokShort(p) + ' − ' + eokShort(rg) + ' =';
+  document.getElementById('premVal').textContent = '프리미엄 ' + toEokStr(prem);
+  document.getElementById('premWarn').style.display = prem < 0 ? 'block' : 'none';
+
+  document.getElementById('addChargeCalc').textContent = eokShort(mb) + ' − ' + eokShort(rg) + ' =';
+  document.getElementById('addChargeVal').textContent = toEokStr(addCharge);
+
+  document.getElementById('totalCalc').textContent = eokShort(p) + ' + ' + eokShort(addCharge) + ' =';
+  document.getElementById('totalVal').textContent = toEokStr(total);
+
+  if (!isNaN(ln) && ln > 0){
+    document.getElementById('cashCalc').textContent = eokShort(p) + ' − ' + eokShort(ln) + ' =';
+    document.getElementById('cashVal').textContent = toEokStr(p - ln);
+    document.getElementById('cashCard').style.display = 'block';
+  } else {
+    document.getElementById('cashCard').style.display = 'none';
+  }
+
+  document.getElementById('buyerResult').style.display = 'block';
+  gaEvent('calc_click', 'buyer');  // 라벨은 탭 구분만 — 금액 등 개인 데이터 수집 금지
+  document.getElementById('buyerResult').scrollIntoView({behavior:'smooth', block:'start'});
+}
+</script><script>
+for(const sheet of parent.document.querySelectorAll('style')){
+  const faces=sheet.textContent.match(/@font-face\s*\{\s*font-family:Gmarket;[^}]+\}/g);
+  if(faces?.length){const style=document.createElement('style');style.textContent=faces.join('\n');document.head.append(style);break;}
+}
+for(const panel of document.querySelectorAll('.body')){
+  const fields=Array.from(panel.querySelectorAll('.field input')),button=panel.querySelector('.calc-btn'),result=panel.querySelector('.result');
+  result.prepend(result.querySelector('.rcard.main'));
+  const error=document.createElement('p');error.className='error';error.setAttribute('role','alert');button.before(error);
+  fields.forEach((input,i)=>{
+    input.closest('.field').querySelector('label').htmlFor=input.id;
+    input.enterKeyHint=i+1<fields.length?'next':'done';
+    input.addEventListener('input',()=>{result.style.display='none';error.textContent='';});
+    input.addEventListener('keydown',e=>{if(e.key!=='Enter'||e.isComposing)return;e.preventDefault();if(fields[i+1])fields[i+1].focus();else{input.blur();button.click();}});
+  });
+  button.addEventListener('click',event=>{
+    const invalid=fields.find(x=>{const v=x.value.replaceAll(',','').trim();return !(x.id==='buyLoan'&&!v)&&(!/^\d+(\.\d+)?$/.test(v)||!Number.isSafeInteger(Math.round(Number(v)*100))||(x.id!=='buyLoan'&&Number(v)<=0));});
+    if(invalid){event.stopImmediatePropagation();invalid.focus();error.textContent='입력한 금액과 비례율을 확인해 주세요.';result.style.display='none';}
+  },true);
+}
+document.getElementById('ratioSlider').setAttribute('aria-label','가정할 비례율');
+</script></body></html>

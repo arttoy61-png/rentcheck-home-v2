@@ -40,8 +40,8 @@ artifacts.mkdir(parents=True,exist_ok=True)
 metrics=[]
 checks=0
 REVIEW_PAGES=[
-    ('/blog/','부동산 실전 가이드','.guide-card',10),
-    ('/tools/youth-score/','청년임대 계산기','h1',1),
+    ('/blog/','최신 부동산 글','.guide-card',8),
+    ('/tools/youth-score/','가점 계산기','h1',1),
     ('/public-housing/','LH·SH 임대주택 모집공고','.housing-card',3),
     ('/about/','Rent Check','h1',1),
     ('/privacy.html','개인정보 처리방침','h1',1),
@@ -70,47 +70,24 @@ try:
                     ctx.route('**/*',route_request)
                     page=ctx.new_page()
                     page.goto(base+'/',wait_until='networkidle')
-                    assert page.locator('#insightTrack .insight-home').count()==4
-                    assert page.locator('#insightTrack .rc-insight-summary').count()==4
-                    assert page.locator('#articleLibrary .article-row').count()>=9
-                    assert page.locator('#articleLibrary .article-category').count()==4
-                    assert page.locator('#rentcheck-value,.rc-value-card').count()==0
-                    assert page.locator('#rc-featured-guide').count()==1
-                    guide=page.locator('#rc-featured-guide .rc-guide-link')
-                    assert guide.count()==1
-                    href=guide.get_attribute('href')
-                    assert href=='/blog/public-housing-application-documents/'
-                    assert (ROOT/href.lstrip('/')/'index.html').exists()
-                    assert guide.inner_text().strip().startswith('추천 가이드')
-                    bounds=guide.bounding_box()
-                    library=page.locator('#insights > .container').bounding_box()
-                    assert 44<=bounds['height']<=88, bounds
-                    assert bounds['x']>=library['x']-1, (bounds,library)
-                    assert bounds['x']+bounds['width']<=library['x']+library['width']+1, (bounds,library)
-                    pair=page.locator('.rc-guide-pair .rc-guide-strip').evaluate_all('(xs)=>xs.map(x=>{const r=x.getBoundingClientRect();return [Math.round(r.x),Math.round(r.y),Math.round(r.width)]})')
-                    assert len(pair)==2, pair
-                    if width>820:
-                        assert pair[0][1]==pair[1][1] and pair[0][2]!=pair[1][2], pair
-                    else:
-                        assert pair[1][1]>pair[0][1], pair
-                    assert page.locator('main > section').first.get_attribute('class')=='hero'
-                    assert page.locator('#insights #latest-guides').count()==1
-                    assert page.locator('#insights #articleLibrary .article-category').count()==4
-                    assert page.locator('#latest-guides .latest-guide-card, #latest-guides .latest-guide-fallback').count()>=1
-                    assert page.locator('.section.insights, .section.article-library').count()==0
-                    for selector in ['.rc-guide-label','.rc-guide-title','.rc-guide-arrow']:
-                        child=guide.locator(selector).bounding_box()
-                        assert child['x']>=bounds['x'] and child['x']+child['width']<=bounds['x']+bounds['width']+1
-                    for href in page.locator('#insightTrack a').evaluate_all('(xs)=>xs.map(x=>x.getAttribute("href"))'):
+                    assert page.locator('#compact-home h1').inner_text()=='자주 찾는 부동산 서비스'
+                    assert page.locator('.topic-main').count()==3
+                    assert page.locator('.guide-list a').count()==3
+                    assert page.locator('.feature-story img').evaluate('(img)=>img.complete && img.naturalWidth>0')
+                    for href in page.locator('.guide-list a,.feature-story').evaluate_all('(xs)=>xs.map(x=>x.getAttribute("href"))'):
                         assert (ROOT/href.lstrip('/')/'index.html').exists(),href
                     assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1')
+                    if js:
+                        page.click('[data-tools]')
+                        assert page.locator('#tool-dialog').is_visible()
+                        assert page.locator('#catalog-title').inner_text()=='전체 서비스'
+                        assert page.locator('[data-service]').count()==12
+                        page.click('#tool-dialog button[aria-label="서비스 목록 닫기"]')
+                        page.wait_for_selector('#tool-dialog',state='hidden')
+                        page.wait_for_function("!['#service-list','#calculators'].includes(location.hash)")
                     if js and mode=='healthy':
-                        question_controls=page.locator('a,button').evaluate_all('(xs)=>xs.filter(x=>/무엇이든|물어보세요/.test(x.textContent)).map(x=>({text:x.textContent.trim(),id:x.id,classes:x.className}))')
-                        record={'width':width,'guide_height':bounds['height'],'left':bounds['x'],'content_width':library['width'],'library_height':round(page.locator('#insights').bounding_box()['height']),'page_height':page.evaluate('document.documentElement.scrollHeight'),'question_controls':question_controls}
-                        metrics.append(record)
-                        print('LAYOUT '+json.dumps(record,ensure_ascii=False),flush=True)
+                        metrics.append({'width':width,'height':page.evaluate('document.documentElement.scrollHeight')})
                         page.screenshot(path=str(artifacts/f'home-{width}.png'),full_page=True)
-                        guide.screenshot(path=str(artifacts/f'guide-{width}.png'))
                     checks+=1
                     page.goto(base+'/tools/jeonse-ratio/',wait_until='networkidle')
                     assert page.locator('.v2-content-guide').count()==1

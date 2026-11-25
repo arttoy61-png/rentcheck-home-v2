@@ -5,8 +5,6 @@
 import fs from 'node:fs';
 import {renderHomeEditorial} from './render-home-editorial.mjs';
 import vm from 'node:vm';
-import {createRequire} from 'node:module';
-const ownedView=createRequire(import.meta.url)('../data/home-content.js');
 import assert from 'node:assert/strict';
 const read=p=>fs.readFileSync(p,'utf8');
 const put=(p,s)=>{if(read(p)!==s)fs.writeFileSync(p,s)};
@@ -17,7 +15,6 @@ function patch(s,old,value,label){if(s.includes(value))return s;assert(s.include
 function block(s,name,value,anchor){const start=`<!-- rc-static:${name} -->`,end=`<!-- /rc-static:${name} -->`;if(s.includes(start)){const a=s.indexOf(start),b=s.indexOf(end,a);assert(b>a);return s.slice(0,a)+start+value+end+s.slice(b+end.length)}assert(s.includes(anchor),`Missing HTML anchor: ${name}`);return s.replace(anchor,start+value+end+anchor)}
 function replaceRoot(s,id,html){const re=new RegExp(`<div\\b[^>]*\\bid="${id}"[^>]*>`);const match=re.exec(s);assert(match,`Missing root ${id}`);let depth=1,end;const tags=/<\/?div\b[^>]*>/g;tags.lastIndex=match.index+match[0].length;for(let m;(m=tags.exec(s));){depth+=m[0].startsWith('</')?-1:1;if(!depth){end=m.index;break}}assert(end!==undefined);const opening=match[0].replace(/\sdata-prerendered="[^"]*"/g,'').replace(/>$/,' data-prerendered="true">');return s.slice(0,match.index)+opening+html+s.slice(end)}
 const outputs=new Map();
-let loader=read('data/posts-loader.js'), app=read('app.js'), homeUI=read('data/home-analysis-ui.js');
 const owned=JSON.parse(read('data/home-content-config.json'));
 const registered=new Set();
 for(const [file,base] of [['blog/all/index.html','/blog/all/'],['analysis/index.html','/analysis/']]){
@@ -40,13 +37,10 @@ owned.categories=owned.categories.map(c=>({...c,articles:c.articles.map(p=>owned
 assert(owned.cards.length===6&&new Set(owned.cards.map(c=>c.url)).size===6);
 assert(owned.cards.every(c=>c.image.startsWith('/assets/home/')&&fs.existsSync(c.image.slice(1))),'Local card photos required');
 assert(owned.categories.every(c=>c.articles.length===3));
-const cards=owned.cards.slice(0,4);
-const cardHTML=ownedView.cardsHTML(cards);
 const feeds=['data/posts.json','data/posts_shared.json','data/posts_latest.json'];
 const byURL=new Map();for(const p of feeds){if(!fs.existsSync(p))continue;const rows=JSON.parse(read(p));assert(Array.isArray(rows),p);for(const row of rows)if(row?.url)byURL.set(row.url,{...(byURL.get(row.url)||{}),...row})}
 const posts=[...byURL.values()].filter(p=>p.status==='published'&&p.url);
 assert(posts.length>0,'Do not replace a valid library with an empty one');
-const library=ownedView.libraryHTML(owned.categories);
 let home=read('index.html');
 home=home.replace(/(<strong id="publishedCount">)\d+(<\/strong>)/,(_,open,close)=>open+owned.inventory.length+close);
 const publicationStats=JSON.parse(read('data/site_stats.json'));
@@ -54,50 +48,13 @@ publicationStats.published_posts=posts.length; // Preserve Naver archive metadat
 publicationStats.home_articles=owned.inventory.length;
 put('data/home-content.json',JSON.stringify(owned,null,2)+'\n');
 put('data/site_stats.json',JSON.stringify(publicationStats));
-home=replaceRoot(home,'insightTrack',cardHTML);home=replaceRoot(home,'articleLibrary',library);
-home=home.replace('<h2>Rent Check 자체 분석</h2>','<h2>Rent Check 자체 분석·가이드</h2>');
-home=home.replace(/<span>네이버 발행 글<\/span>/g,'<span>자체 분석·가이드</span>').replace('<p class="kicker">네이버 블로그</p><h2>네이버 발행 글</h2>','<p class="kicker">자체글</p><h2>자체 분석·가이드</h2>').replace('Rent Check가 네이버 블로그에 발행한 글을 주제별로 모았습니다. 홈페이지 자체 분석은 위 ‘Rent Check 자체 분석’에서 확인하세요.','Rent Check가 직접 작성한 분석과 실전 가이드를 주제별로 모았습니다.');
-const latest=owned.inventory.filter(p=>p.url.startsWith('/blog/')&&p.date).sort((a,b)=>b.date.localeCompare(a.date))[0];assert(latest);
-// The standalone '새로 나온 글' strip is folded into the guide library, which renders the newest post itself.
-if(process.argv.includes('--posts-only')){put('index.html',home);renderHomeEditorial();console.log('Owned HOME library/count synchronized; Naver archive preserved: '+posts.length);process.exit(0);}
-const homeDesc='강서구 실거래를 비교하고 보증금·월세·계약 비용과 재개발 분담금을 계산해 보세요. LH·SH 공고와 부동산 실전 가이드도 함께 확인할 수 있습니다.';
-home=home.replace(/<meta name="description" content="[^"]*">/,`<meta name="description" content="${homeDesc}">`);
-home=home.replace(/<meta property="og:description" content="[^"]*">/,`<meta property="og:description" content="${homeDesc}">`);
-home=home.replace(/<meta name="twitter:description" content="[^"]*">/,`<meta name="twitter:description" content="${homeDesc}">`);
-home=home.replace(/"description": "대한민국 부동산 실거래 신고자료를 바탕으로 계산 도구와 분석을 제공하는 부동산 데이터 서비스입니다\."/,`"description": "국토교통부 실거래와 공식 공고를 비교·해석하고 계산 도구와 자체 분석을 제공하는 부동산 데이터 서비스입니다."`);
-home=home.replace(/"description": "국토교통부 실거래 신고자료와 부동산 계산 도구를 연결하는 Rent Check입니다\."/,`"description": "국토교통부 실거래와 LH·SH 공식 공고를 비교·해석하고 계산 도구와 자체 분석으로 연결하는 Rent Check입니다."`);
-home=home.replace(/<p class="hero-lead">[\s\S]*?<\/p>/,`<p class="hero-lead">강서구 실거래는 단지·면적으로 비교하고,<br>LH·SH 공고는 접수일·마감시간을 보세요.</p>`);
-home=home.replace(/<div class="trust">[\s\S]*?<\/div>/,`<div class="trust"><span><i>✓</i> 국토부 신고자료 기반</span><span><i>✓</i> 공식 공고와 계산 도구</span></div>`);
-home=home.replace('<p>계약부터 투자 판단까지, 필요한 계산을 한곳에서 확인하세요.</p>','<p>보증금·월세부터 계약 비용과 재개발 분담금까지 계산해 보세요.</p>');
-home=home.replace('<p>실거래와 제도를 읽는 판단 기준을 정리합니다.</p>','<p>공개자료를 다시 비교해, 무엇을 확인했고 어디까지 해석할 수 있는지 함께 적습니다.</p>');
-home=home.replace('<h2>분석 글 모음</h2>','<h2>발행 글 찾아보기</h2>');
-home=home.replace('<p>주제별 최신 글을 바로 찾고, 더 필요한 글은 펼쳐서 확인하세요.</p>','<p>홈 자체 분석과 네이버 발행 글을 주제별로 찾습니다. 자체 분석은 위에서 먼저 확인할 수 있습니다.</p>');
-home=home.replace('국토부 실거래 데이터와 실전형 해석을 연결하는<br>부동산 계산·분석 서비스입니다.','국토부 실거래와 공식 공고를 직접 비교하고,<br>계산 도구와 실전 가이드로 알기 쉽게 안내합니다.');
-// Replace the approved oversized introduction, rather than hiding it or adding another section.
-home=home.replace(/<!-- rc-static:value-proof -->[\s\S]*?<!-- \/rc-static:value-proof -->/g,'');
-const guideStripHTML='<aside class="rc-guide-strip" id="rc-featured-guide" aria-label="추천 실전 가이드"><a class="rc-guide-link" href="/blog/public-housing-application-documents/"><span class="rc-guide-label">추천 가이드</span><span class="rc-guide-title">SH 신청 후 서류, 언제 내나요?</span><span class="rc-guide-arrow" aria-hidden="true">→</span></a></aside>';
-const guideStripCSS='';
-home=block(home,'guide-strip',guideStripHTML,'<section class="section rc-library"');
-home=replaceRoot(home,'insightTrack',cardHTML);home=replaceRoot(home,'articleLibrary',library);
-const curatedCSS=capture(loader,/style\.textContent=`(#insightTrack[\s\S]*?)`;/,'curated CSS');
-home=block(home,'home-style',`<style>${curatedCSS}.rc-insight-summary{font-size:13px;line-height:1.65;color:#596273;margin:0 0 12px}.article-actions a.article-all{text-decoration:none;display:inline-flex;align-items:center;min-height:40px}${guideStripCSS}</style>`,'</head>');
-home=home.replace('<h2>최신 부동산 인사이트</h2>','<h2>Rent Check 자체 분석</h2>');
-assert(home.includes(guideStripHTML)&&!home.includes('id="rentcheck-value"')&&!home.includes('rc-value-card'),'Compact guide migration failed');
-assert(!home.includes('전국에서 쓰는 계산 도구'),'Unsupported trust claim still present');
-// Existing runtime renderers enhance the same roots. Never clear valid static cards on a failed fetch.
-app=patch(app,"track=$('#insightTrack');track.replaceChildren();","track=$('#insightTrack');if(track?.dataset.prerendered==='true')return;track.replaceChildren();",'legacy insights');
-// The owned library renderer uses the shared HOME source.
-// Curated hydration delegates to the shared HOME renderer.
-homeUI=patch(homeUI,"if(!homeTrack||homeTrack.querySelector('a[href=\"/blog/gangseo-home-price/\"]'))return;","if(!homeTrack||homeTrack.dataset.prerendered==='true'||homeTrack.querySelector('a[href=\"/blog/gangseo-home-price/\"]'))return;",'legacy feature replacement');
-for(const name of ['app.js','data/posts-loader.js','data/home-analysis-ui.js'])home=home.replace(new RegExp(`src="${name.replaceAll('.','\\.')}(?:\\?[^\"]*)?"`),`src="${name}?v=${name==='data/home-analysis-ui.js'?'20261110-strip':'owned-20261005'}"`);
-
-// Initial HTML uses the existing home snapshot; runtime may enhance the same label.
-const homeSnapshot=JSON.parse(read('data/home_stats.json'));
-assert(/^\d{4}-\d{2}-\d{2}$/.test(homeSnapshot.data_until)&&Number.isFinite(Date.parse(homeSnapshot.generated_at)),'A dated home snapshot is required');
-home=home.replace(/<p class="hero-live" id="heroLive"[^>]*>[\s\S]*?<\/p>/,`<p class="hero-live" id="heroLive">국토부 신고자료 기반 · 최근 계약일 ${esc(homeSnapshot.data_until.replaceAll('-','.'))}</p>`);
-home=home.replace(/src="data\/site-stats-loader.js(?:\?[^"]*)?"/,'src="data/site-stats-loader.js?v=owned-20261005"');
-if(!home.includes('src="data/home-content.js'))home=home.replace('<script src="app.js','<script src="data/home-content.js?v=owned-20261005"></script><script src="app.js');
-outputs.set('index.html',home);outputs.set('app.js',app);outputs.set('data/posts-loader.js',loader);outputs.set('data/home-analysis-ui.js',homeUI);
+if (process.argv.includes('--posts-only')) {
+  put('index.html',home);
+  renderHomeEditorial();
+  console.log('Owned HOME library/count synchronized: '+owned.inventory.length);
+  process.exit(0);
+}
+outputs.set('index.html',home);
 // Copy the existing guide verbatim into HTML. Its existing presence guard prevents duplication.
 const common=read('tools/tool-common.js');
 const guide=vm.runInNewContext('('+capture(common,/const contentGuide=([\s\S]*?);\s*const join=/,'tool copy')+')',Object.create(null),{timeout:1000})['jeonse-ratio'];
@@ -139,7 +96,7 @@ if(!process.argv.includes('--content-only')){
 }
 // No partial writes: calculate all target output strings before replacing files.
 for(const [p,s] of outputs){assert(!s.includes('undefined</'),'Invalid generated HTML');put(p,s)}
-console.log(`Static content ready: ${cards.length} owned-analysis cards, ${posts.length} published records, one calculator guide; ${outputs.size} scoped files checked.`);
+console.log(`Static content ready: ${owned.inventory.length} registered HOME articles, ${posts.length} published records, one calculator guide; ${outputs.size} scoped files checked.`);
 
 // Keep static tool explanations and the five service entry points after regular regeneration.
 const {renderUserJourneys}=await import('./render-user-journeys.mjs');

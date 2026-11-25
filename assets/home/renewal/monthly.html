@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ko">
+<head><meta name="robots" content="noindex,follow">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="/tools/rent-vs-monthly/" target="_top">
+<title>전세·월세 비용 비교</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f5f6f8;color:#172e48;font:16px/1.55 Gmarket,"Malgun Gothic",sans-serif;word-break:keep-all}
+main{max-width:680px;margin:auto;padding:20px clamp(12px,4vw,24px) 36px}
+h1,h2,p{margin:0}h1{font-size:clamp(24px,5vw,32px);letter-spacing:-.055em}
+header p,.hint{color:#526478;font-size:14px}header p{margin:4px 0 16px}
+form,details,section{background:#fff;border:1px solid #d6dfe8;border-radius:14px;padding:16px;margin:0 0 12px}
+fieldset{min-width:0;border:0;padding:0;margin:0 0 14px}legend{font-size:16px;font-weight:700;padding:0;margin-bottom:6px}
+.two,.costs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+label{display:block;font-size:14px}label>span{display:flex;align-items:center;gap:5px;border:1px solid #adbac8;border-radius:8px;margin-top:4px;padding-right:10px;color:#526478}
+label>span:focus-within{outline:2px solid #365673}input{width:100%;min-width:0;border:0;border-radius:8px;padding:10px;color:#172e48;font:inherit;font-size:16px;outline:0}small{flex:none;font-size:14px}
+.rate{border-top:1px solid #dce3ea;padding-top:12px}.rate label{display:flex;align-items:center;justify-content:space-between;font-weight:600}.rate label span{width:7.5rem;margin:0}.hint{margin:5px 0 0}
+button{font:inherit;font-weight:700;background:#142e4a;color:#fff;border:0;border-radius:8px;width:100%;min-height:46px;margin-top:14px;cursor:pointer}
+#result{scroll-margin-block:10px}#result h2{font-size:clamp(19px,4.7vw,25px);line-height:1.4;margin:4px 0 12px}
+.costs>div{min-width:0;border-radius:9px;background:#edf1f5;padding:11px}.costs strong{display:block;font-size:clamp(16px,4vw,21px);overflow-wrap:anywhere}.costs small{font-size:13px}.costs .lower{background:#173651;color:white}
+details{padding:0 16px}summary{cursor:pointer;padding:12px 0;font-weight:600}details p,details li,details nav{font-size:14px;margin:8px 0}details a{color:#274c74}details nav a{display:block;padding:6px 0}details ol{padding-left:20px}
+details .v2-content-guide{padding:0;border:0;margin:0}details h2{font-size:17px}details .v2-content-guide__box{margin:10px 0;font-size:14px}
+:focus-visible{outline:3px solid #996c1e;outline-offset:2px}
+</style></head>
+<body><main>
+<header><h1>전세·월세 비용 비교</h1><p>두 집의 보증금과 월세를 입력하면 한 달 부담이 얼마나 다른지 볼 수 있어요.</p></header>
+<form id="contract">
+  <fieldset><legend>전세 조건</legend><label for="jeonse">전세보증금<span><input id="jeonse" inputmode="decimal" enterkeyhint="next" placeholder="예) 30,000" required><small>만원</small></span></label></fieldset>
+  <fieldset><legend>월세 조건</legend><div class="two">
+    <label for="mDeposit">월세보증금<span><input id="mDeposit" inputmode="decimal" enterkeyhint="next" placeholder="예) 5,000"><small>만원</small></span></label>
+    <label for="monthly">월세<span><input id="monthly" inputmode="decimal" enterkeyhint="next" placeholder="예) 100" required><small>만원</small></span></label>
+  </div></fieldset>
+  <div class="rate"><label for="rate">연 자금비용률<span><input id="rate" inputmode="decimal" enterkeyhint="done" value="4.0" required><small>%</small></span></label>
+  <p class="hint">두 보증금에 적용할 연간 비용률이에요. 내 대출금리 등 비교할 조건에 맞게 바꿔 보세요.</p></div>
+  <button type="submit">월 부담 비교하기</button>
+</form>
+<section id="result" tabindex="-1" aria-labelledby="verdict" hidden>
+  <small>월 환산비용 차이</small><h2 id="verdict"></h2>
+  <div class="costs"><div><small>전세 월 환산비용</small><strong id="jCost"></strong></div><div><small>월세 월 환산비용</small><strong id="mCost"></strong></div></div>
+  <p class="hint">보증금에 묶이는 돈의 비용을 포함해요. 관리비와 보증료는 별도예요.</p>
+</section>
+<details><summary>계산 기준과 결과 읽는 법</summary><section class="v2-content-guide" data-journey-version="20260925" aria-labelledby="v2-content-guide-title"><p class="v2-content-guide__eyebrow">입력 전 확인 · 결과 해석</p><h2 id="v2-content-guide-title">월 환산비용은 실제 월세 청구액과 다릅니다</h2><p class="v2-content-guide__lead">전세와 월세를 비교할 때는 월세뿐 아니라 보증금으로 묶이는 돈의 비용도 같은 기준으로 봐야 합니다. 이 도구는 양쪽 보증금에 같은 연 자금비용률을 적용합니다. 자기 돈과 대출 비율이 다른 계약의 실제 이자 청구액을 그대로 계산하는 도구는 아닙니다.</p><ol><li>전세보증금과 월세 계약의 보증금·월세를 만원 단위로 입력합니다.</li><li>연 자금비용은 비교 가정입니다. 실제 대출금리 또는 내 돈을 다른 용도로 쓸 때의 비용을 참고해 정합니다.</li><li>월 차이를 확인한 다음 관리비·이사비·보증료와 보증금 회수 조건을 따로 비교합니다.</li></ol><div class="v2-content-guide__box v2-content-guide__example rc-tool-interpretation" id="rc-guide-interpretation"><strong>결과는 이렇게 읽으세요</strong><br>전세 월 환산비용과 월세 월 환산비용의 차이입니다. 보증금 전체에 같은 비용률을 적용한 가정이므로 실제 통장에서 나가는 이자·월세와 구분하세요.</div><div class="v2-content-guide__box v2-content-guide__example"><strong>비교 예시</strong><br>가정 예시: 전세 3억원과 보증금 5,000만원·월세 100만원을 연 4%로 비교하면 월 환산비용은 전세 100만원, 월세 약 116만6,667원입니다. 차이는 월 약 16만6,667원입니다. 이 숫자는 실제 월세 100만원에 보증금 자금비용을 더한 비교값입니다.</div><div class="v2-content-guide__box v2-content-guide__caution"><strong>이 결과로 확정할 수 없는 것</strong><br>관리비·보증료·세액공제·이사비·중도상환수수료는 결과에 포함되지 않습니다. 비용이 낮다는 결과가 보증금 안전성이나 해당 집의 품질을 보증하지 않습니다.</div><p class="v2-content-guide__source">산식: 전세보증금 × 연 자금비용 ÷ 12 / 월세보증금 × 연 자금비용 ÷ 12 + 월세. 예시는 실제 매물이나 대출 제안이 아닌 산술 비교입니다.</p><h3 id="rc-guide-next" style="margin:18px 0 8px;font-size:16px;color:#0d1f3c">확인한 뒤, 다음 단계</h3><nav class="v2-content-guide__links" aria-label="관련 Rent Check 페이지"><a class="v2-content-guide__link" data-primary-guide="true" href="../../blog/jeonse-vs-monthly-cost/">환산비용과 실제 지출 구분 →</a><a class="v2-content-guide__link alt" href="../../blog/maintenance-fee-rent-compare/">관리비까지 합쳐 비교 →</a><a class="v2-content-guide__link alt" href="../../blog/jeonse-safety/">보증금 안전 확인 순서 →</a></nav><p class="rc-tool-help"><a href="../../about/">자료·계산 안내 원칙</a> · <a href="../../contact/">계산·표시 오류 제보</a></p><noscript><p class="rc-tool-help">계산 버튼은 JavaScript가 켜진 브라우저에서 작동합니다. 사용 설명과 관련 글은 이 상태에서도 읽을 수 있습니다.</p></noscript></section></details>
+</main>
+<script>
+for (const style of parent.document.querySelectorAll('style')) {
+  const faces=style.textContent.match(/@font-face\s*\{\s*font-family:Gmarket;[^}]+\}/g);
+  if(faces?.length){const sheet=document.createElement('style');sheet.textContent=faces.join('\n');document.head.append(sheet);break;}
+}
+const $=s=>document.querySelector(s), form=$('#contract'), result=$('#result');
+const fields=Array.from(form.querySelectorAll('input'));
+fields.forEach((input,i)=>{
+  input.addEventListener('input',()=>{result.hidden=true;input.setCustomValidity('');});
+  if(i+1<fields.length)input.addEventListener('keydown',e=>{
+    if(e.key==='Enter'&&!e.isComposing){e.preventDefault();fields[i+1].focus();}
+  });
+});
+form.addEventListener('submit',event=>{
+  event.preventDefault();
+  parent.gtag?.('event','rent_vs_monthly_calc');
+  const amounts=[];
+  for(const input of fields){
+    const raw=input.value.trim();
+    const valid=(input.id==='rate'? /^(?:\d+(?:\.\d+)?|\.\d+)$/ : /^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/).test(raw);
+    const amount=Number(raw.replaceAll(',',''));
+    const positive=input.id==='jeonse'||input.id==='monthly';
+    if((!valid && !(raw===''&&input.id==='mDeposit'))||!Number.isFinite(amount)||positive&&amount<=0){
+      input.setCustomValidity(positive?'0보다 큰 숫자를 입력해 주세요.':'0 이상의 숫자를 입력해 주세요.');
+      input.reportValidity();return;
+    }
+    amounts.push(amount);
+  }
+  const [jeonse,deposit,monthly,rate]=amounts;
+  const j=jeonse*10000,md=deposit*10000,m=monthly*10000,r=rate/100;
+  const money=n=>Math.round(n).toLocaleString('ko-KR')+'원';
+  const jCost=j*r/12,mCost=md*r/12+m,d=Math.abs(jCost-mCost);
+  $('#jCost').textContent=money(jCost);$('#mCost').textContent=money(mCost);
+  $('#verdict').textContent=d<1000?'두 조건의 월 부담이 거의 같습니다.':jCost<mCost?'전세가 월 '+money(d)+' 적게 듭니다.':'월세가 월 '+money(d)+' 적게 듭니다.';
+  $('#jCost').parentElement.classList.toggle('lower',d>=1000&&jCost<mCost);
+  $('#mCost').parentElement.classList.toggle('lower',d>=1000&&mCost<jCost);
+  result.hidden=false;result.focus({preventScroll:true});result.scrollIntoView({block:'nearest'});
+});
+</script></body></html>

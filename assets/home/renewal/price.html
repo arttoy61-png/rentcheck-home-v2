@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ko"><head><meta name="robots" content="noindex,follow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="/tools/neighborhood-price/" target="_top">
+<title>강서구 집값</title><style>*{box-sizing:border-box}body{margin:0;background:#f5f6f8;color:#142941;font:15px/1.55 Gmarket,"Malgun Gothic",sans-serif;word-break:keep-all;overflow-wrap:anywhere}
+main{max-width:710px;margin:auto;padding:20px clamp(12px,4vw,26px) 36px}h1,h2,h3,p{margin:0}h1{font-size:clamp(25px,5.5vw,34px);letter-spacing:-.055em;line-height:1.3}header p,#resultSub,.fold p{color:#526377;font-size:14px}header p{margin:5px 0 16px}
+.panel,.result,.fold{background:white;border:1px solid #d8dfe7;border-radius:13px;padding:15px;margin-bottom:12px}
+label,legend{font-size:13px;font-weight:600}fieldset{border:0;padding:0;margin:10px 0}legend{padding:0;margin-bottom:4px}
+.field{display:grid;gap:4px}.seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}button,select,input{font:inherit;color:inherit;border:1px solid #b9c5d2;background:white;border-radius:7px;min-height:44px;padding:6px 9px}button,select,summary{cursor:pointer}button{font-size:14px}select,input{font-size:16px;width:100%;min-width:0}.on,#searchBtn{background:#142e4a;color:white;border-color:#142e4a}
+summary{font-weight:600;min-height:44px;padding:10px 0;font-size:14px}details[open]>summary{color:#745619}
+.panel details{border-top:1px solid #dde3e8}.extra,.search{display:grid;gap:8px}.extra{grid-template-columns:repeat(2,minmax(0,1fr))}.search{grid-template-columns:minmax(0,1fr) auto;margin-top:4px}
+.text-btn{border:0;text-decoration:underline;text-underline-offset:3px}.result h2,.fold h2{font-size:clamp(18px,4.6vw,23px);letter-spacing:-.04em;line-height:1.45}
+#summary{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.sum{padding:10px;background:#f2f4f7;border-radius:8px}.sum .k,.date,.meta,.answer-sub,.trend,.mini .k{color:#526377;font-size:12px}.sum .v{font-weight:700;font-size:16px}.sum:nth-child(2):has(+.sum){background:#edf1f6}.sum:nth-child(2):has(+.sum) .v{font-size:21px}
+#status{font-size:12px;color:#59697b;margin:9px 0 4px}.sort-row{display:none}.sort-row.show{display:flex;gap:6px}
+.deal{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:8px;padding:11px 0;border-top:1px solid #e1e5ea}.deal .date{grid-column:1/-1}.nm,.amt{font-weight:600}.amt{align-self:start}.badge,.distance{display:inline-block;font-size:11px;background:#eff3f7;padding:1px 4px;margin-right:3px}.distance{margin-left:3px}
+#deals:not(.expanded)>.deal:nth-child(n+4){display:none}#more{margin-top:5px;width:100%}[hidden]{display:none!important}.fold{padding:1px 15px}.fold[open]{padding-bottom:15px}.fold h2{margin:6px 0}.fold p,.fold ol{margin:8px 0}.fold a{color:#244b73;text-underline-offset:3px}
+#answerCards{display:grid;gap:6px}.answer-card{text-align:left;background:#f7f8fa;padding:10px}.answer-name,.answer-price{font-weight:700}.answer-price{font-size:20px}.answer-top,.answer-price,.answer-sub,.answer-mini,.trend{margin-bottom:2px}.answer-mini{display:flex;gap:12px}.answer-go{display:none}.mini .v{font-size:13px}
+:focus-visible{outline:3px solid #986e20;outline-offset:1px}@media(min-width:650px){#answerCards{grid-template-columns:repeat(3,minmax(0,1fr))}.answer-mini{display:block}}@media(max-width:350px){.extra{grid-template-columns:1fr}.amt{grid-column:1/-1}}
+</style>
+</head><body><main>
+<header><h1>강서구 집값</h1><p>동네와 집 종류를 골라 최근 3개월 실거래를 확인하세요.</p></header>
+<section class="panel" aria-label="조회 조건">
+<label class="field" for="dong">동네<select id="dong"><option>자료 불러오는 중…</option></select></label>
+<fieldset><legend>거래 유형</legend><div class="seg" id="modeSeg"><button class="on" data-mode="sale">매매</button><button data-mode="jeonse">전세</button><button data-mode="wolse">월세</button></div></fieldset>
+<fieldset><legend>집 종류</legend><div class="seg" id="houseSeg"><button class="on" data-house="apt">아파트</button><button data-house="villa">빌라·연립</button><button data-house="offi">오피스텔</button></div></fieldset>
+<details><summary>면적·역세권 선택</summary><div class="extra"><label class="field">전용면적<select id="area"><option value="all">전체 면적</option></select></label><label class="field">역세권<select id="station" disabled><option value="all">동네를 먼저 선택하세요</option></select></label></div><button class="text-btn" id="resetAll">조건 초기화</button></details>
+<details><summary>건물명·지번으로 찾기</summary><label for="quickSearch">선택한 동네의 전체 거래에서 검색</label><div class="search"><input type="search" id="quickSearch" placeholder="예) 강서힐스테이트" enterkeyhint="search"><button id="searchBtn">찾기</button></div><button class="text-btn" id="resetSearch" style="display:none">검색 결과 닫기</button></details>
+</section>
+<section class="result" aria-labelledby="resultTitle"><h2 id="resultTitle">최근 실거래</h2><p id="resultSub"></p><div id="summary" aria-live="polite"></div>
+<p id="status">국토부 실거래 자료를 읽는 중입니다.</p><div class="sort-row" id="sortRow"><button data-sort="distance">가까운 순</button><button data-sort="recent">최근 거래순</button></div><div id="deals" class="loading">자료 불러오는 중…</div><a id="station-original" href="https://rent-check.kr/tools/neighborhood-price/" hidden>운영 화면에서 역세권 조회하기</a><button id="more" hidden aria-controls="deals">거래 더 보기</button></section>
+<details class="fold"><summary>주택 유형별 시세 비교</summary><h2 id="overviewTitle">강서구 매매 시세</h2><div id="answerCards"></div></details>
+<details class="fold"><summary>자료 출처와 시세 읽는 법</summary><p>국토교통부 실거래가 공개시스템 · 계약일 기준. 최근 신고분은 추가되거나 정정될 수 있습니다. 역세권은 서울시 역사 좌표에서 직선거리 800m 이내에 있는 거래 중 지번 좌표가 확인된 건입니다. 환승역은 5호선, 해당 호선이 없으면 9호선 역사 위치를 기준으로 합니다.</p><p><a href="https://rt.molit.go.kr/" target="_blank" rel="noopener">국토부 실거래가 공개시스템</a> · <a href="https://data.seoul.go.kr/dataList/OA-21232/S/1/datasetView.do" target="_blank" rel="noopener">서울시 역사마스터 좌표</a> · <a id="dataFile" target="_blank" rel="noopener">사용한 실거래 자료</a></p><section class="v2-content-guide" data-journey-version="20260925" aria-labelledby="v2-content-guide-title"><p class="v2-content-guide__eyebrow">입력 전 확인 · 결과 해석</p><h2 id="v2-content-guide-title">강서구 집값은 평균 하나보다 집 종류부터 나누는 게 먼저입니다</h2><p class="v2-content-guide__lead">강서구 전체 평균만 보면 아파트·빌라·오피스텔의 서로 다른 가격대가 한 숫자에 섞입니다. 이 도구는 주택유형을 먼저 나누고 동, 거래유형, 역세권, 면적으로 좁혀 최근 실거래를 확인하도록 만들었습니다. 검색한 집과 비슷한 조건의 거래가 충분하지 않다면 결과가 적게 나오는 것이 정상이며, 그때는 조건을 한 단계씩 넓혀 비교하는 편이 안전합니다.</p><ol><li>아파트·빌라·오피스텔 중 실제로 찾는 집 종류를 먼저 선택합니다.</li><li>매매·전세·월세를 구분한 뒤 동과 면적을 맞춰 비교합니다.</li><li>역을 선택했다면 거리순과 최근 거래순을 번갈아 보며 위치 차이도 확인합니다.</li></ol><div class="v2-content-guide__box v2-content-guide__example rc-tool-interpretation" id="rc-guide-interpretation"><strong>결과는 이렇게 읽으세요</strong><br>거래가 없거나 적게 나오는 결과는 가격이 0원이거나 싼 집이라는 뜻이 아닙니다. 집 종류를 유지한 채 면적·지역 조건을 한 단계씩 넓혀 비교하세요.</div><div class="v2-content-guide__box v2-content-guide__example"><strong>비교 예시</strong><br>예를 들어 화곡동 월세를 찾는다면 강서구 전체 월세 평균보다 화곡동의 같은 주택유형·비슷한 면적 거래를 모아 보는 편이 실제 계약 조건을 판단하는 데 더 도움이 됩니다. 빌라는 같은 동이라도 준공연도와 지번 차이가 커서 같은 건물 또는 가까운 지번부터 보는 것이 좋습니다.</div><div class="v2-content-guide__box v2-content-guide__caution"><strong>이 결과로 확정할 수 없는 것</strong><br>거래건수가 적은 조건은 중간값 하나만으로 시세를 확정하기 어렵습니다. 최근 계약의 위치·면적·준공연도·층 등 개별 조건을 함께 확인하세요. 신고 이후 해제·정정되는 거래도 있을 수 있습니다.</div><div class="v2-content-guide__faq"><h3>자주 묻는 질문</h3><details><summary>왜 강서구 평균가격 하나만 보여주지 않나요?</summary><p>아파트·빌라·오피스텔의 가격 구조가 다르고, 같은 동 안에서도 면적과 연식에 따라 차이가 커서 한 평균으로 묶으면 실제 계약 판단에 도움이 되기 어렵기 때문입니다.</p></details><details><summary>최근 거래가 한 건뿐이면 그 가격이 시세인가요?</summary><p>아닙니다. 한 건은 참고점일 뿐입니다. 조건을 조금 넓혀 여러 거래가 반복되는 가격 구간을 함께 보세요.</p></details><details><summary>월세는 무엇을 같이 봐야 하나요?</summary><p>월세 숫자만 보지 말고 보증금과 면적을 함께 맞춰야 합니다. 관리비·옵션·주차처럼 신고자료에 없는 조건은 별도로 확인해야 합니다.</p></details></div><p class="v2-content-guide__source">자료 기준 · 국토교통부 실거래 신고자료 · 최근 신고분은 계속 추가될 수 있음</p><h3 id="rc-guide-next" style="margin:18px 0 8px;font-size:16px;color:#0d1f3c">확인한 뒤, 다음 단계</h3><nav class="v2-content-guide__links" aria-label="관련 Rent Check 페이지"><a class="v2-content-guide__link" data-primary-guide="true" href="../../blog/gangseo-home-price/">강서구 집값 읽는 순서 →</a><a class="v2-content-guide__link alt" href="../../tools/apartment/">강서구 아파트 실거래 →</a><a class="v2-content-guide__link alt" href="../../analysis/gangseo-august-2026/">과거 사례: 2026년 8월 월결산 →</a></nav><p class="rc-tool-help"><a href="../../about/">자료·계산 안내 원칙</a> · <a href="../../contact/">계산·표시 오류 제보</a></p><noscript><p class="rc-tool-help">계산 버튼은 JavaScript가 켜진 브라우저에서 작동합니다. 사용 설명과 관련 글은 이 상태에서도 읽을 수 있습니다.</p></noscript></section></details>
+</main>
+<script>const DATA_URLS=['https://raw.githubusercontent.com/arttoy61-png/rent-check/main/gangseo_transactions_public.json','https://arttoy61-png.github.io/rent-check/gangseo_transactions_public.json'];
+async function loadPriceData(){let lastError;for(const url of DATA_URLS){try{const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw new Error(response.status);const snapshot=await response.json();if(snapshot.schema_version!==1||!/^\d{6}$/.test(String(snapshot.updated))||!['sale','jeonse','wolse'].every(mode=>Array.isArray(snapshot[mode])&&snapshot[mode].length))throw new Error('Invalid house-price snapshot');document.getElementById('dataFile').href=response.url;return snapshot}catch(error){lastError=error}}throw lastError}
+const HOUSES={apt:{label:'아파트',t:'a'},villa:{label:'빌라·연립',t:'v'},offi:{label:'오피스텔',t:'o'}};
+const MODES={sale:'매매',jeonse:'전세',wolse:'월세'};
+const AREA_BANDS=[['all','전체 면적'],['u40','40㎡ 이하'],['40_60','40~60㎡'],['60_85','60~85㎡'],['o85','85㎡ 초과']];
+const STATIONS_BY_DONG={'화곡동':['화곡','까치산','우장산'],'등촌동':['등촌','증미','가양'],'염창동':['염창','등촌'],'가양동':['가양','양천향교','증미'],'마곡동':['마곡','발산','마곡나루','신방화'],'방화동':['방화','개화산','신방화','공항시장','개화'],'공항동':['송정','공항시장','김포공항'],'내발산동':['발산','우장산','마곡'],'외발산동':['발산','마곡'],'개화동':['개화']};
+let data=null,geo={},rows=[],latestYM='',stationCache={},renderSeq=0;
+let state={dong:'all',mode:'sale',house:'apt',station:'all',area:'all',sort:'recent'};
+const $=s=>document.querySelector(s);
+function n(v){const x=Number(v);return Number.isFinite(x)?x:null}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function prevYM(ym,k){let y=+ym.slice(0,4),m=+ym.slice(4);m-=k;while(m<=0){m+=12;y--}return String(y)+String(m).padStart(2,'0')}
+function areaOk(v,b){if(b==='all')return true;if(!Number.isFinite(v))return false;if(b==='u40')return v<=40;if(b==='40_60')return v>40&&v<=60;if(b==='60_85')return v>60&&v<=85;return v>85}
+function vals(a){return a.filter(Number.isFinite).sort((x,y)=>x-y)}
+function quantile(a,q){const b=vals(a);if(!b.length)return null;if(b.length===1)return b[0];const p=(b.length-1)*q,lo=Math.floor(p),hi=Math.ceil(p);return b[lo]+(b[hi]-b[lo])*(p-lo)}
+function med(a){return quantile(a,.5)}
+function money(v){if(v==null)return '-';if(v>=10000){const e=v/10000;return e.toFixed(e>=10?1:2).replace(/\.?0+$/,'')+'억'}return Math.round(v).toLocaleString()+'만원'}
+function rentMoney(d,r){return `${money(d)} / ${Math.round(r||0).toLocaleString()}만`}
+function keyDate(r){return Number(r.ym)*100+Number(r.d||0)}
+function dateText(r){return `${String(r.ym).slice(0,4)}.${String(r.ym).slice(4)}.${String(r.d||0).padStart(2,'0')}`}
+function modeValue(r,mode){return mode==='wolse'?n(r.m):n(r.p)}
+function displayAmount(r,mode){return mode==='sale'?money(r.p):mode==='jeonse'?money(r.p):rentMoney(r.dp,r.m)}
+function priceStats(list,mode){const v=list.map(r=>modeValue(r,mode)).filter(Number.isFinite);return{mid:med(v),q1:quantile(v,.25),q3:quantile(v,.75),dep:mode==='wolse'?med(list.map(r=>n(r.dp))):null}}
+function rangeText(s,mode){if(s.q1==null||s.q3==null)return '-';return mode==='wolse'?`${Math.round(s.q1)}~${Math.round(s.q3)}만원`:`${money(s.q1)}~${money(s.q3)}`}
+function midText(s,mode){if(s.mid==null)return '-';return mode==='wolse'?`${Math.round(s.mid).toLocaleString()}만원`:money(s.mid)}
+function distM(lat1,lng1,lat2,lng2){const R=6371000,p1=lat1*Math.PI/180,p2=lat2*Math.PI/180,dp=(lat2-lat1)*Math.PI/180,dl=(lng2-lng1)*Math.PI/180;const a=Math.sin(dp/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin(dl/2)**2;return 2*R*Math.asin(Math.sqrt(a))}
+function normalizeRows(d){const out=[];for(const mode of ['sale','jeonse','wolse'])for(const r of(d[mode]||[]))out.push({...r,mode});return out}
+function recent3(list){if(!latestYM||latestYM.length<6)return list;const months=new Set([latestYM,prevYM(latestYM,1),prevYM(latestYM,2)]);return list.filter(r=>months.has(String(r.ym)))}
+function scopeLabel(){return state.dong==='all'?'강서구':state.dong}
+function houseRows(dong,house,mode,onlyRecent=true){const f=rows.filter(r=>(dong==='all'||r.u===dong)&&r.t===HOUSES[house].t&&r.mode===mode);return onlyRecent?recent3(f):f}
+function renderOverview(){const label=scopeLabel(),mode=state.mode;$('#overviewTitle').textContent=`${label} ${MODES[mode]} 시세`;$('#answerCards').innerHTML=Object.entries(HOUSES).map(([house,h])=>{const f=houseRows(state.dong,house,mode,true).sort((a,b)=>keyDate(b)-keyDate(a)),s=priceStats(f,mode),last=f[0];return `<button class="answer-card" data-pick-house="${house}"><div class="answer-top"><span class="answer-name">${h.label}</span><span class="answer-go">조건 좁히기 →</span></div><div class="answer-price">${midText(s,mode)}</div><div class="answer-sub">중간 시세${mode==='wolse'&&s.dep!=null?` · 보증금 중간 ${money(s.dep)}`:''}</div><div class="answer-mini"><div class="mini"><div class="k">주로 거래된 가격대</div><div class="v">${rangeText(s,mode)}</div></div><div class="mini"><div class="k">최근 3개월 거래</div><div class="v">${f.length.toLocaleString()}건</div></div></div><div class="trend">${last?`최근 계약 ${dateText(last)} · ${displayAmount(last,mode)}`:'최근 거래 없음'}</div></button>`}).join('');document.querySelectorAll('[data-pick-house]').forEach(b=>b.onclick=()=>{state.house=b.dataset.pickHouse;setOn('#houseSeg','house',state.house);renderResults();document.querySelector('.panel').scrollIntoView({behavior:'smooth',block:'start'})})}
+function updateAreaOptions(){const base=houseRows(state.dong,state.house,state.mode,true),bands=AREA_BANDS.filter(([k])=>k==='all'||base.some(r=>areaOk(n(r.a),k)));if(!bands.some(([k])=>k===state.area))state.area='all';$('#area').innerHTML=bands.map(([k,l])=>`<option value="${k}" ${k===state.area?'selected':''}>${l}</option>`).join('')}
+// Seoul station master OA-21232, checked 2026-11-25. Transfer stations use
+// the Line 5 station record when available, otherwise the Line 9 record.
+const stationCenters = {
+  '화곡': [37.541513, 126.840461],
+  '까치산': [37.531768, 126.846683],
+  '우장산': [37.548768, 126.836318],
+  '등촌': [37.550632, 126.865689],
+  '증미': [37.557402, 126.861939],
+  '가양': [37.561391, 126.854456],
+  '염창': [37.546936, 126.874916],
+  '양천향교': [37.568381, 126.841333],
+  '마곡': [37.560183, 126.825448],
+  '발산': [37.558598, 126.837668],
+  '마곡나루': [37.566778, 126.827310],
+  '신방화': [37.567532, 126.816601],
+  '방화': [37.577446, 126.812741],
+  '개화산': [37.572399, 126.806171],
+  '공항시장': [37.563726, 126.810678],
+  '개화': [37.578608, 126.798153],
+  '송정': [37.561184, 126.811973],
+  '김포공항': [37.562384, 126.801292]
+};
+
+function stationCoord(name) {
+  if (!Object.hasOwn(stationCenters, name)) throw new Error('역 좌표가 없습니다');
+  return stationCenters[name];
+}
+
+function stationChoices() {
+  return state.dong === 'all' ? Object.keys(stationCenters) : STATIONS_BY_DONG[state.dong] || [];
+}
+
+function updateStationOptions() {
+  const select = $('#station');
+  const names = stationChoices();
+  if (!names.includes(state.station)) state.station = 'all';
+  select.disabled = !names.length;
+  const entire = state.dong === 'all' ? '강서구 전체' : '동네 전체';
+  select.replaceChildren(new Option(entire, 'all'), ...names.map(name => new Option(name+'역 800m', name)));
+  select.value = state.station;
+}
+
+function applyPriceLink() {
+  const routeQuery = parent.location.hash.split('?')[1];
+  const params = new URLSearchParams(routeQuery || parent.location.search);
+  const dong = params.get('dong'), station = params.get('station');
+  if ([...$('#dong').options].some(option => option.value === dong)) {
+    state.dong = dong;
+    $('#dong').value = dong;
+  }
+  for (const [key, options] of [['house', HOUSES], ['mode', MODES]]) {
+    const value = params.get(key);
+    if (value && Object.hasOwn(options, value)) {
+      state[key] = value;
+      setOn('#' + key + 'Seg', key, value);
+    }
+  }
+  if (stationChoices().includes(station)) {
+    state.station = station;
+    state.sort = 'distance';
+  }
+}
+
+async function filteredRows(){let f=houseRows(state.dong,state.house,state.mode,true).filter(r=>areaOk(n(r.a),state.area));if(state.station!=='all'){const xy=await stationCoord(state.station);f=f.map(r=>{const g=geo[`${r.u} ${r.j||''}`];if(!g)return null;const dm=distM(xy[0],xy[1],Number(g[0]),Number(g[1]));return dm<=800?{...r,_dist:Math.round(dm)}:null}).filter(Boolean)}if(state.station!=='all'&&state.sort==='distance')f.sort((a,b)=>(a._dist??99999)-(b._dist??99999)||keyDate(b)-keyDate(a));else f.sort((a,b)=>keyDate(b)-keyDate(a));return f}
+function setOn(group,key,val){document.querySelectorAll(group+' button').forEach(b=>b.classList.toggle('on',b.dataset[key]===val))}
+function syncSort(){const show=state.station!=='all';$('#sortRow').classList.toggle('show',show);document.querySelectorAll('#sortRow button').forEach(b=>b.classList.toggle('on',b.dataset.sort===state.sort))}
+function renderSummary(f){const s=priceStats(f,state.mode),last=f.reduce((latest,r)=>!latest||keyDate(r)>keyDate(latest)?r:latest,null);$('#summary').innerHTML=`<div class="sum"><div class="k">최근 3개월 거래</div><div class="v">${f.length.toLocaleString()}건</div></div><div class="sum"><div class="k">중간 시세</div><div class="v">${midText(s,state.mode)}</div></div><div class="sum"><div class="k">주로 거래된 가격대</div><div class="v">${rangeText(s,state.mode)}</div></div><div class="sum"><div class="k">가장 최근 계약</div><div class="v">${last?displayAmount(last,state.mode):'-'}</div></div>`}
+function dealHtml(r,mode=state.mode,searchMode=false){const h=Object.values(HOUSES).find(x=>x.t===r.t)?.label||r.t,badge=searchMode?`<span class="badge">${h}</span><span class="badge">${MODES[r.mode]} 시세</span>`:'';const dist=r._dist!=null?`<span class="distance">${state.station}역 ${r._dist}m</span>`:'';return `<div class="deal"><div class="date">${dateText(r)}</div><div><div class="nm">${badge}${esc(r.b||'(건물명 없음)')}</div><div class="meta">${esc(r.u||'')} ${esc(r.j||'')} · ${Number.isFinite(n(r.a))?Math.round(n(r.a))+'㎡':'면적 미상'} · ${r.f?esc(r.f)+'층':'층 미상'}${r.y?' · '+esc(r.y)+'년 준공':''}${dist}</div></div><div class="amt ${mode==='sale'?'sale':mode==='jeonse'?'je':'wo'}">${displayAmount(r,mode)}</div></div>`}
+async function renderResults(){const seq=++renderSeq;updateStationOptions();updateAreaOptions();syncSort();const place=state.station==='all'?(state.dong==='all'?'강서구 전체':'동네 전체'):`${state.station}역 800m`,area=AREA_BANDS.find(x=>x[0]===state.area)?.[1]||'전체 면적';$('#resultTitle').textContent=`${scopeLabel()} ${HOUSES[state.house].label} ${MODES[state.mode]} 시세`;$('#resultSub').textContent=`최근 실거래 · ${place} · ${area}${state.station!=='all'?(state.sort==='distance'?' · 가까운 순':' · 최근 거래순'):''}`;$('#summary').replaceChildren();$('#deals').className='loading';$('#deals').textContent=state.station==='all'?'조건에 맞는 최근 실거래를 찾는 중…':`${state.station}역 800m 안 실거래를 찾는 중…`;try{const f=await filteredRows();if(seq!==renderSeq)return;if(latestYM.length>=6)$('#status').textContent=`${prevYM(latestYM,2).slice(0,4)}.${prevYM(latestYM,2).slice(4)}~${latestYM.slice(0,4)}.${latestYM.slice(4)} · 최신월은 신고 진행 중 · ${data.collection?.status==='success'&&data.collection?.last_success_at?'수집 확인 '+data.collection.last_success_at:data.collection?.status==='partial'?'일부 수집만 성공':data.collection?.status==='failed'?'최근 수집 실패':'수집 성공 시각 미확인'}`;renderSummary(f);if(!f.length){$('#deals').className='empty';$('#deals').textContent='선택한 조건에 최근 3개월 거래가 없습니다.';return}$('#deals').className='';$('#deals').innerHTML=f.slice(0,30).map(r=>dealHtml(r)).join('')}catch(e){if(seq!==renderSeq)return;$('#summary').innerHTML='';$('#deals').className='empty';$('#deals').textContent='역 위치 또는 거래 위치를 불러오지 못했습니다. 동네 전체로 다시 확인해주세요.'}}
+function doQuickSearch(){++renderSeq;const q=$('#quickSearch').value.trim().toLowerCase();if(!q){renderResults();return}const f=rows.filter(r=>(state.dong==='all'||r.u===state.dong)&&(`${r.u||''} ${r.j||''} ${r.b||''}`).toLowerCase().includes(q)).sort((a,b)=>keyDate(b)-keyDate(a));$('#sortRow').classList.remove('show');$('#resultTitle').textContent=`${scopeLabel()} “${q}” 검색 결과`;$('#resultSub').textContent='보유 실거래 데이터 · 주택유형과 거래유형 전체';$('#summary').innerHTML=`<div class="sum"><div class="k">검색된 거래</div><div class="v">${f.length.toLocaleString()}건</div></div><div class="sum"><div class="k">검색 범위</div><div class="v">보유 데이터 전체</div></div>`;$('#resetSearch').style.display='inline-block';if(!f.length){$('#deals').className='empty';$('#deals').textContent='해당 지번·건물명 거래를 찾지 못했습니다.';return}$('#deals').className='';$('#deals').innerHTML=f.slice(0,30).map(r=>dealHtml(r,r.mode,true)).join('');document.querySelector('.result').scrollIntoView({behavior:'smooth',block:'start'})}
+function resetAll(){state={dong:'all',mode:'sale',house:'apt',station:'all',area:'all',sort:'recent'};$('#dong').value='all';setOn('#modeSeg','mode','sale');setOn('#houseSeg','house','apt');$('#quickSearch').value='';$('#resetSearch').style.display='none';renderOverview();renderResults()}
+async function init(){try{data=await loadPriceData();geo=data.geo||{};latestYM=String(data.updated||'');rows=normalizeRows(data);const dongs=(data.regions||[...new Set(rows.map(r=>r.u))]).filter(Boolean).sort((a,b)=>a.localeCompare(b,'ko'));$('#dong').innerHTML='<option value="all" selected>서울 강서구 전체</option>'+dongs.map(d=>`<option value="${esc(d)}">서울 강서구 ${esc(d)}</option>`).join('');$('#dong').onchange=e=>{state.dong=e.target.value;state.station='all';state.area='all';state.sort='recent';renderOverview();renderResults()};document.querySelectorAll('#modeSeg button').forEach(b=>b.onclick=()=>{state.mode=b.dataset.mode;state.station='all';state.area='all';state.sort='recent';setOn('#modeSeg','mode',state.mode);renderOverview();renderResults()});document.querySelectorAll('#houseSeg button').forEach(b=>b.onclick=()=>{state.house=b.dataset.house;state.area='all';setOn('#houseSeg','house',state.house);renderResults()});$('#station').onchange=e=>{state.station=e.target.value;state.sort=state.station==='all'?'recent':'distance';renderResults()};$('#area').onchange=e=>{state.area=e.target.value;renderResults()};document.querySelectorAll('#sortRow button').forEach(b=>b.onclick=()=>{state.sort=b.dataset.sort;renderResults()});$('#searchBtn').onclick=doQuickSearch;$('#quickSearch').onkeydown=e=>{if(e.key==='Enter')doQuickSearch()};$('#resetSearch').onclick=()=>{$('#quickSearch').value='';$('#resetSearch').style.display='none';renderResults()};$('#resetAll').onclick=resetAll;applyPriceLink();renderOverview();renderResults()}catch(e){$('#answerCards').innerHTML='<div class="empty">데이터를 불러오지 못했습니다.</div>';$('#deals').className='empty';$('#deals').textContent='데이터를 불러오지 못했습니다. 잠시 뒤 다시 열어주세요.';$('#status').textContent='데이터 연결 확인 필요'}}
+init();</script><script>for (const sheet of parent.document.styleSheets) {
+  try {
+    const fonts = [...sheet.cssRules].filter(rule => rule.type === CSSRule.FONT_FACE_RULE && rule.style.fontFamily === 'Gmarket');
+    if (fonts.length) {
+      const style = document.createElement('style');
+      style.textContent = fonts.map(rule => rule.cssText).join('\n');
+      document.head.append(style);
+      break;
+    }
+  } catch { /* External stylesheets do not expose their rules. */ }
+}
+const dealList = document.getElementById('deals');
+const more = document.getElementById('more');
+function updateMore() {
+  const count = dealList.querySelectorAll('.deal').length;
+  const expanded = dealList.classList.contains('expanded');
+  more.hidden = count <= 3;
+  more.textContent = expanded ? '거래 접기' : '거래 ' + (count - 3) + '건 더 보기';
+  more.setAttribute('aria-expanded', String(expanded));
+  document.getElementById('station-original').hidden = !(dealList.classList.contains('empty') && !document.getElementById('summary').childElementCount && document.getElementById('station').value !== 'all');
+}
+more.addEventListener('click', () => {
+  dealList.classList.toggle('expanded');
+  updateMore();
+});
+new MutationObserver(updateMore).observe(dealList, {childList:true});
+updateMore();
+function syncPressed() {
+  for (const b of document.querySelectorAll('.seg button,.sort-row button')) {
+    b.setAttribute('aria-pressed', String(b.classList.contains('on')));
+  }
+}
+new MutationObserver(syncPressed).observe(document.querySelector('main'), {
+  subtree:true, attributes:true, attributeFilter:['class']
+});
+syncPressed();
+</script></body></html>

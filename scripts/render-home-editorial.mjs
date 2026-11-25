@@ -11,6 +11,16 @@ const esc=s=>s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')
 function removeBlock(html,a,b){const i=html.indexOf(a);if(i<0)return html;const j=html.indexOf(b,i);assert(j>i,'Incomplete editorial marker');let k=j+b.length;if(html[k]==='\n')k++;return html.slice(0,i)+html.slice(k);}
 export function restoreHomeEditorial(html){return removeBlock(removeBlock(html,start,end),styleStart,styleEnd);}
 export function applyHomeEditorial(html,config,read=p=>fs.readFileSync(p,'utf8')){
+ if(html.includes('id="compact-home"')){
+   html=restoreHomeEditorial(html);
+   if(!config.enabled)return html;
+   const feature=config.articles[0];
+   assert(feature && /^\/blog\/[a-z0-9-]+\/$/.test(feature.url),'Invalid HOME feature');
+   assert(read(feature.url.slice(1)+'index.html').includes('rel="canonical" href="'+origin+feature.url+'"'),'Missing featured original');
+   const marker=/<a class="feature-story" href="[^"]+">(<img[^>]+>)<h3>[^<]*<\/h3><\/a>/;
+   assert(marker.test(html),'Missing compact HOME feature');
+   return html.replace(marker,(_,image)=>'<a class="feature-story" href="'+esc(feature.url)+'">'+image+'<h3>'+esc(feature.homeTitle || feature.title)+'</h3></a>');
+ }
  html=restoreHomeEditorial(html);
  if(!config.enabled)return html;
  assert(config.articles.length===4,'Exactly four editorial cards required');
