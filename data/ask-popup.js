@@ -13,7 +13,7 @@
     {q:'관리처분인가 나면 언제 이사하나요?',keywords:['관리처분인가','언제 이사','이주기간','몇개월'],cat:'재개발',answer:'관리처분인가가 났다고 바로 같은 날 이사하는 것은 아닙니다. 이후 이주계획·이주개시 통지와 사업 일정에 따라 실제 이주시점이 정해집니다.',action:'조합이나 사업시행자가 안내한 이주개시일과 이주기간을 먼저 확인하세요.',tool:'재개발 글 보기',url:'/blog/redevelopment-tenant/'},
     {q:'재개발 세입자도 이사비를 받을 수 있나요?',keywords:['세입자 이사비','재개발 이사비','주거이전비'],cat:'재개발',answer:'조건에 따라 받을 수 있는 항목이 달라집니다. 세입자는 거주 시점과 사업 단계, 보상 기준을 따로 확인해야 합니다.',action:'내 전입일과 사업 기준일을 확인한 뒤 주거이전비·이사비 대상 여부를 구분해서 보세요.',tool:'재개발 글 보기',url:'/blog/redevelopment-tenant/'},
     {q:'계약갱신청구권 쓰기 전에 문자로 남겨야 하나요?',keywords:['계약갱신청구권','문자로','문자 남겨','갱신권'],cat:'전월세 계약',answer:'분쟁을 줄이려면 갱신 의사를 문자처럼 기록이 남는 방식으로 전달하는 것이 좋습니다. 실제 효력은 내용과 시점도 함께 봐야 합니다.',action:'갱신 의사와 계약 만료일이 드러나도록 짧고 분명하게 보내고 기록을 보관하세요.',tool:'전월세 문자 만들기',url:'/tools/tenant-message/'},
-    {q:'보증금 1000·월세 60 중개수수료 얼마예요?',keywords:['1000 60','보증금 1000','월세 60','중개수수료','중개보수'],cat:'세금·비용',answer:'월세 계약의 중개보수는 보증금과 월세를 환산한 거래금액을 기준으로 상한을 계산합니다.',action:'보증금 1,000만원과 월세 60만원을 그대로 넣어 상한액을 확인하세요.',tool:'중개보수 계산기',url:'/tools/brokerage-fee/'},
+    {q:'월세 중개보수는 어떻게 계산하나요?',keywords:['중개수수료','중개보수','복비'],cat:'세금·비용',answer:'월세 계약의 중개보수는 보증금과 월세를 환산한 거래금액을 기준으로 상한을 계산합니다.',action:'물건 종류와 거래 방식을 고르고 계약 금액을 입력하세요.',tool:'중개보수 계산기',url:'/tools/brokerage-fee/'},
     {q:'7억 아파트 사면 취득세 얼마예요?',keywords:['7억','취득세','아파트 사면'],cat:'세금·비용',answer:'취득세는 매수가격뿐 아니라 주택 수, 지역, 취득원인 등에 따라 달라집니다.',action:'7억원과 현재 주택 수를 넣어 취득세·지방교육세·농어촌특별세를 함께 확인하세요.',tool:'취득세 계산기',url:'/tools/acquisition-tax/'},
     {q:'전세가율 몇 퍼센트면 위험한가요?',keywords:['전세가율','몇 퍼센트','위험'],cat:'전월세 계약',answer:'전세가율이 높을수록 매매가 하락 시 보증금 여유가 줄어듭니다. 비율 하나만으로 안전 여부를 확정할 수는 없습니다.',action:'매매가와 전세보증금을 넣어 전세가율을 계산한 뒤 선순위 채권과 시세도 함께 보세요.',tool:'전세가율 계산기',url:'/tools/jeonse-ratio/'},
     {q:'전세랑 월세 중 뭐가 더 유리한가요?',keywords:['전세 월세','뭐가 더','유리'],cat:'전월세 계약',answer:'월세와 전세의 유불리는 보증금 차액의 자금비용과 실제 월세를 같은 월 기준으로 비교해야 합니다.',action:'두 계약의 보증금과 월세를 넣어 매달 체감비용을 비교하세요.',tool:'전세 vs 월세 비교',url:'/tools/rent-vs-monthly/'}
@@ -62,12 +62,19 @@
       result.innerHTML=`<article class="rc-ask-card"><small>청년·공공주택</small><h3>${escapeHtml(calculator.title)}</h3><p>${escapeHtml(calculator.meta)}</p><div class="rc-ask-actions"><a class="rc-ask-primary" href="${calculator.url}">내 가점 계산하기</a></div></article>`;
       return;
     }
-    const item=best(q);
+    const sampleQuery=norm(q).replace(/[\s,·?]/g,'');
+    const monthlyExample=/^보증금1000(?:만원)?월세60(?:만원)?(?:(?:중개수수료|중개보수|복비)(?:얼마예요|얼마인가요)?)?$/.test(sampleQuery);
+    const item=monthlyExample ? {
+      q:'보증금 1,000만 원·월세 60만 원의 중개보수는?',
+      cat:'세금·비용',answer:'서울 주택 기준 중개보수 상한은 28만 원입니다(부가세 별도). 환산 거래금액 7,000만 원에 상한요율 0.4%를 적용한 금액입니다.',
+      action:'계산기에 보증금과 월세를 채워 두었습니다. 내 계약 조건에 맞게 바꿔볼 수 있습니다.',
+      tool:'이 조건으로 계산하기',url:'/tools/brokerage-fee/?example=housing-monthly'
+    } : best(q);
     if(!item){const found=typeof searchData==='function'?searchData(q).filter(x=>x.valid):[];result.innerHTML=`<article class="rc-ask-card"><small>${found.length?'관련 가이드·도구·글':'아직 등록되지 않은 질문'}</small><h3>${escapeHtml(q)}</h3><p>${found.length?'아래 자료에서 확인해보세요.':'아래 계산 도구나 분석 글에서 먼저 확인해보세요.'}</p><div class="rc-ask-actions">${found.map(x=>`<a class="rc-ask-secondary" href="${escapeHtml(x.url)}"${x.type==='post'?' target="_blank" rel="noopener noreferrer"':''}>${escapeHtml(x.title)} · ${escapeHtml(x.meta||'')}</a>`).join('')}<a class="rc-ask-primary" href="#calculators">계산 도구 보기 →</a><a class="rc-ask-secondary" href="/analysis/">분석 글 보기</a></div></article>`;return}
     result.innerHTML=`<article class="rc-ask-card"><small>한 줄 요약 · ${escapeHtml(item.cat)}</small><h3>${escapeHtml(item.q)}</h3><p>${escapeHtml(item.answer)}</p><div class="rc-ask-now"><b>지금 할 일</b>${escapeHtml(item.action)}</div><div class="rc-ask-actions"><a class="rc-ask-primary" href="${item.url}">${escapeHtml(item.tool)} →</a>${item.secondary?`<a class="rc-ask-secondary" href="${item.secondaryUrl}">${escapeHtml(item.secondary)}</a>`:''}</div></article>`;
   }
   function escapeHtml(v){return String(v||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-  function open(q=''){document.documentElement.classList.add('rc-ask-open');checkFabCollision();if(q){modalInput.value=q;answer(q)}else result.innerHTML='';setTimeout(()=>modalInput.focus(),80)}
+  function open(q=''){document.documentElement.classList.add('rc-ask-open');checkFabCollision();if(q){modalInput.value=q;answer(q)}else result.innerHTML='';setTimeout(()=>{if(document.documentElement.classList.contains('rc-ask-open'))modalInput.focus()},80)}
   function close(){document.documentElement.classList.remove('rc-ask-open');checkFabCollision()}
   backdrop.addEventListener('click',close);sheet.querySelector('.rc-ask-close').addEventListener('click',close);fab.addEventListener('click',()=>open());document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
   sheet.querySelector('.rc-ask-form').addEventListener('submit',e=>{e.preventDefault();const q=modalInput.value.trim();if(q)answer(q)});
