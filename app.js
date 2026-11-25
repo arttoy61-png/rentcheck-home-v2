@@ -26,11 +26,25 @@ function youthScoreResult(query){
   if(!new RegExp('^'+subject+'(?:'+score+'|계산기)$').test(term))return null;
   return {type:'tool',title:'청년임대 가점 계산기',meta:'LH·SH 청년임대의 순위와 가점을 확인하세요.',url:'/tools/youth-score/',valid:true};
 }
+function prioritySearchResult(query){
+  const term=compactSearchText(query).replace(/[?!？]+$/,'');
+  const youth=youthScoreResult(term);
+  if(youth)return {...youth,id:'youth-score',category:'청년·공공주택',action:'내 가점 계산하기'};
+  let id,title,meta,url,action;
+  if(/^(?:복비|중개수수료|중개보수)(?:가|는)?(?:얼마(?:야|예요|인가요|에요)?|계산(?:기|해줘)?|알려줘)?$/.test(term)){
+    id='brokerage-fee';title='중개보수 계산기';meta='계약 금액으로 서울 기준 중개보수 상한을 확인하세요.';action='내 계약으로 계산하기';
+  }else if(/^(?:(?:집주인|임대인)(?:에게|한테|께)?)?(?:이사(?:간다고|간다는|나간다고)?|퇴거|계약종료)(?:알림|통보|안내)?(?:문자|메시지)(?:만들기|만들어줘|보내기|작성)?$/.test(term)){
+    id='tenant-message';title='집주인에게 보낼 퇴거 문자';meta='계약 종료와 보증금 반환 일정을 담은 문안을 열어보세요.';url='#tenant-message?scenario=moveout';action='퇴거 문자 만들기';
+  }else if(/^(?:서울시?)?(?:강서구)?우장산(?:역)?(?:부근|근처|인근|주변|역세권)?(?:아파트)?(?:전세(?:가|가격|시세|값)?|전셋값)(?:얼마|보기|조회|확인)?$/.test(term)){
+    id='neighborhood-price';title='우장산역 아파트 전세';meta='우장산역 반경 800m 안의 아파트 전세 실거래를 확인하세요.';url='/tools/neighborhood-price/?station=우장산&mode=jeonse&house=apt';action='전세 실거래 보기';
+  }else return null;
+  return {type:'tool',valid:true,id,title,meta,url:url||'/tools/'+id+'/',category:'매매·전세',action};
+}
 function searchData(query){
   if(state.categoryMode)return sortedPosts(publishedPosts().filter(p=>p.category===state.categoryMode)).map(p=>({type:'post',title:p.title,meta:[p.category,p.published_at].filter(Boolean).join(' · '),valid:true,url:p.url}));
   if(!normalized(query))return[];
-  const priority=youthScoreResult(query);
-  const tools=state.tools.filter(t=>!hiddenHomeTools.has(t.id) && !(priority && t.id==='youth-score')).filter(t=>matchesSearch([t.title,t.description,t.category],query)).map(t=>({type:'tool',title:t.title,meta:t.description,icon:t.icon,valid:Boolean(isAvailable(t)),url:t.url,status:statusLabel(t)}));
+  const priority=prioritySearchResult(query);
+  const tools=state.tools.filter(t=>!hiddenHomeTools.has(t.id) && !(priority && t.id===priority.id)).filter(t=>matchesSearch([t.title,t.description,t.category],query)).map(t=>({type:'tool',title:t.title,meta:t.description,icon:t.icon,valid:Boolean(isAvailable(t)),url:t.url,status:statusLabel(t)}));
   const posts=sortedPosts(publishedPosts().filter(p=>matchesSearch([p.title,p.category],query))).map(p=>({type:'post',title:p.title,meta:[p.category,p.published_at].filter(Boolean).join(' · '),valid:true,url:p.url}));
   const tokens=normalized(query).split(/\s+/).map(t=>t==='층수'?'층':t);const score=p=>tokens.reduce((n,t)=>n+(compactSearchText(p.title).includes(compactSearchText(t))?4:compactSearchText(p.description||'').includes(compactSearchText(t))?2:0),0);const internal=internalSearch.filter(p=>matchesSearch([p.title,p.category,p.keywords],tokens.join(' '))).sort((a,b)=>score(b)-score(a)).map(p=>({type:'guide',title:p.title,meta:p.category,valid:true,url:p.url}));return[...(priority?[priority]:[]),...tools.slice(0,2),...internal.slice(0,3),...posts.slice(0,1),...tools.slice(2),...internal.slice(3),...posts.slice(1)].filter((p,i,a)=>a.findIndex(x=>x.url===p.url)===i).slice(0,6)
 }

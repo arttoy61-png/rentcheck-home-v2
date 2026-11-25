@@ -57,9 +57,9 @@
   function norm(v){return String(v||'').toLowerCase().replace(/\s+/g,' ').trim()}
   function best(q){const text=norm(q);let winner=null,max=0;ITEMS.forEach(item=>{let score=0;item.keywords.forEach(k=>{if(text.includes(norm(k)))score+=5});if(text.includes(norm(item.q))||norm(item.q).includes(text))score+=10;if(score>max){max=score;winner=item}});return max?winner:null}
   function answer(q){
-    const calculator=typeof youthScoreResult==='function' && youthScoreResult(q);
+    const calculator=typeof prioritySearchResult==='function' && prioritySearchResult(q);
     if(calculator){
-      result.innerHTML=`<article class="rc-ask-card"><small>청년·공공주택</small><h3>${escapeHtml(calculator.title)}</h3><p>${escapeHtml(calculator.meta)}</p><div class="rc-ask-actions"><a class="rc-ask-primary" href="${calculator.url}">내 가점 계산하기</a></div></article>`;
+      result.innerHTML=`<article class="rc-ask-card"><small>${escapeHtml(calculator.category)}</small><h3>${escapeHtml(calculator.title)}</h3><p>${escapeHtml(calculator.meta)}</p><div class="rc-ask-actions"><a class="rc-ask-primary" href="${escapeHtml(calculator.url)}">${escapeHtml(calculator.action)}</a></div></article>`;
       return;
     }
     const sampleQuery=norm(q).replace(/[\s,·?]/g,'');
