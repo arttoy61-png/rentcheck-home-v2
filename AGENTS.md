@@ -1,5 +1,9 @@
 # Rent Check HOME 작업 진입 지침
 
+**필독 · HOME 글 발행과 일일 HOME·외부 점검**
+
+두 작업 모두 시작 전에 [새 글 서체·양식과 일일 점검 기준](docs/home-content-guidelines.md#home-daily-read-first)을 읽는다. 발행한 글과 점검한 페이지의 실제 URL을 작업 기록에 남긴다.
+
 HOME 가이드·직접 작성하는 분석 글을 새로 쓰거나 고칠 때는 작업 시작 전에 [공통 작성·발행 기준](docs/home-content-guidelines.md)을 읽는다. 이 문서가 작성 기준의 단일 원본이며, 별도 SEO 규칙 복사본을 만들지 않는다.
 
 게시 대상은 `arttoy61-png/rentcheck-home-v2`의 최신 `main`이다. 이 저장소의 `CNAME`은 `rent-check.kr`이다. `arttoy61-png/rent-check`는 별도 데이터·기존 도구 저장소이며 HOME 글의 최종 게시 저장소로 혼동하지 않는다. `rentcheck-preview`는 이번 HOME 글 발행 대상이 아니다.
