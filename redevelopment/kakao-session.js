@@ -1,18 +1,94 @@
-/* User-operated session-only Kakao SDK connection. Never stores or logs the key. */
-(()=>{'use strict';
-const input=document.querySelector('#kakaoSessionKey'),button=document.querySelector('#connectKakao'),status=document.querySelector('#kakaoConnectionStatus');
-let latest=null,ready=false,busy=false,started=false,selected=null,script=null,timer=null,attempt=0;
-function message(text){status.textContent=text;}
-function sync(opts){latest=opts;if(!ready)return;document.querySelector('#kakaoMap').hidden=false;document.querySelector('#map').style.visibility='hidden';document.querySelector('.mapcanvas').classList.add('kakao-connected');
-if(!started){started=window.RentKakaoMap.start({container:'#kakaoMap',statusSelector:'#kakaoMapStatus',onPick:(id,open,kind)=>latest?.onPick(id,open,kind),onMove:(c,tab)=>{if(latest?.tab===tab)latest.onMove?.(c);}});if(!started)throw Error('map unavailable');}
-window.RentKakaoMap.update(opts);
-}
-function fail(){++attempt;clearTimeout(timer);script?.remove();script=null;busy=false;ready=false;input.disabled=false;const panel=document.querySelector('.kakao-connect');if(panel)panel.hidden=false;document.querySelector('#kakaoMap').hidden=true;document.querySelector('#map').style.visibility='';document.querySelector('.mapcanvas').classList.remove('kakao-connected');button.disabled=false;button.textContent='지도 연결 다시 시도';input.value='';message('연결하지 못했습니다. JavaScript 키와 등록 도메인을 확인한 뒤 다시 입력해 주세요. 키 값은 표시하지 않습니다.');}
-button.addEventListener('click',()=>{if(busy||ready)return;let key=input.value.trim();if(!/^[a-f0-9]{32}$/i.test(key)){message('카카오 JavaScript 키 형식을 확인해 주세요.');return;}
-const current=++attempt;busy=true;button.disabled=true;message('카카오에 지도 연결을 요청하고 있습니다…');script=document.createElement('script');script.async=true;script.referrerPolicy='strict-origin-when-cross-origin';script.src='https://dapi.kakao.com/v2/maps/sdk.js?appkey='+encodeURIComponent(key)+'&autoload=false&libraries=services';key='';input.value='';
-script.onerror=()=>{if(current===attempt)fail();};script.onload=()=>{if(current!==attempt)return;script?.remove();script=null;try{if(!window.kakao?.maps?.load){fail();return;}window.kakao.maps.load(()=>{if(current!==attempt)return;try{ready=true;if(latest)sync(latest);clearTimeout(timer);busy=false;input.value='';input.disabled=true;button.textContent='이 탭에서 연결됨';const badge=document.querySelector('.private');if(badge)badge.textContent='재개발 지도 · 카카오 연결';const panel=document.querySelector('.kakao-connect');if(panel)panel.hidden=true;window.RentKakaoMap.resize();message('카카오 지도 연결됨 · 재개발 지도에 연결됐습니다. 새로고침하면 키를 다시 입력해야 합니다.');}catch{fail();}});}catch{fail();}};
-timer=setTimeout(fail,20000);document.head.append(script);
-});
-window.RentKakaoSession={sync,isActive:()=>ready,activeTab:()=>window.RentKakaoMap.activeTab?.()};
-})();
+/* Connect using the site's configured Kakao browser key. */
+(() => {
+  'use strict';
+  const button = document.querySelector('#connectKakao');
+  const status = document.querySelector('#kakaoConnectionStatus');
+  const map = document.querySelector('#kakaoMap');
+  const baseMap = document.querySelector('#map');
+  const canvas = document.querySelector('.mapcanvas');
+  let latest = null;
+  let ready = false;
+  let busy = false;
+  let started = false;
 
+  function sync(options) {
+    latest = options;
+    if (!ready) return;
+    map.hidden = false;
+    baseMap.style.visibility = 'hidden';
+    canvas.classList.add('kakao-connected');
+    if (!started) {
+      started = window.RentKakaoMap.start({
+        container: '#kakaoMap',
+        statusSelector: '#kakaoMapStatus',
+        onPick: (id, open, kind) => latest?.onPick(id, open, kind),
+        onMove: (camera, tab) => {
+          if (latest?.tab === tab) latest.onMove?.(camera);
+        }
+      });
+      if (!started) throw Error('map unavailable');
+    }
+    window.RentKakaoMap.update(options);
+  }
+
+  function connect() {
+    if (ready || busy) return;
+    const config = window.RENTCHECK_MAP_CONFIG || {};
+    const key = String(config.kakaoJavaScriptKey || '').trim();
+    if (config.autoConnect === false || !/^[a-f0-9]{32}$/i.test(key)) return;
+    busy = true;
+    button.hidden = true;
+    status.textContent = '카카오 지도를 불러오고 있습니다.';
+    const script = document.createElement('script');
+    let pending = true;
+    const timer = setTimeout(fail, 20000);
+
+    function finish() {
+      pending = false;
+      clearTimeout(timer);
+      script.remove();
+      busy = false;
+    }
+
+    function fail() {
+      if (!pending) return;
+      finish();
+      ready = false;
+      map.hidden = true;
+      baseMap.style.visibility = '';
+      canvas.classList.remove('kakao-connected');
+      status.textContent = '카카오 지도에 연결할 수 없어 기본 지도를 표시합니다. 현장 검색과 상세 보기는 그대로 이용할 수 있습니다.';
+      button.hidden = false;
+    }
+
+    script.onerror = fail;
+    script.onload = () => {
+      if (!pending) return;
+      try {
+        window.kakao.maps.load(() => {
+          if (!pending) return;
+          try {
+            ready = true;
+            if (latest) sync(latest);
+            window.RentKakaoMap.resize();
+            finish();
+            status.textContent = '카카오 지도를 사용하고 있습니다.';
+            const badge = document.querySelector('.private');
+            if (badge) badge.textContent = '재개발 지도 · 카카오 연결';
+          } catch {
+            fail();
+          }
+        });
+      } catch {
+        fail();
+      }
+    };
+    script.async = true;
+    script.referrerPolicy = 'strict-origin-when-cross-origin';
+    script.src = 'https://dapi.kakao.com/v2/maps/sdk.js?appkey=' + encodeURIComponent(key) + '&autoload=false&libraries=services';
+    document.head.append(script);
+  }
+
+  button.addEventListener('click', connect);
+  window.RentKakaoSession = {sync, connect, isActive: () => ready, activeTab: () => window.RentKakaoMap.activeTab?.()};
+})();
