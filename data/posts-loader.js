@@ -66,7 +66,7 @@
   document.querySelectorAll('.final-cta a[href="/blog/"]').forEach(link=>{link.textContent='최신 글'});
   const searchInput=document.querySelector('#searchInput');
   const searchLabel=document.querySelector('label[for="searchInput"]');
-  if(searchInput)searchInput.placeholder='계산기·부동산 글 검색';
+  if(searchInput)searchInput.placeholder='부동산 궁금증을 입력하세요';
   if(searchLabel)searchLabel.textContent='계산기·부동산 글 검색';
 
   // Layout for this list lives in /assets/home/home-library.css so it renders before JS runs.

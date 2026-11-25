@@ -69,8 +69,8 @@
 
   const homeForm=document.querySelector('#searchForm'),homeInput=document.querySelector('#searchInput'),homePanel=document.querySelector('#searchResults');
   if(homeForm&&homeInput){
-    homeInput.placeholder='부동산 궁금한 걸 그대로 물어보세요';homeInput.setAttribute('aria-label','부동산 궁금한 걸 그대로 물어보세요');
-    const label=homeForm.querySelector('label');if(label)label.textContent='부동산 궁금한 걸 그대로 물어보세요';
+    homeInput.placeholder='부동산 궁금증을 입력하세요';homeInput.setAttribute('aria-label','부동산 궁금증을 입력하세요');
+    const label=homeForm.querySelector('label');if(label)label.textContent='부동산 궁금증을 입력하세요';
     // Preserve the homepage autocomplete while keeping the established Q&A submit.
     homeForm.addEventListener('submit',e=>{e.preventDefault();e.stopImmediatePropagation();if(homePanel)homePanel.hidden=true;open(homeInput.value.trim())},true);
   }

@@ -54,7 +54,7 @@
 <main id="compact-home">
   <section class="intro-band">
     <div class="page-width">
-      <div class="intro-heading"><h1>자주 찾는 부동산 서비스</h1><div class="search-wrap"><form class="search" id="searchForm" role="search" autocomplete="off"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><label class="sr-only" for="searchInput">계산기·분석 글 검색</label><input id="searchInput" type="search" placeholder="계산기·분석 글 검색" aria-controls="searchResults" aria-expanded="false" aria-autocomplete="list"><button type="submit" aria-label="검색">→</button></form><div class="search-results" id="searchResults" role="listbox" hidden></div></div></div>
+      <div class="intro-heading"><h1>자주 찾는 부동산 서비스</h1><div class="search-wrap"><form class="search" id="searchForm" role="search" autocomplete="off"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><label class="sr-only" for="searchInput">부동산 궁금증을 입력하세요</label><input id="searchInput" type="search" placeholder="부동산 궁금증을 입력하세요" aria-controls="searchResults" aria-expanded="false" aria-autocomplete="list"><button type="submit" aria-label="검색">→</button></form><div class="search-results" id="searchResults" role="listbox" hidden></div></div></div>
       <p class="intro-description">렌트체크에서 재개발 구역을 찾고, 청년임대 가점을 계산하고, 강서구 실거래를 비교해 보세요.</p>
       <nav class="tool-tiles" aria-label="주요 주거 서비스">
         <div class="topic"><a class="topic-main" href="/blog/redevelopment-tenant/">
@@ -186,7 +186,7 @@
   document.querySelectorAll('.final-cta a[href="/blog/"]').forEach(link=>{link.textContent='최신 글'});
   const searchInput=document.querySelector('#searchInput');
   const searchLabel=document.querySelector('label[for="searchInput"]');
-  if(searchInput)searchInput.placeholder='계산기·부동산 글 검색';
+  if(searchInput)searchInput.placeholder='부동산 궁금증을 입력하세요';
   if(searchLabel)searchLabel.textContent='계산기·부동산 글 검색';
 
   // Layout for this list lives in /assets/home/home-library.css so it renders before JS runs.
@@ -655,8 +655,8 @@ toolDialog.addEventListener('click', event => {
 
   const homeForm=document.querySelector('#searchForm'),homeInput=document.querySelector('#searchInput'),homePanel=document.querySelector('#searchResults');
   if(homeForm&&homeInput){
-    homeInput.placeholder='부동산 궁금한 걸 그대로 물어보세요';homeInput.setAttribute('aria-label','부동산 궁금한 걸 그대로 물어보세요');
-    const label=homeForm.querySelector('label');if(label)label.textContent='부동산 궁금한 걸 그대로 물어보세요';
+    homeInput.placeholder='부동산 궁금증을 입력하세요';homeInput.setAttribute('aria-label','부동산 궁금증을 입력하세요');
+    const label=homeForm.querySelector('label');if(label)label.textContent='부동산 궁금증을 입력하세요';
     // Preserve the homepage autocomplete while keeping the established Q&A submit.
     homeForm.addEventListener('submit',e=>{e.preventDefault();e.stopImmediatePropagation();if(homePanel)homePanel.hidden=true;open(homeInput.value.trim())},true);
   }
