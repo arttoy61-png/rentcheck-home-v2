@@ -6,7 +6,7 @@ import re
 import sys
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import unquote, urlparse
+from urllib.parse import unquote, urljoin, urlparse
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,9 +23,14 @@ class AttrParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
         self.refs: list[tuple[str, str]] = []
+        self.base_href: str | None = None
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         for key, value in attrs:
+            if tag == "base" and key == "href":
+                if self.base_href is None:
+                    self.base_href = value or ""
+                continue
             if value and key.lower() in {"href", "src"}:
                 self.refs.append((key.lower(), value.strip()))
 
@@ -82,8 +87,11 @@ def scan_html() -> tuple[list[str], list[str]]:
         except Exception as exc:
             broken.append(f"HTML_PARSE {path.relative_to(ROOT)}: {exc}")
             continue
+        document_url = "https://rent-check.kr/" + path.relative_to(ROOT).as_posix()
+        base_url = urljoin(document_url, parser.base_href or "")
         for attr, raw in parser.refs:
-            target = resolve_local(path, raw)
+            reference = urljoin(base_url, raw) if parser.base_href is not None else raw
+            target = resolve_local(path, reference)
             if target is None:
                 continue
             if not target.exists():

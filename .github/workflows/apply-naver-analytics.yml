@@ -44,6 +44,9 @@ jobs:
           no_body = []
 
           for path in sorted(Path('.').rglob('*.html')):
+              # Embedded tools share the host page's visit.
+              if path.is_relative_to(Path('assets/home/renewal')):
+                  continue
               text = path.read_text(encoding='utf-8')
               if marker in text:
                   skipped.append(str(path))
