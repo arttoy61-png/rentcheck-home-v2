@@ -50,7 +50,25 @@
 }
 .form:has(#priceField):not(:has(#priceField.hidden)) #priceField{grid-column:1/-1}
 .card>.fold:first-child{border-top:none;margin-top:0}
-</style></head><body data-tool="rent-yield"><main class="page"><section class="hero"><h1>임대 수익률 계산기</h1><p>매매가·보증금·월세·대출 조건으로 실투자금과 세전 현금수익률을 계산합니다.</p></section>
+</style>
+<!-- Rent Check share preview -->
+<meta property="og:site_name" content="Rent Check">
+<meta property="og:title" content="임대 수익률 계산기">
+<meta property="og:description" content="부동산 계산과 실거래 해석을 연결하는 Rent Check입니다.">
+<meta property="og:url" content="https://rent-check.kr/assets/home/renewal/rent-yield.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://rent-check.kr/assets/share/rent-check-og-v2.png?v=20260829-2">
+<meta property="og:image:secure_url" content="https://rent-check.kr/assets/share/rent-check-og-v2.png?v=20260829-2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="Rent Check - 실거래로 더 정확하게">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="임대 수익률 계산기">
+<meta name="twitter:description" content="부동산 계산과 실거래 해석을 연결하는 Rent Check입니다.">
+<meta name="twitter:image" content="https://rent-check.kr/assets/share/rent-check-og-v2.png?v=20260829-2">
+<!-- /Rent Check share preview -->
+</head><body data-tool="rent-yield"><main class="page"><section class="hero"><h1>임대 수익률 계산기</h1><p>매매가·보증금·월세·대출 조건으로 실투자금과 세전 현금수익률을 계산합니다.</p></section>
 <section class="card"><h2>1. 물건 종류</h2><div class="seg" id="typeTabs"><button class="active" data-value="housing">주택</button><button data-value="officetel">오피스텔</button><button data-value="commercial">상가</button></div><div class="note">상가는 월세 부가세를 제외한 임대료를 입력하세요. 오피스텔·상가는 취득 관련 세율 기본값을 4.6%로 두고 직접 수정할 수 있습니다.</div></section>
 <section class="card"><h2>2. 임대·매입 조건</h2><div class="form"><div class="field"><label>매매가·분양가</label><div class="input"><input id="price" inputmode="decimal" placeholder="예: 30000"><span>만원</span></div></div><div class="field"><label>임대보증금</label><div class="input"><input id="deposit" inputmode="decimal" placeholder="예: 1000"><span>만원</span></div></div><div class="field"><label>월세</label><div class="input"><input id="rent" inputmode="decimal" placeholder="예: 120"><span>만원</span></div></div><div class="field"><label>대출비율</label><div class="stepper"><button data-target="loanRatio" data-delta="-5">−</button><div class="input"><input id="loanRatio" value="70" inputmode="decimal"><span>%</span></div><button data-target="loanRatio" data-delta="5">＋</button></div></div><div class="field"><label>대출이율</label><div class="stepper"><button data-target="interestRate" data-delta="-0.5">−</button><div class="input"><input id="interestRate" value="3.2" inputmode="decimal"><span>%</span></div><button data-target="interestRate" data-delta="0.5">＋</button></div></div></div><div class="note">대출비율과 금리는 예상값입니다. 실제 금융기관 승인 조건에 맞춰 조정해 보세요.</div></section>
 <section class="card"><h2>3. 취득 관련 세금</h2><div class="form" id="housingOptions"><div class="field"><label>취득 후 주택 수</label><select id="houseCount"><option value="1">1주택</option><option value="temp2">일시적 2주택·중과 제외</option><option value="2">2주택</option><option value="3">3주택</option><option value="4">4주택 이상</option><option value="corp">법인</option></select></div><div class="field"><label>조정대상지역</label><select id="regulated"><option value="no">아니오</option><option value="yes">예</option></select></div><div class="field"><label>전용면적 85㎡ 초과</label><select id="over85"><option value="no">85㎡ 이하</option><option value="yes">85㎡ 초과</option></select></div></div><div class="taxbox"><div class="taxhead"><div><strong>예상 취득 관련 세율</strong><div class="taxdesc" id="taxDesc"></div></div><div class="taxrate" id="taxRateView">-</div></div><div class="taxedit"><div class="field"><label>최종 적용 세율 직접 수정</label><div class="input"><input id="taxRate" value="1.1" inputmode="decimal"><span>%</span></div></div><button id="resetTax">자동 참고값으로</button></div></div><div class="note" id="taxNote"></div></section>
