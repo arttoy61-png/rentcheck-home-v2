@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-26T03:17:52+00:00",
-  "source_generated_at": "2026-11-26T04:17:29",
+  "generated_at": "2026-11-26T04:21:35+00:00",
+  "source_generated_at": "2026-11-26T12:35:30",
   "source_status": {
     "LH": {
       "count": 4,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 4,
       "carried_count": 13,
-      "failure_streak": 190
+      "failure_streak": 191
     },
     "SH": {
       "count": 19,
@@ -30,7 +30,7 @@
     "SEOUL": {
       "count": 32,
       "errors": [],
-      "excluded_noise": 11
+      "excluded_noise": 12
     },
     "SOCO": {
       "count": 26,
@@ -65,8 +65,8 @@
       "published_at": "2026-11-25",
       "deadline": "",
       "open_state": "일정 확인",
-      "event": "수정",
-      "change": "수정",
+      "event": "신규",
+      "change": "동일",
       "status_text": "일정 확인 중",
       "is_gangseo": false,
       "keywords": [
@@ -2446,7 +2446,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313268",
         "kind": "official_notice_body",
         "excerpt": "접수 기간 : 2026.11.23.(월) ~ 12.04.(금) 18시까지",
-        "verified_at": "2026-11-26T04:17:18"
+        "verified_at": "2026-11-26T12:35:18"
       },
       "sh_schedule_version": 1,
       "naver_detail": null,
@@ -2490,7 +2490,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313227",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.24.(화) ~ 2026.12.07.(월)",
-        "verified_at": "2026-11-26T04:17:12"
+        "verified_at": "2026-11-26T12:35:11"
       },
       "sh_schedule_version": 1,
       "naver_detail": null,
@@ -2514,8 +2514,8 @@
       "published_at": "",
       "deadline": "2026-12-07",
       "open_state": "접수중",
-      "event": "수정",
-      "change": "수정",
+      "event": "신규",
+      "change": "동일",
       "status_text": "",
       "is_gangseo": false,
       "keywords": [
@@ -2536,7 +2536,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313225",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.24.(화) ~ 12.07.(월) 18시까지",
-        "verified_at": "2026-11-26T04:17:14"
+        "verified_at": "2026-11-26T12:35:13"
       },
       "sh_schedule_version": 1,
       "naver_detail": {
@@ -2624,7 +2624,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313424",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.25.(수) ~ 2026.12.04.(금) 18시까지",
-        "verified_at": "2026-11-26T04:17:16"
+        "verified_at": "2026-11-26T12:35:16"
       },
       "sh_schedule_version": 1,
       "naver_detail": null,
