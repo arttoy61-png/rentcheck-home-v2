@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-26T18:03:30+00:00",
-  "source_generated_at": "2026-11-27T01:55:12",
+  "generated_at": "2026-11-27T03:23:05+00:00",
+  "source_generated_at": "2026-11-27T10:47:44",
   "source_status": {
     "LH": {
       "count": 4,
@@ -21,7 +21,7 @@
       ],
       "fresh_count": 4,
       "carried_count": 13,
-      "failure_streak": 192
+      "failure_streak": 193
     },
     "SH": {
       "count": 20,
@@ -29,9 +29,7 @@
     },
     "SEOUL": {
       "count": 41,
-      "errors": [
-        "https://youth.seoul.go.kr/infoData/sprtInfo/list.do?key=2309130006 :: <urlopen error _ssl.c:1001: The handshake operation timed out>"
-      ],
+      "errors": [],
       "excluded_noise": 11
     },
     "SOCO": {
@@ -70,7 +68,7 @@
       "deadline": "",
       "open_state": "대상별 일정 확인",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "대상별 일정 확인",
       "is_gangseo": false,
       "keywords": [
@@ -129,7 +127,7 @@
       "deadline": "",
       "open_state": "대상별 일정 확인",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "대상별 일정 확인",
       "is_gangseo": false,
       "keywords": [
@@ -188,7 +186,7 @@
       "deadline": "",
       "open_state": "대상별 일정 확인",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "대상별 일정 확인",
       "is_gangseo": false,
       "keywords": [
@@ -247,7 +245,7 @@
       "deadline": "",
       "open_state": "대상별 일정 확인",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "대상별 일정 확인",
       "is_gangseo": false,
       "keywords": [
@@ -306,7 +304,7 @@
       "deadline": "",
       "open_state": "대상별 일정 확인",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "대상별 일정 확인",
       "is_gangseo": false,
       "keywords": [
@@ -365,7 +363,7 @@
       "deadline": "",
       "open_state": "대상별 일정 확인",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "대상별 일정 확인",
       "is_gangseo": false,
       "keywords": [
@@ -424,7 +422,7 @@
       "deadline": "",
       "open_state": "대상별 일정 확인",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "대상별 일정 확인",
       "is_gangseo": false,
       "keywords": [
@@ -483,7 +481,7 @@
       "deadline": "",
       "open_state": "대상별 일정 확인",
       "event": "신규",
-      "change": "신규",
+      "change": "동일",
       "status_text": "대상별 일정 확인",
       "is_gangseo": false,
       "keywords": [
@@ -2920,7 +2918,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313268",
         "kind": "official_notice_body",
         "excerpt": "접수 기간 : 2026.11.23.(월) ~ 12.04.(금) 18시까지",
-        "verified_at": "2026-11-27T01:54:59"
+        "verified_at": "2026-11-27T10:47:33"
       },
       "sh_schedule_version": 1,
       "naver_detail": null,
@@ -2964,7 +2962,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313227",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.24.(화) ~ 2026.12.07.(월)",
-        "verified_at": "2026-11-27T01:54:51"
+        "verified_at": "2026-11-27T10:47:21"
       },
       "sh_schedule_version": 1,
       "naver_detail": null,
@@ -3010,7 +3008,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313225",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.24.(화) ~ 12.07.(월) 18시까지",
-        "verified_at": "2026-11-27T01:54:54"
+        "verified_at": "2026-11-27T10:47:25"
       },
       "sh_schedule_version": 1,
       "naver_detail": {
@@ -3098,7 +3096,7 @@
         "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313424",
         "kind": "official_notice_body",
         "excerpt": "접수기간 : 2026.11.25.(수) ~ 2026.12.04.(금) 18시까지",
-        "verified_at": "2026-11-27T01:54:56"
+        "verified_at": "2026-11-27T10:47:29"
       },
       "sh_schedule_version": 1,
       "naver_detail": null,
